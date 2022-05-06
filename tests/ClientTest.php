@@ -15,7 +15,7 @@ use TelegramBot\Api\Types\Update;
 
 class ClientTest extends TestCase
 {
-    public function data()
+    public function data(): array
     {
         return [
             [
@@ -120,11 +120,9 @@ class ClientTest extends TestCase
     }
 
     /**
-     * @param Update $update
-     *
      * @dataProvider data
      */
-    public function testGetInlineQueryChecker($update)
+    public function testGetInlineQueryChecker(Update $update): void
     {
         $reflectionMethod = new ReflectionMethod(Client::class, 'getInlineQueryChecker');
         $reflectionMethod->setAccessible(true);
@@ -135,7 +133,7 @@ class ClientTest extends TestCase
         $this->assertSame($update->getInlineQuery() !== null, call_user_func($result, $update));
     }
 
-    public function testBadMethodCallException()
+    public function testBadMethodCallException(): void
     {
         $this->expectException(BadMethodCallException::class);
         $this->expectExceptionMessage('Method testMethod not exists');
@@ -144,14 +142,14 @@ class ClientTest extends TestCase
         $item->testMethod();
     }
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $item = new Client('testToken');
 
         $this->assertInstanceOf(Client::class, $item);
     }
 
-    public function testOn()
+    public function testOn(): void
     {
         $item = new Client('testToken');
 
@@ -173,12 +171,9 @@ class ClientTest extends TestCase
     }
 
     /**
-     * @param Update $update
-     * @param string $command
-     *
      * @dataProvider data
      */
-    public function testGetChecker(Update $update, string $command)
+    public function testGetChecker(Update $update, string $command): void
     {
         $reflectionMethod = new ReflectionMethod('TelegramBot\Api\Client', 'getChecker');
         $reflectionMethod->setAccessible(true);
@@ -196,11 +191,9 @@ class ClientTest extends TestCase
     }
 
     /**
-     * @param Update $update
-     *
      * @dataProvider data
      */
-    public function testHandle($update)
+    public function testHandle(Update $update): void
     {
         $item = new Client('testToken');
 
@@ -220,11 +213,9 @@ class ClientTest extends TestCase
     }
 
     /**
-     * @param Update $update
-     *
      * @dataProvider data
      */
-    public function testGetEvent($update, $command, $attr1, $attr2)
+    public function testGetEvent(Update $update, string $command, $attr1, $attr2): void
     {
         $reflectionMethod = new ReflectionMethod(Client::class, 'getEvent');
         $reflectionMethod->setAccessible(true);
@@ -265,11 +256,9 @@ class ClientTest extends TestCase
     }
 
     /**
-     * @param Update $update
-     *
      * @dataProvider data
      */
-    public function testGetInlineQueryEvent($update)
+    public function testGetInlineQueryEvent(Update $update): void
     {
         $reflectionMethod = new ReflectionMethod(Client::class, 'getInlineQueryEvent');
         $reflectionMethod->setAccessible(true);

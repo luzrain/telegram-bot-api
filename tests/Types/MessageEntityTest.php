@@ -8,7 +8,7 @@ use TelegramBot\Api\Types\User;
 
 class MessageEntityTest extends TestCase
 {
-    public function testTextMentionFromResponse()
+    public function testTextMentionFromResponse(): void
     {
         $messageEntity = MessageEntity::fromResponse([
             'type' => 'text_mention',
@@ -39,7 +39,7 @@ class MessageEntityTest extends TestCase
         $this->assertNull($messageEntity->getLanguage());
     }
 
-    public function testPreFromResponse()
+    public function testPreFromResponse(): void
     {
         $messageEntity = MessageEntity::fromResponse([
             'type' => 'pre',

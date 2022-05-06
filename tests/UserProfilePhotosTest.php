@@ -9,14 +9,14 @@ use TelegramBot\Api\Types\UserProfilePhotos;
 
 class UserProfilePhotosTest extends TestCase
 {
-    public function testGetTotalCount()
+    public function testGetTotalCount(): void
     {
         $userProfilePhotos = new UserProfilePhotos();
         $userProfilePhotos->setTotalCount(1);
         $this->assertSame(1, $userProfilePhotos->getTotalCount());
     }
 
-    public function testGetPhotos()
+    public function testGetPhotos(): void
     {
         $userProfilePhotos = new UserProfilePhotos();
         $photos = [];
@@ -25,7 +25,7 @@ class UserProfilePhotosTest extends TestCase
                 'file_id' => 'testFileId1',
                 'width' => $i,
                 'height' => $i * 2,
-                'file_size' => $i * 3
+                'file_size' => $i * 3,
             ]);
         }
 
@@ -33,7 +33,7 @@ class UserProfilePhotosTest extends TestCase
         $this->assertEquals($photos, $userProfilePhotos->getPhotos());
     }
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
         $userProfilePhotos = UserProfilePhotos::fromResponse([
             'total_count' => 1,
@@ -43,10 +43,10 @@ class UserProfilePhotosTest extends TestCase
                         'file_id' => 'testFileId1',
                         'width' => 1,
                         'height' => 2,
-                        'file_size' => 3
-                    ]
-                ]
-            ]
+                        'file_size' => 3,
+                    ],
+                ],
+            ],
         ]);
         $photos = [
             [
@@ -54,9 +54,9 @@ class UserProfilePhotosTest extends TestCase
                     'file_id' => 'testFileId1',
                     'width' => 1,
                     'height' => 2,
-                    'file_size' => 3
+                    'file_size' => 3,
                 ])
-            ]
+            ],
         ];
 
         $this->assertInstanceOf(UserProfilePhotos::class, $userProfilePhotos);
@@ -70,7 +70,7 @@ class UserProfilePhotosTest extends TestCase
         }
     }
 
-    public function testSetTotalCountException()
+    public function testSetTotalCountException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 

@@ -8,7 +8,7 @@ use TelegramBot\Api\Types\PollOption;
 
 class PollTest extends TestCase
 {
-    public function testGetId()
+    public function testGetId(): void
     {
         $item = new Poll();
         $item->setId(123456789);
@@ -16,7 +16,7 @@ class PollTest extends TestCase
         $this->assertSame(123456789, $item->getId());
     }
 
-    public function testGetQuestion()
+    public function testGetQuestion(): void
     {
         $item = new Poll();
         $item->setQuestion('What is the name of Heisenberg from "Breaking bad"?');
@@ -24,7 +24,7 @@ class PollTest extends TestCase
         $this->assertSame('What is the name of Heisenberg from "Breaking bad"?', $item->getQuestion());
     }
 
-    public function testGetOptions()
+    public function testGetOptions(): void
     {
         $item = new Poll();
         $options = [
@@ -43,7 +43,7 @@ class PollTest extends TestCase
         }
     }
 
-    public function testGetTotalVoterCount()
+    public function testGetTotalVoterCount(): void
     {
         $item = new Poll();
         $item->setTotalVoterCount(17);
@@ -51,7 +51,7 @@ class PollTest extends TestCase
         $this->assertSame(17, $item->getTotalVoterCount());
     }
 
-    public function testIsClosed()
+    public function testIsClosed(): void
     {
         $item = new Poll();
         $item->setIsClosed(true);
@@ -59,7 +59,7 @@ class PollTest extends TestCase
         $this->assertTrue($item->isClosed());
     }
 
-    public function testIsAnonymous()
+    public function testIsAnonymous(): void
     {
         $item = new Poll();
         $item->setIsAnonymous(false);
@@ -67,7 +67,7 @@ class PollTest extends TestCase
         $this->assertFalse($item->isAnonymous());
     }
 
-    public function testGetType()
+    public function testGetType(): void
     {
         $item = new Poll();
         $item->setType('regular');
@@ -75,7 +75,7 @@ class PollTest extends TestCase
         $this->assertSame('regular', $item->getType());
     }
 
-    public function testAllowsMultipleAnswers()
+    public function testAllowsMultipleAnswers(): void
     {
         $item = new Poll();
         $item->setAllowsMultipleAnswers(true);
@@ -83,7 +83,7 @@ class PollTest extends TestCase
         $this->assertTrue($item->isAllowsMultipleAnswers());
     }
 
-    public function testGetCorrectOptionId()
+    public function testGetCorrectOptionId(): void
     {
         $item = new Poll();
         $item->setCorrectOptionId(2);

@@ -7,7 +7,7 @@ use TelegramBot\Api\Types\LoginUrl;
 
 class LoginUrlTest extends TestCase
 {
-    public function testGetUrl()
+    public function testGetUrl(): void
     {
         $loginUrl = new LoginUrl();
         $loginUrl->setUrl('https://telegram.org');
@@ -15,7 +15,7 @@ class LoginUrlTest extends TestCase
         $this->assertSame('https://telegram.org', $loginUrl->getUrl());
     }
 
-    public function testGetForwardText()
+    public function testGetForwardText(): void
     {
         $loginUrl = new LoginUrl();
         $loginUrl->setForwardText('Log in!');
@@ -23,7 +23,7 @@ class LoginUrlTest extends TestCase
         $this->assertSame('Log in!', $loginUrl->getForwardText());
     }
 
-    public function testGetBotUsername()
+    public function testGetBotUsername(): void
     {
         $loginUrl = new LoginUrl();
         $loginUrl->setBotUsername('TestBot');
@@ -31,7 +31,7 @@ class LoginUrlTest extends TestCase
         $this->assertSame('TestBot', $loginUrl->getBotUsername());
     }
 
-    public function testGetRequestWriteAccess()
+    public function testGetRequestWriteAccess(): void
     {
         $loginUrl = new LoginUrl();
         $loginUrl->setRequestWriteAccess(true);
@@ -39,13 +39,13 @@ class LoginUrlTest extends TestCase
         $this->assertTrue($loginUrl->isRequestWriteAccess());
     }
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
         $loginUrl = LoginUrl::fromResponse([
             'url' => 'https://telegram.org',
             'forward_text' => 'Log in!',
             'bot_username' => 'TestBot',
-            'request_write_access' => true
+            'request_write_access' => true,
         ]);
 
         $this->assertInstanceOf(LoginUrl::class, $loginUrl);

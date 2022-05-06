@@ -10,7 +10,7 @@ use TelegramBot\Api\Types\Update;
 
 class EventTest extends TestCase
 {
-    public function data()
+    public function data(): array
     {
         return [
             [
@@ -46,13 +46,9 @@ class EventTest extends TestCase
     }
 
     /**
-     * @param Closure $action
-     * @param Closure $checker
-     * @param Update $update
-     *
      * @dataProvider data
      */
-    public function testConstructor($action, $checker, $update)
+    public function testConstructor(Closure $action, Closure $checker, Update $update): void
     {
         $item = new Event($action, $checker);
 
@@ -60,13 +56,9 @@ class EventTest extends TestCase
     }
 
     /**
-     * @param Closure $action
-     * @param Closure $checker
-     * @param Update $update
-     *
      * @dataProvider data
      */
-    public function testGetAction($action, $checker, $update)
+    public function testGetAction(Closure $action, Closure $checker, Update $update): void
     {
         $item = new Event($action, $checker);
 
@@ -75,13 +67,9 @@ class EventTest extends TestCase
     }
 
     /**
-     * @param Closure $action
-     * @param Closure $checker
-     * @param Update $update
-     *
      * @dataProvider data
      */
-    public function testGetChecker($action, $checker, $update)
+    public function testGetChecker(Closure $action, Closure $checker, Update $update): void
     {
         $item = new Event($action, $checker);
 
@@ -90,13 +78,9 @@ class EventTest extends TestCase
     }
 
     /**
-     * @param Closure $action
-     * @param Closure $checker
-     * @param Update $update
-     *
      * @dataProvider data
      */
-    public function testExecuteAction($action, $checker, $update)
+    public function testExecuteAction(Closure $action, Closure $checker, Update $update): void
     {
         $item = new Event($action, $checker);
 
@@ -107,13 +91,10 @@ class EventTest extends TestCase
     }
 
     /**
-     * @param Closure $action
-     * @param Closure $checker
-     * @param Update $update
-     *
      * @dataProvider data
      */
-    public function testExecuteActionFalse($action, $checker, $update) {
+    public function testExecuteActionFalse(Closure $action, Closure $checker, Update $update): void
+    {
         $item = new Event($action, $checker);
 
         $reflection = new ReflectionClass($item);
@@ -126,13 +107,9 @@ class EventTest extends TestCase
     }
 
     /**
-     * @param Closure $action
-     * @param Closure $checker
-     * @param Update $update
-     *
      * @dataProvider data
      */
-    public function testExecuteCheker($action, $checker, $update)
+    public function testExecuteCheker(Closure $action, Closure $checker, Update $update): void
     {
         $item = new Event($action, $checker);
 
@@ -143,13 +120,10 @@ class EventTest extends TestCase
     }
 
     /**
-     * @param Closure $action
-     * @param Closure $checker
-     * @param Update $update
-     *
      * @dataProvider data
      */
-    public function testExecuteCheckerFalse($action, $checker, $update) {
+    public function testExecuteCheckerFalse(Closure $action, Closure $checker, Update $update): void
+    {
         $item = new Event($action, $checker);
 
         $reflection = new ReflectionClass($item);

@@ -20,7 +20,7 @@ class ChosenInlineResultTest extends TestCase
         'query' => 'test_query'
     ];
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
         $item = ChosenInlineResult::fromResponse($this->chosenInlineResultFixture);
 
@@ -32,39 +32,44 @@ class ChosenInlineResultTest extends TestCase
         $this->assertSame($this->chosenInlineResultFixture['query'], $item->getQuery());
     }
 
-    public function testFromResponseException1() {
+    public function testFromResponseException1(): void
+    {
         unset($this->chosenInlineResultFixture['result_id']);
         $this->expectException(InvalidArgumentException::class);
         ChosenInlineResult::fromResponse($this->chosenInlineResultFixture);
     }
 
-    public function testFromResponseException2() {
+    public function testFromResponseException2(): void
+    {
         unset($this->chosenInlineResultFixture['from']);
         $this->expectException(InvalidArgumentException::class);
         ChosenInlineResult::fromResponse($this->chosenInlineResultFixture);
     }
 
-    public function testFromResponseException3() {
+    public function testFromResponseException3(): void
+    {
         unset($this->chosenInlineResultFixture['query']);
         $this->expectException(InvalidArgumentException::class);
         ChosenInlineResult::fromResponse($this->chosenInlineResultFixture);
     }
 
-    public function testGetResultId()
+    public function testGetResultId(): void
     {
         $item = new ChosenInlineResult();
         $item->setResultId($this->chosenInlineResultFixture['result_id']);
         $this->assertSame($this->chosenInlineResultFixture['result_id'], $item->getResultId());
     }
 
-    public function testGetFrom() {
+    public function testGetFrom(): void
+    {
         $item = new ChosenInlineResult();
         $user = User::fromResponse($this->chosenInlineResultFixture['from']);
         $item->setFrom($user);
         $this->assertSame($user, $item->getFrom());
     }
 
-    public function testGetQuery() {
+    public function testGetQuery(): void
+    {
         $item = new ChosenInlineResult();
         $item->setQuery('testQuery');
         $this->assertSame('testQuery', $item->getQuery());

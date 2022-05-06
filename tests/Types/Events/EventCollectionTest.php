@@ -13,7 +13,7 @@ use TelegramBot\Api\Types\Update;
 
 class EventCollectionTest extends TestCase
 {
-    public function data()
+    public function data(): array
     {
         return [
             [
@@ -48,7 +48,7 @@ class EventCollectionTest extends TestCase
         ];
     }
 
-    public function testConstructor1()
+    public function testConstructor1(): void
     {
         $item = new EventCollection();
         $tracker = (new ReflectionProperty($item, 'tracker'))->getValue($item);
@@ -58,7 +58,7 @@ class EventCollectionTest extends TestCase
         $this->assertEmpty($events);
     }
 
-    public function testConstructor2()
+    public function testConstructor2(): void
     {
         $item = new EventCollection('testToken');
         $tracker = (new ReflectionProperty($item, 'tracker'))->getValue($item);
@@ -69,12 +69,9 @@ class EventCollectionTest extends TestCase
     }
 
     /**
-     * @param Closure $action
-     * @param Closure $checker
-     *
      * @dataProvider data
      */
-    public function testAdd1($action, $checker)
+    public function testAdd1(Closure $action, Closure $checker): void
     {
         $item = new EventCollection();
         $item->add($action, $checker);
@@ -93,11 +90,9 @@ class EventCollectionTest extends TestCase
     }
 
     /**
-     * @param Closure $action
-     *
      * @dataProvider data
      */
-    public function testAdd2($action)
+    public function testAdd2(Closure $action): void
     {
         $item = new EventCollection();
         $item->add($action);
@@ -116,13 +111,10 @@ class EventCollectionTest extends TestCase
     }
 
     /**
-     * @param Closure $action
-     * @param Closure $checker
-     * @param Update $update
-     *
      * @dataProvider data
      */
-    public function testHandle1($action, $checker, $update) {
+    public function testHandle1(Closure $action, Closure $checker, Update $update): void
+    {
         $item = new EventCollection('testToken');
         $name = 'test';
         $item->add($action, function ($update) use ($name) {
@@ -147,13 +139,10 @@ class EventCollectionTest extends TestCase
     }
 
     /**
-     * @param Closure $action
-     * @param Closure $checker
-     * @param Update $update
-     *
      * @dataProvider data
      */
-    public function testHandle2($action, $checker, $update) {
+    public function testHandle2(Closure $action, Closure $checker, Update $update): void
+    {
         $item = new EventCollection();
         $name = 'test';
         $item->add($action, function ($update) use ($name) {

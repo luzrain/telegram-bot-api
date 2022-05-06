@@ -12,17 +12,17 @@ use TelegramBot\Api\Types\WebhookInfo;
 
 class WebhookInfoTest extends TestCase
 {
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
-        $webhookInfo = WebhookInfo::fromResponse(array(
+        $webhookInfo = WebhookInfo::fromResponse([
             'url' => '',
             'has_custom_certificate' => false,
             'pending_update_count' => 0,
             'last_error_date' => null,
             'last_error_message' => null,
             'max_connections' => 40,
-            'allowed_updates' => null
-        ));
+            'allowed_updates' => null,
+        ]);
 
         $this->assertInstanceOf(WebhookInfo::class, $webhookInfo);
         $this->assertSame('', $webhookInfo->getUrl());

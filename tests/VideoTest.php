@@ -9,35 +9,35 @@ use TelegramBot\Api\Types\Video;
 
 class VideoTest extends TestCase
 {
-    public function testGetFileId()
+    public function testGetFileId(): void
     {
         $item = new Video();
         $item->setFileId('testfileId');
         $this->assertSame('testfileId', $item->getFileId());
     }
 
-    public function testGetDuration()
+    public function testGetDuration(): void
     {
         $item = new Video();
         $item->setDuration(1);
         $this->assertSame(1, $item->getDuration());
     }
 
-    public function testGetFileSize()
+    public function testGetFileSize(): void
     {
         $item = new Video();
         $item->setFileSize(6);
         $this->assertSame(6, $item->getFileSize());
     }
 
-    public function testGetMimeType()
+    public function testGetMimeType(): void
     {
         $item = new Video();
         $item->setMimeType('video/mp4');
         $this->assertSame('video/mp4', $item->getMimeType());
     }
 
-    public function testGetThumb()
+    public function testGetThumb(): void
     {
         $item = new Video();
         $thumb = PhotoSize::fromResponse([
@@ -51,21 +51,21 @@ class VideoTest extends TestCase
         $this->assertInstanceOf(PhotoSize::class, $item->getThumb());
     }
 
-    public function testGetWidth()
+    public function testGetWidth(): void
     {
         $item = new Video();
         $item->setWidth(2);
         $this->assertSame(2, $item->getWidth());
     }
 
-    public function testGetHeight()
+    public function testGetHeight(): void
     {
         $item = new Video();
         $item->setHeight(4);
         $this->assertSame(4, $item->getHeight());
     }
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
         $item = Video::fromResponse([
             'file_id' => 'testFileId1',
@@ -78,14 +78,14 @@ class VideoTest extends TestCase
                 'file_id' => 'testFileId1',
                 'width' => 5,
                 'height' => 6,
-                'file_size' => 7
-            ]
+                'file_size' => 7,
+            ],
         ]);
         $thumb = PhotoSize::fromResponse([
             'file_id' => 'testFileId1',
             'width' => 5,
             'height' => 6,
-            'file_size' => 7
+            'file_size' => 7,
         ]);
 
         $this->assertInstanceOf(Video::class, $item);
@@ -99,7 +99,7 @@ class VideoTest extends TestCase
         $this->assertInstanceOf(PhotoSize::class, $item->getThumb());
     }
 
-    public function testSetHeightException()
+    public function testSetHeightException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -107,7 +107,7 @@ class VideoTest extends TestCase
         $item->setHeight('s');
     }
 
-    public function testSetWidthException()
+    public function testSetWidthException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -115,7 +115,7 @@ class VideoTest extends TestCase
         $item->setWidth('s');
     }
 
-    public function testSetDurationException()
+    public function testSetDurationException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -123,7 +123,7 @@ class VideoTest extends TestCase
         $item->setDuration('s');
     }
 
-    public function testSetFileSizeException()
+    public function testSetFileSizeException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -131,7 +131,7 @@ class VideoTest extends TestCase
         $item->setFileSize('s');
     }
 
-    public function testFromResponseException1()
+    public function testFromResponseException1(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -145,12 +145,12 @@ class VideoTest extends TestCase
                 'file_id' => 'testFileId1',
                 'width' => 5,
                 'height' => 6,
-                'file_size' => 7
-            ]
+                'file_size' => 7,
+            ],
         ]);
     }
 
-    public function testFromResponseException2()
+    public function testFromResponseException2(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -164,12 +164,12 @@ class VideoTest extends TestCase
                 'file_id' => 'testFileId1',
                 'width' => 5,
                 'height' => 6,
-                'file_size' => 7
-            ]
+                'file_size' => 7,
+            ],
         ]);
     }
 
-    public function testFromResponseException3()
+    public function testFromResponseException3(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -183,12 +183,12 @@ class VideoTest extends TestCase
                 'file_id' => 'testFileId1',
                 'width' => 5,
                 'height' => 6,
-                'file_size' => 7
-            ]
+                'file_size' => 7,
+            ],
         ]);
     }
 
-    public function testFromResponseException4()
+    public function testFromResponseException4(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -202,8 +202,8 @@ class VideoTest extends TestCase
                 'file_id' => 'testFileId1',
                 'width' => 5,
                 'height' => 6,
-                'file_size' => 7
-            ]
+                'file_size' => 7,
+            ],
         ]);
     }
 }

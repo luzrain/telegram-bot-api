@@ -8,7 +8,7 @@ use TelegramBot\Api\Types\PhotoSize;
 
 class ArrayOfPhotoSizeTest extends TestCase
 {
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
         $actual = ArrayOfPhotoSize::fromResponse([
             [

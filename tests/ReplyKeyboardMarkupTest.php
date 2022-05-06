@@ -7,7 +7,7 @@ use TelegramBot\Api\Types\ReplyKeyboardMarkup;
 
 class ReplyKeyboardMarkupTest extends TestCase
 {
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $item = new ReplyKeyboardMarkup([['one', 'two']]);
 
@@ -17,7 +17,7 @@ class ReplyKeyboardMarkupTest extends TestCase
         $this->assertNull($item->isSelective());
     }
 
-    public function testConstructor2()
+    public function testConstructor2(): void
     {
         $item = new ReplyKeyboardMarkup([['one', 'two']], true);
 
@@ -27,7 +27,7 @@ class ReplyKeyboardMarkupTest extends TestCase
         $this->assertNull($item->isSelective());
     }
 
-    public function testConstructor3()
+    public function testConstructor3(): void
     {
         $item = new ReplyKeyboardMarkup([['one', 'two']], true, true);
 
@@ -37,7 +37,7 @@ class ReplyKeyboardMarkupTest extends TestCase
         $this->assertNull($item->isSelective());
     }
 
-    public function testConstructor4()
+    public function testConstructor4(): void
     {
         $item = new ReplyKeyboardMarkup([['one', 'two']], true, true, true);
 
@@ -47,7 +47,7 @@ class ReplyKeyboardMarkupTest extends TestCase
         $this->assertTrue(true, 'selective', $item);
     }
 
-    public function testGetKeyboard()
+    public function testGetKeyboard(): void
     {
         $item = new ReplyKeyboardMarkup([['one', 'two']]);
         $item->setKeyboard([['one', 'two', 'three']]);
@@ -55,7 +55,7 @@ class ReplyKeyboardMarkupTest extends TestCase
         $this->assertSame([['one', 'two', 'three']], $item->getKeyboard());
     }
 
-    public function testIsSelective()
+    public function testIsSelective(): void
     {
         $item = new ReplyKeyboardMarkup([['one', 'two']]);
         $item->setSelective(true);
@@ -63,7 +63,7 @@ class ReplyKeyboardMarkupTest extends TestCase
         $this->assertTrue($item->isSelective());
     }
 
-    public function testIsOneTimeKeyboard()
+    public function testIsOneTimeKeyboard(): void
     {
         $item = new ReplyKeyboardMarkup([['one', 'two']]);
         $item->setOneTimeKeyboard(false);
@@ -71,7 +71,7 @@ class ReplyKeyboardMarkupTest extends TestCase
         $this->assertFalse($item->isOneTimeKeyboard());
     }
 
-    public function testIsResizeKeyboard()
+    public function testIsResizeKeyboard(): void
     {
         $item = new ReplyKeyboardMarkup([['one', 'two']]);
         $item->setResizeKeyboard(true);
@@ -79,14 +79,14 @@ class ReplyKeyboardMarkupTest extends TestCase
         $this->assertTrue($item->isResizeKeyboard());
     }
 
-    public function testToJson()
+    public function testToJson(): void
     {
         $item = new ReplyKeyboardMarkup([['one', 'two']]);
 
         $this->assertSame(json_encode(['keyboard' => [['one', 'two']]]), $item->toJson());
     }
 
-    public function testToJson2()
+    public function testToJson2(): void
     {
         $item = new ReplyKeyboardMarkup([['one', 'two']], true, true, true);
 
@@ -98,14 +98,14 @@ class ReplyKeyboardMarkupTest extends TestCase
         ]), $item->toJson());
     }
 
-    public function testToJson3()
+    public function testToJson3(): void
     {
         $item = new ReplyKeyboardMarkup([['one', 'two']]);
 
         $this->assertEquals(['keyboard' => [['one', 'two']]], $item->toJson(true));
     }
 
-    public function testToJson4()
+    public function testToJson4(): void
     {
         $item = new ReplyKeyboardMarkup([['one', 'two']], true, true, true);
 

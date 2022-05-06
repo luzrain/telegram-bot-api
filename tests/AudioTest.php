@@ -8,49 +8,49 @@ use TelegramBot\Api\Types\Audio;
 
 class AudioTest extends TestCase
 {
-    public function testGetFileId()
+    public function testGetFileId(): void
     {
         $item = new Audio();
         $item->setFileId('testfileId');
         $this->assertSame('testfileId', $item->getFileId());
     }
 
-    public function testGetDuration()
+    public function testGetDuration(): void
     {
         $item = new Audio();
         $item->setDuration(1);
         $this->assertSame(1, $item->getDuration());
     }
 
-    public function testGetPerformer()
+    public function testGetPerformer(): void
     {
         $item = new Audio();
         $item->setPerformer('test');
         $this->assertSame('test', $item->getPerformer());
     }
 
-    public function testGetTitle()
+    public function testGetTitle(): void
     {
         $item = new Audio();
         $item->setTitle('test');
         $this->assertSame('test', $item->getTitle());
     }
 
-    public function testGetFileSize()
+    public function testGetFileSize(): void
     {
         $item = new Audio();
         $item->setFileSize(6);
         $this->assertSame(6, $item->getFileSize());
     }
 
-    public function testGetMimeType()
+    public function testGetMimeType(): void
     {
         $item = new Audio();
         $item->setMimeType('audio/mp3');
         $this->assertSame('audio/mp3', $item->getMimeType());
     }
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
         $item = Audio::fromResponse([
             'file_id' => 'testFileId1',
@@ -70,7 +70,7 @@ class AudioTest extends TestCase
         $this->assertSame(3, $item->getFileSize());
     }
 
-    public function testFromResponseException()
+    public function testFromResponseException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -81,7 +81,7 @@ class AudioTest extends TestCase
         ]);
     }
 
-    public function testFromResponseException2()
+    public function testFromResponseException2(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -92,7 +92,7 @@ class AudioTest extends TestCase
         ]);
     }
 
-    public function testSetDurationException()
+    public function testSetDurationException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -100,7 +100,7 @@ class AudioTest extends TestCase
         $item->setDuration('s');
     }
 
-    public function testSetFileSizeException()
+    public function testSetFileSizeException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 

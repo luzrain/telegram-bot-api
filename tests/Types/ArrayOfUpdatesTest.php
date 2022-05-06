@@ -9,7 +9,7 @@ use TelegramBot\Api\Types\Update;
 class ArrayOfUpdatesTest extends TestCase
 {
 
-    public function data()
+    public function data(): array
     {
         return [
             // item 1
@@ -44,7 +44,7 @@ class ArrayOfUpdatesTest extends TestCase
     /**
      * @dataProvider data
      */
-    public function testFromResponse($data)
+    public function testFromResponse(array $data): void
     {
         $items = ArrayOfUpdates::fromResponse($data);
 

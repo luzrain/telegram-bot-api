@@ -9,7 +9,7 @@ use TelegramBot\Api\Types\Update;
 
 class BotApiTest extends TestCase
 {
-    public function data()
+    public function data(): array
     {
         return [
             [
@@ -106,7 +106,7 @@ class BotApiTest extends TestCase
      *
      * @dataProvider data
      */
-    public function testGetUpdates($updates)
+    public function testGetUpdates(array $updates): void
     {
         $mock = $this->getMockBuilder(BotApi::class)
             ->setMethods(['call'])

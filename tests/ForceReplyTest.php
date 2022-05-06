@@ -7,7 +7,7 @@ use TelegramBot\Api\Types\ForceReply;
 
 class ForceReplyTest extends TestCase
 {
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $item = new ForceReply();
 
@@ -15,7 +15,7 @@ class ForceReplyTest extends TestCase
         $this->assertNull($item->isSelective());
     }
 
-    public function testConstructor2()
+    public function testConstructor2(): void
     {
         $item = new ForceReply(true, true);
 
@@ -23,7 +23,7 @@ class ForceReplyTest extends TestCase
         $this->assertTrue($item->isSelective());
     }
 
-    public function testConstructor3()
+    public function testConstructor3(): void
     {
         $item = new ForceReply(false, true);
 
@@ -31,7 +31,7 @@ class ForceReplyTest extends TestCase
         $this->assertTrue($item->isSelective());
     }
 
-    public function testConstructor4()
+    public function testConstructor4(): void
     {
         $item = new ForceReply(true);
 
@@ -39,7 +39,7 @@ class ForceReplyTest extends TestCase
         $this->assertNull($item->isSelective());
     }
 
-    public function testIsforceReply()
+    public function testIsforceReply(): void
     {
         $item = new ForceReply(true);
         $item->setforceReply(false);
@@ -47,7 +47,7 @@ class ForceReplyTest extends TestCase
         $this->assertFalse($item->isforceReply());
     }
 
-    public function testIsSelective()
+    public function testIsSelective(): void
     {
         $item = new ForceReply();
         $item->setSelective(true);
@@ -55,28 +55,28 @@ class ForceReplyTest extends TestCase
         $this->assertTrue($item->isSelective());
     }
 
-    public function testToJson()
+    public function testToJson(): void
     {
         $item = new ForceReply();
 
         $this->assertSame(json_encode(['force_reply' => true]), $item->toJson());
     }
 
-    public function testToJson2()
+    public function testToJson2(): void
     {
         $item = new ForceReply();
 
         $this->assertSame(['force_reply' => true], $item->toJson(true));
     }
 
-    public function testToJson3()
+    public function testToJson3(): void
     {
         $item = new ForceReply(true, true);
 
         $this->assertSame(json_encode(['force_reply' => true, 'selective' => true]), $item->toJson());
     }
 
-    public function testToJson4()
+    public function testToJson4(): void
     {
         $item = new ForceReply(true, true);
 

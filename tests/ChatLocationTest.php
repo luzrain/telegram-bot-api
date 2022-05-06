@@ -8,7 +8,7 @@ use TelegramBot\Api\Types\Location;
 
 class ChatLocationTest extends TestCase
 {
-    public function testGetLocation()
+    public function testGetLocation(): void
     {
         $chatLocation = new ChatLocation();
 
@@ -21,7 +21,7 @@ class ChatLocationTest extends TestCase
         $this->assertSame($location, $chatLocation->getLocation());
     }
 
-    public function testGetAddress()
+    public function testGetAddress(): void
     {
         $chatLocation = new ChatLocation();
         $chatLocation->setAddress('Wall St. 123');
@@ -29,7 +29,7 @@ class ChatLocationTest extends TestCase
         $this->assertSame('Wall St. 123', $chatLocation->getAddress());
     }
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
         $chatLocation = ChatLocation::fromResponse(
             [
@@ -37,8 +37,8 @@ class ChatLocationTest extends TestCase
                     'latitude' => 55.585827,
                     'longitude' => 37.675309,
                 ],
-                'address' => 'Wall St. 123'
-            ]
+                'address' => 'Wall St. 123',
+            ],
         );
 
         $this->assertInstanceOf(ChatLocation::class, $chatLocation);

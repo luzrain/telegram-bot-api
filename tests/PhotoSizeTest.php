@@ -8,42 +8,42 @@ use TelegramBot\Api\Types\PhotoSize;
 
 class PhotoSizeTest extends TestCase
 {
-    public function testGetFileId()
+    public function testGetFileId(): void
     {
         $photoSize = new PhotoSize();
         $photoSize->setFileId('testfileId');
         $this->assertSame('testfileId', $photoSize->getFileId());
     }
 
-    public function testGetWidth()
+    public function testGetWidth(): void
     {
         $photoSize = new PhotoSize();
         $photoSize->setWidth(2);
         $this->assertSame(2, $photoSize->getWidth());
     }
 
-    public function testGetHeight()
+    public function testGetHeight(): void
     {
         $photoSize = new PhotoSize();
         $photoSize->setHeight(4);
         $this->assertSame(4, $photoSize->getHeight());
     }
 
-    public function testGetFileSize()
+    public function testGetFileSize(): void
     {
         $photoSize = new PhotoSize();
         $photoSize->setFileSize(6);
         $this->assertSame(6, $photoSize->getFileSize());
     }
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
-        $photoSize = PhotoSize::fromResponse(array(
+        $photoSize = PhotoSize::fromResponse([
             'file_id' => 'testFileId1',
             'width' => 1,
             'height' => 2,
-            'file_size' => 3
-        ));
+            'file_size' => 3,
+        ]);
         $this->assertInstanceOf(PhotoSize::class, $photoSize);
         $this->assertSame('testFileId1', $photoSize->getFileId());
         $this->assertSame(1, $photoSize->getWidth());
@@ -51,7 +51,7 @@ class PhotoSizeTest extends TestCase
         $this->assertSame(3, $photoSize->getFileSize());
     }
 
-    public function testSetFileSizeException()
+    public function testSetFileSizeException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -59,7 +59,7 @@ class PhotoSizeTest extends TestCase
         $item->setFileSize('s');
     }
 
-    public function testSetHeightException()
+    public function testSetHeightException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -67,7 +67,7 @@ class PhotoSizeTest extends TestCase
         $item->setHeight('s');
     }
 
-    public function testSetWidthException()
+    public function testSetWidthException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 

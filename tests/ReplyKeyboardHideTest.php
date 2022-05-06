@@ -7,7 +7,7 @@ use TelegramBot\Api\Types\ReplyKeyboardHide;
 
 class ReplyKeyboardHideTest extends TestCase
 {
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $item = new ReplyKeyboardHide();
 
@@ -15,7 +15,7 @@ class ReplyKeyboardHideTest extends TestCase
         $this->assertNull($item->isSelective());
     }
 
-    public function testConstructor2()
+    public function testConstructor2(): void
     {
         $item = new ReplyKeyboardHide(true, true);
 
@@ -23,7 +23,7 @@ class ReplyKeyboardHideTest extends TestCase
         $this->assertTrue($item->isSelective());
     }
 
-    public function testConstructor3()
+    public function testConstructor3(): void
     {
         $item = new ReplyKeyboardHide(false, true);
 
@@ -31,7 +31,7 @@ class ReplyKeyboardHideTest extends TestCase
         $this->assertTrue($item->isSelective());
     }
 
-    public function testConstructor4()
+    public function testConstructor4(): void
     {
         $item = new ReplyKeyboardHide(true);
 
@@ -39,7 +39,7 @@ class ReplyKeyboardHideTest extends TestCase
         $this->assertNull($item->isSelective());
     }
 
-    public function testIsHideKeyboard()
+    public function testIsHideKeyboard(): void
     {
         $item = new ReplyKeyboardHide(true);
         $item->setHideKeyboard(false);
@@ -47,7 +47,7 @@ class ReplyKeyboardHideTest extends TestCase
         $this->assertFalse($item->isHideKeyboard());
     }
 
-    public function testIsSelective()
+    public function testIsSelective(): void
     {
         $item = new ReplyKeyboardHide();
         $item->setSelective(true);
@@ -55,28 +55,28 @@ class ReplyKeyboardHideTest extends TestCase
         $this->assertTrue($item->isSelective());
     }
 
-    public function testToJson()
+    public function testToJson(): void
     {
         $item = new ReplyKeyboardHide();
 
         $this->assertEquals(json_encode(['hide_keyboard' => true]), $item->toJson());
     }
 
-    public function testToJson2()
+    public function testToJson2(): void
     {
         $item = new ReplyKeyboardHide();
 
         $this->assertEquals(['hide_keyboard' => true], $item->toJson(true));
     }
 
-    public function testToJson3()
+    public function testToJson3(): void
     {
         $item = new ReplyKeyboardHide(true, true);
 
         $this->assertEquals(json_encode(['hide_keyboard' => true, 'selective' => true]), $item->toJson());
     }
 
-    public function testToJson4()
+    public function testToJson4(): void
     {
         $item = new ReplyKeyboardHide(true, true);
 

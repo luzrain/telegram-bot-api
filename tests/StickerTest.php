@@ -9,49 +9,49 @@ use TelegramBot\Api\Types\Sticker;
 
 class StickerTest extends TestCase
 {
-    public function testGetFileId()
+    public function testGetFileId(): void
     {
         $sticker = new Sticker();
         $sticker->setFileId('testfileId');
         $this->assertSame('testfileId', $sticker->getFileId());
     }
 
-    public function testGetWidth()
+    public function testGetWidth(): void
     {
         $sticker = new Sticker();
         $sticker->setWidth(2);
         $this->assertSame(2, $sticker->getWidth());
     }
 
-    public function testGetHeight()
+    public function testGetHeight(): void
     {
         $sticker = new Sticker();
         $sticker->setHeight(4);
         $this->assertSame(4, $sticker->getHeight());
     }
 
-    public function testGetFileSize()
+    public function testGetFileSize(): void
     {
         $sticker = new Sticker();
         $sticker->setFileSize(6);
         $this->assertSame(6, $sticker->getFileSize());
     }
 
-    public function testGetThumb()
+    public function testGetThumb(): void
     {
         $sticker = new Sticker();
         $thumb = PhotoSize::fromResponse([
             'file_id' => 'testFileId1',
             'width' => 1,
             'height' => 2,
-            'file_size' => 3
+            'file_size' => 3,
         ]);
         $sticker->setThumb($thumb);
         $this->assertEquals($thumb, $sticker->getThumb());
         $this->assertInstanceOf(PhotoSize::class, $sticker->getThumb());
     }
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
         $sticker = Sticker::fromResponse([
             'file_id' => 'testFileId1',
@@ -62,14 +62,14 @@ class StickerTest extends TestCase
                 'file_id' => 'testFileId1',
                 'width' => 1,
                 'height' => 2,
-                'file_size' => 3
-            ]
+                'file_size' => 3,
+            ],
         ]);
         $thumb = PhotoSize::fromResponse([
             'file_id' => 'testFileId1',
             'width' => 1,
             'height' => 2,
-            'file_size' => 3
+            'file_size' => 3,
         ]);
         $this->assertInstanceOf(Sticker::class, $sticker);
         $this->assertSame('testFileId1', $sticker->getFileId());
@@ -79,7 +79,7 @@ class StickerTest extends TestCase
         $this->assertEquals($thumb, $sticker->getThumb());
     }
 
-    public function testSetFileSizeException()
+    public function testSetFileSizeException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -87,7 +87,7 @@ class StickerTest extends TestCase
         $item->setFileSize('s');
     }
 
-    public function testSetHeightException()
+    public function testSetHeightException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -95,7 +95,7 @@ class StickerTest extends TestCase
         $item->setHeight('s');
     }
 
-    public function testSetWidthException()
+    public function testSetWidthException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 

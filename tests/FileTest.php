@@ -7,33 +7,33 @@ use TelegramBot\Api\Types\File;
 
 class FileTest extends TestCase
 {
-    public function testGetFileId()
+    public function testGetFileId(): void
     {
         $item = new File();
         $item->setFileId('testfileId');
         $this->assertSame('testfileId', $item->getFileId());
     }
 
-    public function testGetFileSize()
+    public function testGetFileSize(): void
     {
         $item = new File();
         $item->setFileSize(6);
         $this->assertSame(6, $item->getFileSize());
     }
 
-    public function testGetFilePath()
+    public function testGetFilePath(): void
     {
         $item = new File();
         $item->setFilePath('testfilepath');
         $this->assertSame('testfilepath', $item->getFilePath());
     }
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
         $item = File::fromResponse([
             'file_id' => 'testFileId1',
             'file_size' => 3,
-            'file_path' => 'testfilepath'
+            'file_path' => 'testfilepath',
         ]);
 
         $this->assertInstanceOf(File::class, $item);
@@ -42,17 +42,17 @@ class FileTest extends TestCase
         $this->assertSame('testfilepath', $item->getFilePath());
     }
 
-    public function testFromResponseException()
+    public function testFromResponseException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
         File::fromResponse([
             'file_size' => 3,
-            'file_path' => 'testfilepath'
+            'file_path' => 'testfilepath',
         ]);
     }
 
-    public function testSetFileSizeException()
+    public function testSetFileSizeException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 

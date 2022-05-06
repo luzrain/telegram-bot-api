@@ -23,7 +23,7 @@ class CallbackQueryTest extends TestCase
         'game_short_name' => 'game_name'
     ];
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
         $item = CallbackQuery::fromResponse($this->callbackQueryFixture);
 
@@ -38,51 +38,58 @@ class CallbackQueryTest extends TestCase
         $this->assertSame($this->callbackQueryFixture['game_short_name'], $item->getGameShortName());
     }
 
-    public function testFromResponseExceptionEmptyId() {
+    public function testFromResponseExceptionEmptyId(): void
+    {
         unset($this->callbackQueryFixture['id']);
         $this->expectException(InvalidArgumentException::class);
         CallbackQuery::fromResponse($this->callbackQueryFixture);
     }
 
-    public function testFromResponseExceptionEmptyFrom() {
+    public function testFromResponseExceptionEmptyFrom(): void
+    {
         unset($this->callbackQueryFixture['from']);
         $this->expectException(InvalidArgumentException::class);
         CallbackQuery::fromResponse($this->callbackQueryFixture);
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $item = new CallbackQuery();
         $item->setId($this->callbackQueryFixture['id']);
         $this->assertSame($this->callbackQueryFixture['id'], $item->getId());
     }
 
-    public function testGetFrom() {
+    public function testGetFrom(): void
+    {
         $item = new CallbackQuery();
         $user = User::fromResponse($this->callbackQueryFixture['from']);
         $item->setFrom($user);
         $this->assertSame($user, $item->getFrom());
     }
 
-    public function testGetInlineMessageId() {
+    public function testGetInlineMessageId(): void
+    {
         $item = new CallbackQuery();
         $item->setInlineMessageId('testInlineMessageId');
         $this->assertSame('testInlineMessageId', $item->getInlineMessageId());
     }
 
-    public function testGetChatInstance() {
+    public function testGetChatInstance(): void
+    {
         $item = new CallbackQuery();
         $item->setChatInstance('testChatInstance');
         $this->assertSame('testChatInstance', $item->getChatInstance());
     }
 
-    public function testGetData() {
+    public function testGetData(): void
+    {
         $item = new CallbackQuery();
         $item->setData('testData');
         $this->assertSame('testData', $item->getData());
     }
 
-    public function testGetGameShortName() {
+    public function testGetGameShortName(): void
+    {
         $item = new CallbackQuery();
         $item->setGameShortName('testGameShortName');
         $this->assertSame('testGameShortName', $item->getGameShortName());

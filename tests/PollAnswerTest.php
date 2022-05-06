@@ -8,7 +8,7 @@ use TelegramBot\Api\Types\User;
 
 class PollAnswerTest extends TestCase
 {
-    public function testGetPollId()
+    public function testGetPollId(): void
     {
         $item = new PollAnswer();
         $item->setPollId(123456789);
@@ -16,7 +16,7 @@ class PollAnswerTest extends TestCase
         $this->assertSame(123456789, $item->getPollId());
     }
 
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $item = new PollAnswer();
         $user = new User();
@@ -25,7 +25,7 @@ class PollAnswerTest extends TestCase
 
         $this->assertSame(123456, $item->getUser()->getId());
     }
-    public function testGetFrom()
+    public function testGetFrom(): void
     {
         $item = new PollAnswer();
         $user = new User();
@@ -34,7 +34,7 @@ class PollAnswerTest extends TestCase
 
         $this->assertSame(123456, $item->getFrom()->getId());
     }
-    public function testGetOptionIds()
+    public function testGetOptionIds(): void
     {
         $item = new PollAnswer();
         $item->setOptionIds([1,2,3,4,5,6]);
