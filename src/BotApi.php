@@ -112,11 +112,6 @@ class BotApi
     const NOT_MODIFIED_STATUS_CODE = 304;
 
     /**
-     * Limits for tracked ids
-     */
-    const MAX_TRACKED_EVENTS = 200;
-
-    /**
      * Url prefixes
      */
     const URL_PREFIX = 'https://api.telegram.org/bot';
@@ -148,20 +143,6 @@ class BotApi
     protected $token;
 
     /**
-     * Botan tracker
-     *
-     * @var \TelegramBot\Api\Botan
-     */
-    protected $tracker;
-
-    /**
-     * list of event ids
-     *
-     * @var array
-     */
-    protected $trackedEvents = [];
-
-    /**
      * Check whether return associative array
      *
      * @var bool
@@ -172,16 +153,11 @@ class BotApi
      * Constructor
      *
      * @param string $token Telegram Bot API token
-     * @param string|null $trackerToken Yandex AppMetrica application api_key
      */
-    public function __construct($token, $trackerToken = null)
+    public function __construct($token)
     {
         $this->curl = curl_init();
         $this->token = $token;
-
-        if ($trackerToken) {
-            $this->tracker = new Botan($trackerToken);
-        }
     }
 
     /**
@@ -197,7 +173,6 @@ class BotApi
 
         return $this;
     }
-
 
     /**
      * Call method
@@ -549,12 +524,6 @@ class BotApi
             'limit' => $limit,
             'timeout' => $timeout,
         ]));
-
-        if ($this->tracker instanceof Botan) {
-            foreach ($updates as $update) {
-                $this->trackUpdate($update);
-            }
-        }
 
         return $updates;
     }
@@ -1352,40 +1321,6 @@ class BotApi
     public function getFileUrl()
     {
         return self::FILE_URL_PREFIX.$this->token;
-    }
-
-    /**
-     * @param \TelegramBot\Api\Types\Update $update
-     * @param string $eventName
-     *
-     * @throws \TelegramBot\Api\Exception
-     */
-    public function trackUpdate(Update $update, $eventName = 'Message')
-    {
-        if (!in_array($update->getUpdateId(), $this->trackedEvents)) {
-            $this->trackedEvents[] = $update->getUpdateId();
-
-            $this->track($update->getMessage(), $eventName);
-
-            if (count($this->trackedEvents) > self::MAX_TRACKED_EVENTS) {
-                $this->trackedEvents = array_slice($this->trackedEvents, round(self::MAX_TRACKED_EVENTS / 4));
-            }
-        }
-    }
-
-    /**
-     * Wrapper for tracker
-     *
-     * @param \TelegramBot\Api\Types\Message $message
-     * @param string $eventName
-     *
-     * @throws \TelegramBot\Api\Exception
-     */
-    public function track(Message $message, $eventName = 'Message')
-    {
-        if ($this->tracker instanceof Botan) {
-            $this->tracker->track($message, $eventName);
-        }
     }
 
     /**

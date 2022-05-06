@@ -6,7 +6,6 @@ use Closure;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionProperty;
-use TelegramBot\Api\Botan;
 use TelegramBot\Api\Events\Event;
 use TelegramBot\Api\Events\EventCollection;
 use TelegramBot\Api\Types\Update;
@@ -46,26 +45,6 @@ class EventCollectionTest extends TestCase
                 ]),
             ],
         ];
-    }
-
-    public function testConstructor1(): void
-    {
-        $item = new EventCollection();
-        $tracker = (new ReflectionProperty($item, 'tracker'))->getValue($item);
-        $events = (new ReflectionProperty($item, 'events'))->getValue($item);
-
-        $this->assertEmpty($tracker);
-        $this->assertEmpty($events);
-    }
-
-    public function testConstructor2(): void
-    {
-        $item = new EventCollection('testToken');
-        $tracker = (new ReflectionProperty($item, 'tracker'))->getValue($item);
-        $events = (new ReflectionProperty($item, 'events'))->getValue($item);
-
-        $this->assertInstanceOf(Botan::class, $tracker);
-        $this->assertEmpty($events);
     }
 
     /**
@@ -113,34 +92,6 @@ class EventCollectionTest extends TestCase
     /**
      * @dataProvider data
      */
-    public function testHandle1(Closure $action, Closure $checker, Update $update): void
-    {
-        $item = new EventCollection('testToken');
-        $name = 'test';
-        $item->add($action, function ($update) use ($name) {
-            return true;
-        });
-
-        $mockedTracker = $this->getMockBuilder(Botan::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        // Configure the stub.
-
-        $mockedTracker->expects($this->once())->method('track')->willReturn(null);
-
-        $reflection = new ReflectionClass($item);
-        $reflectionProperty = $reflection->getProperty('tracker');
-        $reflectionProperty->setAccessible(true);
-        $reflectionProperty->setValue($item, $mockedTracker);
-        $reflectionProperty->setAccessible(false);
-
-        $item->handle($update);
-    }
-
-    /**
-     * @dataProvider data
-     */
     public function testHandle2(Closure $action, Closure $checker, Update $update): void
     {
         $item = new EventCollection();
@@ -149,16 +100,11 @@ class EventCollectionTest extends TestCase
             return true;
         });
 
-        $mockedTracker = $this->getMockBuilder(Botan::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
         $mockedEvent = $this->getMockBuilder(Event::class)
             ->disableOriginalConstructor()
             ->getMock();
 
         // Configure the stub.
-        $mockedTracker->expects($this->exactly(0))->method('track')->willReturn(null);
         $mockedEvent->expects($this->once())->method('executeChecker')->willReturn(true);
         $mockedEvent->expects($this->once())->method('executeAction')->willReturn(true);
 

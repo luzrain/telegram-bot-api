@@ -40,12 +40,11 @@ class Client
      * Client constructor
      *
      * @param string $token Telegram Bot API token
-     * @param string|null $trackerToken Yandex AppMetrica application api_key
      */
-    public function __construct($token, $trackerToken = null)
+    public function __construct($token)
     {
         $this->api = new BotApi($token);
-        $this->events = new EventCollection($trackerToken);
+        $this->events = new EventCollection();
     }
 
     /**
