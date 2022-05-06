@@ -3,7 +3,7 @@
 namespace TelegramBot\Api\Test;
 
 use PHPUnit\Framework\TestCase;
-use TelegramBot\Api\InvalidArgumentException;
+use TelegramBot\Api\Exceptions\InvalidArgumentException;
 use TelegramBot\Api\Types\PhotoSize;
 use TelegramBot\Api\Types\UserProfilePhotos;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace TelegramBot\Api;
+namespace TelegramBot\Api\Exceptions;
 
 /**
  * Class HttpException

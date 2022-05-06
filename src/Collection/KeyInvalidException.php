@@ -2,7 +2,7 @@
 
 namespace TelegramBot\Api\Collection;
 
-use TelegramBot\Api\Exception;
+use TelegramBot\Api\Exceptions\Exception;
 
 /**
  * Class KeyInvalidException
@@ -12,5 +12,4 @@ use TelegramBot\Api\Exception;
  */
 class KeyInvalidException extends Exception
 {
-
 }

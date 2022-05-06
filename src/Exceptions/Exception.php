@@ -1,6 +1,6 @@
 <?php
 
-namespace TelegramBot\Api;
+namespace TelegramBot\Api\Exceptions;
 
 /**
  * Class Exception
@@ -10,5 +10,4 @@ namespace TelegramBot\Api;
  */
 class Exception extends \Exception
 {
-
 }

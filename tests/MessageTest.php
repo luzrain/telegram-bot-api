@@ -3,7 +3,7 @@
 namespace TelegramBot\Api\Test;
 
 use PHPUnit\Framework\TestCase;
-use TelegramBot\Api\InvalidArgumentException;
+use TelegramBot\Api\Exceptions\InvalidArgumentException;
 use TelegramBot\Api\Types\Audio;
 use TelegramBot\Api\Types\Chat;
 use TelegramBot\Api\Types\Contact;

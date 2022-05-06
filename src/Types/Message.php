@@ -2,7 +2,7 @@
 namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
-use TelegramBot\Api\InvalidArgumentException;
+use TelegramBot\Api\Exceptions\InvalidArgumentException;
 use TelegramBot\Api\TypeInterface;
 use TelegramBot\Api\Types\Inline\InlineKeyboardMarkup;
 use TelegramBot\Api\Types\Payments\Invoice;

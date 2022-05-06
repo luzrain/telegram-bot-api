@@ -6,7 +6,7 @@ use Closure;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionMethod;
-use TelegramBot\Api\BadMethodCallException;
+use TelegramBot\Api\Exceptions\BadMethodCallException;
 use TelegramBot\Api\Client;
 use TelegramBot\Api\Events\EventCollection;
 use TelegramBot\Api\Types\Inline\InlineQuery;

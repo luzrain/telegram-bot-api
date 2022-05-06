@@ -1,6 +1,6 @@
 <?php
 
-namespace TelegramBot\Api;
+namespace TelegramBot\Api\Exceptions;
 
 /**
  * Class InvalidJsonException
@@ -10,5 +10,4 @@ namespace TelegramBot\Api;
  */
 class InvalidJsonException extends Exception
 {
-
 }

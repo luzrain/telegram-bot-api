@@ -3,7 +3,7 @@
 namespace TelegramBot\Api\Test\Types\Inline;
 
 use PHPUnit\Framework\TestCase;
-use TelegramBot\Api\InvalidArgumentException;
+use TelegramBot\Api\Exceptions\InvalidArgumentException;
 use TelegramBot\Api\Types\Inline\InlineQuery;
 use TelegramBot\Api\Types\User;
 

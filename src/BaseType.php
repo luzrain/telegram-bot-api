@@ -2,6 +2,8 @@
 
 namespace TelegramBot\Api;
 
+use TelegramBot\Api\Exceptions\InvalidArgumentException;
+
 /**
  * Class BaseType
  * Base class for Telegram Types

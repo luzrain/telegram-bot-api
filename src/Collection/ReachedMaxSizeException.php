@@ -2,7 +2,7 @@
 
 namespace TelegramBot\Api\Collection;
 
-use TelegramBot\Api\Exception;
+use TelegramBot\Api\Exceptions\Exception;
 
 /**
  * Class ReachedMaxSizeException
