@@ -2,11 +2,12 @@
 
 namespace TelegramBot\Api\Test\Types;
 
+use PHPUnit\Framework\TestCase;
+use TelegramBot\Api\InvalidArgumentException;
 use TelegramBot\Api\Types\CallbackQuery;
-use TelegramBot\Api\Types\Message;
 use TelegramBot\Api\Types\User;
 
-class CallbackQueryTest extends \PHPUnit_Framework_TestCase
+class CallbackQueryTest extends TestCase
 {
     protected $callbackQueryFixture = [
         'id' => 1,
@@ -28,110 +29,62 @@ class CallbackQueryTest extends \PHPUnit_Framework_TestCase
 
         $user = User::fromResponse($this->callbackQueryFixture['from']);
 
-        $this->assertInstanceOf('\TelegramBot\Api\Types\CallbackQuery', $item);
-        $this->assertEquals($this->callbackQueryFixture['id'], $item->getId());
+        $this->assertInstanceOf(CallbackQuery::class, $item);
+        $this->assertSame($this->callbackQueryFixture['id'], $item->getId());
         $this->assertEquals($user, $item->getFrom());
-        $this->assertEquals($this->callbackQueryFixture['inline_message_id'], $item->getInlineMessageId());
-        $this->assertEquals($this->callbackQueryFixture['chat_instance'], $item->getChatInstance());
-        $this->assertEquals($this->callbackQueryFixture['data'], $item->getData());
-        $this->assertEquals($this->callbackQueryFixture['game_short_name'], $item->getGameShortName());
+        $this->assertSame($this->callbackQueryFixture['inline_message_id'], $item->getInlineMessageId());
+        $this->assertSame($this->callbackQueryFixture['chat_instance'], $item->getChatInstance());
+        $this->assertSame($this->callbackQueryFixture['data'], $item->getData());
+        $this->assertSame($this->callbackQueryFixture['game_short_name'], $item->getGameShortName());
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
     public function testFromResponseExceptionEmptyId() {
         unset($this->callbackQueryFixture['id']);
+        $this->expectException(InvalidArgumentException::class);
         CallbackQuery::fromResponse($this->callbackQueryFixture);
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
     public function testFromResponseExceptionEmptyFrom() {
         unset($this->callbackQueryFixture['from']);
+        $this->expectException(InvalidArgumentException::class);
         CallbackQuery::fromResponse($this->callbackQueryFixture);
-    }
-
-    public function testSetId()
-    {
-        $item = new CallbackQuery();
-        $item->setId($this->callbackQueryFixture['id']);
-        $this->assertAttributeEquals($this->callbackQueryFixture['id'], 'id', $item);
     }
 
     public function testGetId()
     {
         $item = new CallbackQuery();
         $item->setId($this->callbackQueryFixture['id']);
-        $this->assertEquals($this->callbackQueryFixture['id'], $item->getId());
-    }
-
-    public function testSetFrom()
-    {
-        $item = new CallbackQuery();
-        $user = User::fromResponse($this->callbackQueryFixture['from']);
-        $item->setFrom($user);
-        $this->assertAttributeEquals($user, 'from', $item);
+        $this->assertSame($this->callbackQueryFixture['id'], $item->getId());
     }
 
     public function testGetFrom() {
         $item = new CallbackQuery();
         $user = User::fromResponse($this->callbackQueryFixture['from']);
         $item->setFrom($user);
-        $this->assertEquals($user, $item->getFrom());
-    }
-
-    public function testSetInlineMessageId()
-    {
-        $item = new CallbackQuery();
-        $item->setInlineMessageId($this->callbackQueryFixture['inline_message_id']);
-        $this->assertAttributeEquals($this->callbackQueryFixture['inline_message_id'], 'inlineMessageId', $item);
+        $this->assertSame($user, $item->getFrom());
     }
 
     public function testGetInlineMessageId() {
         $item = new CallbackQuery();
         $item->setInlineMessageId('testInlineMessageId');
-        $this->assertEquals('testInlineMessageId', $item->getInlineMessageId());
-    }
-
-    public function testSetChatInstance()
-    {
-        $item = new CallbackQuery();
-        $item->setChatInstance($this->callbackQueryFixture['chat_instance']);
-        $this->assertAttributeEquals($this->callbackQueryFixture['chat_instance'], 'chatInstance', $item);
+        $this->assertSame('testInlineMessageId', $item->getInlineMessageId());
     }
 
     public function testGetChatInstance() {
         $item = new CallbackQuery();
         $item->setChatInstance('testChatInstance');
-        $this->assertEquals('testChatInstance', $item->getChatInstance());
-    }
-
-    public function testSetData()
-    {
-        $item = new CallbackQuery();
-        $item->setData($this->callbackQueryFixture['data']);
-        $this->assertAttributeEquals($this->callbackQueryFixture['data'], 'data', $item);
+        $this->assertSame('testChatInstance', $item->getChatInstance());
     }
 
     public function testGetData() {
         $item = new CallbackQuery();
         $item->setData('testData');
-        $this->assertEquals('testData', $item->getData());
-    }
-
-    public function testSetGameShortName()
-    {
-        $item = new CallbackQuery();
-        $item->setGameShortName($this->callbackQueryFixture['game_short_name']);
-        $this->assertAttributeEquals($this->callbackQueryFixture['game_short_name'], 'gameShortName', $item);
+        $this->assertSame('testData', $item->getData());
     }
 
     public function testGetGameShortName() {
         $item = new CallbackQuery();
         $item->setGameShortName('testGameShortName');
-        $this->assertEquals('testGameShortName', $item->getGameShortName());
+        $this->assertSame('testGameShortName', $item->getGameShortName());
     }
-
 }

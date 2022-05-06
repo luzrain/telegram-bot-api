@@ -2,10 +2,12 @@
 
 namespace TelegramBot\Api\Test\Types\Inline;
 
+use PHPUnit\Framework\TestCase;
+use TelegramBot\Api\InvalidArgumentException;
 use TelegramBot\Api\Types\Inline\InlineQuery;
 use TelegramBot\Api\Types\User;
 
-class InlineQueryTest extends \PHPUnit_Framework_TestCase
+class InlineQueryTest extends TestCase
 {
     protected $inlineQueryFixture = [
         'id' => 1,
@@ -25,10 +27,10 @@ class InlineQueryTest extends \PHPUnit_Framework_TestCase
 
         $user = User::fromResponse($this->inlineQueryFixture['from']);
 
-        $this->assertInstanceOf('\TelegramBot\Api\Types\Inline\InlineQuery', $item);
-        $this->assertEquals(1, $item->getId());
+        $this->assertInstanceOf(InlineQuery::class, $item);
+        $this->assertSame(1, $item->getId());
         $this->assertEquals($user, $item->getFrom());
-        $this->assertEquals('20', $item->getOffset());
+        $this->assertSame('20', $item->getOffset());
     }
 
 
@@ -38,63 +40,41 @@ class InlineQueryTest extends \PHPUnit_Framework_TestCase
 
         $user = User::fromResponse($this->inlineQueryFixture['from']);
 
-        $this->assertInstanceOf('\TelegramBot\Api\Types\Inline\InlineQuery', $item);
-        $this->assertEquals(1, $item->getId());
+        $this->assertInstanceOf(InlineQuery::class, $item);
+        $this->assertSame(1, $item->getId());
         $this->assertEquals($user, $item->getFrom());
-        $this->assertEquals('', $item->getOffset());
+        $this->assertSame('', $item->getOffset());
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
     public function testFromResponseException1() {
         unset($this->inlineQueryFixture['id']);
+        $this->expectException(InvalidArgumentException::class);
         InlineQuery::fromResponse($this->inlineQueryFixture);
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
     public function testFromResponseException2() {
         unset($this->inlineQueryFixture['from']);
+        $this->expectException(InvalidArgumentException::class);
         InlineQuery::fromResponse($this->inlineQueryFixture);
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
     public function testFromResponseException3() {
         unset($this->inlineQueryFixture['query']);
+        $this->expectException(InvalidArgumentException::class);
         InlineQuery::fromResponse($this->inlineQueryFixture);
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
     public function testFromResponseException4() {
         unset($this->inlineQueryFixture['offset']);
+        $this->expectException(InvalidArgumentException::class);
         InlineQuery::fromResponse($this->inlineQueryFixture);
-    }
-
-    public function testSetId()
-    {
-        $item = new InlineQuery();
-        $item->setId('testId');
-        $this->assertAttributeEquals('testId', 'id', $item);
     }
 
     public function testGetId()
     {
         $item = new InlineQuery();
         $item->setId('testId');
-        $this->assertEquals('testId', $item->getId());
-    }
-
-    public function testSetFrom() {
-        $item = new InlineQuery();
-        $user = User::fromResponse($this->inlineQueryFixture['from']);
-        $item->setFrom($user);
-        $this->assertAttributeEquals($user, 'from', $item);
+        $this->assertSame('testId', $item->getId());
     }
 
     public function testGetFrom() {
@@ -104,27 +84,15 @@ class InlineQueryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($user, $item->getFrom());
     }
 
-    public function testSetQuery() {
-        $item = new InlineQuery();
-        $item->setQuery('testQuery');
-        $this->assertAttributeEquals('testQuery', 'query', $item);
-    }
-
     public function testGetQuery() {
         $item = new InlineQuery();
         $item->setQuery('testQuery');
-        $this->assertEquals('testQuery', $item->getQuery());
-    }
-
-    public function testSetOffset() {
-        $item = new InlineQuery();
-        $item->setOffset('20');
-        $this->assertAttributeEquals('20', 'offset', $item);
+        $this->assertSame('testQuery', $item->getQuery());
     }
 
     public function testGetOffset() {
         $item = new InlineQuery();
         $item->setOffset('20');
-        $this->assertEquals('20', $item->getOffset());
+        $this->assertSame('20', $item->getOffset());
     }
 }

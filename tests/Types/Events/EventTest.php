@@ -2,10 +2,13 @@
 
 namespace TelegramBot\Api\Test\Types\Events;
 
+use Closure;
+use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 use TelegramBot\Api\Events\Event;
 use TelegramBot\Api\Types\Update;
 
-class EventTest extends \PHPUnit_Framework_TestCase
+class EventTest extends TestCase
 {
     public function data()
     {
@@ -43,8 +46,8 @@ class EventTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param \Closure $action
-     * @param \Closure $checker
+     * @param Closure $action
+     * @param Closure $checker
      * @param Update $update
      *
      * @dataProvider data
@@ -53,12 +56,12 @@ class EventTest extends \PHPUnit_Framework_TestCase
     {
         $item = new Event($action, $checker);
 
-        $this->assertInstanceOf('TelegramBot\Api\Events\Event', $item);
+        $this->assertInstanceOf(Event::class, $item);
     }
 
     /**
-     * @param \Closure $action
-     * @param \Closure $checker
+     * @param Closure $action
+     * @param Closure $checker
      * @param Update $update
      *
      * @dataProvider data
@@ -67,13 +70,13 @@ class EventTest extends \PHPUnit_Framework_TestCase
     {
         $item = new Event($action, $checker);
 
-        $this->assertAttributeInstanceOf('\Closure', 'action', $item);
-        $this->assertEquals($action, $item->getAction());
+        $this->assertInstanceOf(Closure::class, $item->getAction());
+        $this->assertSame($action, $item->getAction());
     }
 
     /**
-     * @param \Closure $action
-     * @param \Closure $checker
+     * @param Closure $action
+     * @param Closure $checker
      * @param Update $update
      *
      * @dataProvider data
@@ -82,13 +85,13 @@ class EventTest extends \PHPUnit_Framework_TestCase
     {
         $item = new Event($action, $checker);
 
-        $this->assertAttributeInstanceOf('\Closure', 'checker', $item);
-        $this->assertEquals($checker, $item->getChecker());
+        $this->assertInstanceOf(Closure::class, $item->getAction());
+        $this->assertSame($checker, $item->getChecker());
     }
 
     /**
-     * @param \Closure $action
-     * @param \Closure $checker
+     * @param Closure $action
+     * @param Closure $checker
      * @param Update $update
      *
      * @dataProvider data
@@ -99,13 +102,13 @@ class EventTest extends \PHPUnit_Framework_TestCase
 
         $result = $item->executeAction($update);
 
-        $this->assertInstanceOf('\TelegramBot\Api\Types\Update', $result);
-        $this->assertEquals($update, $result);
+        $this->assertInstanceOf(Update::class, $result);
+        $this->assertSame($update, $result);
     }
 
     /**
-     * @param \Closure $action
-     * @param \Closure $checker
+     * @param Closure $action
+     * @param Closure $checker
      * @param Update $update
      *
      * @dataProvider data
@@ -113,7 +116,7 @@ class EventTest extends \PHPUnit_Framework_TestCase
     public function testExecuteActionFalse($action, $checker, $update) {
         $item = new Event($action, $checker);
 
-        $reflection = new \ReflectionClass($item);
+        $reflection = new ReflectionClass($item);
         $reflectionProperty = $reflection->getProperty('action');
         $reflectionProperty->setAccessible(true);
         $reflectionProperty->setValue($item, 1);
@@ -123,8 +126,8 @@ class EventTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param \Closure $action
-     * @param \Closure $checker
+     * @param Closure $action
+     * @param Closure $checker
      * @param Update $update
      *
      * @dataProvider data
@@ -135,13 +138,13 @@ class EventTest extends \PHPUnit_Framework_TestCase
 
         $result = $item->executeChecker($update);
 
-        $this->assertInstanceOf('\TelegramBot\Api\Types\Update', $result);
+        $this->assertInstanceOf(Update::class, $result);
         $this->assertEquals($update, $result);
     }
 
     /**
-     * @param \Closure $action
-     * @param \Closure $checker
+     * @param Closure $action
+     * @param Closure $checker
      * @param Update $update
      *
      * @dataProvider data
@@ -149,7 +152,7 @@ class EventTest extends \PHPUnit_Framework_TestCase
     public function testExecuteCheckerFalse($action, $checker, $update) {
         $item = new Event($action, $checker);
 
-        $reflection = new \ReflectionClass($item);
+        $reflection = new ReflectionClass($item);
         $reflectionProperty = $reflection->getProperty('checker');
         $reflectionProperty->setAccessible(true);
         $reflectionProperty->setValue($item, 1);

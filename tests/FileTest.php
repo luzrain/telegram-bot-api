@@ -1,83 +1,62 @@
 <?php
 namespace TelegramBot\Api\Test;
 
+use PHPUnit\Framework\TestCase;
+use TelegramBot\Api\InvalidArgumentException;
 use TelegramBot\Api\Types\File;
 
-class FileTest extends \PHPUnit_Framework_TestCase
+class FileTest extends TestCase
 {
-    public function testSetFileId()
-    {
-        $item = new File();
-        $item->setFileId('testfileId');
-        $this->assertAttributeEquals('testfileId', 'fileId', $item);
-    }
-
     public function testGetFileId()
     {
         $item = new File();
         $item->setFileId('testfileId');
-        $this->assertEquals('testfileId', $item->getFileId());
-    }
-
-    public function testSetFileSize()
-    {
-        $item = new File();
-        $item->setFileSize(5);
-        $this->assertAttributeEquals(5, 'fileSize', $item);
+        $this->assertSame('testfileId', $item->getFileId());
     }
 
     public function testGetFileSize()
     {
         $item = new File();
         $item->setFileSize(6);
-        $this->assertEquals(6, $item->getFileSize());
-    }
-
-    public function testSetFilePath()
-    {
-        $item = new File();
-        $item->setFilePath('testfilepath');
-        $this->assertAttributeEquals('testfilepath', 'filePath', $item);
+        $this->assertSame(6, $item->getFileSize());
     }
 
     public function testGetFilePath()
     {
         $item = new File();
         $item->setFilePath('testfilepath');
-        $this->assertEquals('testfilepath', $item->getFilePath());
+        $this->assertSame('testfilepath', $item->getFilePath());
     }
 
     public function testFromResponse()
     {
-        $item = File::fromResponse(array(
+        $item = File::fromResponse([
             'file_id' => 'testFileId1',
             'file_size' => 3,
             'file_path' => 'testfilepath'
-        ));
-        $this->assertInstanceOf('\TelegramBot\Api\Types\File', $item);
-        $this->assertAttributeEquals('testFileId1', 'fileId', $item);
-        $this->assertAttributeEquals(3, 'fileSize', $item);
-        $this->assertAttributeEquals('testfilepath', 'filePath', $item);
+        ]);
+
+        $this->assertInstanceOf(File::class, $item);
+        $this->assertSame('testFileId1', $item->getFileId());
+        $this->assertSame(3, $item->getFileSize());
+        $this->assertSame('testfilepath', $item->getFilePath());
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
     public function testFromResponseException()
     {
-        $item = File::fromResponse(array(
+        $this->expectException(InvalidArgumentException::class);
+
+        File::fromResponse([
             'file_size' => 3,
             'file_path' => 'testfilepath'
-        ));
+        ]);
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
     public function testSetFileSizeException()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $item = new File();
         $item->setFileSize('s');
     }
-
 }

@@ -2,16 +2,17 @@
 
 namespace TelegramBot\Api\Test;
 
+use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Types\LoginUrl;
 
-class LoginUrlTest extends \PHPUnit_Framework_TestCase
+class LoginUrlTest extends TestCase
 {
     public function testGetUrl()
     {
         $loginUrl = new LoginUrl();
         $loginUrl->setUrl('https://telegram.org');
 
-        $this->assertAttributeEquals('https://telegram.org', 'url', $loginUrl);
+        $this->assertSame('https://telegram.org', $loginUrl->getUrl());
     }
 
     public function testGetForwardText()
@@ -19,7 +20,7 @@ class LoginUrlTest extends \PHPUnit_Framework_TestCase
         $loginUrl = new LoginUrl();
         $loginUrl->setForwardText('Log in!');
 
-        $this->assertAttributeEquals('Log in!', 'forwardText', $loginUrl);
+        $this->assertSame('Log in!', $loginUrl->getForwardText());
     }
 
     public function testGetBotUsername()
@@ -27,7 +28,7 @@ class LoginUrlTest extends \PHPUnit_Framework_TestCase
         $loginUrl = new LoginUrl();
         $loginUrl->setBotUsername('TestBot');
 
-        $this->assertAttributeEquals('TestBot', 'botUsername', $loginUrl);
+        $this->assertSame('TestBot', $loginUrl->getBotUsername());
     }
 
     public function testGetRequestWriteAccess()
@@ -35,7 +36,7 @@ class LoginUrlTest extends \PHPUnit_Framework_TestCase
         $loginUrl = new LoginUrl();
         $loginUrl->setRequestWriteAccess(true);
 
-        $this->assertEquals(true, $loginUrl->isRequestWriteAccess());
+        $this->assertTrue($loginUrl->isRequestWriteAccess());
     }
 
     public function testFromResponse()
@@ -47,10 +48,10 @@ class LoginUrlTest extends \PHPUnit_Framework_TestCase
             'request_write_access' => true
         ]);
 
-        $this->assertInstanceOf('\TelegramBot\Api\Types\LoginUrl', $loginUrl);
-        $this->assertEquals('https://telegram.org', $loginUrl->getUrl());
-        $this->assertEquals('Log in!', $loginUrl->getForwardText());
-        $this->assertEquals('TestBot', $loginUrl->getBotUsername());
-        $this->assertEquals(true, $loginUrl->isRequestWriteAccess());
+        $this->assertInstanceOf(LoginUrl::class, $loginUrl);
+        $this->assertSame('https://telegram.org', $loginUrl->getUrl());
+        $this->assertSame('Log in!', $loginUrl->getForwardText());
+        $this->assertSame('TestBot', $loginUrl->getBotUsername());
+        $this->assertTrue($loginUrl->isRequestWriteAccess());
     }
 }

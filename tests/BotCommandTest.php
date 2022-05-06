@@ -2,36 +2,23 @@
 
 namespace TelegramBot\Api\Test;
 
+use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Types\BotCommand;
 
-class BotCommandTest extends \PHPUnit_Framework_TestCase
+class BotCommandTest extends TestCase
 {
-    public function testSetCommand()
-    {
-        $item = new BotCommand();
-        $item->setCommand('start');
-        $this->assertAttributeEquals('start', 'command', $item);
-    }
-
     public function testGetCommand()
     {
         $item = new BotCommand();
         $item->setCommand('start');
-        $this->assertEquals('start', $item->getCommand());
-    }
-
-    public function testSetDescription()
-    {
-        $item = new BotCommand();
-        $item->setDescription('This is a start command!');
-        $this->assertAttributeEquals('This is a start command!', 'description', $item);
+        $this->assertSame('start', $item->getCommand());
     }
 
     public function testGetDescription()
     {
         $item = new BotCommand();
         $item->setDescription('This is a start command!');
-        $this->assertEquals('This is a start command!', $item->getDescription());
+        $this->assertSame('This is a start command!', $item->getDescription());
     }
 
     public function testFromResponse()
@@ -43,8 +30,8 @@ class BotCommandTest extends \PHPUnit_Framework_TestCase
             ]
         );
 
-        $this->assertInstanceOf('\TelegramBot\Api\Types\BotCommand', $botCommand);
-        $this->assertEquals('start', $botCommand->getCommand());
-        $this->assertEquals('This is a start command!', $botCommand->getDescription());
+        $this->assertInstanceOf(BotCommand::class, $botCommand);
+        $this->assertSame('start', $botCommand->getCommand());
+        $this->assertSame('This is a start command!', $botCommand->getDescription());
     }
 }

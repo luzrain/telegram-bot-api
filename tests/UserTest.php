@@ -2,118 +2,90 @@
 
 namespace TelegramBot\Api\Test;
 
+use PHPUnit\Framework\TestCase;
+use TelegramBot\Api\InvalidArgumentException;
 use TelegramBot\Api\Types\User;
 
-class UserTest extends \PHPUnit_Framework_TestCase
+class UserTest extends TestCase
 {
-    public function testSetDuration()
+    public function testGetId()
     {
         $item = new User();
         $item->setId(1);
-        $this->assertAttributeEquals(1, 'id', $item);
+        $this->assertSame(1, $item->getId());
     }
 
-    public function testSet64bitId()
+    public function testGet64bitId()
     {
         $item = new User();
         $item->setId(2147483648);
-        $this->assertAttributeEquals(2147483648, 'id', $item);
-    }
-
-    public function testGetDuration()
-    {
-        $item = new User();
-        $item->setId(1);
-        $this->assertEquals(1, $item->getId());
-    }
-
-    public function testSetFirstName()
-    {
-        $item = new User();
-        $item->setFirstName('Ilya');
-        $this->assertAttributeEquals('Ilya', 'firstName', $item);
+        $this->assertSame(2147483648, $item->getId());
     }
 
     public function testGetFirstName()
     {
         $item = new User();
         $item->setFirstName('Ilya');
-        $this->assertEquals('Ilya', $item->getFirstName());
-    }
-
-    public function testSetLastName()
-    {
-        $item = new User();
-        $item->setLastName('Gusev');
-        $this->assertAttributeEquals('Gusev', 'lastName', $item);
+        $this->assertSame('Ilya', $item->getFirstName());
     }
 
     public function testGetLastName()
     {
         $item = new User();
         $item->setLastName('Gusev');
-        $this->assertEquals('Gusev', $item->getLastName());
-    }
-
-    public function testSetUsername()
-    {
-        $item = new User();
-        $item->setUsername('iGusev');
-        $this->assertAttributeEquals('iGusev', 'username', $item);
+        $this->assertSame('Gusev', $item->getLastName());
     }
 
     public function testGetUsername()
     {
         $item = new User();
         $item->setUsername('iGusev');
-        $this->assertEquals('iGusev', $item->getUsername());
+        $this->assertSame('iGusev', $item->getUsername());
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
     public function testSetIdException()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $item = new User();
         $item->setId('s');
     }
 
     public function testFromResponse()
     {
-        $user = User::fromResponse(array(
+        $user = User::fromResponse([
             'first_name' => 'Ilya',
             'last_name' => 'Gusev',
             'id' => 123456,
             'username' => 'iGusev'
-        ));
-        $this->assertInstanceOf('\TelegramBot\Api\Types\User', $user);
-        $this->assertEquals(123456, $user->getId());
-        $this->assertEquals('Ilya', $user->getFirstName());
-        $this->assertEquals('Gusev', $user->getLastName());
-        $this->assertEquals('iGusev', $user->getUsername());
+        ]);
+        $this->assertInstanceOf(User::class, $user);
+        $this->assertSame(123456, $user->getId());
+        $this->assertSame('Ilya', $user->getFirstName());
+        $this->assertSame('Gusev', $user->getLastName());
+        $this->assertSame('iGusev', $user->getUsername());
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
     public function testFromResponseException1()
     {
-        $user = User::fromResponse(array(
+        $this->expectException(InvalidArgumentException::class);
+
+        User::fromResponse([
             'last_name' => 'Gusev',
             'id' => 123456,
             'username' => 'iGusev'
-        ));
+        ]);
     }
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
+
     public function testFromResponseException2()
     {
-        $user = User::fromResponse(array(
+        $this->expectException(InvalidArgumentException::class);
+
+        User::fromResponse([
             'first_name' => 'Ilya',
             'last_name' => 'Gusev',
             'username' => 'iGusev'
-        ));
+        ]);
     }
 
 }
