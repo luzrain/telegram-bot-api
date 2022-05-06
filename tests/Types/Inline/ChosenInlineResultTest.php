@@ -2,10 +2,12 @@
 
 namespace TelegramBot\Api\Test\Types\Inline;
 
+use PHPUnit\Framework\TestCase;
+use TelegramBot\Api\InvalidArgumentException;
 use TelegramBot\Api\Types\Inline\ChosenInlineResult;
 use TelegramBot\Api\Types\User;
 
-class ChosenInlineResultTest extends \PHPUnit_Framework_TestCase
+class ChosenInlineResultTest extends TestCase
 {
     protected $chosenInlineResultFixture = [
         'result_id' => 1,
@@ -18,79 +20,58 @@ class ChosenInlineResultTest extends \PHPUnit_Framework_TestCase
         'query' => 'test_query'
     ];
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
         $item = ChosenInlineResult::fromResponse($this->chosenInlineResultFixture);
 
         $user = User::fromResponse($this->chosenInlineResultFixture['from']);
 
-        $this->assertInstanceOf('\TelegramBot\Api\Types\Inline\ChosenInlineResult', $item);
-        $this->assertEquals($this->chosenInlineResultFixture['result_id'], $item->getResultId());
+        $this->assertInstanceOf(ChosenInlineResult::class, $item);
+        $this->assertSame($this->chosenInlineResultFixture['result_id'], $item->getResultId());
         $this->assertEquals($user, $item->getFrom());
-        $this->assertEquals($this->chosenInlineResultFixture['query'], $item->getQuery());
+        $this->assertSame($this->chosenInlineResultFixture['query'], $item->getQuery());
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
-    public function testFromResponseException1() {
+    public function testFromResponseException1(): void
+    {
         unset($this->chosenInlineResultFixture['result_id']);
+        $this->expectException(InvalidArgumentException::class);
         ChosenInlineResult::fromResponse($this->chosenInlineResultFixture);
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
-    public function testFromResponseException2() {
+    public function testFromResponseException2(): void
+    {
         unset($this->chosenInlineResultFixture['from']);
+        $this->expectException(InvalidArgumentException::class);
         ChosenInlineResult::fromResponse($this->chosenInlineResultFixture);
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
-    public function testFromResponseException3() {
+    public function testFromResponseException3(): void
+    {
         unset($this->chosenInlineResultFixture['query']);
+        $this->expectException(InvalidArgumentException::class);
         ChosenInlineResult::fromResponse($this->chosenInlineResultFixture);
     }
 
-    public function testSetResultId()
+    public function testGetResultId(): void
     {
         $item = new ChosenInlineResult();
         $item->setResultId($this->chosenInlineResultFixture['result_id']);
-        $this->assertAttributeEquals($this->chosenInlineResultFixture['result_id'], 'resultId', $item);
+        $this->assertSame($this->chosenInlineResultFixture['result_id'], $item->getResultId());
     }
 
-    public function testGetResultId()
+    public function testGetFrom(): void
     {
         $item = new ChosenInlineResult();
-        $item->setResultId($this->chosenInlineResultFixture['result_id']);
-        $this->assertEquals($this->chosenInlineResultFixture['result_id'], $item->getResultId());
-    }
-
-    public function testSetFrom() {
-        $item = new ChosenInlineResult();
         $user = User::fromResponse($this->chosenInlineResultFixture['from']);
         $item->setFrom($user);
-        $this->assertAttributeEquals($user, 'from', $item);
+        $this->assertSame($user, $item->getFrom());
     }
 
-    public function testGetFrom() {
-        $item = new ChosenInlineResult();
-        $user = User::fromResponse($this->chosenInlineResultFixture['from']);
-        $item->setFrom($user);
-        $this->assertEquals($user, $item->getFrom());
-    }
-
-    public function testSetQuery() {
+    public function testGetQuery(): void
+    {
         $item = new ChosenInlineResult();
         $item->setQuery('testQuery');
-        $this->assertAttributeEquals('testQuery', 'query', $item);
-    }
-
-    public function testGetQuery() {
-        $item = new ChosenInlineResult();
-        $item->setQuery('testQuery');
-        $this->assertEquals('testQuery', $item->getQuery());
+        $this->assertSame('testQuery', $item->getQuery());
     }
 }

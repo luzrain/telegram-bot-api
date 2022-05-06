@@ -2,12 +2,13 @@
 
 namespace TelegramBot\Api\Test\Types;
 
+use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Types\MessageEntity;
 use TelegramBot\Api\Types\User;
 
-class MessageEntityTest extends \PHPUnit_Framework_TestCase
+class MessageEntityTest extends TestCase
 {
-    public function testTextMentionFromResponse()
+    public function testTextMentionFromResponse(): void
     {
         $messageEntity = MessageEntity::fromResponse([
             'type' => 'text_mention',
@@ -24,21 +25,21 @@ class MessageEntityTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $this->assertInstanceOf(MessageEntity::class, $messageEntity);
-        $this->assertEquals(MessageEntity::TYPE_TEXT_MENTION, $messageEntity->getType());
-        $this->assertEquals(108, $messageEntity->getOffset());
-        $this->assertEquals(10, $messageEntity->getLength());
+        $this->assertSame(MessageEntity::TYPE_TEXT_MENTION, $messageEntity->getType());
+        $this->assertSame(108, $messageEntity->getOffset());
+        $this->assertSame(10, $messageEntity->getLength());
         $this->assertNull($messageEntity->getUrl());
         $this->assertInstanceOf(User::class, $messageEntity->getUser());
-        $this->assertEquals(4815162342, $messageEntity->getUser()->getId());
+        $this->assertSame(4815162342, $messageEntity->getUser()->getId());
         $this->assertFalse($messageEntity->getUser()->isBot());
-        $this->assertEquals('John', $messageEntity->getUser()->getFirstName());
-        $this->assertEquals('Locke', $messageEntity->getUser()->getLastName());
-        $this->assertEquals('hunter', $messageEntity->getUser()->getUsername());
-        $this->assertEquals('en', $messageEntity->getUser()->getLanguageCode());
+        $this->assertSame('John', $messageEntity->getUser()->getFirstName());
+        $this->assertSame('Locke', $messageEntity->getUser()->getLastName());
+        $this->assertSame('hunter', $messageEntity->getUser()->getUsername());
+        $this->assertSame('en', $messageEntity->getUser()->getLanguageCode());
         $this->assertNull($messageEntity->getLanguage());
     }
 
-    public function testPreFromResponse()
+    public function testPreFromResponse(): void
     {
         $messageEntity = MessageEntity::fromResponse([
             'type' => 'pre',
@@ -48,11 +49,11 @@ class MessageEntityTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $this->assertInstanceOf(MessageEntity::class, $messageEntity);
-        $this->assertEquals(MessageEntity::TYPE_PRE, $messageEntity->getType());
-        $this->assertEquals(16, $messageEntity->getOffset());
-        $this->assertEquals(128, $messageEntity->getLength());
+        $this->assertSame(MessageEntity::TYPE_PRE, $messageEntity->getType());
+        $this->assertSame(16, $messageEntity->getOffset());
+        $this->assertSame(128, $messageEntity->getLength());
         $this->assertNull($messageEntity->getUrl());
         $this->assertNull($messageEntity->getUser());
-        $this->assertEquals('php', $messageEntity->getLanguage());
+        $this->assertSame('php', $messageEntity->getLanguage());
     }
 }

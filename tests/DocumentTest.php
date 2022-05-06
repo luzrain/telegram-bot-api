@@ -2,148 +2,107 @@
 
 namespace TelegramBot\Api\Test;
 
-
+use PHPUnit\Framework\TestCase;
+use TelegramBot\Api\InvalidArgumentException;
 use TelegramBot\Api\Types\Document;
 use TelegramBot\Api\Types\PhotoSize;
 
-class DocumentTest extends \PHPUnit_Framework_TestCase
+class DocumentTest extends TestCase
 {
-    public function testSetFileId()
+    public function testGetFileId(): void
     {
         $item = new Document();
         $item->setFileId('testfileId');
-        $this->assertAttributeEquals('testfileId', 'fileId', $item);
+        $this->assertSame('testfileId', $item->getFileId());
     }
 
-    public function testGetFileId()
+    public function testGetThumb(): void
     {
         $item = new Document();
-        $item->setFileId('testfileId');
-        $this->assertEquals('testfileId', $item->getFileId());
-    }
-
-    public function testSetThumb()
-    {
-        $item = new Document();
-        $thumb = PhotoSize::fromResponse(array(
-            "file_id" => 'testFileId1',
+        $thumb = PhotoSize::fromResponse([
+            'file_id' => 'testFileId1',
             'width' => 1,
             'height' => 2,
-            'file_size' => 3
-        ));
+            'file_size' => 3,
+        ]);
         $item->setThumb($thumb);
-        $this->assertAttributeEquals($thumb, 'thumb', $item);
+        $this->assertSame($thumb, $item->getThumb());
+        $this->assertInstanceOf(PhotoSize::class, $item->getThumb());
     }
 
-    public function testGetThumb()
-    {
-        $item = new Document();
-        $thumb = PhotoSize::fromResponse(array(
-            "file_id" => 'testFileId1',
-            'width' => 1,
-            'height' => 2,
-            'file_size' => 3
-        ));
-        $item->setThumb($thumb);
-        $this->assertEquals($thumb, $item->getThumb());
-        $this->assertInstanceOf('\TelegramBot\Api\Types\PhotoSize', $item->getThumb());
-    }
-
-    public function testSetFileName()
+    public function testGetFileName(): void
     {
         $item = new Document();
         $item->setFileName('testfileName');
-        $this->assertAttributeEquals('testfileName', 'fileName', $item);
+        $this->assertSame('testfileName', $item->getFileName());
     }
 
-    public function testGetFileName()
-    {
-        $item = new Document();
-        $item->setFileName('testfileName');
-        $this->assertEquals('testfileName', $item->getFileName());
-    }
-
-    public function testSetFileSize()
-    {
-        $item = new Document();
-        $item->setFileSize(5);
-        $this->assertAttributeEquals(5, 'fileSize', $item);
-    }
-
-    public function testGetFileSize()
+    public function testGetFileSize(): void
     {
         $item = new Document();
         $item->setFileSize(6);
-        $this->assertEquals(6, $item->getFileSize());
+        $this->assertSame(6, $item->getFileSize());
     }
 
-    public function testSetMimeType()
+    public function testGetMimeType(): void
     {
         $item = new Document();
         $item->setMimeType('audio/mp3');
-        $this->assertAttributeEquals('audio/mp3', 'mimeType', $item);
+        $this->assertSame('audio/mp3', $item->getMimeType());
     }
 
-    public function testGetMimeType()
+    public function testSetFileSizeException(): void
     {
-        $item = new Document();
-        $item->setMimeType('audio/mp3');
-        $this->assertEquals('audio/mp3', $item->getMimeType());
-    }
+        $this->expectException(InvalidArgumentException::class);
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
-    public function testSetFileSizeException()
-    {
         $item = new Document();
         $item->setFileSize('s');
     }
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
-        $item = Document::fromResponse(array(
+        $item = Document::fromResponse([
             'file_id' => 'testFileId1',
             'file_name' => 'testFileName',
             'mime_type' => 'audio/mp3',
             'file_size' => 3,
-            'thumb' => array(
+            'thumb' => [
                 'file_id' => 'testFileId1',
                 'width' => 5,
                 'height' => 6,
-                'file_size' => 7
-            )
-        ));
-        $thumb = PhotoSize::fromResponse(array(
+                'file_size' => 7,
+            ],
+        ]);
+        $thumb = PhotoSize::fromResponse([
             'file_id' => 'testFileId1',
             'width' => 5,
             'height' => 6,
-            'file_size' => 7
-        ));
-        $this->assertInstanceOf('\TelegramBot\Api\Types\Document', $item);
-        $this->assertAttributeEquals('testFileId1', 'fileId', $item);
-        $this->assertAttributeEquals('testFileName', 'fileName', $item);
-        $this->assertAttributeEquals('audio/mp3', 'mimeType', $item);
-        $this->assertAttributeEquals(3, 'fileSize', $item);
-        $this->assertAttributeEquals($thumb, 'thumb', $item);
-        $this->assertInstanceOf('\TelegramBot\Api\Types\PhotoSize', $item->getThumb());
+            'file_size' => 7,
+        ]);
+
+        $this->assertInstanceOf(Document::class, $item);
+        $this->assertSame('testFileId1', $item->getFileId());
+        $this->assertSame('testFileName', $item->getFileName());
+        $this->assertSame('audio/mp3', $item->getMimeType());
+        $this->assertSame(3, $item->getFileSize());
+        $this->assertEquals($thumb, $item->getThumb());
+        $this->assertInstanceOf(PhotoSize::class, $item->getThumb());
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
-    public function testFromResponseException1()
+    public function testFromResponseException1(): void
     {
-        $item = Document::fromResponse(array(
+        $this->expectException(InvalidArgumentException::class);
+
+        Document::fromResponse([
             'file_name' => 'testFileName',
             'mime_type' => 'audio/mp3',
             'file_size' => 3,
-            'thumb' => array(
+            'thumb' => [
                 'file_id' => 'testFileId1',
                 'width' => 5,
                 'height' => 6,
-                'file_size' => 7
-            )
-        ));
+                'file_size' => 7,
+            ],
+        ]);
     }
 }

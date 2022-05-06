@@ -7,28 +7,30 @@
 
 namespace TelegramBot\Api\Test;
 
+use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Types\WebhookInfo;
 
-class WebhookInfoTest extends \PHPUnit_Framework_TestCase
+class WebhookInfoTest extends TestCase
 {
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
-        $webhookInfo = WebhookInfo::fromResponse(array(
+        $webhookInfo = WebhookInfo::fromResponse([
             'url' => '',
             'has_custom_certificate' => false,
             'pending_update_count' => 0,
             'last_error_date' => null,
             'last_error_message' => null,
             'max_connections' => 40,
-            'allowed_updates' => null
-        ));
-        $this->assertInstanceOf('\TelegramBot\Api\Types\WebhookInfo', $webhookInfo);
-        $this->assertEquals('', $webhookInfo->getUrl());
-        $this->assertEquals(false, $webhookInfo->hasCustomCertificate());
-        $this->assertEquals(0, $webhookInfo->getPendingUpdateCount());
-        $this->assertEquals(null, $webhookInfo->getLastErrorDate());
-        $this->assertEquals(null, $webhookInfo->getLastErrorMessage());
-        $this->assertEquals(40, $webhookInfo->getMaxConnections());
-        $this->assertEquals(null, $webhookInfo->getAllowedUpdates());
+            'allowed_updates' => null,
+        ]);
+
+        $this->assertInstanceOf(WebhookInfo::class, $webhookInfo);
+        $this->assertSame('', $webhookInfo->getUrl());
+        $this->assertFalse($webhookInfo->hasCustomCertificate());
+        $this->assertSame(0, $webhookInfo->getPendingUpdateCount());
+        $this->assertNull($webhookInfo->getLastErrorDate());
+        $this->assertNull($webhookInfo->getLastErrorMessage());
+        $this->assertSame(40, $webhookInfo->getMaxConnections());
+        $this->assertNull($webhookInfo->getAllowedUpdates());
     }
 }

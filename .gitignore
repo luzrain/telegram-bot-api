@@ -56,3 +56,4 @@ crashlytics-build.properties
 vendor/
 
 /*.php
+.phpunit.result.cache

@@ -2,34 +2,31 @@
 
 namespace TelegramBot\Api\Test;
 
-
-use TelegramBot\Api\Types\PhotoSize;
+use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Types\ArrayOfPhotoSize;
+use TelegramBot\Api\Types\PhotoSize;
 
-class ArrayOfPhotoSizeTest extends \PHPUnit_Framework_TestCase
+class ArrayOfPhotoSizeTest extends TestCase
 {
-
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
-        $actual = ArrayOfPhotoSize::fromResponse(
-            array(
-                array(
-                    'file_id' => 'testFileId1',
-                    'width' => 5,
-                    'height' => 6,
-                    'file_size' => 7
-                )
-            )
-        );
-
-        $expected = array(
-            PhotoSize::fromResponse(array(
+        $actual = ArrayOfPhotoSize::fromResponse([
+            [
                 'file_id' => 'testFileId1',
                 'width' => 5,
                 'height' => 6,
-                'file_size' => 7
-            ))
-        );
+                'file_size' => 7,
+            ]
+        ]);
+
+        $expected = [
+            PhotoSize::fromResponse([
+                'file_id' => 'testFileId1',
+                'width' => 5,
+                'height' => 6,
+                'file_size' => 7,
+            ])
+        ];
 
         foreach($actual as $key => $item) {
             $this->assertEquals($expected[$key], $item);

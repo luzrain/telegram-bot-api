@@ -2,12 +2,14 @@
 
 namespace TelegramBot\Api\Test\Types;
 
+use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Types\ArrayOfUpdates;
+use TelegramBot\Api\Types\Update;
 
-class ArrayOfUpdatesTest extends \PHPUnit_Framework_TestCase
+class ArrayOfUpdatesTest extends TestCase
 {
 
-    public function data()
+    public function data(): array
     {
         return [
             // item 1
@@ -33,7 +35,6 @@ class ArrayOfUpdatesTest extends \PHPUnit_Framework_TestCase
                             'date' => 1440169809,
                             'text' => 'testText',
                         ],
-
                     ],
                 ],
             ],
@@ -43,14 +44,14 @@ class ArrayOfUpdatesTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider data
      */
-    public function testFromResponse($data)
+    public function testFromResponse(array $data): void
     {
         $items = ArrayOfUpdates::fromResponse($data);
 
-        $this->assertInternalType('array', $items);
+        $this->assertIsArray($items);
 
         foreach($items as $item) {
-            $this->assertInstanceOf('\TelegramBot\Api\Types\Update', $item);
+            $this->assertInstanceOf(Update::class, $item);
         }
     }
 }

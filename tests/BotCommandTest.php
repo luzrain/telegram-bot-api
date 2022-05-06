@@ -2,49 +2,36 @@
 
 namespace TelegramBot\Api\Test;
 
+use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Types\BotCommand;
 
-class BotCommandTest extends \PHPUnit_Framework_TestCase
+class BotCommandTest extends TestCase
 {
-    public function testSetCommand()
+    public function testGetCommand(): void
     {
         $item = new BotCommand();
         $item->setCommand('start');
-        $this->assertAttributeEquals('start', 'command', $item);
+        $this->assertSame('start', $item->getCommand());
     }
 
-    public function testGetCommand()
-    {
-        $item = new BotCommand();
-        $item->setCommand('start');
-        $this->assertEquals('start', $item->getCommand());
-    }
-
-    public function testSetDescription()
+    public function testGetDescription(): void
     {
         $item = new BotCommand();
         $item->setDescription('This is a start command!');
-        $this->assertAttributeEquals('This is a start command!', 'description', $item);
+        $this->assertSame('This is a start command!', $item->getDescription());
     }
 
-    public function testGetDescription()
-    {
-        $item = new BotCommand();
-        $item->setDescription('This is a start command!');
-        $this->assertEquals('This is a start command!', $item->getDescription());
-    }
-
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
         $botCommand = BotCommand::fromResponse(
             [
                 'command' => 'start',
                 'description' => 'This is a start command!',
-            ]
+            ],
         );
 
-        $this->assertInstanceOf('\TelegramBot\Api\Types\BotCommand', $botCommand);
-        $this->assertEquals('start', $botCommand->getCommand());
-        $this->assertEquals('This is a start command!', $botCommand->getDescription());
+        $this->assertInstanceOf(BotCommand::class, $botCommand);
+        $this->assertSame('start', $botCommand->getCommand());
+        $this->assertSame('This is a start command!', $botCommand->getDescription());
     }
 }

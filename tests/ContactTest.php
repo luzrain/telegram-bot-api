@@ -2,92 +2,59 @@
 
 namespace TelegramBot\Api\Test;
 
+use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Types\Contact;
 
-class ContactTest extends \PHPUnit_Framework_TestCase
+class ContactTest extends TestCase
 {
-    public function testSetPhoneNumber()
+    public function testGetPhoneNumber(): void
     {
         $contact = new Contact();
         $contact->setPhoneNumber('123456');
-        $this->assertAttributeEquals('123456', 'phoneNumber', $contact);
+        $this->assertSame('123456', $contact->getPhoneNumber());
     }
 
-    public function testGetPhoneNumber()
-    {
-        $contact = new Contact();
-        $contact->setPhoneNumber('123456');
-        $this->assertEquals('123456', $contact->getPhoneNumber());
-    }
-
-    public function testSetFirstName()
+    public function testGetFirstName(): void
     {
         $contact = new Contact();
         $contact->setFirstName('Ilya');
-        $this->assertAttributeEquals('Ilya', 'firstName', $contact);
+        $this->assertSame('Ilya', $contact->getFirstName());
     }
 
-    public function testGetFirstName()
-    {
-        $contact = new Contact();
-        $contact->setFirstName('Ilya');
-        $this->assertEquals('Ilya', $contact->getFirstName());
-    }
-
-    public function testSetLastName()
+    public function testGetLastName(): void
     {
         $contact = new Contact();
         $contact->setLastName('Gusev');
-        $this->assertAttributeEquals('Gusev', 'lastName', $contact);
+        $this->assertSame('Gusev', $contact->getLastName());
     }
 
-    public function testGetLastName()
-    {
-        $contact = new Contact();
-        $contact->setLastName('Gusev');
-        $this->assertEquals('Gusev', $contact->getLastName());
-    }
-
-    public function testSetUserId()
+    public function testGetUserId(): void
     {
         $contact = new Contact();
         $contact->setUserId('iGusev');
-        $this->assertAttributeEquals('iGusev', 'userId', $contact);
+        $this->assertSame('iGusev', $contact->getUserId());
     }
 
-    public function testGetUserId()
-    {
-        $contact = new Contact();
-        $contact->setUserId('iGusev');
-        $this->assertEquals('iGusev', $contact->getUserId());
-    }
-
-    public function testSetVcard()
-    {
-        $contact = new Contact();
-        $contact->setVcard('testVcard');
-        $this->assertAttributeEquals('testVcard', 'vcard', $contact);
-    }
-
-    public function testGetVCard()
+    public function testGetVCard(): void
     {
         $contact = new Contact();
         $contact->setVCard('testVCard');
-        $this->assertEquals('testVCard', $contact->getVCard());
+        $this->assertSame('testVCard', $contact->getVCard());
     }
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
-        $contact = Contact::fromResponse(array(
+        $contact = Contact::fromResponse([
             'first_name' => 'Ilya',
             'last_name' => 'Gusev',
             'phone_number' => '123456',
-            'user_id' => 'iGusev'
-        ));
-        $this->assertInstanceOf('\TelegramBot\Api\Types\Contact', $contact);
-        $this->assertEquals('123456', $contact->getPhoneNumber());
-        $this->assertEquals('Ilya', $contact->getFirstName());
-        $this->assertEquals('Gusev', $contact->getLastName());
-        $this->assertEquals('iGusev', $contact->getUserId());
+            'user_id' => 'iGusev',
+        ]);
+
+        $this->assertInstanceOf(Contact::class, $contact);
+        $this->assertSame('123456', $contact->getPhoneNumber());
+        $this->assertSame('Ilya', $contact->getFirstName());
+        $this->assertSame('Gusev', $contact->getLastName());
+        $this->assertSame('iGusev', $contact->getUserId());
     }
 }

@@ -2,103 +2,84 @@
 
 namespace TelegramBot\Api\Test;
 
+use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Types\ReplyKeyboardHide;
 
-class ReplyKeyboardHideTest extends \PHPUnit_Framework_TestCase
+class ReplyKeyboardHideTest extends TestCase
 {
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $item = new ReplyKeyboardHide();
 
-        $this->assertAttributeEquals(true, 'hideKeyboard', $item);
-        $this->assertAttributeEquals(null, 'selective', $item);
+        $this->assertTrue($item->isHideKeyboard());
+        $this->assertNull($item->isSelective());
     }
 
-    public function testConstructor2()
+    public function testConstructor2(): void
     {
         $item = new ReplyKeyboardHide(true, true);
 
-        $this->assertAttributeEquals(true, 'hideKeyboard', $item);
-        $this->assertAttributeEquals(true, 'selective', $item);
+        $this->assertTrue($item->isHideKeyboard());
+        $this->assertTrue($item->isSelective());
     }
 
-    public function testConstructor3()
+    public function testConstructor3(): void
     {
         $item = new ReplyKeyboardHide(false, true);
 
-        $this->assertAttributeEquals(false, 'hideKeyboard', $item);
-        $this->assertAttributeEquals(true, 'selective', $item);
+        $this->assertFalse($item->isHideKeyboard());
+        $this->assertTrue($item->isSelective());
     }
 
-    public function testConstructor4()
+    public function testConstructor4(): void
     {
         $item = new ReplyKeyboardHide(true);
 
-        $this->assertAttributeEquals(true, 'hideKeyboard', $item);
-        $this->assertAttributeEquals(null, 'selective', $item);
+        $this->assertTrue($item->isHideKeyboard());
+        $this->assertNull($item->isSelective());
     }
 
-    public function testSetHideKeyboard()
+    public function testIsHideKeyboard(): void
     {
         $item = new ReplyKeyboardHide(true);
-
         $item->setHideKeyboard(false);
 
-        $this->assertAttributeEquals(false, 'hideKeyboard', $item);
+        $this->assertFalse($item->isHideKeyboard());
     }
 
-    public function testIsHideKeyboard()
-    {
-        $item = new ReplyKeyboardHide(true);
-
-        $item->setHideKeyboard(false);
-
-        $this->assertEquals(false, $item->isHideKeyboard());
-    }
-
-    public function testSetSelective()
+    public function testIsSelective(): void
     {
         $item = new ReplyKeyboardHide();
-
         $item->setSelective(true);
 
-        $this->assertAttributeEquals(true, 'selective', $item);
+        $this->assertTrue($item->isSelective());
     }
 
-    public function testIsSelective()
+    public function testToJson(): void
     {
         $item = new ReplyKeyboardHide();
 
-        $item->setSelective(true);
-
-        $this->assertEquals(true, $item->isSelective());
+        $this->assertEquals(json_encode(['hide_keyboard' => true]), $item->toJson());
     }
 
-    public function testToJson()
+    public function testToJson2(): void
     {
         $item = new ReplyKeyboardHide();
 
-        $this->assertEquals(json_encode(array('hide_keyboard' => true)), $item->toJson());
+        $this->assertEquals(['hide_keyboard' => true], $item->toJson(true));
     }
 
-    public function testToJson2()
-    {
-        $item = new ReplyKeyboardHide();
-
-        $this->assertEquals(array('hide_keyboard' => true), $item->toJson(true));
-    }
-
-    public function testToJson3()
+    public function testToJson3(): void
     {
         $item = new ReplyKeyboardHide(true, true);
 
-        $this->assertEquals(json_encode(array('hide_keyboard' => true, 'selective' => true)), $item->toJson());
+        $this->assertEquals(json_encode(['hide_keyboard' => true, 'selective' => true]), $item->toJson());
     }
 
-    public function testToJson4()
+    public function testToJson4(): void
     {
         $item = new ReplyKeyboardHide(true, true);
 
-        $this->assertEquals(array('hide_keyboard' => true, 'selective' => true), $item->toJson(true));
+        $this->assertEquals(['hide_keyboard' => true, 'selective' => true], $item->toJson(true));
     }
 }

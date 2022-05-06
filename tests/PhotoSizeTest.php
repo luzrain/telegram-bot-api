@@ -2,104 +2,75 @@
 
 namespace TelegramBot\Api\Test;
 
+use PHPUnit\Framework\TestCase;
+use TelegramBot\Api\InvalidArgumentException;
 use TelegramBot\Api\Types\PhotoSize;
 
-class PhotoSizeTest extends \PHPUnit_Framework_TestCase
+class PhotoSizeTest extends TestCase
 {
-    public function testSetFileId()
+    public function testGetFileId(): void
     {
         $photoSize = new PhotoSize();
         $photoSize->setFileId('testfileId');
-        $this->assertAttributeEquals('testfileId', 'fileId', $photoSize);
+        $this->assertSame('testfileId', $photoSize->getFileId());
     }
 
-    public function testGetFileId()
-    {
-        $photoSize = new PhotoSize();
-        $photoSize->setFileId('testfileId');
-        $this->assertEquals('testfileId', $photoSize->getFileId());
-    }
-
-    public function testSetWidth()
-    {
-        $photoSize = new PhotoSize();
-        $photoSize->setWidth(1);
-        $this->assertAttributeEquals(1, 'width', $photoSize);
-    }
-
-    public function testGetWidth()
+    public function testGetWidth(): void
     {
         $photoSize = new PhotoSize();
         $photoSize->setWidth(2);
-        $this->assertEquals(2, $photoSize->getWidth());
+        $this->assertSame(2, $photoSize->getWidth());
     }
 
-    public function testSetHeight()
-    {
-        $photoSize = new PhotoSize();
-        $photoSize->setHeight(3);
-        $this->assertAttributeEquals(3, 'height', $photoSize);
-    }
-
-    public function testGetHeight()
+    public function testGetHeight(): void
     {
         $photoSize = new PhotoSize();
         $photoSize->setHeight(4);
-        $this->assertEquals(4, $photoSize->getHeight());
+        $this->assertSame(4, $photoSize->getHeight());
     }
 
-    public function testSetFileSize()
-    {
-        $photoSize = new PhotoSize();
-        $photoSize->setFileSize(5);
-        $this->assertAttributeEquals(5, 'fileSize', $photoSize);
-    }
-
-    public function testGetFileSize()
+    public function testGetFileSize(): void
     {
         $photoSize = new PhotoSize();
         $photoSize->setFileSize(6);
-        $this->assertEquals(6, $photoSize->getFileSize());
+        $this->assertSame(6, $photoSize->getFileSize());
     }
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
-        $photoSize = PhotoSize::fromResponse(array(
-            "file_id" => 'testFileId1',
+        $photoSize = PhotoSize::fromResponse([
+            'file_id' => 'testFileId1',
             'width' => 1,
             'height' => 2,
-            'file_size' => 3
-        ));
-        $this->assertInstanceOf('\TelegramBot\Api\Types\PhotoSize', $photoSize);
-        $this->assertAttributeEquals('testFileId1', 'fileId', $photoSize);
-        $this->assertAttributeEquals(1, 'width', $photoSize);
-        $this->assertAttributeEquals(2, 'height', $photoSize);
-        $this->assertAttributeEquals(3, 'fileSize', $photoSize);
+            'file_size' => 3,
+        ]);
+        $this->assertInstanceOf(PhotoSize::class, $photoSize);
+        $this->assertSame('testFileId1', $photoSize->getFileId());
+        $this->assertSame(1, $photoSize->getWidth());
+        $this->assertSame(2, $photoSize->getHeight());
+        $this->assertSame(3, $photoSize->getFileSize());
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
-    public function testSetFileSizeException()
+    public function testSetFileSizeException(): void
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $item = new PhotoSize();
         $item->setFileSize('s');
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
-    public function testSetHeightException()
+    public function testSetHeightException(): void
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $item = new PhotoSize();
         $item->setHeight('s');
     }
 
-    /**
-     * @expectedException \TelegramBot\Api\InvalidArgumentException
-     */
-    public function testSetWidthException()
+    public function testSetWidthException(): void
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $item = new PhotoSize();
         $item->setWidth('s');
     }

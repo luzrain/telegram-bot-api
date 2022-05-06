@@ -2,12 +2,13 @@
 
 namespace TelegramBot\Api\Test;
 
+use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Types\ChatLocation;
 use TelegramBot\Api\Types\Location;
 
-class ChatLocationTest extends \PHPUnit_Framework_TestCase
+class ChatLocationTest extends TestCase
 {
-    public function testGetLocation()
+    public function testGetLocation(): void
     {
         $chatLocation = new ChatLocation();
 
@@ -17,18 +18,18 @@ class ChatLocationTest extends \PHPUnit_Framework_TestCase
 
         $chatLocation->setLocation($location);
 
-        $this->assertEquals($location, $chatLocation->getLocation());
+        $this->assertSame($location, $chatLocation->getLocation());
     }
 
-    public function testGetAddress()
+    public function testGetAddress(): void
     {
         $chatLocation = new ChatLocation();
         $chatLocation->setAddress('Wall St. 123');
 
-        $this->assertEquals('Wall St. 123', $chatLocation->getAddress());
+        $this->assertSame('Wall St. 123', $chatLocation->getAddress());
     }
 
-    public function testFromResponse()
+    public function testFromResponse(): void
     {
         $chatLocation = ChatLocation::fromResponse(
             [
@@ -36,10 +37,11 @@ class ChatLocationTest extends \PHPUnit_Framework_TestCase
                     'latitude' => 55.585827,
                     'longitude' => 37.675309,
                 ],
-                'address' => 'Wall St. 123'
-            ]
+                'address' => 'Wall St. 123',
+            ],
         );
-        $this->assertInstanceOf('\TelegramBot\Api\Types\ChatLocation', $chatLocation);
-        $this->assertAttributeEquals('Wall St. 123', 'address', $chatLocation);
+
+        $this->assertInstanceOf(ChatLocation::class, $chatLocation);
+        $this->assertSame('Wall St. 123', $chatLocation->getAddress());
     }
 }
