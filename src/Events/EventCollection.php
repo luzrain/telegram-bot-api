@@ -21,7 +21,8 @@ class EventCollection
     public function handle(Update $update): void
     {
         foreach ($this->events as $event) {
-            if ($event->executeChecker($update) === true && $event->executeAction($update) === false) {
+            if ($event->executeChecker($update)) {
+                $event->executeAction($update);
                 break;
             }
         }
