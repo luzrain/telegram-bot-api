@@ -19,14 +19,14 @@ class Audio extends BaseType implements TypeInterface
      *
      * @var array
      */
-    static protected $requiredParams = ['file_id', 'duration'];
+    protected static array $requiredParams = ['file_id', 'duration'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'file_id' => true,
         'duration' => true,
         'performer' => true,

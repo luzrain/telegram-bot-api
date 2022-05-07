@@ -20,7 +20,7 @@ class Document extends BaseType implements TypeInterface
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'file_id' => true,
         'thumb' => PhotoSize::class,
         'file_name' => true,
@@ -33,7 +33,7 @@ class Document extends BaseType implements TypeInterface
      *
      * @var array
      */
-    static protected $requiredParams = ['file_id'];
+    protected static array $requiredParams = ['file_id'];
 
     /**
      * Unique identifier for this file

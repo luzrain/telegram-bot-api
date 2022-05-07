@@ -35,14 +35,14 @@ class MessageEntity extends BaseType implements TypeInterface
      *
      * @var array
      */
-    static protected $requiredParams = ['type', 'offset', 'length'];
+    protected static array $requiredParams = ['type', 'offset', 'length'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'type' => true,
         'offset' => true,
         'length' => true,

@@ -19,14 +19,14 @@ class Location extends BaseType implements TypeInterface
      *
      * @var array
      */
-    static protected $requiredParams = ['latitude', 'longitude'];
+    protected static array $requiredParams = ['latitude', 'longitude'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'latitude' => true,
         'longitude' => true,
         'horizontal_accuracy' => true,

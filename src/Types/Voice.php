@@ -19,14 +19,14 @@ class Voice extends BaseType implements TypeInterface
      *
      * @var array
      */
-    static protected $requiredParams = ['file_id', 'file_unique_id', 'duration'];
+    protected static array $requiredParams = ['file_id', 'file_unique_id', 'duration'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'file_id'        => true,
         'file_unique_id' => true,
         'duration'       => true,

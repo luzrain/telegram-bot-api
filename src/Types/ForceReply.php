@@ -19,14 +19,14 @@ class ForceReply extends BaseType
      *
      * @var array
      */
-    static protected $requiredParams = ['force_reply'];
+    protected static array $requiredParams = ['force_reply'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'force_reply' => true,
         'selective' => true
     ];

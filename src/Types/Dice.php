@@ -16,14 +16,14 @@ class Dice extends BaseType implements TypeInterface
      *
      * @var array
      */
-    static protected $requiredParams = ['emoji', 'value'];
+    protected static array $requiredParams = ['emoji', 'value'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'emoji' => true,
         'value' => true
     ];

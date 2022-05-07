@@ -20,14 +20,14 @@ class Gif extends AbstractInlineQueryResult
      *
      * @var array
      */
-    static protected $requiredParams = ['type', 'id', 'gif_url', 'thumb_url'];
+    protected static array $requiredParams = ['type', 'id', 'gif_url', 'thumb_url'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'type' => true,
         'id' => true,
         'gif_url' => true,

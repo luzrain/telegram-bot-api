@@ -14,14 +14,14 @@ class LoginUrl extends BaseType implements TypeInterface
     /**
      * @var array
      */
-    static protected $requiredParams = ['url'];
+    protected static array $requiredParams = ['url'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'url' => true,
         'forward_text' => true,
         'bot_username' => true,

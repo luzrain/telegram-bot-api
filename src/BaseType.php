@@ -14,69 +14,56 @@ abstract class BaseType
 {
     /**
      * Array of required data params for type
-     *
-     * @var array
      */
-    protected static $requiredParams = [];
+    protected static array $requiredParams = [];
 
     /**
      * Map of input data
-     *
-     * @var array
      */
-    protected static $map = [];
+    protected static array $map = [];
 
     /**
      * Validate input data
      *
-     * @param array $data
-     *
-     * @return bool
-     *
      * @throws InvalidArgumentException
      */
-    public static function validate($data)
+    private static function validate(array $data): void
     {
-        if (count(array_intersect_key(array_flip(static::$requiredParams), $data)) === count(static::$requiredParams)) {
-            return true;
-        }
-
-        throw new InvalidArgumentException();
+        if (count(array_intersect_key(array_flip(static::$requiredParams), $data)) !== count(static::$requiredParams)) {
+            throw new InvalidArgumentException();
+        }        
     }
 
-    public function map($data)
+    private function map(array $data): static
     {
         foreach (static::$map as $key => $item) {
             if (isset($data[$key]) && (!is_array($data[$key]) || (is_array($data[$key]) && !empty($data[$key])))) {
-                $method = 'set' . self::toCamelCase($key);
+                $setter = 'set' . self::toCamelCase($key);
                 if ($item === true) {
-                    $this->$method($data[$key]);
+                    $this->$setter($data[$key]);
                 } else {
-                    $this->$method($item::fromResponse($data[$key]));
+                    $this->$setter($item::fromResponse($data[$key]));
                 }
             }
         }
+
+        return $this;
     }
 
-    protected static function toCamelCase($str)
+    private static function toCamelCase(string $str): string
     {
-        return str_replace(" ", "", ucwords(str_replace("_", " ", $str)));
+        return str_replace(' ', '', ucwords(str_replace('_', ' ', $str)));
     }
 
-    public function toJson($inner = false)
+    public function toJson(bool $inner = false): mixed
     {
         $output = [];
 
         foreach (static::$map as $key => $item) {
             $property = lcfirst(self::toCamelCase($key));
-            if (!is_null($this->$property)) {
+            if ($this->$property !== null) {
                 if (is_array($this->$property)) {
-                    $output[$key] = array_map(
-                        function ($v) {
-                            return is_object($v) ? $v->toJson(true) : $v;
-                        },
-                        $this->$property
-                    );
+                    $output[$key] = array_map(fn ($v) => is_object($v) ? $v->toJson(true) : $v, $this->$property);
                 } else {
                     $output[$key] = $item === true ? $this->$property : $this->$property->toJson(true);
                 }
@@ -86,16 +73,10 @@ abstract class BaseType
         return $inner === false ? json_encode($output) : $output;
     }
 
-    public static function fromResponse($data)
+    public static function fromResponse(array $data): static
     {
-        if ($data === true) {
-            return true;
-        }
-        
         self::validate($data);
-        $instance = new static();
-        $instance->map($data);
 
-        return $instance;
+        return (new static())->map($data);
     }
 }

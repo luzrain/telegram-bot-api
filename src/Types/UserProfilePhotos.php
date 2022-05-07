@@ -19,14 +19,14 @@ class UserProfilePhotos extends BaseType implements TypeInterface
      *
      * @var array
      */
-    static protected $requiredParams = ['total_count', 'photos'];
+    protected static array $requiredParams = ['total_count', 'photos'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'total_count' => true,
         'photos' => ArrayOfArrayOfPhotoSize::class,
     ];

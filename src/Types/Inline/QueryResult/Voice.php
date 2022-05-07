@@ -29,14 +29,14 @@ class Voice extends AbstractInlineQueryResult
      *
      * @var array
      */
-    static protected $requiredParams = ['type', 'id', 'voice_url', 'title'];
+    protected static array $requiredParams = ['type', 'id', 'voice_url', 'title'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'type' => true,
         'id' => true,
         'voice_url' => true,

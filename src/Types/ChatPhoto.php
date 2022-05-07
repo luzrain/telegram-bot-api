@@ -11,14 +11,14 @@ class ChatPhoto extends BaseType
      *
      * @var array
      */
-    static protected $requiredParams = ['small_file_id', 'big_file_id'];
+    protected static array $requiredParams = ['small_file_id', 'big_file_id'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'small_file_id' => true,
         'big_file_id' => true,
     ];

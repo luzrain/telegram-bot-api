@@ -4,5 +4,5 @@ use TelegramBot\Api\BaseType;
 
 class TestBaseType extends BaseType
 {
-    protected static $requiredParams = ['test1', 'test2'];
+    protected static array $requiredParams = ['test1', 'test2'];
 }

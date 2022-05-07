@@ -16,12 +16,12 @@ class AnswerPreCheckoutQuery extends BaseType
     /**
      * @var array
      */
-    static protected $requiredParams = ['pre_checkout_query_id', 'ok'];
+    protected static array $requiredParams = ['pre_checkout_query_id', 'ok'];
 
     /**
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'pre_checkout_query_id' => true,
         'ok' => true,
         'error_message' => true,

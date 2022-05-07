@@ -18,14 +18,14 @@ class Article extends AbstractInlineQueryResult
      *
      * @var array
      */
-    static protected $requiredParams = ['type', 'id', 'title', 'input_message_content'];
+    protected static array $requiredParams = ['type', 'id', 'title', 'input_message_content'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'type' => true,
         'id' => true,
         'title' => true,

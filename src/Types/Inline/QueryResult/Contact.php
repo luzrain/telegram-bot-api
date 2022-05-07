@@ -18,14 +18,14 @@ class Contact extends AbstractInlineQueryResult
      *
      * @var array
      */
-    static protected $requiredParams = ['type', 'id', 'phone_number', 'first_name'];
+    protected static array $requiredParams = ['type', 'id', 'phone_number', 'first_name'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'type' => true,
         'id' => true,
         'phone_number' => true,

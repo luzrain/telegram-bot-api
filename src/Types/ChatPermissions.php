@@ -12,14 +12,14 @@ class ChatPermissions extends BaseType implements TypeInterface
      *
      * @var array
      */
-    static protected $requiredParams = [];
+    protected static array $requiredParams = [];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'can_send_messages' => true,
         'can_send_media_messages' => true,
         'can_send_polls' => true,

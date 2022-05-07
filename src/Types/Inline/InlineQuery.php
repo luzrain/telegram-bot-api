@@ -20,14 +20,14 @@ class InlineQuery extends BaseType
      *
      * @var array
      */
-    static protected $requiredParams = ['id', 'from', 'query', 'offset'];
+    protected static array $requiredParams = ['id', 'from', 'query', 'offset'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'id' => true,
         'from' => User::class,
         'location' => Location::class,

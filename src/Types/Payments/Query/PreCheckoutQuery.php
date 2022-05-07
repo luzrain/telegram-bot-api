@@ -19,12 +19,12 @@ class PreCheckoutQuery extends BaseType
     /**
      * @var array
      */
-    static protected $requiredParams = ['id', 'from', 'currency', 'total_amount', 'invoice_payload'];
+    protected static array $requiredParams = ['id', 'from', 'currency', 'total_amount', 'invoice_payload'];
 
     /**
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'id' => true,
         'from' => User::class,
         'currency' => true,

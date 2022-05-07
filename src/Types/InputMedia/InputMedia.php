@@ -18,14 +18,14 @@ class InputMedia extends BaseType implements CollectionItemInterface
      *
      * @var array
      */
-    static protected $requiredParams = ['type', 'media'];
+    protected static array $requiredParams = ['type', 'media'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'type' => true,
         'media' => true,
         'caption' => true,

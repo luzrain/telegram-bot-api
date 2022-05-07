@@ -25,14 +25,14 @@ class Venue extends InputMessageContent implements TypeInterface
      *
      * @var array
      */
-    static protected $requiredParams = ['latitude', 'longitude', 'title', 'address'];
+    protected static array $requiredParams = ['latitude', 'longitude', 'title', 'address'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'latitude' => true,
         'longitude' => true,
         'title' => true,

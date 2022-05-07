@@ -18,14 +18,14 @@ class Video extends AbstractInlineQueryResult
      *
      * @var array
      */
-    static protected $requiredParams = ['type', 'id', 'video_url', 'mime_type', 'thumb_url', 'title'];
+    protected static array $requiredParams = ['type', 'id', 'video_url', 'mime_type', 'thumb_url', 'title'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'type' => true,
         'id' => true,
         'video_url' => true,

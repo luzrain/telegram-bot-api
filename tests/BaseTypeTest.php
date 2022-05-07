@@ -16,13 +16,15 @@ class BaseTypeTest extends TestCase
 
     public function testValidate(): void
     {
-        $this->assertTrue(TestBaseType::validate(['test1' => 1, 'test2' => 2, 'test3' => 3]));
+        TestBaseType::fromResponse(['test1' => 1, 'test2' => 2, 'test3' => 3]);
+
+        $this->addToAssertionCount(1);
     }
 
     public function testValidateFail(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $this->assertTrue(TestBaseType::validate(['test1' => 1]));
+        TestBaseType::fromResponse(['test1' => 1]);
     }
 }

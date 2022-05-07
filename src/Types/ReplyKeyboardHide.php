@@ -20,14 +20,14 @@ class ReplyKeyboardHide extends BaseType
      *
      * @var array
      */
-    static protected $requiredParams = ['hide_keyboard'];
+    protected static array $requiredParams = ['hide_keyboard'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'hide_keyboard' => true,
         'selective' => true
     ];

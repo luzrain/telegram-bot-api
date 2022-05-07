@@ -13,14 +13,14 @@ class Chat extends BaseType implements TypeInterface
      *
      * @var array
      */
-    static protected $requiredParams = ['id', 'type'];
+    protected static array $requiredParams = ['id', 'type'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'id' => true,
         'type' => true,
         'title' => true,

@@ -18,14 +18,14 @@ class ShippingQuery extends BaseType
     /**
      * @var array
      */
-    static protected $requiredParams = ['id', 'from', 'invoice_payload', 'shipping_address'];
+    protected static array $requiredParams = ['id', 'from', 'invoice_payload', 'shipping_address'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'id' => true,
         'from' => User::class,
         'invoice_payload' => true,

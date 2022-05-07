@@ -15,14 +15,14 @@ class Message extends BaseType implements TypeInterface
      *
      * @var array
      */
-    static protected $requiredParams = ['message_id', 'date', 'chat'];
+    protected static array $requiredParams = ['message_id', 'date', 'chat'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'message_id' => true,
         'from' => User::class,
         'date' => true,

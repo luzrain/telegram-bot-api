@@ -23,14 +23,14 @@ class Update extends BaseType implements TypeInterface
      *
      * @var array
      */
-    static protected $requiredParams = ['update_id'];
+    protected static array $requiredParams = ['update_id'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'update_id' => true,
         'message' => Message::class,
         'edited_message' => Message::class,

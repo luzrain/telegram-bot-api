@@ -29,14 +29,14 @@ class Location extends AbstractInlineQueryResult
      *
      * @var array
      */
-    static protected $requiredParams = ['type', 'id', 'latitude', 'longitude', 'title'];
+    protected static array $requiredParams = ['type', 'id', 'latitude', 'longitude', 'title'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'type' => true,
         'id' => true,
         'latitude' => true,

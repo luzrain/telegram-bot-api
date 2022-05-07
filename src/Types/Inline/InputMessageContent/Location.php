@@ -25,14 +25,14 @@ class Location extends InputMessageContent implements TypeInterface
      *
      * @var array
      */
-    static protected $requiredParams = ['latitude', 'longitude'];
+    protected static array $requiredParams = ['latitude', 'longitude'];
 
     /**
      * {@inheritdoc}
      *
      * @var array
      */
-    static protected $map = [
+    protected static array $map = [
         'latitude' => true,
         'longitude' => true
     ];
