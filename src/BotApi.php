@@ -274,13 +274,9 @@ class BotApi
     /**
      * JSON validation
      *
-     * @param string $jsonString
-     * @param boolean $asArray
-     *
-     * @return object|array
      * @throws InvalidJsonException
      */
-    public static function jsonValidate($jsonString, $asArray)
+    public static function jsonValidate(string $jsonString, bool $asArray): object|array
     {
         $json = json_decode($jsonString, $asArray);
 

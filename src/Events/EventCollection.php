@@ -2,54 +2,27 @@
 
 namespace TelegramBot\Api\Events;
 
-use Closure;
-use ReflectionFunction;
 use TelegramBot\Api\Types\Update;
 
 class EventCollection
 {
     /**
-     * Array of events.
-     *
-     * @var array
+     * @var Event[] Array of events.
      */
-    protected $events;
+    protected array $events;
 
-    /**
-     * EventCollection constructor.
-     */
-    public function __construct()
+    public function add(Event $event): self
     {
-    }
-
-    /**
-     * Add new event to collection
-     *
-     * @param Closure $event
-     * @param Closure|null $checker
-     *
-     * @return \TelegramBot\Api\Events\EventCollection
-     */
-    public function add(Closure $event, $checker = null)
-    {
-        $this->events[] = !is_null($checker) ? new Event($event, $checker)
-            : new Event($event, function () {
-            });
+        $this->events[] = $event;
 
         return $this;
     }
 
-    /**
-     * @param \TelegramBot\Api\Types\Update
-     */
-    public function handle(Update $update)
+    public function handle(Update $update): void
     {
         foreach ($this->events as $event) {
-            /* @var \TelegramBot\Api\Events\Event $event */
-            if ($event->executeChecker($update) === true) {
-                if (false === $event->executeAction($update)) {
-                    break;
-                }
+            if ($event->executeChecker($update) === true && $event->executeAction($update) === false) {
+                break;
             }
         }
     }
