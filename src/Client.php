@@ -12,6 +12,7 @@ use TelegramBot\Api\Events\Events\Command;
 use TelegramBot\Api\Events\Events\EditedChannelPost;
 use TelegramBot\Api\Events\Events\EditedMessage;
 use TelegramBot\Api\Events\Events\InlineQuery;
+use TelegramBot\Api\Events\Events\Message;
 use TelegramBot\Api\Events\Events\PreCheckoutQuery;
 use TelegramBot\Api\Events\Events\ShippingQuery;
 use TelegramBot\Api\Exceptions\InvalidJsonException;
@@ -32,6 +33,14 @@ class Client
     public function command(string $name, Closure $action): self
     {
         return $this->on(new Command($name, $action));
+    }
+
+    /**
+     * New incoming message of any kind — text, photo, sticker, etc.
+     */
+    public function message(Closure $action): self
+    {
+        return $this->on(new Message($action));
     }
 
     /**
