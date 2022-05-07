@@ -14,12 +14,7 @@ final class EditedMessage extends Event
 
     public function executeAction(Update $update): bool
     {
-        if (!$update->getEditedMessage()) {
-            return true;
-        }
-
-        $reflectionAction = new ReflectionFunction($this->getAction());
-        $reflectionAction->invokeArgs([$update->getEditedMessage()]);
+        $this->getAction()($update->getEditedMessage());
 
         return false;
     }

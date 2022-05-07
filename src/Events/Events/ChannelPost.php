@@ -14,12 +14,7 @@ final class ChannelPost extends Event
 
     public function executeAction(Update $update): bool
     {
-        if (!$update->getChannelPost()) {
-            return true;
-        }
-
-        $reflectionAction = new ReflectionFunction($this->getAction());
-        $reflectionAction->invokeArgs([$update->getChannelPost()]);
+        $this->getAction()($update->getChannelPost());
 
         return false;
     }

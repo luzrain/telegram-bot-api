@@ -14,12 +14,7 @@ final class PreCheckoutQuery extends Event
 
     public function executeAction(Update $update): bool
     {
-        if (!$update->getPreCheckoutQuery()) {
-            return true;
-        }
-
-        $reflectionAction = new ReflectionFunction($this->getAction());
-        $reflectionAction->invokeArgs([$update->getPreCheckoutQuery()]);
+        $this->getAction()($update->getPreCheckoutQuery());
 
         return false;
     }

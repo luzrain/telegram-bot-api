@@ -14,12 +14,7 @@ final class ShippingQuery extends Event
 
     public function executeAction(Update $update): bool
     {
-        if (!$update->getShippingQuery()) {
-            return true;
-        }
-
-        $reflectionAction = new ReflectionFunction($this->getAction());
-        $reflectionAction->invokeArgs([$update->getShippingQuery()]);
+        $this->getAction()($update->getShippingQuery());
 
         return false;
     }

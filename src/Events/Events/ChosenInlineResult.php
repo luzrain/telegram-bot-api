@@ -14,12 +14,7 @@ final class ChosenInlineResult extends Event
 
     public function executeAction(Update $update): bool
     {
-        if (!$update->getChosenInlineResult()) {
-            return true;
-        }
-
-        $reflectionAction = new ReflectionFunction($this->getAction());
-        $reflectionAction->invokeArgs([$update->getChosenInlineResult()]);
+        $this->getAction()($update->getChosenInlineResult());
 
         return false;
     }

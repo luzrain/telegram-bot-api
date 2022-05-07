@@ -58,28 +58,6 @@ class EventTest extends TestCase
     /**
      * @dataProvider data
      */
-    public function testGetAction(Closure $action, Closure $checker, Update $update): void
-    {
-        $item = new Event($action, $checker);
-
-        $this->assertInstanceOf(Closure::class, $item->getAction());
-        $this->assertSame($action, $item->getAction());
-    }
-
-    /**
-     * @dataProvider data
-     */
-    public function testGetChecker(Closure $action, Closure $checker, Update $update): void
-    {
-        $item = new Event($action, $checker);
-
-        $this->assertInstanceOf(Closure::class, $item->getAction());
-        $this->assertSame($checker, $item->getChecker());
-    }
-
-    /**
-     * @dataProvider data
-     */
     public function testExecuteAction(Closure $action, Closure $checker, Update $update): void
     {
         $item = new Event($action, $checker);

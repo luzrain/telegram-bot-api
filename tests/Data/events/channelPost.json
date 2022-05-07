@@ -1,0 +1,18 @@
+{
+    "update_id":264807284,
+    "channel_post":{
+        "message_id":2,
+        "sender_chat":{
+            "id":-1001505111111,
+            "title":"TestChannel999999",
+            "type":"channel"
+        },
+        "chat":{
+            "id":-1001505111111,
+            "title":"TestChannel999999",
+            "type":"channel"
+        },
+        "date":1651939149,
+        "text":"test"
+    }
+}

@@ -14,12 +14,7 @@ final class CallbackQuery extends Event
 
     public function executeAction(Update $update): bool
     {
-        if (!$update->getCallbackQuery()) {
-            return true;
-        }
-
-        $reflectionAction = new ReflectionFunction($this->getAction());
-        $reflectionAction->invokeArgs([$update->getCallbackQuery()]);
+        $this->getAction()($update->getCallbackQuery());
 
         return false;
     }

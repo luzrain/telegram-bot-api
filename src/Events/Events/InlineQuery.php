@@ -14,12 +14,7 @@ final class InlineQuery extends Event
 
     public function executeAction(Update $update): bool
     {
-        if (!$update->getInlineQuery()) {
-            return true;
-        }
-
-        $reflectionAction = new ReflectionFunction($this->getAction());
-        $reflectionAction->invokeArgs([$update->getInlineQuery()]);
+        $this->getAction()($update->getInlineQuery());
 
         return false;
     }

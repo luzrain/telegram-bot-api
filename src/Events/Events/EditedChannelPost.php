@@ -14,12 +14,7 @@ final class EditedChannelPost extends Event
 
     public function executeAction(Update $update): bool
     {
-        if (!$update->getEditedChannelPost()) {
-            return true;
-        }
-
-        $reflectionAction = new ReflectionFunction($this->getAction());
-        $reflectionAction->invokeArgs([$update->getEditedChannelPost()]);
+        $this->getAction()($update->getEditedChannelPost());
 
         return false;
     }

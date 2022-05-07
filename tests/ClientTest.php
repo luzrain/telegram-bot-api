@@ -2,291 +2,72 @@
 
 namespace TelegramBot\Api\Test;
 
-use Closure;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
-use ReflectionMethod;
-use TelegramBot\Api\Exceptions\BadMethodCallException;
 use TelegramBot\Api\Client;
-use TelegramBot\Api\Events\EventCollection;
-use TelegramBot\Api\Types\Inline\InlineQuery;
+use TelegramBot\Api\Test\Data\ClosureTest;
 use TelegramBot\Api\Types\Message;
-use TelegramBot\Api\Types\Update;
 
 class ClientTest extends TestCase
 {
-    public function data(): array
-    {
-        return [
-            [
-                Update::fromResponse([
-                    'update_id' => 123456,
-                    'message' => [
-                        'message_id' => 13948,
-                        'from' => [
-                            'id' => 123,
-                            'first_name' => 'Ilya',
-                            'last_name' => 'Gusev',
-                            'username' => 'iGusev',
-                        ],
-                        'chat' => [
-                            'id' => 123,
-                            'type' => 'private',
-                            'first_name' => 'Ilya',
-                            'last_name' => 'Gusev',
-                            'username' => 'iGusev',
-                        ],
-                        'date' => 1440169809,
-                        'text' => 'testText',
-                    ],
-                ]),
-                'testText',
-                null,
-                null
-            ],
-            [
-                Update::fromResponse([
-                    'update_id' => 123456,
-                    'message' => [
-                        'message_id' => 13948,
-                        'from' => [
-                            'id' => 123,
-                            'first_name' => 'Ilya',
-                            'last_name' => 'Gusev',
-                            'username' => 'iGusev',
-                        ],
-                        'chat' => [
-                            'id' => 123,
-                            'type' => 'private',
-                            'first_name' => 'Ilya',
-                            'last_name' => 'Gusev',
-                            'username' => 'iGusev',
-                        ],
-                        'date' => 1440169809,
-                        'text' => '/testcommand',
-                    ],
-                ]),
-                'testcommand',
-                null,
-                null
-            ],
-            [
-                Update::fromResponse([
-                    'update_id' => 123456,
-                    'message' => [
-                        'message_id' => 13948,
-                        'from' => [
-                            'id' => 123,
-                            'first_name' => 'Ilya',
-                            'last_name' => 'Gusev',
-                            'username' => 'iGusev',
-                        ],
-                        'chat' => [
-                            'id' => 123,
-                            'type' => 'private',
-                            'first_name' => 'Ilya',
-                            'last_name' => 'Gusev',
-                            'username' => 'iGusev',
-                        ],
-                        'date' => 1440169809,
-                        'text' => '/testcommand with attrs',
-                    ],
-                ]),
-                'testcommand',
-                'with',
-                'attrs'
-            ],
-            [
-                Update::fromResponse([
-                    'update_id' => 376262206,
-                    'inline_query' => [
-                        'id' => '248571229377660054',
-                        'from' => [
-                            'id' => 123,
-                            'first_name' => 'Ilya',
-                            'last_name' => 'Gusev',
-                            'username' => 'iGusev',
-                        ],
-                        'query' => 'h g',
-                        'offset' => '',
-                    ],
+    private Client $client;
 
-                ]),
-                'testcommand',
-                null,
-                null
-            ],
-        ];
+    public function clientHandlersData(): iterable
+    {
+        yield ['command', file_get_contents(__DIR__ . '/Data/events/command.json')];
+        yield ['editedMessage', file_get_contents(__DIR__ . '/Data/events/editedMessage.json')];
+        yield ['channelPost', file_get_contents(__DIR__ . '/Data/events/channelPost.json')];
+        yield ['editedChannelPost', file_get_contents(__DIR__ . '/Data/events/editedChannelPost.json')];
+        yield ['inlineQuery', file_get_contents(__DIR__ . '/Data/events/inlineQuery.json')];
+        yield ['chosenInlineResult', file_get_contents(__DIR__ . '/Data/events/chosenInlineResult.json')];
+        yield ['callbackQuery', file_get_contents(__DIR__ . '/Data/events/callbackQuery.json')];
+        yield ['shippingQuery', file_get_contents(__DIR__ . '/Data/events/shippingQuery.json')];
+        yield ['preCheckoutQuery', file_get_contents(__DIR__ . '/Data/events/preCheckoutQuery.json')];
+    }
+
+    public function setUp(): void
+    {
+        $this->client = new Client();
     }
 
     /**
-     * @dataProvider data
+     * @dataProvider clientHandlersData
      */
-    public function testGetInlineQueryChecker(Update $update): void
+    public function testClientHandlers(string $eventName, string $requestBody): void
     {
-        $reflectionMethod = new ReflectionMethod(Client::class, 'getInlineQueryChecker');
-        $reflectionMethod->setAccessible(true);
+        $commandClosure = new ClosureTest();
+        $wrongCommandClosure = new ClosureTest();
+        $editedMessageClosure = new ClosureTest();
+        $channelPostClosure = new ClosureTest();
+        $editedChannelPostClosure = new ClosureTest();
+        $inlineQueryClosure = new ClosureTest();
+        $chosenInlineResultClosure = new ClosureTest();
+        $callbackQueryClosure = new ClosureTest();
+        $shippingQueryClosure = new ClosureTest();
+        $preCheckoutQueryClosure = new ClosureTest();
 
-        $result = $reflectionMethod->invoke(null);
+        $this->client
+            ->command('/testcommand', $commandClosure->getClosure())
+            ->command('/wrongcommand', $wrongCommandClosure->getClosure())
+            ->editedMessage($editedMessageClosure->getClosure())
+            ->channelPost($channelPostClosure->getClosure())
+            ->editedChannelPost($editedChannelPostClosure->getClosure())
+            ->inlineQuery($inlineQueryClosure->getClosure())
+            ->chosenInlineResult($chosenInlineResultClosure->getClosure())
+            ->callbackQuery($callbackQueryClosure->getClosure())
+            ->shippingQuery($shippingQueryClosure->getClosure())
+            ->preCheckoutQuery($preCheckoutQueryClosure->getClosure())
+            ->run($requestBody);
+        ;
 
-        $this->assertInstanceOf(Closure::class, $result);
-        $this->assertSame($update->getInlineQuery() !== null, call_user_func($result, $update));
-    }
-
-    public function testBadMethodCallException(): void
-    {
-        $this->expectException(BadMethodCallException::class);
-        $this->expectExceptionMessage('Method testMethod not exists');
-
-        $item = new Client('testToken');
-        $item->testMethod();
-    }
-
-    public function testConstructor(): void
-    {
-        $item = new Client('testToken');
-
-        $this->assertInstanceOf(Client::class, $item);
-    }
-
-    public function testOn(): void
-    {
-        $item = new Client('testToken');
-
-        $mockedEventCollection = $this->getMockBuilder(EventCollection::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $mockedEventCollection->expects($this->once())->method('add');
-
-        $reflection = new ReflectionClass($item);
-        $reflectionProperty = $reflection->getProperty('events');
-        $reflectionProperty->setAccessible(true);
-        $reflectionProperty->setValue($item, $mockedEventCollection);
-        $reflectionProperty->setAccessible(false);
-
-        $this->assertSame($item, $item->on(function () {
-            return true;
-        }));
-    }
-
-    /**
-     * @dataProvider data
-     */
-    public function testGetChecker(Update $update, string $command): void
-    {
-        $reflectionMethod = new ReflectionMethod('TelegramBot\Api\Client', 'getChecker');
-        $reflectionMethod->setAccessible(true);
-
-        $result = $reflectionMethod->invoke(null, $command);
-
-        $this->assertInstanceOf(Closure::class, $result);
-
-        preg_match(Client::REGEXP, $update->getMessage() ? $update->getMessage()->getText() : '', $matches);
-
-        $expected = !empty($matches) && $matches[1] == $command;
-
-        $this->assertEquals($expected, call_user_func($result, $update));
-
-    }
-
-    /**
-     * @dataProvider data
-     */
-    public function testHandle(Update $update): void
-    {
-        $item = new Client('testToken');
-
-        $mockedEventCollection = $this->getMockBuilder(EventCollection::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $mockedEventCollection->expects($this->exactly(2))->method('handle');
-
-        $reflection = new ReflectionClass($item);
-        $reflectionProperty = $reflection->getProperty('events');
-        $reflectionProperty->setAccessible(true);
-        $reflectionProperty->setValue($item, $mockedEventCollection);
-        $reflectionProperty->setAccessible(false);
-
-        $item->handle([$update, $update]);
-    }
-
-    /**
-     * @dataProvider data
-     */
-    public function testGetEvent(Update $update, string $command, $attr1, $attr2): void
-    {
-        $reflectionMethod = new ReflectionMethod(Client::class, 'getEvent');
-        $reflectionMethod->setAccessible(true);
-        global $test;
-
-        $test = 1;
-
-        $action = function (Message $message) {
-            global $test;
-            $test = 2;
-
-            return true;
-        };
-
-        if($attr1 && $attr2) {
-            $action = function (Message $message, $attr1, $attr2) {
-                global $test;
-                $test = 2;
-
-                return true;
-            };
-        }
-        $action->bind($action, $this);
-
-        $result = $reflectionMethod->invoke(null, $action);
-
-        $this->assertInstanceOf('\Closure', $result);
-
-        $mustBeCalled = !is_null($update->getMessage());
-
-        $this->assertEquals(!$mustBeCalled, call_user_func($result, $update));
-
-        if ($mustBeCalled) {
-            $this->assertEquals(2, $test);
-        } else {
-            $this->assertEquals(1, $test);
-        }
-    }
-
-    /**
-     * @dataProvider data
-     */
-    public function testGetInlineQueryEvent(Update $update): void
-    {
-        $reflectionMethod = new ReflectionMethod(Client::class, 'getInlineQueryEvent');
-        $reflectionMethod->setAccessible(true);
-        global $test;
-
-        $test = 1;
-
-        $action = function (InlineQuery $query) {
-            global $test;
-            $test = 2;
-
-            return true;
-        };
-
-        $action->bind($action, $this);
-
-        $result = $reflectionMethod->invoke(null, $action);
-
-        $this->assertInstanceOf(Closure::class, $result);
-
-        $mustBeCalled = !is_null($update->getInlineQuery());
-
-        $this->assertEquals(!$mustBeCalled, call_user_func($result, $update));
-
-        if ($mustBeCalled) {
-            $this->assertEquals(2, $test);
-        } else {
-            $this->assertEquals(1, $test);
-        }
+        $this->assertSame($eventName === 'command', $commandClosure->isCalled());
+        $this->assertFalse($wrongCommandClosure->isCalled());
+        $this->assertSame($eventName === 'editedMessage', $editedMessageClosure->isCalled());
+        $this->assertSame($eventName === 'channelPost', $channelPostClosure->isCalled());
+        $this->assertSame($eventName === 'editedChannelPost', $editedChannelPostClosure->isCalled());
+        $this->assertSame($eventName === 'inlineQuery', $inlineQueryClosure->isCalled());
+        $this->assertSame($eventName === 'chosenInlineResult', $chosenInlineResultClosure->isCalled());
+        $this->assertSame($eventName === 'callbackQuery', $callbackQueryClosure->isCalled());
+        $this->assertSame($eventName === 'shippingQuery', $shippingQueryClosure->isCalled());
+        $this->assertSame($eventName === 'preCheckoutQuery', $preCheckoutQueryClosure->isCalled());
     }
 }
