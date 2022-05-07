@@ -4,7 +4,7 @@ namespace TelegramBot\Api\Test;
 
 use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Client;
-use TelegramBot\Api\Test\Data\ClosureTest;
+use TelegramBot\Api\Test\ClosureTest;
 use TelegramBot\Api\Types\Update;
 
 class ClientTest extends TestCase
@@ -32,7 +32,7 @@ class ClientTest extends TestCase
 
     private function getDataFile(string $file): string
     {
-        return file_get_contents(__DIR__ . '/Data/' . $file);
+        return file_get_contents(__DIR__ . '/data/' . $file);
     }
 
     /**

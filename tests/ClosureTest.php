@@ -1,6 +1,6 @@
 <?php
 
-namespace TelegramBot\Api\Test\Data;
+namespace TelegramBot\Api\Test;
 
 use Closure;
 

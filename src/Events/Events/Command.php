@@ -4,6 +4,7 @@ namespace TelegramBot\Api\Events\Events;
 
 use Closure;
 use TelegramBot\Api\Events\Event;
+use TelegramBot\Api\Types\MessageEntity;
 use TelegramBot\Api\Types\Update;
 
 final class Command extends Event
@@ -21,7 +22,7 @@ final class Command extends Event
         $message = $update->getMessage();
         $entity = $message?->getEntities()[0] ?? null;
 
-        if ($entity?->getType() !== 'bot_command' || $entity?->getOffset() !== 0) {
+        if ($entity?->getType() !== MessageEntity::TYPE_BOT_COMMAND || $entity?->getOffset() !== 0) {
             return false;
         }
 
