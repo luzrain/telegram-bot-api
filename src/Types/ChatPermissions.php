@@ -5,20 +5,13 @@ namespace TelegramBot\Api\Types;
 use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
 
+/**
+ * Describes actions that a non-administrator user is allowed to take in a chat.
+ */
 class ChatPermissions extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $requiredParams = [];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'can_send_messages' => true,
         'can_send_media_messages' => true,
@@ -32,189 +25,81 @@ class ChatPermissions extends BaseType implements TypeInterface
 
     /**
      * Optional. True, if the user is allowed to send text messages, contacts, locations and venues
-     *
-     * @var bool
      */
-    protected $canSendMessages;
+    protected ?bool $canSendMessages = null;
 
     /**
-     * Optional. True, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes,
-     * implies can_send_messages
-     *
-     * @var bool
+     * Optional. True, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes, implies can_send_messages
      */
-    protected $canSendMediaMessages;
+    protected ?bool $canSendMediaMessages = null;
 
     /**
      * Optional. True, if the user is allowed to send polls, implies can_send_messages
-     *
-     * @var bool
      */
-    protected $canSendPolls;
+    protected ?bool $canSendPolls = null;
 
     /**
-     * Optional. True, if the user is allowed to send animations, games, stickers and use inline bots, implies
-     * can_send_media_messages
-     *
-     * @var bool
+     * Optional. True, if the user is allowed to send animations, games, stickers and use inline bots, implies can_send_media_messages
      */
-    protected $canSendOtherMessages;
+    protected ?bool $canSendOtherMessages = null;
 
     /**
-     * Optional. True, if the user is allowed to add web page previews to their messages, implies
-     * can_send_media_messages
-     *
-     * @var bool
+     * Optional. True, if the user is allowed to add web page previews to their messages, implies can_send_media_messages
      */
-    protected $canAddWebPagePreviews;
+    protected ?bool $canAddWebPagePreviews = null;
 
     /**
-     * Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public
-     * supergroups
-     *
-     * @var bool
+     * Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups
      */
-    protected $canChangeInfo;
+    protected ?bool $canChangeInfo = null;
 
     /**
      * Optional. True, if the user is allowed to invite new users to the chat
-     *
-     * @var bool
      */
-    protected $canInviteUsers;
+    protected ?bool $canInviteUsers = null;
 
     /**
-     * Optional. True, if the user is allowed to pin messages. Ignored in public supergroups
-     *
-     * @var bool
+     *Optional. True, if the user is allowed to pin messages. Ignored in public supergroups
      */
-    protected $canPinMessages;
+    protected ?bool $canPinMessages = null;
 
-    /**
-     * @return bool
-     */
-    public function isCanSendMessages()
+    public function isCanSendMessages(): ?bool
     {
         return $this->canSendMessages;
     }
 
-    /**
-     * @param bool $canSendMessages
-     */
-    public function setCanSendMessages($canSendMessages)
-    {
-        $this->canSendMessages = $canSendMessages;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isCanSendMediaMessages()
+    public function isCanSendMediaMessages(): ?bool
     {
         return $this->canSendMediaMessages;
     }
 
-    /**
-     * @param bool $canSendMediaMessages
-     */
-    public function setCanSendMediaMessages($canSendMediaMessages)
-    {
-        $this->canSendMediaMessages = $canSendMediaMessages;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isCanSendPolls()
+    public function isCanSendPolls(): ?bool
     {
         return $this->canSendPolls;
     }
 
-    /**
-     * @param bool $canSendPolls
-     */
-    public function setCanSendPolls($canSendPolls)
-    {
-        $this->canSendPolls = $canSendPolls;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isCanSendOtherMessages()
+    public function isCanSendOtherMessages(): ?bool
     {
         return $this->canSendOtherMessages;
     }
 
-    /**
-     * @param bool $canSendOtherMessages
-     */
-    public function setCanSendOtherMessages($canSendOtherMessages)
-    {
-        $this->canSendOtherMessages = $canSendOtherMessages;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isCanAddWebPagePreviews()
+    public function isCanAddWebPagePreviews(): ?bool
     {
         return $this->canAddWebPagePreviews;
     }
 
-    /**
-     * @param bool $canAddWebPagePreviews
-     */
-    public function setCanAddWebPagePreviews($canAddWebPagePreviews)
-    {
-        $this->canAddWebPagePreviews = $canAddWebPagePreviews;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isCanChangeInfo()
+    public function isCanChangeInfo(): ?bool
     {
         return $this->canChangeInfo;
     }
 
-    /**
-     * @param bool $canChangeInfo
-     */
-    public function setCanChangeInfo($canChangeInfo)
-    {
-        $this->canChangeInfo = $canChangeInfo;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isCanInviteUsers()
+    public function isCanInviteUsers(): ?bool
     {
         return $this->canInviteUsers;
     }
 
-    /**
-     * @param bool $canInviteUsers
-     */
-    public function setCanInviteUsers($canInviteUsers)
-    {
-        $this->canInviteUsers = $canInviteUsers;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isCanPinMessages()
+    public function isCanPinMessages(): ?bool
     {
         return $this->canPinMessages;
-    }
-
-    /**
-     * @param bool $canPinMessages
-     */
-    public function setCanPinMessages($canPinMessages)
-    {
-        $this->canPinMessages = $canPinMessages;
     }
 }

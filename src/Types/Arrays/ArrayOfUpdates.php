@@ -1,6 +1,8 @@
 <?php
 
-namespace TelegramBot\Api\Types;
+namespace TelegramBot\Api\Types\Arrays;
+
+use TelegramBot\Api\Types\Update;
 
 abstract class ArrayOfUpdates
 {

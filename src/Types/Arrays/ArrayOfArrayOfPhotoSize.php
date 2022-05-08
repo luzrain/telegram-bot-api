@@ -1,6 +1,6 @@
 <?php
 
-namespace TelegramBot\Api\Types;
+namespace TelegramBot\Api\Types\Arrays;
 
 abstract class ArrayOfArrayOfPhotoSize
 {

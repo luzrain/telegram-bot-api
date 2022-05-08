@@ -3,69 +3,66 @@
 namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
+use TelegramBot\Api\TypeInterface;
 
-class ChatPhoto extends BaseType
+/**
+ * This object represents a chat photo.
+ */
+class ChatPhoto extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['small_file_id', 'big_file_id'];
+    protected static array $requiredParams = [
+        'small_file_id',
+        'small_file_unique_id',
+        'big_file_id',
+        'big_file_unique_id',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'small_file_id' => true,
+        'small_file_unique_id' => true,
         'big_file_id' => true,
+        'big_file_unique_id' => true,
     ];
 
     /**
-     * Unique file identifier of small (160x160) chat photo. This file_id can be used only for photo download.
-     *
-     * @var string
+     * File identifier of small (160x160) chat photo. This file_id can be used only for photo download and only for as long as the photo is not changed.
      */
-    protected $smallFileId;
+    protected string $smallFileId;
 
     /**
-     * Unique file identifier of big (640x640) chat photo. This file_id can be used only for photo download.
-     *
-     * @var string
+     * Unique file identifier of small (160x160) chat photo, which is supposed to be the same over time and for different bots.
+     * Can't be used to download or reuse the file.
      */
-    protected $bigFileId;
+    protected string $smallFileUniqueId;
 
     /**
-     * @return string
+     * File identifier of big (640x640) chat photo. This file_id can be used only for photo download and only for as long as the photo is not changed.
      */
-    public function getSmallFileId()
+    protected string $bigFileId;
+    
+    /**
+     * Unique file identifier of big (640x640) chat photo, which is supposed to be the same over time and for different bots.
+     * Can't be used to download or reuse the file.
+     */
+    protected string $bigFileUniqueId;
+
+    public function getSmallFileId(): string
     {
         return $this->smallFileId;
     }
 
-    /**
-     * @param string $smallFileId
-     */
-    public function setSmallFileId($smallFileId)
+    public function getSmallFileUniqueId(): string
     {
-        $this->smallFileId = $smallFileId;
+        return $this->smallFileUniqueId;
     }
 
-    /**
-     * @return string
-     */
-    public function getBigFileId()
+    public function getBigFileId(): string
     {
         return $this->bigFileId;
     }
 
-    /**
-     * @param string $bigFileId
-     */
-    public function setBigFileId($bigFileId)
+    public function getBigFileUniqueId(): string
     {
-        $this->bigFileId = $bigFileId;
+        return $this->bigFileUniqueId;
     }
 }

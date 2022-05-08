@@ -6,28 +6,24 @@ use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
 
 /**
- * This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
+ * This object represents a video message (available in Telegram apps as of v.4.0).
  */
-class Animation extends BaseType implements TypeInterface
+class VideoNote extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'file_id',
         'file_unique_id',
-        'width',
-        'height',
+        'length',
         'duration',
     ];
 
     protected static array $map = [
         'file_id' => true,
         'file_unique_id' => true,
-        'width' => true,
-        'height' => true,
+        'length' => true,
         'duration' => true,
         'thumb' => PhotoSize::class,
         'file_name' => true,
-        'mime_type' => true,
-        'file_size' => true,
     ];
 
     /**
@@ -42,14 +38,9 @@ class Animation extends BaseType implements TypeInterface
     protected string $fileUniqueId;
 
     /**
-     * Video width as defined by sender
+     * Video width and height (diameter of the video message) as defined by sender
      */
-    protected int $width;
-
-    /**
-     * Video height as defined by sender
-     */
-    protected int $height;
+    protected int $length;
 
     /**
      * Duration of the video in seconds as defined by sender
@@ -57,19 +48,9 @@ class Animation extends BaseType implements TypeInterface
     protected int $duration;
 
     /**
-     * Optional. Animation thumbnail as defined by sender
+     * Optional. Video thumbnail
      */
     protected ?PhotoSize $thumb = null;
-
-    /**
-     * Optional. Original animation filename as defined by sender
-     */
-    protected ?string $fileName = null;
-
-    /**
-     * Optional. MIME type of the file as defined by sender
-     */
-    protected ?string $mimeType = null;
 
     /**
      * Optional. File size in bytes
@@ -86,15 +67,10 @@ class Animation extends BaseType implements TypeInterface
         return $this->fileUniqueId;
     }
 
-    public function getWidth(): int
+    public function getLength(): int
     {
-        return $this->width;
+        return $this->length;
     }
-
-    public function getHeight(): int
-    {
-        return $this->height;
-    }    
 
     public function getDuration(): int
     {
@@ -104,16 +80,6 @@ class Animation extends BaseType implements TypeInterface
     public function getThumb(): ?PhotoSize
     {
         return $this->thumb;
-    }
-
-    public function getFileName(): ?string
-    {
-        return $this->fileName;
-    }
-
-    public function getMimeType(): ?string
-    {
-        return $this->mimeType;
     }
 
     public function getFileSize(): ?int

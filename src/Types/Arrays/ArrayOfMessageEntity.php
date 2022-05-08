@@ -1,12 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: iGusev
- * Date: 13/04/16
- * Time: 04:16
- */
 
-namespace TelegramBot\Api\Types;
+namespace TelegramBot\Api\Types\Arrays;
+
+use TelegramBot\Api\Types\MessageEntity;
 
 abstract class ArrayOfMessageEntity
 {

@@ -3,22 +3,15 @@
 namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
-use TelegramBot\Api\Exceptions\InvalidArgumentException;
 use TelegramBot\Api\TypeInterface;
+use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
+use TelegramBot\Api\Types\Arrays\ArrayOfPollOption;
 
 /**
- * Class Poll
  * This object contains information about a poll.
- *
- * @package TelegramBot\Api\Types
  */
 class Poll extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $requiredParams = [
         'id',
         'question',
@@ -30,11 +23,6 @@ class Poll extends BaseType implements TypeInterface
         'allows_multiple_answers',
     ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'id' => true,
         'question' => true,
@@ -45,215 +33,150 @@ class Poll extends BaseType implements TypeInterface
         'type' => true,
         'allows_multiple_answers' => true,
         'correct_option_id' => true,
+        'explanation' => true,
+        'explanation_entities' => ArrayOfMessageEntity::class,
+        'open_period' => true,
+        'close_date' => true,
     ];
 
     /**
      * Unique poll identifier
-     *
-     * @var string
      */
-    protected $id;
+    protected string $id;
 
     /**
-     * Poll question, 1-255 characters
-     *
-     * @var string
+     * Poll question, 1-300 characters
      */
-    protected $question;
+    protected string $question;
 
     /**
      * List of poll options
-     * Array of \TelegramBot\Api\Types\PollOption
      *
-     * @var array
+     * @var PollOption[]
      */
-    protected $options;
+    protected array $options;
 
     /**
      * Total number of users that voted in the poll
-     *
-     * @var int
      */
-    protected $totalVoterCount;
+    protected int $totalVoterCount;
 
     /**
      * True, if the poll is closed
-     *
-     * @var boolean
      */
-    protected $isClosed;
+    protected bool $isClosed;
 
     /**
      * True, if the poll is anonymous
-     *
-     * @var bool
      */
-    protected $isAnonymous;
+    protected bool $isAnonymous;
 
     /**
      * Poll type, currently can be “regular” or “quiz”
-     *
-     * @var string
      */
-    protected $type;
+    protected string $type;
 
     /**
      * True, if the poll allows multiple answers
-     *
-     * @var bool
      */
-    protected $allowsMultipleAnswers;
+    protected bool $allowsMultipleAnswers;
 
     /**
-     * Optional. 0-based identifier of the correct answer option.
-     * Available only for polls in the quiz mode, which are closed, or was sent (not forwarded)
-     * by the bot or to the private chat with the bot.
-     *
-     * @var int
+     * Optional. 0-based identifier of the correct answer option. Available only for polls in the quiz mode,
+     * which are closed, or was sent (not forwarded) by the bot or to the private chat with the bot.
      */
-    protected $correctOptionId;
+    protected ?int $correctOptionId = null;
 
     /**
-     * @return string
+     * Optional. Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters
      */
-    public function getId()
+    protected ?string $explanation = null;
+
+    /**
+     * Optional. Special entities like usernames, URLs, bot commands, etc. that appear in the explanation
+     *
+     * @var MessageEntity[]
+     */
+    protected ?array $explanationEntities = null;
+
+    /**
+     * Optional. Amount of time in seconds the poll will be active after creation
+     */
+    protected ?int $openPeriod = null;
+
+    /**
+     * Optional. Point in time (Unix timestamp) when the poll will be automatically closed
+     */
+    protected ?int $closeDate = null;
+
+    public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getQuestion()
+    public function getQuestion(): string
     {
         return $this->question;
     }
 
     /**
-     * @param string $question
+     * @return PollOption[]
      */
-    public function setQuestion($question)
-    {
-        $this->question = $question;
-    }
-
-    /**
-     * @return array
-     */
-    public function getOptions()
+    public function getOptions(): array
     {
         return $this->options;
     }
 
-    /**
-     * @param array $options
-     */
-    public function setOptions($options)
-    {
-        $this->options = $options;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTotalVoterCount()
+    public function getTotalVoterCount(): int
     {
         return $this->totalVoterCount;
     }
 
-    /**
-     * @param int $totalVoterCount
-     */
-    public function setTotalVoterCount($totalVoterCount)
-    {
-        $this->totalVoterCount = $totalVoterCount;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isClosed()
+    public function isClosed(): bool
     {
         return $this->isClosed;
     }
 
-    /**
-     * @param bool $isClosed
-     */
-    public function setIsClosed($isClosed)
-    {
-        $this->isClosed = $isClosed;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isAnonymous()
+    public function isAnonymous(): bool
     {
         return $this->isAnonymous;
     }
 
-    /**
-     * @param bool $isAnonymous
-     */
-    public function setIsAnonymous($isAnonymous)
-    {
-        $this->isAnonymous = $isAnonymous;
-    }
-
-    /**
-     * @return string
-     */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isAllowsMultipleAnswers()
+    public function isAllowsMultipleAnswers(): bool
     {
         return $this->allowsMultipleAnswers;
     }
 
-    /**
-     * @param bool $allowsMultipleAnswers
-     */
-    public function setAllowsMultipleAnswers($allowsMultipleAnswers)
-    {
-        $this->allowsMultipleAnswers = $allowsMultipleAnswers;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCorrectOptionId()
+    public function getCorrectOptionId(): ?int
     {
         return $this->correctOptionId;
     }
 
-    /**
-     * @param int $correctOptionId
-     */
-    public function setCorrectOptionId($correctOptionId)
+    public function getExplanation(): ?string
     {
-        $this->correctOptionId = $correctOptionId;
+        return $this->explanation;
+    }
+
+    /**
+     * @return MessageEntity[]
+     */
+    public function getExplanationEntities(): ?array
+    {
+        return $this->explanationEntities;
+    }
+
+    public function getOpenPeriod(): ?int
+    {
+        return $this->openPeriod;
+    }
+
+    public function getCloseDate(): ?int
+    {
+        return $this->closeDate;
     }
 }

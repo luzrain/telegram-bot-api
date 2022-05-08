@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: iGusev
- * Date: 13/04/16
- * Time: 13:55
- */
 
 namespace TelegramBot\Api\Types;
 
@@ -12,121 +6,94 @@ use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
 
 /**
- * Class Venue
- * This object represents a venue
- *
- * @package TelegramBot\Api\Types
+ * This object represents a venue.
  */
 class Venue extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['location', 'title', 'address'];
+    protected static array $requiredParams = [
+        'location',
+        'title',
+        'address',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'location' => Location::class,
         'title' => true,
         'address' => true,
         'foursquare_id' => true,
+        'foursquare_type' => true,
+        'google_place_id' => true,
+        'google_place_type' => true,
     ];
 
     /**
-     * Venue location
-     *
-     * @var Location
+     * Venue location. Can't be a live location
      */
-    protected $location;
+    protected Location $location;
 
     /**
      * Name of the venue
-     *
-     * @var string
      */
-    protected $title;
+    protected string $title;
 
     /**
      * Address of the venue
-     *
-     * @var string
      */
-    protected $address;
+    protected string $address;
 
     /**
      * Optional. Foursquare identifier of the venue
-     *
-     * @var string
      */
-    protected $foursquareId;
+    protected ?string $foursquareId = null;
 
     /**
-     * @return Location
+     * Optional. Foursquare type of the venue. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
      */
-    public function getLocation()
+    protected ?string $foursquareType = null;
+
+    /**
+     * Optional. Google Places identifier of the venue
+     */
+    protected ?string $googlePlaceId = null;
+
+    /**
+     * Optional. Google Places type of the venue.
+     * @see https://developers.google.com/places/web-service/supported_types
+     */
+    protected ?string $googlePlaceType = null;
+
+    public function getLocation(): Location
     {
         return $this->location;
     }
 
-    /**
-     * @param Location $location
-     */
-    public function setLocation($location)
-    {
-        $this->location = $location;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @param string $title
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAddress()
+    public function getAddress(): string
     {
         return $this->address;
     }
 
-    /**
-     * @param string $address
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFoursquareId()
+    public function getFoursquareId(): ?string
     {
         return $this->foursquareId;
     }
 
-    /**
-     * @param string $foursquareId
-     */
-    public function setFoursquareId($foursquareId)
+    public function getFoursquareType(): ?string
     {
-        $this->foursquareId = $foursquareId;
+        return $this->foursquareType;
+    }
+
+    public function getGooglePlaceId(): ?string
+    {
+        return $this->googlePlaceId;
+    }
+
+    public function getGooglePlaceType(): ?string
+    {
+        return $this->googlePlaceType;
     }
 }

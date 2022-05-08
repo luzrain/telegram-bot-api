@@ -3,29 +3,19 @@
 namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
-use TelegramBot\Api\Exceptions\InvalidArgumentException;
 use TelegramBot\Api\TypeInterface;
+use TelegramBot\Api\Types\Arrays\ArrayOfArrayOfPhotoSize;
 
 /**
- * Class UserProfilePhotos
  * This object represent a user's profile pictures.
- *
- * @package TelegramBot\Api\Types
  */
 class UserProfilePhotos extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['total_count', 'photos'];
+    protected static array $requiredParams = [
+        'total_count',
+        'photos',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'total_count' => true,
         'photos' => ArrayOfArrayOfPhotoSize::class,
@@ -33,54 +23,21 @@ class UserProfilePhotos extends BaseType implements TypeInterface
 
     /**
      * Total number of profile pictures the target user has
-     *
-     * @var Integer
      */
-    protected $totalCount;
+    protected int $totalCount;
 
     /**
-     * Requested profile pictures (in up to 4 sizes each).
-     * Array of Array of \TelegramBot\Api\Types\PhotoSize
-     *
-     * @var array
+     * Requested profile pictures (in up to 4 sizes each)
      */
-    protected $photos;
+    protected array $photos;
 
-    /**
-     * @return array
-     */
-    public function getPhotos()
-    {
-        return $this->photos;
-    }
-
-    /**
-     * @param array $photos
-     */
-    public function setPhotos($photos)
-    {
-        $this->photos = $photos;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTotalCount()
+    public function getTotalCount(): int
     {
         return $this->totalCount;
     }
 
-    /**
-     * @param int $totalCount
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setTotalCount($totalCount)
+    public function getPhotos(): array
     {
-        if (is_integer($totalCount)) {
-            $this->totalCount = $totalCount;
-        } else {
-            throw new InvalidArgumentException();
-        }
+        return $this->photos;
     }
 }

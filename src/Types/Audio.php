@@ -3,185 +3,119 @@
 namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
-use TelegramBot\Api\Exceptions\InvalidArgumentException;
 use TelegramBot\Api\TypeInterface;
 
 /**
- * Class Audio
- * This object represents an audio file (voice note).
- *
- * @package TelegramBot\Api\Types
+ * This object represents an audio file to be treated as music by the Telegram clients.
  */
 class Audio extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['file_id', 'duration'];
+    protected static array $requiredParams = [
+        'file_id',
+        'file_unique_id',
+        'duration',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'file_id' => true,
+        'file_unique_id' => true,
         'duration' => true,
         'performer' => true,
         'title' => true,
+        'file_name' => true,
         'mime_type' => true,
-        'file_size' => true
+        'file_size' => true,
+        'thumb' => PhotoSize::class,
     ];
 
     /**
-     * Unique identifier for this file
-     *
-     * @var string
+     * Identifier for this file, which can be used to download or reuse the file
      */
-    protected $fileId;
+    protected string $fileId;
 
     /**
-     * Photo width
-     *
-     * @var int
+     * Unique identifier for this file, which is supposed to be the same over time and for different bots.
+     * Can't be used to download or reuse the file.
      */
-    protected $duration;
+    protected string $fileUniqueId;
+
+    /**
+     * Duration of the audio in seconds as defined by sender
+     */
+    protected int $duration;
 
     /**
      * Optional. Performer of the audio as defined by sender or by audio tags
-     *
-     * @var string
      */
-    protected $performer;
+    protected ?string $performer = null;
 
     /**
      * Optional. Title of the audio as defined by sender or by audio tags
-     *
-     * @var string
      */
-    protected $title;
+    protected ?string $title = null;
+
+    /**
+     * Optional. Original filename as defined by sender
+     */
+    protected ?string $fileName = null;
 
     /**
      * Optional. MIME type of the file as defined by sender
-     *
-     * @var string
      */
-    protected $mimeType;
+    protected ?string $mimeType = null;
 
     /**
-     * Optional. File size
-     *
-     * @var int
+     * Optional. File size in bytes
      */
-    protected $fileSize;
+    protected ?int $fileSize = null;
 
     /**
-     * @return int
+     * Optional. Thumbnail of the album cover to which the music file belongs
      */
-    public function getDuration()
-    {
-        return $this->duration;
-    }
+    protected ?PhotoSize $thumb = null;
 
-    /**
-     * @param int $duration
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setDuration($duration)
-    {
-        if (is_integer($duration)) {
-            $this->duration = $duration;
-        } else {
-            throw new InvalidArgumentException();
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function getPerformer()
-    {
-        return $this->performer;
-    }
-
-    /**
-     * @param string $performer
-     */
-    public function setPerformer($performer)
-    {
-        $this->performer = $performer;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param string $title
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFileId()
+    public function getFileId(): string
     {
         return $this->fileId;
     }
 
-    /**
-     * @param string $fileId
-     */
-    public function setFileId($fileId)
+    public function getFileUniqueId(): string
     {
-        $this->fileId = $fileId;
+        return $this->fileUniqueId;
     }
 
-    /**
-     * @return int
-     */
-    public function getFileSize()
+    public function getDuration(): int
     {
-        return $this->fileSize;
+        return $this->duration;
     }
 
-    /**
-     * @param int $fileSize
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setFileSize($fileSize)
+    public function getPerformer(): ?string
     {
-        if (is_integer($fileSize)) {
-            $this->fileSize = $fileSize;
-        } else {
-            throw new InvalidArgumentException();
-        }
+        return $this->performer;
     }
 
-    /**
-     * @return string
-     */
-    public function getMimeType()
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function getFileName(): ?string
+    {
+        return $this->fileName;
+    }
+
+    public function getMimeType(): ?string
     {
         return $this->mimeType;
     }
 
-    /**
-     * @param string $mimeType
-     */
-    public function setMimeType($mimeType)
+    public function getFileSize(): ?int
     {
-        $this->mimeType = $mimeType;
+        return $this->fileSize;
+    }
+
+    public function getThumb(): ?PhotoSize
+    {
+        return $this->thumb;
     }
 }

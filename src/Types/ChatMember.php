@@ -3,21 +3,15 @@
 namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
+use TelegramBot\Api\TypeInterface;
 
-class ChatMember extends BaseType
+class ChatMember extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['user', 'status'];
+    protected static array $requiredParams = [
+        'user',
+        'status',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'user' => User::class,
         'status' => true,
@@ -34,7 +28,7 @@ class ChatMember extends BaseType
         'can_send_messages' => true,
         'can_send_media_messages' => true,
         'can_send_other_messages' => true,
-        'can_add_web_page_previews' => true
+        'can_add_web_page_previews' => true,
     ];
 
     /**
@@ -162,13 +156,7 @@ class ChatMember extends BaseType
         return $this->user;
     }
 
-    /**
-     * @param User $user
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-    }
+
 
     /**
      * @return string
@@ -178,13 +166,7 @@ class ChatMember extends BaseType
         return $this->status;
     }
 
-    /**
-     * @param string $status
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
+
 
     /**
      * @return int
@@ -194,13 +176,7 @@ class ChatMember extends BaseType
         return $this->untilDate;
     }
 
-    /**
-     * @param int $untilDate
-     */
-    public function setUntilDate($untilDate)
-    {
-        $this->untilDate = $untilDate;
-    }
+
 
     /**
      * @return bool
@@ -210,13 +186,7 @@ class ChatMember extends BaseType
         return $this->canBeEdited;
     }
 
-    /**
-     * @param bool $canBeEdited
-     */
-    public function setCanBeEdited($canBeEdited)
-    {
-        $this->canBeEdited = $canBeEdited;
-    }
+
 
     /**
      * @return bool
@@ -226,13 +196,7 @@ class ChatMember extends BaseType
         return $this->canChangeInfo;
     }
 
-    /**
-     * @param bool $canChangeInfo
-     */
-    public function setCanChangeInfo($canChangeInfo)
-    {
-        $this->canChangeInfo = $canChangeInfo;
-    }
+
 
     /**
      * @return bool
@@ -242,13 +206,6 @@ class ChatMember extends BaseType
         return $this->canPostMessages;
     }
 
-    /**
-     * @param bool $canPostMessages
-     */
-    public function setCanPostMessages($canPostMessages)
-    {
-        $this->canPostMessages = $canPostMessages;
-    }
 
     /**
      * @return bool
@@ -258,13 +215,6 @@ class ChatMember extends BaseType
         return $this->canEditMessages;
     }
 
-    /**
-     * @param bool $canEditMessages
-     */
-    public function setCanEditMessages($canEditMessages)
-    {
-        $this->canEditMessages = $canEditMessages;
-    }
 
     /**
      * @return bool
@@ -274,13 +224,7 @@ class ChatMember extends BaseType
         return $this->canDeleteMessages;
     }
 
-    /**
-     * @param bool $canDeleteMessages
-     */
-    public function setCanDeleteMessages($canDeleteMessages)
-    {
-        $this->canDeleteMessages = $canDeleteMessages;
-    }
+
 
     /**
      * @return bool
@@ -290,13 +234,6 @@ class ChatMember extends BaseType
         return $this->canInviteUsers;
     }
 
-    /**
-     * @param bool $canInviteUsers
-     */
-    public function setCanInviteUsers($canInviteUsers)
-    {
-        $this->canInviteUsers = $canInviteUsers;
-    }
 
     /**
      * @return bool
@@ -306,13 +243,6 @@ class ChatMember extends BaseType
         return $this->canRestrictMembers;
     }
 
-    /**
-     * @param bool $canRestrictMembers
-     */
-    public function setCanRestrictMembers($canRestrictMembers)
-    {
-        $this->canRestrictMembers = $canRestrictMembers;
-    }
 
     /**
      * @return bool
@@ -322,13 +252,6 @@ class ChatMember extends BaseType
         return $this->canPinMessages;
     }
 
-    /**
-     * @param bool $canPinMessages
-     */
-    public function setCanPinMessages($canPinMessages)
-    {
-        $this->canPinMessages = $canPinMessages;
-    }
 
     /**
      * @return bool
@@ -338,13 +261,7 @@ class ChatMember extends BaseType
         return $this->canPromoteMembers;
     }
 
-    /**
-     * @param bool $canPromoteMembers
-     */
-    public function setCanPromoteMembers($canPromoteMembers)
-    {
-        $this->canPromoteMembers = $canPromoteMembers;
-    }
+
 
     /**
      * @return bool
@@ -354,13 +271,6 @@ class ChatMember extends BaseType
         return $this->canSendMessages;
     }
 
-    /**
-     * @param bool $canSendMessages
-     */
-    public function setCanSendMessages($canSendMessages)
-    {
-        $this->canSendMessages = $canSendMessages;
-    }
 
     /**
      * @return bool
@@ -370,13 +280,6 @@ class ChatMember extends BaseType
         return $this->canSendMediaMessages;
     }
 
-    /**
-     * @param bool $canSendMediaMessages
-     */
-    public function setCanSendMediaMessages($canSendMediaMessages)
-    {
-        $this->canSendMediaMessages = $canSendMediaMessages;
-    }
 
     /**
      * @return bool
@@ -386,13 +289,7 @@ class ChatMember extends BaseType
         return $this->canSendOtherMessages;
     }
 
-    /**
-     * @param bool $canSendOtherMessages
-     */
-    public function setCanSendOtherMessages($canSendOtherMessages)
-    {
-        $this->canSendOtherMessages = $canSendOtherMessages;
-    }
+
 
     /**
      * @return bool
@@ -402,11 +299,4 @@ class ChatMember extends BaseType
         return $this->canAddWebPagePreviews;
     }
 
-    /**
-     * @param bool $canAddWebPagePreviews
-     */
-    public function setCanAddWebPagePreviews($canAddWebPagePreviews)
-    {
-        $this->canAddWebPagePreviews = $canAddWebPagePreviews;
-    }
 }
