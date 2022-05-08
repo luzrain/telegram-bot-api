@@ -29,21 +29,20 @@ abstract class BaseType
      */
     private static function validate(array $data): void
     {
-        if (count(array_intersect_key(array_flip(static::$requiredParams), $data)) !== count(static::$requiredParams)) {
-            throw new InvalidArgumentException();
-        }        
+        $requiredKeys = array_flip(static::$requiredParams);
+        $intersection = array_intersect_key($requiredKeys, $data);
+        if (count($intersection) !== count(static::$requiredParams)) {
+            $missingKeys = array_keys(array_diff_key($requiredKeys, $data));
+            throw new InvalidArgumentException(sprintf('Missing keys: %s', implode(', ', $missingKeys)));
+        }
     }
 
     private function map(array $data): static
     {
         foreach (static::$map as $key => $item) {
             if (isset($data[$key]) && (!is_array($data[$key]) || (is_array($data[$key]) && !empty($data[$key])))) {
-                $setter = 'set' . self::toCamelCase($key);
-                if ($item === true) {
-                    $this->$setter($data[$key]);
-                } else {
-                    $this->$setter($item::fromResponse($data[$key]));
-                }
+                $property = self::toCamelCase($key);
+                $this->$property = $item === true ? $data[$key] : $item::fromResponse($data[$key]);
             }
         }
 
@@ -52,7 +51,7 @@ abstract class BaseType
 
     private static function toCamelCase(string $str): string
     {
-        return str_replace(' ', '', ucwords(str_replace('_', ' ', $str)));
+        return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $str))));
     }
 
     public function toJson(bool $inner = false): mixed
@@ -60,7 +59,7 @@ abstract class BaseType
         $output = [];
 
         foreach (static::$map as $key => $item) {
-            $property = lcfirst(self::toCamelCase($key));
+            $property = self::toCamelCase($key);
             if ($this->$property !== null) {
                 if (is_array($this->$property)) {
                     $output[$key] = array_map(fn ($v) => is_object($v) ? $v->toJson(true) : $v, $this->$property);

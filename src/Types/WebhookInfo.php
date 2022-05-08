@@ -78,19 +78,9 @@ class WebhookInfo extends BaseType implements TypeInterface
         return $this->url;
     }
 
-    public function setUrl(string $url): void
-    {
-        $this->url = $url;
-    }
-
     public function hasCustomCertificate(): bool
     {
         return $this->hasCustomCertificate;
-    }
-
-    public function setHasCustomCertificate(bool $hasCustomCertificate): void
-    {
-        $this->hasCustomCertificate = $hasCustomCertificate;
     }
 
     public function getPendingUpdateCount(): int
@@ -98,19 +88,9 @@ class WebhookInfo extends BaseType implements TypeInterface
         return $this->pendingUpdateCount;
     }
 
-    public function setPendingUpdateCount(int $pendingUpdateCount)
-    {
-        $this->pendingUpdateCount = $pendingUpdateCount;
-    }
-
     public function getIpAddress(): ?string
     {
         return $this->ipAddress;
-    }
-
-    public function setIpAddress(string $ipAddress)
-    {
-        $this->ipAddress = $ipAddress;
     }
 
     public function getLastErrorDate(): ?int
@@ -118,19 +98,9 @@ class WebhookInfo extends BaseType implements TypeInterface
         return $this->lastErrorDate;
     }
 
-    public function setLastErrorDate(int $lastErrorDate)
-    {
-        $this->lastErrorDate = $lastErrorDate;
-    }
-
     public function getLastErrorMessage(): ?string
     {
         return $this->lastErrorMessage;
-    }
-
-    public function setLastErrorMessage(string $lastErrorMessage)
-    {
-        $this->lastErrorMessage = $lastErrorMessage;
     }
 
     public function getLastSynchronizationErrorDate(): ?int
@@ -138,28 +108,13 @@ class WebhookInfo extends BaseType implements TypeInterface
         return $this->lastSynchronizationErrorDate;
     }
 
-    public function setLastSynchronizationErrorDate(int $lastSynchronizationErrorDate)
-    {
-        $this->lastSynchronizationErrorDate = $lastSynchronizationErrorDate;
-    }
-
     public function getMaxConnections(): ?int
     {
         return $this->maxConnections;
     }
 
-    public function setMaxConnections(int $maxConnections)
-    {
-        $this->maxConnections = $maxConnections;
-    }
-
     public function getAllowedUpdates(): ?array
     {
         return $this->allowedUpdates;
-    }
-
-    public function setAllowedUpdates(array $allowedUpdates)
-    {
-        $this->allowedUpdates = $allowedUpdates;
     }
 }
