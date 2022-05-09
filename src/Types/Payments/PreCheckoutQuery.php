@@ -4,29 +4,41 @@ namespace TelegramBot\Api\Types\Payments;
 
 use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
+use TelegramBot\Api\Types\Payments\OrderInfo;
+use TelegramBot\Api\Types\User;
 
 /**
- * This object contains basic information about a successful payment.
+ * This object contains information about an incoming pre-checkout query.
  */
-class SuccessfulPayment extends BaseType implements TypeInterface
+class PreCheckoutQuery extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
+        'id',
+        'from',
         'currency',
         'total_amount',
         'invoice_payload',
-        'telegram_payment_charge_id',
-        'provider_payment_charge_id',
     ];
 
     protected static array $map = [
+        'id' => true,
+        'from' => User::class,
         'currency' => true,
         'total_amount' => true,
         'invoice_payload' => true,
         'shipping_option_id' => true,
         'order_info' => OrderInfo::class,
-        'telegram_payment_charge_id' => true,
-        'provider_payment_charge_id' => true,
     ];
+
+    /**
+     * Unique query identifier
+     */
+    protected string $id;
+
+    /**
+     * User who sent the query
+     */
+    protected User $from;
 
     /**
      * Three-letter ISO 4217 currency code
@@ -55,15 +67,15 @@ class SuccessfulPayment extends BaseType implements TypeInterface
      */
     protected ?OrderInfo $orderInfo = null;
 
-    /**
-     * Telegram payment identifier
-     */
-    protected string $telegramPaymentChargeId;
+    public function getId(): string
+    {
+        return $this->id;
+    }
 
-    /**
-     * Provider payment identifier
-     */
-    protected string $providerPaymentChargeId;
+    public function getFrom(): User
+    {
+        return $this->from;
+    }
 
     public function getCurrency(): string
     {
@@ -88,15 +100,5 @@ class SuccessfulPayment extends BaseType implements TypeInterface
     public function getOrderInfo(): ?OrderInfo
     {
         return $this->orderInfo;
-    }
-
-    public function getTelegramPaymentChargeId(): ?string
-    {
-        return $this->telegramPaymentChargeId;
-    }
-
-    public function getProviderPaymentChargeId(): ?string
-    {
-        return $this->providerPaymentChargeId;
     }
 }

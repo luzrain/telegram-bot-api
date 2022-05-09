@@ -6,8 +6,8 @@ use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
 use TelegramBot\Api\Types\Inline\ChosenInlineResult;
 use TelegramBot\Api\Types\Inline\InlineQuery;
-use TelegramBot\Api\Types\Payments\Query\PreCheckoutQuery;
-use TelegramBot\Api\Types\Payments\Query\ShippingQuery;
+use TelegramBot\Api\Types\Payments\PreCheckoutQuery;
+use TelegramBot\Api\Types\Payments\ShippingQuery;
 
 /**
  * This object represents an incoming update.
