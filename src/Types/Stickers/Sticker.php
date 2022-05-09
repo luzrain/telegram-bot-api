@@ -1,21 +1,23 @@
 <?php
 
-namespace TelegramBot\Api\Types;
+namespace TelegramBot\Api\Types\Stickers;
 
 use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
+use TelegramBot\Api\Types\PhotoSize;
 
 /**
- * This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
+ * This object represents a sticker.
  */
-class Animation extends BaseType implements TypeInterface
+class Sticker extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'file_id',
         'file_unique_id',
         'width',
         'height',
-        'duration',
+        'is_animated',
+        'is_video',
     ];
 
     protected static array $map = [
@@ -23,10 +25,12 @@ class Animation extends BaseType implements TypeInterface
         'file_unique_id' => true,
         'width' => true,
         'height' => true,
-        'duration' => true,
+        'is_animated' => true,
+        'is_video' => true,
         'thumb' => PhotoSize::class,
-        'file_name' => true,
-        'mime_type' => true,
+        'emoji' => true,
+        'set_name' => true,
+        'mask_position' => MaskPosition::class,
         'file_size' => true,
     ];
 
@@ -42,34 +46,44 @@ class Animation extends BaseType implements TypeInterface
     protected string $fileUniqueId;
 
     /**
-     * Video width as defined by sender
+     * Sticker width
      */
     protected int $width;
 
     /**
-     * Video height as defined by sender
+     * Sticker height
      */
     protected int $height;
 
     /**
-     * Duration of the video in seconds as defined by sender
+     * True, if the sticker is animated
      */
-    protected int $duration;
+    protected bool $isAnimated;
 
     /**
-     * Optional. Animation thumbnail as defined by sender
+     * True, if the sticker is a video sticker
+     */
+    protected bool $isVideo;
+
+    /**
+     * Optional. Sticker thumbnail in the .WEBP or .JPG format
      */
     protected ?PhotoSize $thumb = null;
 
     /**
-     * Optional. Original animation filename as defined by sender
+     * Optional. Emoji associated with the sticker
      */
-    protected ?string $fileName = null;
+    protected ?string $emoji = null;
 
     /**
-     * Optional. MIME type of the file as defined by sender
+     * Optional. Name of the sticker set to which the sticker belongs
      */
-    protected ?string $mimeType = null;
+    protected ?string $setName = null;
+
+    /**
+     * Optional. For mask stickers, the position where the mask should be placed
+     */
+    protected ?MaskPosition $maskPosition = null;
 
     /**
      * Optional. File size in bytes
@@ -96,9 +110,14 @@ class Animation extends BaseType implements TypeInterface
         return $this->height;
     }
 
-    public function getDuration(): int
+    public function isAnimated(): bool
     {
-        return $this->duration;
+        return $this->isAnimated;
+    }
+
+    public function isVideo(): bool
+    {
+        return $this->isVideo;
     }
 
     public function getThumb(): ?PhotoSize
@@ -106,17 +125,22 @@ class Animation extends BaseType implements TypeInterface
         return $this->thumb;
     }
 
-    public function getFileName(): ?string
+    public function getEmoji(): ?string
     {
-        return $this->fileName;
+        return $this->emoji;
     }
 
-    public function getMimeType(): ?string
+    public function getSetName(): ?string
     {
-        return $this->mimeType;
+        return $this->setName;
     }
 
-    public function getFileSize(): ?int
+    public function getMaskPosition(): ?MaskPosition
+    {
+        return $this->maskPosition;
+    }
+
+    public function isFileSize(): ?bool
     {
         return $this->fileSize;
     }
