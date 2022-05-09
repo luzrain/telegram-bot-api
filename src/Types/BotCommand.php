@@ -30,6 +30,17 @@ class BotCommand extends BaseType implements TypeInterface
      */
     protected string $description;
 
+    /**
+     * Create new instance of BotCommand
+     */
+    public static function create(string $command, string $description): self
+    {
+        return new self([
+            'command' => $command,
+            'description' => $description,
+        ]);
+    }
+
     public function getCommand(): string
     {
         return $this->command;
