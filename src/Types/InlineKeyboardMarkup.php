@@ -25,16 +25,19 @@ class InlineKeyboardMarkup extends BaseType implements TypeInterface
      */
     protected array $inlineKeyboard;
 
+    /**
+     * Create new instance of InlineKeyboardMarkup
+     */
     public static function create(InlineKeyboardButton|int ...$arrayOfButtons): self
     {
         $rowIndex = 0;
         $markup = [$rowIndex => []];
 
         foreach ($arrayOfButtons as $button) {
-            if ($button === self::BREAK) {
-                $rowIndex++;
-            } else {
+            if ($button instanceof InlineKeyboardButton) {
                 $markup[$rowIndex][] = $button->toArray();
+            } elseif ($button === self::BREAK) {
+                $rowIndex++;
             }
         }
 
@@ -43,6 +46,9 @@ class InlineKeyboardMarkup extends BaseType implements TypeInterface
         ]);
     }
 
+    /**
+     * Break buttons row to tne next row
+     */
     public static function break(): int
     {
         return self::BREAK;

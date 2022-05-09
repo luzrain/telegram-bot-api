@@ -46,6 +46,9 @@ class LoginUrl extends BaseType implements TypeInterface
      */
     protected ?bool $requestWriteAccess = null;
 
+    /**
+     * Create new instance of LoginUrl
+     */
     public static function create(
         string $url = null,
         ?string $forwardText = null,

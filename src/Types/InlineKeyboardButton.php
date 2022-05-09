@@ -82,6 +82,9 @@ class InlineKeyboardButton extends BaseType implements TypeInterface
      */
     protected ?bool $pay = null;
 
+    /**
+     * Create new instance of InlineKeyboardButton
+     */
     public static function create(
         string $text = null,
         ?string $url = null,
@@ -102,7 +105,7 @@ class InlineKeyboardButton extends BaseType implements TypeInterface
             'switch_inline_query' => $switchInlineQuery,
             'switch_inline_query_current_chat' => $switchInlineQueryCurrentChat,
             'callback_game' => $callbackGame?->toArray(),
-            'pay' => $pay,        
+            'pay' => $pay,
         ]);
     }
 }
