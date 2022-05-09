@@ -6,6 +6,8 @@ use TelegramBot\Api\TypeInterface;
 use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
 use TelegramBot\Api\Types\Arrays\ArrayOfPhotoSize;
 use TelegramBot\Api\Types\Arrays\ArrayOfUser;
+use TelegramBot\Api\Types\Games\Game;
+use TelegramBot\Api\Types\Passport\PassportData;
 use TelegramBot\Api\Types\Payments\Invoice;
 use TelegramBot\Api\Types\Payments\SuccessfulPayment;
 
@@ -53,7 +55,7 @@ class Message extends BaseType implements TypeInterface
         'caption_entities' => ArrayOfMessageEntity::class,
         'contact' => Contact::class,
         'dice' => Dice::class,
-        //'game' => Game::class,
+        'game' => Game::class,
         'poll' => Poll::class,
         'venue' => Venue::class,
         'location' => Location::class,
@@ -72,7 +74,7 @@ class Message extends BaseType implements TypeInterface
         'invoice' => Invoice::class,
         'successful_payment' => SuccessfulPayment::class,
         'connected_website' => true,
-        //'passport_data' => PassportData::class,
+        'passport_data' => PassportData::class,
         'proximity_alert_triggered' => ProximityAlertTriggered::class,
         'video_chat_scheduled' => VideoChatScheduled::class,
         'video_chat_started' => VideoChatStarted::class,
@@ -256,10 +258,9 @@ class Message extends BaseType implements TypeInterface
     protected ?Dice $dice = null;
 
     /**
-     * @TODO
      * Optional. Message is a game, information about the game.
      */
-    //protected ?Game $game = null;
+    protected ?Game $game = null;
 
     /**
      * Optional. Message is a native poll, information about the poll
@@ -366,10 +367,9 @@ class Message extends BaseType implements TypeInterface
     protected ?string $connectedWebsite = null;
 
     /**
-     * @TODO
      * Optional. Telegram Passport data
      */
-    //protected ?PassportData $passportData = null;
+    protected ?PassportData $passportData = null;
 
     /**
      * Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
@@ -501,9 +501,6 @@ class Message extends BaseType implements TypeInterface
         return $this->text;
     }
 
-    /**
-     * @return MessageEntity[]
-     */
     public function getEntities(): ?array
     {
         return $this->entities;
@@ -524,9 +521,6 @@ class Message extends BaseType implements TypeInterface
         return $this->document;
     }
 
-    /**
-     * @return PhotoSize[]
-     */
     public function getPhoto(): array
     {
         return $this->photo;
@@ -557,9 +551,6 @@ class Message extends BaseType implements TypeInterface
         return $this->caption;
     }
 
-    /**
-     * @return MessageEntity[]
-     */
     public function getCaptionEntities(): ?array
     {
         return $this->captionEntities;
@@ -575,10 +566,10 @@ class Message extends BaseType implements TypeInterface
         return $this->dice;
     }
 
-//    public function getGame(): ?Game
-//    {
-//        return $this->game;
-//    }
+    public function getGame(): ?Game
+    {
+        return $this->game;
+    }
 
     public function getPoll(): ?Poll
     {
@@ -595,9 +586,6 @@ class Message extends BaseType implements TypeInterface
         return $this->location;
     }
 
-    /**
-     * @return User[]
-     */
     public function getNewChatMembers(): ?array
     {
         return $this->newChatMembers;
@@ -613,9 +601,6 @@ class Message extends BaseType implements TypeInterface
         return $this->newChatTitle;
     }
 
-    /**
-     * @return PhotoSize[]
-     */
     public function getNewChatPhoto(): ?array
     {
         return $this->newChatPhoto;
@@ -676,10 +661,10 @@ class Message extends BaseType implements TypeInterface
         return $this->connectedWebsite;
     }
 
-//    public function getPassportData(): ?PassportData
-//    {
-//        return $this->passportData;
-//    }
+    public function getPassportData(): ?PassportData
+    {
+        return $this->passportData;
+    }
 
     public function getProximityAlertTriggered(): ?ProximityAlertTriggered
     {

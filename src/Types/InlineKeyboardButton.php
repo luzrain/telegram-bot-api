@@ -4,6 +4,7 @@ namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
+use TelegramBot\Api\Types\Games\CallbackGame;
 
 /**
  * This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
@@ -22,7 +23,7 @@ class InlineKeyboardButton extends BaseType implements TypeInterface
         'login_url' => LoginUrl::class,
         'switch_inline_query' => true,
         'switch_inline_query_current_chat' => true,
-        'callback_game' => CallbackGame::class, // @TODO
+        'callback_game' => CallbackGame::class,
         'pay' => true,
     ];
 
