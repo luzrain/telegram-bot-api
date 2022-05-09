@@ -4,13 +4,14 @@ namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
-use TelegramBot\Api\Types\Arrays\ArrayOfInlineKeyboardButton;
 
 /**
  * This object represents an inline keyboard that appears right next to the message it belongs to.
  */
 class InlineKeyboardMarkup extends BaseType implements TypeInterface
 {
+    private const BREAK = 1;
+
     protected static array $requiredParams = [
         'inline_keyboard',
     ];
@@ -24,19 +25,26 @@ class InlineKeyboardMarkup extends BaseType implements TypeInterface
      */
     protected array $inlineKeyboard;
 
-    /**
-     * Create instance of InlineKeyboardMarkup
-     */
-    public static function create(array $arrayofArrayofKeyboardButton)
+    public static function create(InlineKeyboardButton|int ...$arrayOfButtons): self
     {
-        $instance = new self();
-        $instance->inlineKeyboard = $arrayofArrayofKeyboardButton;
+        $rowIndex = 0;
+        $markup = [$rowIndex => []];
 
-        return $instance;
+        foreach ($arrayOfButtons as $button) {
+            if ($button === self::BREAK) {
+                $rowIndex++;
+            } else {
+                $markup[$rowIndex][] = $button->toArray();
+            }
+        }
+
+        return new self([
+            'inline_keyboard' => $markup,
+        ]);
     }
 
-    public function getInlineKeyboard(): array
+    public static function break(): int
     {
-        return $this->inlineKeyboard;
+        return self::BREAK;
     }
 }

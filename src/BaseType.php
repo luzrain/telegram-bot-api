@@ -5,10 +5,7 @@ namespace TelegramBot\Api;
 use TelegramBot\Api\Exceptions\InvalidArgumentException;
 
 /**
- * Class BaseType
  * Base class for Telegram Types
- *
- * @package TelegramBot\Api
  */
 abstract class BaseType
 {
@@ -37,7 +34,7 @@ abstract class BaseType
         }
     }
 
-    private function map(array $data): static
+    protected function __construct(array $data)
     {
         foreach (static::$map as $key => $item) {
             if (isset($data[$key]) && (!is_array($data[$key]) || (is_array($data[$key]) && !empty($data[$key])))) {
@@ -45,8 +42,6 @@ abstract class BaseType
                 $this->$property = $item === true ? $data[$key] : $item::fromResponse($data[$key]);
             }
         }
-
-        return $this;
     }
 
     private static function toCamelCase(string $str): string
@@ -54,7 +49,7 @@ abstract class BaseType
         return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $str))));
     }
 
-    public function toJson(bool $inner = false): mixed
+    public function toArray(): array
     {
         $output = [];
 
@@ -62,20 +57,25 @@ abstract class BaseType
             $property = self::toCamelCase($key);
             if ($this->$property !== null) {
                 if (is_array($this->$property)) {
-                    $output[$key] = array_map(fn ($v) => is_object($v) ? $v->toJson(true) : $v, $this->$property);
+                    $output[$key] = array_map(fn ($v) => is_object($v) ? $v->toArray() : $v, $this->$property);
                 } else {
-                    $output[$key] = $item === true ? $this->$property : $this->$property->toJson(true);
+                    $output[$key] = $item === true ? $this->$property : $this->$property->toArray();
                 }
             }
         }
 
-        return $inner === false ? json_encode($output) : $output;
+        return $output;
     }
 
-    public static function fromResponse(array $data): static
+    public function toJson(): string
+    {
+        return json_encode($this->toArray());
+    }
+
+    public static function fromResponse(array $data): self
     {
         self::validate($data);
 
-        return (new static())->map($data);
+        return new static($data);
     }
 }

@@ -46,23 +46,17 @@ class LoginUrl extends BaseType implements TypeInterface
      */
     protected ?bool $requestWriteAccess = null;
 
-    public function getUrl(): string
-    {
-        return $this->url;
-    }
-
-    public function getForwardText(): ?string
-    {
-        return $this->forwardText;
-    }
-
-    public function getBotUsername(): ?string
-    {
-        return $this->botUsername;
-    }
-
-    public function isRequestWriteAccess(): ?bool
-    {
-        return $this->requestWriteAccess;
+    public static function create(
+        string $url = null,
+        ?string $forwardText = null,
+        ?string $botUsername = null,
+        ?bool $requestWriteAccess = null,
+    ) {
+        return new self([
+            'url' => $url,
+            'forward_text' => $forwardText,
+            'bot_username' => $botUsername,
+            'request_write_access' => $requestWriteAccess, 
+        ]);
     }
 }
