@@ -2,6 +2,8 @@
 
 namespace TelegramBot\Api\Types;
 
+use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
+
 /**
  * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
  */
@@ -18,7 +20,7 @@ class InputMediaAnimation extends InputMedia
         'thumb' => true,
         'caption' => true,
         'parse_mode' => true,
-        'caption_entities' => true,
+        'caption_entities' => ArrayOfMessageEntity::class,
         'width' => true,
         'height' => true,
         'duration' => true,
@@ -65,7 +67,7 @@ class InputMediaAnimation extends InputMedia
      *
      * @var MessageEntity[]
      */
-    protected ?Array $captionEntities = null;
+    protected ?array $captionEntities = null;
 
     /**
      * Optional. Animation width

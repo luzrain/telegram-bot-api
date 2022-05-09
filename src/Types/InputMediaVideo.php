@@ -2,6 +2,8 @@
 
 namespace TelegramBot\Api\Types;
 
+use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
+
 /**
  * Represents a video to be sent.
  */
@@ -18,7 +20,7 @@ class InputMediaVideo extends InputMedia
         'thumb' => true,
         'caption' => true,
         'parse_mode' => true,
-        'caption_entities' => true,
+        'caption_entities' => ArrayOfMessageEntity::class,
         'width' => true,
         'height' => true,
         'duration' => true,
@@ -66,7 +68,7 @@ class InputMediaVideo extends InputMedia
      *
      * @var MessageEntity[]
      */
-    protected ?Array $captionEntities = null;
+    protected ?array $captionEntities = null;
 
     /**
      * Optional. Video width

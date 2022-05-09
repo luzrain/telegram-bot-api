@@ -2,6 +2,8 @@
 
 namespace TelegramBot\Api\Types;
 
+use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
+
 /**
  * Represents an audio file to be treated as music to be sent.
  */
@@ -18,7 +20,7 @@ class InputMediaAudio extends InputMedia
         'thumb' => true,
         'caption' => true,
         'parse_mode' => true,
-        'caption_entities' => true,
+        'caption_entities' => ArrayOfMessageEntity::class,
         'duration' => true,
         'performer' => true,
         'title' => true,
@@ -65,7 +67,7 @@ class InputMediaAudio extends InputMedia
      *
      * @var MessageEntity[]
      */
-    protected ?Array $captionEntities = null;
+    protected ?array $captionEntities = null;
 
     /**
      * Optional. Duration of the audio in seconds

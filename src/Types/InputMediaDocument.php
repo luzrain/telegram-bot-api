@@ -2,6 +2,8 @@
 
 namespace TelegramBot\Api\Types;
 
+use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
+
 /**
  * Represents a general file to be sent.
  */
@@ -18,7 +20,7 @@ class InputMediaDocument extends InputMedia
         'thumb' => true,
         'caption' => true,
         'parse_mode' => true,
-        'caption_entities' => true,
+        'caption_entities' => ArrayOfMessageEntity::class,
         'disable_content_type_detection' => true,
     ];
 
@@ -63,7 +65,7 @@ class InputMediaDocument extends InputMedia
      *
      * @var MessageEntity[]
      */
-    protected ?Array $captionEntities = null;
+    protected ?array $captionEntities = null;
 
     /**
      * Optional. Disables automatic server-side content type detection for files uploaded using multipart/form-data.

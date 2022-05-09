@@ -2,6 +2,8 @@
 
 namespace TelegramBot\Api\Types;
 
+use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
+
 /**
  * Represents a photo to be sent.
  */
@@ -17,7 +19,7 @@ class InputMediaPhoto extends InputMedia
         'media' => true,
         'caption' => true,
         'parse_mode' => true,
-        'caption_entities' => true,
+        'caption_entities' => ArrayOfMessageEntity::class,
     ];
 
     /**
@@ -32,7 +34,7 @@ class InputMediaPhoto extends InputMedia
      *
      * @see https://core.telegram.org/bots/api#sending-files
      */
-    protected string $media;
+    protected InputFile|string $media;
 
     /**
      * Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
@@ -51,7 +53,7 @@ class InputMediaPhoto extends InputMedia
      *
      * @var MessageEntity[]
      */
-    protected ?Array $captionEntities = null;
+    protected ?array $captionEntities = null;
 
     public function getType(): string
     {
