@@ -9,11 +9,6 @@ use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
  */
 class InputMediaAudio extends InputMedia
 {
-    protected static array $requiredParams = [
-        'type',
-        'media',
-    ];
-
     protected static array $map = [
         'type' => true,
         'media' => true,
@@ -29,7 +24,7 @@ class InputMediaAudio extends InputMedia
     /**
      * Type of the result, must be audio
      */
-    protected string $type;
+    protected string $type = 'audio';
 
     /**
      * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
@@ -38,7 +33,7 @@ class InputMediaAudio extends InputMedia
      *
      * @see https://core.telegram.org/bots/api#sending-files
      */
-    protected string $media;
+    protected InputFile|string $media;
 
     /**
      * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side.
@@ -84,12 +79,35 @@ class InputMediaAudio extends InputMedia
      */
     protected ?string $title = null;
 
+    public static function create(
+        InputFile|string $media,
+        InputFile|string|null $thumb = null,
+        ?string $caption = null,
+        ?string $parseMode = null,
+        ?array $captionEntities = null,
+        ?int $duration = null,
+        ?string $performer = null,
+        ?string $title = null,
+    ): self {
+        $instance = new self();
+        $instance->media = $media;
+        $instance->thumb = $thumb;
+        $instance->caption = $caption;
+        $instance->parseMode = $parseMode;
+        $instance->captionEntities = $captionEntities;
+        $instance->duration = $duration;
+        $instance->performer = $performer;
+        $instance->title = $title;
+
+        return $instance;
+    }
+
     public function getType(): string
     {
         return $this->type;
     }
 
-    public function getMedia(): string
+    public function getMedia(): InputFile|string
     {
         return $this->media;
     }

@@ -2,6 +2,9 @@
 
 namespace TelegramBot\Api\Types;
 
+use TelegramBot\Api\BaseType;
+use TelegramBot\Api\TypeInterface;
+
 /**
  * This object represents the content of a media message to be sent. It should be one of
  *
@@ -11,35 +14,9 @@ namespace TelegramBot\Api\Types;
  * @see InputMediaPhoto
  * @see InputMediaVideo
  */
-class InputMedia extends BaseType implements TypeInterface
+class InputMedia extends BaseType
 {
-    protected static array $requiredParams = [
-        'type',
-    ];
-
-    protected static array $map = [
-        'type' => true,
-    ];
-
-    /**
-     * Type of the result
-     */
-    protected string $type;
-
-    public static function fromResponse(array $data): self
+    protected function __construct()
     {
-        $instance = parent::fromResponse($data);
-
-        if (self::class !== static::class) {
-            return $instance;
-        }
-
-        return match($instance->type) {
-            'animation' => InputMediaAnimation::fromResponse($data),
-            'document' => InputMediaDocument::fromResponse($data),
-            'audio' => InputMediaAudio::fromResponse($data),
-            'photo' => InputMediaPhoto::fromResponse($data),
-            'video' => InputMediaVideo::fromResponse($data),
-        };
     }
 }

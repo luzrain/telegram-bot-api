@@ -9,11 +9,6 @@ use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
  */
 class InputMediaDocument extends InputMedia
 {
-    protected static array $requiredParams = [
-        'type',
-        'media',
-    ];
-
     protected static array $map = [
         'type' => true,
         'media' => true,
@@ -27,7 +22,7 @@ class InputMediaDocument extends InputMedia
     /**
      * Type of the result, must be document
      */
-    protected string $type;
+    protected string $type = 'document';
 
     /**
      * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
@@ -36,7 +31,7 @@ class InputMediaDocument extends InputMedia
      *
      * @see https://core.telegram.org/bots/api#sending-files
      */
-    protected string $media;
+    protected InputFile|string $media;
 
     /**
      * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side.
@@ -73,12 +68,31 @@ class InputMediaDocument extends InputMedia
      */
     protected ?bool $disableContentTypeDetection = null;
 
+    public static function create(
+        InputFile|string $media,
+        InputFile|string|null $thumb = null,
+        ?string $caption = null,
+        ?string $parseMode = null,
+        ?array $captionEntities = null,
+        ?bool $disableContentTypeDetection = null,
+    ): self {
+        $instance = new self();
+        $instance->media = $media;
+        $instance->thumb = $thumb;
+        $instance->caption = $caption;
+        $instance->parseMode = $parseMode;
+        $instance->captionEntities = $captionEntities;
+        $instance->disableContentTypeDetection = $disableContentTypeDetection;
+
+        return $instance;
+    }
+
     public function getType(): string
     {
         return $this->type;
     }
 
-    public function getMedia(): string
+    public function getMedia(): InputFile|string
     {
         return $this->media;
     }

@@ -9,11 +9,6 @@ use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
  */
 class InputMediaPhoto extends InputMedia
 {
-    protected static array $requiredParams = [
-        'type',
-        'media',
-    ];
-
     protected static array $map = [
         'type' => true,
         'media' => true,
@@ -25,7 +20,7 @@ class InputMediaPhoto extends InputMedia
     /**
      * Type of the result, must be photo
      */
-    protected string $type;
+    protected string $type = 'photo';
 
     /**
      * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
@@ -54,6 +49,21 @@ class InputMediaPhoto extends InputMedia
      * @var MessageEntity[]
      */
     protected ?array $captionEntities = null;
+
+    public static function create(
+        InputFile|string $media,
+        ?string $caption = null,
+        ?string $parseMode = null,
+        ?array $captionEntities = null,
+    ): self {
+        $instance = new self();
+        $instance->media = $media;
+        $instance->caption = $caption;
+        $instance->parseMode = $parseMode;
+        $instance->captionEntities = $captionEntities;
+
+        return $instance;
+    }
 
     public function getType(): string
     {

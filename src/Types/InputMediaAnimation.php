@@ -9,11 +9,6 @@ use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
  */
 class InputMediaAnimation extends InputMedia
 {
-    protected static array $requiredParams = [
-        'type',
-        'media',
-    ];
-
     protected static array $map = [
         'type' => true,
         'media' => true,
@@ -29,7 +24,7 @@ class InputMediaAnimation extends InputMedia
     /**
      * Type of the result, must be animation
      */
-    protected string $type;
+    protected string $type = 'animation';
 
     /**
      * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
@@ -38,7 +33,7 @@ class InputMediaAnimation extends InputMedia
      *
      * @see https://core.telegram.org/bots/api#sending-files
      */
-    protected string $media;
+    protected InputFile|string $media;
 
     /**
      * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side.
@@ -84,12 +79,35 @@ class InputMediaAnimation extends InputMedia
      */
     protected ?int $duration = null;
 
+    public static function create(
+        InputFile|string $media,
+        InputFile|string|null $thumb = null,
+        ?string $caption = null,
+        ?string $parseMode = null,
+        ?array $captionEntities = null,
+        ?int $width = null,
+        ?int $height = null,
+        ?int $duration = null,
+    ): self {
+        $instance = new self();
+        $instance->media = $media;
+        $instance->thumb = $thumb;
+        $instance->caption = $caption;
+        $instance->parseMode = $parseMode;
+        $instance->captionEntities = $captionEntities;
+        $instance->width = $width;
+        $instance->height = $height;
+        $instance->duration = $duration;
+
+        return $instance;
+    }
+
     public function getType(): string
     {
         return $this->type;
     }
 
-    public function getMedia(): string
+    public function getMedia(): InputFile|string
     {
         return $this->media;
     }

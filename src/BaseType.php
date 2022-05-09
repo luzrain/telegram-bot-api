@@ -2,12 +2,13 @@
 
 namespace TelegramBot\Api;
 
+use JsonSerializable;
 use TelegramBot\Api\Exceptions\InvalidArgumentException;
 
 /**
  * Base class for Telegram Types
  */
-abstract class BaseType
+abstract class BaseType implements JsonSerializable
 {
     /**
      * Array of required data params for type
@@ -67,9 +68,9 @@ abstract class BaseType
         return $output;
     }
 
-    public function toJson(): string
+    public function jsonSerialize(): mixed
     {
-        return json_encode($this->toArray());
+        return $this->toArray();
     }
 
     public static function fromResponse(array $data): self

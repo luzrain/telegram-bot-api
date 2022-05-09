@@ -9,11 +9,6 @@ use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
  */
 class InputMediaVideo extends InputMedia
 {
-    protected static array $requiredParams = [
-        'type',
-        'media',
-    ];
-
     protected static array $map = [
         'type' => true,
         'media' => true,
@@ -30,7 +25,7 @@ class InputMediaVideo extends InputMedia
     /**
      * Type of the result, must be video
      */
-    protected string $type;
+    protected string $type = 'video';
 
     /**
      * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
@@ -39,7 +34,7 @@ class InputMediaVideo extends InputMedia
      *
      * @see https://core.telegram.org/bots/api#sending-files
      */
-    protected string $media;
+    protected InputFile|string $media;
 
     /**
      * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side.
@@ -90,12 +85,37 @@ class InputMediaVideo extends InputMedia
      */
     protected ?bool $supportsStreaming = null;
 
+    public static function create(
+        InputFile|string $media,
+        InputFile|string|null $thumb = null,
+        ?string $caption = null,
+        ?string $parseMode = null,
+        ?array $captionEntities = null,
+        ?int $width = null,
+        ?int $height = null,
+        ?int $duration = null,
+        ?bool $supportsStreaming = null,
+    ): self {
+        $instance = new self();
+        $instance->media = $media;
+        $instance->thumb = $thumb;
+        $instance->caption = $caption;
+        $instance->parseMode = $parseMode;
+        $instance->captionEntities = $captionEntities;
+        $instance->width = $width;
+        $instance->height = $height;
+        $instance->duration = $duration;
+        $instance->supportsStreaming = $supportsStreaming;
+
+        return $instance;
+    }
+
     public function getType(): string
     {
         return $this->type;
     }
 
-    public function getMedia(): string
+    public function getMedia(): InputFile|string
     {
         return $this->media;
     }
