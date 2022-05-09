@@ -3,7 +3,6 @@
 namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
-use TelegramBot\Api\TypeInterface;
 
 /**
  * This object represents the content of a media message to be sent. It should be one of
