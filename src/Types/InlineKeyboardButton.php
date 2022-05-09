@@ -86,7 +86,7 @@ class InlineKeyboardButton extends BaseType implements TypeInterface
      * Create new instance of InlineKeyboardButton
      */
     public static function create(
-        string $text = null,
+        string $text,
         ?string $url = null,
         ?string $callbackData = null,
         ?WebAppInfo $webApp = null,
@@ -107,5 +107,50 @@ class InlineKeyboardButton extends BaseType implements TypeInterface
             'callback_game' => $callbackGame?->toArray(),
             'pay' => $pay,
         ]);
+    }
+
+    public function getText(): string
+    {
+        return $this->text;
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function getCallbackData(): ?string
+    {
+        return $this->callbackData;
+    }
+
+    public function getWebApp(): ?WebAppInfo
+    {
+        return $this->webApp;
+    }
+
+    public function getLoginUrl(): ?LoginUrl
+    {
+        return $this->loginUrl;
+    }
+
+    public function getSwitchInlineQuery(): ?string
+    {
+        return $this->switchInlineQuery;
+    }
+
+    public function getSwitchInlineQueryCurrentChat(): ?string
+    {
+        return $this->switchInlineQueryCurrentChat;
+    }
+
+    public function getCallbackGame(): ?CallbackGame
+    {
+        return $this->callbackGame;
+    }
+
+    public function isPay(): ?bool
+    {
+        return $this->pay;
     }
 }

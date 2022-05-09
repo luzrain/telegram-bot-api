@@ -23,6 +23,14 @@ class WebAppInfo extends BaseType implements TypeInterface
      */
     protected string $url;
 
+    /**
+     * Create new instance of WebAppInfo
+     */
+    public static function create(string $url)
+    {
+        return new self(['url' => $url]);
+    }
+
     public function getUrl(): string
     {
         return $this->url;

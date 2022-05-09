@@ -28,22 +28,30 @@ class InlineKeyboardMarkup extends BaseType implements TypeInterface
     /**
      * Create new instance of InlineKeyboardMarkup
      */
-    public static function create(InlineKeyboardButton|int ...$arrayOfButtons): self
+    public static function create(): self
+    {
+        return new self([
+            'inline_keyboard' => [],
+        ]);
+    }
+
+    /**
+     * Add buttons into markup
+     */
+    public function addButtons(InlineKeyboardButton|int ...$arrayOfButtons): self
     {
         $rowIndex = 0;
-        $markup = [$rowIndex => []];
+        $this->inlineKeyboard = [$rowIndex => []];
 
         foreach ($arrayOfButtons as $button) {
             if ($button instanceof InlineKeyboardButton) {
-                $markup[$rowIndex][] = $button->toArray();
+                $this->inlineKeyboard[$rowIndex][] = $button->toArray();
             } elseif ($button === self::BREAK) {
                 $rowIndex++;
             }
         }
 
-        return new self([
-            'inline_keyboard' => $markup,
-        ]);
+        return $this;
     }
 
     /**
