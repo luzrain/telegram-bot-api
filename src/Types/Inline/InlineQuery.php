@@ -3,151 +3,91 @@
 namespace TelegramBot\Api\Types\Inline;
 
 use TelegramBot\Api\BaseType;
+use TelegramBot\Api\TypeInterface;
 use TelegramBot\Api\Types\Location;
 use TelegramBot\Api\Types\User;
 
 /**
- * Class InlineQuery
  * This object represents an incoming inline query.
  * When the user sends an empty query, your bot could return some default or trending results.
- *
- * @package TelegramBot\Api\Types
  */
-class InlineQuery extends BaseType
+class InlineQuery extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['id', 'from', 'query', 'offset'];
+    protected static array $requiredParams = [
+        'id',
+        'from',
+        'query',
+        'offset',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'id' => true,
         'from' => User::class,
-        'location' => Location::class,
         'query' => true,
         'offset' => true,
+        'chat_type' => true,
+        'location' => Location::class,
     ];
 
     /**
      * Unique identifier for this query
-     *
-     * @var string
      */
-    protected $id;
+    protected string $id;
 
     /**
      * Sender
-     *
-     * @var User
      */
-    protected $from;
-
+    protected User $from;
 
     /**
-     * Optional. Sender location, only for bots that request user location
-     *
-     * @var Location
+     * Text of the query (up to 256 characters)
      */
-    protected $location;
-
-    /**
-     * Text of the query
-     *
-     * @var string
-     */
-    protected $query;
+    protected string $query;
 
     /**
      * Offset of the results to be returned, can be controlled by the bot
-     *
-     * @var string
      */
-    protected $offset;
+    protected string $offset;
 
     /**
-     * @return string
+     * Optional. Type of the chat, from which the inline query was sent.
+     * Can be either “sender” for a private chat with the inline query sender, “private”, “group”, “supergroup”, or “channel”.
+     * The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat
      */
-    public function getId()
+    protected ?string $chatType = null;
+
+    /**
+     * Optional. Sender location, only for bots that request user location
+     */
+    protected ?Location $location = null;
+
+    public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return User
-     */
-    public function getFrom()
+    public function getFrom(): User
     {
         return $this->from;
     }
 
-    /**
-     * @param User $from
-     */
-    public function setFrom(User $from)
-    {
-        $this->from = $from;
-    }
-
-    /**
-     * @return Location
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-
-    /**
-     * @param Location $location
-     */
-    public function setLocation($location)
-    {
-        $this->location = $location;
-    }
-
-    /**
-     * @return string
-     */
-    public function getQuery()
+    public function getQuery(): string
     {
         return $this->query;
     }
 
-    /**
-     * @param string $query
-     */
-    public function setQuery($query)
-    {
-        $this->query = $query;
-    }
-
-    /**
-     * @return string
-     */
-    public function getOffset()
+    public function getOffset(): string
     {
         return $this->offset;
     }
 
-    /**
-     * @param string $offset
-     */
-    public function setOffset($offset)
+    public function getChatType(): ?string
     {
-        $this->offset = $offset;
+        return $this->chatType;
+    }
+
+    public function getLocation(): ?Location
+    {
+        return $this->location;
     }
 }
