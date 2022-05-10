@@ -6,6 +6,7 @@ use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
 
 /**
+ * @TODO this needs to be creatable!
  * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
  */
 class MessageEntity extends BaseType implements TypeInterface

@@ -3,10 +3,12 @@
 namespace TelegramBot\Api;
 
 use JsonSerializable;
-use TelegramBot\Api\Exceptions\InvalidArgumentException;
+use TelegramBot\Api\Exceptions\TelegramArgumentException;
 
 /**
  * Base class for Telegram Types
+ *
+ * @see https://core.telegram.org/bots/api#available-types
  */
 abstract class BaseType implements JsonSerializable
 {
@@ -23,7 +25,7 @@ abstract class BaseType implements JsonSerializable
     /**
      * Validate input data
      *
-     * @throws InvalidArgumentException
+     * @throws TelegramArgumentException
      */
     private static function validate(array $data): void
     {
@@ -31,7 +33,8 @@ abstract class BaseType implements JsonSerializable
         $intersection = array_intersect_key($requiredKeys, $data);
         if (count($intersection) !== count(static::$requiredParams)) {
             $missingKeys = array_keys(array_diff_key($requiredKeys, $data));
-            throw new InvalidArgumentException(sprintf('Missing keys: %s', implode(', ', $missingKeys)));
+            $ErrorText = sprintf('"%s" object creation error. Missing keys: %s', static::class, implode(', ', $missingKeys));
+            throw new TelegramArgumentException($ErrorText);
         }
     }
 
