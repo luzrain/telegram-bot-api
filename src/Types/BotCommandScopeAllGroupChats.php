@@ -7,10 +7,6 @@ namespace TelegramBot\Api\Types;
  */
 class BotCommandScopeAllGroupChats extends BotCommandScope
 {
-    protected static array $requiredParams = [
-        'type',
-    ];
-
     protected static array $map = [
         'type' => true,
     ];
@@ -18,11 +14,11 @@ class BotCommandScopeAllGroupChats extends BotCommandScope
     /**
      * Scope type, must be all_group_chats
      */
-    protected string $type;
+    protected string $type = 'all_group_chats';
 
     public static function create(): self
     {
-        return new self(['type' => 'all_group_chats']);
+        return new self();
     }
 
     public function getType(): string

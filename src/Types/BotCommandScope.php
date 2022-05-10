@@ -3,7 +3,6 @@
 namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
-use TelegramBot\Api\TypeInterface;
 
 /**
  * This object represents the scope to which bot commands are applied. Currently, the following 7 scopes are supported:
@@ -16,6 +15,9 @@ use TelegramBot\Api\TypeInterface;
  * @see BotCommandScopeChatAdministrators
  * @see BotCommandScopeChatMember
  */
-class BotCommandScope extends BaseType implements TypeInterface
+class BotCommandScope extends BaseType
 {
+    protected function __construct()
+    {
+    }
 }

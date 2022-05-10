@@ -7,12 +7,6 @@ namespace TelegramBot\Api\Types;
  */
 class BotCommandScopeChatMember extends BotCommandScope
 {
-    protected static array $requiredParams = [
-        'type',
-        'chat_id',
-        'user_id',
-    ];
-
     protected static array $map = [
         'type' => true,
         'chat_id' => true,
@@ -22,7 +16,7 @@ class BotCommandScopeChatMember extends BotCommandScope
     /**
      * Scope type, must be chat_member
      */
-    protected string $type;
+    protected string $type = 'chat_member';
 
     /**
      * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -36,11 +30,11 @@ class BotCommandScopeChatMember extends BotCommandScope
 
     public static function create(int|string $chatId, int $userId): self
     {
-        return new self([
-            'type' => 'chat_member',
-            'chat_id' => $chatId,
-            'user_id' => $userId,
-        ]);
+        $instance = new self();
+        $instance->chatId = $chatId;
+        $instance->userId = $userId;
+
+        return $instance;
     }
 
     public function getType(): string

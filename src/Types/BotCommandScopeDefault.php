@@ -7,10 +7,6 @@ namespace TelegramBot\Api\Types;
  */
 class BotCommandScopeDefault extends BotCommandScope
 {
-    protected static array $requiredParams = [
-        'type',
-    ];
-
     protected static array $map = [
         'type' => true,
     ];
@@ -18,11 +14,11 @@ class BotCommandScopeDefault extends BotCommandScope
     /**
      * Scope type, must be default
      */
-    protected string $type;
+    protected string $type = 'default';
 
     public static function create(): self
     {
-        return new self(['type' => 'default']);
+        return new self();
     }
 
     public function getType(): string
