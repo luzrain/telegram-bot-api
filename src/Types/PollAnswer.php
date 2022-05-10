@@ -5,111 +5,54 @@ namespace TelegramBot\Api\Types;
 use TelegramBot\Api\BaseType;
 
 /**
- * Class PollAnswer
- *
- * @see https://core.telegram.org/bots/api#pollanswer
- *
  * This object represents an answer of a user in a non-anonymous poll.
- *
- *
- * @package TelegramBot\Api\Types
  */
 class PollAnswer extends BaseType
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['poll_id', 'option_ids', 'user'];
+    protected static array $requiredParams = [
+        'poll_id',
+        'user',
+        'option_ids',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
-        'option_ids' => true,
-        'user' => User::class,
         'poll_id' => true,
+        'user' => User::class,
+        'option_ids' => true,
     ];
 
     /**
-     * @var \TelegramBot\Api\Types\User
+     * Unique poll identifier
      */
-    protected $user;
+    protected string $pollId;
 
     /**
-     * @var string
+     * The user, who changed the answer to the poll
      */
-    protected $pollId;
+    protected User $user;
 
     /**
+     * 0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their vote.
+     *
      * @var int[]
      */
-    protected $optionIds;
+    protected array $optionIds;
 
-    /**
-     * @return string
-     */
-    public function getPollId()
+    public function getPollId(): string
     {
         return $this->pollId;
     }
 
-    /**
-     * @param string $id
-     */
-    public function setPollId($id)
-    {
-        $this->pollId = $id;
-    }
-
-    /**
-     * @return User
-     */
-    public function getUser()
+    public function getUser(): User
     {
         return $this->user;
     }
 
     /**
-     * @param User $from
-     */
-    public function setUser(User $from)
-    {
-        $this->user = $from;
-    }
-
-    /**
-     * @return User
-     */
-    public function getFrom()
-    {
-        return $this->getUser();
-    }
-
-    /**
-     * @param User $from
-     */
-    public function setFrom(User $from)
-    {
-        return $this->setUser($from);
-    }
-
-    /**
      * @return int[]
      */
-    public function getOptionIds()
+    public function getOptionIds(): array
     {
         return $this->optionIds;
-    }
-
-    /**
-     * @param int[] $optionIds
-     */
-    public function setOptionIds($optionIds)
-    {
-        $this->optionIds = $optionIds;
-    }
+    }    
 }

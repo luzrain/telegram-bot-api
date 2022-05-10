@@ -3,222 +3,121 @@
 namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
-use TelegramBot\Api\Exceptions\InvalidArgumentException;
 use TelegramBot\Api\TypeInterface;
 
 /**
- * Class Video
  * This object represents a video file.
- *
- * @package TelegramBot\Api\Types
  */
 class Video extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['file_id', 'width', 'height', 'duration'];
+    protected static array $requiredParams = [
+        'file_id',
+        'file_unique_id',
+        'width',
+        'height',
+        'duration',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'file_id' => true,
+        'file_unique_id' => true,
         'width' => true,
         'height' => true,
         'duration' => true,
         'thumb' => PhotoSize::class,
+        'file_name' => true,
         'mime_type' => true,
         'file_size' => true
     ];
 
     /**
-     * Unique identifier for this file
-     *
-     * @var string
+     * Identifier for this file, which can be used to download or reuse the file
      */
-    protected $fileId;
+    protected string $fileId;
+
+    /**
+     * Unique identifier for this file, which is supposed to be the same over time and for different bots.
+     * Can't be used to download or reuse the file.
+     */
+    protected string $fileUniqueId;
 
     /**
      * Video width as defined by sender
-     *
-     * @var int
      */
-    protected $width;
+    protected int $width;
 
     /**
      * Video height as defined by sender
-     *
-     * @var int
      */
-    protected $height;
+    protected int $height;
 
     /**
      * Duration of the video in seconds as defined by sender
-     *
-     * @var int
      */
-    protected $duration;
+    protected int $duration;
 
     /**
-     * Video thumbnail
-     *
-     * @var PhotoSize
+     * Optional. Video thumbnail
      */
-    protected $thumb;
+    protected ?PhotoSize $thumb = null;
 
+    /**
+     * Optional. Original filename as defined by sender
+     */
+    protected ?string $fileName = null;
 
     /**
      * Optional. Mime type of a file as defined by sender
-     *
-     * @var string
      */
-    protected $mimeType;
+    protected ?string $mimeType = null;
 
     /**
-     * Optional. File size
-     *
-     * @var int
+     * Optional. File size in bytes
      */
-    protected $fileSize;
+    protected ?int $fileSize = null;
 
-    /**
-     * @return int
-     */
-    public function getDuration()
-    {
-        return $this->duration;
-    }
-
-    /**
-     * @param int $duration
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setDuration($duration)
-    {
-        if (is_integer($duration)) {
-            $this->duration = $duration;
-        } else {
-            throw new InvalidArgumentException();
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function getFileId()
+    public function getFileId(): string
     {
         return $this->fileId;
     }
 
-    /**
-     * @param string $fileId
-     */
-    public function setFileId($fileId)
+    public function getFileUniqueId(): string
     {
-        $this->fileId = $fileId;
+        return $this->fileUniqueId;
     }
 
-    /**
-     * @return int
-     */
-    public function getFileSize()
-    {
-        return $this->fileSize;
-    }
-
-    /**
-     * @param int $fileSize
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setFileSize($fileSize)
-    {
-        if (is_integer($fileSize)) {
-            $this->fileSize = $fileSize;
-        } else {
-            throw new InvalidArgumentException();
-        }
-    }
-
-    /**
-     * @return int
-     */
-    public function getHeight()
-    {
-        return $this->height;
-    }
-
-    /**
-     * @param int $height
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setHeight($height)
-    {
-        if (is_integer($height)) {
-            $this->height = $height;
-        } else {
-            throw new InvalidArgumentException();
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function getMimeType()
-    {
-        return $this->mimeType;
-    }
-
-    /**
-     * @param string $mimeType
-     */
-    public function setMimeType($mimeType)
-    {
-        $this->mimeType = $mimeType;
-    }
-
-    /**
-     * @return PhotoSize
-     */
-    public function getThumb()
-    {
-        return $this->thumb;
-    }
-
-    /**
-     * @param PhotoSize $thumb
-     */
-    public function setThumb(PhotoSize $thumb)
-    {
-        $this->thumb = $thumb;
-    }
-
-    /**
-     * @return int
-     */
-    public function getWidth()
+    public function getWidth(): int
     {
         return $this->width;
     }
 
-    /**
-     * @param int $width
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setWidth($width)
+    public function getHeight(): int
     {
-        if (is_integer($width)) {
-            $this->width = $width;
-        } else {
-            throw new InvalidArgumentException();
-        }
+        return $this->height;
+    }    
+
+    public function getDuration(): int
+    {
+        return $this->duration;
+    }
+
+    public function getThumb(): ?PhotoSize
+    {
+        return $this->thumb;
+    }
+
+    public function getFileName(): ?string
+    {
+        return $this->fileName;
+    }
+
+    public function getMimeType(): ?string
+    {
+        return $this->mimeType;
+    }
+
+    public function getFileSize(): ?int
+    {
+        return $this->fileSize;
     }
 }

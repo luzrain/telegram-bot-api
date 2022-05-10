@@ -83,7 +83,7 @@ class Collection
     {
         $output = [];
         foreach ($this->items as $item) {
-            $output[] = $item->toJson(true);
+            $output[] = $item->toArray();
         }
 
         return $inner === false ? json_encode($output) : $output;

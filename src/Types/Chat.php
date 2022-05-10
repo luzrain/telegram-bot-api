@@ -3,23 +3,18 @@
 namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
-use TelegramBot\Api\Exceptions\InvalidArgumentException;
 use TelegramBot\Api\TypeInterface;
 
+/**
+ * This object represents a chat.
+ */
 class Chat extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['id', 'type'];
+    protected static array $requiredParams = [
+        'id',
+        'type',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'id' => true,
         'type' => true,
@@ -29,11 +24,14 @@ class Chat extends BaseType implements TypeInterface
         'last_name' => true,
         'photo' => ChatPhoto::class,
         'bio' => true,
+        'has_private_forwards' => true,
         'description' => true,
         'invite_link' => true,
         'pinned_message' => Message::class,
         'permissions' => ChatPermissions::class,
         'slow_mode_delay' => true,
+        'message_auto_delete_time' => true,
+        'has_protected_content' => true,
         'sticker_set_name' => true,
         'can_set_sticker_set' => true,
         'linked_chat_id' => true,
@@ -41,403 +39,207 @@ class Chat extends BaseType implements TypeInterface
     ];
 
     /**
-     * Unique identifier for this chat, not exceeding 1e13 by absolute value
-     *
-     * @var int|string
+     * Unique identifier for this chat
      */
-    protected $id;
+    protected int $id;
 
     /**
      * Type of chat, can be either “private”, “group”, “supergroup” or “channel”
-     *
-     * @var string
      */
-    protected $type;
+    protected string $type;
 
     /**
-     * Optional. Title, for channels and group chats
-     *
-     * @var string
+     * Optional. Title, for supergroups, channels and group chats
      */
-    protected $title;
+    protected ?string $title = null;
 
     /**
-     * Optional. Username, for private chats and channels if available
-     *
-     * @var string
+     * Optional. Username, for private chats, supergroups and channels if available
      */
-    protected $username;
+    protected ?string $username = null;
 
     /**
      * Optional. First name of the other party in a private chat
-     *
-     * @var string
      */
-    protected $firstName;
+    protected ?string $firstName = null;
 
     /**
      * Optional. Last name of the other party in a private chat
-     *
-     * @var string
      */
-    protected $lastName;
+    protected ?string $lastName = null;
 
     /**
      * Optional. Chat photo. Returned only in getChat.
-     *
-     * @var ChatPhoto
      */
-    protected $photo;
+    protected ?ChatPhoto $photo = null;
 
     /**
-     * Optional. Bio of the other party in a private chat. Returned only in getChat
-     *
-     * @var string
+     * Optional. Bio of the other party in a private chat. Returned only in getChat.
      */
-    protected $bio;
+    protected ?string $bio = null;
 
     /**
-     * Optional. Description, for supergroups and channel chats. Returned only in getChat.
-     *
-     * @var string
+     * Optional. True, if privacy settings of the other party in the private chat allows to use tg://user?id=<user_id> links only in chats with the user.
+     * Returned only in getChat.
      */
-    protected $description;
+    protected ?bool $hasPrivateForwards = null;
 
     /**
-     * Optional. Chat invite link, for supergroups and channel chats. Returned only in getChat.
-     *
-     * @var string
+     * Optional. Description, for groups, supergroups and channel chats. Returned only in getChat.
      */
-    protected $inviteLink;
+    protected ?string $description = null;
 
     /**
-     * Optional. Pinned message, for supergroups. Returned only in getChat.
-     *
-     * @var Message
+     * Optional. Primary invite link, for groups, supergroups and channel chats. Returned only in getChat.
      */
-    protected $pinnedMessage;
+    protected ?string $inviteLink = null;
+
+    /**
+     * Optional. The most recent pinned message (by sending date). Returned only in getChat.
+     */
+    protected ?Message $pinnedMessage = null;
 
     /**
      * Optional. Default chat member permissions, for groups and supergroups. Returned only in getChat.
-     *
-     * @var ChatPermissions
      */
-    protected $permissions;
+    protected ?ChatPermissions $permissions = null;
 
     /**
-     * Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unpriviledged
-     * user. Returned only in getChat.
-     *
-     * @var int
+     * Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unpriviledged user; in seconds.
+     * Returned only in getChat.
      */
-    protected $slowModeDelay;
+    protected ?int $slowModeDelay = null;
+
+    /**
+     * Optional. The time after which all messages sent to the chat will be automatically deleted; in seconds. Returned only in getChat.
+     */
+    protected ?int $messageAutoDeleteTime = null;
+
+    /**
+     * Optional. True, if messages from the chat can't be forwarded to other chats. Returned only in getChat.
+     */
+    protected ?bool $hasProtectedContent = null;
 
     /**
      * Optional. For supergroups, name of group sticker set. Returned only in getChat.
-     *
-     * @var string
      */
-    protected $stickerSetName;
+    protected ?string $stickerSetName = null;
 
     /**
      * Optional. True, if the bot can change the group sticker set. Returned only in getChat.
-     *
-     * @var bool
      */
-    protected $canSetStickerSet;
+    protected ?bool $canSetStickerSet = null;
 
     /**
-     * Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice
-     * versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming
-     * languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64
-     * bit integer or double-precision float type are safe for storing this identifier. Returned only in getChat.
-     *
-     * @var int
+     * Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa;
+     * for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may
+     * have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or
+     * double-precision float type are safe for storing this identifier. Returned only in getChat.
      */
-    protected $linkedChatId;
+    protected ?int $linkedChatId = null;
 
     /**
      * Optional. For supergroups, the location to which the supergroup is connected. Returned only in getChat.
-     *
-     * @var ChatLocation
      */
-    protected $location;
+    protected ?ChatLocation $location = null;
 
-    /**
-     * @return int|string
-     */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @param int|string $id
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setId($id)
-    {
-        if (is_integer($id) || is_float($id) || is_string($id)) {
-            $this->id = $id;
-        } else {
-            throw new InvalidArgumentException();
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * @param string $title
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUsername()
+    public function getUsername(): ?string
     {
         return $this->username;
     }
 
-    /**
-     * @param string $username
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
-    /**
-     * @param string $firstName
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
-    /**
-     * @param string $lastName
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-    }
-
-    /**
-     * @return ChatPhoto
-     */
-    public function getPhoto()
+    public function getPhoto(): ?ChatPhoto
     {
         return $this->photo;
     }
 
-    /**
-     * @param ChatPhoto $photo
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-    }
-
-    /**
-     * @return string
-     */
-    public function getBio()
+    public function getBio(): ?string
     {
         return $this->bio;
     }
 
-    /**
-     * @param string $bio
-     */
-    public function setBio($bio)
+    public function hasPrivateForwards(): ?bool
     {
-        $this->bio = $bio;
+        return $this->hasPrivateForwards;
     }
 
-    /**
-     * @return string
-     */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $description
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
-
-    /**
-     * @return string
-     */
-    public function getInviteLink()
+    public function getInviteLink(): ?string
     {
         return $this->inviteLink;
     }
 
-    /**
-     * @param string $inviteLink
-     */
-    public function setInviteLink($inviteLink)
-    {
-        $this->inviteLink = $inviteLink;
-    }
-
-    /**
-     * @return Message
-     */
-    public function getPinnedMessage()
+    public function getPinnedMessage(): ?Message
     {
         return $this->pinnedMessage;
     }
 
-    /**
-     * @param Message $pinnedMessage
-     */
-    public function setPinnedMessage($pinnedMessage)
-    {
-        $this->pinnedMessage = $pinnedMessage;
-    }
-
-    /**
-     * @return ChatPermissions
-     */
-    public function getPermissions()
+    public function getPermissions(): ?ChatPermissions
     {
         return $this->permissions;
     }
 
-    /**
-     * @param ChatPermissions $permissions
-     */
-    public function setPermissions($permissions)
-    {
-        $this->permissions = $permissions;
-    }
-
-    /**
-     * @return int
-     */
-    public function getSlowModeDelay()
+    public function getSlowModeDelay(): ?int
     {
         return $this->slowModeDelay;
     }
 
-    /**
-     * @param int $slowModeDelay
-     */
-    public function setSlowModeDelay($slowModeDelay)
+    public function getMessageAutoDeleteTime(): ?int
     {
-        $this->slowModeDelay = $slowModeDelay;
+        return $this->messageAutoDeleteTime;
     }
 
-    /**
-     * @return string
-     */
-    public function getStickerSetName()
+    public function hasProtectedContent(): ?bool
+    {
+        return $this->hasProtectedContent;
+    }
+
+    public function getStickerSetName(): ?string
     {
         return $this->stickerSetName;
     }
 
-    /**
-     * @param string $stickerSetName
-     */
-    public function setStickerSetName($stickerSetName)
-    {
-        $this->stickerSetName = $stickerSetName;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isCanSetStickerSet()
+    public function isCanSetStickerSet(): ?bool
     {
         return $this->canSetStickerSet;
     }
 
-    /**
-     * @param bool $canSetStickerSet
-     */
-    public function setCanSetStickerSet($canSetStickerSet)
-    {
-        $this->canSetStickerSet = $canSetStickerSet;
-    }
-
-    /**
-     * @return int
-     */
-    public function getLinkedChatId()
+    public function getLinkedChatId(): ?int
     {
         return $this->linkedChatId;
     }
 
-    /**
-     * @param int $linkedChatId
-     */
-    public function setLinkedChatId($linkedChatId)
-    {
-        $this->linkedChatId = $linkedChatId;
-    }
-
-    /**
-     * @return ChatLocation
-     */
-    public function getLocation()
+    public function getLocation(): ?ChatLocation
     {
         return $this->location;
-    }
-
-    /**
-     * @param ChatLocation $location
-     */
-    public function setLocation($location)
-    {
-        $this->location = $location;
     }
 }

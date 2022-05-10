@@ -3,23 +3,15 @@
 namespace TelegramBot\Api\Types\Payments;
 
 use TelegramBot\Api\BaseType;
+use TelegramBot\Api\TypeInterface;
 
 /**
- * Class OrderInfo
  * This object represents information about an order.
- *
- * @package TelegramBot\Api\Types\Payments
  */
-class OrderInfo extends BaseType
+class OrderInfo extends BaseType implements TypeInterface
 {
-    /**
-     * @var array
-     */
     protected static array $requiredParams = [];
 
-    /**
-     * @var array
-     */
     protected static array $map = [
         'name' => true,
         'phone_number' => true,
@@ -29,101 +21,41 @@ class OrderInfo extends BaseType
 
     /**
      * Optional. User name
-     *
-     * @var string
      */
-    protected $name;
+    protected ?string $name = null;
 
     /**
      * Optional. User's phone number
-     *
-     * @var string
      */
-    protected $phoneNumber;
+    protected ?string $phoneNumber = null;
 
     /**
      * Optional. User email
-     *
-     * @var string
      */
-    protected $email;
+    protected ?string $email = null;
 
     /**
      * Optional. User shipping address
-     *
-     * @var ShippingAddress
      */
-    protected $shippingAddress;
+    protected ?ShippingAddress $shippingAddress = null;
 
-    /**
-     * @author MY
-     * @return string
-     */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @author MY
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @author MY
-     * @return string
-     */
-    public function getPhoneNumber()
+    public function getPhoneNumber(): ?string
     {
         return $this->phoneNumber;
     }
 
-    /**
-     * @author MY
-     * @param string $phoneNumber
-     */
-    public function setPhoneNumber($phoneNumber)
-    {
-        $this->phoneNumber = $phoneNumber;
-    }
-
-    /**
-     * @author MY
-     * @return string
-     */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    /**
-     * @author MY
-     * @param string $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @author MY
-     * @return ShippingAddress
-     */
-    public function getShippingAddress()
+    public function getShippingAddress(): ?ShippingAddress
     {
         return $this->shippingAddress;
-    }
-
-    /**
-     * @author MY
-     * @param ShippingAddress $shippingAddress
-     */
-    public function setShippingAddress($shippingAddress)
-    {
-        $this->shippingAddress = $shippingAddress;
     }
 }

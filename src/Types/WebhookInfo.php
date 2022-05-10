@@ -1,9 +1,4 @@
 <?php
-/**
- * User: boshurik
- * Date: 10.06.2020
- * Time: 19:43
- */
 
 namespace TelegramBot\Api\Types;
 
@@ -12,192 +7,114 @@ use TelegramBot\Api\TypeInterface;
 
 /**
  * Contains information about the current status of a webhook.
- *
- * @package TelegramBot\Api\Types
  */
 class WebhookInfo extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['url', 'has_custom_certificate', 'pending_update_count'];
+    protected static array $requiredParams = [
+        'url',
+        'has_custom_certificate',
+        'pending_update_count',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'url' => true,
         'has_custom_certificate' => true,
         'pending_update_count' => true,
+        'ip_address' => true,
         'last_error_date' => true,
         'last_error_message' => true,
+        'last_synchronization_error_date' => true,
         'max_connections' => true,
         'allowed_updates' => true
     ];
 
     /**
      * Webhook URL, may be empty if webhook is not set up
-     *
-     * @var string
      */
-    protected $url;
+    protected string $url;
 
     /**
      * True, if a custom certificate was provided for webhook certificate checks
-     *
-     * @var bool
      */
-    protected $hasCustomCertificate;
+    protected bool $hasCustomCertificate;
 
     /**
      * Number of updates awaiting delivery
-     *
-     * @var int
      */
-    protected $pendingUpdateCount;
+    protected int $pendingUpdateCount;
+
+    /**
+     * Optional. Currently used webhook IP address
+     */
+    protected ?string $ipAddress = null;
 
     /**
      * Optional. Unix time for the most recent error that happened when trying to deliver an update via webhook
-     *
-     * @var int
      */
-    protected $lastErrorDate;
+    protected ?int $lastErrorDate = null;
 
     /**
-     * Optional. Error message in human-readable format for the most recent error that happened when trying to deliver
-     * an update via webhook
-     *
-     * @var string
+     * Optional. Error message in human-readable format for the most recent error that happened when trying to deliver an update via webhook
      */
-    protected $lastErrorMessage;
+    protected ?string $lastErrorMessage = null;
+
+    /**
+     * Optional. Unix time of the most recent error that happened when trying to synchronize available updates with Telegram datacenters
+     */
+    protected ?string $lastSynchronizationErrorDate = null;
 
     /**
      * Optional. Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery
-     *
-     * @var int
      */
-    protected $maxConnections;
+    protected ?int $maxConnections = null;
 
     /**
-     * Optional. A list of update types the bot is subscribed to. Defaults to all update types
-     *
-     * @var array
+     * Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member
      */
-    protected $allowedUpdates;
+    protected ?array $allowedUpdates = null;
 
-    /**
-     * @return string
-     */
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->url;
     }
 
-    /**
-     * @param string $url
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasCustomCertificate()
+    public function hasCustomCertificate(): bool
     {
         return $this->hasCustomCertificate;
     }
 
-    /**
-     * @param bool $hasCustomCertificate
-     */
-    public function setHasCustomCertificate($hasCustomCertificate)
-    {
-        $this->hasCustomCertificate = $hasCustomCertificate;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPendingUpdateCount()
+    public function getPendingUpdateCount(): int
     {
         return $this->pendingUpdateCount;
     }
 
-    /**
-     * @param int $pendingUpdateCount
-     */
-    public function setPendingUpdateCount($pendingUpdateCount)
+    public function getIpAddress(): ?string
     {
-        $this->pendingUpdateCount = $pendingUpdateCount;
+        return $this->ipAddress;
     }
 
-    /**
-     * @return int
-     */
-    public function getLastErrorDate()
+    public function getLastErrorDate(): ?int
     {
         return $this->lastErrorDate;
     }
 
-    /**
-     * @param int $lastErrorDate
-     */
-    public function setLastErrorDate($lastErrorDate)
-    {
-        $this->lastErrorDate = $lastErrorDate;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastErrorMessage()
+    public function getLastErrorMessage(): ?string
     {
         return $this->lastErrorMessage;
     }
 
-    /**
-     * @param string $lastErrorMessage
-     */
-    public function setLastErrorMessage($lastErrorMessage)
+    public function getLastSynchronizationErrorDate(): ?int
     {
-        $this->lastErrorMessage = $lastErrorMessage;
+        return $this->lastSynchronizationErrorDate;
     }
 
-    /**
-     * @return int
-     */
-    public function getMaxConnections()
+    public function getMaxConnections(): ?int
     {
         return $this->maxConnections;
     }
 
-    /**
-     * @param int $maxConnections
-     */
-    public function setMaxConnections($maxConnections)
-    {
-        $this->maxConnections = $maxConnections;
-    }
-
-    /**
-     * @return array
-     */
-    public function getAllowedUpdates()
+    public function getAllowedUpdates(): ?array
     {
         return $this->allowedUpdates;
-    }
-
-    /**
-     * @param array $allowedUpdates
-     */
-    public function setAllowedUpdates($allowedUpdates)
-    {
-        $this->allowedUpdates = $allowedUpdates;
     }
 }

@@ -3,162 +3,75 @@
 namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
-use TelegramBot\Api\Exceptions\InvalidArgumentException;
 use TelegramBot\Api\TypeInterface;
 
 /**
- * Class Voice
  * This object represents a voice note.
- *
- * @package TelegramBot\Api\Types
  */
 class Voice extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['file_id', 'file_unique_id', 'duration'];
+    protected static array $requiredParams = [
+        'file_id',
+        'file_unique_id',
+        'duration',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
-        'file_id'        => true,
+        'file_id' => true,
         'file_unique_id' => true,
-        'duration'       => true,
-        'mime_type'      => true,
-        'file_size'      => true,
+        'duration' => true,
+        'mime_type' => true,
+        'file_size' => true,
     ];
 
     /**
      * Identifier for this file, which can be used to download or reuse the file
-     *
-     * @var string
      */
-    protected $fileId;
+    protected string $fileId;
 
     /**
-     * Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be
-     * used to download or reuse the file.
-     *
-     * @var string
+     * Unique identifier for this file, which is supposed to be the same over time and for different bots.
+     * Can't be used to download or reuse the file.
      */
-    protected $fileUniqueId;
+    protected string $fileUniqueId;
 
     /**
      * Duration of the audio in seconds as defined by sender
-     *
-     * @var int
      */
-    protected $duration;
+    protected int $duration;
 
     /**
      * Optional. MIME type of the file as defined by sender
-     *
-     * @var string
      */
-    protected $mimeType;
+    protected ?string $mimeType = null;
 
     /**
-     * Optional. File size
-     *
-     * @var int
+     * Optional. File size in bytes
      */
-    protected $fileSize;
+    protected ?int $fileSize = null;
 
-    /**
-     * @return string
-     */
-    public function getFileId()
+    public function getFileId(): string
     {
         return $this->fileId;
     }
 
-    /**
-     * @param string $fileId
-     */
-    public function setFileId($fileId)
-    {
-        $this->fileId = $fileId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFileUniqueId()
+    public function getFileUniqueId(): string
     {
         return $this->fileUniqueId;
     }
 
-    /**
-     * @param string $fileUniqueId
-     */
-    public function setFileUniqueId($fileUniqueId)
-    {
-        $this->fileUniqueId = $fileUniqueId;
-    }
-
-    /**
-     * @return int
-     */
-    public function getDuration()
+    public function getDuration(): int
     {
         return $this->duration;
     }
 
-    /**
-     * @param int $duration
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setDuration($duration)
-    {
-        if (is_integer($duration)) {
-            $this->duration = $duration;
-        } else {
-            throw new InvalidArgumentException();
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function getMimeType()
+    public function getMimeType(): ?string
     {
         return $this->mimeType;
     }
 
-    /**
-     * @param string $mimeType
-     */
-    public function setMimeType($mimeType)
-    {
-        $this->mimeType = $mimeType;
-    }
-
-    /**
-     * @return int
-     */
-    public function getFileSize()
+    public function getFileSize(): ?int
     {
         return $this->fileSize;
-    }
-
-    /**
-     * @param int $fileSize
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setFileSize($fileSize)
-    {
-        if (is_integer($fileSize)) {
-            $this->fileSize = $fileSize;
-        } else {
-            throw new InvalidArgumentException();
-        }
     }
 }

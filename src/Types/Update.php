@@ -6,30 +6,19 @@ use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
 use TelegramBot\Api\Types\Inline\ChosenInlineResult;
 use TelegramBot\Api\Types\Inline\InlineQuery;
-use TelegramBot\Api\Types\Payments\Query\PreCheckoutQuery;
-use TelegramBot\Api\Types\Payments\Query\ShippingQuery;
+use TelegramBot\Api\Types\Payments\PreCheckoutQuery;
+use TelegramBot\Api\Types\Payments\ShippingQuery;
 
 /**
- * Class Update
  * This object represents an incoming update.
- * Only one of the optional parameters can be present in any given update.
- *
- * @package TelegramBot\Api\Types
+ * At most one of the optional parameters can be present in any given update.
  */
 class Update extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['update_id'];
+    protected static array $requiredParams = [
+        'update_id',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'update_id' => true,
         'message' => Message::class,
@@ -41,287 +30,166 @@ class Update extends BaseType implements TypeInterface
         'callback_query' => CallbackQuery::class,
         'shipping_query' => ShippingQuery::class,
         'pre_checkout_query' => PreCheckoutQuery::class,
-        'poll_answer' => PollAnswer::class,
         'poll' => Poll::class,
+        'poll_answer' => PollAnswer::class,
+        'my_chat_member' => ChatMemberUpdated::class,
+        'chat_member' => ChatMemberUpdated::class,
+        'chat_join_request' => ChatJoinRequest::class,
     ];
 
     /**
-     * The update‘s unique identifier.
-     * Update identifiers start from a certain positive number and increase sequentially.
-     * This ID becomes especially handy if you’re using Webhooks, since it allows you to ignore repeated updates or
-     * to restore the correct update sequence, should they get out of order.
-     *
-     * @var integer
+     * The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially.
+     * This ID becomes especially handy if you're using Webhooks, since it allows you to ignore repeated updates or to
+     * restore the correct update sequence, should they get out of order. If there are no new updates for at least a week,
+     * then identifier of the next update will be chosen randomly instead of sequentially.
      */
-    protected $updateId;
+    protected int $updateId;
 
     /**
      * Optional. New incoming message of any kind — text, photo, sticker, etc.
-     *
-     * @var Message
      */
-    protected $message;
-
-    /**
-     * @var PollAnswer
-     */
-    protected $pollAnswer;
-
-    /**
-     * @var Poll
-     */
-    protected $poll;
-
+    protected ?Message $message = null;
 
     /**
      * Optional. New version of a message that is known to the bot and was edited
-     *
-     * @var Message
      */
-    protected $editedMessage;
+    protected ?Message $editedMessage = null;
 
     /**
      * Optional. New incoming channel post of any kind — text, photo, sticker, etc.
-     *
-     * @var Message
      */
-    protected $channelPost;
+    protected ?Message $channelPost = null;
 
     /**
      * Optional. New version of a channel post that is known to the bot and was edited
-     *
-     * @var Message
      */
-    protected $editedChannelPost;
+    protected ?Message $editedChannelPost = null;
 
     /**
      * Optional. New incoming inline query
-     *
-     * @var \TelegramBot\Api\Types\Inline\InlineQuery
      */
-    protected $inlineQuery;
+    protected ?InlineQuery $inlineQuery = null;
 
     /**
-     * Optional. The result of a inline query that was chosen by a user and sent to their chat partner
-     *
-     * @var \TelegramBot\Api\Types\Inline\ChosenInlineResult
+     * Optional. The result of an inline query that was chosen by a user and sent to their chat partner.
+     * Please see our documentation on the feedback collecting for details on how to enable these updates for your bot.
      */
-    protected $chosenInlineResult;
+    protected ?ChosenInlineResult $chosenInlineResult = null;
 
     /**
      * Optional. New incoming callback query
-     *
-     * @var \TelegramBot\Api\Types\CallbackQuery
      */
-    protected $callbackQuery;
+    protected ?CallbackQuery $callbackQuery = null;
 
     /**
      * Optional. New incoming shipping query. Only for invoices with flexible price
-     *
-     * @var ShippingQuery
      */
-    protected $shippingQuery;
+    protected ?ShippingQuery $shippingQuery = null;
 
     /**
      * Optional. New incoming pre-checkout query. Contains full information about checkout
-     *
-     * @var PreCheckoutQuery
      */
-    protected $preCheckoutQuery;
+    protected ?PreCheckoutQuery $preCheckoutQuery = null;
 
     /**
-     * @return int
+     * Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot
      */
-    public function getUpdateId()
+    protected ?Poll $poll = null;
+
+    /**
+     * Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself.
+     */
+    protected ?PollAnswer $pollAnswer = null;
+
+    /**
+     * Optional. The bot's chat member status was updated in a chat.
+     * For private chats, this update is received only when the bot is blocked or unblocked by the user.
+     */
+    protected ?ChatMemberUpdated $myChatMember = null;
+
+    /**
+     * Optional. A chat member's status was updated in a chat.
+     * The bot must be an administrator in the chat and must explicitly specify “chat_member” in the list of allowed_updates to receive these updates.
+     */
+    protected ?ChatMemberUpdated $chatMember = null;
+
+    /**
+     * Optional. A request to join the chat has been sent. The bot must have the can_invite_users administrator right in the chat to receive these updates.
+     */
+    protected ?ChatJoinRequest $chatJoinRequest = null;
+
+    public function getUpdateId(): int
     {
         return $this->updateId;
     }
 
-    /**
-     * @param int $updateId
-     */
-    public function setUpdateId($updateId)
-    {
-        $this->updateId = $updateId;
-    }
-
-    /**
-     * @return Message
-     */
-    public function getMessage()
+    public function getMessage(): ?Message
     {
         return $this->message;
     }
 
-    /**
-     * @param Message $message
-     */
-    public function setMessage(Message $message)
-    {
-        $this->message = $message;
-    }
-
-    /**
-     * @return Message
-     */
-    public function getEditedMessage()
+    public function getEditedMessage(): ?Message
     {
         return $this->editedMessage;
     }
 
-    /**
-     * @param Message $editedMessage
-     */
-    public function setEditedMessage($editedMessage)
-    {
-        $this->editedMessage = $editedMessage;
-    }
-
-    /**
-     * @return Message
-     */
-    public function getChannelPost()
+    public function getChannelPost(): ?Message
     {
         return $this->channelPost;
     }
 
-    /**
-     * @param Message $channelPost
-     */
-    public function setChannelPost($channelPost)
-    {
-        $this->channelPost = $channelPost;
-    }
-
-    /**
-     * @return PollAnswer
-     */
-    public function getPollAnswer()
-    {
-        return $this->pollAnswer;
-    }
-
-    /**
-     * @return Poll
-     */
-    public function getPoll()
-    {
-        return $this->poll;
-    }
-
-    /**
-     * @param Poll $poll
-     */
-    public function setPoll($poll)
-    {
-        $this->poll = $poll;
-    }
-
-    /**
-     * @param PollAnswer $pollAnswer
-     */
-    public function setPollAnswer($pollAnswer)
-    {
-        $this->pollAnswer = $pollAnswer;
-    }
-
-    /**
-     * @return Message
-     */
-    public function getEditedChannelPost()
+    public function getEditedChannelPost(): ?Message
     {
         return $this->editedChannelPost;
     }
 
-    /**
-     * @param Message $editedChannelPost
-     */
-    public function setEditedChannelPost($editedChannelPost)
-    {
-        $this->editedChannelPost = $editedChannelPost;
-    }
-
-    /**
-     * @return InlineQuery
-     */
-    public function getInlineQuery()
+    public function getInlineQuery(): ?InlineQuery
     {
         return $this->inlineQuery;
     }
 
-    /**
-     * @param InlineQuery $inlineQuery
-     */
-    public function setInlineQuery($inlineQuery)
-    {
-        $this->inlineQuery = $inlineQuery;
-    }
-
-    /**
-     * @return ChosenInlineResult
-     */
-    public function getChosenInlineResult()
+    public function getChosenInlineResult(): ?ChosenInlineResult
     {
         return $this->chosenInlineResult;
     }
 
-    /**
-     * @param ChosenInlineResult $chosenInlineResult
-     */
-    public function setChosenInlineResult($chosenInlineResult)
-    {
-        $this->chosenInlineResult = $chosenInlineResult;
-    }
-
-    /**
-     * @return CallbackQuery
-     */
-    public function getCallbackQuery()
+    public function getCallbackQuery(): ?CallbackQuery
     {
         return $this->callbackQuery;
     }
 
-    /**
-     * @param CallbackQuery $callbackQuery
-     */
-    public function setCallbackQuery($callbackQuery)
-    {
-        $this->callbackQuery = $callbackQuery;
-    }
-
-    /**
-     * @author MY
-     * @return ShippingQuery
-     */
-    public function getShippingQuery()
+    public function getShippingQuery(): ?ShippingQuery
     {
         return $this->shippingQuery;
     }
 
-    /**
-     * @author MY
-     * @param ShippingQuery $shippingQuery
-     */
-    public function setShippingQuery($shippingQuery)
-    {
-        $this->shippingQuery = $shippingQuery;
-    }
-
-    /**
-     * @author MY
-     * @return PreCheckoutQuery
-     */
-    public function getPreCheckoutQuery()
+    public function getPreCheckoutQuery(): ?PreCheckoutQuery
     {
         return $this->preCheckoutQuery;
     }
 
-    /**
-     * @author MY
-     * @param PreCheckoutQuery $preCheckoutQuery
-     */
-    public function setPreCheckoutQuery($preCheckoutQuery)
+    public function getPoll(): ?Poll
     {
-        $this->preCheckoutQuery = $preCheckoutQuery;
+        return $this->poll;
+    }
+
+    public function getPollAnswer(): ?PollAnswer
+    {
+        return $this->pollAnswer;
+    }
+
+    public function getMyChatMember(): ?ChatMemberUpdated
+    {
+        return $this->myChatMember;
+    }
+
+    public function getChatMember(): ?ChatMemberUpdated
+    {
+        return $this->chatMember;
+    }
+
+    public function getChatJoinRequest(): ?ChatJoinRequest
+    {
+        return $this->chatJoinRequest;
     }
 }

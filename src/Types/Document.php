@@ -3,25 +3,21 @@
 namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
-use TelegramBot\Api\Exceptions\InvalidArgumentException;
 use TelegramBot\Api\TypeInterface;
 
 /**
- * Class Document
- * This object represents a general file (as opposed to photos and audio files).
- * Telegram users can send files of any type of up to 1.5 GB in size.
- *
- * @package TelegramBot\Api\Types
+ * This object represents a general file (as opposed to photos, voice messages and audio files).
  */
 class Document extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
+    protected static array $requiredParams = [
+        'file_id',
+        'file_unique_id',
+    ];
+
     protected static array $map = [
         'file_id' => true,
+        'file_unique_id' => true,
         'thumb' => PhotoSize::class,
         'file_name' => true,
         'mime_type' => true,
@@ -29,130 +25,63 @@ class Document extends BaseType implements TypeInterface
     ];
 
     /**
-     * {@inheritdoc}
-     *
-     * @var array
+     * Identifier for this file, which can be used to download or reuse the file
      */
-    protected static array $requiredParams = ['file_id'];
+    protected string $fileId;
 
     /**
-     * Unique identifier for this file
-     *
-     * @var string
+     * Unique identifier for this file, which is supposed to be the same over time and for different bots.
+     * Can't be used to download or reuse the file.
      */
-    protected $fileId;
+    protected string $fileUniqueId;
 
     /**
-     * Document thumbnail as defined by sender
-     *
-     * @var PhotoSize
+     * Optional. Document thumbnail as defined by sender
      */
-    protected $thumb;
+    protected ?PhotoSize $thumb = null;
 
     /**
      * Optional. Original filename as defined by sender
-     *
-     * @var string
      */
-    protected $fileName;
+    protected ?string $fileName = null;
 
     /**
      * Optional. MIME type of the file as defined by sender
-     *
-     * @var string
      */
-    protected $mimeType;
+    protected ?string $mimeType = null;
 
     /**
-     * Optional. File size
-     *
-     * @var int
+     * Optional. File size in bytes
      */
-    protected $fileSize;
+    protected ?int $fileSize = null;
 
-    /**
-     * @return string
-     */
-    public function getFileId()
+    public function getFileId(): string
     {
         return $this->fileId;
     }
 
-    /**
-     * @param string $fileId
-     */
-    public function setFileId($fileId)
+    public function getFileUniqueId(): string
     {
-        $this->fileId = $fileId;
+        return $this->fileUniqueId;
     }
 
-    /**
-     * @return string
-     */
-    public function getFileName()
-    {
-        return $this->fileName;
-    }
-
-    /**
-     * @param string $fileName
-     */
-    public function setFileName($fileName)
-    {
-        $this->fileName = $fileName;
-    }
-
-    /**
-     * @return int
-     */
-    public function getFileSize()
-    {
-        return $this->fileSize;
-    }
-
-    /**
-     * @param int $fileSize
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setFileSize($fileSize)
-    {
-        if (is_integer($fileSize)) {
-            $this->fileSize = $fileSize;
-        } else {
-            throw new InvalidArgumentException();
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function getMimeType()
-    {
-        return $this->mimeType;
-    }
-
-    /**
-     * @param string $mimeType
-     */
-    public function setMimeType($mimeType)
-    {
-        $this->mimeType = $mimeType;
-    }
-
-    /**
-     * @return PhotoSize
-     */
-    public function getThumb()
+    public function getThumb(): ?PhotoSize
     {
         return $this->thumb;
     }
 
-    /**
-     * @param PhotoSize $thumb
-     */
-    public function setThumb(PhotoSize $thumb)
+    public function getFileName(): ?string
     {
-        $this->thumb = $thumb;
+        return $this->fileName;
+    }
+
+    public function getMimeType(): ?string
+    {
+        return $this->mimeType;
+    }
+
+    public function getFileSize(): ?int
+    {
+        return $this->fileSize;
     }
 }

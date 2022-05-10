@@ -3,23 +3,20 @@
 namespace TelegramBot\Api\Types\Payments;
 
 use TelegramBot\Api\BaseType;
+use TelegramBot\Api\TypeInterface;
+use TelegramBot\Api\Types\Arrays\ArrayOfLabeledPrice;
 
 /**
- * Class ShippingOption
  * This object represents one shipping option.
- *
- * @package TelegramBot\Api\Types\Payments
  */
-class ShippingOption extends BaseType
+class ShippingOption extends BaseType implements TypeInterface
 {
-    /**
-     * @var array
-     */
-    protected static array $requiredParams = ['id', 'title', 'prices'];
+    protected static array $requiredParams = [
+        'id',
+        'title',
+        'prices',
+    ];
 
-    /**
-     * @var array
-     */
     protected static array $map = [
         'id' => true,
         'title' => true,
@@ -28,76 +25,33 @@ class ShippingOption extends BaseType
 
     /**
      * Shipping option identifier
-     *
-     * @var string
      */
-    protected $id;
+    protected string $id;
 
     /**
      * Option title
-     *
-     * @var string
      */
-    protected $title;
+    protected string $title;
 
     /**
      * List of price portions
      *
-     * @var array
+     * @var LabeledPrice[]
      */
-    protected $prices;
+    protected array $prices;
 
-    /**
-     * @author MY
-     * @return string
-     */
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @author MY
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @author MY
-     * @return string
-     */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @author MY
-     * @param string $title
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    }
-
-    /**
-     * @author MY
-     * @return array
-     */
-    public function getPrices()
+    public function getPrices(): array
     {
         return $this->prices;
-    }
-
-    /**
-     * @author MY
-     * @param array $prices
-     */
-    public function setPrices($prices)
-    {
-        $this->prices = $prices;
     }
 }

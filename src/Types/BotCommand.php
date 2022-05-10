@@ -5,68 +5,49 @@ namespace TelegramBot\Api\Types;
 use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
 
+/**
+ * This object represents a bot command.
+ */
 class BotCommand extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['command', 'description'];
+    protected static array $requiredParams = [
+        'command',
+        'description',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'command' => true,
         'description' => true,
     ];
 
     /**
-     * Text of the command, 1-32 characters. Can contain only lowercase English letters, digits and underscores.
-     *
-     * @var string
+     * Text of the command; 1-32 characters. Can contain only lowercase English letters, digits and underscores.
      */
-    protected $command;
+    protected string $command;
 
     /**
-     * Description of the command, 3-256 characters.
-     *
-     * @var string
+     * Description of the command; 1-256 characters.
      */
-    protected $description;
+    protected string $description;
 
     /**
-     * @return string
+     * Create new instance of BotCommand
      */
-    public function getCommand()
+    public static function create(string $command, string $description): self
+    {
+        return new self([
+            'command' => $command,
+            'description' => $description,
+        ]);
+    }
+
+    public function getCommand(): string
     {
         return $this->command;
     }
 
-    /**
-     * @param string $command
-     */
-    public function setCommand($command)
-    {
-        $this->command = $command;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
-    }
-
-    /**
-     * @param string $description
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
     }
 }

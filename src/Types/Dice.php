@@ -6,71 +6,37 @@ use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
 
 /**
- * Class Dice
  * This object represents an animated emoji that displays a random value.
  */
 class Dice extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['emoji', 'value'];
+    protected static array $requiredParams = [
+        'emoji',
+        'value',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'emoji' => true,
-        'value' => true
+        'value' => true,
     ];
 
     /**
      * Emoji on which the dice throw animation is based
-     *
-     * @var string
      */
-    protected $emoji;
+    protected string $emoji;
 
     /**
-     * Value of the dice, 1-6 for “🎲” and “🎯” base emoji, 1-5 for “🏀” and “⚽” base emoji, 1-64 for “🎰” base emoji
-     *
-     * @var int
+     * Value of the dice, 1-6 for “🎲”, “🎯” and “🎳” base emoji, 1-5 for “🏀” and “⚽” base emoji, 1-64 for “🎰” base emoji
      */
-    protected $value;
+    protected int $value;
 
-    /**
-     * @return string
-     */
-    public function getEmoji()
+    public function getEmoji(): string
     {
         return $this->emoji;
     }
 
-    /**
-     * @param string $emoji
-     */
-    public function setEmoji($emoji)
-    {
-        $this->emoji = $emoji;
-    }
-
-    /**
-     * @return int
-     */
-    public function getValue()
+    public function getValue(): int
     {
         return $this->value;
-    }
-
-    /**
-     * @param int $value
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
     }
 }

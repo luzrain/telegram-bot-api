@@ -3,32 +3,21 @@
 namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
-use TelegramBot\Api\Exceptions\InvalidArgumentException;
 use TelegramBot\Api\TypeInterface;
 
 /**
- * Class Location
  * This object represents a point on the map.
- *
- * @package TelegramBot\Api\Types
  */
 class Location extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['latitude', 'longitude'];
+    protected static array $requiredParams = [
+        'longitude',
+        'latitude',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
-        'latitude' => true,
         'longitude' => true,
+        'latitude' => true,
         'horizontal_accuracy' => true,
         'live_period' => true,
         'heading' => true,
@@ -37,159 +26,61 @@ class Location extends BaseType implements TypeInterface
 
     /**
      * Longitude as defined by sender
-     *
-     * @var float
      */
-    protected $longitude;
+    protected float $longitude;
 
     /**
      * Latitude as defined by sender
-     *
-     * @var float
      */
-    protected $latitude;
+    protected float $latitude;
 
     /**
      * Optional. The radius of uncertainty for the location, measured in meters; 0-1500
-     *
-     * @var float
      */
-    protected $horizontalAccuracy;
+    protected ?float $horizontalAccuracy = null;
 
     /**
-     * Optional. Time relative to the message sending date, during which the location can be updated, in seconds. For
-     * active live locations only.
-     *
-     * @var int
+     * Optional. Time relative to the message sending date, during which the location can be updated; in seconds. For active live locations only.
      */
-    protected $livePeriod;
+    protected ?int $livePeriod = null;
 
     /**
      * Optional. The direction in which user is moving, in degrees; 1-360. For active live locations only.
-     *
-     * @var int
      */
-    protected $heading;
+    protected ?int $heading = null;
 
     /**
-     * Optional. Maximum distance for proximity alerts about approaching another chat member, in meters. For sent live
-     * locations only.
-     *
-     * @var int
+     * Optional. Maximum distance for proximity alerts about approaching another chat member, in meters. For sent live locations only.
      */
-    protected $proximityAlertRadius;
+    protected ?int $proximityAlertRadius = null;
 
-    /**
-     * @return float
-     */
-    public function getLatitude()
+    public function getLongitude(): float
+    {
+        return $this->longitude;
+    }    
+
+    public function getLatitude(): float
     {
         return $this->latitude;
     }
 
-    /**
-     * @param float $latitude
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setLatitude($latitude)
-    {
-        if (is_float($latitude)) {
-            $this->latitude = $latitude;
-        } else {
-            throw new InvalidArgumentException();
-        }
-    }
-
-    /**
-     * @return float
-     */
-    public function getLongitude()
-    {
-        return $this->longitude;
-    }
-
-    /**
-     * @param float $longitude
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setLongitude($longitude)
-    {
-        if (is_float($longitude)) {
-            $this->longitude = $longitude;
-        } else {
-            throw new InvalidArgumentException();
-        }
-    }
-
-    /**
-     * @return float
-     */
-    public function getHorizontalAccuracy()
+    public function getHorizontalAccuracy(): ?float
     {
         return $this->horizontalAccuracy;
     }
 
-    /**
-     * @param float $horizontalAccuracy
-     *
-     * @throws InvalidArgumentException
-     */
-    public function setHorizontalAccuracy($horizontalAccuracy)
-    {
-        if (is_float($horizontalAccuracy)) {
-            $this->horizontalAccuracy = $horizontalAccuracy;
-        } else {
-            throw new InvalidArgumentException();
-        }
-    }
-
-    /**
-     * @return int
-     */
-    public function getLivePeriod()
+    public function getLivePeriod(): ?int
     {
         return $this->livePeriod;
     }
 
-    /**
-     * @param int $livePeriod
-     */
-    public function setLivePeriod($livePeriod)
-    {
-        $this->livePeriod = $livePeriod;
-    }
-
-    /**
-     * @return int
-     */
-    public function getHeading()
+    public function getHeading(): ?int
     {
         return $this->heading;
     }
 
-    /**
-     * @param int $heading
-     */
-    public function setHeading($heading)
-    {
-        $this->heading = $heading;
-    }
-
-    /**
-     * @return int
-     */
-    public function getProximityAlertRadius()
+    public function getProximityAlertRadius(): ?int
     {
         return $this->proximityAlertRadius;
-    }
-
-    /**
-     * @param int $proximityAlertRadius
-     */
-    public function setProximityAlertRadius($proximityAlertRadius)
-    {
-        $this->proximityAlertRadius = $proximityAlertRadius;
     }
 }

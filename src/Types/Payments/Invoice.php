@@ -3,23 +3,21 @@
 namespace TelegramBot\Api\Types\Payments;
 
 use TelegramBot\Api\BaseType;
+use TelegramBot\Api\TypeInterface;
 
 /**
- * Class Invoice
  * This object contains basic information about an invoice.
- *
- * @package TelegramBot\Api\Types\Payments
  */
-class Invoice extends BaseType
+class Invoice extends BaseType implements TypeInterface
 {
-    /**
-     * @var array
-     */
-    protected static array $requiredParams = ['title', 'description', 'start_parameter', 'currency', 'total_amount'];
+    protected static array $requiredParams = [
+        'title',
+        'description',
+        'start_parameter',
+        'currency',
+        'total_amount',
+    ];
 
-    /**
-     * @var array
-     */
     protected static array $map = [
         'title' => true,
         'description' => true,
@@ -30,126 +28,53 @@ class Invoice extends BaseType
 
     /**
      * Product name
-     *
-     * @var string
      */
-    protected $title;
+    protected string $title;
 
     /**
      * Product description
-     *
-     * @var string
      */
-    protected $description;
+    protected string $description;
 
     /**
      * Unique bot deep-linking parameter that can be used to generate this invoice
-     *
-     * @var string
      */
-    protected $startParameter;
+    protected string $startParameter;
 
     /**
      * Three-letter ISO 4217 currency code
-     *
-     * @var string
      */
-    protected $currency;
+    protected string $currency;
 
     /**
-     * Total price in the smallest units of the currency
-     *
-     * @var integer
+     * Total price in the smallest units of the currency (integer, not float/double).
+     * For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json,
+     * it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
      */
-    protected $totalAmount;
+    protected int $totalAmount;
 
-    /**
-     * @author MY
-     * @return string
-     */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @author MY
-     * @param string $title
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    }
-
-    /**
-     * @author MY
-     * @return string
-     */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * @author MY
-     * @param string $description
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
-
-    /**
-     * @author MY
-     * @return string
-     */
-    public function getStartParameter()
+    public function getStartParameter(): string
     {
         return $this->startParameter;
     }
 
-    /**
-     * @author MY
-     * @param string $startParameter
-     */
-    public function setStartParameter($startParameter)
-    {
-        $this->startParameter = $startParameter;
-    }
-
-    /**
-     * @author MY
-     * @return string
-     */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->currency;
     }
 
-    /**
-     * @author MY
-     * @param string $currency
-     */
-    public function setCurrency($currency)
-    {
-        $this->currency = $currency;
-    }
-
-    /**
-     * @author MY
-     * @return int
-     */
-    public function getTotalAmount()
+    public function getTotalAmount(): int
     {
         return $this->totalAmount;
-    }
-
-    /**
-     * @author MY
-     * @param int $totalAmount
-     */
-    public function setTotalAmount($totalAmount)
-    {
-        $this->totalAmount = $totalAmount;
     }
 }

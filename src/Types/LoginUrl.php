@@ -11,112 +11,55 @@ use TelegramBot\Api\TypeInterface;
  */
 class LoginUrl extends BaseType implements TypeInterface
 {
-    /**
-     * @var array
-     */
-    protected static array $requiredParams = ['url'];
+    protected static array $requiredParams = [
+        'url',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'url' => true,
         'forward_text' => true,
         'bot_username' => true,
-        'request_write_access' => true
+        'request_write_access' => true,
     ];
 
     /**
      * An HTTP URL to be opened with user authorization data added to the query string when the button is pressed.
-     *
-     * @var string
+     * If the user refuses to provide authorization data, the original URL without information about the user will be opened.
+     * The data added is the same as described in Receiving authorization data.
      */
-    protected $url;
+    protected string $url;
 
     /**
      * Optional. New text of the button in forwarded messages.
-     *
-     * @var string
      */
-    protected $forwardText;
+    protected ?string $forwardText = null;
 
     /**
-     * Optional. Username of a bot, which will be used for user authorization
-     *
-     * @var string
+     * Optional. Username of a bot, which will be used for user authorization.
+     * See Setting up a bot for more details. If not specified, the current bot's username will be assumed.
+     * The url's domain must be the same as the domain linked with the bot. See Linking your domain to the bot for more details.
      */
-    protected $botUsername;
+    protected ?string $botUsername = null;
 
     /**
      * Optional. Pass True to request the permission for your bot to send messages to the user.
-     *
-     * @var bool
      */
-    protected $requestWriteAccess;
+    protected ?bool $requestWriteAccess = null;
 
     /**
-     * @return string
+     * Create new instance of LoginUrl
      */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * @param string $url
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-    }
-
-    /**
-     * @return string
-     */
-    public function getForwardText()
-    {
-        return $this->forwardText;
-    }
-
-    /**
-     * @param string $forwardText
-     */
-    public function setForwardText($forwardText)
-    {
-        $this->forwardText = $forwardText;
-    }
-
-    /**
-     * @return string
-     */
-    public function getBotUsername()
-    {
-        return $this->botUsername;
-    }
-
-    /**
-     * @param string $botUsername
-     */
-    public function setBotUsername($botUsername)
-    {
-        $this->botUsername = $botUsername;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isRequestWriteAccess()
-    {
-        return $this->requestWriteAccess;
-    }
-
-    /**
-     * @param bool $requestWriteAccess
-     */
-    public function setRequestWriteAccess($requestWriteAccess)
-    {
-        $this->requestWriteAccess = $requestWriteAccess;
+    public static function create(
+        string $url = null,
+        ?string $forwardText = null,
+        ?string $botUsername = null,
+        ?bool $requestWriteAccess = null,
+    ) {
+        return new self([
+            'url' => $url,
+            'forward_text' => $forwardText,
+            'bot_username' => $botUsername,
+            'request_write_access' => $requestWriteAccess, 
+        ]);
     }
 }

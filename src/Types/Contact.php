@@ -6,25 +6,15 @@ use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
 
 /**
- * Class Contact
  * This object represents a phone contact.
- *
- * @package TelegramBot\Api\Types
  */
 class Contact extends BaseType implements TypeInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
-    protected static array $requiredParams = ['phone_number', 'first_name'];
+    protected static array $requiredParams = [
+        'phone_number',
+        'first_name',
+    ];
 
-    /**
-     * {@inheritdoc}
-     *
-     * @var array
-     */
     protected static array $map = [
         'phone_number' => true,
         'first_name' => true,
@@ -35,116 +25,51 @@ class Contact extends BaseType implements TypeInterface
 
     /**
      * Contact's phone number
-     *
-     * @var string
      */
-    protected $phoneNumber;
+    protected string $phoneNumber;
 
     /**
      * Contact's first name
-     *
-     * @var string
      */
-    protected $firstName;
+    protected string $firstName;
 
     /**
      * Optional. Contact's last name
-     *
-     * @var string
      */
-    protected $lastName;
+    protected string $lastName;
 
     /**
      * Optional. Contact's user identifier in Telegram
-     *
-     * @var int
      */
-    protected $userId;
+    protected ?int $userId = null;
 
     /**
      * Optional. Additional data about the contact in the form of a vCard
-     *
-     * @var string
      */
-    protected $vcard;
+    protected ?string $vcard = null;
 
-    /**
-     * @return string
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * @param string $firstName
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    /**
-     * @param string $lastName
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPhoneNumber()
+    public function getPhoneNumber(): string
     {
         return $this->phoneNumber;
     }
 
-    /**
-     * @param string $phoneNumber
-     */
-    public function setPhoneNumber($phoneNumber)
+    public function getFirstName(): string
     {
-        $this->phoneNumber = $phoneNumber;
+        return $this->firstName;
     }
 
-    /**
-     * @return int
-     */
-    public function getUserId()
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function getUserId(): ?int
     {
         return $this->userId;
     }
 
-    /**
-     * @param int $userId
-     */
-    public function setUserId($userId)
-    {
-        $this->userId = $userId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getVCard()
+    public function getVcard(): ?string
     {
         return $this->vcard;
-    }
-
-    /**
-     * @param string $vcard
-     */
-    public function setVCard($vcard)
-    {
-        $this->vcard = $vcard;
     }
 }

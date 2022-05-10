@@ -2,15 +2,13 @@
 
 namespace TelegramBot\Api;
 
+use JsonSerializable;
 use TelegramBot\Api\Exceptions\InvalidArgumentException;
 
 /**
- * Class BaseType
  * Base class for Telegram Types
- *
- * @package TelegramBot\Api
  */
-abstract class BaseType
+abstract class BaseType implements JsonSerializable
 {
     /**
      * Array of required data params for type
@@ -29,54 +27,56 @@ abstract class BaseType
      */
     private static function validate(array $data): void
     {
-        if (count(array_intersect_key(array_flip(static::$requiredParams), $data)) !== count(static::$requiredParams)) {
-            throw new InvalidArgumentException();
-        }        
+        $requiredKeys = array_flip(static::$requiredParams);
+        $intersection = array_intersect_key($requiredKeys, $data);
+        if (count($intersection) !== count(static::$requiredParams)) {
+            $missingKeys = array_keys(array_diff_key($requiredKeys, $data));
+            throw new InvalidArgumentException(sprintf('Missing keys: %s', implode(', ', $missingKeys)));
+        }
     }
 
-    private function map(array $data): static
+    protected function __construct(array $data)
     {
         foreach (static::$map as $key => $item) {
             if (isset($data[$key]) && (!is_array($data[$key]) || (is_array($data[$key]) && !empty($data[$key])))) {
-                $setter = 'set' . self::toCamelCase($key);
-                if ($item === true) {
-                    $this->$setter($data[$key]);
-                } else {
-                    $this->$setter($item::fromResponse($data[$key]));
-                }
+                $property = self::toCamelCase($key);
+                $this->$property = $item === true ? $data[$key] : $item::fromResponse($data[$key]);
             }
         }
-
-        return $this;
     }
 
     private static function toCamelCase(string $str): string
     {
-        return str_replace(' ', '', ucwords(str_replace('_', ' ', $str)));
+        return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $str))));
     }
 
-    public function toJson(bool $inner = false): mixed
+    public function toArray(): array
     {
         $output = [];
 
         foreach (static::$map as $key => $item) {
-            $property = lcfirst(self::toCamelCase($key));
+            $property = self::toCamelCase($key);
             if ($this->$property !== null) {
                 if (is_array($this->$property)) {
-                    $output[$key] = array_map(fn ($v) => is_object($v) ? $v->toJson(true) : $v, $this->$property);
+                    $output[$key] = array_map(fn ($v) => is_object($v) ? $v->toArray() : $v, $this->$property);
                 } else {
-                    $output[$key] = $item === true ? $this->$property : $this->$property->toJson(true);
+                    $output[$key] = $item === true ? $this->$property : $this->$property->toArray();
                 }
             }
         }
 
-        return $inner === false ? json_encode($output) : $output;
+        return $output;
     }
 
-    public static function fromResponse(array $data): static
+    public function jsonSerialize(): mixed
+    {
+        return $this->toArray();
+    }
+
+    public static function fromResponse(array $data): self
     {
         self::validate($data);
 
-        return (new static())->map($data);
+        return new static($data);
     }
 }
