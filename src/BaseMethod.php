@@ -9,19 +9,33 @@ namespace TelegramBot\Api;
  */
 abstract class BaseMethod
 {
-    protected const METHOD_NAME = '';
+    protected static string $methodName;
 
-    protected array $request = [];
+    protected static string $responseClass;
 
     public function getMethodName(): string
     {
-        return static::METHOD_NAME;
+        return static::$methodName;
     }
 
-    public function getRequest(): array
+    public function getRequest(): iterable
     {
-        return \array_filter($this->request, fn (mixed $val) => $val !== null);
+        foreach ($this as $key => $value) {
+            if ($value !== null) {
+                yield $this->toSnakeCase($key) => $value;
+            }
+        }
     }
 
-    abstract public function createResponse(array $data): BaseType;
+    public function createResponse(array $data): BaseType|array
+    {
+        $responeClass = static::$responseClass;
+
+        return $responeClass::fromResponse($data);
+    }
+
+    private static function toSnakeCase(string $str): string
+    {
+        return strtolower(preg_replace('/[A-Z]/', '_\\0', lcfirst($str)));
+    }
 }

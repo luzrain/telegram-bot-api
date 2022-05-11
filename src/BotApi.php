@@ -5,6 +5,12 @@ namespace TelegramBot\Api;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
 use TelegramBot\Api\Exceptions\TelegramException;
+use TelegramBot\Api\Methods\SendMediaGroup;
+use TelegramBot\Api\Types\InputFile;
+use TelegramBot\Api\Types\InputMediaAnimation;
+use TelegramBot\Api\Types\InputMediaAudio;
+use TelegramBot\Api\Types\InputMediaDocument;
+use TelegramBot\Api\Types\InputMediaVideo;
 use TelegramBot\Api\Types\ResponseParameters;
 
 /**
@@ -30,19 +36,47 @@ class BotApi
         $this->httpClient = new HttpClient($options);
     }
 
-    public function call(BaseMethod $method): BaseType
+    public function call(BaseMethod $method): BaseType|array
     {
-        $url = \sprintf(self::URL_API_ENDPOINT, $this->token, $method->getMethodName());
+        $url = sprintf(self::URL_API_ENDPOINT, $this->token, $method->getMethodName());
         $options = [];
-        $multipart = [];
+        $multiparts = [];
+        $files = [];
 
         foreach ($method->getRequest() as $name => $data) {
-            $contents = \is_scalar($data) ? $data : \json_encode($data);
-            $multipart[] = compact('name', 'contents');
+            if ($data instanceof InputFile) {
+                $files[] = $data;
+                $contents = $data->getAttachPath();
+            } else {
+                $contents = \is_scalar($data) ? $data : \json_encode($data);
+            }
+
+            if ($method instanceof SendMediaGroup && $name === 'media') {
+                foreach ($data as $inputMedia) {
+                    $files[] = $inputMedia->getMedia();
+                    if ($inputMedia instanceof InputMediaAudio ||
+                        $inputMedia instanceof InputMediaDocument ||
+                        $inputMedia instanceof InputMediaVideo ||
+                        $inputMedia instanceof InputMediaAnimation
+                    ) {
+                        if ($inputMedia->getThumb() instanceof InputFile) {
+                            $files[] = $inputMedia->getThumb();
+                        }
+                    }
+                }
+            }
+
+            $multiparts[] = compact('name', 'contents');
         }
 
-        if ($multipart !== []) {
-            $options['multipart'] = $multipart;
+        if ($multiparts !== []) {
+            $options['multipart'] = $multiparts;
+        }
+
+        foreach ($files as $file) {
+            $name = $file->getUniqueName();
+            $contents = \fopen($file->getFilePath(), 'r');
+            $options['multipart'][] = compact('name', 'contents');
         }
 
         try {

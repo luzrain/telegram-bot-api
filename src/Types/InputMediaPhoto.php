@@ -70,7 +70,7 @@ class InputMediaPhoto extends InputMedia
         return $this->type;
     }
 
-    public function getMedia(): string
+    public function getMedia(): InputFile|string
     {
         return $this->media;
     }
