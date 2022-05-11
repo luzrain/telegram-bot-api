@@ -1,3 +1,4 @@
+
 # PHP Telegram Bot Api
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/telegram-bot/api.svg?style=flat-square)](https://packagist.org/packages/telegram-bot/api)
@@ -27,55 +28,118 @@ $ composer require telegram-bot/api
 
 ## Usage
 
-See example [DevAnswerBot](https://github.com/TelegramBot/DevAnswerBot) (russian).
+See example @TODO
 
 ### API Wrapper
+
 #### Send message
 ``` php
-$bot = new \TelegramBot\Api\BotApi('YOUR_BOT_API_TOKEN');
+use TelegramBot\Api\BotApi;
+use TelegramBot\Api\Methods\SendMessage;
 
-$bot->sendMessage($chatId, $messageText);
+$bot = new BotApi('BOT_API_TOKEN');
+
+$request = new SendMessage(
+    chatId: 123456789,
+    text: 'Example text',
+);
+
+$response = $bot->call($request);
 ```
-#### Send document
-```php
-$bot = new \TelegramBot\Api\BotApi('YOUR_BOT_API_TOKEN');
 
-$document = new \CURLFile('document.txt');
-
-$bot->sendDocument($chatId, $document);
-```
 #### Send message with reply keyboard
 ```php
-$bot = new \TelegramBot\Api\BotApi('YOUR_BOT_API_TOKEN');
+use TelegramBot\Api\BotApi;
+use TelegramBot\Api\Types\ReplyKeyboardMarkup;
+use TelegramBot\Api\Types\KeyboardButton;
+use TelegramBot\Api\Types\KeyboardButtonPollType;
+use TelegramBot\Api\Types\WebAppInfo;
+use TelegramBot\Api\Methods\SendMessage;
 
-$keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup(array(array("one", "two", "three")), true); // true for one-time keyboard
+$bot = new BotApi('BOT_API_TOKEN');
 
-$bot->sendMessage($chatId, $messageText, null, false, null, $keyboard);
+$replyKeyboard = ReplyKeyboardMarkup::create(oneTimeKeyboard: true, resizeKeyboard: true)->addButtons(
+    KeyboardButton::create(text: 'Button 1'),
+    KeyboardButton::create(text: 'Button 2'),
+    ReplyKeyboardMarkup::break(),
+    KeyboardButton::create(text: 'Web App', webApp: WebAppInfo::create('https://github.com/')),
+    KeyboardButton::create(text: 'Create Poll', requestPoll: KeyboardButtonPollType::create()),
+);
+
+$request = new SendMessage(
+    chatId: 123456789,
+    text: 'Example text',
+    replyMarkup: $replyKeyboard,
+);
+
+$response = $bot->call($request);
 ```
+
 #### Send message with inline keyboard
 ```php
-$bot = new \TelegramBot\Api\BotApi('YOUR_BOT_API_TOKEN');
+use TelegramBot\Api\BotApi;
+use TelegramBot\Api\Types\InlineKeyboardMarkup;
+use TelegramBot\Api\Types\InlineKeyboardButton;
+use TelegramBot\Api\Methods\SendMessage;
 
-$keyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup(
-            [
-                [
-                    ['text' => 'link', 'url' => 'https://core.telegram.org']
-                ]
-            ]
-        );
-        
-$bot->sendMessage($chatId, $messageText, null, false, null, $keyboard);
+$bot = new BotApi('BOT_API_TOKEN');
+
+$inlineKeyboard = InlineKeyboardMarkup::create()->addButtons(
+    InlineKeyboardButton::create(text: 'Url button', url: 'https://google.com'),
+    InlineKeyboardButton::create(text: 'Callback button', callbackData: 'callback_data'),
+    InlineKeyboardMarkup::break(),
+    InlineKeyboardButton::create(text: 'Iinline query', switchInlineQueryCurrentChat: 'test'),
+);
+
+$request = new SendMessage(
+    chatId: 123456789,
+    text: 'Example text',
+    replyMarkup: $inlineKeyboard ,
+);
+
+$response = $bot->call($request);
 ```
+
+#### Send photo/video/document
+```php
+use TelegramBot\Api\BotApi;
+use TelegramBot\Api\Methods\SendPhoto;
+use TelegramBot\Api\Types\InputFile;
+
+$bot = new BotApi('BOT_API_TOKEN');
+
+$request = new SendPhoto(
+    chatId: 123456789,
+    photo: InputFile::create('/home/user/img/test.png'),
+);
+
+$response = $bot->call($request);
+```
+
 #### Send media group
 ```php
-$bot = new \TelegramBot\Api\BotApi('YOUR_BOT_API_TOKEN');
+use TelegramBot\Api\BotApi;
+use TelegramBot\Api\Methods\SendMediaGroup;
+use TelegramBot\Api\Types\InputMediaPhoto;
+use TelegramBot\Api\Types\InputFile;
 
-$media = new \TelegramBot\Api\Types\InputMedia\ArrayOfInputMedia();
-$media->addItem(new TelegramBot\Api\Types\InputMedia\InputMediaPhoto('https://avatars3.githubusercontent.com/u/9335727'));
-$media->addItem(new TelegramBot\Api\Types\InputMedia\InputMediaPhoto('https://avatars3.githubusercontent.com/u/9335727'));
-// Same for video
-// $media->addItem(new TelegramBot\Api\Types\InputMedia\InputMediaVideo('http://clips.vorwaerts-gmbh.de/VfE_html5.mp4'));
-$bot->sendMediaGroup($chatId, $media);
+$bot = new BotApi('BOT_API_TOKEN');
+
+$request = new SendMediaGroup(
+    chatId: 123456789,
+    media: [
+        InputMediaPhoto::create(
+            media: InputFile::create('/home/user/img/15311661465960.jpg'),
+            caption: 'Test media 1',
+        ),
+        InputMediaPhoto::create(
+            media: InputFile::create('/home/user/img/16176321866250.png'),
+            caption: 'Test media 2',
+        ),
+    ],
+);
+
+$response = $bot->call($request);
 ```
 
 #### Client
