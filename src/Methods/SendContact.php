@@ -5,17 +5,16 @@ namespace TelegramBot\Api\Methods;
 use TelegramBot\Api\BaseMethod;
 use TelegramBot\Api\Types\ForceReply;
 use TelegramBot\Api\Types\InlineKeyboardMarkup;
-use TelegramBot\Api\Types\InputFile;
 use TelegramBot\Api\Types\Message;
 use TelegramBot\Api\Types\ReplyKeyboardMarkup;
 use TelegramBot\Api\Types\ReplyKeyboardRemove;
 
 /**
- * Use this method to send photos. On success, the sent Message is returned.
+ * Use this method to send phone contacts. On success, the sent Message is returned.
  */
-final class SendPhoto extends BaseMethod
+final class SendContact extends BaseMethod
 {
-    protected static string $methodName = 'sendPhoto';
+    protected static string $methodName = 'sendContact';
     protected static string $responseClass = Message::class;
 
     public function __construct(
@@ -26,30 +25,25 @@ final class SendPhoto extends BaseMethod
         protected int|string $chatId,
 
         /**
-         * Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended),
-         * pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.
-         * The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total.
-         * Width and height ratio must be at most 20. More info on Sending Files »
+         * Contact's phone number
          */
-        protected InputFile|string $photo,
+        protected string $phoneNumber,
 
         /**
-         * Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
+         * Contact's first name
          */
-        protected string|null $caption = null,
+        protected string $firstName,
 
         /**
-         * Mode for parsing entities in the photo caption. See formatting options for more details.
-         *
-         * @see https://core.telegram.org/bots/api#formatting-options
+         * Contact's last name
          */
-        protected string|null $parseMode = null,
+        protected string|null $lastName = null,
 
         /**
-         * A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+         * Additional data about the contact in the form of a vCard, 0-2048 bytes
          */
-        protected array|null $captionEntities = null,
-
+        protected string|null $vcard = null,
+ 
         /**
          * Sends the message silently. Users will receive a notification with no sound.
          */

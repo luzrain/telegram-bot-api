@@ -15,7 +15,6 @@ use TelegramBot\Api\Types\ReplyKeyboardRemove;
 final class SendMessage extends BaseMethod
 {
     protected static string $methodName = 'sendMessage';
-
     protected static string $responseClass = Message::class;
 
     public function __construct(
@@ -32,6 +31,8 @@ final class SendMessage extends BaseMethod
 
         /**
          * Mode for parsing entities in the message text. See formatting options for more details.
+         *
+         * @see https://core.telegram.org/bots/api#formatting-options
          */
         protected string|null $parseMode = null,
 
@@ -58,7 +59,7 @@ final class SendMessage extends BaseMethod
         /**
          * If the message is a reply, ID of the original message
          */
-        protected bool|null $replyToMessageId = null,
+        protected int|null $replyToMessageId = null,
 
         /**
          * Pass True, if the message should be sent even if the specified replied-to message is not found

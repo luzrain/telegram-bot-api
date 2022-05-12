@@ -5,51 +5,56 @@ namespace TelegramBot\Api\Methods;
 use TelegramBot\Api\BaseMethod;
 use TelegramBot\Api\Types\ForceReply;
 use TelegramBot\Api\Types\InlineKeyboardMarkup;
-use TelegramBot\Api\Types\InputFile;
 use TelegramBot\Api\Types\Message;
 use TelegramBot\Api\Types\ReplyKeyboardMarkup;
 use TelegramBot\Api\Types\ReplyKeyboardRemove;
 
 /**
- * Use this method to send photos. On success, the sent Message is returned.
+ * Use this method to send point on the map. On success, the sent Message is returned.
  */
-final class SendPhoto extends BaseMethod
+final class SendLocation extends BaseMethod
 {
-    protected static string $methodName = 'sendPhoto';
+    protected static string $methodName = 'sendLocation';
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
+ 
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */
         protected int|string $chatId,
 
         /**
-         * Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended),
-         * pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.
-         * The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total.
-         * Width and height ratio must be at most 20. More info on Sending Files »
+         * Latitude of the location
          */
-        protected InputFile|string $photo,
+        protected float $latitude,
 
         /**
-         * Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
+         * Longitude of the location
          */
-        protected string|null $caption = null,
+        protected float $longitude,
 
         /**
-         * Mode for parsing entities in the photo caption. See formatting options for more details.
-         *
-         * @see https://core.telegram.org/bots/api#formatting-options
+         * The radius of uncertainty for the location, measured in meters; 0-1500
          */
-        protected string|null $parseMode = null,
+        protected float|null $horizontalAccuracy = null,
 
         /**
-         * A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+         * Period in seconds for which the location will be updated (see Live Locations, should be between 60 and 86400.
          */
-        protected array|null $captionEntities = null,
+        protected int|null $livePeriod = null,
 
+        /**
+         * For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
+         */
+        protected int|null $heading = null,
+
+        /**
+         * For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters.
+         * Must be between 1 and 100000 if specified.
+         */
+        protected int|null $proximityAlertRadius = null,
+  
         /**
          * Sends the message silently. Users will receive a notification with no sound.
          */

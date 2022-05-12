@@ -10,7 +10,6 @@ namespace TelegramBot\Api;
 abstract class BaseMethod
 {
     protected static string $methodName;
-
     protected static string $responseClass;
 
     public function getMethodName(): string
@@ -27,8 +26,12 @@ abstract class BaseMethod
         }
     }
 
-    public function createResponse(array $data): BaseType|array
+    public function createResponse(array|string|int|bool $data): BaseType|array|string|int|bool
     {
+        if (is_scalar($data)) {
+            return $data;
+        }
+
         $responeClass = static::$responseClass;
 
         return $responeClass::fromResponse($data);

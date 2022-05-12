@@ -11,11 +11,12 @@ use TelegramBot\Api\Types\ReplyKeyboardMarkup;
 use TelegramBot\Api\Types\ReplyKeyboardRemove;
 
 /**
- * Use this method to send photos. On success, the sent Message is returned.
+ * As of v.4.0, Telegram clients support rounded square mp4 videos of up to 1 minute long. Use this method to send video messages.
+ * On success, the sent Message is returned.
  */
-final class SendPhoto extends BaseMethod
+final class SendVideoNote extends BaseMethod
 {
-    protected static string $methodName = 'sendPhoto';
+    protected static string $methodName = 'sendVideoNote';
     protected static string $responseClass = Message::class;
 
     public function __construct(
@@ -26,29 +27,27 @@ final class SendPhoto extends BaseMethod
         protected int|string $chatId,
 
         /**
-         * Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended),
-         * pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.
-         * The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total.
-         * Width and height ratio must be at most 20. More info on Sending Files »
+         * Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended)
+         * or upload a new video using multipart/form-data.
+         * Sending video notes by a URL is currently unsupported
          */
-        protected InputFile|string $photo,
+        protected InputFile|string $videoNote,
 
         /**
-         * Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
+         * Duration of sent video in seconds
          */
-        protected string|null $caption = null,
+        protected int|null $duration = null,
 
         /**
-         * Mode for parsing entities in the photo caption. See formatting options for more details.
-         *
-         * @see https://core.telegram.org/bots/api#formatting-options
+         * Video width and height, i.e. diameter of the video message
          */
-        protected string|null $parseMode = null,
+        protected int|null $length = null,
 
         /**
-         * A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+         * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side.
+         * The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320.
          */
-        protected array|null $captionEntities = null,
+        protected InputFile|string|null $thumb = null,
 
         /**
          * Sends the message silently. Users will receive a notification with no sound.

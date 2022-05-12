@@ -12,6 +12,5 @@ use TelegramBot\Api\Types\User;
 final class GetMe extends BaseMethod
 {
     protected static string $methodName = 'getMe';
-
     protected static string $responseClass = User::class;
 }

@@ -36,7 +36,14 @@ class BotApi
         $this->httpClient = new HttpClient($options);
     }
 
-    public function call(BaseMethod $method): BaseType|array
+    /**
+     * Execute telergam method
+     *
+     * @param BaseMethod $method
+     * @return BaseType|array|string|int|bool
+     * @throws TelegramException
+     */
+    public function call(BaseMethod $method): BaseType|array|string|int|bool
     {
         $url = sprintf(self::URL_API_ENDPOINT, $this->token, $method->getMethodName());
         $options = [];

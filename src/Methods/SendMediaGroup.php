@@ -13,7 +13,6 @@ use TelegramBot\Api\Types\Arrays\ArrayOfMessages;
 final class SendMediaGroup extends BaseMethod
 {
     protected static string $methodName = 'sendMediaGroup';
-
     protected static string $responseClass = ArrayOfMessages::class;
 
     public function __construct(
