@@ -4,8 +4,11 @@ namespace TelegramBot\Api;
 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\RequestOptions;
 use TelegramBot\Api\Exceptions\TelegramException;
+use TelegramBot\Api\Methods\GetFile;
 use TelegramBot\Api\Methods\SendMediaGroup;
+use TelegramBot\Api\Types\File;
 use TelegramBot\Api\Types\InputFile;
 use TelegramBot\Api\Types\InputMediaAnimation;
 use TelegramBot\Api\Types\InputMediaAudio;
@@ -14,7 +17,7 @@ use TelegramBot\Api\Types\InputMediaVideo;
 use TelegramBot\Api\Types\ResponseParameters;
 
 /**
- * 
+ * Service for execute telegram methods
  */
 class BotApi
 {
@@ -55,7 +58,7 @@ class BotApi
                 $files[] = $data;
                 $contents = $data->getAttachPath();
             } else {
-                $contents = \is_scalar($data) ? $data : \json_encode($data);
+                $contents = is_scalar($data) ? $data : json_encode($data);
             }
 
             if ($method instanceof SendMediaGroup && $name === 'media') {
@@ -77,13 +80,13 @@ class BotApi
         }
 
         if ($multiparts !== []) {
-            $options['multipart'] = $multiparts;
+            $options[RequestOptions::MULTIPART] = $multiparts;
         }
 
         foreach ($files as $file) {
             $name = $file->getUniqueName();
-            $contents = \fopen($file->getFilePath(), 'r');
-            $options['multipart'][] = compact('name', 'contents');
+            $contents = fopen($file->getFilePath(), 'r');
+            $options[RequestOptions::MULTIPART][] = compact('name', 'contents');
         }
 
         try {
@@ -92,7 +95,7 @@ class BotApi
             $httpResponse = $exception->getResponse();
         }
 
-        $response = \json_decode($httpResponse->getBody(), true);
+        $response = json_decode($httpResponse->getBody(), true);
 
         if ($response['ok'] === false) {
             $parameters = isset($response['parameters']) ? ResponseParameters::fromResponse($response['parameters']) : null;
@@ -100,5 +103,37 @@ class BotApi
         }
 
         return $method->createResponse($response['result']);
+    }
+
+    /**
+     * Download telegram file
+     *
+     * @param File|string $file File object or string with fileId
+     * @return string path to saved file on filesystem
+     * @throws TelegramException
+     */
+    public function downloadFile(File|string $file): string
+    {
+        if (is_string($file)) {
+            $file = $this->call(new GetFile($file));
+        }
+
+        $fileUrl = sprintf(self::URL_FILE_ENDPOINT, $this->token, $file->getFilePath());
+        $fileExtension = pathinfo($file->getFilePath(), PATHINFO_EXTENSION);
+        $downloadFilePath = sys_get_temp_dir() . '/' . uniqid('tgfile_', true) . '.' . $fileExtension;
+        $options = [RequestOptions::SINK => $downloadFilePath];
+
+        try {
+            $this->httpClient->request('GET', $fileUrl, $options);
+        } catch (ClientException $exception) {
+            if (is_file($downloadFilePath)) {
+                unlink($downloadFilePath);
+            }
+
+            $response = json_decode($exception->getResponse()->getBody(), true);
+            throw new TelegramException($response['description'], $response['error_code'], $exception);
+        }
+
+        return $downloadFilePath;
     }
 }
