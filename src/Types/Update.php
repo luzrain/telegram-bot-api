@@ -15,6 +15,21 @@ use TelegramBot\Api\Types\Payments\ShippingQuery;
  */
 class Update extends BaseType implements TypeInterface
 {
+    public const MESSAGE_TYPE = 'message';
+    public const EDITED_MESSAGE_TYPE = 'edited_message';
+    public const CHANNEL_POST_TYPE = 'channel_post';
+    public const EDITED_CHANNEL_POST_TYPE = 'edited_channel_post';
+    public const INLINE_QUERY_TYPE = 'inline_query';
+    public const CHOSEN_INLINE_RESULT_TYPE = 'chosen_inline_result';
+    public const CALLBACK_QUERY_TYPE = 'callback_query';
+    public const SHIPPING_QUERY_TYPE = 'shipping_query';
+    public const PRE_CHECKOUT_QUERY_TYPE = 'pre_checkout_query';
+    public const POLL_TYPE = 'poll';
+    public const POLL_ANSWER_TYPE = 'poll_answer';
+    public const MY_CHAT_MEMBER_TYPE = 'my_chat_member';
+    public const CHAT_MEMBER_TYPE = 'chat_member';
+    public const CHAT_JOIN_REQUEST_TYPE = 'chat_join_request';
+
     protected static array $requiredParams = [
         'update_id',
     ];
