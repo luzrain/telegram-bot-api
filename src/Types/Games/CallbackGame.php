@@ -10,4 +10,8 @@ use TelegramBot\Api\TypeInterface;
  */
 class CallbackGame extends BaseType implements TypeInterface
 {
+    public static function create()
+    {
+        return new self();
+    }
 }

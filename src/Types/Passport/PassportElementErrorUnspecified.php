@@ -14,8 +14,11 @@ class PassportElementErrorUnspecified extends PassportElementError
         'message' => true,
     ];
 
-    public static function create(string $type, string $elementHash, string $message): self
-    {
+    public static function create(
+        string $type,
+        string $elementHash,
+        string $message,
+    ): self {
         $instance = new self();
         $instance->type = $type;
         $instance->elementHash = $elementHash;

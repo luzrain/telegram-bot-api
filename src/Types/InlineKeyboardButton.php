@@ -83,9 +83,6 @@ class InlineKeyboardButton extends BaseType implements TypeInterface
      */
     protected ?bool $pay = null;
 
-    /**
-     * Create new instance of InlineKeyboardButton
-     */
     public static function create(
         string $text,
         ?string $url = null,
@@ -97,17 +94,18 @@ class InlineKeyboardButton extends BaseType implements TypeInterface
         ?CallbackGame $callbackGame = null,
         ?bool $pay = null,
     ) {
-        return new self([
-            'text' => $text,
-            'url' => $url,
-            'callback_data' => $callbackData,
-            'web_app' => $webApp?->toArray(),
-            'login_url' => $loginUrl?->toArray(),
-            'switch_inline_query' => $switchInlineQuery,
-            'switch_inline_query_current_chat' => $switchInlineQueryCurrentChat,
-            'callback_game' => $callbackGame?->toArray(),
-            'pay' => $pay,
-        ]);
+        $instance = new self();
+        $instance->text = $text;
+        $instance->url = $url;
+        $instance->callbackData = $callbackData;
+        $instance->webApp = $webApp;
+        $instance->loginUrl = $loginUrl;
+        $instance->switchInlineQuery = $switchInlineQuery;
+        $instance->switchInlineQueryCurrentChat = $switchInlineQueryCurrentChat;
+        $instance->callbackGame = $callbackGame;
+        $instance->pay = $pay;
+
+        return $instance;
     }
 
     public function getText(): string

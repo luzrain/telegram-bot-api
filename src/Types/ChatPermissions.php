@@ -63,6 +63,29 @@ class ChatPermissions extends BaseType implements TypeInterface
      */
     protected ?bool $canPinMessages = null;
 
+    public static function create(
+        ?bool $canSendMessages = null,
+        ?bool $canSendMediaMessages = null,
+        ?bool $canSendPolls = null,
+        ?bool $canSendOtherMessages = null,
+        ?bool $canAddWebPagePreviews = null,
+        ?bool $canChangeInfo = null,
+        ?bool $canInviteUsers = null,
+        ?bool $canPinMessages = null,
+    ): self {
+        $instance = new self();
+        $instance->canSendMessages = $canSendMessages;
+        $instance->canSendMediaMessages = $canSendMediaMessages;
+        $instance->canSendPolls = $canSendPolls;
+        $instance->canSendOtherMessages = $canSendOtherMessages;
+        $instance->canAddWebPagePreviews = $canAddWebPagePreviews;
+        $instance->canChangeInfo = $canChangeInfo;
+        $instance->canInviteUsers = $canInviteUsers;
+        $instance->canPinMessages = $canPinMessages;
+
+        return $instance;
+    }
+
     public function isCanSendMessages(): ?bool
     {
         return $this->canSendMessages;

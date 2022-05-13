@@ -60,13 +60,14 @@ class KeyboardButton extends BaseType implements TypeInterface
         ?KeyboardButtonPollType $requestPoll = null,
         ?WebAppInfo $webApp = null,
     ) {
-        return new self([
-            'text' => $text,
-            'request_contact' => $requestContact,
-            'request_location' => $requestLocation,
-            'request_poll' => $requestPoll?->toArray(),
-            'web_app' => $webApp?->toArray(),
-        ]);
+        $instance = new self();
+        $instance->text = $text;
+        $instance->requestContact = $requestContact;
+        $instance->requestLocation = $requestLocation;
+        $instance->requestPoll = $requestPoll;
+        $instance->webApp = $webApp;
+
+        return $instance;
     }
 
     public function getText(): string

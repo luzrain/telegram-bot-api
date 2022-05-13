@@ -92,6 +92,35 @@ class ChatAdministratorRights extends BaseType implements TypeInterface
      */
     protected ?bool $canPinMessages = null;
 
+    public static function create(
+        bool $isAnonymous,
+        bool $canManageChat,
+        bool $canDeleteMessages,
+        bool $canManageVideoChats,
+        bool $canRestrictMembers,
+        bool $canPromoteMembers,
+        bool $canChangeInfo,
+        bool $canInviteUsers,
+        ?bool $canPostMessages = null,
+        ?bool $canEditMessages = null,
+        ?bool $canPinMessages = null,
+    ): self {
+        $instance = new self();
+        $instance->isAnonymous = $isAnonymous;
+        $instance->canManageChat = $canManageChat;
+        $instance->canDeleteMessages = $canDeleteMessages;
+        $instance->canManageVideoChats = $canManageVideoChats;
+        $instance->canRestrictMembers = $canRestrictMembers;
+        $instance->canPromoteMembers = $canPromoteMembers;
+        $instance->canChangeInfo = $canChangeInfo;
+        $instance->canInviteUsers = $canInviteUsers;
+        $instance->canPostMessages = $canPostMessages;
+        $instance->canEditMessages = $canEditMessages;
+        $instance->canPinMessages = $canPinMessages;
+
+        return $instance;
+    }
+
     public function isAnonymous(): bool
     {
         return $this->isAnonymous;

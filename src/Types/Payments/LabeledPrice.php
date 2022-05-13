@@ -32,6 +32,17 @@ class LabeledPrice extends BaseType implements TypeInterface
      */
     protected int $amount;
 
+    public static function create(
+        string $label,
+        int $amount,
+    ): self {
+        $instance = new self();
+        $instance->label = $label;
+        $instance->amount = $amount;
+
+        return $instance;
+    }
+
     public function getLabel(): string
     {
         return $this->label;

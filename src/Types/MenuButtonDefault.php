@@ -18,7 +18,12 @@ class MenuButtonDefault extends MenuButton
     /**
      * Type of the button, must be default
      */
-    protected string $type;
+    protected string $type = 'default';
+
+    public static function create(): self
+    {
+        return new self();
+    }
 
     public function getType(): string
     {

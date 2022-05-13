@@ -10,7 +10,7 @@ use TelegramBot\Api\TypeInterface;
  */
 class InlineKeyboardMarkup extends BaseType implements TypeInterface
 {
-    private const BREAK = 1;
+    private const BREAK = 2;
 
     protected static array $requiredParams = [
         'inline_keyboard',
@@ -30,9 +30,7 @@ class InlineKeyboardMarkup extends BaseType implements TypeInterface
      */
     public static function create(): self
     {
-        return new self([
-            'inline_keyboard' => [],
-        ]);
+        return new self();
     }
 
     /**

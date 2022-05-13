@@ -46,6 +46,21 @@ class MaskPosition extends BaseType implements TypeInterface
      */
     protected float $scale;
 
+    public static function create(
+        float $point,
+        float $xShift,
+        float $yShift,
+        float $scale,
+    ): self {
+        $instance = new self();
+        $instance->point = $point;
+        $instance->xShift = $xShift;
+        $instance->yShift = $yShift;
+        $instance->scale = $scale;
+
+        return $instance;
+    }
+
     public function getPoint(): float
     {
         return $this->point;

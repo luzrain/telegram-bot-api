@@ -38,7 +38,11 @@ abstract class BaseType implements JsonSerializable
         }
     }
 
-    protected function __construct(array $data)
+    protected function __construct()
+    {
+    }
+
+    private function map(array $data): self
     {
         foreach (static::$map as $key => $item) {
             if (isset($data[$key]) && (!is_array($data[$key]) || (is_array($data[$key]) && !empty($data[$key])))) {
@@ -46,6 +50,8 @@ abstract class BaseType implements JsonSerializable
                 $this->$property = $item === true ? $data[$key] : $item::fromResponse($data[$key]);
             }
         }
+        
+        return $this;
     }
 
     private static function toCamelCase(string $str): string
@@ -80,6 +86,6 @@ abstract class BaseType implements JsonSerializable
     {
         self::validate($data);
 
-        return new static($data);
+        return (new static())->map($data);
     }
 }

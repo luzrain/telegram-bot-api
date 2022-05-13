@@ -22,7 +22,7 @@ class MenuButtonWebApp extends MenuButton
     /**
      * Type of the button, must be web_app
      */
-    protected string $type;
+    protected string $type = 'web_app';
 
     /**
      * Text on the button
@@ -34,6 +34,15 @@ class MenuButtonWebApp extends MenuButton
      * The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery.
      */
     protected WebAppInfo $webApp;
+
+    public static function create(string $text, WebAppInfo $webApp): self
+    {
+        $instance = new self();
+        $instance->text = $text;
+        $instance->webApp = $webApp;
+
+        return $instance;
+    }
 
     public function getType(): string
     {

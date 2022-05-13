@@ -28,8 +28,10 @@ class BotCommandScopeChatMember extends BotCommandScope
      */
     protected int $userId;
 
-    public static function create(int|string $chatId, int $userId): self
-    {
+    public static function create(
+        int|string $chatId,
+        int $userId,
+    ): self {
         $instance = new self();
         $instance->chatId = $chatId;
         $instance->userId = $userId;

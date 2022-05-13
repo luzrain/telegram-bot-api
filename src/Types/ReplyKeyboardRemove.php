@@ -34,15 +34,13 @@ class ReplyKeyboardRemove extends BaseType implements TypeInterface
      */
     protected ?bool $selective = null;
 
-    /**
-     * Create new instance of ReplyKeyboardRemove
-     */
     public static function create(?bool $selective = null): self
     {
-        return new self([
-            'remove_keyboard' => true,
-            'selective' => $selective,
-        ]);
+        $instance = new self();
+        $instance->removeKeyboard = true;
+        $instance->selective = $selective;
+
+        return $instance;
     }
 
     public function isRemoveKeyboard(): bool

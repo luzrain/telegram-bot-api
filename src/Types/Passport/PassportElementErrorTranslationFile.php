@@ -14,8 +14,11 @@ class PassportElementErrorTranslationFile extends PassportElementError
         'message' => true,
     ];
 
-    public static function create(string $type, string $fileHash, string $message): self
-    {
+    public static function create(
+        string $type,
+        string $fileHash,
+        string $message,
+    ): self {
         $instance = new self();
         $instance->type = $type;
         $instance->fileHash = $fileHash;

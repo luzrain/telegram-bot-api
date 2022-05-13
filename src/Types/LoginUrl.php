@@ -46,20 +46,18 @@ class LoginUrl extends BaseType implements TypeInterface
      */
     protected ?bool $requestWriteAccess = null;
 
-    /**
-     * Create new instance of LoginUrl
-     */
     public static function create(
         string $url = null,
         ?string $forwardText = null,
         ?string $botUsername = null,
         ?bool $requestWriteAccess = null,
     ) {
-        return new self([
-            'url' => $url,
-            'forward_text' => $forwardText,
-            'bot_username' => $botUsername,
-            'request_write_access' => $requestWriteAccess, 
-        ]);
+        $instance = new self();
+        $instance->url = $url;
+        $instance->forwardText = $forwardText;
+        $instance->botUsername = $botUsername;
+        $instance->requestWriteAccess = $requestWriteAccess;
+
+        return $instance;
     }
 }

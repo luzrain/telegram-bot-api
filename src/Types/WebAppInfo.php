@@ -23,12 +23,12 @@ class WebAppInfo extends BaseType implements TypeInterface
      */
     protected string $url;
 
-    /**
-     * Create new instance of WebAppInfo
-     */
     public static function create(string $url)
     {
-        return new self(['url' => $url]);
+        $instance = new self();
+        $instance->url = $url;
+
+        return $instance;
     }
 
     public function getUrl(): string

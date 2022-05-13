@@ -64,19 +64,20 @@ class ReplyKeyboardMarkup extends BaseType implements TypeInterface
         ?string $inputFieldPlaceholder = null,
         ?bool $selective = null,
     ): self {
-        return new self([
-            'keyboard' => [],
-            'resize_keyboard' => $resizeKeyboard,
-            'one_time_keyboard' => $oneTimeKeyboard,
-            'input_field_placeholder' => $inputFieldPlaceholder,
-            'selective' => $selective,
-        ]);
+        $instance = new self();
+        $instance->resizeKeyboard = $resizeKeyboard;
+        $instance->oneTimeKeyboard = $oneTimeKeyboard;
+        $instance->inputFieldPlaceholder = $inputFieldPlaceholder;
+        $instance->selective = $selective;
+
+        return $instance;
     }
 
     /**
      * Add buttons into markup
      */
-    public function addButtons(KeyboardButton|int ...$arrayOfButtons): self {
+    public function addButtons(KeyboardButton|int ...$arrayOfButtons): self
+    {
         $rowIndex = 0;
         $this->keyboard = [$rowIndex => []];
 

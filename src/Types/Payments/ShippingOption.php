@@ -40,6 +40,19 @@ class ShippingOption extends BaseType implements TypeInterface
      */
     protected array $prices;
 
+    public static function create(
+        string $id,
+        string $title,
+        array $prices,
+    ): self {
+        $instance = new self();
+        $instance->id = $id;
+        $instance->title = $title;
+        $instance->prices = $prices;
+
+        return $instance;
+    }
+
     public function getId(): string
     {
         return $this->id;

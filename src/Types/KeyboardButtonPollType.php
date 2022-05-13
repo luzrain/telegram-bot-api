@@ -22,28 +22,28 @@ class KeyboardButtonPollType extends BaseType implements TypeInterface
      */
     protected ?string $type = null;
 
-    /**
-     * Create new instance of KeyboardButtonPollType
-     */
     public static function create()
     {
-        return new self(['type' => '']);
+        $instance = new self();
+        $instance->type = '';
+        
+        return $instance;
     }
 
-    /**
-     * Create new instance of quiz KeyboardButtonPollType
-     */
     public static function createQuiz()
     {
-        return new self(['type' => 'quiz']);
+        $instance = new self();
+        $instance->type = 'quiz';
+
+        return $instance;
     }
 
-    /**
-     * Create new instance of regular KeyboardButtonPollType
-     */
     public static function createRegular()
     {
-        return new self(['type' => 'regular']);
+        $instance = new self();
+        $instance->type = 'regular';
+
+        return $instance;
     }
 
     public function getType(): ?string

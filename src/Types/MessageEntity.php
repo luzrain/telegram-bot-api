@@ -6,7 +6,6 @@ use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
 
 /**
- * @TODO this needs to be creatable!
  * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
  */
 class MessageEntity extends BaseType implements TypeInterface
@@ -76,6 +75,25 @@ class MessageEntity extends BaseType implements TypeInterface
      * Optional. For “pre” only, the programming language of the entity text
      */
     protected ?string $language = null;
+
+    public static function create(
+        string $type,
+        int $offset,
+        int $length,
+        ?string $url = null,
+        ?User $user = null,
+        ?string $language = null,
+    ): self {
+        $instance = new self();
+        $instance->type = $type;
+        $instance->offset = $offset;
+        $instance->length = $length;
+        $instance->url = $url;
+        $instance->user = $user;
+        $instance->language = $language;
+
+        return $instance;
+    }
 
     public function getType(): string
     {

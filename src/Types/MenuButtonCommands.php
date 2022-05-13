@@ -18,7 +18,12 @@ class MenuButtonCommands extends MenuButton
     /**
      * Type of the button, must be commands
      */
-    protected string $type;
+    protected string $type = 'commands';
+
+    public static function create(): self
+    {
+        return new self();
+    }
 
     public function getType(): string
     {

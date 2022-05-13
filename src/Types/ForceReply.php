@@ -39,16 +39,16 @@ class ForceReply extends BaseType implements TypeInterface
      */
     protected ?bool $selective = null;
 
-    /**
-     * Create new instance of ForceReply
-     */
-    public static function create(?string $inputFieldPlaceholder = null, ?bool $selective = null): self
-    {
-        return new self([
-            'force_reply' => true,
-            'input_field_placeholder' => $inputFieldPlaceholder,
-            'selective' => $selective,
-        ]);
+    public static function create(
+        ?string $inputFieldPlaceholder = null,
+        ?bool $selective = null,
+    ): self {
+        $instance = new self();
+        $instance->forceReply = true;
+        $instance->inputFieldPlaceholder = $inputFieldPlaceholder;
+        $instance->selective = $selective;
+
+        return $instance;
     }
 
     public function isForceReply(): bool

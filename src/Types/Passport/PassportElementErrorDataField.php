@@ -15,8 +15,12 @@ class PassportElementErrorDataField extends PassportElementError
         'message' => true,
     ];
 
-    public static function create(string $type, string $fieldName, string $dataHash, string $message): self
-    {
+    public static function create(
+        string $type,
+        string $fieldName,
+        string $dataHash,
+        string $message,
+    ): self {
         $instance = new self();
         $instance->type = $type;
         $instance->fieldName = $fieldName;
