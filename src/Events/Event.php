@@ -24,7 +24,7 @@ abstract class Event
      * @return BaseMethod|null
      * @throws TelegramActionException
      */
-    protected function call(mixed ...$params): BaseMethod|null
+    protected function callback(mixed ...$params): BaseMethod|null
     {
         try {
             return ($this->action)(...$params);

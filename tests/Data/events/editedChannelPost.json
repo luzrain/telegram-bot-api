@@ -1,19 +1,19 @@
 {
-    "update_id":264807285,
-    "edited_channel_post":{
-        "message_id":2,
-        "sender_chat":{
-            "id":-1001505111111,
-            "title":"TestChannel999999",
-            "type":"channel"
+    "update_id": 264807285,
+    "edited_channel_post": {
+        "message_id": 2,
+        "sender_chat": {
+            "id": -1001505111111,
+            "title": "TestChannel999999",
+            "type": "channel"
         },
-        "chat":{
-            "id":-1001505111111,
-            "title":"TestChannel999999",
-            "type":"channel"
+        "chat": {
+            "id": -1001505111111,
+            "title": "TestChannel999999",
+            "type": "channel"
         },
-        "date":1651939149,
-        "edit_date":1651939319,
-        "text":"test test"
+        "date": 1651939149,
+        "edit_date": 1651939319,
+        "text": "test test"
     }
 }

@@ -1,20 +1,20 @@
 <?php
 
-namespace TelegramBot\Api\Events\Events;
+namespace TelegramBot\Api\Events\Event;
 
 use TelegramBot\Api\BaseMethod;
 use TelegramBot\Api\Events\Event;
 use TelegramBot\Api\Types\Update;
 
-final class PreCheckoutQuery extends Event
+final class ShippingQuery extends Event
 {
     public function executeChecker(Update $update): bool
     {
-        return $update->getPreCheckoutQuery() !== null;
+        return $update->getShippingQuery() !== null;
     }
 
     public function executeAction(Update $update): BaseMethod|null
     {
-        return $this->call($update->getPreCheckoutQuery());
+        return $this->callback($update->getShippingQuery());
     }
 }

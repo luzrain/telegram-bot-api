@@ -1,20 +1,20 @@
 <?php
 
-namespace TelegramBot\Api\Events\Events;
+namespace TelegramBot\Api\Events\Event;
 
 use TelegramBot\Api\BaseMethod;
 use TelegramBot\Api\Events\Event;
 use TelegramBot\Api\Types\Update;
 
-final class EditedChannelPost extends Event
+final class Message extends Event
 {
     public function executeChecker(Update $update): bool
     {
-        return $update->getEditedChannelPost() !== null;
+        return $update->getMessage() !== null;
     }
 
     public function executeAction(Update $update): BaseMethod|null
     {
-        return $this->call($update->getEditedChannelPost());
+        return $this->callback($update->getMessage());
     }
 }

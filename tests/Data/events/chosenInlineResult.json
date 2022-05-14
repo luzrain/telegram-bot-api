@@ -1,14 +1,14 @@
 {
-    "update_id":264807333,
-    "chosen_inline_result":{
-        "from":{
-            "id":123456789,
-            "is_bot":false,
-            "first_name":"Anton",
-            "username":"User2384885921",
-            "language_code":"ru"
+    "update_id": 264807333,
+    "chosen_inline_result": {
+        "from": {
+            "id": 123456789,
+            "is_bot": false,
+            "first_name": "Anton",
+            "username": "User2384885921",
+            "language_code": "ru"
         },
-        "query":"",
-        "result_id":"123456"
+        "query": "",
+        "result_id": "123456"
     }
 }

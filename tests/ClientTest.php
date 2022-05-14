@@ -22,6 +22,9 @@ class ClientTest extends TestCase
         yield ['callbackQuery', $this->getDataFile('events/callbackQuery.json')];
         yield ['shippingQuery', $this->getDataFile('events/shippingQuery.json')];
         yield ['preCheckoutQuery', $this->getDataFile('events/preCheckoutQuery.json')];
+        yield ['poll', $this->getDataFile('events/poll.json')];
+        yield ['pollAnswer', $this->getDataFile('events/pollAnswer.json')];
+        yield ['myChatMember', $this->getDataFile('events/myChatMember.json')];
     }
 
     public function setUp(): void
@@ -40,6 +43,7 @@ class ClientTest extends TestCase
      */
     public function testClientWebhook(string $eventName, string $requestBody): void
     {
+        $updateClosure = new ClosureTest();
         $commandClosure = new ClosureTest();
         $wrongCommandClosure = new ClosureTest();
         $messageClosure = new ClosureTest();
@@ -51,8 +55,12 @@ class ClientTest extends TestCase
         $callbackQueryClosure = new ClosureTest();
         $shippingQueryClosure = new ClosureTest();
         $preCheckoutQueryClosure = new ClosureTest();
+        $pollClosure = new ClosureTest();
+        $pollAnswerClosure = new ClosureTest();
+        $myChatMember = new ClosureTest();
 
         $this->client
+            ->update($updateClosure->getClosure())
             ->command('/testcommand', $commandClosure->getClosure())
             ->command('/wrongcommand', $wrongCommandClosure->getClosure())
             ->message($messageClosure->getClosure())
@@ -64,9 +72,13 @@ class ClientTest extends TestCase
             ->callbackQuery($callbackQueryClosure->getClosure())
             ->shippingQuery($shippingQueryClosure->getClosure())
             ->preCheckoutQuery($preCheckoutQueryClosure->getClosure())
-            ->run($requestBody)
+            ->poll($pollClosure->getClosure())
+            ->pollAnswer($pollAnswerClosure->getClosure())
+            ->myChatMember($myChatMember->getClosure())
+            ->webhookHandle($requestBody)
         ;
 
+        $this->assertTrue($updateClosure->isCalled());
         $this->assertSame($eventName === 'command', $commandClosure->isCalled());
         $this->assertFalse($wrongCommandClosure->isCalled());
         $this->assertSame(in_array($eventName, ['command', 'message']), $messageClosure->isCalled());
@@ -78,6 +90,9 @@ class ClientTest extends TestCase
         $this->assertSame($eventName === 'callbackQuery', $callbackQueryClosure->isCalled());
         $this->assertSame($eventName === 'shippingQuery', $shippingQueryClosure->isCalled());
         $this->assertSame($eventName === 'preCheckoutQuery', $preCheckoutQueryClosure->isCalled());
+        $this->assertSame($eventName === 'poll', $pollClosure->isCalled());
+        $this->assertSame($eventName === 'pollAnswer', $pollAnswerClosure->isCalled());
+        $this->assertSame($eventName === 'myChatMember', $myChatMember->isCalled());
     }
 
     public function testClientHandler(): void
@@ -98,7 +113,7 @@ class ClientTest extends TestCase
             ->editedMessage($editedMessageClosure->getClosure())
             ->channelPost($channelPostClosure->getClosure())
             ->editedChannelPost($editedChannelPostClosure->getClosure())
-            ->handle($updates)
+            ->updatesHandle($updates)
         ;
 
         $this->assertTrue($commandClosure->isCalled());

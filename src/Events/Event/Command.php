@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Events\Events;
+namespace TelegramBot\Api\Events\Event;
 
 use Closure;
 use TelegramBot\Api\BaseMethod;
@@ -38,6 +38,6 @@ final class Command extends Event
         $params = \array_filter(\explode(' ', $message->getText()));
         $params[0] = $message;
 
-        return $this->call(...$params);
+        return $this->callback(...$params);
     }
 }
