@@ -5,7 +5,7 @@ namespace TelegramBot\Api;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\RequestOptions;
-use TelegramBot\Api\Exceptions\TelegramException;
+use TelegramBot\Api\Exceptions\TelegramApiException;
 use TelegramBot\Api\Methods\GetFile;
 use TelegramBot\Api\Methods\SendMediaGroup;
 use TelegramBot\Api\Types\File;
@@ -44,7 +44,7 @@ class BotApi
      *
      * @param BaseMethod $method
      * @return BaseType|array|string|int|bool
-     * @throws TelegramException
+     * @throws TelegramApiException
      */
     public function call(BaseMethod $method): BaseType|array|string|int|bool
     {
@@ -99,7 +99,7 @@ class BotApi
 
         if ($response['ok'] === false) {
             $parameters = isset($response['parameters']) ? ResponseParameters::fromResponse($response['parameters']) : null;
-            throw new TelegramException($response['description'], $response['error_code'], $exception, $parameters);
+            throw new TelegramApiException($response['description'], $response['error_code'], $exception, $parameters);
         }
 
         return $method->createResponse($response['result']);
@@ -110,7 +110,7 @@ class BotApi
      *
      * @param File|string $file File object or string with fileId
      * @return string path to saved file on filesystem
-     * @throws TelegramException
+     * @throws TelegramApiException
      */
     public function downloadFile(File|string $file): string
     {
@@ -131,7 +131,7 @@ class BotApi
             }
 
             $response = json_decode($exception->getResponse()->getBody(), true);
-            throw new TelegramException($response['description'], $response['error_code'], $exception);
+            throw new TelegramApiException($response['description'], $response['error_code'], $exception);
         }
 
         return $downloadFilePath;
