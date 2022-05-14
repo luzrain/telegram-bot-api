@@ -3,6 +3,7 @@
 namespace TelegramBot\Api\Types\Inline;
 
 use TelegramBot\Api\BaseType;
+use TelegramBot\Api\TypeInterface;
 use TelegramBot\Api\Types\Location;
 use TelegramBot\Api\Types\User;
 

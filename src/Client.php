@@ -3,6 +3,7 @@
 namespace TelegramBot\Api;
 
 use Closure;
+use JsonException;
 use TelegramBot\Api\Events\Event;
 use TelegramBot\Api\Events\EventCollection;
 use TelegramBot\Api\Events\Events\CallbackQuery;
@@ -15,9 +16,11 @@ use TelegramBot\Api\Events\Events\InlineQuery;
 use TelegramBot\Api\Events\Events\Message;
 use TelegramBot\Api\Events\Events\PreCheckoutQuery;
 use TelegramBot\Api\Events\Events\ShippingQuery;
-use TelegramBot\Api\Exceptions\InvalidJsonException;
 use TelegramBot\Api\Types\Update;
 
+/**
+ * Service for handle telegram updates
+ */
 class Client
 {
     private EventCollection $events;
@@ -129,12 +132,12 @@ class Client
     /**
      * Webhook handler
      *
-     * @throws InvalidJsonException
+     * @throws JsonException
      */
     public function run(?string $body = null): void
     {
         $body ??= file_get_contents('php://input');
-        $data = BotApi::jsonValidate($body, true);
+        $data = json_decode(json: $body, associative: true, flags: JSON_THROW_ON_ERROR);
         $this->handle([Update::fromResponse($data)]);
     }
 }

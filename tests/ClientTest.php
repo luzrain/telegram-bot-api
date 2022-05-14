@@ -4,7 +4,6 @@ namespace TelegramBot\Api\Test;
 
 use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Client;
-use TelegramBot\Api\Test\ClosureTest;
 use TelegramBot\Api\Types\Update;
 
 class ClientTest extends TestCase
@@ -27,6 +26,7 @@ class ClientTest extends TestCase
 
     public function setUp(): void
     {
+        include_once('tests/data/ClosureTest.php');
         $this->client = new Client();
     }
 
