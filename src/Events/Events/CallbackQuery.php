@@ -2,6 +2,7 @@
 
 namespace TelegramBot\Api\Events\Events;
 
+use TelegramBot\Api\BaseMethod;
 use TelegramBot\Api\Events\Event;
 use TelegramBot\Api\Types\Update;
 
@@ -12,10 +13,8 @@ final class CallbackQuery extends Event
         return $update->getCallbackQuery() !== null;
     }
 
-    public function executeAction(Update $update): bool
+    public function executeAction(Update $update): BaseMethod|null
     {
-        $this->getAction()($update->getCallbackQuery());
-
-        return false;
+        return $this->call($update->getCallbackQuery());
     }
 }

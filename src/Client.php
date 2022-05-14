@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TelegramBot\Api;
 
 use Closure;
@@ -132,12 +134,15 @@ class Client
     /**
      * Webhook handler
      *
+     * @param string|null $body raw request body
+     * @return BaseMethod|null
      * @throws JsonException
      */
-    public function run(?string $body = null): void
+    public function run(?string $body = null): BaseMethod|null
     {
         $body ??= file_get_contents('php://input');
         $data = json_decode(json: $body, associative: true, flags: JSON_THROW_ON_ERROR);
-        $this->handle([Update::fromResponse($data)]);
+
+        return $this->events->handle(Update::fromResponse($data));
     }
 }

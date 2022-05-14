@@ -2,12 +2,14 @@
 
 namespace TelegramBot\Api;
 
+use JsonSerializable;
+
 /**
  * Base class for Telegram Method
  *
  * @see https://core.telegram.org/bots/api#available-methods
  */
-abstract class BaseMethod
+abstract class BaseMethod implements JsonSerializable
 {
     protected static string $methodName;
     protected static string $responseClass;
@@ -40,5 +42,13 @@ abstract class BaseMethod
     private static function toSnakeCase(string $str): string
     {
         return strtolower(preg_replace('/[A-Z]/', '_\\0', lcfirst($str)));
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        $array = ['method' => $this->getMethodName()];
+        $array += iterator_to_array($this->getRequest());
+
+        return $array;
     }
 }

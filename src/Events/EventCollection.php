@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TelegramBot\Api\Events;
 
+use TelegramBot\Api\BaseMethod;
 use TelegramBot\Api\Types\Update;
 
 class EventCollection
@@ -18,13 +21,17 @@ class EventCollection
         return $this;
     }
 
-    public function handle(Update $update): void
+    public function handle(Update $update): BaseMethod|null
     {
         foreach ($this->events as $event) {
             if ($event->executeChecker($update)) {
-                $event->executeAction($update);
-                break;
+                $method = $event->executeAction($update);
+                if ($method !== null) {
+                    return $method;
+                }
             }
         }
+
+        return null;
     }
 }

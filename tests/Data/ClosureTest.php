@@ -11,7 +11,10 @@ class ClosureTest
 
     public function __construct()
     {
-        $this->closure = fn (mixed $parameter) => $this->parameter = $parameter;
+        $this->closure = function (mixed $parameter) {
+            $this->parameter = $parameter;
+            return null;
+        };
     }
 
     public function getClosure(): Closure

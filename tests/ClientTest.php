@@ -41,8 +41,8 @@ class ClientTest extends TestCase
     public function testClientWebhook(string $eventName, string $requestBody): void
     {
         $commandClosure = new ClosureTest();
-        $messageClosure = new ClosureTest();
         $wrongCommandClosure = new ClosureTest();
+        $messageClosure = new ClosureTest();
         $editedMessageClosure = new ClosureTest();
         $channelPostClosure = new ClosureTest();
         $editedChannelPostClosure = new ClosureTest();
@@ -64,12 +64,12 @@ class ClientTest extends TestCase
             ->callbackQuery($callbackQueryClosure->getClosure())
             ->shippingQuery($shippingQueryClosure->getClosure())
             ->preCheckoutQuery($preCheckoutQueryClosure->getClosure())
-            ->run($requestBody);
+            ->run($requestBody)
         ;
 
         $this->assertSame($eventName === 'command', $commandClosure->isCalled());
         $this->assertFalse($wrongCommandClosure->isCalled());
-        $this->assertSame($eventName === 'message', $messageClosure->isCalled());
+        $this->assertSame(in_array($eventName, ['command', 'message']), $messageClosure->isCalled());
         $this->assertSame($eventName === 'editedMessage', $editedMessageClosure->isCalled());
         $this->assertSame($eventName === 'channelPost', $channelPostClosure->isCalled());
         $this->assertSame($eventName === 'editedChannelPost', $editedChannelPostClosure->isCalled());

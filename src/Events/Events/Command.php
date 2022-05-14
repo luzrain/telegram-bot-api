@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TelegramBot\Api\Events\Events;
 
 use Closure;
+use TelegramBot\Api\BaseMethod;
 use TelegramBot\Api\Events\Event;
 use TelegramBot\Api\Types\MessageEntity;
 use TelegramBot\Api\Types\Update;
@@ -29,13 +32,12 @@ final class Command extends Event
         return $this->command === \substr($message->getText(), $entity->getOffset(), $entity->getLength());
     }
 
-    public function executeAction(Update $update): bool
+    public function executeAction(Update $update): BaseMethod|null
     {
         $message = $update->getMessage();
         $params = \array_filter(\explode(' ', $message->getText()));
         $params[0] = $message;
-        $this->getAction()(...$params);
 
-        return true;
+        return $this->call(...$params);
     }
 }
