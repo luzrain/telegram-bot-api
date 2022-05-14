@@ -3,7 +3,7 @@
 namespace TelegramBot\Api\Test;
 
 use PHPUnit\Framework\TestCase;
-use TelegramBot\Api\Exceptions\TelegramArgumentException;
+use TelegramBot\Api\Exceptions\TelegramTypeException;
 use TestBaseType;
 
 class BaseTypeTest extends TestCase
@@ -26,7 +26,7 @@ class BaseTypeTest extends TestCase
 
     public function testValidateFail(): void
     {
-        $this->expectException(TelegramArgumentException::class);
+        $this->expectException(TelegramTypeException::class);
 
         TestBaseType::fromResponse([
             'test1' => 1,
