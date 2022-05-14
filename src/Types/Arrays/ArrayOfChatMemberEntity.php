@@ -2,17 +2,10 @@
 
 namespace TelegramBot\Api\Types\Arrays;
 
+use TelegramBot\Api\ArrayTypeInterface;
 use TelegramBot\Api\Types\ChatMember;
 
-abstract class ArrayOfChatMemberEntity
+class ArrayOfChatMemberEntity extends BaseArray implements ArrayTypeInterface
 {
-    public static function fromResponse($data)
-    {
-        $arrayOfChatMemberEntity = [];
-        foreach ($data as $chatMemberEntity) {
-            $arrayOfChatMemberEntity[] = ChatMember::fromResponse($chatMemberEntity);
-        }
-
-        return $arrayOfChatMemberEntity;
-    }
+    protected static string $type = ChatMember::class;
 }

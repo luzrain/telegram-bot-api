@@ -2,17 +2,10 @@
 
 namespace TelegramBot\Api\Types\Arrays;
 
+use TelegramBot\Api\ArrayTypeInterface;
 use TelegramBot\Api\Types\BotCommand;
 
-abstract class ArrayOfBotCommand
+class ArrayOfBotCommand extends BaseArray implements ArrayTypeInterface
 {
-    public static function fromResponse($data)
-    {
-        $arrayOfBotCommand = [];
-        foreach ($data as $botCommand) {
-            $arrayOfBotCommand[] = BotCommand::fromResponse($botCommand);
-        }
-
-        return $arrayOfBotCommand;
-    }
+    protected static string $type = BotCommand::class;
 }

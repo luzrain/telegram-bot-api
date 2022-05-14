@@ -2,18 +2,10 @@
 
 namespace TelegramBot\Api\Types\Arrays;
 
+use TelegramBot\Api\ArrayTypeInterface;
 use TelegramBot\Api\Types\Payments\LabeledPrice;
 
-abstract class ArrayOfLabeledPrice
+class ArrayOfLabeledPrice extends BaseArray implements ArrayTypeInterface
 {
-    public static function fromResponse($data)
-    {
-        $array = [];
-
-        foreach ($data as $item) {
-            $array[] = LabeledPrice::fromResponse($item);
-        }
-
-        return $array;
-    }
+    protected static string $type = LabeledPrice::class;
 }

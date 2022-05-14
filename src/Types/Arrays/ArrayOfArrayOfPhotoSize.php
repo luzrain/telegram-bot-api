@@ -2,12 +2,12 @@
 
 namespace TelegramBot\Api\Types\Arrays;
 
-abstract class ArrayOfArrayOfPhotoSize
+use TelegramBot\Api\ArrayTypeInterface;
+
+class ArrayOfArrayOfPhotoSize extends BaseArray implements ArrayTypeInterface
 {
-    public static function fromResponse($data)
+    public static function fromResponse(array $data): array
     {
-        return array_map(function ($arrayOfPhotoSize) {
-            return ArrayOfPhotoSize::fromResponse($arrayOfPhotoSize);
-        }, $data);
+        return array_map(fn (array $array) => ArrayOfPhotoSize::fromResponse($array), $data);
     }
 }

@@ -2,17 +2,10 @@
 
 namespace TelegramBot\Api\Types\Arrays;
 
+use TelegramBot\Api\ArrayTypeInterface;
 use TelegramBot\Api\Types\Update;
 
-abstract class ArrayOfUpdates
+class ArrayOfUpdates extends BaseArray implements ArrayTypeInterface
 {
-    public static function fromResponse($data)
-    {
-        $arrayOfUpdates = [];
-        foreach ($data as $update) {
-            $arrayOfUpdates[] = Update::fromResponse($update);
-        }
-
-        return $arrayOfUpdates;
-    }
+    protected static string $type = Update::class;
 }

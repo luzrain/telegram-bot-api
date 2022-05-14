@@ -2,17 +2,10 @@
 
 namespace TelegramBot\Api\Types\Arrays;
 
+use TelegramBot\Api\ArrayTypeInterface;
 use TelegramBot\Api\Types\PollOption;
 
-abstract class ArrayOfPollOption
+class ArrayOfPollOption extends BaseArray implements ArrayTypeInterface
 {
-    public static function fromResponse($data)
-    {
-        $arrayOfPollOption = [];
-        foreach ($data as $pollOptionItem) {
-            $arrayOfPollOption[] = PollOption::fromResponse($pollOptionItem);
-        }
-
-        return $arrayOfPollOption;
-    }
+    protected static string $type = PollOption::class;
 }

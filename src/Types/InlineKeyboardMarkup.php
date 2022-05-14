@@ -4,6 +4,7 @@ namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
+use TelegramBot\Api\Types\Arrays\ArrayOfArrayOfInlineKeyboardButton;
 
 /**
  * This object represents an inline keyboard that appears right next to the message it belongs to.
@@ -17,7 +18,7 @@ class InlineKeyboardMarkup extends BaseType implements TypeInterface
     ];
 
     protected static array $map = [
-        'inline_keyboard' => true,
+        'inline_keyboard' => ArrayOfArrayOfInlineKeyboardButton::class,
     ];
 
     /**

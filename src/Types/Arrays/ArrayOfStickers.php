@@ -2,18 +2,10 @@
 
 namespace TelegramBot\Api\Types\Arrays;
 
+use TelegramBot\Api\ArrayTypeInterface;
 use TelegramBot\Api\Types\Stickers\Sticker;
 
-class ArrayOfStickers
+class ArrayOfStickers extends BaseArray implements ArrayTypeInterface
 {
-    public static function fromResponse($data)
-    {
-        $array = [];
-
-        foreach ($data as $item) {
-            $array[] = Sticker::fromResponse($item);
-        }
-
-        return $array;
-    }
+    protected static string $type = Sticker::class;
 }

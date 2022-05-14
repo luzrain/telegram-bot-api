@@ -2,17 +2,10 @@
 
 namespace TelegramBot\Api\Types\Arrays;
 
+use TelegramBot\Api\ArrayTypeInterface;
 use TelegramBot\Api\Types\MessageEntity;
 
-abstract class ArrayOfMessageEntity
+class ArrayOfMessageEntity extends BaseArray implements ArrayTypeInterface
 {
-    public static function fromResponse($data)
-    {
-        $arrayOfMessageEntity = [];
-        foreach ($data as $messageEntity) {
-            $arrayOfMessageEntity[] = MessageEntity::fromResponse($messageEntity);
-        }
-
-        return $arrayOfMessageEntity;
-    }
+    protected static string $type = MessageEntity::class;
 }

@@ -2,18 +2,10 @@
 
 namespace TelegramBot\Api\Types\Arrays;
 
+use TelegramBot\Api\ArrayTypeInterface;
 use TelegramBot\Api\Types\Payments\PassportFile;
 
-abstract class ArrayOfPassportFile
+class ArrayOfPassportFile extends BaseArray implements ArrayTypeInterface
 {
-    public static function fromResponse($data)
-    {
-        $array = [];
-
-        foreach ($data as $item) {
-            $array[] = PassportFile::fromResponse($item);
-        }
-
-        return $array;
-    }
+    protected static string $type = PassportFile::class;
 }

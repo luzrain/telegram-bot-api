@@ -2,17 +2,10 @@
 
 namespace TelegramBot\Api\Types\Arrays;
 
+use TelegramBot\Api\ArrayTypeInterface;
 use TelegramBot\Api\Types\User;
 
-abstract class ArrayOfUser
+class ArrayOfUser extends BaseArray implements ArrayTypeInterface
 {
-    public static function fromResponse($data)
-    {
-        $arrayOfUsers = [];
-        foreach ($data as $user) {
-            $arrayOfUsers[] = User::fromResponse($user);
-        }
-
-        return $arrayOfUsers;
-    }
+    protected static string $type = User::class;
 }
