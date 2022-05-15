@@ -154,7 +154,7 @@ class Client
     }
 
     /**
-     * Listen new event
+     * Register new event
      *
      * @param Event $event
      * @return self
@@ -188,16 +188,18 @@ class Client
     public function webhookHandle(string $body): BaseMethod|null
     {
         $data = json_decode(json: $body, associative: true, flags: JSON_THROW_ON_ERROR);
+        $responseMethod = $this->events->handle(Update::fromResponse($data));
+        $this->events->reset();
 
-        return $this->events->handle(Update::fromResponse($data));
+        return $responseMethod;
     }
 
     public function run(): void
     {
         $body = file_get_contents('php://input');
-        $command = $this->webhookHandle($body);
+        $responseMethod = $this->webhookHandle($body);
         header('Content-Type: application/json');
-        echo json_encode($command);
+        echo json_encode($responseMethod);
         exit;
     }
 }
