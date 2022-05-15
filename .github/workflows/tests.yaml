@@ -7,7 +7,7 @@ on:
 
 jobs:
   run:
-    name: Unit test
+    name: Tests
     runs-on: ubuntu-latest
     steps:
       - name: Setup PHP
@@ -20,9 +20,9 @@ jobs:
 
       - name: Composer install
         run: composer install
-        
-      - name: Test
-        run: ls -la tests/data/
 
       - name: Run Tests
         run: composer test
+        
+      - name: Run codestyle checks
+        run: composer codestyle-check
