@@ -3,7 +3,6 @@
 namespace TelegramBot\Api\Methods;
 
 use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\ChatPermissions;
 
 /**
  * Use this method to promote or demote a user in a supergroup or a channel.

@@ -43,7 +43,7 @@ final class SendContact extends BaseMethod
          * Additional data about the contact in the form of a vCard, 0-2048 bytes
          */
         protected string|null $vcard = null,
- 
+
         /**
          * Sends the message silently. Users will receive a notification with no sound.
          */

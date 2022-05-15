@@ -15,7 +15,7 @@ final class AnswerShippingQuery extends BaseMethod
     protected static string $methodName = 'answerShippingQuery';
 
     public function __construct(
- 
+
         /**
          * Unique identifier for the query to be answered
          */
@@ -26,7 +26,7 @@ final class AnswerShippingQuery extends BaseMethod
          * (for example, if delivery to the specified address is not possible)
          */
         protected bool $ok,
-            
+
         /**
          * Required if ok is True. A JSON-serialized array of available shipping options.
          *

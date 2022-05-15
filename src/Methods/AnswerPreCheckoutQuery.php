@@ -14,7 +14,7 @@ final class AnswerPreCheckoutQuery extends BaseMethod
     protected static string $methodName = 'answerPreCheckoutQuery';
 
     public function __construct(
- 
+
         /**
          * Unique identifier for the query to be answered
          */

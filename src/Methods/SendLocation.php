@@ -18,7 +18,7 @@ final class SendLocation extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
- 
+
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */
@@ -54,7 +54,7 @@ final class SendLocation extends BaseMethod
          * Must be between 1 and 100000 if specified.
          */
         protected int|null $proximityAlertRadius = null,
-  
+
         /**
          * Sends the message silently. Users will receive a notification with no sound.
          */

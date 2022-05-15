@@ -51,7 +51,7 @@ final class SendInvoice extends BaseMethod
 
         /**
          * Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)
-         * 
+         *
          * @var LabeledPrice[]
          */
         protected array $prices,

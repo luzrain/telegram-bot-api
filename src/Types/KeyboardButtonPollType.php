@@ -26,7 +26,7 @@ class KeyboardButtonPollType extends BaseType implements TypeInterface
     {
         $instance = new self();
         $instance->type = '';
-        
+
         return $instance;
     }
 

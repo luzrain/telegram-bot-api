@@ -94,7 +94,7 @@ class Video extends BaseType implements TypeInterface
     public function getHeight(): int
     {
         return $this->height;
-    }    
+    }
 
     public function getDuration(): int
     {

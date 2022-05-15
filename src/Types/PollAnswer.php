@@ -54,5 +54,5 @@ class PollAnswer extends BaseType
     public function getOptionIds(): array
     {
         return $this->optionIds;
-    }    
+    }
 }

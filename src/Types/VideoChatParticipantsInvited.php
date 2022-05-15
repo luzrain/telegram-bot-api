@@ -21,7 +21,7 @@ class VideoChatParticipantsInvited extends BaseType implements TypeInterface
 
     /**
      * New members that were invited to the video chat
-     * 
+     *
      * @var User[]
      */
     protected array $users;

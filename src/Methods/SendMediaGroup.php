@@ -16,7 +16,7 @@ final class SendMediaGroup extends BaseMethod
     protected static string $responseClass = ArrayOfMessages::class;
 
     public function __construct(
- 
+
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

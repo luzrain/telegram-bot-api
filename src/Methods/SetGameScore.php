@@ -16,7 +16,7 @@ final class SetGameScore extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
- 
+
         /**
          * User identifier
          */

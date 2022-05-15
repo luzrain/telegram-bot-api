@@ -31,68 +31,68 @@ class InlineQueryResultLocation extends InlineQueryResult
      * Type of the result, must be location
      */
     protected string $type = 'location';
-    
+
     /**
      * Unique identifier for this result, 1-64 Bytes
      */
     protected string $id;
-    
+
     /**
      * Location latitude in degrees
      */
     protected float $latitude;
-    
+
     /**
      * Location longitude in degrees
      */
     protected float $longitude;
-    
+
     /**
      * Location title
      */
     protected string $title;
-    
+
     /**
      * Optional. The radius of uncertainty for the location, measured in meters; 0-1500
      */
     protected ?float $horizontalAccuracy = null;
-    
+
     /**
      * Optional. Period in seconds for which the location can be updated, should be between 60 and 86400.
      */
     protected ?int $livePeriod = null;
-    
+
     /**
      * Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
      */
     protected ?int $heading = null;
-    
+
     /**
      * Optional. For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters.
      * Must be between 1 and 100000 if specified.
      */
     protected ?int $proximityAlertRadius = null;
-    
+
     /**
      * Optional. Inline keyboard attached to the message
      */
     protected ?InlineKeyboardMarkup $replyMarkup = null;
-    
+
     /**
      * Optional. Content of the message to be sent instead of the location
      */
     protected ?InputMessageContent $inputMessageContent = null;
-    
+
     /**
      * Optional. Url of the thumbnail for the result
      */
     protected ?string $thumbUrl = null;
-    
+
     /**
      * Optional. Thumbnail width
      */
     protected ?int $thumbWidth = null;
-    
+
     /**
      * Optional. Thumbnail height
      */
@@ -140,7 +140,7 @@ class InlineQueryResultLocation extends InlineQueryResult
     {
         return $this->id;
     }
-    
+
     public function getLatitude(): float
     {
         return $this->latitude;

@@ -57,7 +57,7 @@ class Location extends BaseType implements TypeInterface
     public function getLongitude(): float
     {
         return $this->longitude;
-    }    
+    }
 
     public function getLatitude(): float
     {

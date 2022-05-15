@@ -35,7 +35,7 @@ class MenuButton extends BaseType implements TypeInterface
             return $instance;
         }
 
-        return match($instance->type) {
+        return match ($instance->type) {
             'commands' => MenuButtonCommands::fromResponse($data),
             'web_app' => MenuButtonWebApp::fromResponse($data),
             'default' => MenuButtonDefault::fromResponse($data),

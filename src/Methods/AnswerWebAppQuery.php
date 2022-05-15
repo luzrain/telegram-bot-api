@@ -19,7 +19,7 @@ final class AnswerWebAppQuery extends BaseMethod
          * Unique identifier for the query to be answered
          */
         protected string $webAppQueryId,
-            
+
         /**
          * A JSON-serialized object describing the message to be sent
          */

@@ -4,7 +4,6 @@ namespace TelegramBot\Api\Types\Inline;
 
 use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
 use TelegramBot\Api\Types\InlineKeyboardMarkup;
-use TelegramBot\Api\Types\MessageEntity;
 
 /**
  * Represents a link to a page containing an embedded video player or a video file.

@@ -4,7 +4,6 @@ namespace TelegramBot\Api\Types\Payments;
 
 use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
-use TelegramBot\Api\Types\Payments\ShippingAddress;
 use TelegramBot\Api\Types\User;
 
 /**

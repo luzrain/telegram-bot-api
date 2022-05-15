@@ -49,7 +49,7 @@ abstract class BaseType implements JsonSerializable
                 $this->$property = $item === true ? $data[$key] : $item::fromResponse($data[$key]);
             }
         }
-        
+
         return $this;
     }
 

@@ -32,22 +32,22 @@ class InlineQueryResultVenue extends InlineQueryResult
      * Type of the result, must be venue
      */
     protected string $type = 'venue';
-    
+
     /**
      * Unique identifier for this result, 1-64 Bytes
      */
     protected string $id;
-    
+
     /**
      * Latitude of the venue location in degrees
      */
     protected float $latitude;
-    
+
     /**
      * Longitude of the venue location in degrees
      */
     protected float $longitude;
-    
+
     /**
      * Title of the venue
      */
@@ -75,7 +75,7 @@ class InlineQueryResultVenue extends InlineQueryResult
 
     /**
      * Optional. Google Places type of the venue. (See supported types.)
-     * 
+     *
      * @see https://developers.google.com/places/web-service/supported_types
      */
     protected ?string $googlePlaceType = null;
@@ -84,22 +84,22 @@ class InlineQueryResultVenue extends InlineQueryResult
      * Optional. Inline keyboard attached to the message
      */
     protected ?InlineKeyboardMarkup $replyMarkup = null;
-    
+
     /**
      * Optional. Content of the message to be sent instead of the venue
      */
     protected ?InputMessageContent $inputMessageContent = null;
-    
+
     /**
      * Optional. Url of the thumbnail for the result
      */
     protected ?string $thumbUrl = null;
-    
+
     /**
      * Optional. Thumbnail width
      */
     protected ?int $thumbWidth = null;
-    
+
     /**
      * Optional. Thumbnail height
      */
@@ -149,7 +149,7 @@ class InlineQueryResultVenue extends InlineQueryResult
     {
         return $this->id;
     }
-    
+
     public function getLatitude(): float
     {
         return $this->latitude;

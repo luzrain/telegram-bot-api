@@ -15,7 +15,7 @@ final class GetGameHighScores extends BaseMethod
     protected static string $responseClass = ArrayOfGameHighScore::class;
 
     public function __construct(
- 
+
         /**
          * User identifier
          */

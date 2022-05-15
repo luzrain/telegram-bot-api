@@ -19,12 +19,12 @@ class InlineQueryResultGame extends InlineQueryResult
      * Type of the result, must be game
      */
     protected string $type = 'game';
-    
+
     /**
      * Unique identifier for this result, 1-64 bytes
      */
     protected string $id;
-    
+
     /**
      * Short name of the game
      */
@@ -57,7 +57,7 @@ class InlineQueryResultGame extends InlineQueryResult
     {
         return $this->id;
     }
-    
+
     public function getPhoneNumber(): string
     {
         return $this->phoneNumber;

@@ -57,7 +57,7 @@ class InlineQueryResultDocument extends InlineQueryResult
 
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
-     * 
+     *
      * @var MessageEntity[]
      */
     protected ?array $captionEntities = null;
@@ -178,7 +178,7 @@ class InlineQueryResultDocument extends InlineQueryResult
     public function getDescription(): ?string
     {
         return $this->description;
-    }    
+    }
 
     public function getReplyMarkup(): ?InlineKeyboardMarkup
     {

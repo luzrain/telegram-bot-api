@@ -119,7 +119,7 @@ class Client
     {
         return $this->on(new Event\Poll($action));
     }
- 
+
     /**
      * A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself.
      */

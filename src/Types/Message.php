@@ -1,4 +1,5 @@
 <?php
+
 namespace TelegramBot\Api\Types;
 
 use TelegramBot\Api\BaseType;
@@ -207,13 +208,13 @@ class Message extends BaseType implements TypeInterface
      * Optional. Message is a general file, information about the file
      */
     protected ?Document $document = null;
-    
+
     /**
      * Optional. Message is a photo, available sizes of the photo
      *
      * @var PhotoSize[]
      */
-    protected ?array $photo = null;    
+    protected ?array $photo = null;
 
     /**
      * Optional. Message is a sticker, information about the sticker
@@ -311,7 +312,7 @@ class Message extends BaseType implements TypeInterface
      * Optional. Service message: the group has been created
      */
     protected ?bool $groupChatCreated = null;
-    
+
     /**
      * Optional. Service message: the supergroup has been created. This field can't be received in a message coming through
      * updates, because bot can't be a member of a supergroup when it is created.

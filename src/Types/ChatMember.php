@@ -38,7 +38,7 @@ class ChatMember extends BaseType implements TypeInterface
             return $instance;
         }
 
-        return match($instance->status) {
+        return match ($instance->status) {
             'creator' => ChatMemberOwner::fromResponse($data),
             'administrator' => ChatMemberAdministrator::fromResponse($data),
             'member' => ChatMemberMember::fromResponse($data),

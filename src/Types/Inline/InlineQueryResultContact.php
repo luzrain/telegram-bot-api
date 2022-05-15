@@ -28,22 +28,22 @@ class InlineQueryResultContact extends InlineQueryResult
      * Type of the result, must be contact
      */
     protected string $type = 'contact';
-    
+
     /**
      * Unique identifier for this result, 1-64 Bytes
      */
     protected string $id;
-    
+
     /**
      * Contact's phone number
      */
     protected string $phoneNumber;
-    
+
     /**
      * Contact's first name
      */
     protected string $firstName;
-    
+
     /**
      * Optional. Contact's last name
      */
@@ -58,22 +58,22 @@ class InlineQueryResultContact extends InlineQueryResult
      * Optional. Inline keyboard attached to the message
      */
     protected ?InlineKeyboardMarkup $replyMarkup = null;
-    
+
     /**
      * Optional. Content of the message to be sent instead of the contact
      */
     protected ?InputMessageContent $inputMessageContent = null;
-    
+
     /**
      * Optional. Url of the thumbnail for the result
      */
     protected ?string $thumbUrl = null;
-    
+
     /**
      * Optional. Thumbnail width
      */
     protected ?int $thumbWidth = null;
-    
+
     /**
      * Optional. Thumbnail height
      */
@@ -115,7 +115,7 @@ class InlineQueryResultContact extends InlineQueryResult
     {
         return $this->id;
     }
-    
+
     public function getPhoneNumber(): string
     {
         return $this->phoneNumber;

@@ -19,7 +19,7 @@ final class SetPassportDataErrors extends BaseMethod
     protected static string $methodName = 'setPassportDataErrors';
 
     public function __construct(
- 
+
         /**
          * User identifier
          */

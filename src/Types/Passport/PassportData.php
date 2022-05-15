@@ -23,7 +23,7 @@ class PassportData extends BaseType implements TypeInterface
 
     /**
      * Array with information about documents and other Telegram Passport elements that was shared with the bot
-     * 
+     *
      * @var EncryptedPassportElement[]
      */
     protected array $data;

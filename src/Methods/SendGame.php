@@ -15,7 +15,7 @@ final class SendGame extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
- 
+
         /**
          * Unique identifier for the target chat
          */

@@ -46,7 +46,7 @@ final class SendVideo extends BaseMethod
          * Video height
          */
         protected int|null $height = null,
-            
+
         /**
          * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side.
          * The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320.
