@@ -1,0 +1,25 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+    types: [closed]
+
+jobs:
+  run:
+    name: Unit test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Composer install
+        run: composer install
+
+      - name: Run Tests
+        run: composer test
