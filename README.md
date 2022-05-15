@@ -1,5 +1,5 @@
 
-# PHP Telegram Bot Api
+# PHP Wrapper for Telegram BOT API
 
 [![Bot Api Version](https://img.shields.io/badge/Bot%20API-6.0-0088cc.svg?style=flat)](https://core.telegram.org/bots/api)
 [![PHP Version](https://img.shields.io/badge/PHP-%3E=8.0.0-777bb3.svg?style=flat)](https://www.php.net/releases/8.0/)
@@ -19,7 +19,7 @@ An extended native php wrapper for [Telegram Bot API](https://core.telegram.org/
 Via Composer
 
 ``` bash
-$ composer require telegram-bot/api
+$ composer require luzrain/telegram-bot-api
 ```
 
 ## API Wrapper

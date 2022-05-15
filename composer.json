@@ -12,6 +12,12 @@
     "license": "MIT",
     "authors": [
         {
+            "name": "anton.z",
+            "email": "anton.z@live.com",
+            "homepage": "https://github.com/luzrain",
+            "role": "Developer"
+        },
+        {
             "name": "Ilya Gusev",
             "email": "mail@igusev.ru",
             "homepage": "https://php-cat.com",
