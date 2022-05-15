@@ -1,13 +1,14 @@
 {
-    "name": "telegram-bot/api",
+    "name": "luzrain/telegram-bot-api",
     "description": "PHP Wrapper for Telegram Bot API",
     "keywords": [
-        "php",
         "telegram",
         "bot",
-        "bot api"
+        "bot api",
+        "telegram bot api",
+        "telegram bot"
     ],
-    "homepage": "https://github.com/TelegramBot/Api",
+    "homepage": "https://github.com/luzrain/TelegramBotApi",
     "license": "MIT",
     "authors": [
         {
