@@ -1,5 +1,5 @@
 
-# PHP Wrapper for Telegram BOT API
+# PHP Wrapper for Telegram Bot API
 
 [![Bot Api Version](https://img.shields.io/badge/Bot%20API-6.0-0088cc.svg?style=flat)](https://core.telegram.org/bots/api)
 [![PHP Version](https://img.shields.io/badge/PHP-%3E=8.0.0-777bb3.svg?style=flat)](https://www.php.net/releases/8.0/)
