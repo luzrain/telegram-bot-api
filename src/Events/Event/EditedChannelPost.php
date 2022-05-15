@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TelegramBot\Api\Events\Event;
 
 use TelegramBot\Api\BaseMethod;

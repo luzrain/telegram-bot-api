@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TelegramBot\Api\Types\Payments;
 
 use TelegramBot\Api\BaseType;

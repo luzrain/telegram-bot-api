@@ -20,8 +20,8 @@ $rules = [
     'phpdoc_var_annotation_correct_order' => true,
     'no_empty_statement' => true,
     'no_spaces_around_offset' => true,
-    //'declare_strict_types' => true,
-    //'strict_comparison' => true,
+    'declare_strict_types' => true,
+    'strict_comparison' => true,
 ];
 
 return (new PhpCsFixer\Config())

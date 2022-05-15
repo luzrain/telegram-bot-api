@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TelegramBot\Api\Methods;
 
 use TelegramBot\Api\BaseMethod;

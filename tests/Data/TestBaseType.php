@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use TelegramBot\Api\BaseType;
 
 class TestBaseType extends BaseType
