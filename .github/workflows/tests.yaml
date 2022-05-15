@@ -2,6 +2,7 @@ name: Tests
 
 on:
   push:
+    branches: [ master ]
   pull_request:
     types: [closed]
 
@@ -22,7 +23,7 @@ jobs:
         run: composer install
         
       - name: Test
-        run: ls -la tests/data/events/command.json
+        run: ls -la tests/data/
 
       - name: Run Tests
         run: composer test
