@@ -97,7 +97,7 @@ class BotApi
             $httpResponse = $exception->getResponse();
         }
 
-        $response = json_decode($httpResponse->getBody(), true);
+        $response = json_decode((string) $httpResponse->getBody(), true);
 
         if ($response['ok'] === false) {
             $parameters = isset($response['parameters']) ? ResponseParameters::fromResponse($response['parameters']) : null;
@@ -132,7 +132,7 @@ class BotApi
                 unlink($downloadFilePath);
             }
 
-            $response = json_decode($exception->getResponse()->getBody(), true);
+            $response = json_decode((string) $exception->getResponse()->getBody(), true);
             throw new TelegramApiException($response['description'], $response['error_code'], $exception);
         }
 
