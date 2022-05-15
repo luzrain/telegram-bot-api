@@ -20,6 +20,9 @@ jobs:
 
       - name: Composer install
         run: composer install
+        
+      - name: Test
+        run: ls -la
 
       - name: Run Tests
         run: composer test
