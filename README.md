@@ -4,6 +4,7 @@
 [![Bot Api Version](https://img.shields.io/badge/Bot%20API-6.0-0088cc.svg?style=flat)](https://core.telegram.org/bots/api)
 [![PHP Version](https://img.shields.io/badge/PHP-%3E=8.0.0-777bb3.svg?style=flat)](https://www.php.net/releases/8.0/)
 [![Software License](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat)](LICENSE.md)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/luzrain/TelegramBotApi/Tests/master?label=Tests)](https://github.com/luzrain/TelegramBotApi/actions/workflows/tests.yaml)
 
 An extended native php wrapper for [Telegram Bot API](https://core.telegram.org/bots/api). Supports all methods and types of responses.
 

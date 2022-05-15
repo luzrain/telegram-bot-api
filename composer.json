@@ -37,6 +37,6 @@
     },
     "scripts": {
         "test": "phpunit",
-        "codestyle-test": "php-cs-fixer fix --dry-run"
+        "codestyle-check": "php-cs-fixer fix --dry-run"
     }
 }
