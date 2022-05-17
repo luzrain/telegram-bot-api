@@ -6,6 +6,7 @@ namespace TelegramBot\Api\Types\Inline;
 
 use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
 use TelegramBot\Api\Types\InlineKeyboardMarkup;
+use TelegramBot\Api\Types\MessageEntity;
 
 /**
  * Represents a link to a page containing an embedded video player or a video file.
@@ -74,6 +75,8 @@ class InlineQueryResultVideo extends InlineQueryResult
 
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
+     *
+     * @var MessageEntity[]
      */
     protected ?array $captionEntities = null;
 
@@ -183,6 +186,9 @@ class InlineQueryResultVideo extends InlineQueryResult
         return $this->parseMode;
     }
 
+    /**
+     * @return MessageEntity[]|null
+     */
     public function getCaptionEntities(): ?array
     {
         return $this->captionEntities;

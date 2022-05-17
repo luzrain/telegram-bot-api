@@ -78,6 +78,9 @@ class Game extends BaseType implements TypeInterface
         return $this->description;
     }
 
+    /**
+     * @return PhotoSize[]
+     */
     public function getPhoto(): array
     {
         return $this->photo;
@@ -88,6 +91,9 @@ class Game extends BaseType implements TypeInterface
         return $this->text;
     }
 
+    /**
+     * @return MessageEntity[]
+     */
     public function getTextEntities(): ?array
     {
         return $this->textEntities;

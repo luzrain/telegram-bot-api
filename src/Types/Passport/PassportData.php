@@ -35,6 +35,9 @@ class PassportData extends BaseType implements TypeInterface
      */
     protected EncryptedCredentials $credentials;
 
+    /**
+     * @return EncryptedPassportElement[]
+     */
     public function getData(): array
     {
         return $this->data;

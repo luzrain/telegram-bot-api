@@ -62,6 +62,9 @@ class PassportElementErrorFiles extends PassportElementError
         return $this->type;
     }
 
+    /**
+     * @return string[]
+     */
     public function getFileHashes(): array
     {
         return $this->fileHashes;

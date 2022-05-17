@@ -141,6 +141,9 @@ class InlineQueryResultCachedVideo extends InlineQueryResult
         return $this->parseMode;
     }
 
+    /**
+     * @return MessageEntity[]|null
+     */
     public function getCaptionEntities(): ?array
     {
         return $this->captionEntities;

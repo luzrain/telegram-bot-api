@@ -72,6 +72,8 @@ class WebhookInfo extends BaseType implements TypeInterface
 
     /**
      * Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member
+     *
+     * @var string[]
      */
     protected ?array $allowedUpdates = null;
 
@@ -115,6 +117,9 @@ class WebhookInfo extends BaseType implements TypeInterface
         return $this->maxConnections;
     }
 
+    /**
+     * @return string[]|null
+     */
     public function getAllowedUpdates(): ?array
     {
         return $this->allowedUpdates;

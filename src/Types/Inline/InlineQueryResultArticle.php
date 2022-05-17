@@ -142,7 +142,7 @@ class InlineQueryResultArticle extends InlineQueryResult
         return $this->hideUrl;
     }
 
-    public function getDescription(): ?array
+    public function getDescription(): ?string
     {
         return $this->description;
     }

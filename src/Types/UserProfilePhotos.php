@@ -25,6 +25,8 @@ class UserProfilePhotos extends BaseType implements TypeInterface
 
     /**
      * Total number of profile pictures the target user has
+     *
+     * Array of Array of PhotoSize
      */
     protected int $totalCount;
 

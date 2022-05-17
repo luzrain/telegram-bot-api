@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TelegramBot\Api\Types\Inline;
 
 use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
+use TelegramBot\Api\Types\MessageEntity;
 
 /**
  * Represents the content of a text message to be sent as the result of an inline query.
@@ -30,6 +31,8 @@ class InputTextMessageContent extends InputMessageContent
 
     /**
      * Optional. List of special entities that appear in message text, which can be specified instead of parse_mode
+     *
+     * @var MessageEntity[]
      */
     protected ?array $entities = null;
 
@@ -63,6 +66,9 @@ class InputTextMessageContent extends InputMessageContent
         return $this->parseMode;
     }
 
+    /**
+     * @return MessageEntity[]|null
+     */
     public function getEntities(): ?array
     {
         return $this->entities;

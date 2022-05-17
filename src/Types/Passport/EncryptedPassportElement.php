@@ -58,6 +58,8 @@ class EncryptedPassportElement extends BaseType implements TypeInterface
      * Optional. Array of encrypted files with documents provided by the user, available for “utility_bill”,
      * “bank_statement”,“rental_agreement”, “passport_registration” and “temporary_registration” types.
      * Files can be decrypted and verified using the accompanying EncryptedCredentials.
+     *
+     * @var PassportFile[]
      */
     protected ?array $files = null;
 
@@ -86,6 +88,8 @@ class EncryptedPassportElement extends BaseType implements TypeInterface
      * Available if requested for “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”,
      * “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types.
      * Files can be decrypted and verified using the accompanying EncryptedCredentials.
+     *
+     * @var PassportFile[]
      */
     protected ?array $translation = null;
 
@@ -114,6 +118,9 @@ class EncryptedPassportElement extends BaseType implements TypeInterface
         return $this->email;
     }
 
+    /**
+     * @return PassportFile[]|null
+     */
     public function getFiles(): ?array
     {
         return $this->files;
@@ -134,6 +141,9 @@ class EncryptedPassportElement extends BaseType implements TypeInterface
         return $this->selfie;
     }
 
+    /**
+     * @return PassportFile[]|null
+     */
     public function getTranslation(): ?array
     {
         return $this->translation;

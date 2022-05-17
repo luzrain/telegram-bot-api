@@ -95,6 +95,9 @@ class StickerSet extends BaseType implements TypeInterface
         return $this->containsMasks;
     }
 
+    /**
+     * @return Sticker[]
+     */
     public function getStickers(): array
     {
         return $this->stickers;

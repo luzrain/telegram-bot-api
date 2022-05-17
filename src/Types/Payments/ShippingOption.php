@@ -65,6 +65,9 @@ class ShippingOption extends BaseType implements TypeInterface
         return $this->title;
     }
 
+    /**
+     * @return LabeledPrice[]
+     */
     public function getPrices(): array
     {
         return $this->prices;

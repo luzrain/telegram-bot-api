@@ -80,6 +80,8 @@ class InputInvoiceMessageContent extends InputMessageContent
      * Optional. A JSON-serialized array of suggested amounts of tip in the smallest units of the currency
      * (integer, not float/double).At most 4 suggested tip amounts can be specified. The suggested tip amounts must
      * be positive, passed in a strictly increased order and must not exceed max_tip_amount.
+     *
+     * @var int[]
      */
     protected ?array $suggestedTipAmounts = null;
 
@@ -217,6 +219,9 @@ class InputInvoiceMessageContent extends InputMessageContent
         return $this->currency;
     }
 
+    /**
+     * @return LabeledPrice[]
+     */
     public function getPrices(): array
     {
         return $this->prices;
@@ -227,6 +232,9 @@ class InputInvoiceMessageContent extends InputMessageContent
         return $this->maxTipAmount;
     }
 
+    /**
+     * @return int[]|null
+     */
     public function getSuggestedTipAmounts(): ?array
     {
         return $this->suggestedTipAmounts;

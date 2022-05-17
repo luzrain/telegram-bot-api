@@ -504,6 +504,9 @@ class Message extends BaseType implements TypeInterface
         return $this->text;
     }
 
+    /**
+     * @return MessageEntity[]|null
+     */
     public function getEntities(): ?array
     {
         return $this->entities;
@@ -524,7 +527,10 @@ class Message extends BaseType implements TypeInterface
         return $this->document;
     }
 
-    public function getPhoto(): array
+    /**
+     * @return PhotoSize[]|null
+     */
+    public function getPhoto(): ?array
     {
         return $this->photo;
     }
@@ -554,6 +560,9 @@ class Message extends BaseType implements TypeInterface
         return $this->caption;
     }
 
+    /**
+     * @return MessageEntity[]|null
+     */
     public function getCaptionEntities(): ?array
     {
         return $this->captionEntities;
@@ -589,6 +598,9 @@ class Message extends BaseType implements TypeInterface
         return $this->location;
     }
 
+    /**
+     * @return User[]|null
+     */
     public function getNewChatMembers(): ?array
     {
         return $this->newChatMembers;
@@ -604,6 +616,9 @@ class Message extends BaseType implements TypeInterface
         return $this->newChatTitle;
     }
 
+    /**
+     * @return PhotoSize[]|null
+     */
     public function getNewChatPhoto(): ?array
     {
         return $this->newChatPhoto;
