@@ -23,16 +23,12 @@ use TelegramBot\Api\Types\ResponseParameters;
  */
 class BotApi
 {
-    // Url prefixes
-    private const URL_API_ENDPOINT = 'https://api.telegram.org/bot%s/%s';
+    use Methods;
 
-    // Url prefix for files
+    private const URL_API_ENDPOINT = 'https://api.telegram.org/bot%s/%s';
     private const URL_FILE_ENDPOINT = 'https://api.telegram.org/file/bot%s/%s';
 
-    // Bot token
     private string $token;
-
-    // Http Client
     private HttpClient $httpClient;
 
     public function __construct(string $token, array $options = [])
@@ -137,5 +133,10 @@ class BotApi
         }
 
         return $downloadFilePath;
+    }
+
+    public function __call(string $methodName, array $arguments): BaseType|array|string|int|bool
+    {
+        return $this->call($this->getMethodObject($methodName, $arguments));
     }
 }

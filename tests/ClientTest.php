@@ -62,21 +62,21 @@ class ClientTest extends TestCase
         $myChatMember = new ClosureTest();
 
         $this->client
-            ->update($updateClosure->getClosure())
-            ->command('/testcommand', $commandClosure->getClosure())
-            ->command('/wrongcommand', $wrongCommandClosure->getClosure())
-            ->message($messageClosure->getClosure())
-            ->editedMessage($editedMessageClosure->getClosure())
-            ->channelPost($channelPostClosure->getClosure())
-            ->editedChannelPost($editedChannelPostClosure->getClosure())
-            ->inlineQuery($inlineQueryClosure->getClosure())
-            ->chosenInlineResult($chosenInlineResultClosure->getClosure())
-            ->callbackQuery($callbackQueryClosure->getClosure())
-            ->shippingQuery($shippingQueryClosure->getClosure())
-            ->preCheckoutQuery($preCheckoutQueryClosure->getClosure())
-            ->poll($pollClosure->getClosure())
-            ->pollAnswer($pollAnswerClosure->getClosure())
-            ->myChatMember($myChatMember->getClosure())
+            ->onUpdate($updateClosure->getClosure())
+            ->onCommand('/testcommand', $commandClosure->getClosure())
+            ->onCommand('/wrongcommand', $wrongCommandClosure->getClosure())
+            ->onMessage($messageClosure->getClosure())
+            ->onEditedMessage($editedMessageClosure->getClosure())
+            ->onChannelPost($channelPostClosure->getClosure())
+            ->onEditedChannelPost($editedChannelPostClosure->getClosure())
+            ->onInlineQuery($inlineQueryClosure->getClosure())
+            ->onChosenInlineResult($chosenInlineResultClosure->getClosure())
+            ->onCallbackQuery($callbackQueryClosure->getClosure())
+            ->onShippingQuery($shippingQueryClosure->getClosure())
+            ->onPreCheckoutQuery($preCheckoutQueryClosure->getClosure())
+            ->onPoll($pollClosure->getClosure())
+            ->onPollAnswer($pollAnswerClosure->getClosure())
+            ->onMyChatMember($myChatMember->getClosure())
             ->webhookHandle($requestBody)
         ;
 
@@ -111,10 +111,10 @@ class ClientTest extends TestCase
         ];
 
         $this->client
-            ->command('/testcommand', $commandClosure->getClosure())
-            ->editedMessage($editedMessageClosure->getClosure())
-            ->channelPost($channelPostClosure->getClosure())
-            ->editedChannelPost($editedChannelPostClosure->getClosure())
+            ->onCommand('/testcommand', $commandClosure->getClosure())
+            ->onEditedMessage($editedMessageClosure->getClosure())
+            ->onChannelPost($channelPostClosure->getClosure())
+            ->onEditedChannelPost($editedChannelPostClosure->getClosure())
             ->updatesHandle($updates)
         ;
 

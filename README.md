@@ -24,22 +24,18 @@ $ composer require luzrain/telegram-bot-api
 #### Send message
 ``` php
 use TelegramBot\Api\BotApi;
-use TelegramBot\Api\Methods\SendMessage;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
-$request = new SendMessage(
+$response = $bot->sendMessage(
     chatId: 123456789,
     text: 'Example text',
 );
-
-$response = $bot->call($request);
 ```
 
 #### Send message with reply keyboard
 ```php
 use TelegramBot\Api\BotApi;
-use TelegramBot\Api\Methods\SendMessage;
 use TelegramBot\Api\Types\KeyboardButton;
 use TelegramBot\Api\Types\KeyboardButtonPollType;
 use TelegramBot\Api\Types\ReplyKeyboardMarkup;
@@ -55,19 +51,16 @@ $replyKeyboard = ReplyKeyboardMarkup::create(oneTimeKeyboard: true, resizeKeyboa
     KeyboardButton::create(text: 'Create Poll', requestPoll: KeyboardButtonPollType::create()),
 );
 
-$request = new SendMessage(
+$response = $bot->sendMessage(
     chatId: 123456789,
     text: 'Example text',
     replyMarkup: $replyKeyboard,
 );
-
-$response = $bot->call($request);
 ```
 
 #### Send message with inline keyboard
 ```php
 use TelegramBot\Api\BotApi;
-use TelegramBot\Api\Methods\SendMessage;
 use TelegramBot\Api\Types\InlineKeyboardButton;
 use TelegramBot\Api\Types\InlineKeyboardMarkup;
 use TelegramBot\Api\Types\ReplyKeyboardRemove;
@@ -84,37 +77,34 @@ $inlineKeyboard = InlineKeyboardMarkup::create()->addButtons(
 // For keyboard remove
 $inlineKeyboard = ReplyKeyboardRemove::create();
 
-$request = new SendMessage(
+$response = $bot->sendMessage(
     chatId: 123456789,
     text: 'Example text',
     replyMarkup: $inlineKeyboard ,
 );
-
-$response = $bot->call($request);
 ```
 
 #### Send photo/video/document
 ```php
 use TelegramBot\Api\BotApi;
-use TelegramBot\Api\Methods\SendPhoto;
 use TelegramBot\Api\Types\InputFile;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
 // Upload image from local filesystem
-$request = new SendPhoto(
+$response = $bot->sendPhoto(
     chatId: 123456789,
     photo: InputFile::create('/home/user/img/15311661465960.jpg'),
 );
 
 // Send image from the Internet
-$request = new SendPhoto(
+$response = $bot->sendPhoto(
     chatId: 123456789,
     photo: 'https://avatars3.githubusercontent.com/u/9335727',
 );
 
 // Upload Document
-$request = new SendDocument(
+$response = $bot->sendDocument(
     chatId: 123456789,
     document: InputFile::create('/home/user/files/file.zip'),
     thumb: InputFile::create('/home/user/img/thumb.jpg'),
@@ -122,23 +112,20 @@ $request = new SendDocument(
 );
 
 /**
- * You can also use this command classes:
- * SendPhoto, SendAudio, SendDocument, SendVideo, SendAnimation, SendVoice, SendVideoNote
+ * You can also use this methods:
+ * sendPhoto, sendAudio, sendDocument, sendVideo, sendAnimation, sendVoice, sendVideoNote
  */
-
-$response = $bot->call($request);
 ```
 
 #### Send media group
 ```php
 use TelegramBot\Api\BotApi;
-use TelegramBot\Api\Methods\SendMediaGroup;
 use TelegramBot\Api\Types\InputFile;
 use TelegramBot\Api\Types\InputMediaPhoto;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
-$request = new SendMediaGroup(
+$response = $bot->sendMediaGroup(
     chatId: 123456789,
     media: [
         InputMediaPhoto::create(
@@ -151,8 +138,6 @@ $request = new SendMediaGroup(
         ),
     ],
 );
-
-$response = $bot->call($request);
 ```
 
 #### Client
@@ -160,29 +145,28 @@ $response = $bot->call($request);
 ```php
 use TelegramBot\Api\Client;
 use TelegramBot\Api\Events\Event;
-use TelegramBot\Api\Methods\SendMessage;
 use TelegramBot\Api\Types\Message;
 use TelegramBot\Api\Types\Update;
 
 $client = new Client();
 
 // Handle any type of update
-$client->update(function(Update $update) {
+$client->onUpdate(function(Update $update) {
     // update received
 });
 
 // Handle /ping command
-$client->command('/ping', function(Message $message) {
+$client->onCommand('/ping', function(Message $message) {
     // Be aware that your cannot sent methods with uploading local files from here, use BotApi instead.
-    return new SendMessage(
+    return $client->sendMessage(
         chatId: $message->getChat()->getId(),
         text: 'pong!',
     );
 });
 
 // Handle text messages
-$client->message(function(Message $message) {
-    return new SendMessage(
+$client->onMessage(function(Message $message) {
+    return $client->sendMessage(
         chatId: $message->getChat()->getId(),
         text: 'Your message: ' . $message->getText(),
     );
