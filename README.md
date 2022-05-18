@@ -1,25 +1,22 @@
 
 # PHP Wrapper for Telegram Bot API
 
-[![Bot Api Version](https://img.shields.io/badge/Bot%20API-6.0-0088cc.svg?style=flat)](https://core.telegram.org/bots/api-changelog#april-16-2022)
-[![PHP Version](https://img.shields.io/badge/PHP-%3E=8.0.0-777bb3.svg?style=flat)](https://www.php.net/releases/8.0/)
+[![Bot Api 6.0](https://img.shields.io/badge/Bot%20API-6.0-0088cc.svg?style=flat)](https://core.telegram.org/bots/api-changelog#april-16-2022)
+[![PHP >= 8.0.0](https://img.shields.io/badge/PHP-%3E=8.0.0-777bb3.svg?style=flat)](https://www.php.net/releases/8.0/)
 [![Software License](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat)](LICENSE.md)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/luzrain/TelegramBotApi/Tests/master?label=Tests)](../../actions/workflows/tests.yaml)
+[![Tests Status](https://img.shields.io/github/workflow/status/luzrain/TelegramBotApi/Tests/master?label=Tests)](../../actions/workflows/tests.yaml)
 
 An extended native php wrapper for [Telegram Bot API](https://core.telegram.org/bots/api). Supports all methods and types of responses.
-
-## Bots: An introduction for developers
->Bots are third-party applications that run inside Telegram. Users can interact with bots by sending them messages, commands and [inline requests](https://core.telegram.org/bots#inline-mode). You control your bots using HTTPS requests to Telegram's [bot API](https://core.telegram.org/bots/api).
->
->The [full API reference](https://core.telegram.org/bots/api) for developers is available [here](https://core.telegram.org/bots/api).
-
 
 ## Installation
 ``` bash
 $ composer require luzrain/telegram-bot-api
 ```
 
-## API Wrapper
+## Bot API
+See all available methods and their parameters on [Telegram Bot API](https://core.telegram.org/bots/api#available-methods) documentation page.  
+
+A few examples of usage:
 
 #### Send message
 ``` php
@@ -140,7 +137,8 @@ $response = $bot->sendMediaGroup(
 );
 ```
 
-#### Client
+## Client Api
+#### Webhook client
 
 ```php
 use TelegramBot\Api\Client;
@@ -189,6 +187,3 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 - [Ilya Gusev](https://github.com/iGusev)
 - [All Contributors](../../contributors)
 
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
