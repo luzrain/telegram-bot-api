@@ -7,7 +7,7 @@ namespace TelegramBot\Api\Exceptions;
 use Exception;
 use TelegramBot\Api\BaseMethod;
 
-class TelegramActionException extends Exception
+class TelegramCallbackException extends Exception
 {
     private const ERROR_TEMLATE = 'Closure should return %s or null';
 

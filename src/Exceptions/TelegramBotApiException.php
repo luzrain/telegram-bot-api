@@ -8,7 +8,7 @@ use Exception;
 use TelegramBot\Api\Types\ResponseParameters;
 use Throwable;
 
-class TelegramApiException extends Exception
+class TelegramBotApiException extends Exception
 {
     private ?ResponseParameters $parameters;
 

@@ -6,7 +6,7 @@ namespace TelegramBot\Api\Events;
 
 use Closure;
 use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Exceptions\TelegramActionException;
+use TelegramBot\Api\Exceptions\TelegramCallbackException;
 use TelegramBot\Api\Types\Update;
 use TypeError;
 
@@ -22,14 +22,14 @@ abstract class Event
     /**
      * @param mixed $params
      * @return BaseMethod|null
-     * @throws TelegramActionException
+     * @throws TelegramCallbackException
      */
     protected function callback(mixed ...$params): BaseMethod|null
     {
         try {
             return ($this->action)(...$params);
         } catch (TypeError) {
-            throw new TelegramActionException();
+            throw new TelegramCallbackException();
         }
     }
 
