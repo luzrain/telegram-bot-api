@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace TelegramBot\Api\Events;
 
-use TelegramBot\Api\BaseMethod;
 use TelegramBot\Api\Types\Update;
 
 class EventCollection
