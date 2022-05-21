@@ -28,13 +28,13 @@ class EventCollection
         return $this;
     }
 
-    public function handle(Update $update): BaseMethod|null
+    public function handle(Update $update): mixed
     {
         foreach ($this->events as $event) {
             if ($event->executeChecker($update)) {
-                $method = $event->executeAction($update);
-                if ($method !== null) {
-                    return $method;
+                $callbackResponse = $event->executeAction($update);
+                if ($callbackResponse !== null) {
+                    return $callbackResponse;
                 }
             }
         }

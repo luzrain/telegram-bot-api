@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace TelegramBot\Api\Events;
 
 use Closure;
-use TelegramBot\Api\BaseMethod;
 use TelegramBot\Api\Exceptions\TelegramCallbackException;
 use TelegramBot\Api\Types\Update;
 use TypeError;
@@ -21,15 +20,15 @@ abstract class Event
 
     /**
      * @param mixed $params
-     * @return BaseMethod|null
+     * @return mixed
      * @throws TelegramCallbackException
      */
-    protected function callback(mixed ...$params): BaseMethod|null
+    final protected function callback(mixed ...$params): mixed
     {
         try {
             return ($this->action)(...$params);
-        } catch (TypeError) {
-            throw new TelegramCallbackException();
+        } catch (TypeError $e) {
+            throw TelegramCallbackException::createArgumentException($e);
         }
     }
 
@@ -41,7 +40,7 @@ abstract class Event
 
     /**
      * @param Update $update
-     * @return BaseMethod|null
+     * @return mixed
      */
-    abstract public function executeAction(Update $update): BaseMethod|null;
+    abstract public function executeAction(Update $update): mixed;
 }

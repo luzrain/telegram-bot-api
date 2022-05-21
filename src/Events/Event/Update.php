@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace TelegramBot\Api\Events\Event;
 
-use TelegramBot\Api\BaseMethod;
 use TelegramBot\Api\Events\Event;
 use TelegramBot\Api\Types\Update as UpdateType;
 
@@ -15,7 +14,7 @@ final class Update extends Event
         return true;
     }
 
-    public function executeAction(UpdateType $update): BaseMethod|null
+    public function executeAction(UpdateType $update): mixed
     {
         return $this->callback($update);
     }
