@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace TelegramBot\Api\Events\Event;
 
-use TelegramBot\Api\BaseMethod;
 use TelegramBot\Api\Events\Event;
 use TelegramBot\Api\Types\Update;
 
@@ -15,7 +14,7 @@ final class InlineQuery extends Event
         return $update->getInlineQuery() !== null;
     }
 
-    public function executeAction(Update $update): BaseMethod|null
+    public function executeAction(Update $update): mixed
     {
         return $this->callback($update->getInlineQuery());
     }

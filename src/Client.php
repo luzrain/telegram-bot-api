@@ -8,6 +8,7 @@ use Closure;
 use JsonException;
 use TelegramBot\Api\Events\Event;
 use TelegramBot\Api\Events\EventCollection;
+use TelegramBot\Api\Exceptions\TelegramCallbackException;
 use TelegramBot\Api\Types\Update;
 
 /**
@@ -184,24 +185,29 @@ class Client
      * Webhook handler
      *
      * @param string $body raw request body
-     * @return BaseMethod|null
+     * @return mixed
      * @throws JsonException
      */
-    public function webhookHandle(string $body): BaseMethod|null
+    public function webhookHandle(string $body): mixed
     {
         $data = json_decode(json: $body, associative: true, flags: JSON_THROW_ON_ERROR);
-        $responseMethod = $this->events->handle(Update::fromResponse($data));
+        $callbackResponse = $this->events->handle(Update::fromResponse($data));
         $this->events->reset();
 
-        return $responseMethod;
+        return $callbackResponse;
     }
 
     public function run(): void
     {
         $body = file_get_contents('php://input');
-        $responseMethod = $this->webhookHandle($body);
+        $callbackResponse = $this->webhookHandle($body);
+
+        if ($callbackResponse !== null && !($callbackResponse instanceof BaseMethod)) {
+            throw TelegramCallbackException::createWrongResponseException(get_debug_type($callbackResponse));
+        }
+
         header('Content-Type: application/json');
-        echo json_encode($responseMethod);
+        echo json_encode($callbackResponse);
         exit;
     }
 
