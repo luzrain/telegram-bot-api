@@ -27,6 +27,7 @@ class Chat extends BaseType implements TypeInterface
         'photo' => ChatPhoto::class,
         'bio' => true,
         'has_private_forwards' => true,
+        'has_restricted_voice_and_video_messages' => true,
         'join_to_send_messages' => true,
         'join_by_request' => true,
         'description' => true,
@@ -81,6 +82,12 @@ class Chat extends BaseType implements TypeInterface
      * Optional. Bio of the other party in a private chat. Returned only in getChat.
      */
     protected ?string $bio = null;
+
+    /**
+     * Optional. True, if the privacy settings of the other party restrict sending voice and video note messages in the private chat.
+     * Returned only in getChat.
+     */
+    protected ?bool $hasRestrictedVoiceAndVideoMessages = null;
 
     /**
      * Optional. True, if privacy settings of the other party in the private chat allows to use tg://user?id=<user_id> links only in chats with the user.
@@ -197,6 +204,11 @@ class Chat extends BaseType implements TypeInterface
     public function getBio(): ?string
     {
         return $this->bio;
+    }
+
+    public function hasRestrictedVoiceAndVideoMessages(): ?bool
+    {
+        return $this->hasRestrictedVoiceAndVideoMessages;
     }
 
     public function hasPrivateForwards(): ?bool

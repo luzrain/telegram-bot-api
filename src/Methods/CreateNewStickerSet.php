@@ -9,8 +9,8 @@ use TelegramBot\Api\Types\InputFile;
 use TelegramBot\Api\Types\Stickers\MaskPosition;
 
 /**
- * Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created.
- * You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker. Returns True on success.
+ * Use this method to create a new sticker set owned by a user.
+ * The bot will be able to edit the sticker set thus created. Returns True on success.
  */
 final class CreateNewStickerSet extends BaseMethod
 {
@@ -60,14 +60,15 @@ final class CreateNewStickerSet extends BaseMethod
         protected InputFile|null $webmSticker = null,
 
         /**
-         * Pass True, if a set of mask stickers should be created
-         */
-        protected bool|null $containsMasks = null,
-
-        /**
          * A JSON-serialized object for position where the mask should be placed on faces
          */
         protected MaskPosition|null $maskPosition = null,
+
+        /**
+         * Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”.
+         * By default, a regular sticker set is created.
+         */
+        protected string|null $stickerType = null,
     ) {
     }
 }

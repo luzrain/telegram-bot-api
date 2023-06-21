@@ -17,6 +17,7 @@ class Sticker extends BaseType implements TypeInterface
     protected static array $requiredParams = [
         'file_id',
         'file_unique_id',
+        'type',
         'width',
         'height',
         'is_animated',
@@ -26,6 +27,7 @@ class Sticker extends BaseType implements TypeInterface
     protected static array $map = [
         'file_id' => true,
         'file_unique_id' => true,
+        'type' => true,
         'width' => true,
         'height' => true,
         'is_animated' => true,
@@ -35,6 +37,7 @@ class Sticker extends BaseType implements TypeInterface
         'set_name' => true,
         'premium_animation' => File::class,
         'mask_position' => MaskPosition::class,
+        'custom_emoji_id' => true,
         'file_size' => true,
     ];
 
@@ -48,6 +51,12 @@ class Sticker extends BaseType implements TypeInterface
      * Can't be used to download or reuse the file.
      */
     protected string $fileUniqueId;
+
+    /**
+     * Type of the sticker, currently one of “regular”, “mask”, “custom_emoji”.
+     * The type of the sticker is independent from its format, which is determined by the fields is_animated and is_video.
+     */
+    protected string $type;
 
     /**
      * Sticker width
@@ -95,6 +104,11 @@ class Sticker extends BaseType implements TypeInterface
     protected ?MaskPosition $maskPosition = null;
 
     /**
+     * Optional. For custom emoji stickers, unique identifier of the custom emoji
+     */
+    protected ?string $customEmojiId = null;
+
+    /**
      * Optional. File size in bytes
      */
     protected ?int $fileSize = null;
@@ -107,6 +121,11 @@ class Sticker extends BaseType implements TypeInterface
     public function getFileUniqueId(): string
     {
         return $this->fileUniqueId;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
     }
 
     public function getWidth(): int
@@ -152,6 +171,11 @@ class Sticker extends BaseType implements TypeInterface
     public function getMaskPosition(): ?MaskPosition
     {
         return $this->maskPosition;
+    }
+
+    public function getCustomEmojiId(): ?string
+    {
+        return $this->customEmojiId;
     }
 
     public function isFileSize(): ?bool

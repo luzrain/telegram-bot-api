@@ -17,18 +17,18 @@ class StickerSet extends BaseType implements TypeInterface
     protected static array $requiredParams = [
         'name',
         'title',
+        'sticker_type',
         'is_animated',
         'is_video',
-        'contains_masks',
         'stickers',
     ];
 
     protected static array $map = [
         'name' => true,
         'title' => true,
+        'sticker_type' => true,
         'is_animated' => true,
         'is_video' => true,
-        'contains_masks' => true,
         'stickers' => ArrayOfStickers::class,
         'thumb' => PhotoSize::class,
     ];
@@ -44,6 +44,11 @@ class StickerSet extends BaseType implements TypeInterface
     protected string $title;
 
     /**
+     * Type of stickers in the set, currently one of “regular”, “mask”, “custom_emoji”
+     */
+    protected string $stickerType;
+
+    /**
      * True, if the sticker set contains animated stickers
      */
     protected bool $isAnimated;
@@ -52,11 +57,6 @@ class StickerSet extends BaseType implements TypeInterface
      * True, if the sticker set contains video stickers
      */
     protected bool $isVideo;
-
-    /**
-     * True, if the sticker set contains masks
-     */
-    protected bool $containsMasks;
 
     /**
      * List of all set stickers
@@ -80,6 +80,11 @@ class StickerSet extends BaseType implements TypeInterface
         return $this->title;
     }
 
+    public function getStickerType(): string
+    {
+        return $this->stickerType;
+    }
+
     public function isAnimated(): bool
     {
         return $this->isAnimated;
@@ -88,11 +93,6 @@ class StickerSet extends BaseType implements TypeInterface
     public function isVideo(): bool
     {
         return $this->isVideo;
-    }
-
-    public function isContainsMasks(): bool
-    {
-        return $this->containsMasks;
     }
 
     /**

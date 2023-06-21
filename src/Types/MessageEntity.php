@@ -28,6 +28,7 @@ class MessageEntity extends BaseType implements TypeInterface
     public const TYPE_PRE = 'pre';
     public const TYPE_TEXT_LINK = 'text_link';
     public const TYPE_TEXT_MENTION = 'text_mention';
+    public const CUSTOM_EMOJI = 'custom_emoji';
 
     protected static array $requiredParams = [
         'type',
@@ -42,6 +43,7 @@ class MessageEntity extends BaseType implements TypeInterface
         'url' => true,
         'user' => User::class,
         'language' => true,
+        'custom_emoji_id' => true,
     ];
 
     /**
@@ -49,7 +51,8 @@ class MessageEntity extends BaseType implements TypeInterface
      * Currently, can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command” (/start@jobs_bot),
      * “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text),
      * “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message),
-     * “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames)
+     * “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames),
+     * “custom_emoji” (for inline custom emoji stickers)
      */
     protected string $type;
 
@@ -77,6 +80,12 @@ class MessageEntity extends BaseType implements TypeInterface
      * Optional. For “pre” only, the programming language of the entity text
      */
     protected ?string $language = null;
+
+    /**
+     * Optional. For “custom_emoji” only, unique identifier of the custom emoji.
+     * Use getCustomEmojiStickers to get full information about the sticker
+     */
+    protected ?string $customEmojiId = null;
 
     public static function create(
         string $type,
@@ -125,5 +134,10 @@ class MessageEntity extends BaseType implements TypeInterface
     public function getLanguage(): ?string
     {
         return $this->language;
+    }
+
+    public function getCustomEmojiId(): ?string
+    {
+        return $this->customEmojiId;
     }
 }
