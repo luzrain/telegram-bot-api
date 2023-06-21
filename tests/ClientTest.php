@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace TelegramBot\Api\Test;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Client;
 use TelegramBot\Api\Test\Helper\ClosureTestHelper;
@@ -41,7 +40,9 @@ final class ClientTest extends TestCase
         return file_get_contents(__DIR__ . '/data/' . $file);
     }
 
-    #[DataProvider('clientWebhookData')]
+    /**
+     * @dataProvider clientWebhookData
+     */
     public function testClientWebhook(string $eventName, string $requestBody): void
     {
         $updateClosure = new ClosureTestHelper();
