@@ -9,6 +9,7 @@
         "telegram bot"
     ],
     "homepage": "https://github.com/luzrain/TelegramBotApi",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -25,12 +26,12 @@
         }
     ],
     "require": {
-        "php" : ">=8.0.0",
-        "guzzlehttp/guzzle": "^7.4"
+        "php" : "^8.0",
+        "guzzlehttp/guzzle": "^7.7"
     },
     "require-dev": {
-        "phpunit/phpunit" : "^9.5.20",
-        "friendsofphp/php-cs-fixer": "^3.8"
+        "phpunit/phpunit" : "^10.0",
+        "friendsofphp/php-cs-fixer": "^3.18"
     },
     "autoload": {
         "psr-4": {
@@ -44,6 +45,6 @@
     },
     "scripts": {
         "test": "phpunit",
-        "codestyle-check": "php-cs-fixer fix --dry-run"
+        "codestyle-check": "php-cs-fixer fix -v --dry-run"
     }
 }

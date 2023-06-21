@@ -6,15 +6,10 @@ namespace TelegramBot\Api\Test;
 
 use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Exceptions\TelegramTypeException;
-use TestBaseType;
+use TelegramBot\Api\Test\Helper\TestBaseType;
 
-class BaseTypeTest extends TestCase
+final class BaseTypeTest extends TestCase
 {
-    public function setUp(): void
-    {
-        include_once('tests/data/TestBaseType.php');
-    }
-
     public function testValidate(): void
     {
         TestBaseType::fromResponse([

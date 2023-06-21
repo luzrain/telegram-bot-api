@@ -2,13 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Test;
+namespace TelegramBot\Api\Test\Helper;
 
-use Closure;
-
-class ClosureTest
+final class ClosureTestHelper
 {
-    private Closure $closure;
+    private \Closure $closure;
     private mixed $parameter = null;
 
     public function __construct()
@@ -19,7 +17,7 @@ class ClosureTest
         };
     }
 
-    public function getClosure(): Closure
+    public function getClosure(): \Closure
     {
         return $this->closure;
     }

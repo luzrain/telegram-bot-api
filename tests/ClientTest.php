@@ -4,62 +4,61 @@ declare(strict_types=1);
 
 namespace TelegramBot\Api\Test;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Client;
+use TelegramBot\Api\Test\Helper\ClosureTestHelper;
 use TelegramBot\Api\Types\Update;
 
-class ClientTest extends TestCase
+final class ClientTest extends TestCase
 {
     private Client $client;
 
-    public function clientWebhookData(): iterable
-    {
-        yield ['command', $this->getDataFile('events/command.json')];
-        yield ['message', $this->getDataFile('events/message.json')];
-        yield ['editedMessage', $this->getDataFile('events/editedMessage.json')];
-        yield ['channelPost', $this->getDataFile('events/channelPost.json')];
-        yield ['editedChannelPost', $this->getDataFile('events/editedChannelPost.json')];
-        yield ['inlineQuery', $this->getDataFile('events/inlineQuery.json')];
-        yield ['chosenInlineResult', $this->getDataFile('events/chosenInlineResult.json')];
-        yield ['callbackQuery', $this->getDataFile('events/callbackQuery.json')];
-        yield ['shippingQuery', $this->getDataFile('events/shippingQuery.json')];
-        yield ['preCheckoutQuery', $this->getDataFile('events/preCheckoutQuery.json')];
-        yield ['poll', $this->getDataFile('events/poll.json')];
-        yield ['pollAnswer', $this->getDataFile('events/pollAnswer.json')];
-        yield ['myChatMember', $this->getDataFile('events/myChatMember.json')];
-    }
-
     public function setUp(): void
     {
-        include_once('tests/data/ClosureTest.php');
         $this->client = new Client();
     }
 
-    private function getDataFile(string $file): string
+    public static function clientWebhookData(): iterable
+    {
+        yield ['command', self::getDataFile('events/command.json')];
+        yield ['message', self::getDataFile('events/message.json')];
+        yield ['editedMessage', self::getDataFile('events/editedMessage.json')];
+        yield ['channelPost', self::getDataFile('events/channelPost.json')];
+        yield ['editedChannelPost', self::getDataFile('events/editedChannelPost.json')];
+        yield ['inlineQuery', self::getDataFile('events/inlineQuery.json')];
+        yield ['chosenInlineResult', self::getDataFile('events/chosenInlineResult.json')];
+        yield ['callbackQuery', self::getDataFile('events/callbackQuery.json')];
+        yield ['shippingQuery', self::getDataFile('events/shippingQuery.json')];
+        yield ['preCheckoutQuery', self::getDataFile('events/preCheckoutQuery.json')];
+        yield ['poll', self::getDataFile('events/poll.json')];
+        yield ['pollAnswer', self::getDataFile('events/pollAnswer.json')];
+        yield ['myChatMember', self::getDataFile('events/myChatMember.json')];
+    }
+
+    private static function getDataFile(string $file): string
     {
         return file_get_contents(__DIR__ . '/data/' . $file);
     }
 
-    /**
-     * @dataProvider clientWebhookData
-     */
+    #[DataProvider('clientWebhookData')]
     public function testClientWebhook(string $eventName, string $requestBody): void
     {
-        $updateClosure = new ClosureTest();
-        $commandClosure = new ClosureTest();
-        $wrongCommandClosure = new ClosureTest();
-        $messageClosure = new ClosureTest();
-        $editedMessageClosure = new ClosureTest();
-        $channelPostClosure = new ClosureTest();
-        $editedChannelPostClosure = new ClosureTest();
-        $inlineQueryClosure = new ClosureTest();
-        $chosenInlineResultClosure = new ClosureTest();
-        $callbackQueryClosure = new ClosureTest();
-        $shippingQueryClosure = new ClosureTest();
-        $preCheckoutQueryClosure = new ClosureTest();
-        $pollClosure = new ClosureTest();
-        $pollAnswerClosure = new ClosureTest();
-        $myChatMember = new ClosureTest();
+        $updateClosure = new ClosureTestHelper();
+        $commandClosure = new ClosureTestHelper();
+        $wrongCommandClosure = new ClosureTestHelper();
+        $messageClosure = new ClosureTestHelper();
+        $editedMessageClosure = new ClosureTestHelper();
+        $channelPostClosure = new ClosureTestHelper();
+        $editedChannelPostClosure = new ClosureTestHelper();
+        $inlineQueryClosure = new ClosureTestHelper();
+        $chosenInlineResultClosure = new ClosureTestHelper();
+        $callbackQueryClosure = new ClosureTestHelper();
+        $shippingQueryClosure = new ClosureTestHelper();
+        $preCheckoutQueryClosure = new ClosureTestHelper();
+        $pollClosure = new ClosureTestHelper();
+        $pollAnswerClosure = new ClosureTestHelper();
+        $myChatMember = new ClosureTestHelper();
 
         $this->client
             ->onUpdate($updateClosure->getClosure())
@@ -99,15 +98,15 @@ class ClientTest extends TestCase
 
     public function testClientHandler(): void
     {
-        $commandClosure = new ClosureTest();
-        $editedMessageClosure = new ClosureTest();
-        $channelPostClosure = new ClosureTest();
-        $editedChannelPostClosure = new ClosureTest();
+        $commandClosure = new ClosureTestHelper();
+        $editedMessageClosure = new ClosureTestHelper();
+        $channelPostClosure = new ClosureTestHelper();
+        $editedChannelPostClosure = new ClosureTestHelper();
 
         $updates = [
-            Update::fromResponse(json_decode($this->getDataFile('events/command.json'), true)),
-            Update::fromResponse(json_decode($this->getDataFile('events/editedMessage.json'), true)),
-            Update::fromResponse(json_decode($this->getDataFile('events/channelPost.json'), true)),
+            Update::fromResponse(json_decode(self::getDataFile('events/command.json'), true)),
+            Update::fromResponse(json_decode(self::getDataFile('events/editedMessage.json'), true)),
+            Update::fromResponse(json_decode(self::getDataFile('events/channelPost.json'), true)),
         ];
 
         $this->client

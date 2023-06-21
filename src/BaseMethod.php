@@ -36,7 +36,7 @@ abstract class BaseMethod implements JsonSerializable
             return $data;
         }
 
-        /** @var $responeClass BaseType */
+        /** @var BaseType $responeClass */
         $responeClass = static::$responseClass;
 
         return $responeClass::fromResponse($data);
