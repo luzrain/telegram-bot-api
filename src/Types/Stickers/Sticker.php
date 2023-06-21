@@ -6,6 +6,7 @@ namespace TelegramBot\Api\Types\Stickers;
 
 use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
+use TelegramBot\Api\Types\File;
 use TelegramBot\Api\Types\PhotoSize;
 
 /**
@@ -32,6 +33,7 @@ class Sticker extends BaseType implements TypeInterface
         'thumb' => PhotoSize::class,
         'emoji' => true,
         'set_name' => true,
+        'premium_animation' => File::class,
         'mask_position' => MaskPosition::class,
         'file_size' => true,
     ];
@@ -81,6 +83,11 @@ class Sticker extends BaseType implements TypeInterface
      * Optional. Name of the sticker set to which the sticker belongs
      */
     protected ?string $setName = null;
+
+    /**
+     * Optional. For premium regular stickers, premium animation for the sticker
+     */
+    protected ?File $premiumAnimation = null;
 
     /**
      * Optional. For mask stickers, the position where the mask should be placed
@@ -135,6 +142,11 @@ class Sticker extends BaseType implements TypeInterface
     public function getSetName(): ?string
     {
         return $this->setName;
+    }
+
+    public function getPremiumAnimation(): ?File
+    {
+        return $this->premiumAnimation;
     }
 
     public function getMaskPosition(): ?MaskPosition

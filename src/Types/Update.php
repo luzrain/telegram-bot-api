@@ -131,7 +131,8 @@ class Update extends BaseType implements TypeInterface
     protected ?ChatMemberUpdated $chatMember = null;
 
     /**
-     * Optional. A request to join the chat has been sent. The bot must have the can_invite_users administrator right in the chat to receive these updates.
+     * Optional. A request to join the chat has been sent.
+     * The bot must have the can_invite_users administrator right in the chat to receive these updates.
      */
     protected ?ChatJoinRequest $chatJoinRequest = null;
 

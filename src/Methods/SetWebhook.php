@@ -8,12 +8,12 @@ use TelegramBot\Api\BaseMethod;
 use TelegramBot\Api\Types\InputFile;
 
 /**
- * Use this method to specify a url and receive incoming updates via an outgoing webhook.
- * Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update.
+ * Use this method to specify a URL and receive incoming updates via an outgoing webhook.
+ * Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update.
  * In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
  *
- * If you'd like to make sure that the Webhook request comes from Telegram, we recommend using a secret path in the URL,
- * e.g. https://www.example.com/<token>. Since nobody else knows your bot's token, you can be pretty sure it's us.
+ * If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token.
+ * If specified, the request will contain a header “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
  */
 final class SetWebhook extends BaseMethod
 {
@@ -58,6 +58,12 @@ final class SetWebhook extends BaseMethod
          * Pass True to drop all pending updates
          */
         protected bool|null $dropPendingUpdates = null,
+
+        /**
+         * A secret token to be sent in a header “X-Telegram-Bot-Api-Secret-Token” in every webhook request, 1-256 characters.
+         * Only characters A-Z, a-z, 0-9, _ and - are allowed. The header is useful to ensure that the request comes from a webhook set by you.
+         */
+        protected string|null $secretToken = null,
     ) {
     }
 }

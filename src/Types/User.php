@@ -25,6 +25,8 @@ class User extends BaseType implements TypeInterface
         'last_name' => true,
         'username' => true,
         'language_code' => true,
+        'is_premium' => true,
+        'added_to_attachment_menu' => true,
         'can_join_groups' => true,
         'can_read_all_group_messages' => true,
         'supports_inline_queries' => true,
@@ -59,6 +61,16 @@ class User extends BaseType implements TypeInterface
      * Optional. IETF language tag of the user's language
      */
     protected ?string $languageCode = null;
+
+    /**
+     * Optional. True, if this user is a Telegram Premium user
+     */
+    protected ?bool $isPremium = null;
+
+    /**
+     * Optional. True, if this user added the bot to the attachment menu
+     */
+    protected ?bool $addedToAttachmentMenu = null;
 
     /**
      * Optional. True, if the bot can be invited to groups. Returned only in getMe.
@@ -103,6 +115,16 @@ class User extends BaseType implements TypeInterface
     public function getLanguageCode(): ?string
     {
         return $this->languageCode;
+    }
+
+    public function isPremium(): ?bool
+    {
+        return $this->isPremium;
+    }
+
+    public function getAddedToAttachmentMenu(): ?bool
+    {
+        return $this->addedToAttachmentMenu;
     }
 
     public function isCanJoinGroups(): ?bool

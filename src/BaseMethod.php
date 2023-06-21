@@ -21,7 +21,7 @@ abstract class BaseMethod implements JsonSerializable
         return static::$methodName;
     }
 
-    public function getRequest(): iterable
+    public function getRequest(): \Generator
     {
         foreach ($this as $key => $value) {
             if ($value !== null) {
@@ -36,6 +36,7 @@ abstract class BaseMethod implements JsonSerializable
             return $data;
         }
 
+        /** @var $responeClass BaseType */
         $responeClass = static::$responseClass;
 
         return $responeClass::fromResponse($data);

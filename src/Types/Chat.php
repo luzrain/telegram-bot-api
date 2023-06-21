@@ -27,6 +27,8 @@ class Chat extends BaseType implements TypeInterface
         'photo' => ChatPhoto::class,
         'bio' => true,
         'has_private_forwards' => true,
+        'join_to_send_messages' => true,
+        'join_by_request' => true,
         'description' => true,
         'invite_link' => true,
         'pinned_message' => Message::class,
@@ -85,6 +87,18 @@ class Chat extends BaseType implements TypeInterface
      * Returned only in getChat.
      */
     protected ?bool $hasPrivateForwards = null;
+
+    /**
+     * Optional. True, if users need to join the supergroup before they can send messages.
+     * Returned only in getChat.
+     */
+    protected ?bool $joinToSendMessages = null;
+
+    /**
+     * Optional. True, if all users directly joining the supergroup need to be approved by supergroup administrators.
+     * Returned only in getChat.
+     */
+    protected ?bool $joinByRequest = null;
 
     /**
      * Optional. Description, for groups, supergroups and channel chats. Returned only in getChat.
@@ -188,6 +202,16 @@ class Chat extends BaseType implements TypeInterface
     public function hasPrivateForwards(): ?bool
     {
         return $this->hasPrivateForwards;
+    }
+
+    public function getJoinToSendMessages(): ?bool
+    {
+        return $this->joinToSendMessages;
+    }
+
+    public function getJoinByRequest(): ?bool
+    {
+        return $this->joinByRequest;
     }
 
     public function getDescription(): ?string
