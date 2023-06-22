@@ -21,6 +21,7 @@ class InputMediaAnimation extends InputMedia
         'width' => true,
         'height' => true,
         'duration' => true,
+        'has_spoiler' => true,
     ];
 
     /**
@@ -81,6 +82,11 @@ class InputMediaAnimation extends InputMedia
      */
     protected ?int $duration = null;
 
+    /**
+     * Optional. Pass True if the animation needs to be covered with a spoiler animation
+     */
+    protected ?bool $hasSpoiler = null;
+
     public static function create(
         InputFile|string $media,
         InputFile|string|null $thumb = null,
@@ -90,6 +96,7 @@ class InputMediaAnimation extends InputMedia
         ?int $width = null,
         ?int $height = null,
         ?int $duration = null,
+        ?bool $hasSpoiler = null,
     ): self {
         $instance = new self();
         $instance->media = $media;
@@ -100,6 +107,7 @@ class InputMediaAnimation extends InputMedia
         $instance->width = $width;
         $instance->height = $height;
         $instance->duration = $duration;
+        $instance->hasSpoiler = $hasSpoiler;
 
         return $instance;
     }
@@ -150,5 +158,10 @@ class InputMediaAnimation extends InputMedia
     public function getDuration(): ?int
     {
         return $this->duration;
+    }
+
+    public function hasSpoiler(): ?bool
+    {
+        return $this->hasSpoiler;
     }
 }

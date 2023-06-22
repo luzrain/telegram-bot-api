@@ -46,6 +46,11 @@ final class SendChatAction extends BaseMethod
          * record_video_note or upload_video_note for video notes.
          */
         protected string $action,
+
+        /**
+         * Unique identifier for the target message thread; supergroups only
+         */
+        protected string|null $messageThreadId = null,
     ) {
     }
 }

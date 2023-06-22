@@ -17,6 +17,7 @@ class InputMediaPhoto extends InputMedia
         'caption' => true,
         'parse_mode' => true,
         'caption_entities' => ArrayOfMessageEntity::class,
+        'has_spoiler' => true,
     ];
 
     /**
@@ -52,17 +53,24 @@ class InputMediaPhoto extends InputMedia
      */
     protected ?array $captionEntities = null;
 
+    /**
+     * Optional. Pass True if the animation needs to be covered with a spoiler animation
+     */
+    protected ?bool $hasSpoiler = null;
+
     public static function create(
         InputFile|string $media,
         ?string $caption = null,
         ?string $parseMode = null,
         ?array $captionEntities = null,
+        ?bool $hasSpoiler = null,
     ): self {
         $instance = new self();
         $instance->media = $media;
         $instance->caption = $caption;
         $instance->parseMode = $parseMode;
         $instance->captionEntities = $captionEntities;
+        $instance->hasSpoiler = $hasSpoiler;
 
         return $instance;
     }
@@ -93,5 +101,10 @@ class InputMediaPhoto extends InputMedia
     public function getCaptionEntities(): ?array
     {
         return $this->captionEntities;
+    }
+
+    public function hasSpoiler(): ?bool
+    {
+        return $this->hasSpoiler;
     }
 }

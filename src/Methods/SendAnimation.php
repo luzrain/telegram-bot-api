@@ -78,6 +78,11 @@ final class SendAnimation extends BaseMethod
         protected array|null $captionEntities = null,
 
         /**
+         * Pass True if the photo needs to be covered with a spoiler animation
+         */
+        protected bool|null $hasSpoiler = null,
+
+        /**
          * Sends the message silently. Users will receive a notification with no sound.
          */
         protected bool|null $disableNotification = null,

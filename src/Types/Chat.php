@@ -39,6 +39,8 @@ class Chat extends BaseType implements TypeInterface
         'permissions' => ChatPermissions::class,
         'slow_mode_delay' => true,
         'message_auto_delete_time' => true,
+        'has_aggressive_anti_spam_enabled' => true,
+        'has_hidden_members' => true,
         'has_protected_content' => true,
         'sticker_set_name' => true,
         'can_set_sticker_set' => true,
@@ -157,6 +159,17 @@ class Chat extends BaseType implements TypeInterface
      * Optional. The time after which all messages sent to the chat will be automatically deleted; in seconds. Returned only in getChat.
      */
     protected ?int $messageAutoDeleteTime = null;
+
+    /**
+     * Optional. True, if aggressive anti-spam checks are enabled in the supergroup. The field is only available to chat administrators.
+     * Returned only in getChat.
+     */
+    protected ?bool $hasAggressiveAntiSpamEnabled = null;
+
+    /**
+     * Optional. True, if non-administrators can only get the list of bots and administrators in the chat. Returned only in getChat.
+     */
+    protected ?bool $hasHiddenMembers = null;
 
     /**
      * Optional. True, if messages from the chat can't be forwarded to other chats. Returned only in getChat.
@@ -289,6 +302,16 @@ class Chat extends BaseType implements TypeInterface
     public function getMessageAutoDeleteTime(): ?int
     {
         return $this->messageAutoDeleteTime;
+    }
+
+    public function hasAggressiveAntiSpamEnabled(): ?bool
+    {
+        return $this->hasAggressiveAntiSpamEnabled;
+    }
+
+    public function hasHiddenMembers(): ?bool
+    {
+        return $this->hasHiddenMembers;
     }
 
     public function hasProtectedContent(): ?bool

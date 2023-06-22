@@ -78,6 +78,11 @@ final class SendVideo extends BaseMethod
         protected array|null $captionEntities = null,
 
         /**
+         * Pass True if the photo needs to be covered with a spoiler animation
+         */
+        protected bool|null $hasSpoiler = null,
+
+        /**
          * Pass True, if the uploaded video is suitable for streaming
          */
         protected bool|null $supportsStreaming = null,

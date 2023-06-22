@@ -20,6 +20,7 @@ class ReplyKeyboardMarkup extends BaseType implements TypeInterface
 
     protected static array $map = [
         'keyboard' => true,
+        'is_persistent' => true,
         'resize_keyboard' => true,
         'one_time_keyboard' => true,
         'input_field_placeholder' => true,
@@ -30,6 +31,12 @@ class ReplyKeyboardMarkup extends BaseType implements TypeInterface
      * Array of button rows, each represented by an Array of KeyboardButton objects
      */
     protected array $keyboard;
+
+    /**
+     * Optional. Requests clients to always show the keyboard when the regular keyboard is hidden.
+     * Defaults to false, in which case the custom keyboard can be hidden and opened with a keyboard icon.
+     */
+    protected ?bool $isPersistent = null;
 
     /**
      * Optional. Requests clients to resize the keyboard vertically for optimal fit
@@ -61,12 +68,14 @@ class ReplyKeyboardMarkup extends BaseType implements TypeInterface
      * Create new instance of ReplyKeyboardMarkup
      */
     public static function create(
+        ?bool $isPersistent = null,
         ?bool $resizeKeyboard = null,
         ?bool $oneTimeKeyboard = null,
         ?string $inputFieldPlaceholder = null,
         ?bool $selective = null,
     ): self {
         $instance = new self();
+        $instance->isPersistent = $isPersistent;
         $instance->resizeKeyboard = $resizeKeyboard;
         $instance->oneTimeKeyboard = $oneTimeKeyboard;
         $instance->inputFieldPlaceholder = $inputFieldPlaceholder;

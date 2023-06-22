@@ -59,6 +59,7 @@ class Message extends BaseType implements TypeInterface
         'voice' => Voice::class,
         'caption' => true,
         'caption_entities' => ArrayOfMessageEntity::class,
+        'has_media_spoiler' => true,
         'contact' => Contact::class,
         'dice' => Dice::class,
         'game' => Game::class,
@@ -80,11 +81,15 @@ class Message extends BaseType implements TypeInterface
         'invoice' => Invoice::class,
         'successful_payment' => SuccessfulPayment::class,
         'connected_website' => true,
+        'write_access_allowed' => WriteAccessAllowed::class,
         'passport_data' => PassportData::class,
         'proximity_alert_triggered' => ProximityAlertTriggered::class,
         'forum_topic_created' => ForumTopicCreated::class,
+        'forum_topic_edited' => ForumTopicEdited::class,
         'forum_topic_closed' => ForumTopicClosed::class,
         'forum_topic_reopened' => ForumTopicReopened::class,
+        'general_forum_topic_hidden' => GeneralForumTopicHidden::class,
+        'general_forum_topic_unhidden' => GeneralForumTopicUnhidden::class,
         'video_chat_scheduled' => VideoChatScheduled::class,
         'video_chat_started' => VideoChatStarted::class,
         'video_chat_ended' => VideoChatEnded::class,
@@ -267,6 +272,11 @@ class Message extends BaseType implements TypeInterface
     protected ?array $captionEntities = null;
 
     /**
+     * Optional. True, if the message media is covered by a spoiler animation
+     */
+    protected ?bool $hasMediaSpoiler = null;
+
+    /**
      * Optional. Message is a shared contact, information about the contact
      */
     protected ?Contact $contact = null;
@@ -386,6 +396,11 @@ class Message extends BaseType implements TypeInterface
     protected ?string $connectedWebsite = null;
 
     /**
+     * Optional. Service message: the user allowed the bot added to the attachment menu to write messages
+     */
+    protected ?WriteAccessAllowed $writeAccessAllowed = null;
+
+    /**
      * Optional. Telegram Passport data
      */
     protected ?PassportData $passportData = null;
@@ -401,6 +416,11 @@ class Message extends BaseType implements TypeInterface
     protected ?ForumTopicCreated $forumTopicCreated = null;
 
     /**
+     * Optional. Service message: forum topic edited
+     */
+    protected ?ForumTopicEdited $forumTopicEdited = null;
+
+    /**
      * Optional. Service message: forum topic closed
      */
     protected ?ForumTopicClosed $forumTopicClosed = null;
@@ -409,6 +429,16 @@ class Message extends BaseType implements TypeInterface
      * Optional. Service message: forum topic reopened
      */
     protected ?ForumTopicReopened $forumTopicReopened = null;
+
+    /**
+     * Optional. Service message: the 'General' forum topic hidden
+     */
+    protected ?GeneralForumTopicHidden $generalForumTopicHidden = null;
+
+    /**
+     * Optional. Service message: the 'General' forum topic unhidden
+     */
+    protected ?GeneralForumTopicUnhidden $generalForumTopicUnhidden = null;
 
     /**
      * Optional. Service message: video chat scheduled
@@ -609,6 +639,11 @@ class Message extends BaseType implements TypeInterface
         return $this->captionEntities;
     }
 
+    public function hasMediaSpoiler(): ?bool
+    {
+        return $this->hasMediaSpoiler;
+    }
+
     public function getContact(): ?Contact
     {
         return $this->contact;
@@ -720,6 +755,11 @@ class Message extends BaseType implements TypeInterface
         return $this->connectedWebsite;
     }
 
+    public function getWriteAccessAllowed(): ?WriteAccessAllowed
+    {
+        return $this->writeAccessAllowed;
+    }
+
     public function getPassportData(): ?PassportData
     {
         return $this->passportData;
@@ -735,6 +775,11 @@ class Message extends BaseType implements TypeInterface
         return $this->forumTopicCreated;
     }
 
+    public function getForumTopicEdited(): ?ForumTopicEdited
+    {
+        return $this->forumTopicEdited;
+    }
+
     public function getForumTopicClosed(): ?ForumTopicClosed
     {
         return $this->forumTopicClosed;
@@ -743,6 +788,16 @@ class Message extends BaseType implements TypeInterface
     public function getForumTopicReopened(): ?ForumTopicReopened
     {
         return $this->forumTopicReopened;
+    }
+
+    public function getGeneralForumTopicHidden(): ?GeneralForumTopicHidden
+    {
+        return $this->generalForumTopicHidden;
+    }
+
+    public function getGeneralForumTopicUnhidden(): ?GeneralForumTopicUnhidden
+    {
+        return $this->generalForumTopicUnhidden;
     }
 
     public function getVideoChatScheduled(): ?VideoChatScheduled

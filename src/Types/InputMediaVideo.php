@@ -22,6 +22,7 @@ class InputMediaVideo extends InputMedia
         'height' => true,
         'duration' => true,
         'supports_streaming' => true,
+        'has_spoiler' => true,
     ];
 
     /**
@@ -87,6 +88,11 @@ class InputMediaVideo extends InputMedia
      */
     protected ?bool $supportsStreaming = null;
 
+    /**
+     * Optional. Pass True if the animation needs to be covered with a spoiler animation
+     */
+    protected ?bool $hasSpoiler = null;
+
     public static function create(
         InputFile|string $media,
         InputFile|string|null $thumb = null,
@@ -97,6 +103,7 @@ class InputMediaVideo extends InputMedia
         ?int $height = null,
         ?int $duration = null,
         ?bool $supportsStreaming = null,
+        ?bool $hasSpoiler = null,
     ): self {
         $instance = new self();
         $instance->media = $media;
@@ -108,6 +115,7 @@ class InputMediaVideo extends InputMedia
         $instance->height = $height;
         $instance->duration = $duration;
         $instance->supportsStreaming = $supportsStreaming;
+        $instance->hasSpoiler = $hasSpoiler;
 
         return $instance;
     }
@@ -163,5 +171,10 @@ class InputMediaVideo extends InputMedia
     public function getSupportsStreaming(): ?bool
     {
         return $this->supportsStreaming;
+    }
+
+    public function hasSpoiler(): ?bool
+    {
+        return $this->hasSpoiler;
     }
 }
