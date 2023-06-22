@@ -13,6 +13,7 @@ use TelegramBot\Api\Types\Games\Game;
 use TelegramBot\Api\Types\Passport\PassportData;
 use TelegramBot\Api\Types\Payments\Invoice;
 use TelegramBot\Api\Types\Payments\SuccessfulPayment;
+use TelegramBot\Api\Types\Stickers\Sticker;
 
 /**
  * This object represents a message.
