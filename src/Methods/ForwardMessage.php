@@ -34,6 +34,11 @@ final class ForwardMessage extends BaseMethod
         protected int|string $messageId,
 
         /**
+         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+         */
+        protected int|null $messageThreadId = null,
+
+        /**
          * Protects the contents of the forwarded message from forwarding and saving
          */
         protected bool|null $disableNotification = null,

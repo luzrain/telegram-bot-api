@@ -29,6 +29,11 @@ final class SendGame extends BaseMethod
         protected string $gameShortName,
 
         /**
+         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+         */
+        protected int|null $messageThreadId = null,
+
+        /**
          * Sends the message silently. Users will receive a notification with no sound.
          */
         protected bool|null $disableNotification = null,

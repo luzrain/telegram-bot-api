@@ -36,6 +36,11 @@ final class SendVideoNote extends BaseMethod
         protected InputFile|string $videoNote,
 
         /**
+         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+         */
+        protected int|null $messageThreadId = null,
+
+        /**
          * Duration of sent video in seconds
          */
         protected int|null $duration = null,

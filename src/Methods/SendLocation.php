@@ -37,6 +37,11 @@ final class SendLocation extends BaseMethod
         protected float $longitude,
 
         /**
+         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+         */
+        protected int|null $messageThreadId = null,
+
+        /**
          * The radius of uncertainty for the location, measured in meters; 0-1500
          */
         protected float|null $horizontalAccuracy = null,

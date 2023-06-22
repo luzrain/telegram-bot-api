@@ -19,5 +19,6 @@ class InputMedia extends BaseType
 {
     protected function __construct()
     {
+        parent::__construct();
     }
 }

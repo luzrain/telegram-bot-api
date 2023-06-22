@@ -35,6 +35,11 @@ final class SendDocument extends BaseMethod
         protected InputFile|string $document,
 
         /**
+         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+         */
+        protected int|null $messageThreadId = null,
+
+        /**
          * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side.
          * The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320.
          */

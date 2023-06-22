@@ -42,6 +42,11 @@ final class SendPoll extends BaseMethod
         protected array $options,
 
         /**
+         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+         */
+        protected int|null $messageThreadId = null,
+
+        /**
          * True, if the poll needs to be anonymous, defaults to True
          */
         protected bool|null $isAnonymous = null,

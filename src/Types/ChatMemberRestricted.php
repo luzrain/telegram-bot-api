@@ -36,6 +36,7 @@ class ChatMemberRestricted extends ChatMember
         'can_send_polls' => true,
         'can_send_other_messages' => true,
         'can_add_web_page_previews' => true,
+        'can_manage_topics' => true,
         'until_date' => true,
     ];
 
@@ -95,6 +96,11 @@ class ChatMemberRestricted extends ChatMember
     protected bool $canAddWebPagePreviews;
 
     /**
+     * True, if the user is allowed to create forum topics
+     */
+    protected ?bool $canManageTopics = null;
+
+    /**
      * Date when restrictions will be lifted for this user; unix time. If 0, then the user is restricted forever
      */
     protected int $untilDate;
@@ -152,6 +158,11 @@ class ChatMemberRestricted extends ChatMember
     public function isCanAddWebPagePreviews(): bool
     {
         return $this->canAddWebPagePreviews;
+    }
+
+    public function getCanManageTopics(): ?bool
+    {
+        return $this->canManageTopics;
     }
 
     public function getUntilDate(): int

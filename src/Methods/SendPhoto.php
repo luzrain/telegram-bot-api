@@ -36,6 +36,11 @@ final class SendPhoto extends BaseMethod
         protected InputFile|string $photo,
 
         /**
+         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+         */
+        protected int|null $messageThreadId = null,
+
+        /**
          * Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
          */
         protected string|null $caption = null,

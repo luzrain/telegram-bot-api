@@ -28,6 +28,7 @@ class Message extends BaseType implements TypeInterface
 
     protected static array $map = [
         'message_id' => true,
+        'message_thread_id ' => true,
         'from' => User::class,
         'sender_chat' => Chat::class,
         'date' => true,
@@ -38,6 +39,7 @@ class Message extends BaseType implements TypeInterface
         'forward_signature' => true,
         'forward_sender_name' => true,
         'forward_date' => true,
+        'is_topic_message' => true,
         'is_automatic_forward' => true,
         'reply_to_message' => Message::class,
         'via_bot' => User::class,
@@ -80,6 +82,9 @@ class Message extends BaseType implements TypeInterface
         'connected_website' => true,
         'passport_data' => PassportData::class,
         'proximity_alert_triggered' => ProximityAlertTriggered::class,
+        'forum_topic_created' => ForumTopicCreated::class,
+        'forum_topic_closed' => ForumTopicClosed::class,
+        'forum_topic_reopened' => ForumTopicReopened::class,
         'video_chat_scheduled' => VideoChatScheduled::class,
         'video_chat_started' => VideoChatStarted::class,
         'video_chat_ended' => VideoChatEnded::class,
@@ -92,6 +97,11 @@ class Message extends BaseType implements TypeInterface
      * Unique message identifier inside this chat
      */
     protected int $messageId;
+
+    /**
+     * Optional. Unique identifier of a message thread to which the message belongs; for supergroups only
+     */
+    protected ?bool $messageThreadId;
 
     /**
      * Optional. Sender of the message; empty for messages sent to channels.
@@ -147,6 +157,11 @@ class Message extends BaseType implements TypeInterface
      * Optional. For forwarded messages, date the original message was sent in Unix time
      */
     protected ?int $forwardDate = null;
+
+    /**
+     * Optional. True, if the message is sent to a forum topic
+     */
+    protected ?bool $isTopicMessage = null;
 
     /**
      * Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion group
@@ -381,6 +396,21 @@ class Message extends BaseType implements TypeInterface
     protected ?ProximityAlertTriggered $proximityAlertTriggered = null;
 
     /**
+     * Optional. Service message: forum topic created
+     */
+    protected ?ForumTopicCreated $forumTopicCreated = null;
+
+    /**
+     * Optional. Service message: forum topic closed
+     */
+    protected ?ForumTopicClosed $forumTopicClosed = null;
+
+    /**
+     * Optional. Service message: forum topic reopened
+     */
+    protected ?ForumTopicReopened $forumTopicReopened = null;
+
+    /**
      * Optional. Service message: video chat scheduled
      */
     protected ?VideoChatScheduled $videoChatScheduled = null;
@@ -413,6 +443,11 @@ class Message extends BaseType implements TypeInterface
     public function getMessageId(): int
     {
         return $this->messageId;
+    }
+
+    public function getMessageThreadId(): ?bool
+    {
+        return $this->messageThreadId;
     }
 
     public function getFrom(): ?User
@@ -463,6 +498,11 @@ class Message extends BaseType implements TypeInterface
     public function getForwardDate(): ?int
     {
         return $this->forwardDate;
+    }
+
+    public function isTopicMessage(): ?bool
+    {
+        return $this->isTopicMessage;
     }
 
     public function isAutomaticForward(): ?bool
@@ -688,6 +728,21 @@ class Message extends BaseType implements TypeInterface
     public function getProximityAlertTriggered(): ?ProximityAlertTriggered
     {
         return $this->proximityAlertTriggered;
+    }
+
+    public function getForumTopicCreated(): ?ForumTopicCreated
+    {
+        return $this->forumTopicCreated;
+    }
+
+    public function getForumTopicClosed(): ?ForumTopicClosed
+    {
+        return $this->forumTopicClosed;
+    }
+
+    public function getForumTopicReopened(): ?ForumTopicReopened
+    {
+        return $this->forumTopicReopened;
     }
 
     public function getVideoChatScheduled(): ?VideoChatScheduled

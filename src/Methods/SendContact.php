@@ -37,6 +37,11 @@ final class SendContact extends BaseMethod
         protected string $firstName,
 
         /**
+         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+         */
+        protected int|null $messageThreadId = null,
+
+        /**
          * Contact's last name
          */
         protected string|null $lastName = null,

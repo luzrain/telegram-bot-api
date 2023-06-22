@@ -47,6 +47,11 @@ final class SendVenue extends BaseMethod
         protected string $address,
 
         /**
+         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+         */
+        protected int|null $messageThreadId = null,
+
+        /**
          * Foursquare identifier of the venue
          */
         protected string|null $foursquareId = null,

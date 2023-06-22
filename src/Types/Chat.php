@@ -24,7 +24,10 @@ class Chat extends BaseType implements TypeInterface
         'username' => true,
         'first_name' => true,
         'last_name' => true,
+        'is_forum' => true,
         'photo' => ChatPhoto::class,
+        'active_usernames' => true,
+        'emoji_status_custom_emoji_id' => true,
         'bio' => true,
         'has_private_forwards' => true,
         'has_restricted_voice_and_video_messages' => true,
@@ -74,9 +77,26 @@ class Chat extends BaseType implements TypeInterface
     protected ?string $lastName = null;
 
     /**
+     * Optional. True, if the supergroup chat is a forum (has topics enabled)
+     */
+    protected ?bool $isForum = null;
+
+    /**
      * Optional. Chat photo. Returned only in getChat.
      */
     protected ?ChatPhoto $photo = null;
+
+    /**
+     * Optional. If non-empty, the list of all active chat usernames; for private chats, supergroups and channels. Returned only in getChat.
+     *
+     * @var list<string>
+     */
+    protected ?array $activeUsernames = null;
+
+    /**
+     * Optional. Custom emoji identifier of emoji status of the other party in a private chat. Returned only in getChat.
+     */
+    protected ?string $emojiStatusCustomEmojiId = null;
 
     /**
      * Optional. Bio of the other party in a private chat. Returned only in getChat.
@@ -196,9 +216,24 @@ class Chat extends BaseType implements TypeInterface
         return $this->lastName;
     }
 
+    public function isForum(): ?bool
+    {
+        return $this->isForum;
+    }
+
     public function getPhoto(): ?ChatPhoto
     {
         return $this->photo;
+    }
+
+    public function getActiveUsernames(): ?array
+    {
+        return $this->activeUsernames;
+    }
+
+    public function getEmojiStatusCustomEmojiId(): ?string
+    {
+        return $this->emojiStatusCustomEmojiId;
     }
 
     public function getBio(): ?string

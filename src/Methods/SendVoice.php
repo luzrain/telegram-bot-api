@@ -36,6 +36,11 @@ final class SendVoice extends BaseMethod
         protected InputFile|string $voice,
 
         /**
+         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+         */
+        protected int|null $messageThreadId = null,
+
+        /**
          * Voice message caption, 0-1024 characters after entities parsing
          */
         protected string|null $caption = null,

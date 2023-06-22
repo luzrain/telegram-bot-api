@@ -39,6 +39,11 @@ final class CopyMessage extends BaseMethod
         protected int $messageId,
 
         /**
+         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+         */
+        protected int|null $messageThreadId = null,
+
+        /**
          * New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept
          */
         protected string|null $caption = null,

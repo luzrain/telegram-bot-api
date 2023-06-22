@@ -38,6 +38,7 @@ class ChatMemberAdministrator extends ChatMember
         'can_post_messages' => true,
         'can_edit_messages' => true,
         'can_pin_messages' => true,
+        'can_manage_topics' => true,
         'custom_title' => true,
     ];
 
@@ -118,6 +119,11 @@ class ChatMemberAdministrator extends ChatMember
      */
     protected ?string $customTitle = null;
 
+    /**
+     * Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
+     */
+    protected ?bool $canManageTopics = null;
+
     public function getStatus(): string
     {
         return $this->status;
@@ -191,5 +197,10 @@ class ChatMemberAdministrator extends ChatMember
     public function getCustomTitle(): ?string
     {
         return $this->customTitle;
+    }
+
+    public function getCanManageTopics(): ?bool
+    {
+        return $this->canManageTopics;
     }
 }

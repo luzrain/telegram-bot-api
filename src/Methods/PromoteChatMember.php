@@ -84,6 +84,11 @@ final class PromoteChatMember extends BaseMethod
          * Pass True, if the administrator can pin messages, supergroups only
          */
         protected bool|null $canPinMessages = null,
+
+        /**
+         * Pass True if the user is allowed to create, rename, close, and reopen forum topics, supergroups only
+         */
+        protected bool|null $canManageTopics = null,
     ) {
     }
 }

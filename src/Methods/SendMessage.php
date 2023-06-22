@@ -32,6 +32,11 @@ final class SendMessage extends BaseMethod
         protected string $text,
 
         /**
+         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+         */
+        protected int|null $messageThreadId = null,
+
+        /**
          * Mode for parsing entities in the message text. See formatting options for more details.
          *
          * @see https://core.telegram.org/bots/api#formatting-options
