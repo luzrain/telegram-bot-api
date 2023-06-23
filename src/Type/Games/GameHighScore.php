@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Games;
 
 use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
 use Luzrain\TelegramBotApi\Type\User;
+use Luzrain\TelegramBotApi\TypeInterface;
 
 /**
  * This object represents one row of the high scores table for a game.

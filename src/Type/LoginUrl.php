@@ -49,7 +49,7 @@ final class LoginUrl extends BaseType implements TypeInterface
     protected ?bool $requestWriteAccess = null;
 
     public static function create(
-        string $url = null,
+        string $url,
         ?string $forwardText = null,
         ?string $botUsername = null,
         ?bool $requestWriteAccess = null,

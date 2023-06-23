@@ -93,4 +93,9 @@ final class InputMediaDocument extends InputMedia
     {
         return $this->thumbnail;
     }
+
+    public function getMedia(): InputFile|string|null
+    {
+        return $this->media;
+    }
 }

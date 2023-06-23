@@ -35,6 +35,8 @@ class ChatMember extends BaseType implements TypeInterface
     /**
      * @psalm-suppress UndefinedPropertyFetch
      * @psalm-suppress UnhandledMatchCondition
+     * @psalm-suppress LessSpecificReturnStatement
+     * @psalm-suppress MoreSpecificReturnType
      */
     public static function fromResponse(array $data): static
     {

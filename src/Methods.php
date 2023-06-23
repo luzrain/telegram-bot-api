@@ -119,6 +119,7 @@ trait Methods
 {
     /**
      * @throws TelegramMethodNotExistException
+     * @psalm-suppress MoreSpecificReturnType
      */
     private function getMethodObject(string $methodName, array $arguments): BaseMethod
     {

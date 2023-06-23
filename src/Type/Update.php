@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
 use Luzrain\TelegramBotApi\Type\Inline\ChosenInlineResult;
 use Luzrain\TelegramBotApi\Type\Inline\InlineQuery;
 use Luzrain\TelegramBotApi\Type\Payments\PreCheckoutQuery;
 use Luzrain\TelegramBotApi\Type\Payments\ShippingQuery;
+use Luzrain\TelegramBotApi\TypeInterface;
 
 /**
  * This object represents an incoming update.

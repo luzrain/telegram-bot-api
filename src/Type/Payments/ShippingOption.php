@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Payments;
 
 use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfLabeledPrice;
+use Luzrain\TelegramBotApi\TypeInterface;
 
 /**
  * This object represents one shipping option.

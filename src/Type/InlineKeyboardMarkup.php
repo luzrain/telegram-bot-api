@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfArrayOfInlineKeyboardButton;
+use Luzrain\TelegramBotApi\TypeInterface;
 
 /**
  * This object represents an inline keyboard that appears right next to the message it belongs to.

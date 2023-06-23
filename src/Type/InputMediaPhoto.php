@@ -74,4 +74,9 @@ final class InputMediaPhoto extends InputMedia
 
         return $instance;
     }
+
+    public function getMedia(): InputFile|string|null
+    {
+        return $this->media;
+    }
 }

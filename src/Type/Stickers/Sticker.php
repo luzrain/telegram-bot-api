@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Stickers;
 
 use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
 use Luzrain\TelegramBotApi\Type\File;
 use Luzrain\TelegramBotApi\Type\PhotoSize;
+use Luzrain\TelegramBotApi\TypeInterface;
 
 /**
  * This object represents a sticker.

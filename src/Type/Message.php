@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessageEntity;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPhotoSize;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfUser;
@@ -14,6 +13,7 @@ use Luzrain\TelegramBotApi\Type\Passport\PassportData;
 use Luzrain\TelegramBotApi\Type\Payments\Invoice;
 use Luzrain\TelegramBotApi\Type\Payments\SuccessfulPayment;
 use Luzrain\TelegramBotApi\Type\Stickers\Sticker;
+use Luzrain\TelegramBotApi\TypeInterface;
 
 /**
  * This object represents a message.

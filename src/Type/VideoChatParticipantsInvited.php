@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfUser;
+use Luzrain\TelegramBotApi\TypeInterface;
 
 /**
  * This object represents a service message about new members invited to a video chat.

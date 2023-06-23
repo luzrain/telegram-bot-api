@@ -42,7 +42,7 @@ abstract class BaseType implements \JsonSerializable
     {
     }
 
-    private function map(array $data): self
+    private function map(array $data): static
     {
         foreach (static::$map as $key => $item) {
             /** @var BaseType|mixed $item */

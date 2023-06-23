@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\Method\GetFile;
 use Luzrain\TelegramBotApi\Method\SendMediaGroup;
 use Luzrain\TelegramBotApi\Type\File;
 use Luzrain\TelegramBotApi\Type\InputFile;
-use Luzrain\TelegramBotApi\Type\InputMediaAnimation;
 use Luzrain\TelegramBotApi\Type\InputMediaAudio;
 use Luzrain\TelegramBotApi\Type\InputMediaDocument;
+use Luzrain\TelegramBotApi\Type\InputMediaPhoto;
 use Luzrain\TelegramBotApi\Type\InputMediaVideo;
 use Luzrain\TelegramBotApi\Type\ResponseParameters;
 
@@ -58,15 +58,16 @@ final class BotApi
             }
 
             if ($method instanceof SendMediaGroup && $name === 'media') {
+                /** @var list<InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo> $data */
                 foreach ($data as $inputMedia) {
-                    $files[] = $inputMedia->getMedia();
-                    if ($inputMedia instanceof InputMediaAudio ||
-                        $inputMedia instanceof InputMediaDocument ||
-                        $inputMedia instanceof InputMediaVideo ||
-                        $inputMedia instanceof InputMediaAnimation
-                    ) {
-                        if ($inputMedia->getThumbnail() instanceof InputFile) {
-                            $files[] = $inputMedia->getThumbnail();
+                    $mediaFile = $inputMedia->getMedia();
+                    if ($mediaFile instanceof InputFile) {
+                        $files[] = $mediaFile;
+                    }
+                    if (!$inputMedia instanceof InputMediaPhoto) {
+                        $mediaThumbnail = $inputMedia->getThumbnail();
+                        if ($mediaThumbnail instanceof InputFile) {
+                            $files[] = $mediaThumbnail;
                         }
                     }
                 }
@@ -95,7 +96,7 @@ final class BotApi
 
         if ($response['ok'] === false) {
             $parameters = isset($response['parameters']) ? ResponseParameters::fromResponse($response['parameters']) : null;
-            throw new TelegramBotApiException($response['description'], $response['error_code'], $exception, $parameters);
+            throw new TelegramBotApiException($response['description'], $response['error_code'], $exception ?? null, $parameters);
         }
 
         return $method->createResponse($response['result']);

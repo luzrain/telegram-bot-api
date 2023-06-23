@@ -124,4 +124,9 @@ final class InputMediaVideo extends InputMedia
     {
         return $this->thumbnail;
     }
+
+    public function getMedia(): InputFile|string|null
+    {
+        return $this->media;
+    }
 }

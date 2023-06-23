@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
 use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
 use Luzrain\TelegramBotApi\Type\Location;
 use Luzrain\TelegramBotApi\Type\User;
+use Luzrain\TelegramBotApi\TypeInterface;
 
 /**
  * This object represents an incoming inline query.

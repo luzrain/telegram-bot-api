@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
 use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfEncryptedPassportElement;
+use Luzrain\TelegramBotApi\TypeInterface;
 
 /**
  * Contains information about Telegram Passport data shared with the bot by the user.
