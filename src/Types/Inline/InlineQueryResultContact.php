@@ -21,9 +21,9 @@ class InlineQueryResultContact extends InlineQueryResult
         'vcard' => true,
         'reply_markup' => InlineKeyboardMarkup::class,
         'input_message_content' => InputMessageContent::class,
-        'thumb_url' => true,
-        'thumb_width' => true,
-        'thumb_height' => true,
+        'thumbnail_url' => true,
+        'thumbnail_width' => true,
+        'thumbnail_height' => true,
     ];
 
     /**
@@ -69,17 +69,17 @@ class InlineQueryResultContact extends InlineQueryResult
     /**
      * Optional. Url of the thumbnail for the result
      */
-    protected ?string $thumbUrl = null;
+    protected ?string $thumbnailUrl = null;
 
     /**
      * Optional. Thumbnail width
      */
-    protected ?int $thumbWidth = null;
+    protected ?int $thumbnailWidth = null;
 
     /**
      * Optional. Thumbnail height
      */
-    protected ?int $thumbHeight = null;
+    protected ?int $thumbnailHeight = null;
 
     public static function create(
         string $id,
@@ -89,9 +89,9 @@ class InlineQueryResultContact extends InlineQueryResult
         ?string $vcard = null,
         ?InlineKeyboardMarkup $replyMarkup = null,
         ?InputMessageContent $inputMessageContent = null,
-        ?string $thumbUrl = null,
-        ?int $thumbWidth = null,
-        ?int $thumbHeight = null,
+        ?string $thumbnailUrl = null,
+        ?int $thumbnailWidth = null,
+        ?int $thumbnailHeight = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -101,9 +101,9 @@ class InlineQueryResultContact extends InlineQueryResult
         $instance->vcard = $vcard;
         $instance->replyMarkup = $replyMarkup;
         $instance->inputMessageContent = $inputMessageContent;
-        $instance->thumbUrl = $thumbUrl;
-        $instance->thumbWidth = $thumbWidth;
-        $instance->thumbHeight = $thumbHeight;
+        $instance->thumbnailUrl = $thumbnailUrl;
+        $instance->thumbnailWidth = $thumbnailWidth;
+        $instance->thumbnailHeight = $thumbnailHeight;
 
         return $instance;
     }
@@ -148,18 +148,18 @@ class InlineQueryResultContact extends InlineQueryResult
         return $this->inputMessageContent;
     }
 
-    public function getThumbUrl(): ?string
+    public function getThumbnailUrl(): ?string
     {
-        return $this->thumbUrl;
+        return $this->thumbnailUrl;
     }
 
-    public function getThumbWidth(): ?int
+    public function getThumbnailWidth(): ?int
     {
-        return $this->thumbWidth;
+        return $this->thumbnailWidth;
     }
 
-    public function getThumbHeight(): ?int
+    public function getThumbnailHeight(): ?int
     {
-        return $this->thumbHeight;
+        return $this->thumbnailHeight;
     }
 }

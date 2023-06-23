@@ -19,11 +19,11 @@ class InlineQueryResultMpeg4Gif extends InlineQueryResult
         'type' => true,
         'id' => true,
         'mpeg4_url' => true,
-        'thumb_url' => true,
+        'thumbnail_url' => true,
         'mpeg4_width' => true,
         'mpeg4_height' => true,
         'mpeg4_duration' => true,
-        'thumb_mime_type' => true,
+        'thumbnail_mime_type' => true,
         'title' => true,
         'caption' => true,
         'parse_mode' => true,
@@ -50,7 +50,7 @@ class InlineQueryResultMpeg4Gif extends InlineQueryResult
     /**
      * URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
      */
-    protected string $thumbUrl;
+    protected string $thumbnailUrl;
 
     /**
      * Optional. Video width
@@ -70,7 +70,7 @@ class InlineQueryResultMpeg4Gif extends InlineQueryResult
     /**
      * Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
      */
-    protected ?string $thumbMimeType = null;
+    protected ?string $thumbnailMimeType = null;
 
     /**
      * Optional. Title for the result
@@ -107,11 +107,11 @@ class InlineQueryResultMpeg4Gif extends InlineQueryResult
     public static function create(
         string $id,
         string $mpeg4Url,
-        string $thumbUrl,
+        string $thumbnailUrl,
         ?int $mpeg4Width = null,
         ?int $mpeg4Height = null,
         ?int $mpeg4Duration = null,
-        ?string $thumbMimeType = null,
+        ?string $thumbnailMimeType = null,
         ?string $title = null,
         ?string $caption = null,
         ?string $parseMode = null,
@@ -122,11 +122,11 @@ class InlineQueryResultMpeg4Gif extends InlineQueryResult
         $instance = new self();
         $instance->id = $id;
         $instance->mpeg4Url = $mpeg4Url;
-        $instance->thumbUrl = $thumbUrl;
+        $instance->thumbnailUrl = $thumbnailUrl;
         $instance->mpeg4Width = $mpeg4Width;
         $instance->mpeg4Height = $mpeg4Height;
         $instance->mpeg4Duration = $mpeg4Duration;
-        $instance->thumbMimeType = $thumbMimeType;
+        $instance->thumbnailMimeType = $thumbnailMimeType;
         $instance->title = $title;
         $instance->caption = $caption;
         $instance->parseMode = $parseMode;
@@ -152,9 +152,9 @@ class InlineQueryResultMpeg4Gif extends InlineQueryResult
         return $this->mpeg4Url;
     }
 
-    public function getThumbUrl(): string
+    public function getThumbnailUrl(): string
     {
-        return $this->thumbUrl;
+        return $this->thumbnailUrl;
     }
 
     public function getMpeg4Width(): ?int
@@ -172,9 +172,9 @@ class InlineQueryResultMpeg4Gif extends InlineQueryResult
         return $this->mpeg4Duration;
     }
 
-    public function getThumbMimeType(): ?string
+    public function getThumbnailMimeType(): ?string
     {
-        return $this->thumbMimeType;
+        return $this->thumbnailMimeType;
     }
 
     public function getTitle(): ?string

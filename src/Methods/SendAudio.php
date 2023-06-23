@@ -16,6 +16,7 @@ use TelegramBot\Api\Types\ReplyKeyboardRemove;
  * Use this method to send audio files, if you want Telegram clients to display them in the music player.
  * Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned.
  * Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
+ * For sending voice messages, use the sendVoice method instead.
  */
 final class SendAudio extends BaseMethod
 {
@@ -76,7 +77,7 @@ final class SendAudio extends BaseMethod
          * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side.
          * The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320.
          */
-        protected InputFile|string|null $thumb = null,
+        protected InputFile|string|null $thumbnail = null,
 
         /**
          * Sends the message silently. Users will receive a notification with no sound.

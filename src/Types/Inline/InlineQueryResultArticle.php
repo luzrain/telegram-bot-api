@@ -20,9 +20,9 @@ class InlineQueryResultArticle extends InlineQueryResult
         'url' => true,
         'hide_url' => true,
         'description' => true,
-        'thumb_url' => true,
-        'thumb_width' => true,
-        'thumb_height' => true,
+        'thumbnail_url' => true,
+        'thumbnail_width' => true,
+        'thumbnail_height' => true,
     ];
 
     /**
@@ -68,17 +68,17 @@ class InlineQueryResultArticle extends InlineQueryResult
     /**
      * Optional. Url of the thumbnail for the result
      */
-    protected ?string $thumbUrl = null;
+    protected ?string $thumbnailUrl = null;
 
     /**
      * Optional. Thumbnail width
      */
-    protected ?int $thumbWidth = null;
+    protected ?int $thumbnailWidth = null;
 
     /**
      * Optional. Thumbnail height
      */
-    protected ?int $thumbHeight = null;
+    protected ?int $thumbnailHeight = null;
 
     public static function create(
         string $id,
@@ -88,9 +88,9 @@ class InlineQueryResultArticle extends InlineQueryResult
         ?string $url = null,
         ?bool $hideUrl = null,
         ?string $description = null,
-        ?string $thumbUrl = null,
-        ?int $thumbWidth = null,
-        ?int $thumbHeight = null,
+        ?string $thumbnailUrl = null,
+        ?int $thumbnailWidth = null,
+        ?int $thumbnailHeight = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -100,9 +100,9 @@ class InlineQueryResultArticle extends InlineQueryResult
         $instance->url = $url;
         $instance->hideUrl = $hideUrl;
         $instance->description = $description;
-        $instance->thumbUrl = $thumbUrl;
-        $instance->thumbWidth = $thumbWidth;
-        $instance->thumbHeight = $thumbHeight;
+        $instance->thumbnailUrl = $thumbnailUrl;
+        $instance->thumbnailWidth = $thumbnailWidth;
+        $instance->thumbnailHeight = $thumbnailHeight;
 
         return $instance;
     }
@@ -147,18 +147,18 @@ class InlineQueryResultArticle extends InlineQueryResult
         return $this->description;
     }
 
-    public function getThumbUrl(): ?string
+    public function getThumbnailUrl(): ?string
     {
-        return $this->thumbUrl;
+        return $this->thumbnailUrl;
     }
 
-    public function getThumbWidth(): ?int
+    public function getThumbnailWidth(): ?int
     {
-        return $this->thumbWidth;
+        return $this->thumbnailWidth;
     }
 
-    public function getThumbHeight(): ?int
+    public function getThumbnailHeight(): ?int
     {
-        return $this->thumbHeight;
+        return $this->thumbnailHeight;
     }
 }

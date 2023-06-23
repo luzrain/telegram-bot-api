@@ -6,11 +6,12 @@ namespace TelegramBot\Api\Methods;
 
 use TelegramBot\Api\BaseMethod;
 use TelegramBot\Api\Types\InputFile;
+use TelegramBot\Api\Types\InputSticker;
 use TelegramBot\Api\Types\Stickers\MaskPosition;
 
 /**
- * Use this method to create a new sticker set owned by a user.
- * The bot will be able to edit the sticker set thus created. Returns True on success.
+ * Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created.
+ * Returns True on success.
  */
 final class CreateNewStickerSet extends BaseMethod
 {
@@ -36,39 +37,27 @@ final class CreateNewStickerSet extends BaseMethod
         protected string $title,
 
         /**
-         * One or more emoji corresponding to the sticker
+         * A JSON-serialized list of 1-50 initial stickers to be added to the sticker set
+         *
+         * @var InputSticker[]
          */
-        protected string $emojis,
+        protected array $stickers,
 
         /**
-         * PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px,
-         * and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers,
-         * pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.
+         * Format of stickers in the set, must be one of “static”, “animated”, “video”
          */
-        protected InputFile|string|null $pngSticker = null,
+        protected string $stickerFormat,
 
         /**
-         * TGS animation with the sticker, uploaded using multipart/form-data.
-         * See https://core.telegram.org/stickers#animated-sticker-requirements for technical requirements
-         */
-        protected InputFile|null $tgsSticker = null,
-
-        /**
-         * WEBM video with the sticker, uploaded using multipart/form-data.
-         * See https://core.telegram.org/stickers#video-sticker-requirements for technical requirements
-         */
-        protected InputFile|null $webmSticker = null,
-
-        /**
-         * A JSON-serialized object for position where the mask should be placed on faces
-         */
-        protected MaskPosition|null $maskPosition = null,
-
-        /**
-         * Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”.
-         * By default, a regular sticker set is created.
+         * Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”. By default, a regular sticker set is created.
          */
         protected string|null $stickerType = null,
+
+        /**
+         * Pass True if stickers in the sticker set must be repainted to the color of text when used in messages, the accent color
+         * if used as emoji status, white on chat photos, or another appropriate color based on context; for custom emoji sticker sets only
+         */
+        protected bool|null $needsRepainting = null,
     ) {
     }
 }

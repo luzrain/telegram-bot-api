@@ -14,7 +14,6 @@ use TelegramBot\Api\Exceptions\TelegramInputFileException;
 class InputFile implements JsonSerializable
 {
     private string $filePath;
-
     private string $uniqueName;
 
     private function __construct(string $filePath)

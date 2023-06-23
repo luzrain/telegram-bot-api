@@ -43,7 +43,7 @@ final class SendDocument extends BaseMethod
          * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side.
          * The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320.
          */
-        protected InputFile|string|null $thumb = null,
+        protected InputFile|string|null $thumbnail = null,
 
         /**
          * Document caption (may also be used when resending documents by file_id), 0-1024 characters after entities parsing

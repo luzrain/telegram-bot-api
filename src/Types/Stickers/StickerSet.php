@@ -30,7 +30,7 @@ class StickerSet extends BaseType implements TypeInterface
         'is_animated' => true,
         'is_video' => true,
         'stickers' => ArrayOfStickers::class,
-        'thumb' => PhotoSize::class,
+        'thumbnail' => PhotoSize::class,
     ];
 
     /**
@@ -68,7 +68,7 @@ class StickerSet extends BaseType implements TypeInterface
     /**
      * Optional. Sticker thumbnail in the .WEBP or .JPG format
      */
-    protected ?PhotoSize $thumb = null;
+    protected ?PhotoSize $thumbnail = null;
 
     public function getName(): string
     {
@@ -103,8 +103,8 @@ class StickerSet extends BaseType implements TypeInterface
         return $this->stickers;
     }
 
-    public function getThumb(): ?PhotoSize
+    public function getThumbnail(): ?PhotoSize
     {
-        return $this->thumb;
+        return $this->thumbnail;
     }
 }

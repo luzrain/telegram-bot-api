@@ -34,6 +34,11 @@ final class SendSticker extends BaseMethod
         protected InputFile|string $sticker,
 
         /**
+         * Emoji associated with the sticker; only for just uploaded stickers
+         */
+        protected string|null $emoji = null,
+
+        /**
          * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
          */
         protected int|null $messageThreadId = null,

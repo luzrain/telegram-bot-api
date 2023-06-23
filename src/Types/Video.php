@@ -26,7 +26,7 @@ class Video extends BaseType implements TypeInterface
         'width' => true,
         'height' => true,
         'duration' => true,
-        'thumb' => PhotoSize::class,
+        'thumbnail' => PhotoSize::class,
         'file_name' => true,
         'mime_type' => true,
         'file_size' => true
@@ -61,7 +61,7 @@ class Video extends BaseType implements TypeInterface
     /**
      * Optional. Video thumbnail
      */
-    protected ?PhotoSize $thumb = null;
+    protected ?PhotoSize $thumbnail = null;
 
     /**
      * Optional. Original filename as defined by sender
@@ -103,9 +103,9 @@ class Video extends BaseType implements TypeInterface
         return $this->duration;
     }
 
-    public function getThumb(): ?PhotoSize
+    public function getThumbnail(): ?PhotoSize
     {
-        return $this->thumb;
+        return $this->thumbnail;
     }
 
     public function getFileName(): ?string

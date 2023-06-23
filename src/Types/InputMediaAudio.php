@@ -14,7 +14,7 @@ class InputMediaAudio extends InputMedia
     protected static array $map = [
         'type' => true,
         'media' => true,
-        'thumb' => true,
+        'thumbnail' => true,
         'caption' => true,
         'parse_mode' => true,
         'caption_entities' => ArrayOfMessageEntity::class,
@@ -45,7 +45,7 @@ class InputMediaAudio extends InputMedia
      *
      * @see https://core.telegram.org/bots/api#sending-files
      */
-    protected InputFile|string|null $thumb = null;
+    protected InputFile|string|null $thumbnail = null;
 
     /**
      * Optional. Caption of the audio to be sent, 0-1024 characters after entities parsing
@@ -83,7 +83,7 @@ class InputMediaAudio extends InputMedia
 
     public static function create(
         InputFile|string $media,
-        InputFile|string|null $thumb = null,
+        InputFile|string|null $thumbnail = null,
         ?string $caption = null,
         ?string $parseMode = null,
         ?array $captionEntities = null,
@@ -93,7 +93,7 @@ class InputMediaAudio extends InputMedia
     ): self {
         $instance = new self();
         $instance->media = $media;
-        $instance->thumb = $thumb;
+        $instance->thumbnail = $thumbnail;
         $instance->caption = $caption;
         $instance->parseMode = $parseMode;
         $instance->captionEntities = $captionEntities;
@@ -114,9 +114,9 @@ class InputMediaAudio extends InputMedia
         return $this->media;
     }
 
-    public function getThumb(): InputFile|string|null
+    public function getThumbnail(): InputFile|string|null
     {
-        return $this->thumb;
+        return $this->thumbnail;
     }
 
     public function getCaption(): ?string

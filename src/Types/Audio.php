@@ -27,7 +27,7 @@ class Audio extends BaseType implements TypeInterface
         'file_name' => true,
         'mime_type' => true,
         'file_size' => true,
-        'thumb' => PhotoSize::class,
+        'thumbnail' => PhotoSize::class,
     ];
 
     /**
@@ -74,7 +74,7 @@ class Audio extends BaseType implements TypeInterface
     /**
      * Optional. Thumbnail of the album cover to which the music file belongs
      */
-    protected ?PhotoSize $thumb = null;
+    protected ?PhotoSize $thumbnail = null;
 
     public function getFileId(): string
     {
@@ -116,8 +116,8 @@ class Audio extends BaseType implements TypeInterface
         return $this->fileSize;
     }
 
-    public function getThumb(): ?PhotoSize
+    public function getThumbnail(): ?PhotoSize
     {
-        return $this->thumb;
+        return $this->thumbnail;
     }
 }

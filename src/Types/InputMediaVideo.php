@@ -14,7 +14,7 @@ class InputMediaVideo extends InputMedia
     protected static array $map = [
         'type' => true,
         'media' => true,
-        'thumb' => true,
+        'thumbnail' => true,
         'caption' => true,
         'parse_mode' => true,
         'caption_entities' => ArrayOfMessageEntity::class,
@@ -47,7 +47,7 @@ class InputMediaVideo extends InputMedia
      *
      * @see https://core.telegram.org/bots/api#sending-files
      */
-    protected InputFile|string|null $thumb = null;
+    protected InputFile|string|null $thumbnail = null;
 
     /**
      * Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
@@ -95,7 +95,7 @@ class InputMediaVideo extends InputMedia
 
     public static function create(
         InputFile|string $media,
-        InputFile|string|null $thumb = null,
+        InputFile|string|null $thumbnail = null,
         ?string $caption = null,
         ?string $parseMode = null,
         ?array $captionEntities = null,
@@ -107,7 +107,7 @@ class InputMediaVideo extends InputMedia
     ): self {
         $instance = new self();
         $instance->media = $media;
-        $instance->thumb = $thumb;
+        $instance->thumbnail = $thumbnail;
         $instance->caption = $caption;
         $instance->parseMode = $parseMode;
         $instance->captionEntities = $captionEntities;
@@ -130,9 +130,9 @@ class InputMediaVideo extends InputMedia
         return $this->media;
     }
 
-    public function getThumb(): InputFile|string|null
+    public function getThumbnail(): ?PhotoSize
     {
-        return $this->thumb;
+        return $this->thumbnail;
     }
 
     public function getCaption(): ?string

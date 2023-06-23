@@ -67,8 +67,8 @@ class BotApi
                         $inputMedia instanceof InputMediaVideo ||
                         $inputMedia instanceof InputMediaAnimation
                     ) {
-                        if ($inputMedia->getThumb() instanceof InputFile) {
-                            $files[] = $inputMedia->getThumb();
+                        if ($inputMedia->getThumbnail() instanceof InputFile) {
+                            $files[] = $inputMedia->getThumbnail();
                         }
                     }
                 }

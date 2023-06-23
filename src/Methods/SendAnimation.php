@@ -58,7 +58,7 @@ final class SendAnimation extends BaseMethod
          * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side.
          * The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320.
          */
-        protected InputFile|string|null $thumb = null,
+        protected InputFile|string|null $thumbnail = null,
 
         /**
          * Animation caption (may also be used when resending animation by file_id), 0-1024 characters after entities parsing

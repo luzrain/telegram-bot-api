@@ -32,12 +32,13 @@ class Sticker extends BaseType implements TypeInterface
         'height' => true,
         'is_animated' => true,
         'is_video' => true,
-        'thumb' => PhotoSize::class,
+        'thumbnail' => PhotoSize::class,
         'emoji' => true,
         'set_name' => true,
         'premium_animation' => File::class,
         'mask_position' => MaskPosition::class,
         'custom_emoji_id' => true,
+        'needs_repainting' => true,
         'file_size' => true,
     ];
 
@@ -81,7 +82,7 @@ class Sticker extends BaseType implements TypeInterface
     /**
      * Optional. Sticker thumbnail in the .WEBP or .JPG format
      */
-    protected ?PhotoSize $thumb = null;
+    protected ?PhotoSize $thumbnail = null;
 
     /**
      * Optional. Emoji associated with the sticker
@@ -107,6 +108,12 @@ class Sticker extends BaseType implements TypeInterface
      * Optional. For custom emoji stickers, unique identifier of the custom emoji
      */
     protected ?string $customEmojiId = null;
+
+    /**
+     * Optional. True, if the sticker must be repainted to a text color in messages,
+     * the color of the Telegram Premium badge in emoji status, white color on chat photos, or another appropriate color in other places
+     */
+    protected ?bool $needsRepainting = null;
 
     /**
      * Optional. File size in bytes
@@ -148,9 +155,9 @@ class Sticker extends BaseType implements TypeInterface
         return $this->isVideo;
     }
 
-    public function getThumb(): ?PhotoSize
+    public function getThumbnail(): ?PhotoSize
     {
-        return $this->thumb;
+        return $this->thumbnail;
     }
 
     public function getEmoji(): ?string
@@ -176,6 +183,11 @@ class Sticker extends BaseType implements TypeInterface
     public function getCustomEmojiId(): ?string
     {
         return $this->customEmojiId;
+    }
+
+    public function getNeedsRepainting(): ?bool
+    {
+        return $this->needsRepainting;
     }
 
     public function isFileSize(): ?bool

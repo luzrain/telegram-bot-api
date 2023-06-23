@@ -18,11 +18,11 @@ class InlineQueryResultGif extends InlineQueryResult
         'type' => true,
         'id' => true,
         'gif_url' => true,
-        'thumb_url' => true,
+        'thumbnail_url' => true,
         'gif_width' => true,
         'gif_height' => true,
         'gif_duration' => true,
-        'thumb_mime_type' => true,
+        'thumbnail_mime_type' => true,
         'title' => true,
         'caption' => true,
         'parse_mode' => true,
@@ -49,7 +49,7 @@ class InlineQueryResultGif extends InlineQueryResult
     /**
      * URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
      */
-    protected string $thumbUrl;
+    protected string $thumbnailUrl;
 
     /**
      * Optional. Width of the GIF
@@ -69,7 +69,7 @@ class InlineQueryResultGif extends InlineQueryResult
     /**
      * Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
      */
-    protected ?string $thumbMimeType = null;
+    protected ?string $thumbnailMimeType = null;
 
     /**
      * Optional. Title for the result
@@ -106,11 +106,11 @@ class InlineQueryResultGif extends InlineQueryResult
     public static function create(
         string $id,
         string $gifUrl,
-        string $thumbUrl,
+        string $thumbnailUrl,
         ?int $gifWidth = null,
         ?int $gifHeight = null,
         ?int $gifDuration = null,
-        ?string $thumbMimeType = null,
+        ?string $thumbnailMimeType = null,
         ?string $title = null,
         ?string $caption = null,
         ?string $parseMode = null,
@@ -121,11 +121,11 @@ class InlineQueryResultGif extends InlineQueryResult
         $instance = new self();
         $instance->id = $id;
         $instance->gifUrl = $gifUrl;
-        $instance->thumbUrl = $thumbUrl;
+        $instance->thumbnailUrl = $thumbnailUrl;
         $instance->gifWidth = $gifWidth;
         $instance->gifHeight = $gifHeight;
         $instance->gifDuration = $gifDuration;
-        $instance->thumbMimeType = $thumbMimeType;
+        $instance->thumbnailMimeType = $thumbnailMimeType;
         $instance->title = $title;
         $instance->caption = $caption;
         $instance->parseMode = $parseMode;
@@ -151,9 +151,9 @@ class InlineQueryResultGif extends InlineQueryResult
         return $this->gifUrl;
     }
 
-    public function getThumbUrl(): string
+    public function getThumbnailUrl(): string
     {
-        return $this->thumbUrl;
+        return $this->thumbnailUrl;
     }
 
     public function getGifWidth(): ?int
@@ -171,9 +171,9 @@ class InlineQueryResultGif extends InlineQueryResult
         return $this->gifDuration;
     }
 
-    public function getThumbMimeType(): ?string
+    public function getThumbnailMimeType(): ?string
     {
-        return $this->thumbMimeType;
+        return $this->thumbnailMimeType;
     }
 
     public function getTitle(): ?string

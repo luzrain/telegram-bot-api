@@ -54,7 +54,7 @@ final class SendVideoNote extends BaseMethod
          * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side.
          * The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320.
          */
-        protected InputFile|string|null $thumb = null,
+        protected InputFile|string|null $thumbnail = null,
 
         /**
          * Sends the message silently. Users will receive a notification with no sound.

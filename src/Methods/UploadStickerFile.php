@@ -9,7 +9,8 @@ use TelegramBot\Api\Types\File;
 use TelegramBot\Api\Types\InputFile;
 
 /**
- * Use this method to upload a .PNG file with a sticker for later use in createNewStickerSet and addStickerToSet methods (can be used multiple times).
+ * Use this method to upload a file with a sticker for later use in the createNewStickerSet
+ * and addStickerToSet methods (the file can be used multiple times).
  * Returns the uploaded File on success.
  */
 final class UploadStickerFile extends BaseMethod
@@ -25,10 +26,17 @@ final class UploadStickerFile extends BaseMethod
         protected int $userId,
 
         /**
-         * PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px,
-         * and either width or height must be exactly 512px.
+         * A file with the sticker in .WEBP, .PNG, .TGS, or .WEBM format.
+         * See https://core.telegram.org/stickers for technical requirements. More information on Sending Files »
+         *
+         * @see https://core.telegram.org/bots/api#sending-files
          */
-        protected InputFile $pngSticker,
+        protected InputFile $sticker,
+
+        /**
+         * Format of the sticker, must be one of “static”, “animated”, “video”
+         */
+        protected string $stickerFormat,
     ) {
     }
 }
