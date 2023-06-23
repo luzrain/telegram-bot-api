@@ -104,51 +104,8 @@ final class InputMediaAudio extends InputMedia
         return $instance;
     }
 
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    public function getMedia(): InputFile|string
-    {
-        return $this->media;
-    }
-
     public function getThumbnail(): InputFile|string|null
     {
         return $this->thumbnail;
-    }
-
-    public function getCaption(): ?string
-    {
-        return $this->caption;
-    }
-
-    public function getParseMode(): ?string
-    {
-        return $this->parseMode;
-    }
-
-    /**
-     * @return MessageEntity[]|null
-     */
-    public function getCaptionEntities(): ?array
-    {
-        return $this->captionEntities;
-    }
-
-    public function getDuration(): ?int
-    {
-        return $this->duration;
-    }
-
-    public function getPerformer(): ?string
-    {
-        return $this->performer;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
     }
 }

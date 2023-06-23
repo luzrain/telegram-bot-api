@@ -21,8 +21,11 @@ jobs:
       - name: Composer install
         run: composer install --optimize-autoloader
 
-      - name: Run Tests
+      - name: Codestyle
+        run: composer php-cs
+
+      - name: Psalm
+        run: composer psalm
+
+      - name: Tests
         run: composer test
-        
-      - name: Run codestyle checks
-        run: composer codestyle-check

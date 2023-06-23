@@ -32,7 +32,11 @@ class ChatMember extends BaseType implements TypeInterface
      */
     protected string $status;
 
-    public static function fromResponse(array $data): self
+    /**
+     * @psalm-suppress UndefinedPropertyFetch
+     * @psalm-suppress UnhandledMatchCondition
+     */
+    public static function fromResponse(array $data): static
     {
         $instance = parent::fromResponse($data);
 

@@ -81,8 +81,8 @@ final class KeyboardButtonRequestChat extends BaseType implements TypeInterface
         ?bool $chatIsForum = null,
         ?bool $chatHasUsername = null,
         ?bool $chatIsCreated = null,
-        ?bool $userAdministratorRights = null,
-        ?bool $botAdministratorRights = null,
+        ?ChatAdministratorRights $userAdministratorRights = null,
+        ?ChatAdministratorRights $botAdministratorRights = null,
         ?bool $botIsMember = null,
     ): self {
         $instance = new self();

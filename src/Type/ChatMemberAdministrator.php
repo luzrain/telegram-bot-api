@@ -179,7 +179,7 @@ final class ChatMemberAdministrator extends ChatMember
         return $this->canInviteUsers;
     }
 
-    public function isCanPostMessages(): bool
+    public function isCanPostMessages(): ?bool
     {
         return $this->canPostMessages;
     }

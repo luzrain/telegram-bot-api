@@ -45,7 +45,8 @@ abstract class BaseType implements \JsonSerializable
     private function map(array $data): self
     {
         foreach (static::$map as $key => $item) {
-            if (isset($data[$key]) && (!is_array($data[$key]) || (is_array($data[$key]) && !empty($data[$key])))) {
+            /** @var BaseType|mixed $item */
+            if (!empty($data[$key])) {
                 $property = StringUtils::toCamelCase($key);
                 $this->$property = $item === true ? $data[$key] : $item::fromResponse($data[$key]);
             }
@@ -77,7 +78,7 @@ abstract class BaseType implements \JsonSerializable
         return $this->toArray();
     }
 
-    public static function fromResponse(array $data): self
+    public static function fromResponse(array $data): static
     {
         self::validate($data);
 

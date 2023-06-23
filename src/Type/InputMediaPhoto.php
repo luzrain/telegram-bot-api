@@ -74,37 +74,4 @@ final class InputMediaPhoto extends InputMedia
 
         return $instance;
     }
-
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    public function getMedia(): InputFile|string
-    {
-        return $this->media;
-    }
-
-    public function getCaption(): ?string
-    {
-        return $this->caption;
-    }
-
-    public function getParseMode(): ?string
-    {
-        return $this->parseMode;
-    }
-
-    /**
-     * @return MessageEntity[]|null
-     */
-    public function getCaptionEntities(): ?array
-    {
-        return $this->captionEntities;
-    }
-
-    public function hasSpoiler(): ?bool
-    {
-        return $this->hasSpoiler;
-    }
 }

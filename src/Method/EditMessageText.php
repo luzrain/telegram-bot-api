@@ -51,7 +51,7 @@ final class EditMessageText extends BaseMethod
         /**
          * A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
          *
-         * @var MessageEntity[]
+         * @var list<MessageEntity>|null
          */
         protected array|null $entities = null,
 

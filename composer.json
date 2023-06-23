@@ -31,7 +31,8 @@
     },
     "require-dev": {
         "phpunit/phpunit" : "^10.2",
-        "friendsofphp/php-cs-fixer": "^3.18"
+        "friendsofphp/php-cs-fixer": "^3.18",
+        "vimeo/psalm": "^5.12"
     },
     "autoload": {
         "psr-4": {
@@ -45,6 +46,7 @@
     },
     "scripts": {
         "test": "phpunit",
-        "codestyle-check": "php-cs-fixer fix -v --dry-run"
+        "php-cs": "php-cs-fixer fix -v --dry-run",
+        "psalm": "psalm --no-cache"
     }
 }

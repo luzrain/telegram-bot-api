@@ -63,7 +63,7 @@ final class WebhookInfo extends BaseType implements TypeInterface
     /**
      * Optional. Unix time of the most recent error that happened when trying to synchronize available updates with Telegram datacenters
      */
-    protected ?string $lastSynchronizationErrorDate = null;
+    protected ?int $lastSynchronizationErrorDate = null;
 
     /**
      * Optional. Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery

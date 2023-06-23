@@ -50,7 +50,7 @@ final class SetWebhook extends BaseMethod
          * Please note that this parameter doesn't affect updates created before the call to the setWebhook,
          * so unwanted updates may be received for a short period of time.
          *
-         * @var string[]
+         * @var list<string>|null
          */
         protected array|null $allowedUpdates = null,
 

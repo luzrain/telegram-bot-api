@@ -89,41 +89,8 @@ final class InputMediaDocument extends InputMedia
         return $instance;
     }
 
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    public function getMedia(): InputFile|string
-    {
-        return $this->media;
-    }
-
     public function getThumbnail(): InputFile|string|null
     {
         return $this->thumbnail;
-    }
-
-    public function getCaption(): ?string
-    {
-        return $this->caption;
-    }
-
-    public function getParseMode(): ?string
-    {
-        return $this->parseMode;
-    }
-
-    /**
-     * @return MessageEntity[]|null
-     */
-    public function getCaptionEntities(): ?array
-    {
-        return $this->captionEntities;
-    }
-
-    public function isDisableContentTypeDetection(): ?bool
-    {
-        return $this->disableContentTypeDetection;
     }
 }

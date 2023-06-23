@@ -114,6 +114,10 @@ final class BotApi
             $file = $this->call(new GetFile($file));
         }
 
+        /**
+         * @TODO remove it
+         */
+        /** @var File $file */
         $fileUrl = sprintf(self::URL_FILE_ENDPOINT, $this->token, $file->getFilePath());
         $fileExtension = pathinfo($file->getFilePath(), PATHINFO_EXTENSION);
         $downloadFilePath = sys_get_temp_dir() . '/' . uniqid('tgfile_', true) . '.' . $fileExtension;

@@ -8,7 +8,8 @@ use Luzrain\TelegramBotApi\BaseMethod;
 use Luzrain\TelegramBotApi\Type\MenuButton;
 
 /**
- * Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.
+ * Use this method to change the bot's menu button in a private chat, or the default menu button.
+ * Returns True on success.
  */
 final class SetChatMenuButton extends BaseMethod
 {

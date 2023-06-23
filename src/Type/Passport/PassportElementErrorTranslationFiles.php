@@ -18,7 +18,7 @@ final class PassportElementErrorTranslationFiles extends PassportElementError
 
     public static function create(
         string $type,
-        string $fileHashes,
+        array $fileHashes,
         string $message,
     ): self {
         $instance = new self();

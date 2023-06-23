@@ -43,7 +43,7 @@ final class GetUpdates extends BaseMethod
          * See Update for a complete list of available update types. Specify an empty list to receive all update types except
          * chat_member (default). If not specified, the previous setting will be used.
          *
-         * @var string[]
+         * @var list<string>|null
          */
         protected array|null $allowedUpdates = null,
     ) {

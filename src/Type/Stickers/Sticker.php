@@ -190,7 +190,7 @@ final class Sticker extends BaseType implements TypeInterface
         return $this->needsRepainting;
     }
 
-    public function isFileSize(): ?bool
+    public function fileSize(): ?int
     {
         return $this->fileSize;
     }

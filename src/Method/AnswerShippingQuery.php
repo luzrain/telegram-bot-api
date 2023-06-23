@@ -32,7 +32,7 @@ final class AnswerShippingQuery extends BaseMethod
         /**
          * Required if ok is True. A JSON-serialized array of available shipping options.
          *
-         * @var ShippingOption[]
+         * @var list<ShippingOption>|null
          */
         protected array|null $shippingOptions = null,
 
