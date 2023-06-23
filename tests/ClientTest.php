@@ -6,7 +6,7 @@ namespace Luzrain\TelegramBotApi\Test;
 
 use Luzrain\TelegramBotApi\Client;
 use Luzrain\TelegramBotApi\Test\Helper\ClosureTestHelper;
-use Luzrain\TelegramBotApi\Types\Update;
+use Luzrain\TelegramBotApi\Type\Update;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 

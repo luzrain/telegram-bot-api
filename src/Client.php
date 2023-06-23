@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi;
 
-use Luzrain\TelegramBotApi\Events\Event;
-use Luzrain\TelegramBotApi\Events\EventCollection;
-use Luzrain\TelegramBotApi\Exceptions\TelegramCallbackException;
-use Luzrain\TelegramBotApi\Types\Update;
+use Luzrain\TelegramBotApi\Exception\TelegramCallbackException;
+use Luzrain\TelegramBotApi\Type\Update;
 
 /**
  * Service for handle telegram updates

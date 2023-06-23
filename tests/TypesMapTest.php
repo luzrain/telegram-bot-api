@@ -19,7 +19,7 @@ final class TypesMapTest extends TestCase
         $classes = array_keys($loader->getClassMap());
 
         foreach ($classes as $class) {
-            if (!str_starts_with($class, 'Luzrain\TelegramBotApi\Types')) {
+            if (!str_starts_with($class, 'Luzrain\TelegramBotApi\Type')) {
                 continue;
             }
             if (!is_subclass_of($class, BaseType::class)) {

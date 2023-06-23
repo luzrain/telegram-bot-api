@@ -30,12 +30,13 @@ $response = $bot->sendMessage(
 ```
 
 #### Send message with reply keyboard
+
 ```php
 use Luzrain\TelegramBotApi\BotApi;
-use Luzrain\TelegramBotApi\Types\KeyboardButton;
-use Luzrain\TelegramBotApi\Types\KeyboardButtonPollType;
-use Luzrain\TelegramBotApi\Types\ReplyKeyboardMarkup;
-use Luzrain\TelegramBotApi\Types\WebAppInfo;
+use Luzrain\TelegramBotApi\Type\KeyboardButton;
+use Luzrain\TelegramBotApi\Type\KeyboardButtonPollType;
+use Luzrain\TelegramBotApi\Type\ReplyKeyboardMarkup;
+use Luzrain\TelegramBotApi\Type\WebAppInfo;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
@@ -55,11 +56,12 @@ $response = $bot->sendMessage(
 ```
 
 #### Send message with inline keyboard
+
 ```php
 use Luzrain\TelegramBotApi\BotApi;
-use Luzrain\TelegramBotApi\Types\InlineKeyboardButton;
-use Luzrain\TelegramBotApi\Types\InlineKeyboardMarkup;
-use Luzrain\TelegramBotApi\Types\ReplyKeyboardRemove;
+use Luzrain\TelegramBotApi\Type\InlineKeyboardButton;
+use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
+use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
@@ -81,9 +83,10 @@ $response = $bot->sendMessage(
 ```
 
 #### Send photo/video/document
+
 ```php
 use Luzrain\TelegramBotApi\BotApi;
-use Luzrain\TelegramBotApi\Types\InputFile;
+use Luzrain\TelegramBotApi\Type\InputFile;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
@@ -114,10 +117,11 @@ $response = $bot->sendDocument(
 ```
 
 #### Send media group
+
 ```php
 use Luzrain\TelegramBotApi\BotApi;
-use Luzrain\TelegramBotApi\Types\InputFile;
-use Luzrain\TelegramBotApi\Types\InputMediaPhoto;
+use Luzrain\TelegramBotApi\Type\InputFile;
+use Luzrain\TelegramBotApi\Type\InputMediaPhoto;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
@@ -140,10 +144,7 @@ $response = $bot->sendMediaGroup(
 #### Webhook client
 
 ```php
-use Luzrain\TelegramBotApi\Client;
-use Luzrain\TelegramBotApi\Events\Event;
-use Luzrain\TelegramBotApi\Types\Message;
-use Luzrain\TelegramBotApi\Types\Update;
+use Luzrain\TelegramBotApi\Client;use Luzrain\TelegramBotApi\Type\Message;use Luzrain\TelegramBotApi\Type\Update;
 
 $client = new Client();
 

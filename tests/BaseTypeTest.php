@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Test;
 
-use Luzrain\TelegramBotApi\Exceptions\TelegramTypeException;
+use Luzrain\TelegramBotApi\Exception\TelegramTypeException;
 use Luzrain\TelegramBotApi\Test\Helper\TestBaseType;
 use PHPUnit\Framework\TestCase;
 
