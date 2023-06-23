@@ -2,8 +2,7 @@
 # PHP Wrapper for Telegram Bot API
 
 [![Bot Api 6.7](https://img.shields.io/badge/Bot%20API-6.7-0088cc.svg?style=flat)](https://core.telegram.org/bots/api-changelog#april-21-2023)
-[![PHP ^8.0](https://img.shields.io/badge/PHP-^8.0-777bb3.svg?style=flat)](https://www.php.net/releases/8.0/)
-[![Software License](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat)](LICENSE.md)
+![PHP ^8.2](https://img.shields.io/badge/PHP-^8.2-777bb3.svg?style=flat)
 [![Tests Status](https://img.shields.io/github/actions/workflow/status/luzrain/telegram-bot-api/tests.yaml?branch=master)](../../actions/workflows/tests.yaml)
 
 An extended native php wrapper for [Telegram Bot API](https://core.telegram.org/bots/api). Supports all methods and types of responses.
@@ -177,13 +176,3 @@ $client->onMessage(function(Message $message) {
 
 $client->run();
 ```
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Credits
-
-- [Ilya Gusev](https://github.com/iGusev)
-- [All Contributors](../../contributors)
-
