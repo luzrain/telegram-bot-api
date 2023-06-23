@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Exceptions;
 
-use Exception;
-
-class TelegramInputFileException extends Exception
+class TelegramInputFileException extends \Exception
 {
     public function __construct(string $filePath)
     {

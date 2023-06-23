@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Test;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\TestCase;
 use Luzrain\TelegramBotApi\Client;
 use Luzrain\TelegramBotApi\Test\Helper\ClosureTestHelper;
 use Luzrain\TelegramBotApi\Types\Update;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 final class ClientTest extends TestCase
 {

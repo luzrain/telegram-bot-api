@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Events;
 
-use Closure;
 use Luzrain\TelegramBotApi\Exceptions\TelegramCallbackException;
 use Luzrain\TelegramBotApi\Types\Update;
-use TypeError;
 
 abstract class Event
 {
     private $action;
 
-    public function __construct(Closure $action)
+    public function __construct(\Closure $action)
     {
         $this->action = $action;
     }
@@ -25,7 +23,7 @@ abstract class Event
     {
         try {
             return ($this->action)(...$params);
-        } catch (TypeError $e) {
+        } catch (\TypeError $e) {
             throw TelegramCallbackException::createArgumentException($e);
         }
     }

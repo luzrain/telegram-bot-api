@@ -4,18 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Exceptions;
 
-use Exception;
 use Luzrain\TelegramBotApi\BaseMethod;
-use Throwable;
 
-class TelegramCallbackException extends Exception
+class TelegramCallbackException extends \Exception
 {
-    public function __construct(string $message = '', int $code = 0, ?Throwable $previous = null)
+    public function __construct(string $message = '', int $code = 0, ?\Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
     }
 
-    public static function createArgumentException(Throwable $previous): self
+    public static function createArgumentException(\Throwable $previous): self
     {
         return new self($previous->getMessage(), 0, $previous);
     }

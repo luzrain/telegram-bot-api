@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Exceptions;
 
-use Exception;
-
-class TelegramTypeException extends Exception
+class TelegramTypeException extends \Exception
 {
     private const ERROR_TEMLATE = '%s object creation error. Missing keys: %s';
 

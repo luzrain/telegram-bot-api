@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi;
 
-use JsonSerializable;
 use Luzrain\TelegramBotApi\Exceptions\TelegramTypeException;
 
 /**
@@ -12,7 +11,7 @@ use Luzrain\TelegramBotApi\Exceptions\TelegramTypeException;
  *
  * @see https://core.telegram.org/bots/api#available-types
  */
-abstract class BaseType implements JsonSerializable
+abstract class BaseType implements \JsonSerializable
 {
     /**
      * Array of required data params for type

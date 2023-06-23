@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi;
 
-use Closure;
-use JsonException;
 use Luzrain\TelegramBotApi\Events\Event;
 use Luzrain\TelegramBotApi\Events\EventCollection;
 use Luzrain\TelegramBotApi\Exceptions\TelegramCallbackException;
@@ -28,7 +26,7 @@ class Client
     /**
      * Any update
      */
-    public function onUpdate(Closure $action): self
+    public function onUpdate(\Closure $action): self
     {
         return $this->on(new Event\Update($action));
     }
@@ -36,7 +34,7 @@ class Client
     /**
      * Command
      */
-    public function onCommand(string $name, Closure $action): self
+    public function onCommand(string $name, \Closure $action): self
     {
         return $this->on(new Event\Command($name, $action));
     }
@@ -44,7 +42,7 @@ class Client
     /**
      * New incoming message of any kind — text, photo, sticker, etc.
      */
-    public function onMessage(Closure $action): self
+    public function onMessage(\Closure $action): self
     {
         return $this->on(new Event\Message($action));
     }
@@ -52,7 +50,7 @@ class Client
     /**
      * New version of a message that is known to the bot and was edited
      */
-    public function onEditedMessage(Closure $action): self
+    public function onEditedMessage(\Closure $action): self
     {
         return $this->on(new Event\EditedMessage($action));
     }
@@ -60,7 +58,7 @@ class Client
     /**
      * New incoming channel post of any kind — text, photo, sticker, etc.
      */
-    public function onChannelPost(Closure $action): self
+    public function onChannelPost(\Closure $action): self
     {
         return $this->on(new Event\ChannelPost($action));
     }
@@ -68,7 +66,7 @@ class Client
     /**
      * New version of a channel post that is known to the bot and was edited
      */
-    public function onEditedChannelPost(Closure $action): self
+    public function onEditedChannelPost(\Closure $action): self
     {
         return $this->on(new Event\EditedChannelPost($action));
     }
@@ -76,7 +74,7 @@ class Client
     /**
      * New incoming inline query
      */
-    public function onInlineQuery(Closure $action): self
+    public function onInlineQuery(\Closure $action): self
     {
         return $this->on(new Event\InlineQuery($action));
     }
@@ -86,7 +84,7 @@ class Client
      * Please see our documentation on the feedback collecting for details on how to enable these updates for your bot.
      * @see https://core.telegram.org/bots/inline#collecting-feedback
      */
-    public function onChosenInlineResult(Closure $action): self
+    public function onChosenInlineResult(\Closure $action): self
     {
         return $this->on(new Event\ChosenInlineResult($action));
     }
@@ -94,7 +92,7 @@ class Client
     /**
      * New incoming callback query.
      */
-    public function onCallbackQuery(Closure $action): self
+    public function onCallbackQuery(\Closure $action): self
     {
         return $this->on(new Event\CallbackQuery($action));
     }
@@ -102,7 +100,7 @@ class Client
     /**
      * New incoming shipping query. Only for invoices with flexible price
      */
-    public function onShippingQuery(Closure $action): self
+    public function onShippingQuery(\Closure $action): self
     {
         return $this->on(new Event\ShippingQuery($action));
     }
@@ -110,7 +108,7 @@ class Client
     /**
      * New incoming pre-checkout query. Contains full information about checkout
      */
-    public function onPreCheckoutQuery(Closure $action): self
+    public function onPreCheckoutQuery(\Closure $action): self
     {
         return $this->on(new Event\PreCheckoutQuery($action));
     }
@@ -118,7 +116,7 @@ class Client
     /**
      * New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot
      */
-    public function onPoll(Closure $action): self
+    public function onPoll(\Closure $action): self
     {
         return $this->on(new Event\Poll($action));
     }
@@ -126,7 +124,7 @@ class Client
     /**
      * A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself.
      */
-    public function onPollAnswer(Closure $action): self
+    public function onPollAnswer(\Closure $action): self
     {
         return $this->on(new Event\PollAnswer($action));
     }
@@ -134,7 +132,7 @@ class Client
     /**
      * The bot's chat member status was updated in a chat. For private chats, this update is received only when the bot is blocked or unblocked by the user.
      */
-    public function onMyChatMember(Closure $action): self
+    public function onMyChatMember(\Closure $action): self
     {
         return $this->on(new Event\MyChatMember($action));
     }
@@ -143,7 +141,7 @@ class Client
      * A chat member's status was updated in a chat. The bot must be an administrator in the chat and must explicitly specify
      * “chat_member” in the list of allowed_updates to receive these updates.
      */
-    public function onChatMember(Closure $action): self
+    public function onChatMember(\Closure $action): self
     {
         return $this->on(new Event\ChatMember($action));
     }
@@ -151,7 +149,7 @@ class Client
     /**
      * A request to join the chat has been sent. The bot must have the can_invite_users administrator right in the chat to receive these updates.
      */
-    public function onChatJoinRequest(Closure $action): self
+    public function onChatJoinRequest(\Closure $action): self
     {
         return $this->on(new Event\ChatJoinRequest($action));
     }
@@ -182,7 +180,7 @@ class Client
      * Webhook handler
      *
      * @param string $body raw request body
-     * @throws JsonException
+     * @throws \JsonException
      */
     public function webhookHandle(string $body): mixed
     {

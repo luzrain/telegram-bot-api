@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Test;
 
 use Composer\Autoload\ClassLoader;
-use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\TestCase;
 use Luzrain\TelegramBotApi\BaseType;
 use Luzrain\TelegramBotApi\StringUtils;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 final class TypesMapTest extends TestCase
 {

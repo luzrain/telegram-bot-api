@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Exceptions;
 
-use Exception;
-
-class TelegramMethodNotExistException extends Exception
+class TelegramMethodNotExistException extends \Exception
 {
     private const ERROR_TEMLATE = 'Telegram method "%s" not exists';
 

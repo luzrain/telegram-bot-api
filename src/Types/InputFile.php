@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Types;
 
-use JsonSerializable;
 use Luzrain\TelegramBotApi\Exceptions\TelegramInputFileException;
 
 /**
  * This object represents the contents of a file to be uploaded.
  * Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.
  */
-class InputFile implements JsonSerializable
+class InputFile implements \JsonSerializable
 {
     private string $filePath;
     private string $uniqueName;

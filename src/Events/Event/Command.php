@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Events\Event;
 
-use Closure;
 use Luzrain\TelegramBotApi\Events\Event;
 use Luzrain\TelegramBotApi\Types\MessageEntity;
 use Luzrain\TelegramBotApi\Types\Update;
@@ -13,7 +12,7 @@ final class Command extends Event
 {
     private string $command;
 
-    public function __construct(string $command, Closure $action)
+    public function __construct(string $command, \Closure $action)
     {
         parent::__construct($action);
         $this->command = $command;

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Test;
 
-use PHPUnit\Framework\TestCase;
 use Luzrain\TelegramBotApi\Exceptions\TelegramTypeException;
 use Luzrain\TelegramBotApi\Test\Helper\TestBaseType;
+use PHPUnit\Framework\TestCase;
 
 final class BaseTypeTest extends TestCase
 {

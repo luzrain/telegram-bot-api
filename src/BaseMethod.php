@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi;
 
-use JsonSerializable;
-
 /**
  * Base class for Telegram Method
  *
  * @see https://core.telegram.org/bots/api#available-methods
  */
-abstract class BaseMethod implements JsonSerializable
+abstract class BaseMethod implements \JsonSerializable
 {
     protected static string $methodName;
     protected static string $responseClass;
