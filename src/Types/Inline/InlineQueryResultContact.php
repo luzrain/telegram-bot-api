@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Inline;
+namespace Luzrain\TelegramBotApi\Types\Inline;
 
-use TelegramBot\Api\Types\InlineKeyboardMarkup;
+use Luzrain\TelegramBotApi\Types\InlineKeyboardMarkup;
 
 /**
  * Represents a contact with a phone number. By default, this contact will be sent by the user.

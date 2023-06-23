@@ -35,12 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "TelegramBot\\Api\\": "src"
+            "Luzrain\\TelegramBotApi\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "TelegramBot\\Api\\Test\\": "tests"
+            "Luzrain\\TelegramBotApi\\Test\\": "tests"
         }
     },
     "scripts": {

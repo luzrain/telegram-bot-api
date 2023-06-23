@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\File;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\File;
 
 /**
  * Use this method to get basic info about a file and prepare it for downloading.

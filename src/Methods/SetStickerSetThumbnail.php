@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\InputFile;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\InputFile;
 
 /**
  * Use this method to set the thumbnail of a regular or mask sticker set.

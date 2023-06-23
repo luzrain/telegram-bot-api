@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Stickers;
+namespace Luzrain\TelegramBotApi\Types\Stickers;
 
-use TelegramBot\Api\BaseType;
-use TelegramBot\Api\TypeInterface;
-use TelegramBot\Api\Types\File;
-use TelegramBot\Api\Types\PhotoSize;
+use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Types\File;
+use Luzrain\TelegramBotApi\Types\PhotoSize;
 
 /**
  * This object represents a sticker.

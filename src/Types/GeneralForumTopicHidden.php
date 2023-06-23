@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
-use TelegramBot\Api\BaseType;
-use TelegramBot\Api\TypeInterface;
+use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\TypeInterface;
 
 /**
  * This object represents a service message about General forum topic hidden in the chat. Currently holds no information.

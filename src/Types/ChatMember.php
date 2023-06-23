@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
-use TelegramBot\Api\BaseType;
-use TelegramBot\Api\TypeInterface;
+use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\TypeInterface;
 
 /**
  * This object contains information about one member of a chat. Currently, the following 6 types of chat members are supported:

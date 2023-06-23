@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Passport;
+namespace Luzrain\TelegramBotApi\Types\Passport;
 
 /**
  * Represents an issue with the reverse side of a document. The error is considered resolved when the file with reverse side of the document changes.

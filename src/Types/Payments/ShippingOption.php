@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Payments;
+namespace Luzrain\TelegramBotApi\Types\Payments;
 
-use TelegramBot\Api\BaseType;
-use TelegramBot\Api\TypeInterface;
-use TelegramBot\Api\Types\Arrays\ArrayOfLabeledPrice;
+use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfLabeledPrice;
 
 /**
  * This object represents one shipping option.

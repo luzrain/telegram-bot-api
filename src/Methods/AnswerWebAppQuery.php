@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\Inline\InlineQueryResult;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\Inline\InlineQueryResult;
 
 /**
  * Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\Chat;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\Chat;
 
 /**
  * Use this method to get up to date information about the chat (current name of the user for one-on-one conversations,

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Test;
+namespace Luzrain\TelegramBotApi\Test;
 
 use PHPUnit\Framework\TestCase;
-use TelegramBot\Api\Exceptions\TelegramTypeException;
-use TelegramBot\Api\Test\Helper\TestBaseType;
+use Luzrain\TelegramBotApi\Exceptions\TelegramTypeException;
+use Luzrain\TelegramBotApi\Test\Helper\TestBaseType;
 
 final class BaseTypeTest extends TestCase
 {

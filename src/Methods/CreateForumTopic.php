@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\ForumTopic;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\ForumTopic;
 
 /**
  * Use this method to create a topic in a forum supergroup chat.

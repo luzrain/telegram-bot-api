@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Inline;
+namespace Luzrain\TelegramBotApi\Types\Inline;
 
-use TelegramBot\Api\BaseType;
+use Luzrain\TelegramBotApi\BaseType;
 
 /**
  * This object represents the content of a message to be sent as a result of an inline query.

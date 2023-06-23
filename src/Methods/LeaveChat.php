@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
+use Luzrain\TelegramBotApi\BaseMethod;
 
 /**
  * Use this method for your bot to leave a group, supergroup or channel. Returns True on success.

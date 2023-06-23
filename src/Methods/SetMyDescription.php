@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
+use Luzrain\TelegramBotApi\BaseMethod;
 
 /**
  * Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty.

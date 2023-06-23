@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
 /**
  * Represents a chat member that isn't currently a member of the chat, but may join it themselves.

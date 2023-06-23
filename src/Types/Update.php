@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
-use TelegramBot\Api\BaseType;
-use TelegramBot\Api\TypeInterface;
-use TelegramBot\Api\Types\Inline\ChosenInlineResult;
-use TelegramBot\Api\Types\Inline\InlineQuery;
-use TelegramBot\Api\Types\Payments\PreCheckoutQuery;
-use TelegramBot\Api\Types\Payments\ShippingQuery;
+use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Types\Inline\ChosenInlineResult;
+use Luzrain\TelegramBotApi\Types\Inline\InlineQuery;
+use Luzrain\TelegramBotApi\Types\Payments\PreCheckoutQuery;
+use Luzrain\TelegramBotApi\Types\Payments\ShippingQuery;
 
 /**
  * This object represents an incoming update.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
 /**
  * Represents a menu button, which opens the bot's list of commands.

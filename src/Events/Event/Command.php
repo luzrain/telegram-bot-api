@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Events\Event;
+namespace Luzrain\TelegramBotApi\Events\Event;
 
 use Closure;
-use TelegramBot\Api\Events\Event;
-use TelegramBot\Api\Types\MessageEntity;
-use TelegramBot\Api\Types\Update;
+use Luzrain\TelegramBotApi\Events\Event;
+use Luzrain\TelegramBotApi\Types\MessageEntity;
+use Luzrain\TelegramBotApi\Types\Update;
 
 final class Command extends Event
 {

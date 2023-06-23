@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
 /**
  * Represents the scope of bot commands, covering a specific member of a group or supergroup chat.

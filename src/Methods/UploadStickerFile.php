@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\File;
-use TelegramBot\Api\Types\InputFile;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\File;
+use Luzrain\TelegramBotApi\Types\InputFile;
 
 /**
  * Use this method to upload a file with a sticker for later use in the createNewStickerSet

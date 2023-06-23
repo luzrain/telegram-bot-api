@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Inline;
+namespace Luzrain\TelegramBotApi\Types\Inline;
 
-use TelegramBot\Api\Types\Arrays\ArrayOfLabeledPrice;
-use TelegramBot\Api\Types\Payments\LabeledPrice;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfLabeledPrice;
+use Luzrain\TelegramBotApi\Types\Payments\LabeledPrice;
 
 /**
  * Represents the content of an invoice message to be sent as the result of an inline query.

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\BotCommand;
-use TelegramBot\Api\Types\BotCommandScope;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\BotCommand;
+use Luzrain\TelegramBotApi\Types\BotCommandScope;
 
 /**
  * Use this method to change the list of the bot's commands.

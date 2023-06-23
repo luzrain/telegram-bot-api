@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\Inline\InlineQueryResult;
-use TelegramBot\Api\Types\InlineQueryResultsButton;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\Inline\InlineQueryResult;
+use Luzrain\TelegramBotApi\Types\InlineQueryResultsButton;
 
 /**
  * Use this method to send answers to an inline query. On success, True is returned.

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\InlineKeyboardMarkup;
-use TelegramBot\Api\Types\Message;
-use TelegramBot\Api\Types\MessageEntity;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\InlineKeyboardMarkup;
+use Luzrain\TelegramBotApi\Types\Message;
+use Luzrain\TelegramBotApi\Types\MessageEntity;
 
 /**
  * Use this method to edit captions of messages.

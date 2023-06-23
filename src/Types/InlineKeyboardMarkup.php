@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
-use TelegramBot\Api\BaseType;
-use TelegramBot\Api\TypeInterface;
-use TelegramBot\Api\Types\Arrays\ArrayOfArrayOfInlineKeyboardButton;
+use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfArrayOfInlineKeyboardButton;
 
 /**
  * This object represents an inline keyboard that appears right next to the message it belongs to.

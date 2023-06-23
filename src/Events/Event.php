@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Events;
+namespace Luzrain\TelegramBotApi\Events;
 
 use Closure;
-use TelegramBot\Api\Exceptions\TelegramCallbackException;
-use TelegramBot\Api\Types\Update;
+use Luzrain\TelegramBotApi\Exceptions\TelegramCallbackException;
+use Luzrain\TelegramBotApi\Types\Update;
 use TypeError;
 
 abstract class Event

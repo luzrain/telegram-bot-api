@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Arrays;
+namespace Luzrain\TelegramBotApi\Types\Arrays;
 
-use TelegramBot\Api\ArrayTypeInterface;
-use TelegramBot\Api\Types\Message;
+use Luzrain\TelegramBotApi\ArrayTypeInterface;
+use Luzrain\TelegramBotApi\Types\Message;
 
 class ArrayOfMessages extends BaseArray implements ArrayTypeInterface
 {

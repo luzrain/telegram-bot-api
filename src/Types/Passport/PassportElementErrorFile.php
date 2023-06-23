@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Passport;
+namespace Luzrain\TelegramBotApi\Types\Passport;
 
 /**
  * Represents an issue with a document scan. The error is considered resolved when the file with the document scan changes.

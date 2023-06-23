@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
+use Luzrain\TelegramBotApi\BaseMethod;
 
 /**
  * Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success.

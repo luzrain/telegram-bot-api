@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Inline;
+namespace Luzrain\TelegramBotApi\Types\Inline;
 
-use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
-use TelegramBot\Api\Types\MessageEntity;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfMessageEntity;
+use Luzrain\TelegramBotApi\Types\MessageEntity;
 
 /**
  * Represents the content of a text message to be sent as the result of an inline query.

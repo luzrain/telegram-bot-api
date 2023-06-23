@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Inline;
+namespace Luzrain\TelegramBotApi\Types\Inline;
 
-use TelegramBot\Api\BaseType;
-use TelegramBot\Api\TypeInterface;
-use TelegramBot\Api\Types\Location;
-use TelegramBot\Api\Types\User;
+use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Types\Location;
+use Luzrain\TelegramBotApi\Types\User;
 
 /**
  * Represents a result of an inline query that was chosen by the user and sent to their chat partner.

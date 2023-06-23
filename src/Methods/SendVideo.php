@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\ForceReply;
-use TelegramBot\Api\Types\InlineKeyboardMarkup;
-use TelegramBot\Api\Types\InputFile;
-use TelegramBot\Api\Types\Message;
-use TelegramBot\Api\Types\ReplyKeyboardMarkup;
-use TelegramBot\Api\Types\ReplyKeyboardRemove;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\ForceReply;
+use Luzrain\TelegramBotApi\Types\InlineKeyboardMarkup;
+use Luzrain\TelegramBotApi\Types\InputFile;
+use Luzrain\TelegramBotApi\Types\Message;
+use Luzrain\TelegramBotApi\Types\ReplyKeyboardMarkup;
+use Luzrain\TelegramBotApi\Types\ReplyKeyboardRemove;
 
 /**
  * Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document).

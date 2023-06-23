@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Test;
+namespace Luzrain\TelegramBotApi\Test;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use TelegramBot\Api\Client;
-use TelegramBot\Api\Test\Helper\ClosureTestHelper;
-use TelegramBot\Api\Types\Update;
+use Luzrain\TelegramBotApi\Client;
+use Luzrain\TelegramBotApi\Test\Helper\ClosureTestHelper;
+use Luzrain\TelegramBotApi\Types\Update;
 
 final class ClientTest extends TestCase
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
 use JsonSerializable;
-use TelegramBot\Api\Exceptions\TelegramInputFileException;
+use Luzrain\TelegramBotApi\Exceptions\TelegramInputFileException;
 
 /**
  * This object represents the contents of a file to be uploaded.

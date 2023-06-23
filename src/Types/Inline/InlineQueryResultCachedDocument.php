@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Inline;
+namespace Luzrain\TelegramBotApi\Types\Inline;
 
-use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
-use TelegramBot\Api\Types\InlineKeyboardMarkup;
-use TelegramBot\Api\Types\MessageEntity;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfMessageEntity;
+use Luzrain\TelegramBotApi\Types\InlineKeyboardMarkup;
+use Luzrain\TelegramBotApi\Types\MessageEntity;
 
 /**
  * Represents a link to a file stored on the Telegram servers. By default, this file will be sent by the user with an optional caption.

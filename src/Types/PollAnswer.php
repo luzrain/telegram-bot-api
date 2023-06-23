@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
-use TelegramBot\Api\BaseType;
+use Luzrain\TelegramBotApi\BaseType;
 
 /**
  * This object represents an answer of a user in a non-anonymous poll.

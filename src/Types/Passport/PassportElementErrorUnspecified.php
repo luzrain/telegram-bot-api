@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Passport;
+namespace Luzrain\TelegramBotApi\Types\Passport;
 
 /**
  * Represents an issue in an unspecified place. The error is considered resolved when new data is added.

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
+use Luzrain\TelegramBotApi\BaseMethod;
 
 /**
  * Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked.

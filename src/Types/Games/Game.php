@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Games;
+namespace Luzrain\TelegramBotApi\Types\Games;
 
-use TelegramBot\Api\BaseType;
-use TelegramBot\Api\TypeInterface;
-use TelegramBot\Api\Types\Animation;
-use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
-use TelegramBot\Api\Types\Arrays\ArrayOfPhotoSize;
-use TelegramBot\Api\Types\MessageEntity;
-use TelegramBot\Api\Types\PhotoSize;
+use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Types\Animation;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfMessageEntity;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfPhotoSize;
+use Luzrain\TelegramBotApi\Types\MessageEntity;
+use Luzrain\TelegramBotApi\Types\PhotoSize;
 
 /**
  * This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.

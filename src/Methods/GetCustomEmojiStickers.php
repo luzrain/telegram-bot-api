@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\Arrays\ArrayOfStickers;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfStickers;
 
 /**
  * Use this method to get information about custom emoji stickers by their identifiers. Returns an Array of Sticker objects.

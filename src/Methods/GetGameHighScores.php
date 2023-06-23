@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\Arrays\ArrayOfGameHighScore;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfGameHighScore;
 
 /**
  * Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game.

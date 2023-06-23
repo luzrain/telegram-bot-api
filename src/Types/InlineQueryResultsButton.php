@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
-use TelegramBot\Api\BaseType;
+use Luzrain\TelegramBotApi\BaseType;
 
 class InlineQueryResultsButton extends BaseType
 {

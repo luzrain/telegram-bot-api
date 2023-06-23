@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api;
+namespace Luzrain\TelegramBotApi;
 
 use JsonSerializable;
-use TelegramBot\Api\Exceptions\TelegramTypeException;
+use Luzrain\TelegramBotApi\Exceptions\TelegramTypeException;
 
 /**
  * Base class for Telegram Types

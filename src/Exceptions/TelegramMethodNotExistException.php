@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Exceptions;
+namespace Luzrain\TelegramBotApi\Exceptions;
 
 use Exception;
 

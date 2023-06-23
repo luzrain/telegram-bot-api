@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api;
+namespace Luzrain\TelegramBotApi;
 
 use Closure;
 use JsonException;
-use TelegramBot\Api\Events\Event;
-use TelegramBot\Api\Events\EventCollection;
-use TelegramBot\Api\Exceptions\TelegramCallbackException;
-use TelegramBot\Api\Types\Update;
+use Luzrain\TelegramBotApi\Events\Event;
+use Luzrain\TelegramBotApi\Events\EventCollection;
+use Luzrain\TelegramBotApi\Exceptions\TelegramCallbackException;
+use Luzrain\TelegramBotApi\Types\Update;
 
 /**
  * Service for handle telegram updates

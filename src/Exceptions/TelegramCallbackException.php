@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Exceptions;
+namespace Luzrain\TelegramBotApi\Exceptions;
 
 use Exception;
-use TelegramBot\Api\BaseMethod;
+use Luzrain\TelegramBotApi\BaseMethod;
 use Throwable;
 
 class TelegramCallbackException extends Exception

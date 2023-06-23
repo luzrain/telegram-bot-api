@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\InlineKeyboardMarkup;
-use TelegramBot\Api\Types\InputMedia;
-use TelegramBot\Api\Types\Message;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\InlineKeyboardMarkup;
+use Luzrain\TelegramBotApi\Types\InputMedia;
+use Luzrain\TelegramBotApi\Types\Message;
 
 /**
  * Use this method to edit animation, audio, document, photo, or video messages.

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\Arrays\ArrayOfMessages;
-use TelegramBot\Api\Types\InputMediaAudio;
-use TelegramBot\Api\Types\InputMediaDocument;
-use TelegramBot\Api\Types\InputMediaPhoto;
-use TelegramBot\Api\Types\InputMediaVideo;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfMessages;
+use Luzrain\TelegramBotApi\Types\InputMediaAudio;
+use Luzrain\TelegramBotApi\Types\InputMediaDocument;
+use Luzrain\TelegramBotApi\Types\InputMediaPhoto;
+use Luzrain\TelegramBotApi\Types\InputMediaVideo;
 
 /**
  * Use this method to send a group of photos, videos, documents or audios as an album.

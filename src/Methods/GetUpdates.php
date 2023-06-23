@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Methods;
+namespace Luzrain\TelegramBotApi\Methods;
 
-use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\Arrays\ArrayOfUpdates;
+use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfUpdates;
 
 /**
  * Use this method to receive incoming updates using long polling (wiki). An Array of Update objects is returned.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Test\Helper;
+namespace Luzrain\TelegramBotApi\Test\Helper;
 
 final class ClosureTestHelper
 {

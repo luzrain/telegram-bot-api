@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Arrays;
+namespace Luzrain\TelegramBotApi\Types\Arrays;
 
-use TelegramBot\Api\ArrayTypeInterface;
-use TelegramBot\Api\Types\Payments\LabeledPrice;
+use Luzrain\TelegramBotApi\ArrayTypeInterface;
+use Luzrain\TelegramBotApi\Types\Payments\LabeledPrice;
 
 class ArrayOfLabeledPrice extends BaseArray implements ArrayTypeInterface
 {

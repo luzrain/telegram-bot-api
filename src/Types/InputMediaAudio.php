@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
-use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfMessageEntity;
 
 /**
  * Represents an audio file to be treated as music to be sent.

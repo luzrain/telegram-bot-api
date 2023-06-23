@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Events;
+namespace Luzrain\TelegramBotApi\Events;
 
-use TelegramBot\Api\Types\Update;
+use Luzrain\TelegramBotApi\Types\Update;
 
 class EventCollection
 {

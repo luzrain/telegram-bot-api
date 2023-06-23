@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
-use TelegramBot\Api\BaseType;
+use Luzrain\TelegramBotApi\BaseType;
 
 /**
  * This object represents the scope to which bot commands are applied. Currently, the following 7 scopes are supported:

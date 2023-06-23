@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api;
+namespace Luzrain\TelegramBotApi;
 
-use TelegramBot\Api\Exceptions\TelegramMethodNotExistException;
-use TelegramBot\Api\Types\BotCommand;
-use TelegramBot\Api\Types\Chat;
-use TelegramBot\Api\Types\ChatAdministratorRights;
-use TelegramBot\Api\Types\ChatInviteLink;
-use TelegramBot\Api\Types\ChatMember;
-use TelegramBot\Api\Types\File;
-use TelegramBot\Api\Types\Games\GameHighScore;
-use TelegramBot\Api\Types\Inline\SentWebAppMessage;
-use TelegramBot\Api\Types\MenuButton;
-use TelegramBot\Api\Types\Message;
-use TelegramBot\Api\Types\MessageId;
-use TelegramBot\Api\Types\Poll;
-use TelegramBot\Api\Types\Stickers\StickerSet;
-use TelegramBot\Api\Types\Update;
-use TelegramBot\Api\Types\User;
-use TelegramBot\Api\Types\UserProfilePhotos;
-use TelegramBot\Api\Types\WebhookInfo;
+use Luzrain\TelegramBotApi\Exceptions\TelegramMethodNotExistException;
+use Luzrain\TelegramBotApi\Types\BotCommand;
+use Luzrain\TelegramBotApi\Types\Chat;
+use Luzrain\TelegramBotApi\Types\ChatAdministratorRights;
+use Luzrain\TelegramBotApi\Types\ChatInviteLink;
+use Luzrain\TelegramBotApi\Types\ChatMember;
+use Luzrain\TelegramBotApi\Types\File;
+use Luzrain\TelegramBotApi\Types\Games\GameHighScore;
+use Luzrain\TelegramBotApi\Types\Inline\SentWebAppMessage;
+use Luzrain\TelegramBotApi\Types\MenuButton;
+use Luzrain\TelegramBotApi\Types\Message;
+use Luzrain\TelegramBotApi\Types\MessageId;
+use Luzrain\TelegramBotApi\Types\Poll;
+use Luzrain\TelegramBotApi\Types\Stickers\StickerSet;
+use Luzrain\TelegramBotApi\Types\Update;
+use Luzrain\TelegramBotApi\Types\User;
+use Luzrain\TelegramBotApi\Types\UserProfilePhotos;
+use Luzrain\TelegramBotApi\Types\WebhookInfo;
 
 /**
  * See available methods and its parameters on documentation page

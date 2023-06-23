@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Test;
+namespace Luzrain\TelegramBotApi\Test;
 
 use Composer\Autoload\ClassLoader;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use TelegramBot\Api\BaseType;
-use TelegramBot\Api\StringUtils;
+use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\StringUtils;
 
 final class TypesMapTest extends TestCase
 {
@@ -19,7 +19,7 @@ final class TypesMapTest extends TestCase
         $classes = array_keys($loader->getClassMap());
 
         foreach ($classes as $class) {
-            if (!str_starts_with($class, 'TelegramBot\Api\Types')) {
+            if (!str_starts_with($class, 'Luzrain\TelegramBotApi\Types')) {
                 continue;
             }
             if (!is_subclass_of($class, BaseType::class)) {

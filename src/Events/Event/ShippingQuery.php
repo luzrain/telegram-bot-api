@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Events\Event;
+namespace Luzrain\TelegramBotApi\Events\Event;
 
-use TelegramBot\Api\Events\Event;
-use TelegramBot\Api\Types\Update;
+use Luzrain\TelegramBotApi\Events\Event;
+use Luzrain\TelegramBotApi\Types\Update;
 
 final class ShippingQuery extends Event
 {

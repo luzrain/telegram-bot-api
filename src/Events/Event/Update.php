@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Events\Event;
+namespace Luzrain\TelegramBotApi\Events\Event;
 
-use TelegramBot\Api\Events\Event;
-use TelegramBot\Api\Types\Update as UpdateType;
+use Luzrain\TelegramBotApi\Events\Event;
+use Luzrain\TelegramBotApi\Types\Update as UpdateType;
 
 final class Update extends Event
 {

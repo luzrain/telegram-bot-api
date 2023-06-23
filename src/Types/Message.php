@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
-use TelegramBot\Api\BaseType;
-use TelegramBot\Api\TypeInterface;
-use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
-use TelegramBot\Api\Types\Arrays\ArrayOfPhotoSize;
-use TelegramBot\Api\Types\Arrays\ArrayOfUser;
-use TelegramBot\Api\Types\Games\Game;
-use TelegramBot\Api\Types\Passport\PassportData;
-use TelegramBot\Api\Types\Payments\Invoice;
-use TelegramBot\Api\Types\Payments\SuccessfulPayment;
-use TelegramBot\Api\Types\Stickers\Sticker;
+use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfMessageEntity;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfPhotoSize;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfUser;
+use Luzrain\TelegramBotApi\Types\Games\Game;
+use Luzrain\TelegramBotApi\Types\Passport\PassportData;
+use Luzrain\TelegramBotApi\Types\Payments\Invoice;
+use Luzrain\TelegramBotApi\Types\Payments\SuccessfulPayment;
+use Luzrain\TelegramBotApi\Types\Stickers\Sticker;
 
 /**
  * This object represents a message.

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Test\Helper;
+namespace Luzrain\TelegramBotApi\Test\Helper;
 
-use TelegramBot\Api\BaseType;
+use Luzrain\TelegramBotApi\BaseType;
 
 final class TestBaseType extends BaseType
 {

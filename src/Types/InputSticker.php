@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
-use TelegramBot\Api\BaseType;
-use TelegramBot\Api\Types\Stickers\MaskPosition;
+use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Types\Stickers\MaskPosition;
 
 /**
  * This object describes a sticker to be added to a sticker set.

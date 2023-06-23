@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types;
+namespace Luzrain\TelegramBotApi\Types;
 
-use TelegramBot\Api\BaseType;
-use TelegramBot\Api\TypeInterface;
-use TelegramBot\Api\Types\Arrays\ArrayOfMessageEntity;
-use TelegramBot\Api\Types\Arrays\ArrayOfPollOption;
+use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfMessageEntity;
+use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfPollOption;
 
 /**
  * This object contains information about a poll.

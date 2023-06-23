@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api\Types\Arrays;
+namespace Luzrain\TelegramBotApi\Types\Arrays;
 
-use TelegramBot\Api\ArrayTypeInterface;
+use Luzrain\TelegramBotApi\ArrayTypeInterface;
 
 class ArrayOfArrayOfInlineKeyboardButton extends BaseArray implements ArrayTypeInterface
 {

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace TelegramBot\Api;
+namespace Luzrain\TelegramBotApi;
 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\RequestOptions;
-use TelegramBot\Api\Exceptions\TelegramBotApiException;
-use TelegramBot\Api\Methods\GetFile;
-use TelegramBot\Api\Methods\SendMediaGroup;
-use TelegramBot\Api\Types\File;
-use TelegramBot\Api\Types\InputFile;
-use TelegramBot\Api\Types\InputMediaAnimation;
-use TelegramBot\Api\Types\InputMediaAudio;
-use TelegramBot\Api\Types\InputMediaDocument;
-use TelegramBot\Api\Types\InputMediaVideo;
-use TelegramBot\Api\Types\ResponseParameters;
+use Luzrain\TelegramBotApi\Exceptions\TelegramBotApiException;
+use Luzrain\TelegramBotApi\Methods\GetFile;
+use Luzrain\TelegramBotApi\Methods\SendMediaGroup;
+use Luzrain\TelegramBotApi\Types\File;
+use Luzrain\TelegramBotApi\Types\InputFile;
+use Luzrain\TelegramBotApi\Types\InputMediaAnimation;
+use Luzrain\TelegramBotApi\Types\InputMediaAudio;
+use Luzrain\TelegramBotApi\Types\InputMediaDocument;
+use Luzrain\TelegramBotApi\Types\InputMediaVideo;
+use Luzrain\TelegramBotApi\Types\ResponseParameters;
 
 /**
  * Service for execute telegram methods

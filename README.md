@@ -19,7 +19,7 @@ A few examples of usage:
 
 #### Send message
 ``` php
-use TelegramBot\Api\BotApi;
+use Luzrain\TelegramBotApi\BotApi;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
@@ -31,11 +31,11 @@ $response = $bot->sendMessage(
 
 #### Send message with reply keyboard
 ```php
-use TelegramBot\Api\BotApi;
-use TelegramBot\Api\Types\KeyboardButton;
-use TelegramBot\Api\Types\KeyboardButtonPollType;
-use TelegramBot\Api\Types\ReplyKeyboardMarkup;
-use TelegramBot\Api\Types\WebAppInfo;
+use Luzrain\TelegramBotApi\BotApi;
+use Luzrain\TelegramBotApi\Types\KeyboardButton;
+use Luzrain\TelegramBotApi\Types\KeyboardButtonPollType;
+use Luzrain\TelegramBotApi\Types\ReplyKeyboardMarkup;
+use Luzrain\TelegramBotApi\Types\WebAppInfo;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
@@ -56,10 +56,10 @@ $response = $bot->sendMessage(
 
 #### Send message with inline keyboard
 ```php
-use TelegramBot\Api\BotApi;
-use TelegramBot\Api\Types\InlineKeyboardButton;
-use TelegramBot\Api\Types\InlineKeyboardMarkup;
-use TelegramBot\Api\Types\ReplyKeyboardRemove;
+use Luzrain\TelegramBotApi\BotApi;
+use Luzrain\TelegramBotApi\Types\InlineKeyboardButton;
+use Luzrain\TelegramBotApi\Types\InlineKeyboardMarkup;
+use Luzrain\TelegramBotApi\Types\ReplyKeyboardRemove;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
@@ -82,8 +82,8 @@ $response = $bot->sendMessage(
 
 #### Send photo/video/document
 ```php
-use TelegramBot\Api\BotApi;
-use TelegramBot\Api\Types\InputFile;
+use Luzrain\TelegramBotApi\BotApi;
+use Luzrain\TelegramBotApi\Types\InputFile;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
@@ -115,9 +115,9 @@ $response = $bot->sendDocument(
 
 #### Send media group
 ```php
-use TelegramBot\Api\BotApi;
-use TelegramBot\Api\Types\InputFile;
-use TelegramBot\Api\Types\InputMediaPhoto;
+use Luzrain\TelegramBotApi\BotApi;
+use Luzrain\TelegramBotApi\Types\InputFile;
+use Luzrain\TelegramBotApi\Types\InputMediaPhoto;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
@@ -140,10 +140,10 @@ $response = $bot->sendMediaGroup(
 #### Webhook client
 
 ```php
-use TelegramBot\Api\Client;
-use TelegramBot\Api\Events\Event;
-use TelegramBot\Api\Types\Message;
-use TelegramBot\Api\Types\Update;
+use Luzrain\TelegramBotApi\Client;
+use Luzrain\TelegramBotApi\Events\Event;
+use Luzrain\TelegramBotApi\Types\Message;
+use Luzrain\TelegramBotApi\Types\Update;
 
 $client = new Client();
 
