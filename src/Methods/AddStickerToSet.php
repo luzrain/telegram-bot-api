@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace TelegramBot\Api\Methods;
 
 use TelegramBot\Api\BaseMethod;
-use TelegramBot\Api\Types\InputFile;
 use TelegramBot\Api\Types\InputSticker;
-use TelegramBot\Api\Types\Stickers\MaskPosition;
 
 /**
  * Use this method to add a new sticker to a set created by the bot.

@@ -137,5 +137,4 @@ class KeyboardButtonRequestChat extends BaseType implements TypeInterface
     {
         return $this->botIsMember;
     }
-
 }
