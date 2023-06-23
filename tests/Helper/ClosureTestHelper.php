@@ -7,11 +7,13 @@ namespace TelegramBot\Api\Test\Helper;
 final class ClosureTestHelper
 {
     private \Closure $closure;
+    private bool $isCalled = false;
     private mixed $parameter = null;
 
     public function __construct()
     {
         $this->closure = function (mixed $parameter) {
+            $this->isCalled = true;
             $this->parameter = $parameter;
             return null;
         };
@@ -24,7 +26,7 @@ final class ClosureTestHelper
 
     public function isCalled(): bool
     {
-        return $this->parameter !== null;
+        return $this->isCalled;
     }
 
     public function getParameter(): mixed

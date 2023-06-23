@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Composer install
-        run: composer install
+        run: composer install --optimize-autoloader
 
       - name: Run Tests
         run: composer test

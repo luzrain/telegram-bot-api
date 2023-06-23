@@ -14,6 +14,7 @@ class InlineQueryResultGame extends InlineQueryResult
     protected static array $map = [
         'type' => true,
         'id' => true,
+        'game_short_name' => true,
         'reply_markup' => InlineKeyboardMarkup::class,
     ];
 
@@ -58,11 +59,6 @@ class InlineQueryResultGame extends InlineQueryResult
     public function getId(): string
     {
         return $this->id;
-    }
-
-    public function getPhoneNumber(): string
-    {
-        return $this->phoneNumber;
     }
 
     public function getGameShortName(): string

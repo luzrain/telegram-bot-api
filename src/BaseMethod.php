@@ -25,7 +25,7 @@ abstract class BaseMethod implements JsonSerializable
     {
         foreach ($this as $key => $value) {
             if ($value !== null) {
-                yield $this->toSnakeCase($key) => $value;
+                yield StringUtils::toSnakeCase($key) => $value;
             }
         }
     }
@@ -40,11 +40,6 @@ abstract class BaseMethod implements JsonSerializable
         $responeClass = static::$responseClass;
 
         return $responeClass::fromResponse($data);
-    }
-
-    private static function toSnakeCase(string $str): string
-    {
-        return strtolower(preg_replace('/[A-Z]/', '_\\0', lcfirst($str)));
     }
 
     public function jsonSerialize(): mixed

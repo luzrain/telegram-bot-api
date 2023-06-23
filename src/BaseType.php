@@ -47,7 +47,7 @@ abstract class BaseType implements JsonSerializable
     {
         foreach (static::$map as $key => $item) {
             if (isset($data[$key]) && (!is_array($data[$key]) || (is_array($data[$key]) && !empty($data[$key])))) {
-                $property = self::toCamelCase($key);
+                $property = StringUtils::toCamelCase($key);
                 $this->$property = $item === true ? $data[$key] : $item::fromResponse($data[$key]);
             }
         }
@@ -55,17 +55,12 @@ abstract class BaseType implements JsonSerializable
         return $this;
     }
 
-    private static function toCamelCase(string $str): string
-    {
-        return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $str))));
-    }
-
     public function toArray(): array
     {
         $output = [];
 
         foreach (static::$map as $key => $item) {
-            $property = self::toCamelCase($key);
+            $property = StringUtils::toCamelCase($key);
             if ($this->$property !== null) {
                 if (is_array($this->$property)) {
                     $output[$key] = array_map(fn ($v) => is_object($v) ? $v->toArray() : $v, $this->$property);

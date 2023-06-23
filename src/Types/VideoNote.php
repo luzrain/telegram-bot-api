@@ -25,7 +25,7 @@ class VideoNote extends BaseType implements TypeInterface
         'length' => true,
         'duration' => true,
         'thumbnail' => PhotoSize::class,
-        'file_name' => true,
+        'file_size' => true,
     ];
 
     /**

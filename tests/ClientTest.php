@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TelegramBot\Api\Test;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use TelegramBot\Api\Client;
 use TelegramBot\Api\Test\Helper\ClosureTestHelper;
@@ -20,29 +21,22 @@ final class ClientTest extends TestCase
 
     public static function clientWebhookData(): iterable
     {
-        yield ['command', self::getDataFile('events/command.json')];
-        yield ['message', self::getDataFile('events/message.json')];
-        yield ['editedMessage', self::getDataFile('events/editedMessage.json')];
-        yield ['channelPost', self::getDataFile('events/channelPost.json')];
-        yield ['editedChannelPost', self::getDataFile('events/editedChannelPost.json')];
-        yield ['inlineQuery', self::getDataFile('events/inlineQuery.json')];
-        yield ['chosenInlineResult', self::getDataFile('events/chosenInlineResult.json')];
-        yield ['callbackQuery', self::getDataFile('events/callbackQuery.json')];
-        yield ['shippingQuery', self::getDataFile('events/shippingQuery.json')];
-        yield ['preCheckoutQuery', self::getDataFile('events/preCheckoutQuery.json')];
-        yield ['poll', self::getDataFile('events/poll.json')];
-        yield ['pollAnswer', self::getDataFile('events/pollAnswer.json')];
-        yield ['myChatMember', self::getDataFile('events/myChatMember.json')];
+        yield ['command', file_get_contents(__DIR__ . '/data/events/command.json')];
+        yield ['message', file_get_contents(__DIR__ . '/data/events/message.json')];
+        yield ['editedMessage', file_get_contents(__DIR__ . '/data/events/editedMessage.json')];
+        yield ['channelPost', file_get_contents(__DIR__ . '/data/events/channelPost.json')];
+        yield ['editedChannelPost', file_get_contents(__DIR__ . '/data/events/editedChannelPost.json')];
+        yield ['inlineQuery', file_get_contents(__DIR__ . '/data/events/inlineQuery.json')];
+        yield ['chosenInlineResult', file_get_contents(__DIR__ . '/data/events/chosenInlineResult.json')];
+        yield ['callbackQuery', file_get_contents(__DIR__ . '/data/events/callbackQuery.json')];
+        yield ['shippingQuery', file_get_contents(__DIR__ . '/data/events/shippingQuery.json')];
+        yield ['preCheckoutQuery', file_get_contents(__DIR__ . '/data/events/preCheckoutQuery.json')];
+        yield ['poll', file_get_contents(__DIR__ . '/data/events/poll.json')];
+        yield ['pollAnswer', file_get_contents(__DIR__ . '/data/events/pollAnswer.json')];
+        yield ['myChatMember', file_get_contents(__DIR__ . '/data/events/myChatMember.json')];
     }
 
-    private static function getDataFile(string $file): string
-    {
-        return file_get_contents(__DIR__ . '/data/' . $file);
-    }
-
-    /**
-     * @dataProvider clientWebhookData
-     */
+    #[DataProvider('clientWebhookData')]
     public function testClientWebhook(string $eventName, string $requestBody): void
     {
         $updateClosure = new ClosureTestHelper();
@@ -80,9 +74,9 @@ final class ClientTest extends TestCase
             ->webhookHandle($requestBody)
         ;
 
-        $this->assertTrue($updateClosure->isCalled());
+        $this->assertSame(true, $updateClosure->isCalled());
         $this->assertSame($eventName === 'command', $commandClosure->isCalled());
-        $this->assertFalse($wrongCommandClosure->isCalled());
+        $this->assertSame(false, $wrongCommandClosure->isCalled());
         $this->assertSame(in_array($eventName, ['command', 'message']), $messageClosure->isCalled());
         $this->assertSame($eventName === 'editedMessage', $editedMessageClosure->isCalled());
         $this->assertSame($eventName === 'channelPost', $channelPostClosure->isCalled());
@@ -105,9 +99,9 @@ final class ClientTest extends TestCase
         $editedChannelPostClosure = new ClosureTestHelper();
 
         $updates = [
-            Update::fromResponse(json_decode(self::getDataFile('events/command.json'), true)),
-            Update::fromResponse(json_decode(self::getDataFile('events/editedMessage.json'), true)),
-            Update::fromResponse(json_decode(self::getDataFile('events/channelPost.json'), true)),
+            Update::fromResponse(json_decode(file_get_contents(__DIR__ . '/data/events/command.json'), true)),
+            Update::fromResponse(json_decode(file_get_contents(__DIR__ . '/data/events/editedMessage.json'), true)),
+            Update::fromResponse(json_decode(file_get_contents(__DIR__ . '/data/events/channelPost.json'), true)),
         ];
 
         $this->client
