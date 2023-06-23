@@ -46,7 +46,7 @@ abstract class BaseType implements \JsonSerializable
     {
         foreach (static::$map as $key => $item) {
             /** @var BaseType|mixed $item */
-            if (!empty($data[$key])) {
+            if (isset($data[$key]) && (is_scalar($data[$key]) || !empty($data[$key]))) {
                 $property = StringUtils::toCamelCase($key);
                 $this->$property = $item === true ? $data[$key] : $item::fromResponse($data[$key]);
             }

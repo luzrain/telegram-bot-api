@@ -18,6 +18,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Create var dir
+        run: mkdir var
+
       - name: Composer install
         run: composer install --optimize-autoloader
 
