@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types\Passport;
 /**
  * Represents an issue with the translated version of a document. The error is considered resolved when a file with the document translation change.
  */
-class PassportElementErrorTranslationFiles extends PassportElementError
+final class PassportElementErrorTranslationFiles extends PassportElementError
 {
     protected static array $map = [
         'source' => true,

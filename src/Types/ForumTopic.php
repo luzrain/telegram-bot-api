@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a forum topic.
  */
-class ForumTopic extends BaseType implements TypeInterface
+final class ForumTopic extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'message_thread_id',

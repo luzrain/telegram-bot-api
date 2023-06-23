@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  * For simple text buttons, String can be used instead of this object to specify the button text.
  * The optional fields web_app, request_user, request_chat, request_contact, request_location, and request_poll are mutually exclusive.
  */
-class KeyboardButton extends BaseType implements TypeInterface
+final class KeyboardButton extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'text',

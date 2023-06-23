@@ -6,7 +6,7 @@ namespace Luzrain\TelegramBotApi\Exceptions;
 
 use Luzrain\TelegramBotApi\Types\ResponseParameters;
 
-class TelegramBotApiException extends \Exception
+final class TelegramBotApiException extends \Exception
 {
     private ?ResponseParameters $parameters;
 

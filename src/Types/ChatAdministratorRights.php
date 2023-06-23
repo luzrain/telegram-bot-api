@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Represents the rights of an administrator in a chat.
  */
-class ChatAdministratorRights extends BaseType implements TypeInterface
+final class ChatAdministratorRights extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'is_anonymous',

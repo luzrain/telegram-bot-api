@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types;
 /**
  * Represents a chat member that isn't currently a member of the chat, but may join it themselves.
  */
-class ChatMemberLeft extends ChatMember
+final class ChatMemberLeft extends ChatMember
 {
     protected static array $requiredParams = [
         'status',

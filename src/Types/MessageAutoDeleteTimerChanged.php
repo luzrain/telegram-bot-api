@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a service message about a change in auto-delete timer settings.
  */
-class MessageAutoDeleteTimerChanged extends BaseType implements TypeInterface
+final class MessageAutoDeleteTimerChanged extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'message_auto_delete_time',

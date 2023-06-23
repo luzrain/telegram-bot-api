@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types\Passport;
 /**
  * Represents an issue with the front side of a document. The error is considered resolved when the file with the front side of the document changes.
  */
-class PassportElementErrorFrontSide extends PassportElementError
+final class PassportElementErrorFrontSide extends PassportElementError
 {
     protected static array $map = [
         'source' => true,

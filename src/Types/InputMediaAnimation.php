@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfMessageEntity;
 /**
  * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
  */
-class InputMediaAnimation extends InputMedia
+final class InputMediaAnimation extends InputMedia
 {
     protected static array $map = [
         'type' => true,

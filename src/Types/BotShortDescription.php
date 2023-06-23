@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents the bot's short description.
  */
-class BotShortDescription extends BaseType implements TypeInterface
+final class BotShortDescription extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'short_description',

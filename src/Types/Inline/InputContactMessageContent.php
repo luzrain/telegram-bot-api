@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types\Inline;
 /**
  * Represents the content of a contact message to be sent as the result of an inline query.
  */
-class InputContactMessageContent extends InputMessageContent
+final class InputContactMessageContent extends InputMessageContent
 {
     protected static array $map = [
         'phone_number' => true,

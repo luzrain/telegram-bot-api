@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types\Inline;
 /**
  * Represents the content of a venue message to be sent as the result of an inline query.
  */
-class InputVenueMessageContent extends InputMessageContent
+final class InputVenueMessageContent extends InputMessageContent
 {
     protected static array $map = [
         'latitude' => true,

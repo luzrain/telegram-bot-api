@@ -13,7 +13,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  * If the button was attached to a message sent via the bot (in inline mode), the field inline_message_id will be present.
  * Exactly one of the fields data or game_short_name will be present.
  */
-class CallbackQuery extends BaseType implements TypeInterface
+final class CallbackQuery extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'id',

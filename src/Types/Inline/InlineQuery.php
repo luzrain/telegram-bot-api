@@ -13,7 +13,7 @@ use Luzrain\TelegramBotApi\Types\User;
  * This object represents an incoming inline query.
  * When the user sends an empty query, your bot could return some default or trending results.
  */
-class InlineQuery extends BaseType implements TypeInterface
+final class InlineQuery extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'id',

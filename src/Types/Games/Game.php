@@ -15,7 +15,7 @@ use Luzrain\TelegramBotApi\Types\PhotoSize;
 /**
  * This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
  */
-class Game extends BaseType implements TypeInterface
+final class Game extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'title',

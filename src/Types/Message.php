@@ -18,7 +18,7 @@ use Luzrain\TelegramBotApi\Types\Stickers\Sticker;
 /**
  * This object represents a message.
  */
-class Message extends BaseType implements TypeInterface
+final class Message extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'message_id',

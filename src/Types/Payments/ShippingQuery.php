@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\Types\User;
 /**
  * This object contains information about an incoming shipping query.
  */
-class ShippingQuery extends BaseType implements TypeInterface
+final class ShippingQuery extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'id',

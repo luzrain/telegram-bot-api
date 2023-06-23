@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a shipping address.
  */
-class ShippingAddress extends BaseType implements TypeInterface
+final class ShippingAddress extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'country_code',

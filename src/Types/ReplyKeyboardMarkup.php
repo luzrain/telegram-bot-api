@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).
  */
-class ReplyKeyboardMarkup extends BaseType implements TypeInterface
+final class ReplyKeyboardMarkup extends BaseType implements TypeInterface
 {
     private const BREAK = 1;
 

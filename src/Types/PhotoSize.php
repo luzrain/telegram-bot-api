@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents one size of a photo or a file / sticker thumbnail.
  */
-class PhotoSize extends BaseType implements TypeInterface
+final class PhotoSize extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'file_id',

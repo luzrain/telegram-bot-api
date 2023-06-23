@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types;
 /**
  * Describes that no specific value for the menu button was set.
  */
-class MenuButtonDefault extends MenuButton
+final class MenuButtonDefault extends MenuButton
 {
     protected static array $requiredParams = [
         'type',

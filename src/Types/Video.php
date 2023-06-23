@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a video file.
  */
-class Video extends BaseType implements TypeInterface
+final class Video extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'file_id',

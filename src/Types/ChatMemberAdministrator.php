@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types;
 /**
  * Represents a chat member that has some additional privileges.
  */
-class ChatMemberAdministrator extends ChatMember
+final class ChatMemberAdministrator extends ChatMember
 {
     protected static array $requiredParams = [
         'status',

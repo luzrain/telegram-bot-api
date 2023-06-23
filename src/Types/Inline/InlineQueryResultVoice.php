@@ -13,7 +13,7 @@ use Luzrain\TelegramBotApi\Types\MessageEntity;
  * By default, this voice recording will be sent by the user. Alternatively, you can use input_message_content
  * to send a message with the specified content instead of the the voice message.
  */
-class InlineQueryResultVoice extends InlineQueryResult
+final class InlineQueryResultVoice extends InlineQueryResult
 {
     protected static array $map = [
         'type' => true,

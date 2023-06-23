@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  * Contains data required for decrypting and authenticating EncryptedPassportElement.
  * See the Telegram Passport Documentation for a complete description of the data decryption and authentication processes.
  */
-class EncryptedCredentials extends BaseType implements TypeInterface
+final class EncryptedCredentials extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'data',

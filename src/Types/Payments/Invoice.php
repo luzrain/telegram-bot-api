@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object contains basic information about an invoice.
  */
-class Invoice extends BaseType implements TypeInterface
+final class Invoice extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'title',

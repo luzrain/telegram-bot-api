@@ -15,7 +15,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  *
  * !Maximum file size to download is 20 MB!
  */
-class File extends BaseType implements TypeInterface
+final class File extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'file_id',

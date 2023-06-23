@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Represents a location to which a chat is connected.
  */
-class ChatLocation extends BaseType implements TypeInterface
+final class ChatLocation extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'location',

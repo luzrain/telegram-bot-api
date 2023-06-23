@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types\Passport;
 /**
  * Represents an issue in an unspecified place. The error is considered resolved when new data is added.
  */
-class PassportElementErrorUnspecified extends PassportElementError
+final class PassportElementErrorUnspecified extends PassportElementError
 {
     protected static array $map = [
         'source' => true,

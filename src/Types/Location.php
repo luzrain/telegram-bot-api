@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a point on the map.
  */
-class Location extends BaseType implements TypeInterface
+final class Location extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'longitude',

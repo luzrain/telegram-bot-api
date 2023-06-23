@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a general file (as opposed to photos, voice messages and audio files).
  */
-class Document extends BaseType implements TypeInterface
+final class Document extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'file_id',

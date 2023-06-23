@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * A placeholder, currently holds no information. Use BotFather to set up your game.
  */
-class CallbackGame extends BaseType implements TypeInterface
+final class CallbackGame extends BaseType implements TypeInterface
 {
     public static function create()
     {

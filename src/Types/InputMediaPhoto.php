@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfMessageEntity;
 /**
  * Represents a photo to be sent.
  */
-class InputMediaPhoto extends InputMedia
+final class InputMediaPhoto extends InputMedia
 {
     protected static array $map = [
         'type' => true,

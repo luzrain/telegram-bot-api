@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Contains information about why a request was unsuccessful.
  */
-class ResponseParameters extends BaseType implements TypeInterface
+final class ResponseParameters extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [];
 

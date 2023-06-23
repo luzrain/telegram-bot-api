@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents an animated emoji that displays a random value.
  */
-class Dice extends BaseType implements TypeInterface
+final class Dice extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'emoji',

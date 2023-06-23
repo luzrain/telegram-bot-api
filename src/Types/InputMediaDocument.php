@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfMessageEntity;
 /**
  * Represents a general file to be sent.
  */
-class InputMediaDocument extends InputMedia
+final class InputMediaDocument extends InputMedia
 {
     protected static array $map = [
         'type' => true,

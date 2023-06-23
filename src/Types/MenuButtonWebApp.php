@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types;
 /**
  * Represents a menu button, which launches a Web App.
  */
-class MenuButtonWebApp extends MenuButton
+final class MenuButtonWebApp extends MenuButton
 {
     protected static array $requiredParams = [
         'type',

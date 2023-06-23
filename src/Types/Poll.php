@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfPollOption;
 /**
  * This object contains information about a poll.
  */
-class Poll extends BaseType implements TypeInterface
+final class Poll extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'id',

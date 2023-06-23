@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
  */
-class MessageEntity extends BaseType implements TypeInterface
+final class MessageEntity extends BaseType implements TypeInterface
 {
     public const TYPE_MENTION = 'mention';
     public const TYPE_HASHTAG = 'hashtag';

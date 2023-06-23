@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents the bot's name.
  */
-class BotName extends BaseType implements TypeInterface
+final class BotName extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'name',

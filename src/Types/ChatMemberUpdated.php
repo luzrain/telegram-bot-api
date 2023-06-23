@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents changes in the status of a chat member.
  */
-class ChatMemberUpdated extends BaseType implements TypeInterface
+final class ChatMemberUpdated extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'chat',

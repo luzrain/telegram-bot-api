@@ -30,9 +30,10 @@ use Luzrain\TelegramBotApi\BaseType;
  * @see InlineQueryResultVideo
  * @see InlineQueryResultVoice
  */
-class InlineQueryResult extends BaseType
+abstract class InlineQueryResult extends BaseType
 {
     protected function __construct()
     {
+        parent::__construct();
     }
 }

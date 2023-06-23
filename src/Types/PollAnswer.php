@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * This object represents an answer of a user in a non-anonymous poll.
  */
-class PollAnswer extends BaseType
+final class PollAnswer extends BaseType
 {
     protected static array $requiredParams = [
         'poll_id',

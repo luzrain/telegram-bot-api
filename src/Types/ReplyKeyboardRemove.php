@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  * the default letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot.
  * An exception is made for one-time keyboards that are hidden immediately after the user presses a button (see ReplyKeyboardMarkup).
  */
-class ReplyKeyboardRemove extends BaseType implements TypeInterface
+final class ReplyKeyboardRemove extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'remove_keyboard',

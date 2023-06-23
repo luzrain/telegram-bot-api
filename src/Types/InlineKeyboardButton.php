@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\Types\Games\CallbackGame;
 /**
  * This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
  */
-class InlineKeyboardButton extends BaseType implements TypeInterface
+final class InlineKeyboardButton extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'text',

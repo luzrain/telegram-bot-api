@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\Types\MessageEntity;
  * Represents a link to a photo. By default, this photo will be sent by the user with optional caption.
  * Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
  */
-class InlineQueryResultPhoto extends InlineQueryResult
+final class InlineQueryResultPhoto extends InlineQueryResult
 {
     protected static array $map = [
         'type' => true,

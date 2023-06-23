@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types\Arrays;
 use Luzrain\TelegramBotApi\ArrayTypeInterface;
 use Luzrain\TelegramBotApi\Types\BotCommand;
 
-class ArrayOfBotCommand extends BaseArray implements ArrayTypeInterface
+final class ArrayOfBotCommand extends BaseArray implements ArrayTypeInterface
 {
     protected static string $type = BotCommand::class;
 }

@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Represents an invite link for a chat.
  */
-class ChatInviteLink extends BaseType implements TypeInterface
+final class ChatInviteLink extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'invite_link',

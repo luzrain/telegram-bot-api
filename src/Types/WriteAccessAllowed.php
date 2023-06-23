@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  * This object represents a service message about a user allowing a bot to write messages after adding
  * the bot to the attachment menuor launching a Web App from a link.
  */
-class WriteAccessAllowed extends BaseType implements TypeInterface
+final class WriteAccessAllowed extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [];
 

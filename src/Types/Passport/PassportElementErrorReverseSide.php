@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types\Passport;
 /**
  * Represents an issue with the reverse side of a document. The error is considered resolved when the file with reverse side of the document changes.
  */
-class PassportElementErrorReverseSide extends PassportElementError
+final class PassportElementErrorReverseSide extends PassportElementError
 {
     protected static array $map = [
         'source' => true,

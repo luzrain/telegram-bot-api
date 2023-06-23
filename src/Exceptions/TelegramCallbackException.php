@@ -6,7 +6,7 @@ namespace Luzrain\TelegramBotApi\Exceptions;
 
 use Luzrain\TelegramBotApi\BaseMethod;
 
-class TelegramCallbackException extends \Exception
+final class TelegramCallbackException extends \Exception
 {
     public function __construct(string $message = '', int $code = 0, ?\Throwable $previous = null)
     {

@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Contains information about the current status of a webhook.
  */
-class WebhookInfo extends BaseType implements TypeInterface
+final class WebhookInfo extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'url',

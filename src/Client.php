@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\Types\Update;
 /**
  * Service for handle telegram updates
  */
-class Client
+final class Client
 {
     use Methods;
 

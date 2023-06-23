@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types;
 /**
  * Represents the default scope of bot commands. Default commands are used if no commands with a narrower scope are specified for the user.
  */
-class BotCommandScopeDefault extends BotCommandScope
+final class BotCommandScopeDefault extends BotCommandScope
 {
     protected static array $map = [
         'type' => true,

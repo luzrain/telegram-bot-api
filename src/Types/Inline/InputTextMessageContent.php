@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\Types\MessageEntity;
 /**
  * Represents the content of a text message to be sent as the result of an inline query.
  */
-class InputTextMessageContent extends InputMessageContent
+final class InputTextMessageContent extends InputMessageContent
 {
     protected static array $map = [
         'message_text' => true,

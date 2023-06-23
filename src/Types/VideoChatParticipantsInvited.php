@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfUser;
 /**
  * This object represents a service message about new members invited to a video chat.
  */
-class VideoChatParticipantsInvited extends BaseType implements TypeInterface
+final class VideoChatParticipantsInvited extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'users',

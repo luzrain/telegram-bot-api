@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a portion of the price for goods or services.
  */
-class LabeledPrice extends BaseType implements TypeInterface
+final class LabeledPrice extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'label',

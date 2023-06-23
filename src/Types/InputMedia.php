@@ -15,7 +15,7 @@ use Luzrain\TelegramBotApi\BaseType;
  * @see InputMediaPhoto
  * @see InputMediaVideo
  */
-class InputMedia extends BaseType
+abstract class InputMedia extends BaseType
 {
     protected function __construct()
     {

@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfArrayOfPhotoSize;
 /**
  * This object represent a user's profile pictures.
  */
-class UserProfilePhotos extends BaseType implements TypeInterface
+final class UserProfilePhotos extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'total_count',

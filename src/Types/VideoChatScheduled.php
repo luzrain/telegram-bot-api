@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a service message about a video chat scheduled in the chat.
  */
-class VideoChatScheduled extends BaseType implements TypeInterface
+final class VideoChatScheduled extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'start_date',

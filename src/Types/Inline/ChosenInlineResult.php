@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\Types\User;
 /**
  * Represents a result of an inline query that was chosen by the user and sent to their chat partner.
  */
-class ChosenInlineResult extends BaseType implements TypeInterface
+final class ChosenInlineResult extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'result_id',

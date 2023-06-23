@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Contains information about an inline message sent by a Web App on behalf of a user.
  */
-class SentWebAppMessage extends BaseType implements TypeInterface
+final class SentWebAppMessage extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [];
 

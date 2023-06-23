@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a unique message identifier.
  */
-class MessageId extends BaseType implements TypeInterface
+final class MessageId extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'message_id',

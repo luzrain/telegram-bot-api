@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a phone contact.
  */
-class Contact extends BaseType implements TypeInterface
+final class Contact extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'phone_number',

@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types;
 /**
  * Represents a menu button, which opens the bot's list of commands.
  */
-class MenuButtonCommands extends MenuButton
+final class MenuButtonCommands extends MenuButton
 {
     protected static array $requiredParams = [
         'type',

@@ -6,7 +6,7 @@ namespace Luzrain\TelegramBotApi\Types;
 
 use Luzrain\TelegramBotApi\BaseType;
 
-class InlineQueryResultsButton extends BaseType
+final class InlineQueryResultsButton extends BaseType
 {
     protected static array $map = [
         'text' => true,

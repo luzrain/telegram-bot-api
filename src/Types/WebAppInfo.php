@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Contains information about a Web App.
  */
-class WebAppInfo extends BaseType implements TypeInterface
+final class WebAppInfo extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'url',

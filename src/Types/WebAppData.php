@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Contains data sent from a Web App to the bot.
  */
-class WebAppData extends BaseType implements TypeInterface
+final class WebAppData extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'data',

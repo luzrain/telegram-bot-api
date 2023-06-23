@@ -21,7 +21,7 @@ use Luzrain\TelegramBotApi\Types\ResponseParameters;
 /**
  * Service for execute telegram methods
  */
-class BotApi
+final class BotApi
 {
     use Methods;
 

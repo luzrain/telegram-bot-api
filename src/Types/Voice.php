@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a voice note.
  */
-class Voice extends BaseType implements TypeInterface
+final class Voice extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'file_id',

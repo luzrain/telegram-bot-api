@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\Types\User;
 /**
  * This object represents one row of the high scores table for a game.
  */
-class GameHighScore extends BaseType implements TypeInterface
+final class GameHighScore extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'position',

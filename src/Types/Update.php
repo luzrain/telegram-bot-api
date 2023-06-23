@@ -15,7 +15,7 @@ use Luzrain\TelegramBotApi\Types\Payments\ShippingQuery;
  * This object represents an incoming update.
  * At most one of the optional parameters can be present in any given update.
  */
-class Update extends BaseType implements TypeInterface
+final class Update extends BaseType implements TypeInterface
 {
     public const MESSAGE_TYPE = 'message';
     public const EDITED_MESSAGE_TYPE = 'edited_message';

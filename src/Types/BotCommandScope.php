@@ -17,9 +17,10 @@ use Luzrain\TelegramBotApi\BaseType;
  * @see BotCommandScopeChatAdministrators
  * @see BotCommandScopeChatMember
  */
-class BotCommandScope extends BaseType
+abstract class BotCommandScope extends BaseType
 {
     protected function __construct()
     {
+        parent::__construct();
     }
 }

@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\Types\Stickers\MaskPosition;
 /**
  * This object describes a sticker to be added to a sticker set.
  */
-class InputSticker extends BaseType
+final class InputSticker extends BaseType
 {
     protected static array $map = [
         'sticker' => true,

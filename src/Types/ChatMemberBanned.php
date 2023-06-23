@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types;
 /**
  * Represents a chat member that was banned in the chat and can't return to the chat or view chat messages.
  */
-class ChatMemberBanned extends ChatMember
+final class ChatMemberBanned extends ChatMember
 {
     protected static array $requiredParams = [
         'status',

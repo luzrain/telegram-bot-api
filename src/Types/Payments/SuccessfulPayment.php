@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object contains basic information about a successful payment.
  */
-class SuccessfulPayment extends BaseType implements TypeInterface
+final class SuccessfulPayment extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'currency',

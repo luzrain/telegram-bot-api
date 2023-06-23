@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types;
 /**
  * Represents the scope of bot commands, covering all group and supergroup chats.
  */
-class BotCommandScopeAllGroupChats extends BotCommandScope
+final class BotCommandScopeAllGroupChats extends BotCommandScope
 {
     protected static array $map = [
         'type' => true,

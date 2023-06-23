@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfEncryptedPassportElement;
 /**
  * Contains information about Telegram Passport data shared with the bot by the user.
  */
-class PassportData extends BaseType implements TypeInterface
+final class PassportData extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'data',

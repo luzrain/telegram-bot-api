@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a service message about a video chat ended in the chat.
  */
-class VideoChatEnded extends BaseType implements TypeInterface
+final class VideoChatEnded extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'duration',

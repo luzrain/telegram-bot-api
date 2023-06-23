@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types\Arrays;
 use Luzrain\TelegramBotApi\ArrayTypeInterface;
 use Luzrain\TelegramBotApi\Types\User;
 
-class ArrayOfUser extends BaseArray implements ArrayTypeInterface
+final class ArrayOfUser extends BaseArray implements ArrayTypeInterface
 {
     protected static string $type = User::class;
 }

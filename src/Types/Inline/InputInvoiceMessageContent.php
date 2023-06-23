@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\Types\Payments\LabeledPrice;
 /**
  * Represents the content of an invoice message to be sent as the result of an inline query.
  */
-class InputInvoiceMessageContent extends InputMessageContent
+final class InputInvoiceMessageContent extends InputMessageContent
 {
     protected static array $map = [
         'title' => true,

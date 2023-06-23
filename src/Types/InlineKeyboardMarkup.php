@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfArrayOfInlineKeyboardButton;
 /**
  * This object represents an inline keyboard that appears right next to the message it belongs to.
  */
-class InlineKeyboardMarkup extends BaseType implements TypeInterface
+final class InlineKeyboardMarkup extends BaseType implements TypeInterface
 {
     private const BREAK = 2;
 

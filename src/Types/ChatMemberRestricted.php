@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Types;
 /**
  * Represents a chat member that is under certain restrictions in the chat. Supergroups only.
  */
-class ChatMemberRestricted extends ChatMember
+final class ChatMemberRestricted extends ChatMember
 {
     protected static array $requiredParams = [
         'status',

@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a Telegram user or bot.
  */
-class User extends BaseType implements TypeInterface
+final class User extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'id',

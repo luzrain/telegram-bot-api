@@ -16,9 +16,10 @@ use Luzrain\TelegramBotApi\BaseType;
  * @see InputContactMessageContent
  * @see InputInvoiceMessageContent
  */
-class InputMessageContent extends BaseType
+abstract class InputMessageContent extends BaseType
 {
     protected function __construct()
     {
+        parent::__construct();
     }
 }

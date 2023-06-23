@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents information about an order.
  */
-class OrderInfo extends BaseType implements TypeInterface
+final class OrderInfo extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [];
 

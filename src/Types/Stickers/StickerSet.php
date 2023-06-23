@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\Types\PhotoSize;
 /**
  * This object represents a sticker set.
  */
-class StickerSet extends BaseType implements TypeInterface
+final class StickerSet extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'name',

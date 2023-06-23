@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\Types\InlineKeyboardMarkup;
 /**
  * Represents a link to an article or web page.
  */
-class InlineQueryResultArticle extends InlineQueryResult
+final class InlineQueryResultArticle extends InlineQueryResult
 {
     protected static array $map = [
         'type' => true,

@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents an audio file to be treated as music by the Telegram clients.
  */
-class Audio extends BaseType implements TypeInterface
+final class Audio extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'file_id',

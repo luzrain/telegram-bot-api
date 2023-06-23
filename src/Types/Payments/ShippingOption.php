@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfLabeledPrice;
 /**
  * This object represents one shipping option.
  */
-class ShippingOption extends BaseType implements TypeInterface
+final class ShippingOption extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'id',

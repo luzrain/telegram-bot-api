@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Represents a join request sent to a chat.
  */
-class ChatJoinRequest extends BaseType implements TypeInterface
+final class ChatJoinRequest extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'chat',

@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a bot command.
  */
-class BotCommand extends BaseType implements TypeInterface
+final class BotCommand extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'command',

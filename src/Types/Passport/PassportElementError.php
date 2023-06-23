@@ -19,9 +19,10 @@ use Luzrain\TelegramBotApi\BaseType;
  * @see PassportElementErrorTranslationFiles
  * @see PassportElementErrorUnspecified
  */
-class PassportElementError extends BaseType
+abstract class PassportElementError extends BaseType
 {
     protected function __construct()
     {
+        parent::__construct();
     }
 }

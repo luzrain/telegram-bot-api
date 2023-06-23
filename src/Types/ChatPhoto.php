@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a chat photo.
  */
-class ChatPhoto extends BaseType implements TypeInterface
+final class ChatPhoto extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'small_file_id',

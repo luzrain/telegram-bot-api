@@ -13,7 +13,7 @@ use Luzrain\TelegramBotApi\Types\MessageEntity;
  * By default, this video file will be sent by the user with an optional caption.
  * Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
  */
-class InlineQueryResultVideo extends InlineQueryResult
+final class InlineQueryResultVideo extends InlineQueryResult
 {
     protected static array $map = [
         'type' => true,

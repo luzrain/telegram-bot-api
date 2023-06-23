@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\Types\User;
 /**
  * This object contains information about an incoming pre-checkout query.
  */
-class PreCheckoutQuery extends BaseType implements TypeInterface
+final class PreCheckoutQuery extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'id',

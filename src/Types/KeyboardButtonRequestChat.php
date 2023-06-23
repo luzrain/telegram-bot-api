@@ -13,7 +13,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  * More about requesting chats »
  * @see https://core.telegram.org/bots/features#chat-and-user-selection
  */
-class KeyboardButtonRequestChat extends BaseType implements TypeInterface
+final class KeyboardButtonRequestChat extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'request_id',

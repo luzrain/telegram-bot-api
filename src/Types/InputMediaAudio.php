@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\Types\Arrays\ArrayOfMessageEntity;
 /**
  * Represents an audio file to be treated as music to be sent.
  */
-class InputMediaAudio extends InputMedia
+final class InputMediaAudio extends InputMedia
 {
     protected static array $map = [
         'type' => true,

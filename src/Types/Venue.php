@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a venue.
  */
-class Venue extends BaseType implements TypeInterface
+final class Venue extends BaseType implements TypeInterface
 {
     protected static array $requiredParams = [
         'location',

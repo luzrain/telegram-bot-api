@@ -6,7 +6,7 @@ namespace Luzrain\TelegramBotApi\Types\Arrays;
 
 use Luzrain\TelegramBotApi\ArrayTypeInterface;
 
-class ArrayOfArrayOfInlineKeyboardButton extends BaseArray implements ArrayTypeInterface
+final class ArrayOfArrayOfInlineKeyboardButton extends BaseArray implements ArrayTypeInterface
 {
     public static function fromResponse(array $data): array
     {

@@ -6,7 +6,7 @@ namespace Luzrain\TelegramBotApi\Events;
 
 use Luzrain\TelegramBotApi\Types\Update;
 
-class EventCollection
+final class EventCollection
 {
     /**
      * @var Event[] Array of events.

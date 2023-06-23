@@ -6,7 +6,7 @@ namespace Luzrain\TelegramBotApi\Types\Arrays;
 
 use Luzrain\TelegramBotApi\ArrayTypeInterface;
 
-class ArrayOfArrayOfPhotoSize extends BaseArray implements ArrayTypeInterface
+final class ArrayOfArrayOfPhotoSize extends BaseArray implements ArrayTypeInterface
 {
     public static function fromResponse(array $data): array
     {
