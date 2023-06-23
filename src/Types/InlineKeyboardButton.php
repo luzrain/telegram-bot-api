@@ -25,6 +25,7 @@ class InlineKeyboardButton extends BaseType implements TypeInterface
         'login_url' => LoginUrl::class,
         'switch_inline_query' => true,
         'switch_inline_query_current_chat' => true,
+        'switch_inline_query_chosen_chat' => SwitchInlineQueryChosenChat::class,
         'callback_game' => CallbackGame::class,
         'pay' => true,
     ];
@@ -72,6 +73,12 @@ class InlineKeyboardButton extends BaseType implements TypeInterface
     protected ?string $switchInlineQueryCurrentChat = null;
 
     /**
+     * Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type,
+     * open that chat and insert the bot's username and the specified inline query in the input field
+     */
+    protected ?SwitchInlineQueryChosenChat $switchInlineQueryChosenChat = null;
+
+    /**
      * Optional. Description of the game that will be launched when the user presses the button.
      *
      * NOTE: This type of button must always be the first button in the first row.
@@ -93,6 +100,7 @@ class InlineKeyboardButton extends BaseType implements TypeInterface
         ?LoginUrl $loginUrl = null,
         ?string $switchInlineQuery = null,
         ?string $switchInlineQueryCurrentChat = null,
+        ?SwitchInlineQueryChosenChat $switchInlineQueryChosenChat = null,
         ?CallbackGame $callbackGame = null,
         ?bool $pay = null,
     ) {
@@ -104,6 +112,7 @@ class InlineKeyboardButton extends BaseType implements TypeInterface
         $instance->loginUrl = $loginUrl;
         $instance->switchInlineQuery = $switchInlineQuery;
         $instance->switchInlineQueryCurrentChat = $switchInlineQueryCurrentChat;
+        $instance->switchInlineQueryChosenChat = $switchInlineQueryChosenChat;
         $instance->callbackGame = $callbackGame;
         $instance->pay = $pay;
 
@@ -143,6 +152,11 @@ class InlineKeyboardButton extends BaseType implements TypeInterface
     public function getSwitchInlineQueryCurrentChat(): ?string
     {
         return $this->switchInlineQueryCurrentChat;
+    }
+
+    public function getSwitchInlineQueryChosenChat(): ?SwitchInlineQueryChosenChat
+    {
+        return $this->switchInlineQueryChosenChat;
     }
 
     public function getCallbackGame(): ?CallbackGame

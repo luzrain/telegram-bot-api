@@ -27,6 +27,7 @@ class ChatMemberUpdated extends BaseType implements TypeInterface
         'old_chat_member' => ChatMember::class,
         'new_chat_member' => ChatMember::class,
         'invite_link' => ChatInviteLink::class,
+        'via_chat_folder_invite_link' => true,
     ];
 
     /**
@@ -59,6 +60,11 @@ class ChatMemberUpdated extends BaseType implements TypeInterface
      */
     protected ?ChatInviteLink $inviteLink = null;
 
+    /**
+     * Optional. True, if the user joined the chat via a chat folder invite link
+     */
+    protected ?bool $viaChatFolderInviteLink = null;
+
     public function getChat(): Chat
     {
         return $this->chat;
@@ -87,5 +93,10 @@ class ChatMemberUpdated extends BaseType implements TypeInterface
     public function getInviteLink(): ?ChatInviteLink
     {
         return $this->inviteLink;
+    }
+
+    public function getViaChatFolderInviteLink(): ?bool
+    {
+        return $this->viaChatFolderInviteLink;
     }
 }

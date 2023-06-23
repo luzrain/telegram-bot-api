@@ -6,9 +6,11 @@ namespace TelegramBot\Api\Methods;
 
 use TelegramBot\Api\BaseMethod;
 use TelegramBot\Api\Types\Inline\InlineQueryResult;
+use TelegramBot\Api\Types\InlineQueryResultsButton;
 
 /**
- * Use this method to send answers to an inline query. On success, True is returned. No more than 50 results per query are allowed.
+ * Use this method to send answers to an inline query. On success, True is returned.
+ * No more than 50 results per query are allowed.
  */
 final class AnswerInlineQuery extends BaseMethod
 {
@@ -46,22 +48,9 @@ final class AnswerInlineQuery extends BaseMethod
         protected string|null $nextOffset = null,
 
         /**
-         * If passed, clients will display a button with specified text that switches the user to a private chat with
-         * the bot and sends the bot a start message with the parameter switch_pm_parameter
+         * A JSON-serialized object describing a button to be shown above inline query results
          */
-        protected string|null $switchPmText = null,
-
-        /**
-         * Deep-linking parameter for the /start message sent to the bot when user presses the switch button.
-         * 1-64 characters, only A-Z, a-z, 0-9, _ and - are allowed.
-         *
-         * Example: An inline bot that sends YouTube videos can ask the user to connect the bot to their YouTube account to
-         * adapt search results accordingly. To do this, it displays a 'Connect your YouTube account' button above the results,
-         * or even before showing any. The user presses the button, switches to a private chat with the bot and, in doing so,
-         * passes a start parameter that instructs the bot to return an OAuth link. Once done, the bot can offer a switch_inline
-         * button so that the user can easily return to the chat where they wanted to use the bot's inline capabilities.
-         */
-        protected string|null $switchPmParameter = null,
+        protected InlineQueryResultsButton|null $button = null,
     ) {
     }
 }
