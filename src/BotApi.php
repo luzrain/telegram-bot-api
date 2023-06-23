@@ -40,8 +40,6 @@ class BotApi
     /**
      * Execute telergam method
      *
-     * @param BaseMethod $method
-     * @return BaseType|array|string|int|bool
      * @throws TelegramBotApiException
      */
     public function call(BaseMethod $method): BaseType|array|string|int|bool

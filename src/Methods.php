@@ -118,9 +118,6 @@ use TelegramBot\Api\Types\WebhookInfo;
 trait Methods
 {
     /**
-     * @param string $methodName
-     * @param array $arguments
-     * @return BaseMethod
      * @throws TelegramMethodNotExistException
      */
     private function getMethodObject(string $methodName, array $arguments): BaseMethod

@@ -45,7 +45,7 @@ class Chat extends BaseType implements TypeInterface
         'sticker_set_name' => true,
         'can_set_sticker_set' => true,
         'linked_chat_id' => true,
-        'location' => ChatLocation::class
+        'location' => ChatLocation::class,
     ];
 
     /**

@@ -24,7 +24,7 @@ class ShippingQuery extends BaseType implements TypeInterface
         'id' => true,
         'from' => User::class,
         'invoice_payload' => true,
-        'shipping_address' => ShippingAddress::class
+        'shipping_address' => ShippingAddress::class,
     ];
 
     /**

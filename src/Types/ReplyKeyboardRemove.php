@@ -20,7 +20,7 @@ class ReplyKeyboardRemove extends BaseType implements TypeInterface
 
     protected static array $map = [
         'remove_keyboard' => true,
-        'selective' => true
+        'selective' => true,
     ];
 
     /**

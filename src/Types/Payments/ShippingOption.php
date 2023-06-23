@@ -22,7 +22,7 @@ class ShippingOption extends BaseType implements TypeInterface
     protected static array $map = [
         'id' => true,
         'title' => true,
-        'prices' => ArrayOfLabeledPrice::class
+        'prices' => ArrayOfLabeledPrice::class,
     ];
 
     /**

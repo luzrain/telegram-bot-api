@@ -23,7 +23,7 @@ class Document extends BaseType implements TypeInterface
         'thumbnail' => PhotoSize::class,
         'file_name' => true,
         'mime_type' => true,
-        'file_size' => true
+        'file_size' => true,
     ];
 
     /**

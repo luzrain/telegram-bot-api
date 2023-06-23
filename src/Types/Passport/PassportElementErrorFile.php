@@ -19,7 +19,7 @@ class PassportElementErrorFile extends PassportElementError
     public static function create(
         string $type,
         string $fileHash,
-        string $message
+        string $message,
     ): self {
         $instance = new self();
         $instance->type = $type;

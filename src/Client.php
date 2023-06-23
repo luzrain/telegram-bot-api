@@ -158,9 +158,6 @@ class Client
 
     /**
      * Register new event
-     *
-     * @param Event $event
-     * @return self
      */
     public function on(Event $event): self
     {
@@ -185,7 +182,6 @@ class Client
      * Webhook handler
      *
      * @param string $body raw request body
-     * @return mixed
      * @throws JsonException
      */
     public function webhookHandle(string $body): mixed

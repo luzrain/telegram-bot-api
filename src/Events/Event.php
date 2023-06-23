@@ -19,8 +19,6 @@ abstract class Event
     }
 
     /**
-     * @param mixed $params
-     * @return mixed
      * @throws TelegramCallbackException
      */
     final protected function callback(mixed ...$params): mixed
@@ -32,15 +30,7 @@ abstract class Event
         }
     }
 
-    /**
-     * @param Update $update
-     * @return bool
-     */
     abstract public function executeChecker(Update $update): bool;
 
-    /**
-     * @param Update $update
-     * @return mixed
-     */
     abstract public function executeAction(Update $update): mixed;
 }

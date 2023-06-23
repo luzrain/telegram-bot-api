@@ -24,7 +24,7 @@ class ReplyKeyboardMarkup extends BaseType implements TypeInterface
         'resize_keyboard' => true,
         'one_time_keyboard' => true,
         'input_field_placeholder' => true,
-        'selective' => true
+        'selective' => true,
     ];
 
     /**

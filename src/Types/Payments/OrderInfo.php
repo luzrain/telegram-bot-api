@@ -18,7 +18,7 @@ class OrderInfo extends BaseType implements TypeInterface
         'name' => true,
         'phone_number' => true,
         'email' => true,
-        'shipping_address' => ShippingAddress::class
+        'shipping_address' => ShippingAddress::class,
     ];
 
     /**
