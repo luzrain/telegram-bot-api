@@ -24,7 +24,7 @@ class KeyboardButtonPollType extends BaseType implements TypeInterface
      */
     protected ?string $type = null;
 
-    public static function create()
+    public static function create(): self
     {
         $instance = new self();
         $instance->type = '';

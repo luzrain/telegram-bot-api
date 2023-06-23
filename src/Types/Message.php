@@ -80,6 +80,8 @@ class Message extends BaseType implements TypeInterface
         'pinned_message' => Message::class,
         'invoice' => Invoice::class,
         'successful_payment' => SuccessfulPayment::class,
+        'user_shared' => UserShared::class,
+        'chat_shared' => ChatShared::class,
         'connected_website' => true,
         'write_access_allowed' => WriteAccessAllowed::class,
         'passport_data' => PassportData::class,
@@ -389,6 +391,16 @@ class Message extends BaseType implements TypeInterface
      * Optional. Message is a service message about a successful payment, information about the payment.
      */
     protected ?SuccessfulPayment $successfulPayment = null;
+
+    /**
+     * Optional. Service message: a user was shared with the bot
+     */
+    protected ?UserShared $userShared = null;
+
+    /**
+     * Optional. Service message: a chat was shared with the bot
+     */
+    protected ?ChatShared $chatShared = null;
 
     /**
      * Optional. The domain name of the website on which the user has logged in.
@@ -748,6 +760,16 @@ class Message extends BaseType implements TypeInterface
     public function getSuccessfulPayment(): ?SuccessfulPayment
     {
         return $this->successfulPayment;
+    }
+
+    public function getUserShared(): ?UserShared
+    {
+        return $this->userShared;
+    }
+
+    public function getChatShared(): ?ChatShared
+    {
+        return $this->chatShared;
     }
 
     public function getConnectedWebsite(): ?string

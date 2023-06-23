@@ -16,7 +16,12 @@ class ChatPermissions extends BaseType implements TypeInterface
 
     protected static array $map = [
         'can_send_messages' => true,
-        'can_send_media_messages' => true,
+        'can_send_audios' => true,
+        'can_send_documents' => true,
+        'can_send_photos' => true,
+        'can_send_videos' => true,
+        'can_send_video_notes' => true,
+        'can_send_voice_notes' => true,
         'can_send_polls' => true,
         'can_send_other_messages' => true,
         'can_add_web_page_previews' => true,
@@ -32,9 +37,34 @@ class ChatPermissions extends BaseType implements TypeInterface
     protected ?bool $canSendMessages = null;
 
     /**
-     * Optional. True, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes, implies can_send_messages
+     * Optional. True, if the user is allowed to send audios
      */
-    protected ?bool $canSendMediaMessages = null;
+    protected ?bool $canSendAudios = null;
+
+    /**
+     * Optional. True, if the user is allowed to send documents
+     */
+    protected ?bool $canSendDocuments = null;
+
+    /**
+     * Optional. True, if the user is allowed to send photos
+     */
+    protected ?bool $canSendPhotos = null;
+
+    /**
+     * Optional. True, if the user is allowed to send videos
+     */
+    protected ?bool $canSendVideos = null;
+
+    /**
+     * Optional. True, if the user is allowed to send video notes
+     */
+    protected ?bool $canSendVideoNotes = null;
+
+    /**
+     * Optional. True, if the user is allowed to send voice notes
+     */
+    protected ?bool $canSendVoiceNotes = null;
 
     /**
      * Optional. True, if the user is allowed to send polls, implies can_send_messages
@@ -73,7 +103,12 @@ class ChatPermissions extends BaseType implements TypeInterface
 
     public static function create(
         ?bool $canSendMessages = null,
-        ?bool $canSendMediaMessages = null,
+        ?bool $canSendAudios = null,
+        ?bool $canSendDocuments = null,
+        ?bool $canSendPhotos = null,
+        ?bool $canSendVideos = null,
+        ?bool $canSendVideoNotes = null,
+        ?bool $canSendVoiceNotes = null,
         ?bool $canSendPolls = null,
         ?bool $canSendOtherMessages = null,
         ?bool $canAddWebPagePreviews = null,
@@ -84,7 +119,12 @@ class ChatPermissions extends BaseType implements TypeInterface
     ): self {
         $instance = new self();
         $instance->canSendMessages = $canSendMessages;
-        $instance->canSendMediaMessages = $canSendMediaMessages;
+        $instance->canSendAudios = $canSendAudios;
+        $instance->canSendDocuments = $canSendDocuments;
+        $instance->canSendPhotos = $canSendPhotos;
+        $instance->canSendVideos = $canSendVideos;
+        $instance->canSendVideoNotes = $canSendVideoNotes;
+        $instance->canSendVoiceNotes = $canSendVoiceNotes;
         $instance->canSendPolls = $canSendPolls;
         $instance->canSendOtherMessages = $canSendOtherMessages;
         $instance->canAddWebPagePreviews = $canAddWebPagePreviews;
@@ -101,9 +141,34 @@ class ChatPermissions extends BaseType implements TypeInterface
         return $this->canSendMessages;
     }
 
-    public function isCanSendMediaMessages(): ?bool
+    public function getCanSendAudios(): ?bool
     {
-        return $this->canSendMediaMessages;
+        return $this->canSendAudios;
+    }
+
+    public function getCanSendDocuments(): ?bool
+    {
+        return $this->canSendDocuments;
+    }
+
+    public function getCanSendPhotos(): ?bool
+    {
+        return $this->canSendPhotos;
+    }
+
+    public function getCanSendVideos(): ?bool
+    {
+        return $this->canSendVideos;
+    }
+
+    public function getCanSendVideoNotes(): ?bool
+    {
+        return $this->canSendVideoNotes;
+    }
+
+    public function getCanSendVoiceNotes(): ?bool
+    {
+        return $this->canSendVoiceNotes;
     }
 
     public function isCanSendPolls(): ?bool

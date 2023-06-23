@@ -17,7 +17,12 @@ class ChatMemberRestricted extends ChatMember
         'can_invite_users',
         'can_pin_messages',
         'can_send_messages',
-        'can_send_media_messages',
+        'can_send_audios',
+        'can_send_documents',
+        'can_send_photos',
+        'can_send_videos',
+        'can_send_video_notes',
+        'can_send_voice_notes',
         'can_send_polls',
         'can_send_other_messages',
         'can_add_web_page_previews',
@@ -32,7 +37,12 @@ class ChatMemberRestricted extends ChatMember
         'can_invite_users' => true,
         'can_pin_messages' => true,
         'can_send_messages' => true,
-        'can_send_media_messages' => true,
+        'can_send_audios' => true,
+        'can_send_documents' => true,
+        'can_send_photos' => true,
+        'can_send_videos' => true,
+        'can_send_video_notes' => true,
+        'can_send_voice_notes' => true,
         'can_send_polls' => true,
         'can_send_other_messages' => true,
         'can_add_web_page_previews' => true,
@@ -76,9 +86,34 @@ class ChatMemberRestricted extends ChatMember
     protected bool $canSendMessages;
 
     /**
-     * True, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes
+     * True, if the user is allowed to send audios
      */
-    protected bool $canSendMediaMessages;
+    protected ?bool $canSendAudios = null;
+
+    /**
+     * True, if the user is allowed to send documents
+     */
+    protected ?bool $canSendDocuments = null;
+
+    /**
+     * True, if the user is allowed to send photos
+     */
+    protected ?bool $canSendPhotos = null;
+
+    /**
+     * True, if the user is allowed to send videos
+     */
+    protected ?bool $canSendVideos = null;
+
+    /**
+     * True, if the user is allowed to send video notes
+     */
+    protected ?bool $canSendVideoNotes = null;
+
+    /**
+     * True, if the user is allowed to send voice notes
+     */
+    protected ?bool $canSendVoiceNotes = null;
 
     /**
      * True, if the user is allowed to send polls
@@ -140,9 +175,34 @@ class ChatMemberRestricted extends ChatMember
         return $this->canSendMessages;
     }
 
-    public function isCanSendMediaMessages(): bool
+    public function getCanSendAudios(): ?bool
     {
-        return $this->canSendMediaMessages;
+        return $this->canSendAudios;
+    }
+
+    public function getCanSendDocuments(): ?bool
+    {
+        return $this->canSendDocuments;
+    }
+
+    public function getCanSendPhotos(): ?bool
+    {
+        return $this->canSendPhotos;
+    }
+
+    public function getCanSendVideos(): ?bool
+    {
+        return $this->canSendVideos;
+    }
+
+    public function getCanSendVideoNotes(): ?bool
+    {
+        return $this->canSendVideoNotes;
+    }
+
+    public function getCanSendVoiceNotes(): ?bool
+    {
+        return $this->canSendVoiceNotes;
     }
 
     public function isCanSendPolls(): bool
