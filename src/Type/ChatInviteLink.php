@@ -60,22 +60,22 @@ final class ChatInviteLink extends BaseType implements TypeInterface
     /**
      * Optional. Invite link name
      */
-    protected ?string $name = null;
+    protected string|null $name = null;
 
     /**
      * Optional. Point in time (Unix timestamp) when the link will expire or has been expired
      */
-    protected ?int $expireDate = null;
+    protected int|null $expireDate = null;
 
     /**
      * Optional. Maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
      */
-    protected ?int $memberLimit = null;
+    protected int|null $memberLimit = null;
 
     /**
      * Optional. Number of pending join requests created using this link
      */
-    protected ?int $pendingJoinRequestCount = null;
+    protected int|null $pendingJoinRequestCount = null;
 
     public function getInviteLink(): string
     {
@@ -102,22 +102,22 @@ final class ChatInviteLink extends BaseType implements TypeInterface
         return $this->isRevoked;
     }
 
-    public function getName(): ?string
+    public function getName(): string|null
     {
         return $this->name;
     }
 
-    public function getExpireDate(): ?int
+    public function getExpireDate(): int|null
     {
         return $this->expireDate;
     }
 
-    public function getMemberLimit(): ?int
+    public function getMemberLimit(): int|null
     {
         return $this->memberLimit;
     }
 
-    public function getPendingJoinRequestCount(): ?int
+    public function getPendingJoinRequestCount(): int|null
     {
         return $this->pendingJoinRequestCount;
     }

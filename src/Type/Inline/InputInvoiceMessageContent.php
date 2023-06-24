@@ -74,7 +74,7 @@ final class InputInvoiceMessageContent extends InputMessageContent
      * For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json,
      * it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0
      */
-    protected ?int $maxTipAmount = null;
+    protected int|null $maxTipAmount = null;
 
     /**
      * Optional. A JSON-serialized array of suggested amounts of tip in the smallest units of the currency
@@ -83,69 +83,69 @@ final class InputInvoiceMessageContent extends InputMessageContent
      *
      * @var int[]
      */
-    protected ?array $suggestedTipAmounts = null;
+    protected array|null $suggestedTipAmounts = null;
 
     /**
      * Optional. A JSON-serialized object for data about the invoice, which will be shared with the payment provider.
      * A detailed description of the required fields should be provided by the payment provider.
      */
-    protected ?string $providerData = null;
+    protected string|null $providerData = null;
 
     /**
      * Optional. URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a service.
      * People like it better when they see what they are paying for.
      */
-    protected ?string $photoUrl = null;
+    protected string|null $photoUrl = null;
 
     /**
      * Optional. Photo size
      */
-    protected ?int $photoSize = null;
+    protected int|null $photoSize = null;
 
     /**
      * Optional. Photo width
      */
-    protected ?int $photoWidth = null;
+    protected int|null $photoWidth = null;
 
     /**
      * Optional. Photo height
      */
-    protected ?int $photoHeight = null;
+    protected int|null $photoHeight = null;
 
     /**
      * Optional. Pass True, if you require the user's full name to complete the order
      */
-    protected ?bool $needName = null;
+    protected bool|null $needName = null;
 
     /**
      * Optional. Pass True, if you require the user's phone number to complete the order
      */
-    protected ?bool $needPhoneNumber = null;
+    protected bool|null $needPhoneNumber = null;
 
     /**
      * Optional. Pass True, if you require the user's email address to complete the order
      */
-    protected ?bool $needEmail = null;
+    protected bool|null $needEmail = null;
 
     /**
      * Optional. Pass True, if you require the user's shipping address to complete the order
      */
-    protected ?bool $needShippingAddress = null;
+    protected bool|null $needShippingAddress = null;
 
     /**
      * Optional. Pass True, if user's phone number should be sent to provider
      */
-    protected ?bool $sendPhoneNumberToProvider = null;
+    protected bool|null $sendPhoneNumberToProvider = null;
 
     /**
      * Optional. Pass True, if user's email address should be sent to provider
      */
-    protected ?bool $sendEmailToProvider = null;
+    protected bool|null $sendEmailToProvider = null;
 
     /**
      * Optional. Pass True, if the final price depends on the shipping method
      */
-    protected ?bool $isFlexible = null;
+    protected bool|null $isFlexible = null;
 
     public static function create(
         string $title,
@@ -154,20 +154,20 @@ final class InputInvoiceMessageContent extends InputMessageContent
         string $providerToken,
         string $currency,
         array $prices,
-        ?int $maxTipAmount = null,
-        ?array $suggestedTipAmounts = null,
-        ?string $providerData = null,
-        ?string $photoUrl = null,
-        ?int $photoSize = null,
-        ?int $photoWidth = null,
-        ?int $photoHeight = null,
-        ?bool $needName = null,
-        ?bool $needPhoneNumber = null,
-        ?bool $needEmail = null,
-        ?bool $needShippingAddress = null,
-        ?bool $sendPhoneNumberToProvider = null,
-        ?bool $sendEmailToProvider = null,
-        ?bool $isFlexible = null,
+        int|null $maxTipAmount = null,
+        array|null $suggestedTipAmounts = null,
+        string|null $providerData = null,
+        string|null $photoUrl = null,
+        int|null $photoSize = null,
+        int|null $photoWidth = null,
+        int|null $photoHeight = null,
+        bool|null $needName = null,
+        bool|null $needPhoneNumber = null,
+        bool|null $needEmail = null,
+        bool|null $needShippingAddress = null,
+        bool|null $sendPhoneNumberToProvider = null,
+        bool|null $sendEmailToProvider = null,
+        bool|null $isFlexible = null,
     ): self {
         $instance = new self();
         $instance->title = $title;
@@ -227,7 +227,7 @@ final class InputInvoiceMessageContent extends InputMessageContent
         return $this->prices;
     }
 
-    public function getMaxTipAmount(): ?int
+    public function getMaxTipAmount(): int|null
     {
         return $this->maxTipAmount;
     }
@@ -235,67 +235,67 @@ final class InputInvoiceMessageContent extends InputMessageContent
     /**
      * @return int[]|null
      */
-    public function getSuggestedTipAmounts(): ?array
+    public function getSuggestedTipAmounts(): array|null
     {
         return $this->suggestedTipAmounts;
     }
 
-    public function getProviderData(): ?string
+    public function getProviderData(): string|null
     {
         return $this->providerData;
     }
 
-    public function getPhotoUrl(): ?string
+    public function getPhotoUrl(): string|null
     {
         return $this->photoUrl;
     }
 
-    public function getPhotoSize(): ?int
+    public function getPhotoSize(): int|null
     {
         return $this->photoSize;
     }
 
-    public function getPhotoWidth(): ?int
+    public function getPhotoWidth(): int|null
     {
         return $this->photoWidth;
     }
 
-    public function getPhotoHeight(): ?int
+    public function getPhotoHeight(): int|null
     {
         return $this->photoHeight;
     }
 
-    public function isNeedName(): ?bool
+    public function isNeedName(): bool|null
     {
         return $this->needName;
     }
 
-    public function isNeedPhoneNumber(): ?bool
+    public function isNeedPhoneNumber(): bool|null
     {
         return $this->needPhoneNumber;
     }
 
-    public function isNeedEmail(): ?bool
+    public function isNeedEmail(): bool|null
     {
         return $this->needEmail;
     }
 
-    public function isNeedShippingAddress(): ?bool
+    public function isNeedShippingAddress(): bool|null
     {
         return $this->needShippingAddress;
     }
 
-    public function isSendPhoneNumberToProvider(): ?bool
+    public function isSendPhoneNumberToProvider(): bool|null
     {
         return $this->sendPhoneNumberToProvider;
     }
 
-    public function isSendEmailToProvider(): ?bool
+    public function isSendEmailToProvider(): bool|null
     {
         return $this->sendEmailToProvider;
     }
 
-    public function isFlexible(): ?bool
+    public function isFlexible(): bool|null
     {
         return $this->isFlexible;
     }

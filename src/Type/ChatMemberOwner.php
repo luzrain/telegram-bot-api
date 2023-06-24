@@ -40,7 +40,7 @@ final class ChatMemberOwner extends ChatMember
     /**
      * Optional. Custom title for this user
      */
-    protected ?string $customTitle = null;
+    protected string|null $customTitle = null;
 
     public function getStatus(): string
     {
@@ -57,7 +57,7 @@ final class ChatMemberOwner extends ChatMember
         return $this->isAnonymous;
     }
 
-    public function getCustomTitle(): ?string
+    public function getCustomTitle(): string|null
     {
         return $this->customTitle;
     }

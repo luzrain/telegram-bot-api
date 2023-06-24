@@ -43,12 +43,12 @@ final class File extends BaseType implements TypeInterface
     /**
      * Optional. File size in bytes, if known
      */
-    protected ?int $fileSize = null;
+    protected int|null $fileSize = null;
 
     /**
      * Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
      */
-    protected ?string $filePath = null;
+    protected string|null $filePath = null;
 
     public function getFileId(): string
     {
@@ -60,12 +60,12 @@ final class File extends BaseType implements TypeInterface
         return $this->fileUniqueId;
     }
 
-    public function getFileSize(): ?int
+    public function getFileSize(): int|null
     {
         return $this->fileSize;
     }
 
-    public function getFilePath(): ?string
+    public function getFilePath(): string|null
     {
         return $this->filePath;
     }

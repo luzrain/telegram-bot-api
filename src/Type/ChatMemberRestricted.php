@@ -88,32 +88,32 @@ final class ChatMemberRestricted extends ChatMember
     /**
      * True, if the user is allowed to send audios
      */
-    protected ?bool $canSendAudios = null;
+    protected bool|null $canSendAudios = null;
 
     /**
      * True, if the user is allowed to send documents
      */
-    protected ?bool $canSendDocuments = null;
+    protected bool|null $canSendDocuments = null;
 
     /**
      * True, if the user is allowed to send photos
      */
-    protected ?bool $canSendPhotos = null;
+    protected bool|null $canSendPhotos = null;
 
     /**
      * True, if the user is allowed to send videos
      */
-    protected ?bool $canSendVideos = null;
+    protected bool|null $canSendVideos = null;
 
     /**
      * True, if the user is allowed to send video notes
      */
-    protected ?bool $canSendVideoNotes = null;
+    protected bool|null $canSendVideoNotes = null;
 
     /**
      * True, if the user is allowed to send voice notes
      */
-    protected ?bool $canSendVoiceNotes = null;
+    protected bool|null $canSendVoiceNotes = null;
 
     /**
      * True, if the user is allowed to send polls
@@ -133,7 +133,7 @@ final class ChatMemberRestricted extends ChatMember
     /**
      * True, if the user is allowed to create forum topics
      */
-    protected ?bool $canManageTopics = null;
+    protected bool|null $canManageTopics = null;
 
     /**
      * Date when restrictions will be lifted for this user; unix time. If 0, then the user is restricted forever
@@ -175,32 +175,32 @@ final class ChatMemberRestricted extends ChatMember
         return $this->canSendMessages;
     }
 
-    public function getCanSendAudios(): ?bool
+    public function getCanSendAudios(): bool|null
     {
         return $this->canSendAudios;
     }
 
-    public function getCanSendDocuments(): ?bool
+    public function getCanSendDocuments(): bool|null
     {
         return $this->canSendDocuments;
     }
 
-    public function getCanSendPhotos(): ?bool
+    public function getCanSendPhotos(): bool|null
     {
         return $this->canSendPhotos;
     }
 
-    public function getCanSendVideos(): ?bool
+    public function getCanSendVideos(): bool|null
     {
         return $this->canSendVideos;
     }
 
-    public function getCanSendVideoNotes(): ?bool
+    public function getCanSendVideoNotes(): bool|null
     {
         return $this->canSendVideoNotes;
     }
 
-    public function getCanSendVoiceNotes(): ?bool
+    public function getCanSendVoiceNotes(): bool|null
     {
         return $this->canSendVoiceNotes;
     }
@@ -220,7 +220,7 @@ final class ChatMemberRestricted extends ChatMember
         return $this->canAddWebPagePreviews;
     }
 
-    public function getCanManageTopics(): ?bool
+    public function getCanManageTopics(): bool|null
     {
         return $this->canManageTopics;
     }

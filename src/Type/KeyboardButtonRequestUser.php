@@ -33,18 +33,18 @@ final class KeyboardButtonRequestUser extends BaseType implements TypeInterface
     /**
      * Optional. Pass True to request a bot, pass False to request a regular user. If not specified, no additional restrictions are applied.
      */
-    protected ?bool $userIsBot = null;
+    protected bool|null $userIsBot = null;
 
     /**
      * Optional. Pass True to request a premium user, pass False to request a non-premium user.
      * If not specified, no additional restrictions are applied.
      */
-    protected ?bool $userIsPremium = null;
+    protected bool|null $userIsPremium = null;
 
     public static function create(
         int $requestId,
-        ?bool $userIsBot = null,
-        ?bool $userIsPremium = null,
+        bool|null $userIsBot = null,
+        bool|null $userIsPremium = null,
     ): self {
         $instance = new self();
         $instance->requestId = $requestId;
@@ -59,12 +59,12 @@ final class KeyboardButtonRequestUser extends BaseType implements TypeInterface
         return $this->requestId;
     }
 
-    public function getUserIsBot(): ?bool
+    public function getUserIsBot(): bool|null
     {
         return $this->userIsBot;
     }
 
-    public function getUserIsPremium(): ?bool
+    public function getUserIsPremium(): bool|null
     {
         return $this->userIsPremium;
     }

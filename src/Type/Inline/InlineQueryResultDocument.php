@@ -50,74 +50,74 @@ final class InlineQueryResultDocument extends InlineQueryResult
     /**
      * Optional. Caption of the document to be sent, 0-1024 characters after entities parsing
      */
-    protected ?string $caption = null;
+    protected string|null $caption = null;
 
     /**
      * Optional. Mode for parsing entities in the document caption. See formatting options for more details.
      */
-    protected ?string $parseMode = null;
+    protected string|null $parseMode = null;
 
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
      *
      * @var MessageEntity[]
      */
-    protected ?array $captionEntities = null;
+    protected array|null $captionEntities = null;
 
     /**
      * A valid URL for the file
      */
-    protected ?string $documentUrl = null;
+    protected string|null $documentUrl = null;
 
     /**
      * Mime type of the content of the file, either “application/pdf” or “application/zip”
      */
-    protected ?string $mimeType = null;
+    protected string|null $mimeType = null;
 
     /**
      * Optional. Short description of the result
      */
-    protected ?string $description = null;
+    protected string|null $description = null;
 
     /**
      * Optional. Inline keyboard attached to the message
      */
-    protected ?InlineKeyboardMarkup $replyMarkup = null;
+    protected InlineKeyboardMarkup|null $replyMarkup = null;
 
     /**
      * Optional. Content of the message to be sent instead of the file
      */
-    protected ?InputMessageContent $inputMessageContent = null;
+    protected InputMessageContent|null $inputMessageContent = null;
 
     /**
      * Optional. URL of the thumbnail (JPEG only) for the file
      */
-    protected ?string $thumbnailUrl = null;
+    protected string|null $thumbnailUrl = null;
 
     /**
      * Optional. Thumbnail width
      */
-    protected ?int $thumbnailWidth = null;
+    protected int|null $thumbnailWidth = null;
 
     /**
      * Optional. Thumbnail height
      */
-    protected ?int $thumbnailHeight = null;
+    protected int|null $thumbnailHeight = null;
 
     public static function create(
         string $id,
         string $title,
-        ?string $caption = null,
-        ?string $parseMode = null,
-        ?array $captionEntities = null,
-        ?string $documentUrl = null,
-        ?string $mimeType = null,
-        ?string $description = null,
-        ?InlineKeyboardMarkup $replyMarkup = null,
-        ?InputMessageContent $inputMessageContent = null,
-        ?string $thumbnailUrl = null,
-        ?int $thumbnailWidth = null,
-        ?int $thumbnailHeight = null,
+        string|null $caption = null,
+        string|null $parseMode = null,
+        array|null $captionEntities = null,
+        string|null $documentUrl = null,
+        string|null $mimeType = null,
+        string|null $description = null,
+        InlineKeyboardMarkup|null $replyMarkup = null,
+        InputMessageContent|null $inputMessageContent = null,
+        string|null $thumbnailUrl = null,
+        int|null $thumbnailWidth = null,
+        int|null $thumbnailHeight = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -152,12 +152,12 @@ final class InlineQueryResultDocument extends InlineQueryResult
         return $this->title;
     }
 
-    public function getCaption(): ?string
+    public function getCaption(): string|null
     {
         return $this->caption;
     }
 
-    public function getParseMode(): ?string
+    public function getParseMode(): string|null
     {
         return $this->parseMode;
     }
@@ -165,47 +165,47 @@ final class InlineQueryResultDocument extends InlineQueryResult
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): ?array
+    public function getCaptionEntities(): array|null
     {
         return $this->captionEntities;
     }
 
-    public function getDocumentUrl(): ?string
+    public function getDocumentUrl(): string|null
     {
         return $this->documentUrl;
     }
 
-    public function getMimeType(): ?string
+    public function getMimeType(): string|null
     {
         return $this->mimeType;
     }
 
-    public function getDescription(): ?string
+    public function getDescription(): string|null
     {
         return $this->description;
     }
 
-    public function getReplyMarkup(): ?InlineKeyboardMarkup
+    public function getReplyMarkup(): InlineKeyboardMarkup|null
     {
         return $this->replyMarkup;
     }
 
-    public function getInputMessageContent(): ?InputMessageContent
+    public function getInputMessageContent(): InputMessageContent|null
     {
         return $this->inputMessageContent;
     }
 
-    public function getThumbnailUrl(): ?string
+    public function getThumbnailUrl(): string|null
     {
         return $this->thumbnailUrl;
     }
 
-    public function getThumbnailWidth(): ?int
+    public function getThumbnailWidth(): int|null
     {
         return $this->thumbnailWidth;
     }
 
-    public function getThumbnailHeight(): ?int
+    public function getThumbnailHeight(): int|null
     {
         return $this->thumbnailHeight;
     }

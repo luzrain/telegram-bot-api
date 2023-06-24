@@ -45,46 +45,46 @@ final class InlineQueryResultCachedMpeg4Gif extends InlineQueryResult
     /**
      * Optional. Title for the result
      */
-    protected ?string $title = null;
+    protected string|null $title = null;
 
     /**
      * Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing
      */
-    protected ?string $caption = null;
+    protected string|null $caption = null;
 
     /**
      * Optional. Mode for parsing entities in the caption. See formatting options for more details.
      *
      * @see https://core.telegram.org/bots/api#formatting-options
      */
-    protected ?string $parseMode = null;
+    protected string|null $parseMode = null;
 
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
      *
      * @var MessageEntity[]
      */
-    protected ?array $captionEntities = null;
+    protected array|null $captionEntities = null;
 
     /**
      * Optional. Inline keyboard attached to the message
      */
-    protected ?InlineKeyboardMarkup $replyMarkup = null;
+    protected InlineKeyboardMarkup|null $replyMarkup = null;
 
     /**
      * Optional. Content of the message to be sent instead of the video animation
      */
-    protected ?InputMessageContent $inputMessageContent = null;
+    protected InputMessageContent|null $inputMessageContent = null;
 
     public static function create(
         string $id,
         string $mpeg4FileId,
-        ?string $title = null,
-        ?string $caption = null,
-        ?string $parseMode = null,
-        ?array $captionEntities = null,
-        ?InlineKeyboardMarkup $replyMarkup = null,
-        ?InputMessageContent $inputMessageContent = null,
+        string|null $title = null,
+        string|null $caption = null,
+        string|null $parseMode = null,
+        array|null $captionEntities = null,
+        InlineKeyboardMarkup|null $replyMarkup = null,
+        InputMessageContent|null $inputMessageContent = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -114,17 +114,17 @@ final class InlineQueryResultCachedMpeg4Gif extends InlineQueryResult
         return $this->mpeg4FileId;
     }
 
-    public function getTitle(): ?string
+    public function getTitle(): string|null
     {
         return $this->title;
     }
 
-    public function getCaption(): ?string
+    public function getCaption(): string|null
     {
         return $this->caption;
     }
 
-    public function getParseMode(): ?string
+    public function getParseMode(): string|null
     {
         return $this->parseMode;
     }
@@ -132,17 +132,17 @@ final class InlineQueryResultCachedMpeg4Gif extends InlineQueryResult
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): ?array
+    public function getCaptionEntities(): array|null
     {
         return $this->captionEntities;
     }
 
-    public function getReplyMarkup(): ?InlineKeyboardMarkup
+    public function getReplyMarkup(): InlineKeyboardMarkup|null
     {
         return $this->replyMarkup;
     }
 
-    public function getInputMessageContent(): ?InputMessageContent
+    public function getInputMessageContent(): InputMessageContent|null
     {
         return $this->inputMessageContent;
     }

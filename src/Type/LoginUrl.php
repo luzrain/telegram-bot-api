@@ -34,25 +34,25 @@ final class LoginUrl extends BaseType implements TypeInterface
     /**
      * Optional. New text of the button in forwarded messages.
      */
-    protected ?string $forwardText = null;
+    protected string|null $forwardText = null;
 
     /**
      * Optional. Username of a bot, which will be used for user authorization.
      * See Setting up a bot for more details. If not specified, the current bot's username will be assumed.
      * The url's domain must be the same as the domain linked with the bot. See Linking your domain to the bot for more details.
      */
-    protected ?string $botUsername = null;
+    protected string|null $botUsername = null;
 
     /**
      * Optional. Pass True to request the permission for your bot to send messages to the user.
      */
-    protected ?bool $requestWriteAccess = null;
+    protected bool|null $requestWriteAccess = null;
 
     public static function create(
         string $url,
-        ?string $forwardText = null,
-        ?string $botUsername = null,
-        ?bool $requestWriteAccess = null,
+        string|null $forwardText = null,
+        string|null $botUsername = null,
+        bool|null $requestWriteAccess = null,
     ) {
         $instance = new self();
         $instance->url = $url;

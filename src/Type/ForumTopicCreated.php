@@ -36,7 +36,7 @@ final class ForumTopicCreated extends BaseType implements TypeInterface
     /**
      * Optional. Unique identifier of the custom emoji shown as the topic icon
      */
-    protected ?string $iconCustomEmojiId = null;
+    protected string|null $iconCustomEmojiId = null;
 
     public function getName(): string
     {
@@ -48,7 +48,7 @@ final class ForumTopicCreated extends BaseType implements TypeInterface
         return $this->iconColor;
     }
 
-    public function getIconCustomEmojiId(): ?string
+    public function getIconCustomEmojiId(): string|null
     {
         return $this->iconCustomEmojiId;
     }

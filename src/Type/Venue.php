@@ -46,23 +46,23 @@ final class Venue extends BaseType implements TypeInterface
     /**
      * Optional. Foursquare identifier of the venue
      */
-    protected ?string $foursquareId = null;
+    protected string|null $foursquareId = null;
 
     /**
      * Optional. Foursquare type of the venue. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
      */
-    protected ?string $foursquareType = null;
+    protected string|null $foursquareType = null;
 
     /**
      * Optional. Google Places identifier of the venue
      */
-    protected ?string $googlePlaceId = null;
+    protected string|null $googlePlaceId = null;
 
     /**
      * Optional. Google Places type of the venue.
      * @see https://developers.google.com/places/web-service/supported_types
      */
-    protected ?string $googlePlaceType = null;
+    protected string|null $googlePlaceType = null;
 
     public function getLocation(): Location
     {
@@ -79,22 +79,22 @@ final class Venue extends BaseType implements TypeInterface
         return $this->address;
     }
 
-    public function getFoursquareId(): ?string
+    public function getFoursquareId(): string|null
     {
         return $this->foursquareId;
     }
 
-    public function getFoursquareType(): ?string
+    public function getFoursquareType(): string|null
     {
         return $this->foursquareType;
     }
 
-    public function getGooglePlaceId(): ?string
+    public function getGooglePlaceId(): string|null
     {
         return $this->googlePlaceId;
     }
 
-    public function getGooglePlaceType(): ?string
+    public function getGooglePlaceType(): string|null
     {
         return $this->googlePlaceType;
     }

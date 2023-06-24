@@ -61,12 +61,12 @@ final class PreCheckoutQuery extends BaseType implements TypeInterface
     /**
      * Optional. Identifier of the shipping option chosen by the user
      */
-    protected ?string $shippingOptionId = null;
+    protected string|null $shippingOptionId = null;
 
     /**
      * Optional. Order info provided by the user
      */
-    protected ?OrderInfo $orderInfo = null;
+    protected OrderInfo|null $orderInfo = null;
 
     public function getId(): string
     {
@@ -93,12 +93,12 @@ final class PreCheckoutQuery extends BaseType implements TypeInterface
         return $this->invoicePayload;
     }
 
-    public function getShippingOptionId(): ?string
+    public function getShippingOptionId(): string|null
     {
         return $this->shippingOptionId;
     }
 
-    public function getOrderInfo(): ?OrderInfo
+    public function getOrderInfo(): OrderInfo|null
     {
         return $this->orderInfo;
     }

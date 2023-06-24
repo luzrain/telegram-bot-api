@@ -41,14 +41,14 @@ final class ChosenInlineResult extends BaseType implements TypeInterface
     /**
      * Optional. Sender location, only for bots that require user location
      */
-    protected ?Location $location = null;
+    protected Location|null $location = null;
 
     /**
      * Optional. Identifier of the sent inline message.
      * Available only if there is an inline keyboard attached to the message.
      * Will be also received in callback queries and can be used to edit the message.
      */
-    protected ?string $inlineMessageId = null;
+    protected string|null $inlineMessageId = null;
 
     /**
      * The query that was used to obtain the result
@@ -65,12 +65,12 @@ final class ChosenInlineResult extends BaseType implements TypeInterface
         return $this->from;
     }
 
-    public function getLocation(): ?Location
+    public function getLocation(): Location|null
     {
         return $this->location;
     }
 
-    public function getInlineMessageId(): ?string
+    public function getInlineMessageId(): string|null
     {
         return $this->inlineMessageId;
     }

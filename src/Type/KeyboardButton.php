@@ -38,51 +38,51 @@ final class KeyboardButton extends BaseType implements TypeInterface
      * Tapping on any user will send their identifier to the bot in a “user_shared” service message.
      * Available in private chats only.
      */
-    protected ?KeyboardButtonRequestUser $requestUser = null;
+    protected KeyboardButtonRequestUser|null $requestUser = null;
 
     /**
      * Optional. If specified, pressing the button will open a list of suitable chats.
      * Tapping on a chat will send its identifier to the bot in a “chat_shared” service message.
      * Available in private chats only.
      */
-    protected ?KeyboardButtonRequestChat $requestChat = null;
+    protected KeyboardButtonRequestChat|null $requestChat = null;
 
     /**
      * Optional. If True, the user's phone number will be sent as a contact when the button is pressed.
      * Available in private chats only.
      */
-    protected ?bool $requestContact = null;
+    protected bool|null $requestContact = null;
 
     /**
      * Optional. If True, the user's current location will be sent when the button is pressed.
      * Available in private chats only.
      */
-    protected ?bool $requestLocation = null;
+    protected bool|null $requestLocation = null;
 
     /**
      * Optional. If specified, the user will be asked to create a poll and send it to the bot when the button is pressed.
      * Available in private chats only.
      */
-    protected ?KeyboardButtonPollType $requestPoll = null;
+    protected KeyboardButtonPollType|null $requestPoll = null;
 
     /**
      * Optional. If specified, the described Web App will be launched when the button is pressed.
      * The Web App will be able to send a “web_app_data” service message.
      * Available in private chats only.
      */
-    protected ?WebAppInfo $webApp = null;
+    protected WebAppInfo|null $webApp = null;
 
     /**
      * Create new instance of KeyboardButton
      */
     public static function create(
         string $text,
-        ?KeyboardButtonRequestUser $requestUser = null,
-        ?KeyboardButtonRequestChat $requestChat = null,
-        ?bool $requestContact = null,
-        ?bool $requestLocation = null,
-        ?KeyboardButtonPollType $requestPoll = null,
-        ?WebAppInfo $webApp = null,
+        KeyboardButtonRequestUser|null $requestUser = null,
+        KeyboardButtonRequestChat|null $requestChat = null,
+        bool|null $requestContact = null,
+        bool|null $requestLocation = null,
+        KeyboardButtonPollType|null $requestPoll = null,
+        WebAppInfo|null $webApp = null,
     ) {
         $instance = new self();
         $instance->text = $text;
@@ -101,32 +101,32 @@ final class KeyboardButton extends BaseType implements TypeInterface
         return $this->text;
     }
 
-    public function getRequestUser(): ?KeyboardButtonRequestUser
+    public function getRequestUser(): KeyboardButtonRequestUser|null
     {
         return $this->requestUser;
     }
 
-    public function getRequestChat(): ?KeyboardButtonRequestChat
+    public function getRequestChat(): KeyboardButtonRequestChat|null
     {
         return $this->requestChat;
     }
 
-    public function isRequestContact(): ?bool
+    public function isRequestContact(): bool|null
     {
         return $this->requestContact;
     }
 
-    public function isRequestLocation(): ?bool
+    public function isRequestLocation(): bool|null
     {
         return $this->requestLocation;
     }
 
-    public function getRequestPoll(): ?KeyboardButtonPollType
+    public function getRequestPoll(): KeyboardButtonPollType|null
     {
         return $this->requestPoll;
     }
 
-    public function getWebApp(): ?WebAppInfo
+    public function getWebApp(): WebAppInfo|null
     {
         return $this->webApp;
     }

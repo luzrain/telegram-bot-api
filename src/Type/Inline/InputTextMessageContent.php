@@ -27,25 +27,25 @@ final class InputTextMessageContent extends InputMessageContent
     /**
      * Optional. Mode for parsing entities in the message text. See formatting options for more details.
      */
-    protected ?string $parseMode = null;
+    protected string|null $parseMode = null;
 
     /**
      * Optional. List of special entities that appear in message text, which can be specified instead of parse_mode
      *
      * @var MessageEntity[]
      */
-    protected ?array $entities = null;
+    protected array|null $entities = null;
 
     /**
      * Optional. Disables link previews for links in the sent message
      */
-    protected ?bool $disableWebPagePreview = null;
+    protected bool|null $disableWebPagePreview = null;
 
     public static function create(
         string $messageText,
-        ?string $parseMode = null,
-        ?array $entities = null,
-        ?bool $disableWebPagePreview = null,
+        string|null $parseMode = null,
+        array|null $entities = null,
+        bool|null $disableWebPagePreview = null,
     ): self {
         $instance = new self();
         $instance->messageText = $messageText;
@@ -61,7 +61,7 @@ final class InputTextMessageContent extends InputMessageContent
         return $this->messageText;
     }
 
-    public function getParseMode(): ?string
+    public function getParseMode(): string|null
     {
         return $this->parseMode;
     }
@@ -69,12 +69,12 @@ final class InputTextMessageContent extends InputMessageContent
     /**
      * @return MessageEntity[]|null
      */
-    public function getEntities(): ?array
+    public function getEntities(): array|null
     {
         return $this->entities;
     }
 
-    public function isDisableWebPagePreview(): ?bool
+    public function isDisableWebPagePreview(): bool|null
     {
         return $this->disableWebPagePreview;
     }

@@ -27,14 +27,14 @@ final class ForumTopicEdited extends BaseType implements TypeInterface
     /**
      * Optional. New identifier of the custom emoji shown as the topic icon, if it was edited; an empty string if the icon was removed
      */
-    protected ?string $iconCustomEmojiId = null;
+    protected string|null $iconCustomEmojiId = null;
 
     public function getName(): string
     {
         return $this->name;
     }
 
-    public function getIconCustomEmojiId(): ?string
+    public function getIconCustomEmojiId(): string|null
     {
         return $this->iconCustomEmojiId;
     }

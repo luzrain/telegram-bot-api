@@ -83,22 +83,22 @@ final class ChatAdministratorRights extends BaseType implements TypeInterface
     /**
      * Optional. True, if the administrator can post in the channel; channels only
      */
-    protected ?bool $canPostMessages = null;
+    protected bool|null $canPostMessages = null;
 
     /**
      * Optional. True, if the administrator can edit messages of other users and can pin messages; channels only
      */
-    protected ?bool $canEditMessages = null;
+    protected bool|null $canEditMessages = null;
 
     /**
      * Optional. True, if the user is allowed to pin messages; groups and supergroups only
      */
-    protected ?bool $canPinMessages = null;
+    protected bool|null $canPinMessages = null;
 
     /**
      * Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
      */
-    protected ?bool $canManageTopics = null;
+    protected bool|null $canManageTopics = null;
 
     public static function create(
         bool $isAnonymous,
@@ -109,10 +109,10 @@ final class ChatAdministratorRights extends BaseType implements TypeInterface
         bool $canPromoteMembers,
         bool $canChangeInfo,
         bool $canInviteUsers,
-        ?bool $canPostMessages = null,
-        ?bool $canEditMessages = null,
-        ?bool $canPinMessages = null,
-        ?bool $canManageTopics = null,
+        bool|null $canPostMessages = null,
+        bool|null $canEditMessages = null,
+        bool|null $canPinMessages = null,
+        bool|null $canManageTopics = null,
     ): self {
         $instance = new self();
         $instance->isAnonymous = $isAnonymous;
@@ -171,22 +171,22 @@ final class ChatAdministratorRights extends BaseType implements TypeInterface
         return $this->canInviteUsers;
     }
 
-    public function isCanPostMessages(): ?bool
+    public function isCanPostMessages(): bool|null
     {
         return $this->canPostMessages;
     }
 
-    public function isCanEditMessages(): ?bool
+    public function isCanEditMessages(): bool|null
     {
         return $this->canEditMessages;
     }
 
-    public function isCanPinMessages(): ?bool
+    public function isCanPinMessages(): bool|null
     {
         return $this->canPinMessages;
     }
 
-    public function getCanManageTopics(): ?bool
+    public function getCanManageTopics(): bool|null
     {
         return $this->canManageTopics;
     }

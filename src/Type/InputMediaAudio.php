@@ -50,46 +50,46 @@ final class InputMediaAudio extends InputMedia
     /**
      * Optional. Caption of the audio to be sent, 0-1024 characters after entities parsing
      */
-    protected ?string $caption = null;
+    protected string|null $caption = null;
 
     /**
      * Optional. Mode for parsing entities in the audio caption. See formatting options for more details.
      *
      * @see https://core.telegram.org/bots/api#formatting-options
      */
-    protected ?string $parseMode = null;
+    protected string|null $parseMode = null;
 
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
      *
      * @var MessageEntity[]
      */
-    protected ?array $captionEntities = null;
+    protected array|null $captionEntities = null;
 
     /**
      * Optional. Duration of the audio in seconds
      */
-    protected ?int $duration = null;
+    protected int|null $duration = null;
 
     /**
      * Optional. Performer of the audio
      */
-    protected ?string $performer = null;
+    protected string|null $performer = null;
 
     /**
      * Optional. Title of the audio
      */
-    protected ?string $title = null;
+    protected string|null $title = null;
 
     public static function create(
         InputFile|string $media,
         InputFile|string|null $thumbnail = null,
-        ?string $caption = null,
-        ?string $parseMode = null,
-        ?array $captionEntities = null,
-        ?int $duration = null,
-        ?string $performer = null,
-        ?string $title = null,
+        string|null $caption = null,
+        string|null $parseMode = null,
+        array|null $captionEntities = null,
+        int|null $duration = null,
+        string|null $performer = null,
+        string|null $title = null,
     ): self {
         $instance = new self();
         $instance->media = $media;

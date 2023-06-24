@@ -56,12 +56,12 @@ final class InlineQuery extends BaseType implements TypeInterface
      * Can be either “sender” for a private chat with the inline query sender, “private”, “group”, “supergroup”, or “channel”.
      * The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat
      */
-    protected ?string $chatType = null;
+    protected string|null $chatType = null;
 
     /**
      * Optional. Sender location, only for bots that request user location
      */
-    protected ?Location $location = null;
+    protected Location|null $location = null;
 
     public function getId(): string
     {
@@ -83,12 +83,12 @@ final class InlineQuery extends BaseType implements TypeInterface
         return $this->offset;
     }
 
-    public function getChatType(): ?string
+    public function getChatType(): string|null
     {
         return $this->chatType;
     }
 
-    public function getLocation(): ?Location
+    public function getLocation(): Location|null
     {
         return $this->location;
     }

@@ -21,9 +21,9 @@ final class SentWebAppMessage extends BaseType implements TypeInterface
     /**
      * Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message.
      */
-    protected ?string $inlineMessageId = null;
+    protected string|null $inlineMessageId = null;
 
-    public function getInlineMessageId(): ?string
+    public function getInlineMessageId(): string|null
     {
         return $this->inlineMessageId;
     }

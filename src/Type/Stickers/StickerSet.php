@@ -68,7 +68,7 @@ final class StickerSet extends BaseType implements TypeInterface
     /**
      * Optional. Sticker thumbnail in the .WEBP or .JPG format
      */
-    protected ?PhotoSize $thumbnail = null;
+    protected PhotoSize|null $thumbnail = null;
 
     public function getName(): string
     {
@@ -103,7 +103,7 @@ final class StickerSet extends BaseType implements TypeInterface
         return $this->stickers;
     }
 
-    public function getThumbnail(): ?PhotoSize
+    public function getThumbnail(): PhotoSize|null
     {
         return $this->thumbnail;
     }

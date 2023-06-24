@@ -45,12 +45,12 @@ final class CallbackQuery extends BaseType implements TypeInterface
      * Optional. Message with the callback button that originated the query.
      * Note that message content and message date will not be available if the message is too old
      */
-    protected ?Message $message = null;
+    protected Message|null $message = null;
 
     /**
      * Optional. Identifier of the message sent via the bot in inline mode, that originated the query.
      */
-    protected ?string $inlineMessageId = null;
+    protected string|null $inlineMessageId = null;
 
     /**
      * Global identifier, uniquely corresponding to the chat to which the message with the callback button was sent.
@@ -61,12 +61,12 @@ final class CallbackQuery extends BaseType implements TypeInterface
     /**
      * Optional. Data associated with the callback button.Be aware that a bad client can send arbitrary data in this field.
      */
-    protected ?string $data = null;
+    protected string|null $data = null;
 
     /**
      * Optional. Short name of a Game to be returned, serves as the unique identifier for the game
      */
-    protected ?string $gameShortName = null;
+    protected string|null $gameShortName = null;
 
     public function getId(): string
     {
@@ -78,12 +78,12 @@ final class CallbackQuery extends BaseType implements TypeInterface
         return $this->from;
     }
 
-    public function getMessage(): ?Message
+    public function getMessage(): Message|null
     {
         return $this->message;
     }
 
-    public function getInlineMessageId(): ?string
+    public function getInlineMessageId(): string|null
     {
         return $this->inlineMessageId;
     }
@@ -93,12 +93,12 @@ final class CallbackQuery extends BaseType implements TypeInterface
         return $this->chatInstance;
     }
 
-    public function getData(): ?string
+    public function getData(): string|null
     {
         return $this->data;
     }
 
-    public function getGameShortName(): ?string
+    public function getGameShortName(): string|null
     {
         return $this->gameShortName;
     }

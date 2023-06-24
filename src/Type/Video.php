@@ -61,22 +61,22 @@ final class Video extends BaseType implements TypeInterface
     /**
      * Optional. Video thumbnail
      */
-    protected ?PhotoSize $thumbnail = null;
+    protected PhotoSize|null $thumbnail = null;
 
     /**
      * Optional. Original filename as defined by sender
      */
-    protected ?string $fileName = null;
+    protected string|null $fileName = null;
 
     /**
      * Optional. Mime type of a file as defined by sender
      */
-    protected ?string $mimeType = null;
+    protected string|null $mimeType = null;
 
     /**
      * Optional. File size in bytes
      */
-    protected ?int $fileSize = null;
+    protected int|null $fileSize = null;
 
     public function getFileId(): string
     {
@@ -103,22 +103,22 @@ final class Video extends BaseType implements TypeInterface
         return $this->duration;
     }
 
-    public function getThumbnail(): ?PhotoSize
+    public function getThumbnail(): PhotoSize|null
     {
         return $this->thumbnail;
     }
 
-    public function getFileName(): ?string
+    public function getFileName(): string|null
     {
         return $this->fileName;
     }
 
-    public function getMimeType(): ?string
+    public function getMimeType(): string|null
     {
         return $this->mimeType;
     }
 
-    public function getFileSize(): ?int
+    public function getFileSize(): int|null
     {
         return $this->fileSize;
     }

@@ -65,148 +65,148 @@ final class Update extends BaseType implements TypeInterface
     /**
      * Optional. New incoming message of any kind — text, photo, sticker, etc.
      */
-    protected ?Message $message = null;
+    protected Message|null $message = null;
 
     /**
      * Optional. New version of a message that is known to the bot and was edited
      */
-    protected ?Message $editedMessage = null;
+    protected Message|null $editedMessage = null;
 
     /**
      * Optional. New incoming channel post of any kind — text, photo, sticker, etc.
      */
-    protected ?Message $channelPost = null;
+    protected Message|null $channelPost = null;
 
     /**
      * Optional. New version of a channel post that is known to the bot and was edited
      */
-    protected ?Message $editedChannelPost = null;
+    protected Message|null $editedChannelPost = null;
 
     /**
      * Optional. New incoming inline query
      */
-    protected ?InlineQuery $inlineQuery = null;
+    protected InlineQuery|null $inlineQuery = null;
 
     /**
      * Optional. The result of an inline query that was chosen by a user and sent to their chat partner.
      * Please see our documentation on the feedback collecting for details on how to enable these updates for your bot.
      */
-    protected ?ChosenInlineResult $chosenInlineResult = null;
+    protected ChosenInlineResult|null $chosenInlineResult = null;
 
     /**
      * Optional. New incoming callback query
      */
-    protected ?CallbackQuery $callbackQuery = null;
+    protected CallbackQuery|null $callbackQuery = null;
 
     /**
      * Optional. New incoming shipping query. Only for invoices with flexible price
      */
-    protected ?ShippingQuery $shippingQuery = null;
+    protected ShippingQuery|null $shippingQuery = null;
 
     /**
      * Optional. New incoming pre-checkout query. Contains full information about checkout
      */
-    protected ?PreCheckoutQuery $preCheckoutQuery = null;
+    protected PreCheckoutQuery|null $preCheckoutQuery = null;
 
     /**
      * Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot
      */
-    protected ?Poll $poll = null;
+    protected Poll|null $poll = null;
 
     /**
      * Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself.
      */
-    protected ?PollAnswer $pollAnswer = null;
+    protected PollAnswer|null $pollAnswer = null;
 
     /**
      * Optional. The bot's chat member status was updated in a chat.
      * For private chats, this update is received only when the bot is blocked or unblocked by the user.
      */
-    protected ?ChatMemberUpdated $myChatMember = null;
+    protected ChatMemberUpdated|null $myChatMember = null;
 
     /**
      * Optional. A chat member's status was updated in a chat.
      * The bot must be an administrator in the chat and must explicitly specify “chat_member” in the list of allowed_updates to receive these updates.
      */
-    protected ?ChatMemberUpdated $chatMember = null;
+    protected ChatMemberUpdated|null $chatMember = null;
 
     /**
      * Optional. A request to join the chat has been sent.
      * The bot must have the can_invite_users administrator right in the chat to receive these updates.
      */
-    protected ?ChatJoinRequest $chatJoinRequest = null;
+    protected ChatJoinRequest|null $chatJoinRequest = null;
 
     public function getUpdateId(): int
     {
         return $this->updateId;
     }
 
-    public function getMessage(): ?Message
+    public function getMessage(): Message|null
     {
         return $this->message;
     }
 
-    public function getEditedMessage(): ?Message
+    public function getEditedMessage(): Message|null
     {
         return $this->editedMessage;
     }
 
-    public function getChannelPost(): ?Message
+    public function getChannelPost(): Message|null
     {
         return $this->channelPost;
     }
 
-    public function getEditedChannelPost(): ?Message
+    public function getEditedChannelPost(): Message|null
     {
         return $this->editedChannelPost;
     }
 
-    public function getInlineQuery(): ?InlineQuery
+    public function getInlineQuery(): InlineQuery|null
     {
         return $this->inlineQuery;
     }
 
-    public function getChosenInlineResult(): ?ChosenInlineResult
+    public function getChosenInlineResult(): ChosenInlineResult|null
     {
         return $this->chosenInlineResult;
     }
 
-    public function getCallbackQuery(): ?CallbackQuery
+    public function getCallbackQuery(): CallbackQuery|null
     {
         return $this->callbackQuery;
     }
 
-    public function getShippingQuery(): ?ShippingQuery
+    public function getShippingQuery(): ShippingQuery|null
     {
         return $this->shippingQuery;
     }
 
-    public function getPreCheckoutQuery(): ?PreCheckoutQuery
+    public function getPreCheckoutQuery(): PreCheckoutQuery|null
     {
         return $this->preCheckoutQuery;
     }
 
-    public function getPoll(): ?Poll
+    public function getPoll(): Poll|null
     {
         return $this->poll;
     }
 
-    public function getPollAnswer(): ?PollAnswer
+    public function getPollAnswer(): PollAnswer|null
     {
         return $this->pollAnswer;
     }
 
-    public function getMyChatMember(): ?ChatMemberUpdated
+    public function getMyChatMember(): ChatMemberUpdated|null
     {
         return $this->myChatMember;
     }
 
-    public function getChatMember(): ?ChatMemberUpdated
+    public function getChatMember(): ChatMemberUpdated|null
     {
         return $this->chatMember;
     }
 
-    public function getChatJoinRequest(): ?ChatJoinRequest
+    public function getChatJoinRequest(): ChatJoinRequest|null
     {
         return $this->chatJoinRequest;
     }

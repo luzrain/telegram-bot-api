@@ -29,20 +29,20 @@ final class InputContactMessageContent extends InputMessageContent
     /**
      * Optional. Contact's last name
      */
-    protected ?string $lastName = null;
+    protected string|null $lastName = null;
 
     /**
      * Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
      *
      * @see https://en.wikipedia.org/wiki/VCard
      */
-    protected ?string $vcard = null;
+    protected string|null $vcard = null;
 
     public static function create(
         string $phoneNumber,
         string $firstName,
-        ?string $lastName = null,
-        ?string $vcard = null,
+        string|null $lastName = null,
+        string|null $vcard = null,
     ): self {
         $instance = new self();
         $instance->phoneNumber = $phoneNumber;
@@ -63,12 +63,12 @@ final class InputContactMessageContent extends InputMessageContent
         return $this->firstName;
     }
 
-    public function getLastName(): ?string
+    public function getLastName(): string|null
     {
         return $this->lastName;
     }
 
-    public function getVcard(): ?string
+    public function getVcard(): string|null
     {
         return $this->vcard;
     }

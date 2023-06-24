@@ -49,49 +49,49 @@ final class InlineQueryResultContact extends InlineQueryResult
     /**
      * Optional. Contact's last name
      */
-    protected ?string $lastName = null;
+    protected string|null $lastName = null;
 
     /**
      * Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
      */
-    protected ?string $vcard = null;
+    protected string|null $vcard = null;
 
     /**
      * Optional. Inline keyboard attached to the message
      */
-    protected ?InlineKeyboardMarkup $replyMarkup = null;
+    protected InlineKeyboardMarkup|null $replyMarkup = null;
 
     /**
      * Optional. Content of the message to be sent instead of the contact
      */
-    protected ?InputMessageContent $inputMessageContent = null;
+    protected InputMessageContent|null $inputMessageContent = null;
 
     /**
      * Optional. Url of the thumbnail for the result
      */
-    protected ?string $thumbnailUrl = null;
+    protected string|null $thumbnailUrl = null;
 
     /**
      * Optional. Thumbnail width
      */
-    protected ?int $thumbnailWidth = null;
+    protected int|null $thumbnailWidth = null;
 
     /**
      * Optional. Thumbnail height
      */
-    protected ?int $thumbnailHeight = null;
+    protected int|null $thumbnailHeight = null;
 
     public static function create(
         string $id,
         string $phoneNumber,
         string $firstName,
-        ?string $lastName = null,
-        ?string $vcard = null,
-        ?InlineKeyboardMarkup $replyMarkup = null,
-        ?InputMessageContent $inputMessageContent = null,
-        ?string $thumbnailUrl = null,
-        ?int $thumbnailWidth = null,
-        ?int $thumbnailHeight = null,
+        string|null $lastName = null,
+        string|null $vcard = null,
+        InlineKeyboardMarkup|null $replyMarkup = null,
+        InputMessageContent|null $inputMessageContent = null,
+        string|null $thumbnailUrl = null,
+        int|null $thumbnailWidth = null,
+        int|null $thumbnailHeight = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -128,37 +128,37 @@ final class InlineQueryResultContact extends InlineQueryResult
         return $this->firstName;
     }
 
-    public function getLastName(): ?string
+    public function getLastName(): string|null
     {
         return $this->lastName;
     }
 
-    public function getVcard(): ?string
+    public function getVcard(): string|null
     {
         return $this->vcard;
     }
 
-    public function getReplyMarkup(): ?InlineKeyboardMarkup
+    public function getReplyMarkup(): InlineKeyboardMarkup|null
     {
         return $this->replyMarkup;
     }
 
-    public function getInputMessageContent(): ?InputMessageContent
+    public function getInputMessageContent(): InputMessageContent|null
     {
         return $this->inputMessageContent;
     }
 
-    public function getThumbnailUrl(): ?string
+    public function getThumbnailUrl(): string|null
     {
         return $this->thumbnailUrl;
     }
 
-    public function getThumbnailWidth(): ?int
+    public function getThumbnailWidth(): int|null
     {
         return $this->thumbnailWidth;
     }
 
-    public function getThumbnailHeight(): ?int
+    public function getThumbnailHeight(): int|null
     {
         return $this->thumbnailHeight;
     }

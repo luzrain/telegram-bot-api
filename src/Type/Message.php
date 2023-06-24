@@ -108,13 +108,13 @@ final class Message extends BaseType implements TypeInterface
     /**
      * Optional. Unique identifier of a message thread to which the message belongs; for supergroups only
      */
-    protected ?bool $messageThreadId;
+    protected bool|null $messageThreadId;
 
     /**
      * Optional. Sender of the message; empty for messages sent to channels.
      * For backward compatibility, the field contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
      */
-    protected ?User $from = null;
+    protected User|null $from = null;
 
     /**
      * Optional. Sender of the message, sent on behalf of a chat.
@@ -122,7 +122,7 @@ final class Message extends BaseType implements TypeInterface
      * administrators, the linked channel for messages automatically forwarded to the discussion group.
      * For backward compatibility, the field from contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
      */
-    protected ?Chat $senderChat = null;
+    protected Chat|null $senderChat = null;
 
     /**
      * Date the message was sent in Unix time
@@ -137,367 +137,367 @@ final class Message extends BaseType implements TypeInterface
     /**
      * Optional. For forwarded messages, sender of the original message
      */
-    protected ?User $forwardFrom = null;
+    protected User|null $forwardFrom = null;
 
     /**
      * Optional. For messages forwarded from channels or from anonymous administrators, information about the original sender chat
      */
-    protected ?Chat $forwardFromChat = null;
+    protected Chat|null $forwardFromChat = null;
 
     /**
      * Optional. For messages forwarded from channels, identifier of the original message in the channel
      */
-    protected ?int $forwardFromMessageId = null;
+    protected int|null $forwardFromMessageId = null;
 
     /**
      * Optional. For forwarded messages that were originally sent in channels or by an anonymous chat administrator,
      * signature of the message sender if present
      */
-    protected ?string $forwardSignature = null;
+    protected string|null $forwardSignature = null;
 
     /**
      * Optional. Sender's name for messages forwarded from users who disallow adding a link to their account in forwarded messages
      */
-    protected ?string $forwardSenderName = null;
+    protected string|null $forwardSenderName = null;
 
     /**
      * Optional. For forwarded messages, date the original message was sent in Unix time
      */
-    protected ?int $forwardDate = null;
+    protected int|null $forwardDate = null;
 
     /**
      * Optional. True, if the message is sent to a forum topic
      */
-    protected ?bool $isTopicMessage = null;
+    protected bool|null $isTopicMessage = null;
 
     /**
      * Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion group
      */
-    protected ?bool $isAutomaticForward = null;
+    protected bool|null $isAutomaticForward = null;
 
     /**
      * Optional. For replies, the original message. Note that the Message object in this field will not contain further
      * reply_to_message fields even if it itself is a reply.
      */
-    protected ?Message $replyToMessage = null;
+    protected Message|null $replyToMessage = null;
 
     /**
      * Optional. Bot through which the message was sent
      */
-    protected ?User $viaBot = null;
+    protected User|null $viaBot = null;
 
     /**
      * Optional. Date the message was last edited in Unix time
      */
-    protected ?int $editDate = null;
+    protected int|null $editDate = null;
 
     /**
      * Optional. True, if the message can't be forwarded
      */
-    protected ?bool $hasProtectedContent = null;
+    protected bool|null $hasProtectedContent = null;
 
     /**
      * Optional. The unique identifier of a media message group this message belongs to
      */
-    protected ?string $mediaGroupId = null;
+    protected string|null $mediaGroupId = null;
 
     /**
      * Optional. Signature of the post author for messages in channels, or the custom title of an anonymous group administrator
      */
-    protected ?string $authorSignature = null;
+    protected string|null $authorSignature = null;
 
     /**
      * Optional. For text messages, the actual UTF-8 text of the message, 0-4096 characters
      */
-    protected ?string $text = null;
+    protected string|null $text = null;
 
     /**
      * Optional. For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text
      *
      * @var MessageEntity[]
      */
-    protected ?array $entities = null;
+    protected array|null $entities = null;
 
     /**
      * Optional. Message is an animation, information about the animation.
      * For backward compatibility, when this field is set, the document field will also be set
      */
-    protected ?Animation $animation = null;
+    protected Animation|null $animation = null;
 
     /**
      * Optional. Message is an audio file, information about the file
      */
-    protected ?Audio $audio = null;
+    protected Audio|null $audio = null;
 
     /**
      * Optional. Message is a general file, information about the file
      */
-    protected ?Document $document = null;
+    protected Document|null $document = null;
 
     /**
      * Optional. Message is a photo, available sizes of the photo
      *
      * @var PhotoSize[]
      */
-    protected ?array $photo = null;
+    protected array|null $photo = null;
 
     /**
      * Optional. Message is a sticker, information about the sticker
      */
-    protected ?Sticker $sticker = null;
+    protected Sticker|null $sticker = null;
 
     /**
      * Optional. Message is a video, information about the video
      */
-    protected ?Video $video = null;
+    protected Video|null $video = null;
 
     /**
      * Optional. Message is a video note, information about the video message
      */
-    protected ?VideoNote $videoNote = null;
+    protected VideoNote|null $videoNote = null;
 
     /**
      * Optional. Message is a voice message, information about the file
      */
-    protected ?Voice $voice = null;
+    protected Voice|null $voice = null;
 
     /**
      * Optional. Caption for the animation, audio, document, photo, video or voice, 0-1024 characters
      */
-    protected ?string $caption = null;
+    protected string|null $caption = null;
 
     /**
      * Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption
      *
      * @var MessageEntity[]
      */
-    protected ?array $captionEntities = null;
+    protected array|null $captionEntities = null;
 
     /**
      * Optional. True, if the message media is covered by a spoiler animation
      */
-    protected ?bool $hasMediaSpoiler = null;
+    protected bool|null $hasMediaSpoiler = null;
 
     /**
      * Optional. Message is a shared contact, information about the contact
      */
-    protected ?Contact $contact = null;
+    protected Contact|null $contact = null;
 
     /**
      * Optional. Message is a dice with random value
      */
-    protected ?Dice $dice = null;
+    protected Dice|null $dice = null;
 
     /**
      * Optional. Message is a game, information about the game.
      */
-    protected ?Game $game = null;
+    protected Game|null $game = null;
 
     /**
      * Optional. Message is a native poll, information about the poll
      */
-    protected ?Poll $poll = null;
+    protected Poll|null $poll = null;
 
     /**
      * Optional. Message is a venue, information about the venue.
      * For backward compatibility, when this field is set, the location field will also be set
      */
-    protected ?Venue $venue = null;
+    protected Venue|null $venue = null;
 
     /**
      * Optional. Message is a shared location, information about the location
      */
-    protected ?Location $location = null;
+    protected Location|null $location = null;
 
     /**
      * Optional. New members that were added to the group or supergroup and information about them (the bot itself may be one of these members)
      *
      * @var User[]
      */
-    protected ?array $newChatMembers = null;
+    protected array|null $newChatMembers = null;
 
     /**
      * Optional. A member was removed from the group, information about them (this member may be the bot itself)
      */
-    protected ?User $leftChatMember = null;
+    protected User|null $leftChatMember = null;
 
     /**
      * Optional. A chat title was changed to this value
      */
-    protected ?string $newChatTitle = null;
+    protected string|null $newChatTitle = null;
 
     /**
      * Optional. A chat photo was change to this value
      *
      * @var PhotoSize[]
      */
-    protected ?array $newChatPhoto = null;
+    protected array|null $newChatPhoto = null;
 
     /**
      * Optional. Service message: the chat photo was deleted
      */
-    protected ?bool $deleteChatPhoto = null;
+    protected bool|null $deleteChatPhoto = null;
 
     /**
      * Optional. Service message: the group has been created
      */
-    protected ?bool $groupChatCreated = null;
+    protected bool|null $groupChatCreated = null;
 
     /**
      * Optional. Service message: the supergroup has been created. This field can't be received in a message coming through
      * updates, because bot can't be a member of a supergroup when it is created.
      * It can only be found in reply_to_message if someone replies to a very first message in a directly created supergroup.
      */
-    protected ?bool $supergroupChatCreated = null;
+    protected bool|null $supergroupChatCreated = null;
 
     /**
      * Optional. Service message: the channel has been created. This field can't be received in a message coming through
      * updates, because bot can't be a member of a channel when it is created.
      * It can only be found in reply_to_message if someone replies to a very first message in a channel.
      */
-    protected ?bool $channelChatCreated = null;
+    protected bool|null $channelChatCreated = null;
 
     /**
      * Optional. Service message: auto-delete timer settings changed in the chat
      */
-    protected ?MessageAutoDeleteTimerChanged $messageAutoDeleteTimerChanged = null;
+    protected MessageAutoDeleteTimerChanged|null $messageAutoDeleteTimerChanged = null;
 
     /**
      * Optional. The group has been migrated to a supergroup with the specified identifier.
      * This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it.
      * But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
      */
-    protected ?int $migrateToChatId = null;
+    protected int|null $migrateToChatId = null;
 
     /**
      * Optional. The supergroup has been migrated from a group with the specified identifier.
      * This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it.
      * But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
      */
-    protected ?int $migrateFromChatId = null;
+    protected int|null $migrateFromChatId = null;
 
     /**
      * Optional. Specified message was pinned.
      * Note that the Message object in this field will not contain further reply_to_message fields even if it is itself a reply.
      */
-    protected ?Message $pinnedMessage = null;
+    protected Message|null $pinnedMessage = null;
 
     /**
      * Optional. Message is an invoice for a payment, information about the invoice.
      */
-    protected ?Invoice $invoice = null;
+    protected Invoice|null $invoice = null;
 
     /**
      * Optional. Message is a service message about a successful payment, information about the payment.
      */
-    protected ?SuccessfulPayment $successfulPayment = null;
+    protected SuccessfulPayment|null $successfulPayment = null;
 
     /**
      * Optional. Service message: a user was shared with the bot
      */
-    protected ?UserShared $userShared = null;
+    protected UserShared|null $userShared = null;
 
     /**
      * Optional. Service message: a chat was shared with the bot
      */
-    protected ?ChatShared $chatShared = null;
+    protected ChatShared|null $chatShared = null;
 
     /**
      * Optional. The domain name of the website on which the user has logged in.
      */
-    protected ?string $connectedWebsite = null;
+    protected string|null $connectedWebsite = null;
 
     /**
      * Optional. Service message: the user allowed the bot added to the attachment menu to write messages
      */
-    protected ?WriteAccessAllowed $writeAccessAllowed = null;
+    protected WriteAccessAllowed|null $writeAccessAllowed = null;
 
     /**
      * Optional. Telegram Passport data
      */
-    protected ?PassportData $passportData = null;
+    protected PassportData|null $passportData = null;
 
     /**
      * Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
      */
-    protected ?ProximityAlertTriggered $proximityAlertTriggered = null;
+    protected ProximityAlertTriggered|null $proximityAlertTriggered = null;
 
     /**
      * Optional. Service message: forum topic created
      */
-    protected ?ForumTopicCreated $forumTopicCreated = null;
+    protected ForumTopicCreated|null $forumTopicCreated = null;
 
     /**
      * Optional. Service message: forum topic edited
      */
-    protected ?ForumTopicEdited $forumTopicEdited = null;
+    protected ForumTopicEdited|null $forumTopicEdited = null;
 
     /**
      * Optional. Service message: forum topic closed
      */
-    protected ?ForumTopicClosed $forumTopicClosed = null;
+    protected ForumTopicClosed|null $forumTopicClosed = null;
 
     /**
      * Optional. Service message: forum topic reopened
      */
-    protected ?ForumTopicReopened $forumTopicReopened = null;
+    protected ForumTopicReopened|null $forumTopicReopened = null;
 
     /**
      * Optional. Service message: the 'General' forum topic hidden
      */
-    protected ?GeneralForumTopicHidden $generalForumTopicHidden = null;
+    protected GeneralForumTopicHidden|null $generalForumTopicHidden = null;
 
     /**
      * Optional. Service message: the 'General' forum topic unhidden
      */
-    protected ?GeneralForumTopicUnhidden $generalForumTopicUnhidden = null;
+    protected GeneralForumTopicUnhidden|null $generalForumTopicUnhidden = null;
 
     /**
      * Optional. Service message: video chat scheduled
      */
-    protected ?VideoChatScheduled $videoChatScheduled = null;
+    protected VideoChatScheduled|null $videoChatScheduled = null;
 
     /**
      * Optional. Service message: video chat started
      */
-    protected ?VideoChatStarted $videoChatStarted = null;
+    protected VideoChatStarted|null $videoChatStarted = null;
 
     /**
      * Optional. Service message: video chat ended
      */
-    protected ?VideoChatEnded $videoChatEnded = null;
+    protected VideoChatEnded|null $videoChatEnded = null;
 
     /**
      * Optional. Service message: new participants invited to a video chat
      */
-    protected ?VideoChatParticipantsInvited $videoChatParticipantsInvited = null;
+    protected VideoChatParticipantsInvited|null $videoChatParticipantsInvited = null;
 
     /**
      * Optional. Service message: data sent by a Web App
      */
-    protected ?WebAppData $webAppData = null;
+    protected WebAppData|null $webAppData = null;
 
     /**
      * Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
      */
-    protected ?InlineKeyboardMarkup $replyMarkup = null;
+    protected InlineKeyboardMarkup|null $replyMarkup = null;
 
     public function getMessageId(): int
     {
         return $this->messageId;
     }
 
-    public function getMessageThreadId(): ?bool
+    public function getMessageThreadId(): bool|null
     {
         return $this->messageThreadId;
     }
 
-    public function getFrom(): ?User
+    public function getFrom(): User|null
     {
         return $this->from;
     }
 
-    public function getSenderChat(): ?Chat
+    public function getSenderChat(): Chat|null
     {
         return $this->senderChat;
     }
@@ -512,77 +512,77 @@ final class Message extends BaseType implements TypeInterface
         return $this->chat;
     }
 
-    public function getForwardFrom(): ?User
+    public function getForwardFrom(): User|null
     {
         return $this->forwardFrom;
     }
 
-    public function getForwardFromChat(): ?Chat
+    public function getForwardFromChat(): Chat|null
     {
         return $this->forwardFromChat;
     }
 
-    public function getForwardFromMessageId(): ?int
+    public function getForwardFromMessageId(): int|null
     {
         return $this->forwardFromMessageId;
     }
 
-    public function getForwardSignature(): ?string
+    public function getForwardSignature(): string|null
     {
         return $this->forwardSignature;
     }
 
-    public function getForwardSenderName(): ?string
+    public function getForwardSenderName(): string|null
     {
         return $this->forwardSenderName;
     }
 
-    public function getForwardDate(): ?int
+    public function getForwardDate(): int|null
     {
         return $this->forwardDate;
     }
 
-    public function isTopicMessage(): ?bool
+    public function isTopicMessage(): bool|null
     {
         return $this->isTopicMessage;
     }
 
-    public function isAutomaticForward(): ?bool
+    public function isAutomaticForward(): bool|null
     {
         return $this->isAutomaticForward;
     }
 
-    public function getReplyToMessage(): ?Message
+    public function getReplyToMessage(): Message|null
     {
         return $this->replyToMessage;
     }
 
-    public function getViaBot(): ?User
+    public function getViaBot(): User|null
     {
         return $this->viaBot;
     }
 
-    public function getEditDate(): ?int
+    public function getEditDate(): int|null
     {
         return $this->editDate;
     }
 
-    public function hasProtectedContent(): ?bool
+    public function hasProtectedContent(): bool|null
     {
         return $this->hasProtectedContent;
     }
 
-    public function getMediaGroupId(): ?string
+    public function getMediaGroupId(): string|null
     {
         return $this->mediaGroupId;
     }
 
-    public function getAuthorSignature(): ?string
+    public function getAuthorSignature(): string|null
     {
         return $this->authorSignature;
     }
 
-    public function getText(): ?string
+    public function getText(): string|null
     {
         return $this->text;
     }
@@ -590,22 +590,22 @@ final class Message extends BaseType implements TypeInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getEntities(): ?array
+    public function getEntities(): array|null
     {
         return $this->entities;
     }
 
-    public function getAnimation(): ?Animation
+    public function getAnimation(): Animation|null
     {
         return $this->animation;
     }
 
-    public function getAudio(): ?Audio
+    public function getAudio(): Audio|null
     {
         return $this->audio;
     }
 
-    public function getDocument(): ?Document
+    public function getDocument(): Document|null
     {
         return $this->document;
     }
@@ -613,32 +613,32 @@ final class Message extends BaseType implements TypeInterface
     /**
      * @return PhotoSize[]|null
      */
-    public function getPhoto(): ?array
+    public function getPhoto(): array|null
     {
         return $this->photo;
     }
 
-    public function getSticker(): ?Sticker
+    public function getSticker(): Sticker|null
     {
         return $this->sticker;
     }
 
-    public function getVideo(): ?Video
+    public function getVideo(): Video|null
     {
         return $this->video;
     }
 
-    public function getVideoNote(): ?VideoNote
+    public function getVideoNote(): VideoNote|null
     {
         return $this->videoNote;
     }
 
-    public function getVoice(): ?Voice
+    public function getVoice(): Voice|null
     {
         return $this->voice;
     }
 
-    public function getCaption(): ?string
+    public function getCaption(): string|null
     {
         return $this->caption;
     }
@@ -646,42 +646,42 @@ final class Message extends BaseType implements TypeInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): ?array
+    public function getCaptionEntities(): array|null
     {
         return $this->captionEntities;
     }
 
-    public function hasMediaSpoiler(): ?bool
+    public function hasMediaSpoiler(): bool|null
     {
         return $this->hasMediaSpoiler;
     }
 
-    public function getContact(): ?Contact
+    public function getContact(): Contact|null
     {
         return $this->contact;
     }
 
-    public function getDice(): ?Dice
+    public function getDice(): Dice|null
     {
         return $this->dice;
     }
 
-    public function getGame(): ?Game
+    public function getGame(): Game|null
     {
         return $this->game;
     }
 
-    public function getPoll(): ?Poll
+    public function getPoll(): Poll|null
     {
         return $this->poll;
     }
 
-    public function getVenue(): ?Venue
+    public function getVenue(): Venue|null
     {
         return $this->venue;
     }
 
-    public function getLocation(): ?Location
+    public function getLocation(): Location|null
     {
         return $this->location;
     }
@@ -689,17 +689,17 @@ final class Message extends BaseType implements TypeInterface
     /**
      * @return User[]|null
      */
-    public function getNewChatMembers(): ?array
+    public function getNewChatMembers(): array|null
     {
         return $this->newChatMembers;
     }
 
-    public function getLeftChatMember(): ?User
+    public function getLeftChatMember(): User|null
     {
         return $this->leftChatMember;
     }
 
-    public function getNewChatTitle(): ?string
+    public function getNewChatTitle(): string|null
     {
         return $this->newChatTitle;
     }
@@ -707,147 +707,147 @@ final class Message extends BaseType implements TypeInterface
     /**
      * @return PhotoSize[]|null
      */
-    public function getNewChatPhoto(): ?array
+    public function getNewChatPhoto(): array|null
     {
         return $this->newChatPhoto;
     }
 
-    public function isDeleteChatPhoto(): ?bool
+    public function isDeleteChatPhoto(): bool|null
     {
         return $this->deleteChatPhoto;
     }
 
-    public function isGroupChatCreated(): ?bool
+    public function isGroupChatCreated(): bool|null
     {
         return $this->groupChatCreated;
     }
 
-    public function isSupergroupChatCreated(): ?bool
+    public function isSupergroupChatCreated(): bool|null
     {
         return $this->supergroupChatCreated;
     }
 
-    public function isChannelChatCreated(): ?bool
+    public function isChannelChatCreated(): bool|null
     {
         return $this->channelChatCreated;
     }
 
-    public function getMessageAutoDeleteTimerChanged(): ?MessageAutoDeleteTimerChanged
+    public function getMessageAutoDeleteTimerChanged(): MessageAutoDeleteTimerChanged|null
     {
         return $this->messageAutoDeleteTimerChanged;
     }
 
-    public function getMigrateToChatId(): ?int
+    public function getMigrateToChatId(): int|null
     {
         return $this->migrateToChatId;
     }
 
-    public function getMigrateFromChatId(): ?int
+    public function getMigrateFromChatId(): int|null
     {
         return $this->migrateFromChatId;
     }
 
-    public function getPinnedMessage(): ?Message
+    public function getPinnedMessage(): Message|null
     {
         return $this->pinnedMessage;
     }
 
-    public function getInvoice(): ?Invoice
+    public function getInvoice(): Invoice|null
     {
         return $this->invoice;
     }
 
-    public function getSuccessfulPayment(): ?SuccessfulPayment
+    public function getSuccessfulPayment(): SuccessfulPayment|null
     {
         return $this->successfulPayment;
     }
 
-    public function getUserShared(): ?UserShared
+    public function getUserShared(): UserShared|null
     {
         return $this->userShared;
     }
 
-    public function getChatShared(): ?ChatShared
+    public function getChatShared(): ChatShared|null
     {
         return $this->chatShared;
     }
 
-    public function getConnectedWebsite(): ?string
+    public function getConnectedWebsite(): string|null
     {
         return $this->connectedWebsite;
     }
 
-    public function getWriteAccessAllowed(): ?WriteAccessAllowed
+    public function getWriteAccessAllowed(): WriteAccessAllowed|null
     {
         return $this->writeAccessAllowed;
     }
 
-    public function getPassportData(): ?PassportData
+    public function getPassportData(): PassportData|null
     {
         return $this->passportData;
     }
 
-    public function getProximityAlertTriggered(): ?ProximityAlertTriggered
+    public function getProximityAlertTriggered(): ProximityAlertTriggered|null
     {
         return $this->proximityAlertTriggered;
     }
 
-    public function getForumTopicCreated(): ?ForumTopicCreated
+    public function getForumTopicCreated(): ForumTopicCreated|null
     {
         return $this->forumTopicCreated;
     }
 
-    public function getForumTopicEdited(): ?ForumTopicEdited
+    public function getForumTopicEdited(): ForumTopicEdited|null
     {
         return $this->forumTopicEdited;
     }
 
-    public function getForumTopicClosed(): ?ForumTopicClosed
+    public function getForumTopicClosed(): ForumTopicClosed|null
     {
         return $this->forumTopicClosed;
     }
 
-    public function getForumTopicReopened(): ?ForumTopicReopened
+    public function getForumTopicReopened(): ForumTopicReopened|null
     {
         return $this->forumTopicReopened;
     }
 
-    public function getGeneralForumTopicHidden(): ?GeneralForumTopicHidden
+    public function getGeneralForumTopicHidden(): GeneralForumTopicHidden|null
     {
         return $this->generalForumTopicHidden;
     }
 
-    public function getGeneralForumTopicUnhidden(): ?GeneralForumTopicUnhidden
+    public function getGeneralForumTopicUnhidden(): GeneralForumTopicUnhidden|null
     {
         return $this->generalForumTopicUnhidden;
     }
 
-    public function getVideoChatScheduled(): ?VideoChatScheduled
+    public function getVideoChatScheduled(): VideoChatScheduled|null
     {
         return $this->videoChatScheduled;
     }
 
-    public function getVideoChatStarted(): ?VideoChatStarted
+    public function getVideoChatStarted(): VideoChatStarted|null
     {
         return $this->videoChatStarted;
     }
 
-    public function getVideoChatEnded(): ?VideoChatEnded
+    public function getVideoChatEnded(): VideoChatEnded|null
     {
         return $this->videoChatEnded;
     }
 
-    public function getVideoChatParticipantsInvited(): ?VideoChatParticipantsInvited
+    public function getVideoChatParticipantsInvited(): VideoChatParticipantsInvited|null
     {
         return $this->videoChatParticipantsInvited;
     }
 
-    public function getWebAppData(): ?WebAppData
+    public function getWebAppData(): WebAppData|null
     {
         return $this->webAppData;
     }
 
-    public function getReplyMarkup(): ?InlineKeyboardMarkup
+    public function getReplyMarkup(): InlineKeyboardMarkup|null
     {
         return $this->replyMarkup;
     }

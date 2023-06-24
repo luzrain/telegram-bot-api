@@ -31,30 +31,30 @@ final class InputLocationMessageContent extends InputMessageContent
     /**
      * Optional. The radius of uncertainty for the location, measured in meters; 0-1500
      */
-    protected ?float $horizontalAccuracy = null;
+    protected float|null $horizontalAccuracy = null;
 
     /**
      * Optional. Period in seconds for which the location can be updated, should be between 60 and 86400.
      */
-    protected ?int $livePeriod = null;
+    protected int|null $livePeriod = null;
 
     /**
      * Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
      */
-    protected ?int $heading = null;
+    protected int|null $heading = null;
 
     /**
      * Optional. For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
      */
-    protected ?int $proximityAlertRadius = null;
+    protected int|null $proximityAlertRadius = null;
 
     public static function create(
         float $latitude,
         float $longitude,
-        ?float $horizontalAccuracy = null,
-        ?int $livePeriod = null,
-        ?int $heading = null,
-        ?int $proximityAlertRadius = null,
+        float|null $horizontalAccuracy = null,
+        int|null $livePeriod = null,
+        int|null $heading = null,
+        int|null $proximityAlertRadius = null,
     ): self {
         $instance = new self();
         $instance->latitude = $latitude;
@@ -77,22 +77,22 @@ final class InputLocationMessageContent extends InputMessageContent
         return $this->longitude;
     }
 
-    public function getHorizontalAccuracy(): ?float
+    public function getHorizontalAccuracy(): float|null
     {
         return $this->horizontalAccuracy;
     }
 
-    public function getLivePeriod(): ?int
+    public function getLivePeriod(): int|null
     {
         return $this->livePeriod;
     }
 
-    public function getHeading(): ?int
+    public function getHeading(): int|null
     {
         return $this->heading;
     }
 
-    public function getProximityAlertRadius(): ?int
+    public function getProximityAlertRadius(): int|null
     {
         return $this->proximityAlertRadius;
     }

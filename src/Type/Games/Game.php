@@ -54,19 +54,19 @@ final class Game extends BaseType implements TypeInterface
      * Can be automatically edited to include current high scores for the game when the bot calls setGameScore,
      * or manually edited using editMessageText. 0-4096 characters.
      */
-    protected ?string $text = null;
+    protected string|null $text = null;
 
     /**
      * Optional. Special entities that appear in text, such as usernames, URLs, bot commands, etc.
      *
      * @var MessageEntity[]
      */
-    protected ?array $textEntities = null;
+    protected array|null $textEntities = null;
 
     /**
      * Optional. Animation that will be displayed in the game message in chats. Upload via BotFather
      */
-    protected ?Animation $animation = null;
+    protected Animation|null $animation = null;
 
     public function getTitle(): string
     {
@@ -86,7 +86,7 @@ final class Game extends BaseType implements TypeInterface
         return $this->photo;
     }
 
-    public function getText(): ?string
+    public function getText(): string|null
     {
         return $this->text;
     }
@@ -94,12 +94,12 @@ final class Game extends BaseType implements TypeInterface
     /**
      * @return MessageEntity[]
      */
-    public function getTextEntities(): ?array
+    public function getTextEntities(): array|null
     {
         return $this->textEntities;
     }
 
-    public function getAnimation(): ?Animation
+    public function getAnimation(): Animation|null
     {
         return $this->animation;
     }

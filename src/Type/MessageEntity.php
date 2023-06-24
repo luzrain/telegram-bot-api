@@ -69,31 +69,31 @@ final class MessageEntity extends BaseType implements TypeInterface
     /**
      * Optional. For “text_link” only, url that will be opened after user taps on the text
      */
-    protected ?string $url = null;
+    protected string|null $url = null;
 
     /**
      * Optional. For “text_mention” only, the mentioned user
      */
-    protected ?User $user = null;
+    protected User|null $user = null;
 
     /**
      * Optional. For “pre” only, the programming language of the entity text
      */
-    protected ?string $language = null;
+    protected string|null $language = null;
 
     /**
      * Optional. For “custom_emoji” only, unique identifier of the custom emoji.
      * Use getCustomEmojiStickers to get full information about the sticker
      */
-    protected ?string $customEmojiId = null;
+    protected string|null $customEmojiId = null;
 
     public static function create(
         string $type,
         int $offset,
         int $length,
-        ?string $url = null,
-        ?User $user = null,
-        ?string $language = null,
+        string|null $url = null,
+        User|null $user = null,
+        string|null $language = null,
     ): self {
         $instance = new self();
         $instance->type = $type;
@@ -121,22 +121,22 @@ final class MessageEntity extends BaseType implements TypeInterface
         return $this->length;
     }
 
-    public function getUrl(): ?string
+    public function getUrl(): string|null
     {
         return $this->url;
     }
 
-    public function getUser(): ?User
+    public function getUser(): User|null
     {
         return $this->user;
     }
 
-    public function getLanguage(): ?string
+    public function getLanguage(): string|null
     {
         return $this->language;
     }
 
-    public function getCustomEmojiId(): ?string
+    public function getCustomEmojiId(): string|null
     {
         return $this->customEmojiId;
     }

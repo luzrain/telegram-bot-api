@@ -45,12 +45,12 @@ final class Voice extends BaseType implements TypeInterface
     /**
      * Optional. MIME type of the file as defined by sender
      */
-    protected ?string $mimeType = null;
+    protected string|null $mimeType = null;
 
     /**
      * Optional. File size in bytes
      */
-    protected ?int $fileSize = null;
+    protected int|null $fileSize = null;
 
     public function getFileId(): string
     {
@@ -67,12 +67,12 @@ final class Voice extends BaseType implements TypeInterface
         return $this->duration;
     }
 
-    public function getMimeType(): ?string
+    public function getMimeType(): string|null
     {
         return $this->mimeType;
     }
 
-    public function getFileSize(): ?int
+    public function getFileSize(): int|null
     {
         return $this->fileSize;
     }

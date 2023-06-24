@@ -24,39 +24,39 @@ final class OrderInfo extends BaseType implements TypeInterface
     /**
      * Optional. User name
      */
-    protected ?string $name = null;
+    protected string|null $name = null;
 
     /**
      * Optional. User's phone number
      */
-    protected ?string $phoneNumber = null;
+    protected string|null $phoneNumber = null;
 
     /**
      * Optional. User email
      */
-    protected ?string $email = null;
+    protected string|null $email = null;
 
     /**
      * Optional. User shipping address
      */
-    protected ?ShippingAddress $shippingAddress = null;
+    protected ShippingAddress|null $shippingAddress = null;
 
-    public function getName(): ?string
+    public function getName(): string|null
     {
         return $this->name;
     }
 
-    public function getPhoneNumber(): ?string
+    public function getPhoneNumber(): string|null
     {
         return $this->phoneNumber;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string|null
     {
         return $this->email;
     }
 
-    public function getShippingAddress(): ?ShippingAddress
+    public function getShippingAddress(): ShippingAddress|null
     {
         return $this->shippingAddress;
     }

@@ -43,7 +43,7 @@ final class ForumTopic extends BaseType implements TypeInterface
     /**
      * Optional. Unique identifier of the custom emoji shown as the topic icon
      */
-    protected ?string $iconCustomEmojiId = null;
+    protected string|null $iconCustomEmojiId = null;
 
     public function getMessageThreadId(): int
     {
@@ -60,7 +60,7 @@ final class ForumTopic extends BaseType implements TypeInterface
         return $this->iconColor;
     }
 
-    public function getIconCustomEmojiId(): ?string
+    public function getIconCustomEmojiId(): string|null
     {
         return $this->iconCustomEmojiId;
     }

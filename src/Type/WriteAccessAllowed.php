@@ -22,9 +22,9 @@ final class WriteAccessAllowed extends BaseType implements TypeInterface
     /**
      * Optional. Name of the Web App which was launched from a link
      */
-    protected ?string $webAppName = null;
+    protected string|null $webAppName = null;
 
-    public function getWebAppName(): ?string
+    public function getWebAppName(): string|null
     {
         return $this->webAppName;
     }

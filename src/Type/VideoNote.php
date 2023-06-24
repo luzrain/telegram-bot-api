@@ -52,12 +52,12 @@ final class VideoNote extends BaseType implements TypeInterface
     /**
      * Optional. Video thumbnail
      */
-    protected ?PhotoSize $thumbnail = null;
+    protected PhotoSize|null $thumbnail = null;
 
     /**
      * Optional. File size in bytes
      */
-    protected ?int $fileSize = null;
+    protected int|null $fileSize = null;
 
     public function getFileId(): string
     {
@@ -79,12 +79,12 @@ final class VideoNote extends BaseType implements TypeInterface
         return $this->duration;
     }
 
-    public function getThumbnail(): ?PhotoSize
+    public function getThumbnail(): PhotoSize|null
     {
         return $this->thumbnail;
     }
 
-    public function getFileSize(): ?int
+    public function getFileSize(): int|null
     {
         return $this->fileSize;
     }

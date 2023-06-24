@@ -57,63 +57,63 @@ final class InlineQueryResultLocation extends InlineQueryResult
     /**
      * Optional. The radius of uncertainty for the location, measured in meters; 0-1500
      */
-    protected ?float $horizontalAccuracy = null;
+    protected float|null $horizontalAccuracy = null;
 
     /**
      * Optional. Period in seconds for which the location can be updated, should be between 60 and 86400.
      */
-    protected ?int $livePeriod = null;
+    protected int|null $livePeriod = null;
 
     /**
      * Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
      */
-    protected ?int $heading = null;
+    protected int|null $heading = null;
 
     /**
      * Optional. For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters.
      * Must be between 1 and 100000 if specified.
      */
-    protected ?int $proximityAlertRadius = null;
+    protected int|null $proximityAlertRadius = null;
 
     /**
      * Optional. Inline keyboard attached to the message
      */
-    protected ?InlineKeyboardMarkup $replyMarkup = null;
+    protected InlineKeyboardMarkup|null $replyMarkup = null;
 
     /**
      * Optional. Content of the message to be sent instead of the location
      */
-    protected ?InputMessageContent $inputMessageContent = null;
+    protected InputMessageContent|null $inputMessageContent = null;
 
     /**
      * Optional. Url of the thumbnail for the result
      */
-    protected ?string $thumbnailUrl = null;
+    protected string|null $thumbnailUrl = null;
 
     /**
      * Optional. Thumbnail width
      */
-    protected ?int $thumbnailWidth = null;
+    protected int|null $thumbnailWidth = null;
 
     /**
      * Optional. Thumbnail height
      */
-    protected ?int $thumbnailHeight = null;
+    protected int|null $thumbnailHeight = null;
 
     public static function create(
         string $id,
         float $latitude,
         float $longitude,
         string $title,
-        ?float $horizontalAccuracy = null,
-        ?int $livePeriod = null,
-        ?int $heading = null,
-        ?int $proximityAlertRadius = null,
-        ?InlineKeyboardMarkup $replyMarkup = null,
-        ?InputMessageContent $inputMessageContent = null,
-        ?string $thumbnailUrl = null,
-        ?int $thumbnailWidth = null,
-        ?int $thumbnailHeight = null,
+        float|null $horizontalAccuracy = null,
+        int|null $livePeriod = null,
+        int|null $heading = null,
+        int|null $proximityAlertRadius = null,
+        InlineKeyboardMarkup|null $replyMarkup = null,
+        InputMessageContent|null $inputMessageContent = null,
+        string|null $thumbnailUrl = null,
+        int|null $thumbnailWidth = null,
+        int|null $thumbnailHeight = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -158,47 +158,47 @@ final class InlineQueryResultLocation extends InlineQueryResult
         return $this->title;
     }
 
-    public function getHorizontalAccuracy(): ?float
+    public function getHorizontalAccuracy(): float|null
     {
         return $this->horizontalAccuracy;
     }
 
-    public function getLivePeriod(): ?int
+    public function getLivePeriod(): int|null
     {
         return $this->livePeriod;
     }
 
-    public function getHeading(): ?int
+    public function getHeading(): int|null
     {
         return $this->heading;
     }
 
-    public function getProximityAlertRadius(): ?int
+    public function getProximityAlertRadius(): int|null
     {
         return $this->proximityAlertRadius;
     }
 
-    public function getReplyMarkup(): ?InlineKeyboardMarkup
+    public function getReplyMarkup(): InlineKeyboardMarkup|null
     {
         return $this->replyMarkup;
     }
 
-    public function getInputMessageContent(): ?InputMessageContent
+    public function getInputMessageContent(): InputMessageContent|null
     {
         return $this->inputMessageContent;
     }
 
-    public function getThumbnailUrl(): ?string
+    public function getThumbnailUrl(): string|null
     {
         return $this->thumbnailUrl;
     }
 
-    public function getThumbnailWidth(): ?int
+    public function getThumbnailWidth(): int|null
     {
         return $this->thumbnailWidth;
     }
 
-    public function getThumbnailHeight(): ?int
+    public function getThumbnailHeight(): int|null
     {
         return $this->thumbnailHeight;
     }

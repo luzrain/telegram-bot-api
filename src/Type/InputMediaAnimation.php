@@ -51,52 +51,52 @@ final class InputMediaAnimation extends InputMedia
     /**
      * Optional. Caption of the animation to be sent, 0-1024 characters after entities parsing
      */
-    protected ?string $caption = null;
+    protected string|null $caption = null;
 
     /**
      * Optional. Mode for parsing entities in the animation caption. See formatting options for more details.
      *
      * @see https://core.telegram.org/bots/api#formatting-options
      */
-    protected ?string $parseMode = null;
+    protected string|null $parseMode = null;
 
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
      *
      * @var MessageEntity[]
      */
-    protected ?array $captionEntities = null;
+    protected array|null $captionEntities = null;
 
     /**
      * Optional. Animation width
      */
-    protected ?int $width = null;
+    protected int|null $width = null;
 
     /**
      * Optional. Animation height
      */
-    protected ?int $height = null;
+    protected int|null $height = null;
 
     /**
      * Optional. Animation duration in seconds
      */
-    protected ?int $duration = null;
+    protected int|null $duration = null;
 
     /**
      * Optional. Pass True if the animation needs to be covered with a spoiler animation
      */
-    protected ?bool $hasSpoiler = null;
+    protected bool|null $hasSpoiler = null;
 
     public static function create(
         InputFile|string $media,
         InputFile|string|null $thumbnail = null,
-        ?string $caption = null,
-        ?string $parseMode = null,
-        ?array $captionEntities = null,
-        ?int $width = null,
-        ?int $height = null,
-        ?int $duration = null,
-        ?bool $hasSpoiler = null,
+        string|null $caption = null,
+        string|null $parseMode = null,
+        array|null $captionEntities = null,
+        int|null $width = null,
+        int|null $height = null,
+        int|null $duration = null,
+        bool|null $hasSpoiler = null,
     ): self {
         $instance = new self();
         $instance->media = $media;

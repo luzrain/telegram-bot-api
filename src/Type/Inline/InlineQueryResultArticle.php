@@ -48,49 +48,49 @@ final class InlineQueryResultArticle extends InlineQueryResult
     /**
      * Optional. Inline keyboard attached to the message
      */
-    protected ?InlineKeyboardMarkup $replyMarkup = null;
+    protected InlineKeyboardMarkup|null $replyMarkup = null;
 
     /**
      * Optional. URL of the result
      */
-    protected ?string $url = null;
+    protected string|null $url = null;
 
     /**
      * Optional. Pass True, if you don't want the URL to be shown in the message
      */
-    protected ?bool $hideUrl = null;
+    protected bool|null $hideUrl = null;
 
     /**
      * Optional. Short description of the result
      */
-    protected ?string $description = null;
+    protected string|null $description = null;
 
     /**
      * Optional. Url of the thumbnail for the result
      */
-    protected ?string $thumbnailUrl = null;
+    protected string|null $thumbnailUrl = null;
 
     /**
      * Optional. Thumbnail width
      */
-    protected ?int $thumbnailWidth = null;
+    protected int|null $thumbnailWidth = null;
 
     /**
      * Optional. Thumbnail height
      */
-    protected ?int $thumbnailHeight = null;
+    protected int|null $thumbnailHeight = null;
 
     public static function create(
         string $id,
         string $title,
         InputMessageContent $inputMessageContent,
-        ?InlineKeyboardMarkup $replyMarkup = null,
-        ?string $url = null,
-        ?bool $hideUrl = null,
-        ?string $description = null,
-        ?string $thumbnailUrl = null,
-        ?int $thumbnailWidth = null,
-        ?int $thumbnailHeight = null,
+        InlineKeyboardMarkup|null $replyMarkup = null,
+        string|null $url = null,
+        bool|null $hideUrl = null,
+        string|null $description = null,
+        string|null $thumbnailUrl = null,
+        int|null $thumbnailWidth = null,
+        int|null $thumbnailHeight = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -127,37 +127,37 @@ final class InlineQueryResultArticle extends InlineQueryResult
         return $this->inputMessageContent;
     }
 
-    public function getReplyMarkup(): ?InlineKeyboardMarkup
+    public function getReplyMarkup(): InlineKeyboardMarkup|null
     {
         return $this->replyMarkup;
     }
 
-    public function getUrl(): ?string
+    public function getUrl(): string|null
     {
         return $this->url;
     }
 
-    public function isHideUrl(): ?bool
+    public function isHideUrl(): bool|null
     {
         return $this->hideUrl;
     }
 
-    public function getDescription(): ?string
+    public function getDescription(): string|null
     {
         return $this->description;
     }
 
-    public function getThumbnailUrl(): ?string
+    public function getThumbnailUrl(): string|null
     {
         return $this->thumbnailUrl;
     }
 
-    public function getThumbnailWidth(): ?int
+    public function getThumbnailWidth(): int|null
     {
         return $this->thumbnailWidth;
     }
 
-    public function getThumbnailHeight(): ?int
+    public function getThumbnailHeight(): int|null
     {
         return $this->thumbnailHeight;
     }

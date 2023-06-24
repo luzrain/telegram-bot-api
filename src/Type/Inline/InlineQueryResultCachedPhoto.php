@@ -46,52 +46,52 @@ final class InlineQueryResultCachedPhoto extends InlineQueryResult
     /**
      * Optional. Title for the result
      */
-    protected ?string $title = null;
+    protected string|null $title = null;
 
     /**
      * Optional. Short description of the result
      */
-    protected ?string $description = null;
+    protected string|null $description = null;
 
     /**
      * Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
      */
-    protected ?string $caption = null;
+    protected string|null $caption = null;
 
     /**
      * Optional. Mode for parsing entities in the photo caption. See formatting options for more details.
      *
      * @see https://core.telegram.org/bots/api#formatting-options
      */
-    protected ?string $parseMode = null;
+    protected string|null $parseMode = null;
 
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
      *
      * @var MessageEntity[]
      */
-    protected ?array $captionEntities = null;
+    protected array|null $captionEntities = null;
 
     /**
      * Optional. Inline keyboard attached to the message
      */
-    protected ?InlineKeyboardMarkup $replyMarkup = null;
+    protected InlineKeyboardMarkup|null $replyMarkup = null;
 
     /**
      * Optional. Content of the message to be sent instead of the photo
      */
-    protected ?InputMessageContent $inputMessageContent = null;
+    protected InputMessageContent|null $inputMessageContent = null;
 
     public static function create(
         string $id,
         string $photoFileId,
-        ?string $title = null,
-        ?string $description = null,
-        ?string $caption = null,
-        ?string $parseMode = null,
-        ?array $captionEntities = null,
-        ?InlineKeyboardMarkup $replyMarkup = null,
-        ?InputMessageContent $inputMessageContent = null,
+        string|null $title = null,
+        string|null $description = null,
+        string|null $caption = null,
+        string|null $parseMode = null,
+        array|null $captionEntities = null,
+        InlineKeyboardMarkup|null $replyMarkup = null,
+        InputMessageContent|null $inputMessageContent = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -122,22 +122,22 @@ final class InlineQueryResultCachedPhoto extends InlineQueryResult
         return $this->photoFileId;
     }
 
-    public function getTitle(): ?string
+    public function getTitle(): string|null
     {
         return $this->title;
     }
 
-    public function getDescription(): ?string
+    public function getDescription(): string|null
     {
         return $this->description;
     }
 
-    public function getCaption(): ?string
+    public function getCaption(): string|null
     {
         return $this->caption;
     }
 
-    public function getParseMode(): ?string
+    public function getParseMode(): string|null
     {
         return $this->parseMode;
     }
@@ -145,17 +145,17 @@ final class InlineQueryResultCachedPhoto extends InlineQueryResult
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): ?array
+    public function getCaptionEntities(): array|null
     {
         return $this->captionEntities;
     }
 
-    public function getReplyMarkup(): ?InlineKeyboardMarkup
+    public function getReplyMarkup(): InlineKeyboardMarkup|null
     {
         return $this->replyMarkup;
     }
 
-    public function getInputMessageContent(): ?InputMessageContent
+    public function getInputMessageContent(): InputMessageContent|null
     {
         return $this->inputMessageContent;
     }

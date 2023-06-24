@@ -37,33 +37,33 @@ final class InputMediaPhoto extends InputMedia
     /**
      * Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
      */
-    protected ?string $caption = null;
+    protected string|null $caption = null;
 
     /**
      * Optional. Mode for parsing entities in the photo caption. See formatting options for more details.
      *
      * @see https://core.telegram.org/bots/api#formatting-options
      */
-    protected ?string $parseMode = null;
+    protected string|null $parseMode = null;
 
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
      *
      * @var MessageEntity[]
      */
-    protected ?array $captionEntities = null;
+    protected array|null $captionEntities = null;
 
     /**
      * Optional. Pass True if the animation needs to be covered with a spoiler animation
      */
-    protected ?bool $hasSpoiler = null;
+    protected bool|null $hasSpoiler = null;
 
     public static function create(
         InputFile|string $media,
-        ?string $caption = null,
-        ?string $parseMode = null,
-        ?array $captionEntities = null,
-        ?bool $hasSpoiler = null,
+        string|null $caption = null,
+        string|null $parseMode = null,
+        array|null $captionEntities = null,
+        bool|null $hasSpoiler = null,
     ): self {
         $instance = new self();
         $instance->media = $media;

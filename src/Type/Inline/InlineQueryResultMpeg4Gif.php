@@ -55,69 +55,69 @@ final class InlineQueryResultMpeg4Gif extends InlineQueryResult
     /**
      * Optional. Video width
      */
-    protected ?int $mpeg4Width = null;
+    protected int|null $mpeg4Width = null;
 
     /**
      * Optional. Video height
      */
-    protected ?int $mpeg4Height = null;
+    protected int|null $mpeg4Height = null;
 
     /**
      * Optional. Video duration in seconds
      */
-    protected ?int $mpeg4Duration = null;
+    protected int|null $mpeg4Duration = null;
 
     /**
      * Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
      */
-    protected ?string $thumbnailMimeType = null;
+    protected string|null $thumbnailMimeType = null;
 
     /**
      * Optional. Title for the result
      */
-    protected ?string $title = null;
+    protected string|null $title = null;
 
     /**
      * Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing
      */
-    protected ?string $caption = null;
+    protected string|null $caption = null;
 
     /**
      * Optional. Mode for parsing entities in the caption. See formatting options for more details.
      */
-    protected ?string $parseMode = null;
+    protected string|null $parseMode = null;
 
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
      *
      * @var MessageEntity[]
      */
-    protected ?array $captionEntities = null;
+    protected array|null $captionEntities = null;
 
     /**
      * Optional. Inline keyboard attached to the message
      */
-    protected ?InlineKeyboardMarkup $replyMarkup = null;
+    protected InlineKeyboardMarkup|null $replyMarkup = null;
 
     /**
      * Optional. Content of the message to be sent instead of the video animation
      */
-    protected ?InputMessageContent $inputMessageContent = null;
+    protected InputMessageContent|null $inputMessageContent = null;
 
     public static function create(
         string $id,
         string $mpeg4Url,
         string $thumbnailUrl,
-        ?int $mpeg4Width = null,
-        ?int $mpeg4Height = null,
-        ?int $mpeg4Duration = null,
-        ?string $thumbnailMimeType = null,
-        ?string $title = null,
-        ?string $caption = null,
-        ?string $parseMode = null,
-        ?array $captionEntities = null,
-        ?InlineKeyboardMarkup $replyMarkup = null,
-        ?InputMessageContent $inputMessageContent = null,
+        int|null $mpeg4Width = null,
+        int|null $mpeg4Height = null,
+        int|null $mpeg4Duration = null,
+        string|null $thumbnailMimeType = null,
+        string|null $title = null,
+        string|null $caption = null,
+        string|null $parseMode = null,
+        array|null $captionEntities = null,
+        InlineKeyboardMarkup|null $replyMarkup = null,
+        InputMessageContent|null $inputMessageContent = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -157,37 +157,37 @@ final class InlineQueryResultMpeg4Gif extends InlineQueryResult
         return $this->thumbnailUrl;
     }
 
-    public function getMpeg4Width(): ?int
+    public function getMpeg4Width(): int|null
     {
         return $this->mpeg4Width;
     }
 
-    public function getMpeg4Height(): ?int
+    public function getMpeg4Height(): int|null
     {
         return $this->mpeg4Height;
     }
 
-    public function getMpeg4Duration(): ?int
+    public function getMpeg4Duration(): int|null
     {
         return $this->mpeg4Duration;
     }
 
-    public function getThumbnailMimeType(): ?string
+    public function getThumbnailMimeType(): string|null
     {
         return $this->thumbnailMimeType;
     }
 
-    public function getTitle(): ?string
+    public function getTitle(): string|null
     {
         return $this->title;
     }
 
-    public function getCaption(): ?string
+    public function getCaption(): string|null
     {
         return $this->caption;
     }
 
-    public function getParseMode(): ?string
+    public function getParseMode(): string|null
     {
         return $this->parseMode;
     }
@@ -195,17 +195,17 @@ final class InlineQueryResultMpeg4Gif extends InlineQueryResult
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): ?array
+    public function getCaptionEntities(): array|null
     {
         return $this->captionEntities;
     }
 
-    public function getReplyMarkup(): ?InlineKeyboardMarkup
+    public function getReplyMarkup(): InlineKeyboardMarkup|null
     {
         return $this->replyMarkup;
     }
 
-    public function getInputMessageContent(): ?InputMessageContent
+    public function getInputMessageContent(): InputMessageContent|null
     {
         return $this->inputMessageContent;
     }

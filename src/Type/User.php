@@ -50,42 +50,42 @@ final class User extends BaseType implements TypeInterface
     /**
      * Optional. User's or bot's last name
      */
-    protected ?string $lastName = null;
+    protected string|null $lastName = null;
 
     /**
      * Optional. User's or bot's username
      */
-    protected ?string $username = null;
+    protected string|null $username = null;
 
     /**
      * Optional. IETF language tag of the user's language
      */
-    protected ?string $languageCode = null;
+    protected string|null $languageCode = null;
 
     /**
      * Optional. True, if this user is a Telegram Premium user
      */
-    protected ?bool $isPremium = null;
+    protected bool|null $isPremium = null;
 
     /**
      * Optional. True, if this user added the bot to the attachment menu
      */
-    protected ?bool $addedToAttachmentMenu = null;
+    protected bool|null $addedToAttachmentMenu = null;
 
     /**
      * Optional. True, if the bot can be invited to groups. Returned only in getMe.
      */
-    protected ?bool $canJoinGroups = null;
+    protected bool|null $canJoinGroups = null;
 
     /**
      * Optional. True, if privacy mode is disabled for the bot. Returned only in getMe.
      */
-    protected ?bool $canReadAllGroupMessages = null;
+    protected bool|null $canReadAllGroupMessages = null;
 
     /**
      * Optional. True, if the bot supports inline queries. Returned only in getMe.
      */
-    protected ?bool $supportsInlineQueries = null;
+    protected bool|null $supportsInlineQueries = null;
 
     public function getId(): int
     {
@@ -102,42 +102,42 @@ final class User extends BaseType implements TypeInterface
         return $this->firstName;
     }
 
-    public function getLastName(): ?string
+    public function getLastName(): string|null
     {
         return $this->lastName;
     }
 
-    public function getUsername(): ?string
+    public function getUsername(): string|null
     {
         return $this->username;
     }
 
-    public function getLanguageCode(): ?string
+    public function getLanguageCode(): string|null
     {
         return $this->languageCode;
     }
 
-    public function isPremium(): ?bool
+    public function isPremium(): bool|null
     {
         return $this->isPremium;
     }
 
-    public function getAddedToAttachmentMenu(): ?bool
+    public function getAddedToAttachmentMenu(): bool|null
     {
         return $this->addedToAttachmentMenu;
     }
 
-    public function isCanJoinGroups(): ?bool
+    public function isCanJoinGroups(): bool|null
     {
         return $this->canJoinGroups;
     }
 
-    public function isCanReadAllGroupMessages(): ?bool
+    public function isCanReadAllGroupMessages(): bool|null
     {
         return $this->canReadAllGroupMessages;
     }
 
-    public function isSupportsInlineQueries(): ?bool
+    public function isSupportsInlineQueries(): bool|null
     {
         return $this->supportsInlineQueries;
     }

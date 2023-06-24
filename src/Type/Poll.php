@@ -87,29 +87,29 @@ final class Poll extends BaseType implements TypeInterface
      * Optional. 0-based identifier of the correct answer option. Available only for polls in the quiz mode,
      * which are closed, or was sent (not forwarded) by the bot or to the private chat with the bot.
      */
-    protected ?int $correctOptionId = null;
+    protected int|null $correctOptionId = null;
 
     /**
      * Optional. Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters
      */
-    protected ?string $explanation = null;
+    protected string|null $explanation = null;
 
     /**
      * Optional. Special entities like usernames, URLs, bot commands, etc. that appear in the explanation
      *
      * @var MessageEntity[]
      */
-    protected ?array $explanationEntities = null;
+    protected array|null $explanationEntities = null;
 
     /**
      * Optional. Amount of time in seconds the poll will be active after creation
      */
-    protected ?int $openPeriod = null;
+    protected int|null $openPeriod = null;
 
     /**
      * Optional. Point in time (Unix timestamp) when the poll will be automatically closed
      */
-    protected ?int $closeDate = null;
+    protected int|null $closeDate = null;
 
     public function getId(): string
     {
@@ -154,12 +154,12 @@ final class Poll extends BaseType implements TypeInterface
         return $this->allowsMultipleAnswers;
     }
 
-    public function getCorrectOptionId(): ?int
+    public function getCorrectOptionId(): int|null
     {
         return $this->correctOptionId;
     }
 
-    public function getExplanation(): ?string
+    public function getExplanation(): string|null
     {
         return $this->explanation;
     }
@@ -167,17 +167,17 @@ final class Poll extends BaseType implements TypeInterface
     /**
      * @return MessageEntity[]
      */
-    public function getExplanationEntities(): ?array
+    public function getExplanationEntities(): array|null
     {
         return $this->explanationEntities;
     }
 
-    public function getOpenPeriod(): ?int
+    public function getOpenPeriod(): int|null
     {
         return $this->openPeriod;
     }
 
-    public function getCloseDate(): ?int
+    public function getCloseDate(): int|null
     {
         return $this->closeDate;
     }

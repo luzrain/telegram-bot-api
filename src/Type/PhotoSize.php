@@ -51,7 +51,7 @@ final class PhotoSize extends BaseType implements TypeInterface
     /**
      * Optional. File size in bytes
      */
-    protected ?int $fileSize = null;
+    protected int|null $fileSize = null;
 
     public function getFileId(): string
     {
@@ -73,7 +73,7 @@ final class PhotoSize extends BaseType implements TypeInterface
         return $this->height;
     }
 
-    public function getFileSize(): ?int
+    public function getFileSize(): int|null
     {
         return $this->fileSize;
     }

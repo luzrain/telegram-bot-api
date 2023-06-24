@@ -34,88 +34,88 @@ final class ChatPermissions extends BaseType implements TypeInterface
     /**
      * Optional. True, if the user is allowed to send text messages, contacts, locations and venues
      */
-    protected ?bool $canSendMessages = null;
+    protected bool|null $canSendMessages = null;
 
     /**
      * Optional. True, if the user is allowed to send audios
      */
-    protected ?bool $canSendAudios = null;
+    protected bool|null $canSendAudios = null;
 
     /**
      * Optional. True, if the user is allowed to send documents
      */
-    protected ?bool $canSendDocuments = null;
+    protected bool|null $canSendDocuments = null;
 
     /**
      * Optional. True, if the user is allowed to send photos
      */
-    protected ?bool $canSendPhotos = null;
+    protected bool|null $canSendPhotos = null;
 
     /**
      * Optional. True, if the user is allowed to send videos
      */
-    protected ?bool $canSendVideos = null;
+    protected bool|null $canSendVideos = null;
 
     /**
      * Optional. True, if the user is allowed to send video notes
      */
-    protected ?bool $canSendVideoNotes = null;
+    protected bool|null $canSendVideoNotes = null;
 
     /**
      * Optional. True, if the user is allowed to send voice notes
      */
-    protected ?bool $canSendVoiceNotes = null;
+    protected bool|null $canSendVoiceNotes = null;
 
     /**
      * Optional. True, if the user is allowed to send polls, implies can_send_messages
      */
-    protected ?bool $canSendPolls = null;
+    protected bool|null $canSendPolls = null;
 
     /**
      * Optional. True, if the user is allowed to send animations, games, stickers and use inline bots, implies can_send_media_messages
      */
-    protected ?bool $canSendOtherMessages = null;
+    protected bool|null $canSendOtherMessages = null;
 
     /**
      * Optional. True, if the user is allowed to add web page previews to their messages, implies can_send_media_messages
      */
-    protected ?bool $canAddWebPagePreviews = null;
+    protected bool|null $canAddWebPagePreviews = null;
 
     /**
      * Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups
      */
-    protected ?bool $canChangeInfo = null;
+    protected bool|null $canChangeInfo = null;
 
     /**
      * Optional. True, if the user is allowed to invite new users to the chat
      */
-    protected ?bool $canInviteUsers = null;
+    protected bool|null $canInviteUsers = null;
 
     /**
      *Optional. True, if the user is allowed to pin messages. Ignored in public supergroups
      */
-    protected ?bool $canPinMessages = null;
+    protected bool|null $canPinMessages = null;
 
     /**
      * Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
      */
-    protected ?bool $canManageTopics = null;
+    protected bool|null $canManageTopics = null;
 
     public static function create(
-        ?bool $canSendMessages = null,
-        ?bool $canSendAudios = null,
-        ?bool $canSendDocuments = null,
-        ?bool $canSendPhotos = null,
-        ?bool $canSendVideos = null,
-        ?bool $canSendVideoNotes = null,
-        ?bool $canSendVoiceNotes = null,
-        ?bool $canSendPolls = null,
-        ?bool $canSendOtherMessages = null,
-        ?bool $canAddWebPagePreviews = null,
-        ?bool $canChangeInfo = null,
-        ?bool $canInviteUsers = null,
-        ?bool $canPinMessages = null,
-        ?bool $canManageTopics = null,
+        bool|null $canSendMessages = null,
+        bool|null $canSendAudios = null,
+        bool|null $canSendDocuments = null,
+        bool|null $canSendPhotos = null,
+        bool|null $canSendVideos = null,
+        bool|null $canSendVideoNotes = null,
+        bool|null $canSendVoiceNotes = null,
+        bool|null $canSendPolls = null,
+        bool|null $canSendOtherMessages = null,
+        bool|null $canAddWebPagePreviews = null,
+        bool|null $canChangeInfo = null,
+        bool|null $canInviteUsers = null,
+        bool|null $canPinMessages = null,
+        bool|null $canManageTopics = null,
     ): self {
         $instance = new self();
         $instance->canSendMessages = $canSendMessages;
@@ -136,72 +136,72 @@ final class ChatPermissions extends BaseType implements TypeInterface
         return $instance;
     }
 
-    public function isCanSendMessages(): ?bool
+    public function isCanSendMessages(): bool|null
     {
         return $this->canSendMessages;
     }
 
-    public function getCanSendAudios(): ?bool
+    public function getCanSendAudios(): bool|null
     {
         return $this->canSendAudios;
     }
 
-    public function getCanSendDocuments(): ?bool
+    public function getCanSendDocuments(): bool|null
     {
         return $this->canSendDocuments;
     }
 
-    public function getCanSendPhotos(): ?bool
+    public function getCanSendPhotos(): bool|null
     {
         return $this->canSendPhotos;
     }
 
-    public function getCanSendVideos(): ?bool
+    public function getCanSendVideos(): bool|null
     {
         return $this->canSendVideos;
     }
 
-    public function getCanSendVideoNotes(): ?bool
+    public function getCanSendVideoNotes(): bool|null
     {
         return $this->canSendVideoNotes;
     }
 
-    public function getCanSendVoiceNotes(): ?bool
+    public function getCanSendVoiceNotes(): bool|null
     {
         return $this->canSendVoiceNotes;
     }
 
-    public function isCanSendPolls(): ?bool
+    public function isCanSendPolls(): bool|null
     {
         return $this->canSendPolls;
     }
 
-    public function isCanSendOtherMessages(): ?bool
+    public function isCanSendOtherMessages(): bool|null
     {
         return $this->canSendOtherMessages;
     }
 
-    public function isCanAddWebPagePreviews(): ?bool
+    public function isCanAddWebPagePreviews(): bool|null
     {
         return $this->canAddWebPagePreviews;
     }
 
-    public function isCanChangeInfo(): ?bool
+    public function isCanChangeInfo(): bool|null
     {
         return $this->canChangeInfo;
     }
 
-    public function isCanInviteUsers(): ?bool
+    public function isCanInviteUsers(): bool|null
     {
         return $this->canInviteUsers;
     }
 
-    public function isCanPinMessages(): ?bool
+    public function isCanPinMessages(): bool|null
     {
         return $this->canPinMessages;
     }
 
-    public function getCanManageTopics(): ?bool
+    public function getCanManageTopics(): bool|null
     {
         return $this->canManageTopics;
     }

@@ -36,20 +36,20 @@ final class InputSticker extends BaseType
     /**
      * Optional. Position where the mask should be placed on faces. For “mask” stickers only.
      */
-    protected ?MaskPosition $maskPosition = null;
+    protected MaskPosition|null $maskPosition = null;
 
     /**
      * Optional. List of 0-20 search keywords for the sticker with total length of up to 64 characters. For “regular” and “custom_emoji” stickers only.
      *
      * @var string[]
      */
-    protected ?array $keywords = null;
+    protected array|null $keywords = null;
 
     public static function create(
         InputFile|string $sticker,
         array $emojiList,
-        ?MaskPosition $maskPosition = null,
-        ?array $keywords = null,
+        MaskPosition|null $maskPosition = null,
+        array|null $keywords = null,
     ): self {
         $instance = new self();
         $instance->sticker = $sticker;

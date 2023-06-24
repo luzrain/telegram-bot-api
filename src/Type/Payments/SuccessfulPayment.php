@@ -50,12 +50,12 @@ final class SuccessfulPayment extends BaseType implements TypeInterface
     /**
      * Optional. Identifier of the shipping option chosen by the user
      */
-    protected ?string $shippingOptionId = null;
+    protected string|null $shippingOptionId = null;
 
     /**
      * Optional. Order info provided by the user
      */
-    protected ?OrderInfo $orderInfo = null;
+    protected OrderInfo|null $orderInfo = null;
 
     /**
      * Telegram payment identifier
@@ -82,22 +82,22 @@ final class SuccessfulPayment extends BaseType implements TypeInterface
         return $this->invoicePayload;
     }
 
-    public function getShippingOptionId(): ?string
+    public function getShippingOptionId(): string|null
     {
         return $this->shippingOptionId;
     }
 
-    public function getOrderInfo(): ?OrderInfo
+    public function getOrderInfo(): OrderInfo|null
     {
         return $this->orderInfo;
     }
 
-    public function getTelegramPaymentChargeId(): ?string
+    public function getTelegramPaymentChargeId(): string|null
     {
         return $this->telegramPaymentChargeId;
     }
 
-    public function getProviderPaymentChargeId(): ?string
+    public function getProviderPaymentChargeId(): string|null
     {
         return $this->providerPaymentChargeId;
     }

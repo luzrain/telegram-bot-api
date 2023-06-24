@@ -58,12 +58,12 @@ final class ChatMemberUpdated extends BaseType implements TypeInterface
     /**
      * Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only.
      */
-    protected ?ChatInviteLink $inviteLink = null;
+    protected ChatInviteLink|null $inviteLink = null;
 
     /**
      * Optional. True, if the user joined the chat via a chat folder invite link
      */
-    protected ?bool $viaChatFolderInviteLink = null;
+    protected bool|null $viaChatFolderInviteLink = null;
 
     public function getChat(): Chat
     {
@@ -90,12 +90,12 @@ final class ChatMemberUpdated extends BaseType implements TypeInterface
         return $this->newChatMember;
     }
 
-    public function getInviteLink(): ?ChatInviteLink
+    public function getInviteLink(): ChatInviteLink|null
     {
         return $this->inviteLink;
     }
 
-    public function getViaChatFolderInviteLink(): ?bool
+    public function getViaChatFolderInviteLink(): bool|null
     {
         return $this->viaChatFolderInviteLink;
     }

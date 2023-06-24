@@ -82,43 +82,43 @@ final class Sticker extends BaseType implements TypeInterface
     /**
      * Optional. Sticker thumbnail in the .WEBP or .JPG format
      */
-    protected ?PhotoSize $thumbnail = null;
+    protected PhotoSize|null $thumbnail = null;
 
     /**
      * Optional. Emoji associated with the sticker
      */
-    protected ?string $emoji = null;
+    protected string|null $emoji = null;
 
     /**
      * Optional. Name of the sticker set to which the sticker belongs
      */
-    protected ?string $setName = null;
+    protected string|null $setName = null;
 
     /**
      * Optional. For premium regular stickers, premium animation for the sticker
      */
-    protected ?File $premiumAnimation = null;
+    protected File|null $premiumAnimation = null;
 
     /**
      * Optional. For mask stickers, the position where the mask should be placed
      */
-    protected ?MaskPosition $maskPosition = null;
+    protected MaskPosition|null $maskPosition = null;
 
     /**
      * Optional. For custom emoji stickers, unique identifier of the custom emoji
      */
-    protected ?string $customEmojiId = null;
+    protected string|null $customEmojiId = null;
 
     /**
      * Optional. True, if the sticker must be repainted to a text color in messages,
      * the color of the Telegram Premium badge in emoji status, white color on chat photos, or another appropriate color in other places
      */
-    protected ?bool $needsRepainting = null;
+    protected bool|null $needsRepainting = null;
 
     /**
      * Optional. File size in bytes
      */
-    protected ?int $fileSize = null;
+    protected int|null $fileSize = null;
 
     public function getFileId(): string
     {
@@ -155,42 +155,42 @@ final class Sticker extends BaseType implements TypeInterface
         return $this->isVideo;
     }
 
-    public function getThumbnail(): ?PhotoSize
+    public function getThumbnail(): PhotoSize|null
     {
         return $this->thumbnail;
     }
 
-    public function getEmoji(): ?string
+    public function getEmoji(): string|null
     {
         return $this->emoji;
     }
 
-    public function getSetName(): ?string
+    public function getSetName(): string|null
     {
         return $this->setName;
     }
 
-    public function getPremiumAnimation(): ?File
+    public function getPremiumAnimation(): File|null
     {
         return $this->premiumAnimation;
     }
 
-    public function getMaskPosition(): ?MaskPosition
+    public function getMaskPosition(): MaskPosition|null
     {
         return $this->maskPosition;
     }
 
-    public function getCustomEmojiId(): ?string
+    public function getCustomEmojiId(): string|null
     {
         return $this->customEmojiId;
     }
 
-    public function getNeedsRepainting(): ?bool
+    public function getNeedsRepainting(): bool|null
     {
         return $this->needsRepainting;
     }
 
-    public function fileSize(): ?int
+    public function fileSize(): int|null
     {
         return $this->fileSize;
     }

@@ -34,9 +34,9 @@ final class ReplyKeyboardRemove extends BaseType implements TypeInterface
      * 1) users that are @mentioned in the text of the Message object;
      * 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.
      */
-    protected ?bool $selective = null;
+    protected bool|null $selective = null;
 
-    public static function create(?bool $selective = null): self
+    public static function create(bool|null $selective = null): self
     {
         $instance = new self();
         $instance->removeKeyboard = true;
@@ -50,7 +50,7 @@ final class ReplyKeyboardRemove extends BaseType implements TypeInterface
         return $this->removeKeyboard;
     }
 
-    public function isSelective(): ?bool
+    public function isSelective(): bool|null
     {
         return $this->selective;
     }

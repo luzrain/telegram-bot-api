@@ -48,35 +48,35 @@ final class InputMediaDocument extends InputMedia
     /**
      * Optional. Caption of the document to be sent, 0-1024 characters after entities parsing
      */
-    protected ?string $caption = null;
+    protected string|null $caption = null;
 
     /**
      * Optional. Mode for parsing entities in the document caption. See formatting options for more details.
      *
      * @see https://core.telegram.org/bots/api#formatting-options
      */
-    protected ?string $parseMode = null;
+    protected string|null $parseMode = null;
 
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
      *
      * @var MessageEntity[]
      */
-    protected ?array $captionEntities = null;
+    protected array|null $captionEntities = null;
 
     /**
      * Optional. Disables automatic server-side content type detection for files uploaded using multipart/form-data.
      * Always True, if the document is sent as part of an album.
      */
-    protected ?bool $disableContentTypeDetection = null;
+    protected bool|null $disableContentTypeDetection = null;
 
     public static function create(
         InputFile|string $media,
         InputFile|string|null $thumbnail = null,
-        ?string $caption = null,
-        ?string $parseMode = null,
-        ?array $captionEntities = null,
-        ?bool $disableContentTypeDetection = null,
+        string|null $caption = null,
+        string|null $parseMode = null,
+        array|null $captionEntities = null,
+        bool|null $disableContentTypeDetection = null,
     ): self {
         $instance = new self();
         $instance->media = $media;

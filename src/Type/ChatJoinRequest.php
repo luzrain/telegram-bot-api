@@ -44,7 +44,7 @@ final class ChatJoinRequest extends BaseType implements TypeInterface
      * The bot can use this identifier for 24 hours to send messages until the join request is processed,
      * assuming no other administratorcontacted the user.
      */
-    protected ?int $userChatId = null;
+    protected int|null $userChatId = null;
 
     /**
      * Date the request was sent in Unix time
@@ -54,12 +54,12 @@ final class ChatJoinRequest extends BaseType implements TypeInterface
     /**
      * Optional. Bio of the user.
      */
-    protected ?string $bio = null;
+    protected string|null $bio = null;
 
     /**
      * Optional. Chat invite link that was used by the user to send the join request
      */
-    protected ?ChatInviteLink $inviteLink = null;
+    protected ChatInviteLink|null $inviteLink = null;
 
     public function getChat(): Chat
     {
@@ -71,7 +71,7 @@ final class ChatJoinRequest extends BaseType implements TypeInterface
         return $this->from;
     }
 
-    public function getUserChatId(): ?int
+    public function getUserChatId(): int|null
     {
         return $this->userChatId;
     }
@@ -81,12 +81,12 @@ final class ChatJoinRequest extends BaseType implements TypeInterface
         return $this->date;
     }
 
-    public function getBio(): ?string
+    public function getBio(): string|null
     {
         return $this->bio;
     }
 
-    public function getInviteLink(): ?ChatInviteLink
+    public function getInviteLink(): ChatInviteLink|null
     {
         return $this->inviteLink;
     }

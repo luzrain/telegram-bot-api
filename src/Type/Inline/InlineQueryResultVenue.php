@@ -63,49 +63,49 @@ final class InlineQueryResultVenue extends InlineQueryResult
     /**
      * Optional. Foursquare identifier of the venue if known
      */
-    protected ?string $foursquareId = null;
+    protected string|null $foursquareId = null;
 
     /**
      * Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
      */
-    protected ?string $foursquareType = null;
+    protected string|null $foursquareType = null;
 
     /**
      * Optional. Google Places identifier of the venue
      */
-    protected ?string $googlePlaceId = null;
+    protected string|null $googlePlaceId = null;
 
     /**
      * Optional. Google Places type of the venue. (See supported types.)
      *
      * @see https://developers.google.com/places/web-service/supported_types
      */
-    protected ?string $googlePlaceType = null;
+    protected string|null $googlePlaceType = null;
 
     /**
      * Optional. Inline keyboard attached to the message
      */
-    protected ?InlineKeyboardMarkup $replyMarkup = null;
+    protected InlineKeyboardMarkup|null $replyMarkup = null;
 
     /**
      * Optional. Content of the message to be sent instead of the venue
      */
-    protected ?InputMessageContent $inputMessageContent = null;
+    protected InputMessageContent|null $inputMessageContent = null;
 
     /**
      * Optional. Url of the thumbnail for the result
      */
-    protected ?string $thumbnailUrl = null;
+    protected string|null $thumbnailUrl = null;
 
     /**
      * Optional. Thumbnail width
      */
-    protected ?int $thumbnailWidth = null;
+    protected int|null $thumbnailWidth = null;
 
     /**
      * Optional. Thumbnail height
      */
-    protected ?int $thumbnailHeight = null;
+    protected int|null $thumbnailHeight = null;
 
     public static function create(
         string $id,
@@ -113,15 +113,15 @@ final class InlineQueryResultVenue extends InlineQueryResult
         float $longitude,
         string $title,
         string $address,
-        ?string $foursquareId = null,
-        ?string $foursquareType = null,
-        ?string $googlePlaceId = null,
-        ?string $googlePlaceType = null,
-        ?InlineKeyboardMarkup $replyMarkup = null,
-        ?InputMessageContent $inputMessageContent = null,
-        ?string $thumbnailUrl = null,
-        ?int $thumbnailWidth = null,
-        ?int $thumbnailHeight = null,
+        string|null $foursquareId = null,
+        string|null $foursquareType = null,
+        string|null $googlePlaceId = null,
+        string|null $googlePlaceType = null,
+        InlineKeyboardMarkup|null $replyMarkup = null,
+        InputMessageContent|null $inputMessageContent = null,
+        string|null $thumbnailUrl = null,
+        int|null $thumbnailWidth = null,
+        int|null $thumbnailHeight = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -172,47 +172,47 @@ final class InlineQueryResultVenue extends InlineQueryResult
         return $this->address;
     }
 
-    public function getFoursquareId(): ?string
+    public function getFoursquareId(): string|null
     {
         return $this->foursquareId;
     }
 
-    public function getFoursquareType(): ?string
+    public function getFoursquareType(): string|null
     {
         return $this->foursquareType;
     }
 
-    public function getGooglePlaceId(): ?string
+    public function getGooglePlaceId(): string|null
     {
         return $this->googlePlaceId;
     }
 
-    public function getGooglePlaceType(): ?string
+    public function getGooglePlaceType(): string|null
     {
         return $this->googlePlaceType;
     }
 
-    public function getReplyMarkup(): ?InlineKeyboardMarkup
+    public function getReplyMarkup(): InlineKeyboardMarkup|null
     {
         return $this->replyMarkup;
     }
 
-    public function getInputMessageContent(): ?InputMessageContent
+    public function getInputMessageContent(): InputMessageContent|null
     {
         return $this->inputMessageContent;
     }
 
-    public function getThumbnailUrl(): ?string
+    public function getThumbnailUrl(): string|null
     {
         return $this->thumbnailUrl;
     }
 
-    public function getThumbnailWidth(): ?int
+    public function getThumbnailWidth(): int|null
     {
         return $this->thumbnailWidth;
     }
 
-    public function getThumbnailHeight(): ?int
+    public function getThumbnailHeight(): int|null
     {
         return $this->thumbnailHeight;
     }

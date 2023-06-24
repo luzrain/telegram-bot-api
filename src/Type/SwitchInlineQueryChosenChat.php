@@ -64,7 +64,7 @@ final class SwitchInlineQueryChosenChat extends BaseType implements TypeInterfac
         return $instance;
     }
 
-    public function getQuery(): ?string
+    public function getQuery(): string|null
     {
         return $this->query;
     }

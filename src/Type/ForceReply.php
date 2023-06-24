@@ -32,18 +32,18 @@ final class ForceReply extends BaseType implements TypeInterface
     /**
      * Optional. The placeholder to be shown in the input field when the reply is active; 1-64 characters
      */
-    protected ?string $inputFieldPlaceholder = null;
+    protected string|null $inputFieldPlaceholder = null;
 
     /**
      * Optional. Use this parameter if you want to force reply from specific users only. Targets:
      * 1) users that are @mentioned in the text of the Message object;
      * 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.
      */
-    protected ?bool $selective = null;
+    protected bool|null $selective = null;
 
     public static function create(
-        ?string $inputFieldPlaceholder = null,
-        ?bool $selective = null,
+        string|null $inputFieldPlaceholder = null,
+        bool|null $selective = null,
     ): self {
         $instance = new self();
         $instance->forceReply = true;
@@ -58,12 +58,12 @@ final class ForceReply extends BaseType implements TypeInterface
         return $this->forceReply;
     }
 
-    public function getInputFieldPlaceholder(): ?string
+    public function getInputFieldPlaceholder(): string|null
     {
         return $this->inputFieldPlaceholder;
     }
 
-    public function isSelective(): ?bool
+    public function isSelective(): bool|null
     {
         return $this->selective;
     }

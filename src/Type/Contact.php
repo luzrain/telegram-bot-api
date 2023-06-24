@@ -43,12 +43,12 @@ final class Contact extends BaseType implements TypeInterface
     /**
      * Optional. Contact's user identifier in Telegram
      */
-    protected ?int $userId = null;
+    protected int|null $userId = null;
 
     /**
      * Optional. Additional data about the contact in the form of a vCard
      */
-    protected ?string $vcard = null;
+    protected string|null $vcard = null;
 
     public function getPhoneNumber(): string
     {
@@ -60,17 +60,17 @@ final class Contact extends BaseType implements TypeInterface
         return $this->firstName;
     }
 
-    public function getLastName(): ?string
+    public function getLastName(): string|null
     {
         return $this->lastName;
     }
 
-    public function getUserId(): ?int
+    public function getUserId(): int|null
     {
         return $this->userId;
     }
 
-    public function getVcard(): ?string
+    public function getVcard(): string|null
     {
         return $this->vcard;
     }

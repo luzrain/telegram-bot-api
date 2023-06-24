@@ -49,32 +49,32 @@ final class Audio extends BaseType implements TypeInterface
     /**
      * Optional. Performer of the audio as defined by sender or by audio tags
      */
-    protected ?string $performer = null;
+    protected string|null $performer = null;
 
     /**
      * Optional. Title of the audio as defined by sender or by audio tags
      */
-    protected ?string $title = null;
+    protected string|null $title = null;
 
     /**
      * Optional. Original filename as defined by sender
      */
-    protected ?string $fileName = null;
+    protected string|null $fileName = null;
 
     /**
      * Optional. MIME type of the file as defined by sender
      */
-    protected ?string $mimeType = null;
+    protected string|null $mimeType = null;
 
     /**
      * Optional. File size in bytes
      */
-    protected ?int $fileSize = null;
+    protected int|null $fileSize = null;
 
     /**
      * Optional. Thumbnail of the album cover to which the music file belongs
      */
-    protected ?PhotoSize $thumbnail = null;
+    protected PhotoSize|null $thumbnail = null;
 
     public function getFileId(): string
     {
@@ -91,32 +91,32 @@ final class Audio extends BaseType implements TypeInterface
         return $this->duration;
     }
 
-    public function getPerformer(): ?string
+    public function getPerformer(): string|null
     {
         return $this->performer;
     }
 
-    public function getTitle(): ?string
+    public function getTitle(): string|null
     {
         return $this->title;
     }
 
-    public function getFileName(): ?string
+    public function getFileName(): string|null
     {
         return $this->fileName;
     }
 
-    public function getMimeType(): ?string
+    public function getMimeType(): string|null
     {
         return $this->mimeType;
     }
 
-    public function getFileSize(): ?int
+    public function getFileSize(): int|null
     {
         return $this->fileSize;
     }
 
-    public function getThumbnail(): ?PhotoSize
+    public function getThumbnail(): PhotoSize|null
     {
         return $this->thumbnail;
     }

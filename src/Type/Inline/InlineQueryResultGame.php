@@ -36,12 +36,12 @@ final class InlineQueryResultGame extends InlineQueryResult
     /**
      * Optional. Inline keyboard attached to the message
      */
-    protected ?InlineKeyboardMarkup $replyMarkup = null;
+    protected InlineKeyboardMarkup|null $replyMarkup = null;
 
     public static function create(
         string $id,
         string $gameShortName,
-        ?InlineKeyboardMarkup $replyMarkup = null,
+        InlineKeyboardMarkup|null $replyMarkup = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -66,7 +66,7 @@ final class InlineQueryResultGame extends InlineQueryResult
         return $this->gameShortName;
     }
 
-    public function getReplyMarkup(): ?InlineKeyboardMarkup
+    public function getReplyMarkup(): InlineKeyboardMarkup|null
     {
         return $this->replyMarkup;
     }

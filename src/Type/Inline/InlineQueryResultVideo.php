@@ -66,50 +66,50 @@ final class InlineQueryResultVideo extends InlineQueryResult
     /**
      * Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
      */
-    protected ?string $caption = null;
+    protected string|null $caption = null;
 
     /**
      * Optional. Mode for parsing entities in the video caption. See formatting options for more details.
      */
-    protected ?string $parseMode = null;
+    protected string|null $parseMode = null;
 
     /**
      * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
      *
      * @var MessageEntity[]
      */
-    protected ?array $captionEntities = null;
+    protected array|null $captionEntities = null;
 
     /**
      * Optional. Video width
      */
-    protected ?int $videoWidth = null;
+    protected int|null $videoWidth = null;
 
     /**
      * Optional. Video height
      */
-    protected ?int $videoHeight = null;
+    protected int|null $videoHeight = null;
 
     /**
      * Optional. Video duration in seconds
      */
-    protected ?int $videoDuration = null;
+    protected int|null $videoDuration = null;
 
     /**
      * Optional. Short description of the result
      */
-    protected ?string $description = null;
+    protected string|null $description = null;
 
     /**
      * Optional. Inline keyboard attached to the message
      */
-    protected ?InlineKeyboardMarkup $replyMarkup = null;
+    protected InlineKeyboardMarkup|null $replyMarkup = null;
 
     /**
      * Optional. Content of the message to be sent instead of the video.
      * This field is required if InlineQueryResultVideo is used to send an HTML-page as a result (e.g., a YouTube video).
      */
-    protected ?InputMessageContent $inputMessageContent = null;
+    protected InputMessageContent|null $inputMessageContent = null;
 
     public static function create(
         string $id,
@@ -117,15 +117,15 @@ final class InlineQueryResultVideo extends InlineQueryResult
         string $mimeType,
         string $thumbUrl,
         string $title,
-        ?string $caption = null,
-        ?string $parseMode = null,
-        ?array $captionEntities = null,
-        ?int $videoWidth = null,
-        ?int $videoHeight = null,
-        ?int $videoDuration = null,
-        ?string $description = null,
-        ?InlineKeyboardMarkup $replyMarkup = null,
-        ?InputMessageContent $inputMessageContent = null,
+        string|null $caption = null,
+        string|null $parseMode = null,
+        array|null $captionEntities = null,
+        int|null $videoWidth = null,
+        int|null $videoHeight = null,
+        int|null $videoDuration = null,
+        string|null $description = null,
+        InlineKeyboardMarkup|null $replyMarkup = null,
+        InputMessageContent|null $inputMessageContent = null,
     ): self {
         $instance = new self();
         $instance->id = $id;
@@ -176,12 +176,12 @@ final class InlineQueryResultVideo extends InlineQueryResult
         return $this->title;
     }
 
-    public function getCaption(): ?string
+    public function getCaption(): string|null
     {
         return $this->caption;
     }
 
-    public function getParseMode(): ?string
+    public function getParseMode(): string|null
     {
         return $this->parseMode;
     }
@@ -189,37 +189,37 @@ final class InlineQueryResultVideo extends InlineQueryResult
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): ?array
+    public function getCaptionEntities(): array|null
     {
         return $this->captionEntities;
     }
 
-    public function getVideoWidth(): ?int
+    public function getVideoWidth(): int|null
     {
         return $this->videoWidth;
     }
 
-    public function getVideoHeight(): ?int
+    public function getVideoHeight(): int|null
     {
         return $this->videoHeight;
     }
 
-    public function getVideoDuration(): ?int
+    public function getVideoDuration(): int|null
     {
         return $this->videoDuration;
     }
 
-    public function getDescription(): ?string
+    public function getDescription(): string|null
     {
         return $this->description;
     }
 
-    public function getReplyMarkup(): ?InlineKeyboardMarkup
+    public function getReplyMarkup(): InlineKeyboardMarkup|null
     {
         return $this->replyMarkup;
     }
 
-    public function getInputMessageContent(): ?InputMessageContent
+    public function getInputMessageContent(): InputMessageContent|null
     {
         return $this->inputMessageContent;
     }
