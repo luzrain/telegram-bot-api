@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\BaseMethod;
-use Luzrain\TelegramBotApi\Type\File;
 use Luzrain\TelegramBotApi\Type\InputSticker;
 
 /**
