@@ -1,26 +1,26 @@
 {
-    "update_id": 264807557,
-    "poll": {
-        "id": "5188410146715337040",
-        "question": "test question",
-        "options": [
-            {
-                "text": "test1",
-                "voter_count": 1
-            },
-            {
-                "text": "test2",
-                "voter_count": 0
-            },
-            {
-                "text": "test3",
-                "voter_count": 0
-            }
-        ],
-        "total_voter_count": 1,
-        "is_closed": false,
-        "is_anonymous": false,
-        "type": "regular",
-        "allows_multiple_answers": false
-    }
+  "update_id":264807557,
+  "poll":{
+    "id":"5188410146715337040",
+    "question":"test question",
+    "options":[
+      {
+        "text":"test1",
+        "voter_count":1
+      },
+      {
+        "text":"test2",
+        "voter_count":0
+      },
+      {
+        "text":"test3",
+        "voter_count":0
+      }
+    ],
+    "total_voter_count":1,
+    "is_closed":false,
+    "is_anonymous":false,
+    "type":"regular",
+    "allows_multiple_answers":false
+  }
 }
