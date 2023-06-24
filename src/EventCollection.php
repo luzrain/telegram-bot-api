@@ -9,22 +9,18 @@ use Luzrain\TelegramBotApi\Type\Update;
 final class EventCollection
 {
     /**
-     * @var Event[] Array of events.
+     * @var list<Event> list of events.
      */
     protected array $events = [];
 
-    public function add(Event $event): self
+    public function add(Event $event): void
     {
         $this->events[] = $event;
-
-        return $this;
     }
 
-    public function reset(): self
+    public function reset(): void
     {
         $this->events = [];
-
-        return $this;
     }
 
     public function handle(Update $update): mixed

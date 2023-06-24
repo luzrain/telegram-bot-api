@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\RequestOptions;
-use Luzrain\TelegramBotApi\Exception\TelegramBotApiException;
+use Luzrain\TelegramBotApi\Exception\TelegramApiException;
 use Luzrain\TelegramBotApi\Method\GetFile;
 use Luzrain\TelegramBotApi\Method\SendMediaGroup;
 use Luzrain\TelegramBotApi\Type\File;
@@ -23,8 +23,6 @@ use Luzrain\TelegramBotApi\Type\ResponseParameters;
  */
 final class BotApi
 {
-    use Methods;
-
     private const URL_API_ENDPOINT = 'https://api.telegram.org/bot%s/%s';
     private const URL_FILE_ENDPOINT = 'https://api.telegram.org/file/bot%s/%s';
 
@@ -40,7 +38,9 @@ final class BotApi
     /**
      * Execute telergam method
      *
-     * @throws TelegramBotApiException
+     * @template T
+     * @psalm-param BaseMethod<T> $method
+     * @psalm-return T
      */
     public function call(BaseMethod $method): BaseType|array|string|int|bool
     {
@@ -49,17 +49,18 @@ final class BotApi
         $multiparts = [];
         $files = [];
 
-        foreach ($method->getRequest() as $name => $data) {
-            if ($data instanceof InputFile) {
-                $files[] = $data;
-                $contents = $data->getAttachPath();
+        foreach ($method->iterateRequestProps() as $name => $result) {
+            if ($result instanceof InputFile) {
+                $files[] = $result;
+                $contents = $result->getAttachPath();
             } else {
-                $contents = is_scalar($data) ? $data : json_encode($data);
+                $contents = is_scalar($result) ? $result : json_encode($result);
             }
 
+            /** @psalm-suppress TypeDoesNotContainType */
             if ($method instanceof SendMediaGroup && $name === 'media') {
-                /** @var list<InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo> $data */
-                foreach ($data as $inputMedia) {
+                /** @var list<InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo> $result */
+                foreach ($result as $inputMedia) {
                     $mediaFile = $inputMedia->getMedia();
                     if ($mediaFile instanceof InputFile) {
                         $files[] = $mediaFile;
@@ -96,10 +97,20 @@ final class BotApi
 
         if ($response['ok'] === false) {
             $parameters = isset($response['parameters']) ? ResponseParameters::fromResponse($response['parameters']) : null;
-            throw new TelegramBotApiException($response['description'], $response['error_code'], $exception ?? null, $parameters);
+            throw new TelegramApiException($response['description'], $response['error_code'], $exception ?? null, $parameters);
         }
 
-        return $method->createResponse($response['result']);
+        $result = $response['result'];
+
+        if (!is_array($result)) {
+            return $result;
+        }
+
+        /** @var class-string<BaseType> $responseClass */
+        $responseClass = $method->getResponseClass();
+
+        /** @psalm-suppress InvalidReturnStatement */
+        return $responseClass::fromResponse($result);
     }
 
     /**
@@ -107,7 +118,7 @@ final class BotApi
      *
      * @param File|string $file File object or string with fileId
      * @return string path to saved file on filesystem
-     * @throws TelegramBotApiException
+     * @throws TelegramApiException
      */
     public function downloadFile(File|string $file): string
     {
@@ -115,10 +126,6 @@ final class BotApi
             $file = $this->call(new GetFile($file));
         }
 
-        /**
-         * @TODO remove it
-         */
-        /** @var File $file */
         $fileUrl = sprintf(self::URL_FILE_ENDPOINT, $this->token, $file->getFilePath());
         $fileExtension = pathinfo($file->getFilePath(), PATHINFO_EXTENSION);
         $downloadFilePath = sys_get_temp_dir() . '/' . uniqid('tgfile_', true) . '.' . $fileExtension;
@@ -132,14 +139,9 @@ final class BotApi
             }
 
             $response = json_decode((string) $exception->getResponse()->getBody(), true);
-            throw new TelegramBotApiException($response['description'], $response['error_code'], $exception);
+            throw new TelegramApiException($response['description'], $response['error_code'], $exception);
         }
 
         return $downloadFilePath;
-    }
-
-    public function __call(string $methodName, array $arguments): BaseType|array|string|int|bool
-    {
-        return $this->call($this->getMethodObject($methodName, $arguments));
     }
 }

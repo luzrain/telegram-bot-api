@@ -10,12 +10,9 @@ use Luzrain\TelegramBotApi\Type\Update;
 
 final class Command extends Event
 {
-    private string $command;
-
-    public function __construct(string $command, \Closure $action)
+    public function __construct(private readonly string $command, \Closure $action)
     {
         parent::__construct($action);
-        $this->command = $command;
     }
 
     public function executeChecker(Update $update): bool
