@@ -8,7 +8,10 @@ use Luzrain\TelegramBotApi\BaseMethod;
 use Luzrain\TelegramBotApi\Type\ChatMember;
 
 /**
- * Use this method to get information about a member of a chat. Returns a ChatMember object on success.
+ * Use this method to get information about a member of a chat.
+ * Returns a ChatMember object on success.
+ *
+ * @extends BaseMethod<ChatMember>
  */
 final class GetChatMember extends BaseMethod
 {
@@ -16,7 +19,6 @@ final class GetChatMember extends BaseMethod
     protected static string $responseClass = ChatMember::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
          */

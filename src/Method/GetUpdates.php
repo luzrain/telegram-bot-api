@@ -6,9 +6,13 @@ namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\BaseMethod;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfUpdates;
+use Luzrain\TelegramBotApi\Type\Update;
 
 /**
- * Use this method to receive incoming updates using long polling (wiki). An Array of Update objects is returned.
+ * Use this method to receive incoming updates using long polling (wiki).
+ * An Array of Update objects is returned.
+ *
+ * @extends BaseMethod<list<Update>>
  */
 final class GetUpdates extends BaseMethod
 {
@@ -16,7 +20,6 @@ final class GetUpdates extends BaseMethod
     protected static string $responseClass = ArrayOfUpdates::class;
 
     public function __construct(
-
         /**
          * Identifier of the first update to be returned. Must be greater by one than the highest among the identifiers of
          * previously received updates. By default, updates starting with the earliest unconfirmed update are returned.

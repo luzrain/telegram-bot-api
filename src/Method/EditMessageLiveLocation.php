@@ -12,6 +12,9 @@ use Luzrain\TelegramBotApi\Type\Message;
  * Use this method to edit live location messages. A location can be edited until its live_period expires or editing
  * is explicitly disabled by a call to stopMessageLiveLocation.
  * On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+ *
+ * @todo: Check return type in real case
+ * @extends BaseMethod<Message>
  */
 final class EditMessageLiveLocation extends BaseMethod
 {
@@ -19,7 +22,6 @@ final class EditMessageLiveLocation extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
         /**
          * Latitude of new location
          */

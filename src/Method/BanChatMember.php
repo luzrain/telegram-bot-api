@@ -11,13 +11,14 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * In the case of supergroups and channels, the user will not be able to return to the chat on their own using invitelinks, etc., unless unbanned first.
  * The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights.
  * Returns True on success.
+ *
+ * @extends BaseMethod<true>
  */
 final class BanChatMember extends BaseMethod
 {
     protected static string $methodName = 'banChatMember';
 
     public function __construct(
-
         /**
          * Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername)
          */

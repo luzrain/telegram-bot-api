@@ -11,13 +11,14 @@ use Luzrain\TelegramBotApi\Type\InputFile;
  * Use this method to set a new profile photo for the chat. Photos can't be changed for private chats.
  * The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights.
  * Returns True on success.
+ *
+ * @extends BaseMethod<true>
  */
 final class SetChatPhoto extends BaseMethod
 {
     protected static string $methodName = 'setChatPhoto';
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

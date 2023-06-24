@@ -9,14 +9,16 @@ use Luzrain\TelegramBotApi\BaseMethod;
 /**
  * Use this method to edit name and icon of a topic in a forum supergroup chat.
  * The bot must be an administrator in the chat for this to work and must have can_manage_topics administrator rights,
- * unless it is the creator of the topic. Returns True on success.
+ * unless it is the creator of the topic.
+ * Returns True on success.
+ *
+ * @extends BaseMethod<true>
  */
 final class EditForumTopic extends BaseMethod
 {
     protected static string $methodName = 'editForumTopic';
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
          */

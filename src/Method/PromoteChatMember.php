@@ -9,14 +9,16 @@ use Luzrain\TelegramBotApi\BaseMethod;
 /**
  * Use this method to promote or demote a user in a supergroup or a channel.
  * The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights.
- * Pass False for all boolean parameters to demote a user. Returns True on success.
+ * Pass False for all boolean parameters to demote a user.
+ * Returns True on success.
+ *
+ * @extends BaseMethod<true>
  */
 final class PromoteChatMember extends BaseMethod
 {
     protected static string $methodName = 'promoteChatMember';
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

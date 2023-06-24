@@ -9,13 +9,14 @@ use Luzrain\TelegramBotApi\BaseMethod;
 /**
  * Use this method to set the title of a created sticker set.
  * Returns True on success.
+ *
+ * @extends BaseMethod<true>
  */
 final class SetStickerSetTitle extends BaseMethod
 {
     protected static string $methodName = 'setStickerSetTitle';
 
     public function __construct(
-
         /**
          * Sticker set name
          */

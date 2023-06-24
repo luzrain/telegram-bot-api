@@ -6,10 +6,13 @@ namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\BaseMethod;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfGameHighScore;
+use Luzrain\TelegramBotApi\Type\Games\GameHighScore;
 
 /**
  * Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game.
  * On success, returns an Array of GameHighScore objects.
+ *
+ * @extends BaseMethod<list<GameHighScore>>
  */
 final class GetGameHighScores extends BaseMethod
 {
@@ -17,7 +20,6 @@ final class GetGameHighScores extends BaseMethod
     protected static string $responseClass = ArrayOfGameHighScore::class;
 
     public function __construct(
-
         /**
          * User identifier
          */

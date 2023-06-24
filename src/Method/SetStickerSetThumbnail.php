@@ -11,13 +11,14 @@ use Luzrain\TelegramBotApi\Type\InputFile;
  * Use this method to set the thumbnail of a regular or mask sticker set.
  * The format of the thumbnail file must match the format of the stickers in the set.
  * Returns True on success.
+ *
+ * @extends BaseMethod<true>
  */
 final class SetStickerSetThumbnail extends BaseMethod
 {
     protected static string $methodName = 'setStickerSetThumbnail';
 
     public function __construct(
-
         /**
          * Sticker set name
          */

@@ -14,6 +14,8 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 
 /**
  * Use this method to send a native poll. On success, the sent Message is returned.
+ *
+ * @extends BaseMethod<Message>
  */
 final class SendPoll extends BaseMethod
 {
@@ -24,7 +26,6 @@ final class SendPoll extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

@@ -9,13 +9,14 @@ use Luzrain\TelegramBotApi\BaseMethod;
 /**
  * Use this method to set a custom title for an administrator in a supergroup promoted by the bot.
  * Returns True on success.
+ *
+ * @extends BaseMethod<true>
  */
 final class SetChatAdministratorCustomTitle extends BaseMethod
 {
     protected static string $methodName = 'setChatAdministratorCustomTitle';
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
          */

@@ -9,13 +9,14 @@ use Luzrain\TelegramBotApi\BaseMethod;
 /**
  * Use this method to set the thumbnail of a custom emoji sticker set.
  * Returns True on success.
+ *
+ * @extends BaseMethod<true>
  */
 final class SetCustomEmojiStickerSetThumbnail extends BaseMethod
 {
     protected static string $methodName = 'setCustomEmojiStickerSetThumbnail';
 
     public function __construct(
-
         /**
          * Sticker set name
          */

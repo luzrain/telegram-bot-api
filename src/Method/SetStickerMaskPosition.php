@@ -11,13 +11,14 @@ use Luzrain\TelegramBotApi\Type\Stickers\MaskPosition;
  * Use this method to change the mask position of a mask sticker.
  * The sticker must belong to a sticker set that was created by the bot.
  * Returns True on success.
+ *
+ * @extends BaseMethod<true>
  */
 final class SetStickerMaskPosition extends BaseMethod
 {
     protected static string $methodName = 'setStickerMaskPosition';
 
     public function __construct(
-
         /**
          * File identifier of the sticker
          */

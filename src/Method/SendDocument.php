@@ -15,6 +15,8 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 /**
  * Use this method to send general files. On success, the sent Message is returned.
  * Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
+ *
+ * @extends BaseMethod<Message>
  */
 final class SendDocument extends BaseMethod
 {
@@ -22,7 +24,6 @@ final class SendDocument extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

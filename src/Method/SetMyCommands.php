@@ -10,14 +10,17 @@ use Luzrain\TelegramBotApi\Type\BotCommandScope;
 
 /**
  * Use this method to change the list of the bot's commands.
- * See https://core.telegram.org/bots#commands for more details about bot commands. Returns True on success.
+ * See this manual for more details about bot commands.
+ * Returns True on success.
+ *
+ * @see https://core.telegram.org/bots/features#commands
+ * @extends BaseMethod<true>
  */
 final class SetMyCommands extends BaseMethod
 {
     protected static string $methodName = 'setMyCommands';
 
     public function __construct(
-
         /**
          * A JSON-serialized list of bot commands to be set as the list of the bot's commands. At most 100 commands can be specified.
          *

@@ -10,7 +10,10 @@ use Luzrain\TelegramBotApi\Type\ChatInviteLink;
 /**
  * Use this method to create an additional invite link for a chat.
  * The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights.
- * The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.
+ * The link can be revoked using the method revokeChatInviteLink.
+ * Returns the new invite link as ChatInviteLink object.
+ *
+ * @extends BaseMethod<ChatInviteLink>
  */
 final class CreateChatInviteLink extends BaseMethod
 {
@@ -18,7 +21,6 @@ final class CreateChatInviteLink extends BaseMethod
     protected static string $responseClass = ChatInviteLink::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

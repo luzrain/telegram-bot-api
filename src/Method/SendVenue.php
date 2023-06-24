@@ -13,6 +13,8 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 
 /**
  * Use this method to send information about a venue. On success, the sent Message is returned.
+ *
+ * @extends BaseMethod<Message>
  */
 final class SendVenue extends BaseMethod
 {
@@ -20,7 +22,6 @@ final class SendVenue extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

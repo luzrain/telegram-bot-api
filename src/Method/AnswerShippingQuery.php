@@ -11,13 +11,14 @@ use Luzrain\TelegramBotApi\Type\Payments\ShippingOption;
  * If you sent an invoice requesting a shipping address and the parameter is_flexible was specified,
  * the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries.
  * On success, True is returned.
+ *
+ * @extends BaseMethod<true>
  */
 final class AnswerShippingQuery extends BaseMethod
 {
     protected static string $methodName = 'answerShippingQuery';
 
     public function __construct(
-
         /**
          * Unique identifier for the query to be answered
          */

@@ -10,13 +10,14 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * Use this method to change search keywords assigned to a regular or custom emoji sticker.
  * The sticker must belong to a sticker set created by the bot.
  * Returns True on success.
+ *
+ * @extends BaseMethod<true>
  */
 final class SetStickerKeywords extends BaseMethod
 {
     protected static string $methodName = 'setStickerKeywords';
 
     public function __construct(
-
         /**
          * File identifier of the sticker
          */

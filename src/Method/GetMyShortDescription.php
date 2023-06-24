@@ -10,6 +10,8 @@ use Luzrain\TelegramBotApi\Type\BotShortDescription;
 /**
  * Use this method to get the current bot short description for the given user language.
  * Returns BotShortDescription on success.
+ *
+ * @extends BaseMethod<BotShortDescription>
  */
 final class GetMyShortDescription extends BaseMethod
 {
@@ -17,7 +19,6 @@ final class GetMyShortDescription extends BaseMethod
     protected static string $responseClass = BotShortDescription::class;
 
     public function __construct(
-
         /**
          * A two-letter ISO 639-1 language code or an empty string
          */

@@ -11,6 +11,8 @@ use Luzrain\TelegramBotApi\Type\ChatInviteLink;
  * Use this method to edit a non-primary invite link created by the bot.
  * The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights.
  * Returns the edited invite link as a ChatInviteLink object.
+ *
+ * @extends BaseMethod<ChatInviteLink>
  */
 final class EditChatInviteLink extends BaseMethod
 {
@@ -18,7 +20,6 @@ final class EditChatInviteLink extends BaseMethod
     protected static string $responseClass = ChatInviteLink::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

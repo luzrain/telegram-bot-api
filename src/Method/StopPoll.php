@@ -10,6 +10,8 @@ use Luzrain\TelegramBotApi\Type\Poll;
 
 /**
  * Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.
+ *
+ * @extends BaseMethod<Poll>
  */
 final class StopPoll extends BaseMethod
 {
@@ -17,7 +19,6 @@ final class StopPoll extends BaseMethod
     protected static string $responseClass = Poll::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

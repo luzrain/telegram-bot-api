@@ -8,6 +8,8 @@ namespace Luzrain\TelegramBotApi;
  * Base class for Telegram Method
  *
  * @see https://core.telegram.org/bots/api#available-methods
+ *
+ * @template T
  */
 abstract class BaseMethod implements \JsonSerializable
 {
@@ -28,19 +30,24 @@ abstract class BaseMethod implements \JsonSerializable
         }
     }
 
+    /**
+     * @psalm-suppress InvalidReturnStatement
+     * @psalm-suppress InvalidReturnType
+     * @psalm-return T
+     */
     public function createResponse(array|string|int|bool $data): BaseType|array|string|int|bool
     {
-        if (is_scalar($data)) {
+        if (!is_array($data)) {
             return $data;
         }
 
-        /** @var BaseType $responeClass */
+        /** @psalm-var class-string<BaseType> $responeClass */
         $responeClass = static::$responseClass;
 
         return $responeClass::fromResponse($data);
     }
 
-    public function jsonSerialize(): mixed
+    public function jsonSerialize(): array
     {
         $array = ['method' => $this->getMethodName()];
         $array += iterator_to_array($this->getRequest());

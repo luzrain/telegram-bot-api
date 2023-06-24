@@ -10,14 +10,16 @@ use Luzrain\TelegramBotApi\Type\ChatPermissions;
 /**
  * Use this method to restrict a user in a supergroup.
  * The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights.
- * Pass True for all permissions to lift restrictions from a user. Returns True on success.
+ * Pass True for all permissions to lift restrictions from a user.
+ * Returns True on success.
+ *
+ * @extends BaseMethod<true>
  */
 final class RestrictChatMember extends BaseMethod
 {
     protected static string $methodName = 'restrictChatMember';
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
          */

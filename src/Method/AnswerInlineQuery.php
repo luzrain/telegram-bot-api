@@ -11,13 +11,14 @@ use Luzrain\TelegramBotApi\Type\InlineQueryResultsButton;
 /**
  * Use this method to send answers to an inline query. On success, True is returned.
  * No more than 50 results per query are allowed.
+ *
+ * @extends BaseMethod<true>
  */
 final class AnswerInlineQuery extends BaseMethod
 {
     protected static string $methodName = 'answerInlineQuery';
 
     public function __construct(
-
         /**
          * Unique identifier for the answered query
          */

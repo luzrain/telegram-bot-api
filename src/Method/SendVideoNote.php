@@ -15,6 +15,8 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 /**
  * As of v.4.0, Telegram clients support rounded square mp4 videos of up to 1 minute long. Use this method to send video messages.
  * On success, the sent Message is returned.
+ *
+ * @extends BaseMethod<Message>
  */
 final class SendVideoNote extends BaseMethod
 {
@@ -22,7 +24,6 @@ final class SendVideoNote extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

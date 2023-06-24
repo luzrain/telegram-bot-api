@@ -9,14 +9,16 @@ use Luzrain\TelegramBotApi\Type\BotCommandScope;
 
 /**
  * Use this method to delete the list of the bot's commands for the given scope and user language.
- * After deletion, higher level commands will be shown to affected users. Returns True on success.
+ * After deletion, higher level commands will be shown to affected users.
+ * Returns True on success.
+ *
+ * @extends BaseMethod<true>
  */
 final class DeleteMyCommands extends BaseMethod
 {
     protected static string $methodName = 'deleteMyCommands';
 
     public function __construct(
-
         /**
          * A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault.
          */

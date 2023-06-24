@@ -11,6 +11,9 @@ use Luzrain\TelegramBotApi\Type\Message;
 /**
  * Use this method to edit only the reply markup of messages.
  * On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+ *
+ * @todo: Check return type in real case
+ * @extends BaseMethod<Message>
  */
 final class EditMessageReplyMarkup extends BaseMethod
 {
@@ -18,7 +21,6 @@ final class EditMessageReplyMarkup extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
         /**
          * Required if inline_message_id is not specified.
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)

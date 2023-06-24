@@ -14,6 +14,8 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 
 /**
  * Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers. On success, the sent Message is returned.
+ *
+ * @extends BaseMethod<Message>
  */
 final class SendSticker extends BaseMethod
 {
@@ -21,7 +23,6 @@ final class SendSticker extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

@@ -11,6 +11,8 @@ use Luzrain\TelegramBotApi\Type\ForumTopic;
  * Use this method to create a topic in a forum supergroup chat.
  * The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights.
  * Returns information about the created topic as a ForumTopic object.
+ *
+ * @extends BaseMethod<ForumTopic>
  */
 final class CreateForumTopic extends BaseMethod
 {
@@ -18,7 +20,6 @@ final class CreateForumTopic extends BaseMethod
     protected static string $responseClass = ForumTopic::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
          */

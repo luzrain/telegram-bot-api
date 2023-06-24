@@ -11,6 +11,8 @@ use Luzrain\TelegramBotApi\Type\Payments\LabeledPrice;
 
 /**
  * Use this method to send invoices. On success, the sent Message is returned.
+ *
+ * @extends BaseMethod<Message>
  */
 final class SendInvoice extends BaseMethod
 {
@@ -18,7 +20,6 @@ final class SendInvoice extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

@@ -15,6 +15,8 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 /**
  * Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound).
  * On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
+ *
+ * @extends BaseMethod<Message>
  */
 final class SendAnimation extends BaseMethod
 {
@@ -22,7 +24,6 @@ final class SendAnimation extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

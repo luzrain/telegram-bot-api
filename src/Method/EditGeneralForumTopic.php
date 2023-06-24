@@ -10,13 +10,14 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * Use this method to edit the name of the 'General' topic in a forum supergroup chat.
  * The bot must be an administrator in the chat for this to work and must have can_manage_topics administrator rights.
  * Returns True on success.
+ *
+ * @extends BaseMethod<true>
  */
 final class EditGeneralForumTopic extends BaseMethod
 {
     protected static string $methodName = 'editGeneralForumTopic';
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
          */

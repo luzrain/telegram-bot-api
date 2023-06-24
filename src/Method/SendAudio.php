@@ -17,6 +17,8 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
  * Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned.
  * Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
  * For sending voice messages, use the sendVoice method instead.
+ *
+ * @extends BaseMethod<Message>
  */
 final class SendAudio extends BaseMethod
 {
@@ -24,7 +26,6 @@ final class SendAudio extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

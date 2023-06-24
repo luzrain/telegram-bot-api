@@ -16,6 +16,8 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
  * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message.
  * For this to work, your audio must be in an .OGG file encoded with OPUS (other formats may be sent as Audio or Document).
  * On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
+ *
+ * @extends BaseMethod<Message>
  */
 final class SendVoice extends BaseMethod
 {
@@ -23,7 +25,6 @@ final class SendVoice extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

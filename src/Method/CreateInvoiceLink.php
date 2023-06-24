@@ -8,14 +8,16 @@ use Luzrain\TelegramBotApi\BaseMethod;
 use Luzrain\TelegramBotApi\Type\Payments\LabeledPrice;
 
 /**
- * Use this method to create a link for an invoice. Returns the created invoice link as String on success.
+ * Use this method to create a link for an invoice.
+ * Returns the created invoice link as String on success.
+ *
+ * @extends BaseMethod<string>
  */
 final class CreateInvoiceLink extends BaseMethod
 {
     protected static string $methodName = 'createInvoiceLink';
 
     public function __construct(
-
         /**
          * Product name, 1-32 characters
          */

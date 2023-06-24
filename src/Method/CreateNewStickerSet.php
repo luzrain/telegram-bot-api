@@ -10,13 +10,14 @@ use Luzrain\TelegramBotApi\Type\InputSticker;
 /**
  * Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created.
  * Returns True on success.
+ * 
+ * @extends BaseMethod<true>
  */
 final class CreateNewStickerSet extends BaseMethod
 {
     protected static string $methodName = 'createNewStickerSet';
 
     public function __construct(
-
         /**
          * User identifier of created sticker set owner
          */

@@ -15,6 +15,9 @@ use Luzrain\TelegramBotApi\Type\Message;
  * for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded;
  * use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message,
  * the edited Message is returned, otherwise True is returned.
+ *
+ * @todo: Check return type in real case
+ * @extends BaseMethod<Message>
  */
 final class EditMessageMedia extends BaseMethod
 {
@@ -22,7 +25,6 @@ final class EditMessageMedia extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
         /**
          * A JSON-serialized object for a new media content of the message
          */

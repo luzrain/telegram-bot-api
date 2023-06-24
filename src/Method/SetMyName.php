@@ -9,13 +9,14 @@ use Luzrain\TelegramBotApi\BaseMethod;
 /**
  * Use this method to change the bot's name.
  * Returns True on success.
+ *
+ * @extends BaseMethod<true>
  */
 final class SetMyName extends BaseMethod
 {
     protected static string $methodName = 'setMyName';
 
     public function __construct(
-
         /**
          * New bot name; 0-64 characters. Pass an empty string to remove the dedicated name for the given language.
          */

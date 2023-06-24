@@ -8,7 +8,10 @@ use Luzrain\TelegramBotApi\BaseMethod;
 use Luzrain\TelegramBotApi\Type\UserProfilePhotos;
 
 /**
- * Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
+ * Use this method to get a list of profile pictures for a user.
+ * Returns a UserProfilePhotos object.
+ *
+ * @extends BaseMethod<UserProfilePhotos>
  */
 final class GetUserProfilePhotos extends BaseMethod
 {
@@ -16,7 +19,6 @@ final class GetUserProfilePhotos extends BaseMethod
     protected static string $responseClass = UserProfilePhotos::class;
 
     public function __construct(
-
         /**
          * Unique identifier of the target user
          */

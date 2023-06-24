@@ -10,13 +10,14 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * Use this method to send answers to callback queries sent from inline keyboards.
  * The answer will be displayed to the user as a notification at the top of the chat screen or as an alert.
  * On success, True is returned.
+ *
+ * @extends BaseMethod<true>
  */
 final class AnswerCallbackQuery extends BaseMethod
 {
     protected static string $methodName = 'answerCallbackQuery';
 
     public function __construct(
-
         /**
          * Unique identifier for the query to be answered
          */

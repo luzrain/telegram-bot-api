@@ -12,6 +12,9 @@ use Luzrain\TelegramBotApi\Type\MessageEntity;
 /**
  * Use this method to edit text and game messages.
  * On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+ *
+ * @todo: Check return type in real case
+ * @extends BaseMethod<Message>
  */
 final class EditMessageText extends BaseMethod
 {
@@ -19,7 +22,6 @@ final class EditMessageText extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
         /**
          * New text of the message, 1-4096 characters after entities parsing
          */

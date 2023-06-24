@@ -10,17 +10,19 @@ use Luzrain\TelegramBotApi\Type\InputFile;
 /**
  * Use this method to specify a URL and receive incoming updates via an outgoing webhook.
  * Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update.
- * In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
+ * In case of an unsuccessful request, we will give up after a reasonable amount of attempts.
+ * Returns True on success.
  *
  * If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token.
  * If specified, the request will contain a header “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
+ *
+ * @extends BaseMethod<true>
  */
 final class SetWebhook extends BaseMethod
 {
     protected static string $methodName = 'setWebhook';
 
     public function __construct(
-
         /**
          * HTTPS url to send updates to. Use an empty string to remove webhook integration
          */

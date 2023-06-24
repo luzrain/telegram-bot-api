@@ -10,11 +10,14 @@ use Luzrain\TelegramBotApi\Type\InputMediaAudio;
 use Luzrain\TelegramBotApi\Type\InputMediaDocument;
 use Luzrain\TelegramBotApi\Type\InputMediaPhoto;
 use Luzrain\TelegramBotApi\Type\InputMediaVideo;
+use Luzrain\TelegramBotApi\Type\Message;
 
 /**
  * Use this method to send a group of photos, videos, documents or audios as an album.
  * Documents and audio files can be only grouped in an album with messages of the same type.
  * On success, an array of Messages that were sent is returned.
+ *
+ * @extends BaseMethod<list<Message>>
  */
 final class SendMediaGroup extends BaseMethod
 {
@@ -22,7 +25,6 @@ final class SendMediaGroup extends BaseMethod
     protected static string $responseClass = ArrayOfMessages::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

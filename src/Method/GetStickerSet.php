@@ -8,7 +8,10 @@ use Luzrain\TelegramBotApi\BaseMethod;
 use Luzrain\TelegramBotApi\Type\Stickers\StickerSet;
 
 /**
- * Use this method to get a sticker set. On success, a StickerSet object is returned.
+ * Use this method to get a sticker set.
+ * On success, a StickerSet object is returned.
+ *
+ * @extends BaseMethod<StickerSet>
  */
 final class GetStickerSet extends BaseMethod
 {
@@ -16,7 +19,6 @@ final class GetStickerSet extends BaseMethod
     protected static string $responseClass = StickerSet::class;
 
     public function __construct(
-
         /**
          * Name of the sticker set
          */

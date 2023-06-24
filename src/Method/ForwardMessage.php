@@ -10,6 +10,8 @@ use Luzrain\TelegramBotApi\Type\Message;
 /**
  * Use this method to forward messages of any kind. Service messages can't be forwarded.
  * On success, the sent Message is returned.
+ *
+ * @extends BaseMethod<Message>
  */
 final class ForwardMessage extends BaseMethod
 {
@@ -17,7 +19,6 @@ final class ForwardMessage extends BaseMethod
     protected static string $responseClass = Message::class;
 
     public function __construct(
-
         /**
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */
