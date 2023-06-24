@@ -9,6 +9,7 @@ use Luzrain\TelegramBotApi\Test\Helper\ClosureTestHelper;
 use Luzrain\TelegramBotApi\Type\Update;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use Luzrain\TelegramBotApi\Event;
 
 final class ClientTest extends TestCase
 {
@@ -56,21 +57,21 @@ final class ClientTest extends TestCase
         $myChatMember = new ClosureTestHelper();
 
         $this->client
-            ->onUpdate($updateClosure->getClosure())
-            ->onCommand('/testcommand', $commandClosure->getClosure())
-            ->onCommand('/wrongcommand', $wrongCommandClosure->getClosure())
-            ->onMessage($messageClosure->getClosure())
-            ->onEditedMessage($editedMessageClosure->getClosure())
-            ->onChannelPost($channelPostClosure->getClosure())
-            ->onEditedChannelPost($editedChannelPostClosure->getClosure())
-            ->onInlineQuery($inlineQueryClosure->getClosure())
-            ->onChosenInlineResult($chosenInlineResultClosure->getClosure())
-            ->onCallbackQuery($callbackQueryClosure->getClosure())
-            ->onShippingQuery($shippingQueryClosure->getClosure())
-            ->onPreCheckoutQuery($preCheckoutQueryClosure->getClosure())
-            ->onPoll($pollClosure->getClosure())
-            ->onPollAnswer($pollAnswerClosure->getClosure())
-            ->onMyChatMember($myChatMember->getClosure())
+            ->on(new Event\Update($updateClosure->getClosure()))
+            ->on(new Event\Command('/testcommand', $commandClosure->getClosure()))
+            ->on(new Event\Command('/wrongcommand', $wrongCommandClosure->getClosure()))
+            ->on(new Event\Message($messageClosure->getClosure()))
+            ->on(new Event\EditedMessage($editedMessageClosure->getClosure()))
+            ->on(new Event\ChannelPost($channelPostClosure->getClosure()))
+            ->on(new Event\EditedChannelPost($editedChannelPostClosure->getClosure()))
+            ->on(new Event\InlineQuery($inlineQueryClosure->getClosure()))
+            ->on(new Event\ChosenInlineResult($chosenInlineResultClosure->getClosure()))
+            ->on(new Event\CallbackQuery($callbackQueryClosure->getClosure()))
+            ->on(new Event\ShippingQuery($shippingQueryClosure->getClosure()))
+            ->on(new Event\PreCheckoutQuery($preCheckoutQueryClosure->getClosure()))
+            ->on(new Event\Poll($pollClosure->getClosure()))
+            ->on(new Event\PollAnswer($pollAnswerClosure->getClosure()))
+            ->on(new Event\MyChatMember($myChatMember->getClosure()))
             ->webhookHandle($requestBody)
         ;
 
@@ -105,10 +106,10 @@ final class ClientTest extends TestCase
         ];
 
         $this->client
-            ->onCommand('/testcommand', $commandClosure->getClosure())
-            ->onEditedMessage($editedMessageClosure->getClosure())
-            ->onChannelPost($channelPostClosure->getClosure())
-            ->onEditedChannelPost($editedChannelPostClosure->getClosure())
+            ->on(new Event\Command('/testcommand', $commandClosure->getClosure()))
+            ->on(new Event\EditedMessage($editedMessageClosure->getClosure()))
+            ->on(new Event\ChannelPost($channelPostClosure->getClosure()))
+            ->on(new Event\EditedChannelPost($editedChannelPostClosure->getClosure()))
             ->updatesHandle($updates)
         ;
 

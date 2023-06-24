@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi;
 
 use Luzrain\TelegramBotApi\Exception\TelegramCallbackException;
+use Luzrain\TelegramBotApi\Exception\TelegramTypeException;
 use Luzrain\TelegramBotApi\Type\Update;
 
 /**
@@ -34,7 +35,7 @@ final class Client
      *
      * @param list<Update> $updates
      */
-    public function updateListHandle(array $updates): void
+    public function updatesHandle(array $updates): void
     {
         foreach ($updates as $update) {
             $this->events->handle($update);
@@ -47,6 +48,7 @@ final class Client
      *
      * @param string $body json request
      * @return string json response
+     * @throws TelegramTypeException
      * @throws TelegramCallbackException
      * @throws \JsonException
      */
