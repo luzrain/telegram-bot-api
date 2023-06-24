@@ -18,15 +18,16 @@ See all available methods and their parameters on [Telegram Bot API](https://cor
 A few examples of usage:
 
 #### Send message
-``` php
+```php
 use Luzrain\TelegramBotApi\BotApi;
+use Luzrain\TelegramBotApi\Method\SendMessage;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
-$response = $bot->sendMessage(
+$response = $bot->call(new SendMessage(
     chatId: 123456789,
     text: 'Example text',
-);
+));
 ```
 
 #### Send message with reply keyboard
@@ -37,6 +38,7 @@ use Luzrain\TelegramBotApi\Type\KeyboardButton;
 use Luzrain\TelegramBotApi\Type\KeyboardButtonPollType;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\WebAppInfo;
+use Luzrain\TelegramBotApi\Method\SendMessage;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
@@ -48,11 +50,11 @@ $replyKeyboard = ReplyKeyboardMarkup::create(oneTimeKeyboard: true, resizeKeyboa
     KeyboardButton::create(text: 'Create Poll', requestPoll: KeyboardButtonPollType::create()),
 );
 
-$response = $bot->sendMessage(
+$response = $bot->call(new SendMessage(
     chatId: 123456789,
     text: 'Example text',
     replyMarkup: $replyKeyboard,
-);
+));
 ```
 
 #### Send message with inline keyboard
@@ -62,6 +64,7 @@ use Luzrain\TelegramBotApi\BotApi;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardButton;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
+use Luzrain\TelegramBotApi\Method\SendMessage;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
@@ -75,11 +78,11 @@ $inlineKeyboard = InlineKeyboardMarkup::create()->addButtons(
 // For keyboard remove
 $inlineKeyboard = ReplyKeyboardRemove::create();
 
-$response = $bot->sendMessage(
+$response = $bot->call(new SendMessage(
     chatId: 123456789,
     text: 'Example text',
     replyMarkup: $inlineKeyboard ,
-);
+));
 ```
 
 #### Send photo/video/document
@@ -87,32 +90,34 @@ $response = $bot->sendMessage(
 ```php
 use Luzrain\TelegramBotApi\BotApi;
 use Luzrain\TelegramBotApi\Type\InputFile;
+use Luzrain\TelegramBotApi\Method\SendPhoto;
+use Luzrain\TelegramBotApi\Method\SendDocument;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
 // Upload image from local filesystem
-$response = $bot->sendPhoto(
+$response = $bot->call(new SendPhoto(
     chatId: 123456789,
     photo: InputFile::create('/home/user/img/15311661465960.jpg'),
-);
+));
 
 // Send image from the Internet
-$response = $bot->sendPhoto(
+$response = $bot->call(new SendPhoto(
     chatId: 123456789,
     photo: 'https://avatars3.githubusercontent.com/u/9335727',
-);
+));
 
 // Upload Document
-$response = $bot->sendDocument(
+$response = $bot->call(new SendDocument(
     chatId: 123456789,
     document: InputFile::create('/home/user/files/file.zip'),
     thumb: InputFile::create('/home/user/img/thumb.jpg'),
     caption: 'Test file',
-);
+));
 
 /**
  * You can also use this methods:
- * sendPhoto, sendAudio, sendDocument, sendVideo, sendAnimation, sendVoice, sendVideoNote
+ * SendPhoto, SendAudio, SendDocument, SendVideo, SendAnimation, SendVoice, SendVideoNote
  */
 ```
 
@@ -122,10 +127,11 @@ $response = $bot->sendDocument(
 use Luzrain\TelegramBotApi\BotApi;
 use Luzrain\TelegramBotApi\Type\InputFile;
 use Luzrain\TelegramBotApi\Type\InputMediaPhoto;
+use Luzrain\TelegramBotApi\Method\SendMediaGroup;
 
 $bot = new BotApi('BOT_API_TOKEN');
 
-$response = $bot->sendMediaGroup(
+$response = $bot->call(new SendMediaGroup(
     chatId: 123456789,
     media: [
         InputMediaPhoto::create(
@@ -137,43 +143,42 @@ $response = $bot->sendMediaGroup(
             caption: 'Test media 2',
         ),
     ],
-);
+));
 ```
 
 ## Client Api
 #### Webhook client
 
 ```php
-use Luzrain\TelegramBotApi\Client;use Luzrain\TelegramBotApi\Type\Message;use Luzrain\TelegramBotApi\Type\Update;
+use Luzrain\TelegramBotApi\Client;
+use Luzrain\TelegramBotApi\Method\SendMessage;
+use Luzrain\TelegramBotApi\Type\Message;
+use Luzrain\TelegramBotApi\Type\Update;
+use Luzrain\TelegramBotApi\Event;
 
 $client = new Client();
 
 // Handle any type of update
-$client->onUpdate(function(Update $update) {
+$client->on(new Event\Update(function(Update $update) {
     // update received
-});
+}));
 
 // Handle /ping command
-$client->onCommand('/ping', function(Message $message) {
+$client->on(new Event\Command('/ping', function(Message $message) {
     // Be aware that your cannot sent methods with uploading local files from here, use BotApi instead.
-    return $client->sendMessage(
+    return new SendMessage(
         chatId: $message->getChat()->getId(),
         text: 'pong!',
     );
-});
+}));
 
 // Handle text messages
-$client->onMessage(function(Message $message) {
-    return $client->sendMessage(
+$client->on(new Event\Message(function(Message $message) {
+    return new SendMessage(
         chatId: $message->getChat()->getId(),
         text: 'Your message: ' . $message->getText(),
     );
-});
-
-// You can write you custom handlers by implementing Event base class
-//$action = function() {};
-//$event = new CustomEvent($action);
-//$client->on($event);
+}));
 
 $client->run();
 ```

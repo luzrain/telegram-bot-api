@@ -73,4 +73,19 @@ final class Client
 
         return json_encode($webhookResponse, JSON_UNESCAPED_UNICODE);
     }
+
+    /**
+     * @throws TelegramCallbackException
+     * @throws TelegramTypeException
+     * @throws \JsonException
+     */
+    public function run(): void
+    {
+        $requestBody = file_get_contents('php://input');
+        $responseBody = $this->webhookHandle($requestBody);
+        header('Content-Type: application/json');
+        header('Content-Length: ' . strlen($responseBody));
+        echo $responseBody;
+        exit;
+    }
 }
