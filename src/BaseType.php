@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\Exception\TelegramTypeException;
  *
  * @see https://core.telegram.org/bots/api#available-types
  */
-abstract class BaseType
+abstract class BaseType implements \JsonSerializable
 {
     /**
      * Array of required data params for type
@@ -23,9 +23,22 @@ abstract class BaseType
      */
     protected static array $map = [];
 
+    protected function __construct()
+    {
+    }
+
     /**
-     * Validate input data
-     *
+     * @internal
+     * @throws TelegramTypeException
+     */
+    public static function fromResponse(array $data): static
+    {
+        self::validate($data);
+
+        return (new static())->map($data);
+    }
+
+    /**
      * @throws TelegramTypeException
      */
     private static function validate(array $data): void
@@ -36,10 +49,6 @@ abstract class BaseType
             $missingKeys = array_keys(array_diff_key($requiredKeys, $data));
             throw new TelegramTypeException(static::class, $missingKeys);
         }
-    }
-
-    protected function __construct()
-    {
     }
 
     private function map(array $data): static
@@ -55,9 +64,7 @@ abstract class BaseType
         return $this;
     }
 
-    /**
-     * @internal
-     */
+    /** @internal */
     public function toArray(): array
     {
         $output = [];
@@ -75,14 +82,9 @@ abstract class BaseType
         return $output;
     }
 
-    /**
-     * @internal
-     * @throws TelegramTypeException
-     */
-    public static function fromResponse(array $data): static
+    /** @internal */
+    public function jsonSerialize(): mixed
     {
-        self::validate($data);
-
-        return (new static())->map($data);
+        return $this->toArray();
     }
 }
