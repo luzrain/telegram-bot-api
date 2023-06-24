@@ -35,6 +35,7 @@ final class ClientTest extends TestCase
         yield ['poll', file_get_contents(__DIR__ . '/data/events/poll.json')];
         yield ['pollAnswer', file_get_contents(__DIR__ . '/data/events/pollAnswer.json')];
         yield ['myChatMember', file_get_contents(__DIR__ . '/data/events/myChatMember.json')];
+        yield ['chatMemberBanned', file_get_contents(__DIR__ . '/data/events/chatMemberBanned.json')];
     }
 
     #[DataProvider('clientWebhookData')]
@@ -55,6 +56,7 @@ final class ClientTest extends TestCase
         $pollClosure = new ClosureTestHelper();
         $pollAnswerClosure = new ClosureTestHelper();
         $myChatMember = new ClosureTestHelper();
+        $chatMemberBanned = new ClosureTestHelper();
 
         $this->client
             ->on(new Event\Update($updateClosure->getClosure()))
@@ -72,6 +74,7 @@ final class ClientTest extends TestCase
             ->on(new Event\Poll($pollClosure->getClosure()))
             ->on(new Event\PollAnswer($pollAnswerClosure->getClosure()))
             ->on(new Event\MyChatMember($myChatMember->getClosure()))
+            ->on(new Event\ChatMemberBanned($chatMemberBanned->getClosure()))
             ->webhookHandle($requestBody)
         ;
 
@@ -89,7 +92,8 @@ final class ClientTest extends TestCase
         $this->assertSame($eventName === 'preCheckoutQuery', $preCheckoutQueryClosure->isCalled());
         $this->assertSame($eventName === 'poll', $pollClosure->isCalled());
         $this->assertSame($eventName === 'pollAnswer', $pollAnswerClosure->isCalled());
-        $this->assertSame($eventName === 'myChatMember', $myChatMember->isCalled());
+        $this->assertSame(in_array($eventName, ['myChatMember', 'chatMemberBanned']), $myChatMember->isCalled());
+        $this->assertSame(in_array($eventName, ['myChatMember', 'chatMemberBanned']), $chatMemberBanned->isCalled());
     }
 
     public function testClientHandler(): void
