@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
 
 /**
  * This object represents one button of the reply keyboard.

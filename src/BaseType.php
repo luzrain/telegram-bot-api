@@ -73,8 +73,6 @@ abstract class BaseType implements \JsonSerializable
         return $data;
     }
 
-
-
     /**
      * @internal
      */
