@@ -36,7 +36,7 @@ final class InputSticker extends BaseType
          * Optional. List of 0-20 search keywords for the sticker with total length of up to 64 characters.
          * For “regular” and “custom_emoji” stickers only.
          *
-         * @var list<string>
+         * @var list<string>|null
          */
         public array|null $keywords = null,
     ) {

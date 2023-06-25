@@ -59,7 +59,7 @@ final class InputInvoiceMessageContent extends BaseType implements InputMessageC
          * (integer, not float/double).At most 4 suggested tip amounts can be specified. The suggested tip amounts must
          * be positive, passed in a strictly increased order and must not exceed max_tip_amount.
          *
-         * @var list<int>
+         * @var list<int>|null
          */
         public array|null $suggestedTipAmounts = null,
 

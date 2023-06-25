@@ -56,7 +56,7 @@ final class Chat extends BaseType implements TypeInterface
         /**
          * Optional. If non-empty, the list of all active chat usernames, for private chats, supergroups and channels. Returned only in getChat.
          *
-         * @var list<string>
+         * @var list<string>|null
          */
         public array|null $activeUsernames = null,
 

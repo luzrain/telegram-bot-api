@@ -48,7 +48,7 @@ final class EncryptedPassportElement extends BaseType implements TypeInterface
          * “bank_statement”,“rental_agreement”, “passport_registration” and “temporary_registration” types.
          * Files can be decrypted and verified using the accompanying EncryptedCredentials.
          *
-         * @var list<PassportFile>
+         * @var list<PassportFile>|null
          */
         #[PropertyType(ArrayOfPassportFile::class)]
         public array|null $files = null,
@@ -79,7 +79,7 @@ final class EncryptedPassportElement extends BaseType implements TypeInterface
          * “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types.
          * Files can be decrypted and verified using the accompanying EncryptedCredentials.
          *
-         * @var list<PassportFile>
+         * @var list<PassportFile>|null
          */
         #[PropertyType(ArrayOfPassportFile::class)]
         public array|null $translation = null,

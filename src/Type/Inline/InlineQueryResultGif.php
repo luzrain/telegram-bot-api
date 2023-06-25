@@ -73,7 +73,7 @@ final class InlineQueryResultGif extends BaseType implements InlineQueryResult
         /**
          * Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
          *
-         * @var list<MessageEntity>
+         * @var list<MessageEntity>|null
          */
         public array|null $captionEntities = null,
 

@@ -34,6 +34,7 @@ abstract class BaseType implements \JsonSerializable
             $property = $reflProperty->getName();
             $propertyKey = StringUtils::toSnakeCase($property);
             $attributeType = $reflProperty->getAttributes(PropertyType::class)[0] ?? null;
+            /** @psalm-suppress UndefinedMethod */
             $propertyType = $attributeType?->getArguments()[0] ?? $reflProperty->getType()->getName();
 
             if (isset($data[$propertyKey])) {
@@ -45,6 +46,7 @@ abstract class BaseType implements \JsonSerializable
         }
 
         try {
+            /** @psalm-suppress TooManyArguments */
             return new static(...$constructorMap);
         } catch (\ArgumentCountError $e) {
             throw new TelegramTypeException(static::class, $data, $reflClass, $e);
@@ -61,7 +63,7 @@ abstract class BaseType implements \JsonSerializable
             $propertyKey = StringUtils::toSnakeCase($property);
             if ($this->$property !== null) {
                 if (is_array($this->$property)) {
-                    $data[$propertyKey] = array_map(fn ($v) => $v instanceof TypeInterface ? $v->toArray() : $v, $this->$property);
+                    $data[$propertyKey] = array_map(fn ($v) => $v instanceof BaseType ? $v->toArray() : $v, $this->$property);
                 } else {
                     $data[$propertyKey] = $value instanceof TypeInterface ? $this->$property->toArray() : $this->$property;
                 }

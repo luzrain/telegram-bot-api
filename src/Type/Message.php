@@ -136,7 +136,7 @@ final class Message extends BaseType implements TypeInterface
         /**
          * Optional. For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text
          *
-         * @var list<MessageEntity>
+         * @var list<MessageEntity>|null
          */
         #[PropertyType(ArrayOfMessageEntity::class)]
         public array|null $entities = null,
@@ -160,7 +160,7 @@ final class Message extends BaseType implements TypeInterface
         /**
          * Optional. Message is a photo, available sizes of the photo
          *
-         * @var list<PhotoSize>
+         * @var list<PhotoSize>|null
          */
         #[PropertyType(ArrayOfPhotoSize::class)]
         public array|null $photo = null,
@@ -193,7 +193,7 @@ final class Message extends BaseType implements TypeInterface
         /**
          * Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption
          *
-         * @var list<MessageEntity>
+         * @var list<MessageEntity>|null
          */
         #[PropertyType(ArrayOfMessageEntity::class)]
         public array|null $captionEntities = null,
@@ -237,7 +237,7 @@ final class Message extends BaseType implements TypeInterface
         /**
          * Optional. New members that were added to the group or supergroup and information about them (the bot itself may be one of these members)
          *
-         * @var list<User>
+         * @var list<User>|null
          */
         #[PropertyType(ArrayOfUser::class)]
         public array|null $newChatMembers = null,
@@ -255,7 +255,7 @@ final class Message extends BaseType implements TypeInterface
         /**
          * Optional. A chat photo was change to this value
          *
-         * @var list<PhotoSize>
+         * @var list<PhotoSize>|null
          */
         #[PropertyType(ArrayOfPhotoSize::class)]
         public array|null $newChatPhoto = null,

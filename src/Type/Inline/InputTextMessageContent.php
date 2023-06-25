@@ -26,7 +26,7 @@ final class InputTextMessageContent extends BaseType implements InputMessageCont
         /**
          * Optional. List of special entities that appear in message text, which can be specified instead of parse_mode
          *
-         * @var list<MessageEntity>
+         * @var list<MessageEntity>|null
          */
         public array|null $entities = null,
 

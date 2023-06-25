@@ -72,7 +72,7 @@ final class Poll extends BaseType implements TypeInterface
         /**
          * Optional. Special entities like usernames, URLs, bot commands, etc. that appear in the explanation
          *
-         * @var list<MessageEntity>
+         * @var list<MessageEntity>|null
          */
         #[PropertyType(ArrayOfMessageEntity::class)]
         public array|null $explanationEntities = null,

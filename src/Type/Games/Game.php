@@ -47,7 +47,7 @@ final class Game extends BaseType implements TypeInterface
         /**
          * Optional. Special entities that appear in text, such as usernames, URLs, bot commands, etc.
          *
-         * @var list<MessageEntity>
+         * @var list<MessageEntity>|null
          */
         #[PropertyType(ArrayOfMessageEntity::class)]
         public array|null $textEntities = null,
