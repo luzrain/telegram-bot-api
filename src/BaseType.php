@@ -16,6 +16,7 @@ abstract class BaseType implements \JsonSerializable
     /**
      * @internal
      * @throws TelegramTypeException
+     * @throws \Exception
      */
     public static function fromArray(array $data): static
     {
@@ -34,10 +35,12 @@ abstract class BaseType implements \JsonSerializable
             $propertyKey = StringUtils::toSnakeCase($property);
             $attributeType = $reflProperty->getAttributes(PropertyType::class)[0] ?? null;
             $propertyType = $attributeType?->getArguments()[0] ?? $reflProperty->getType()->getName();
-            $isPropertyScalar = $reflProperty->getType()->isBuiltin();
 
-            if (!empty($data[$propertyKey])) {
-                $constructorMap[$property] = $isPropertyScalar ? $data[$propertyKey] : $propertyType::fromArray($data[$propertyKey]);
+            if (isset($data[$propertyKey])) {
+                $constructorMap[$property] = is_subclass_of($propertyType, TypeInterface::class)
+                    ? $propertyType::fromArray((array) $data[$propertyKey])
+                    : $data[$propertyKey]
+                ;
             }
         }
 
@@ -53,27 +56,22 @@ abstract class BaseType implements \JsonSerializable
      */
     public function toArray(): array
     {
-        $reflClass = new \ReflectionClass(static::class);
         $data = [];
-        foreach ($reflClass->getProperties() as $reflProperty) {
-            if (!$reflProperty->isPublic()) {
-                continue;
-            }
-
-            $property = $reflProperty->getName();
+        foreach ($this as $property => $value) {
             $propertyKey = StringUtils::toSnakeCase($property);
-            $isPropertyScalar = $reflProperty->getType()->isBuiltin();
             if ($this->$property !== null) {
                 if (is_array($this->$property)) {
-                    $data[$propertyKey] = array_map(fn ($v) => is_object($v) ? $v->toArray() : $v, $this->$property);
+                    $data[$propertyKey] = array_map(fn ($v) => $v instanceof TypeInterface ? $v->toArray() : $v, $this->$property);
                 } else {
-                    $data[$propertyKey] = $isPropertyScalar ? $this->$property : $this->$property->toArray();
+                    $data[$propertyKey] = $value instanceof TypeInterface ? $this->$property->toArray() : $this->$property;
                 }
             }
         }
 
         return $data;
     }
+
+
 
     /**
      * @internal

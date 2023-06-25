@@ -11,11 +11,11 @@ final class ChosenInlineResult extends Event
 {
     public function executeChecker(Update $update): bool
     {
-        return $update->getChosenInlineResult() !== null;
+        return $update->chosenInlineResult !== null;
     }
 
     public function executeAction(Update $update): mixed
     {
-        return $this->callback($update->getChosenInlineResult());
+        return $this->callback($update->chosenInlineResult);
     }
 }

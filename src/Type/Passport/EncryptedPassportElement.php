@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
 use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\PropertyType;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPassportFile;
 use Luzrain\TelegramBotApi\TypeInterface;
 
@@ -49,6 +50,7 @@ final class EncryptedPassportElement extends BaseType implements TypeInterface
          *
          * @var list<PassportFile>
          */
+        #[PropertyType(ArrayOfPassportFile::class)]
         public array|null $files = null,
 
         /**
@@ -79,6 +81,7 @@ final class EncryptedPassportElement extends BaseType implements TypeInterface
          *
          * @var list<PassportFile>
          */
+        #[PropertyType(ArrayOfPassportFile::class)]
         public array|null $translation = null,
     ) {
     }

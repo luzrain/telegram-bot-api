@@ -59,6 +59,11 @@ final class ClientTest extends TestCase
         $chatMemberBanned = new ClosureTestHelper();
 
         $this->client
+            ->on(new Event\Command('/testcommand', $commandClosure->getClosure()))
+            ->webhookHandle($requestBody)
+        ;
+
+        $this->client
             ->on(new Event\Update($updateClosure->getClosure()))
             ->on(new Event\Command('/testcommand', $commandClosure->getClosure()))
             ->on(new Event\Command('/wrongcommand', $wrongCommandClosure->getClosure()))
@@ -78,22 +83,22 @@ final class ClientTest extends TestCase
             ->webhookHandle($requestBody)
         ;
 
-        $this->assertSame(true, $updateClosure->isCalled());
-        $this->assertSame($eventName === 'command', $commandClosure->isCalled());
-        $this->assertSame(false, $wrongCommandClosure->isCalled());
-        $this->assertSame(in_array($eventName, ['command', 'message']), $messageClosure->isCalled());
-        $this->assertSame($eventName === 'editedMessage', $editedMessageClosure->isCalled());
-        $this->assertSame($eventName === 'channelPost', $channelPostClosure->isCalled());
-        $this->assertSame($eventName === 'editedChannelPost', $editedChannelPostClosure->isCalled());
-        $this->assertSame($eventName === 'inlineQuery', $inlineQueryClosure->isCalled());
-        $this->assertSame($eventName === 'chosenInlineResult', $chosenInlineResultClosure->isCalled());
-        $this->assertSame($eventName === 'callbackQuery', $callbackQueryClosure->isCalled());
-        $this->assertSame($eventName === 'shippingQuery', $shippingQueryClosure->isCalled());
-        $this->assertSame($eventName === 'preCheckoutQuery', $preCheckoutQueryClosure->isCalled());
-        $this->assertSame($eventName === 'poll', $pollClosure->isCalled());
-        $this->assertSame($eventName === 'pollAnswer', $pollAnswerClosure->isCalled());
-        $this->assertSame(in_array($eventName, ['myChatMember', 'chatMemberBanned']), $myChatMember->isCalled());
-        $this->assertSame(in_array($eventName, ['myChatMember', 'chatMemberBanned']), $chatMemberBanned->isCalled());
+        $this->assertSame(true, $updateClosure->isCalled(), 'Event\Update');
+        $this->assertSame($eventName === 'command', $commandClosure->isCalled(), 'Event\Command (/testcommand)');
+        $this->assertSame(false, $wrongCommandClosure->isCalled(), 'Event\Command (/wrongcommand)');
+        $this->assertSame(in_array($eventName, ['command', 'message']), $messageClosure->isCalled(), 'Event\Message');
+        $this->assertSame($eventName === 'editedMessage', $editedMessageClosure->isCalled(), 'Event\EditedMessage');
+        $this->assertSame($eventName === 'channelPost', $channelPostClosure->isCalled(), 'Event\ChannelPost');
+        $this->assertSame($eventName === 'editedChannelPost', $editedChannelPostClosure->isCalled(), 'Event\EditedChannelPost');
+        $this->assertSame($eventName === 'inlineQuery', $inlineQueryClosure->isCalled(), 'Event\InlineQuery');
+        $this->assertSame($eventName === 'chosenInlineResult', $chosenInlineResultClosure->isCalled(), 'Event\ChosenInlineResult');
+        $this->assertSame($eventName === 'callbackQuery', $callbackQueryClosure->isCalled(), 'Event\CallbackQuery');
+        $this->assertSame($eventName === 'shippingQuery', $shippingQueryClosure->isCalled(), 'Event\ShippingQuery');
+        $this->assertSame($eventName === 'preCheckoutQuery', $preCheckoutQueryClosure->isCalled(), 'Event\PreCheckoutQuery');
+        $this->assertSame($eventName === 'poll', $pollClosure->isCalled(), 'Event\Poll');
+        $this->assertSame($eventName === 'pollAnswer', $pollAnswerClosure->isCalled(), 'Event\PollAnswer');
+        $this->assertSame(in_array($eventName, ['myChatMember', 'chatMemberBanned']), $myChatMember->isCalled(), 'Event\MyChatMember');
+        $this->assertSame(in_array($eventName, ['myChatMember', 'chatMemberBanned']), $chatMemberBanned->isCalled(), 'Event\ChatMemberBanned');
     }
 
     public function testClientHandler(): void

@@ -255,7 +255,7 @@ final class Message extends BaseType implements TypeInterface
         /**
          * Optional. A chat photo was change to this value
          *
-         * @var <PhotoSize>
+         * @var list<PhotoSize>
          */
         #[PropertyType(ArrayOfPhotoSize::class)]
         public array|null $newChatPhoto = null,

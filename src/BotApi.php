@@ -61,12 +61,12 @@ final class BotApi
             if ($method instanceof SendMediaGroup && $name === 'media') {
                 /** @var list<InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo> $result */
                 foreach ($result as $inputMedia) {
-                    $mediaFile = $inputMedia->getMedia();
+                    $mediaFile = $inputMedia->media;
                     if ($mediaFile instanceof InputFile) {
                         $files[] = $mediaFile;
                     }
                     if (!$inputMedia instanceof InputMediaPhoto) {
-                        $mediaThumbnail = $inputMedia->getThumbnail();
+                        $mediaThumbnail = $inputMedia->thumbnail;
                         if ($mediaThumbnail instanceof InputFile) {
                             $files[] = $mediaThumbnail;
                         }
@@ -126,8 +126,8 @@ final class BotApi
             $file = $this->call(new GetFile($file));
         }
 
-        $fileUrl = sprintf(self::URL_FILE_ENDPOINT, $this->token, $file->getFilePath());
-        $fileExtension = pathinfo($file->getFilePath(), PATHINFO_EXTENSION);
+        $fileUrl = sprintf(self::URL_FILE_ENDPOINT, $this->token, $file->filePath);
+        $fileExtension = pathinfo($file->filePath, PATHINFO_EXTENSION);
         $downloadFilePath = sys_get_temp_dir() . '/' . uniqid('tgfile_', true) . '.' . $fileExtension;
         $options = [RequestOptions::SINK => $downloadFilePath];
 

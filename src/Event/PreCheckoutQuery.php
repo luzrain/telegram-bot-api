@@ -11,11 +11,11 @@ final class PreCheckoutQuery extends Event
 {
     public function executeChecker(Update $update): bool
     {
-        return $update->getPreCheckoutQuery() !== null;
+        return $update->preCheckoutQuery !== null;
     }
 
     public function executeAction(Update $update): mixed
     {
-        return $this->callback($update->getPreCheckoutQuery());
+        return $this->callback($update->preCheckoutQuery);
     }
 }

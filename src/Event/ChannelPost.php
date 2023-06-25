@@ -11,11 +11,11 @@ final class ChannelPost extends Event
 {
     public function executeChecker(Update $update): bool
     {
-        return $update->getChannelPost() !== null;
+        return $update->channelPost !== null;
     }
 
     public function executeAction(Update $update): mixed
     {
-        return $this->callback($update->getChannelPost());
+        return $this->callback($update->channelPost);
     }
 }

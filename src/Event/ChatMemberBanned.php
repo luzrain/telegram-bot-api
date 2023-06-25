@@ -13,11 +13,11 @@ final class ChatMemberBanned extends Event
 {
     public function executeChecker(Update $update): bool
     {
-        return $update->getMyChatMember()?->getNewChatMember() instanceof ChatMemberBannedType;
+        return $update->myChatMember?->newChatMember instanceof ChatMemberBannedType;
     }
 
     public function executeAction(Update $update): BaseMethod|null
     {
-        return $this->callback($update->getMyChatMember()->getFrom());
+        return $this->callback($update->myChatMember->from);
     }
 }

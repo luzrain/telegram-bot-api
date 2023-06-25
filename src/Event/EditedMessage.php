@@ -11,11 +11,11 @@ final class EditedMessage extends Event
 {
     public function executeChecker(Update $update): bool
     {
-        return $update->getEditedMessage() !== null;
+        return $update->editedMessage !== null;
     }
 
     public function executeAction(Update $update): mixed
     {
-        return $this->callback($update->getEditedMessage());
+        return $this->callback($update->editedMessage);
     }
 }

@@ -11,11 +11,11 @@ final class ShippingQuery extends Event
 {
     public function executeChecker(Update $update): bool
     {
-        return $update->getShippingQuery() !== null;
+        return $update->shippingQuery !== null;
     }
 
     public function executeAction(Update $update): mixed
     {
-        return $this->callback($update->getShippingQuery());
+        return $this->callback($update->shippingQuery);
     }
 }

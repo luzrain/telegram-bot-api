@@ -11,11 +11,11 @@ final class CallbackQuery extends Event
 {
     public function executeChecker(Update $update): bool
     {
-        return $update->getCallbackQuery() !== null;
+        return $update->callbackQuery !== null;
     }
 
     public function executeAction(Update $update): mixed
     {
-        return $this->callback($update->getCallbackQuery());
+        return $this->callback($update->callbackQuery);
     }
 }

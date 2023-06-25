@@ -11,11 +11,11 @@ final class EditedChannelPost extends Event
 {
     public function executeChecker(Update $update): bool
     {
-        return $update->getEditedChannelPost() !== null;
+        return $update->editedChannelPost !== null;
     }
 
     public function executeAction(Update $update): mixed
     {
-        return $this->callback($update->getEditedChannelPost());
+        return $this->callback($update->editedChannelPost);
     }
 }

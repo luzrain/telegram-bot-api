@@ -11,11 +11,11 @@ final class Poll extends Event
 {
     public function executeChecker(Update $update): bool
     {
-        return $update->getPoll() !== null;
+        return $update->poll !== null;
     }
 
     public function executeAction(Update $update): mixed
     {
-        return $this->callback($update->getPoll());
+        return $this->callback($update->poll);
     }
 }

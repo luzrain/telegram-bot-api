@@ -17,20 +17,20 @@ final class Command extends Event
 
     public function executeChecker(Update $update): bool
     {
-        $message = $update->getMessage();
-        $entity = $message?->getEntities()[0] ?? null;
+        $message = $update->message;
+        $entity = $message?->entities[0] ?? null;
 
-        if ($entity?->getType() !== MessageEntity::TYPE_BOT_COMMAND || $entity?->getOffset() !== 0) {
+        if ($entity?->type !== MessageEntity::TYPE_BOT_COMMAND || $entity?->offset !== 0) {
             return false;
         }
 
-        return $this->command === \substr($message->getText(), $entity->getOffset(), $entity->getLength());
+        return $this->command === \substr($message->text, $entity->offset, $entity->length);
     }
 
     public function executeAction(Update $update): mixed
     {
-        $message = $update->getMessage();
-        $params = \array_filter(\explode(' ', $message->getText()));
+        $message = $update->message;
+        $params = \array_filter(\explode(' ', $message->text));
         $params[0] = $message;
 
         return $this->callback(...$params);

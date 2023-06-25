@@ -11,11 +11,11 @@ final class ChatJoinRequest extends Event
 {
     public function executeChecker(Update $update): bool
     {
-        return $update->getChatJoinRequest() !== null;
+        return $update->chatJoinRequest !== null;
     }
 
     public function executeAction(Update $update): mixed
     {
-        return $this->callback($update->getChatJoinRequest());
+        return $this->callback($update->chatJoinRequest);
     }
 }

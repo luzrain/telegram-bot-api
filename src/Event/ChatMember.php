@@ -11,11 +11,11 @@ final class ChatMember extends Event
 {
     public function executeChecker(Update $update): bool
     {
-        return $update->getChatMember() !== null;
+        return $update->chatMember !== null;
     }
 
     public function executeAction(Update $update): mixed
     {
-        return $this->callback($update->getChatMember());
+        return $this->callback($update->chatMember);
     }
 }
