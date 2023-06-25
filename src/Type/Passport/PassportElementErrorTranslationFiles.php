@@ -4,74 +4,37 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
+use Luzrain\TelegramBotApi\BaseType;
+
 /**
  * Represents an issue with the translated version of a document. The error is considered resolved when a file with the document translation change.
  */
-final class PassportElementErrorTranslationFiles extends PassportElementError
+final class PassportElementErrorTranslationFiles extends BaseType implements PassportElementError
 {
-    protected static array $map = [
-        'source' => true,
-        'type' => true,
-        'file_hashes' => true,
-        'message' => true,
-    ];
-
-    public static function create(
-        string $type,
-        array $fileHashes,
-        string $message,
-    ): self {
-        $instance = new self();
-        $instance->type = $type;
-        $instance->fileHashes = $fileHashes;
-        $instance->message = $message;
-
-        return $instance;
-    }
-
     /**
      * Error source, must be translation_files
      */
-    protected string $source = 'translation_files';
+    public string $source;
 
-    /**
-     * Type of element of the user's Telegram Passport which has the issue, one of“passport”, “driver_license”, “identity_card”,
-     * “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
-     */
-    protected string $type;
+    public function __construct(
+        /**
+         * Type of element of the user's Telegram Passport which has the issue, one of“passport”, “driver_license”, “identity_card”,
+         * “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
+         */
+        public string $type,
 
-    /**
-     * List of base64-encoded file hashes
-     *
-     * @var string[]
-     */
-    protected array $fileHashes;
+        /**
+         * List of base64-encoded file hashes
+         *
+         * @var string[]
+         */
+        public array $fileHashes,
 
-    /**
-     * Error message
-     */
-    protected string $message;
-
-    public function getSource(): string
-    {
-        return $this->source;
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getFileHashes(): array
-    {
-        return $this->fileHashes;
-    }
-
-    public function getMessage(): string
-    {
-        return $this->message;
+        /**
+         * Error message
+         */
+        public string $message,
+    ) {
+        $this->source = 'translation_files';
     }
 }

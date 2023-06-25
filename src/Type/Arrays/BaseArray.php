@@ -12,13 +12,13 @@ abstract class BaseArray
     {
     }
 
-    public static function fromResponse(array $data): array
+    public static function fromArray(array $data): array
     {
         $type = static::$type;
         $array = [];
 
         foreach ($data as $item) {
-            $array[] = $type::fromResponse($item);
+            $array[] = $type::fromArray($item);
         }
 
         return $array;

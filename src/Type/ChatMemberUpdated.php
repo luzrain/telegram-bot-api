@@ -12,91 +12,41 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class ChatMemberUpdated extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'chat',
-        'from',
-        'date',
-        'old_chat_member',
-        'new_chat_member',
-    ];
+    protected function __construct(
+        /**
+         * Chat the user belongs to
+         */
+        public Chat $chat,
 
-    protected static array $map = [
-        'chat' => Chat::class,
-        'from' => User::class,
-        'date' => true,
-        'old_chat_member' => ChatMember::class,
-        'new_chat_member' => ChatMember::class,
-        'invite_link' => ChatInviteLink::class,
-        'via_chat_folder_invite_link' => true,
-    ];
+        /**
+         * Performer of the action, which resulted in the change
+         */
+        public User $from,
 
-    /**
-     * Chat the user belongs to
-     */
-    protected Chat $chat;
+        /**
+         * Date the change was done in Unix time
+         */
+        public int $date,
 
-    /**
-     * Performer of the action, which resulted in the change
-     */
-    protected User $from;
+        /**
+         * Previous information about the chat member
+         */
+        public ChatMember $oldChatMember,
 
-    /**
-     * Date the change was done in Unix time
-     */
-    protected int $date;
+        /**
+         * New information about the chat member
+         */
+        public ChatMember $newChatMember,
 
-    /**
-     * Previous information about the chat member
-     */
-    protected ChatMember $oldChatMember;
+        /**
+         * Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only.
+         */
+        public ChatInviteLink|null $inviteLink = null,
 
-    /**
-     * New information about the chat member
-     */
-    protected ChatMember $newChatMember;
-
-    /**
-     * Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only.
-     */
-    protected ChatInviteLink|null $inviteLink = null;
-
-    /**
-     * Optional. True, if the user joined the chat via a chat folder invite link
-     */
-    protected bool|null $viaChatFolderInviteLink = null;
-
-    public function getChat(): Chat
-    {
-        return $this->chat;
-    }
-
-    public function getFrom(): User
-    {
-        return $this->from;
-    }
-
-    public function getDate(): int
-    {
-        return $this->date;
-    }
-
-    public function getOldChatMember(): ChatMember
-    {
-        return $this->oldChatMember;
-    }
-
-    public function getNewChatMember(): ChatMember
-    {
-        return $this->newChatMember;
-    }
-
-    public function getInviteLink(): ChatInviteLink|null
-    {
-        return $this->inviteLink;
-    }
-
-    public function getViaChatFolderInviteLink(): bool|null
-    {
-        return $this->viaChatFolderInviteLink;
+        /**
+         * Optional. True, if the user joined the chat via a chat folder invite link
+         */
+        public bool|null $viaChatFolderInviteLink = null,
+    ) {
     }
 }

@@ -13,57 +13,26 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class PassportFile extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'file_id',
-        'file_unique_id',
-        'file_size',
-        'file_date',
-    ];
+    protected function __construct(
+        /**
+         * Identifier for this file, which can be used to download or reuse the file
+         */
+        public string $fileId,
 
-    protected static array $map = [
-        'file_id' => true,
-        'file_unique_id' => true,
-        'file_size' => true,
-        'file_date' => true,
-    ];
+        /**
+         * Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
+         */
+        public string $fileUniqueId,
 
-    /**
-     * Identifier for this file, which can be used to download or reuse the file
-     */
-    protected string $fileId;
+        /**
+         * File size in bytes
+         */
+        public int $fileSize,
 
-    /**
-     * Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
-     */
-    protected string $fileUniqueId;
-
-    /**
-     * File size in bytes
-     */
-    protected int $fileSize;
-
-    /**
-     * Unix time when the file was uploaded
-     */
-    protected int $fileDate;
-
-    public function getFileId(): string
-    {
-        return $this->fileId;
-    }
-
-    public function getFileUniqueId(): string
-    {
-        return $this->fileUniqueId;
-    }
-
-    public function getFileSize(): int
-    {
-        return $this->fileSize;
-    }
-
-    public function getFileDate(): int
-    {
-        return $this->fileDate;
+        /**
+         * Unix time when the file was uploaded
+         */
+        public int $fileDate,
+    ) {
     }
 }

@@ -12,33 +12,16 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class WebAppData extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'data',
-        'button_text',
-    ];
+    protected function __construct(
+        /**
+         * The data. Be aware that a bad client can send arbitrary data in this field.
+         */
+        public string $data,
 
-    protected static array $map = [
-        'data' => true,
-        'button_text' => true,
-    ];
-
-    /**
-     * The data. Be aware that a bad client can send arbitrary data in this field.
-     */
-    protected string $data;
-
-    /**
-     * Text of the web_app keyboard button, from which the Web App was opened. Be aware that a bad client can send arbitrary data in this field.
-     */
-    protected string $buttonText;
-
-    public function getData(): string
-    {
-        return $this->data;
-    }
-
-    public function getButtonText(): string
-    {
-        return $this->buttonText;
+        /**
+         * Text of the web_app keyboard button, from which the Web App was opened. Be aware that a bad client can send arbitrary data in this field.
+         */
+        public string $buttonText,
+    ) {
     }
 }

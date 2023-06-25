@@ -12,33 +12,16 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class PollOption extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'text',
-        'voter_count',
-    ];
+    protected function __construct(
+        /**
+         * Option text, 1-100 characters
+         */
+        public string $text,
 
-    protected static array $map = [
-        'text' => true,
-        'voter_count' => true,
-    ];
-
-    /**
-     * Option text, 1-100 characters
-     */
-    protected string $text;
-
-    /**
-     * Number of users that voted for this option
-     */
-    protected int $voterCount;
-
-    public function getText(): string
-    {
-        return $this->text;
-    }
-
-    public function getVoterCount(): int
-    {
-        return $this->voterCount;
+        /**
+         * Number of users that voted for this option
+         */
+        public int $voterCount,
+    ) {
     }
 }

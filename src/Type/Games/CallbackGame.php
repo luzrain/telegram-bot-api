@@ -12,8 +12,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class CallbackGame extends BaseType implements TypeInterface
 {
-    public static function create()
+    public function __construct()
     {
-        return new self();
     }
 }

@@ -4,27 +4,20 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
+use Luzrain\TelegramBotApi\BaseType;
+
 /**
  * Represents the scope of bot commands, covering all private chats.
  */
-final class BotCommandScopeAllPrivateChats extends BotCommandScope
+final class BotCommandScopeAllPrivateChats extends BaseType implements BotCommandScope
 {
-    protected static array $map = [
-        'type' => true,
-    ];
-
     /**
      * Scope type, must be all_private_chats
      */
-    protected string $type = 'all_private_chats';
+    public string $type;
 
-    public static function create(): self
+    public function __construct()
     {
-        return new self();
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
+        $this->type = 'all_private_chats';
     }
 }

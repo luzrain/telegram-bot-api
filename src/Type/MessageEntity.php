@@ -30,114 +30,47 @@ final class MessageEntity extends BaseType implements TypeInterface
     public const TYPE_TEXT_MENTION = 'text_mention';
     public const CUSTOM_EMOJI = 'custom_emoji';
 
-    protected static array $requiredParams = [
-        'type',
-        'offset',
-        'length',
-    ];
+    public function __construct(
+        /**
+         * Type of the entity.
+         * Currently, can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command” (/start@jobs_bot),
+         * “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text),
+         * “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message),
+         * “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames),
+         * “custom_emoji” (for inline custom emoji stickers)
+         */
+        public string $type,
 
-    protected static array $map = [
-        'type' => true,
-        'offset' => true,
-        'length' => true,
-        'url' => true,
-        'user' => User::class,
-        'language' => true,
-        'custom_emoji_id' => true,
-    ];
+        /**
+         * Offset in UTF-16 code units to the start of the entity
+         */
+        public int $offset,
 
-    /**
-     * Type of the entity.
-     * Currently, can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command” (/start@jobs_bot),
-     * “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text),
-     * “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message),
-     * “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames),
-     * “custom_emoji” (for inline custom emoji stickers)
-     */
-    protected string $type;
+        /**
+         * Length of the entity in UTF-16 code units
+         */
+        public int $length,
 
-    /**
-     * Offset in UTF-16 code units to the start of the entity
-     */
-    protected int $offset;
+        /**
+         * Optional. For “text_link” only, url that will be opened after user taps on the text
+         */
+        public string|null $url = null,
 
-    /**
-     * Length of the entity in UTF-16 code units
-     */
-    protected int $length;
+        /**
+         * Optional. For “text_mention” only, the mentioned user
+         */
+        public User|null $user = null,
 
-    /**
-     * Optional. For “text_link” only, url that will be opened after user taps on the text
-     */
-    protected string|null $url = null;
+        /**
+         * Optional. For “pre” only, the programming language of the entity text
+         */
+        public string|null $language = null,
 
-    /**
-     * Optional. For “text_mention” only, the mentioned user
-     */
-    protected User|null $user = null;
-
-    /**
-     * Optional. For “pre” only, the programming language of the entity text
-     */
-    protected string|null $language = null;
-
-    /**
-     * Optional. For “custom_emoji” only, unique identifier of the custom emoji.
-     * Use getCustomEmojiStickers to get full information about the sticker
-     */
-    protected string|null $customEmojiId = null;
-
-    public static function create(
-        string $type,
-        int $offset,
-        int $length,
-        string|null $url = null,
-        User|null $user = null,
-        string|null $language = null,
-    ): self {
-        $instance = new self();
-        $instance->type = $type;
-        $instance->offset = $offset;
-        $instance->length = $length;
-        $instance->url = $url;
-        $instance->user = $user;
-        $instance->language = $language;
-
-        return $instance;
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    public function getOffset(): int
-    {
-        return $this->offset;
-    }
-
-    public function getLength(): int
-    {
-        return $this->length;
-    }
-
-    public function getUrl(): string|null
-    {
-        return $this->url;
-    }
-
-    public function getUser(): User|null
-    {
-        return $this->user;
-    }
-
-    public function getLanguage(): string|null
-    {
-        return $this->language;
-    }
-
-    public function getCustomEmojiId(): string|null
-    {
-        return $this->customEmojiId;
+        /**
+         * Optional. For “custom_emoji” only, unique identifier of the custom emoji.
+         * Use getCustomEmojiStickers to get full information about the sticker
+         */
+        public string|null $customEmojiId = null,
+    ) {
     }
 }

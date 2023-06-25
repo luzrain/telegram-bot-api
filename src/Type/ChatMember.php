@@ -19,18 +19,13 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 class ChatMember extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'status',
-    ];
-
-    protected static array $map = [
-        'status' => true,
-    ];
-
-    /**
-     * The member's status in the chat
-     */
-    protected string $status;
+    protected function __construct(
+        /**
+         * The member's status in the chat
+         */
+        public string $status,
+    ) {
+    }
 
     /**
      * @psalm-suppress UndefinedPropertyFetch
@@ -38,21 +33,21 @@ class ChatMember extends BaseType implements TypeInterface
      * @psalm-suppress LessSpecificReturnStatement
      * @psalm-suppress MoreSpecificReturnType
      */
-    public static function fromResponse(array $data): static
+    public static function fromArray(array $data): static
     {
-        $instance = parent::fromResponse($data);
+        $instance = parent::fromArray($data);
 
         if (self::class !== static::class) {
             return $instance;
         }
 
         return match ($instance->status) {
-            'creator' => ChatMemberOwner::fromResponse($data),
-            'administrator' => ChatMemberAdministrator::fromResponse($data),
-            'member' => ChatMemberMember::fromResponse($data),
-            'restricted' => ChatMemberRestricted::fromResponse($data),
-            'left' => ChatMemberLeft::fromResponse($data),
-            'kicked' => ChatMemberBanned::fromResponse($data),
+            'creator' => ChatMemberOwner::fromArray($data),
+            'administrator' => ChatMemberAdministrator::fromArray($data),
+            'member' => ChatMemberMember::fromArray($data),
+            'restricted' => ChatMemberRestricted::fromArray($data),
+            'left' => ChatMemberLeft::fromArray($data),
+            'kicked' => ChatMemberBanned::fromArray($data),
         };
     }
 }

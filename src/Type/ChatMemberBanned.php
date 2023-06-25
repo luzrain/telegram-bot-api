@@ -9,45 +9,22 @@ namespace Luzrain\TelegramBotApi\Type;
  */
 final class ChatMemberBanned extends ChatMember
 {
-    protected static array $requiredParams = [
-        'status',
-        'user',
-        'until_date',
-    ];
+    protected function __construct(
+        /**
+         * The member's status in the chat, always “kicked”
+         */
+        public string $status,
 
-    protected static array $map = [
-        'status' => true,
-        'user' => User::class,
-        'until_date' => true,
-    ];
+        /**
+         * Information about the user
+         */
+        public User $user,
 
-    /**
-     * The member's status in the chat, always “kicked”
-     */
-    protected string $status;
-
-    /**
-     * Information about the user
-     */
-    protected User $user;
-
-    /**
-     * Date when restrictions will be lifted for this user; unix time. If 0, then the user is banned forever
-     */
-    protected int $untilDate;
-
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-
-    public function getUser(): User
-    {
-        return $this->user;
-    }
-
-    public function getUntilDate(): int
-    {
-        return $this->untilDate;
+        /**
+         * Date when restrictions will be lifted for this user; unix time. If 0, then the user is banned forever
+         */
+        public int $untilDate,
+    ) {
+        parent::__construct($this->status);
     }
 }

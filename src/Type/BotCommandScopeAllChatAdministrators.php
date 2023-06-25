@@ -4,27 +4,20 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
+use Luzrain\TelegramBotApi\BaseType;
+
 /**
  * Represents the scope of bot commands, covering all group and supergroup chat administrators.
  */
-final class BotCommandScopeAllChatAdministrators extends BotCommandScope
+final class BotCommandScopeAllChatAdministrators extends BaseType implements BotCommandScope
 {
-    protected static array $map = [
-        'type' => true,
-    ];
-
     /**
      * Scope type, must be all_chat_administrators
      */
-    protected string $type = 'all_chat_administrators';
+    public string $type;
 
-    public static function create(): self
+    public function __construct()
     {
-        return new self();
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
+        $this->type = 'all_chat_administrators';
     }
 }

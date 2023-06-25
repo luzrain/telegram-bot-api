@@ -55,7 +55,7 @@ final class Client
     public function webhookHandle(string $body): string
     {
         $data = json_decode(json: $body, associative: true, flags: JSON_THROW_ON_ERROR);
-        $callbackResponse = $this->events->handle(Update::fromResponse($data));
+        $callbackResponse = $this->events->handle(Update::fromArray($data));
         $this->events->reset();
 
         if ($callbackResponse === null) {

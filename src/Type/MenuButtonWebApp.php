@@ -9,55 +9,26 @@ namespace Luzrain\TelegramBotApi\Type;
  */
 final class MenuButtonWebApp extends MenuButton
 {
-    protected static array $requiredParams = [
-        'type',
-        'text',
-        'web_app',
-    ];
+    public function __construct(
+        /**
+         * Text on the button
+         */
+        public string $text,
 
-    protected static array $map = [
-        'type' => true,
-        'text' => true,
-        'web_app' => WebAppInfo::class,
-    ];
+        /**
+         * Description of the Web App that will be launched when the user presses the button.
+         * The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery.
+         */
+        public WebAppInfo $webApp,
 
-    /**
-     * Type of the button, must be web_app
-     */
-    protected string $type = 'web_app';
-
-    /**
-     * Text on the button
-     */
-    protected string $text;
-
-    /**
-     * Description of the Web App that will be launched when the user presses the button.
-     * The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery.
-     */
-    protected WebAppInfo $webApp;
-
-    public static function create(string $text, WebAppInfo $webApp): self
-    {
-        $instance = new self();
-        $instance->text = $text;
-        $instance->webApp = $webApp;
-
-        return $instance;
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    public function getText(): string
-    {
-        return $this->text;
-    }
-
-    public function getWebApp(): WebAppInfo
-    {
-        return $this->webApp;
+        /**
+         * Type of the button, must be web_app
+         */
+        public string $type = 'web_app',
+    ) {
+        if ($this->type !== 'web_app') {
+            throw new \InvalidArgumentException('type should be "web_app"');
+        }
+        parent::__construct($this->type);
     }
 }

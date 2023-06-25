@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\PropertyType;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfArrayOfPhotoSize;
 use Luzrain\TelegramBotApi\TypeInterface;
 
@@ -13,35 +14,19 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class UserProfilePhotos extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'total_count',
-        'photos',
-    ];
+    protected function __construct(
+        /**
+         * Total number of profile pictures the target user has
+         */
+        public int $totalCount,
 
-    protected static array $map = [
-        'total_count' => true,
-        'photos' => ArrayOfArrayOfPhotoSize::class,
-    ];
-
-    /**
-     * Total number of profile pictures the target user has
-     *
-     * Array of Array of PhotoSize
-     */
-    protected int $totalCount;
-
-    /**
-     * Requested profile pictures (in up to 4 sizes each)
-     */
-    protected array $photos;
-
-    public function getTotalCount(): int
-    {
-        return $this->totalCount;
-    }
-
-    public function getPhotos(): array
-    {
-        return $this->photos;
+        /**
+         * Requested profile pictures (in up to 4 sizes each)
+         *
+         * @var list<list<PhotoSize>>
+         */
+        #[PropertyType(ArrayOfArrayOfPhotoSize::class)]
+        public array $photos,
+    ) {
     }
 }

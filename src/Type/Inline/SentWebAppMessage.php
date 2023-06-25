@@ -12,19 +12,11 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class SentWebAppMessage extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [];
-
-    protected static array $map = [
-        'inline_message_id' => true,
-    ];
-
-    /**
-     * Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message.
-     */
-    protected string|null $inlineMessageId = null;
-
-    public function getInlineMessageId(): string|null
-    {
-        return $this->inlineMessageId;
+    protected function __construct(
+        /**
+         * Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message.
+         */
+        public string|null $inlineMessageId = null,
+    ) {
     }
 }

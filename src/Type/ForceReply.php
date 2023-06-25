@@ -14,32 +14,26 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class ForceReply extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'force_reply',
-    ];
-
-    protected static array $map = [
-        'force_reply' => true,
-        'input_field_placeholder' => true,
-        'selective' => true,
-    ];
-
     /**
      * Shows reply interface to the user, as if they manually selected the bot's message and tapped 'Reply'
      */
-    protected bool $forceReply;
+    public true $forceReply;
 
     /**
      * Optional. The placeholder to be shown in the input field when the reply is active; 1-64 characters
      */
-    protected string|null $inputFieldPlaceholder = null;
+    public string|null $inputFieldPlaceholder;
 
     /**
      * Optional. Use this parameter if you want to force reply from specific users only. Targets:
      * 1) users that are @mentioned in the text of the Message object;
      * 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.
      */
-    protected bool|null $selective = null;
+    public bool|null $selective;
+
+    private function __construct()
+    {
+    }
 
     public static function create(
         string|null $inputFieldPlaceholder = null,
@@ -51,20 +45,5 @@ final class ForceReply extends BaseType implements TypeInterface
         $instance->selective = $selective;
 
         return $instance;
-    }
-
-    public function isForceReply(): bool
-    {
-        return $this->forceReply;
-    }
-
-    public function getInputFieldPlaceholder(): string|null
-    {
-        return $this->inputFieldPlaceholder;
-    }
-
-    public function isSelective(): bool|null
-    {
-        return $this->selective;
     }
 }

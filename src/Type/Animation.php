@@ -12,114 +12,52 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class Animation extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'file_id',
-        'file_unique_id',
-        'width',
-        'height',
-        'duration',
-    ];
+    protected function __construct(
+        /**
+         * Identifier for this file, which can be used to download or reuse the file
+         */
+        public string $fileId,
 
-    protected static array $map = [
-        'file_id' => true,
-        'file_unique_id' => true,
-        'width' => true,
-        'height' => true,
-        'duration' => true,
-        'thumbnail' => PhotoSize::class,
-        'file_name' => true,
-        'mime_type' => true,
-        'file_size' => true,
-    ];
+        /**
+         * Unique identifier for this file, which is supposed to be the same over time and for different bots.
+         * Can't be used to download or reuse the file.
+         */
+        public string $fileUniqueId,
 
-    /**
-     * Identifier for this file, which can be used to download or reuse the file
-     */
-    protected string $fileId;
+        /**
+         * Video width as defined by sender
+         */
+        public int $width,
 
-    /**
-     * Unique identifier for this file, which is supposed to be the same over time and for different bots.
-     * Can't be used to download or reuse the file.
-     */
-    protected string $fileUniqueId;
+        /**
+         * Video height as defined by sender
+         */
+        public int $height,
 
-    /**
-     * Video width as defined by sender
-     */
-    protected int $width;
+        /**
+         * Duration of the video in seconds as defined by sender
+         */
+        public int $duration,
 
-    /**
-     * Video height as defined by sender
-     */
-    protected int $height;
+        /**
+         * Optional. Animation thumbnail as defined by sender
+         */
+        public PhotoSize|null $thumbnail = null,
 
-    /**
-     * Duration of the video in seconds as defined by sender
-     */
-    protected int $duration;
+        /**
+         * Optional. Original animation filename as defined by sender
+         */
+        public string|null $fileName = null,
 
-    /**
-     * Optional. Animation thumbnail as defined by sender
-     */
-    protected PhotoSize|null $thumbnail = null;
+        /**
+         * Optional. MIME type of the file as defined by sender
+         */
+        public string|null $mimeType = null,
 
-    /**
-     * Optional. Original animation filename as defined by sender
-     */
-    protected string|null $fileName = null;
-
-    /**
-     * Optional. MIME type of the file as defined by sender
-     */
-    protected string|null $mimeType = null;
-
-    /**
-     * Optional. File size in bytes
-     */
-    protected int|null $fileSize = null;
-
-    public function getFileId(): string
-    {
-        return $this->fileId;
-    }
-
-    public function getFileUniqueId(): string
-    {
-        return $this->fileUniqueId;
-    }
-
-    public function getWidth(): int
-    {
-        return $this->width;
-    }
-
-    public function getHeight(): int
-    {
-        return $this->height;
-    }
-
-    public function getDuration(): int
-    {
-        return $this->duration;
-    }
-
-    public function getThumbnail(): PhotoSize|null
-    {
-        return $this->thumbnail;
-    }
-
-    public function getFileName(): string|null
-    {
-        return $this->fileName;
-    }
-
-    public function getMimeType(): string|null
-    {
-        return $this->mimeType;
-    }
-
-    public function getFileSize(): int|null
-    {
-        return $this->fileSize;
+        /**
+         * Optional. File size in bytes
+         */
+        public int|null $fileSize = null,
+    ) {
     }
 }

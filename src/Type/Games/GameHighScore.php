@@ -13,45 +13,21 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class GameHighScore extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'position',
-        'user',
-        'score',
-    ];
+    protected function __construct(
+        /**
+         * Position in high score table for the game
+         */
+        public int $position,
 
-    protected static array $map = [
-        'position' => true,
-        'user' => User::class,
-        'score' => true,
-    ];
+        /**
+         * User
+         */
+        public User $user,
 
-    /**
-     * Position in high score table for the game
-     */
-    protected int $position;
-
-    /**
-     * User
-     */
-    protected User $user;
-
-    /**
-     * Score
-     */
-    protected int $score;
-
-    public function getPosition(): int
-    {
-        return $this->position;
-    }
-
-    public function getUser(): User
-    {
-        return $this->user;
-    }
-
-    public function getScore(): int
-    {
-        return $this->score;
+        /**
+         * Score
+         */
+        public int $score,
+    ) {
     }
 }

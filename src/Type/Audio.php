@@ -12,112 +12,52 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class Audio extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'file_id',
-        'file_unique_id',
-        'duration',
-    ];
+    protected function __construct(
+        /**
+         * Identifier for this file, which can be used to download or reuse the file
+         */
+        public string $fileId,
 
-    protected static array $map = [
-        'file_id' => true,
-        'file_unique_id' => true,
-        'duration' => true,
-        'performer' => true,
-        'title' => true,
-        'file_name' => true,
-        'mime_type' => true,
-        'file_size' => true,
-        'thumbnail' => PhotoSize::class,
-    ];
+        /**
+         * Unique identifier for this file, which is supposed to be the same over time and for different bots.
+         * Can't be used to download or reuse the file.
+         */
+        public string $fileUniqueId,
 
-    /**
-     * Identifier for this file, which can be used to download or reuse the file
-     */
-    protected string $fileId;
+        /**
+         * Duration of the audio in seconds as defined by sender
+         */
+        public int $duration,
 
-    /**
-     * Unique identifier for this file, which is supposed to be the same over time and for different bots.
-     * Can't be used to download or reuse the file.
-     */
-    protected string $fileUniqueId;
+        /**
+         * Optional. Performer of the audio as defined by sender or by audio tags
+         */
+        public string|null $performer = null,
 
-    /**
-     * Duration of the audio in seconds as defined by sender
-     */
-    protected int $duration;
+        /**
+         * Optional. Title of the audio as defined by sender or by audio tags
+         */
+        public string|null $title = null,
 
-    /**
-     * Optional. Performer of the audio as defined by sender or by audio tags
-     */
-    protected string|null $performer = null;
+        /**
+         * Optional. Original filename as defined by sender
+         */
+        public string|null $fileName = null,
 
-    /**
-     * Optional. Title of the audio as defined by sender or by audio tags
-     */
-    protected string|null $title = null;
+        /**
+         * Optional. MIME type of the file as defined by sender
+         */
+        public string|null $mimeType = null,
 
-    /**
-     * Optional. Original filename as defined by sender
-     */
-    protected string|null $fileName = null;
+        /**
+         * Optional. File size in bytes
+         */
+        public int|null $fileSize = null,
 
-    /**
-     * Optional. MIME type of the file as defined by sender
-     */
-    protected string|null $mimeType = null;
-
-    /**
-     * Optional. File size in bytes
-     */
-    protected int|null $fileSize = null;
-
-    /**
-     * Optional. Thumbnail of the album cover to which the music file belongs
-     */
-    protected PhotoSize|null $thumbnail = null;
-
-    public function getFileId(): string
-    {
-        return $this->fileId;
-    }
-
-    public function getFileUniqueId(): string
-    {
-        return $this->fileUniqueId;
-    }
-
-    public function getDuration(): int
-    {
-        return $this->duration;
-    }
-
-    public function getPerformer(): string|null
-    {
-        return $this->performer;
-    }
-
-    public function getTitle(): string|null
-    {
-        return $this->title;
-    }
-
-    public function getFileName(): string|null
-    {
-        return $this->fileName;
-    }
-
-    public function getMimeType(): string|null
-    {
-        return $this->mimeType;
-    }
-
-    public function getFileSize(): int|null
-    {
-        return $this->fileSize;
-    }
-
-    public function getThumbnail(): PhotoSize|null
-    {
-        return $this->thumbnail;
+        /**
+         * Optional. Thumbnail of the album cover to which the music file belongs
+         */
+        public PhotoSize|null $thumbnail = null,
+    ) {
     }
 }

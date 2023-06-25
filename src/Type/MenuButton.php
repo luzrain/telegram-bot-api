@@ -16,18 +16,13 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 class MenuButton extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'type',
-    ];
-
-    protected static array $map = [
-        'type' => true,
-    ];
-
-    /**
-     * Type of the button
-     */
-    protected string $type;
+    protected function __construct(
+        /**
+         * Type of the button
+         */
+        public string $type,
+    ) {
+    }
 
     /**
      * @psalm-suppress UndefinedPropertyFetch
@@ -35,18 +30,18 @@ class MenuButton extends BaseType implements TypeInterface
      * @psalm-suppress LessSpecificReturnStatement
      * @psalm-suppress MoreSpecificReturnType
      */
-    public static function fromResponse(array $data): static
+    public static function fromArray(array $data): static
     {
-        $instance = parent::fromResponse($data);
+        $instance = parent::fromArray($data);
 
         if (self::class !== static::class) {
             return $instance;
         }
 
         return match ($instance->type) {
-            'commands' => MenuButtonCommands::fromResponse($data),
-            'web_app' => MenuButtonWebApp::fromResponse($data),
-            'default' => MenuButtonDefault::fromResponse($data),
+            'commands' => MenuButtonCommands::fromArray($data),
+            'web_app' => MenuButtonWebApp::fromArray($data),
+            'default' => MenuButtonDefault::fromArray($data),
         };
     }
 }

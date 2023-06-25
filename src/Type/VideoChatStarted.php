@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class VideoChatStarted extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [];
-
-    protected static array $map = [];
+    protected function __construct()
+    {
+    }
 }

@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class ForumTopicReopened extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [];
-
-    protected static array $map = [];
+    protected function __construct()
+    {
+    }
 }

@@ -13,57 +13,26 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class ShippingQuery extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'id',
-        'from',
-        'invoice_payload',
-        'shipping_address',
-    ];
+    protected function __construct(
+        /**
+         * Unique query identifier
+         */
+        public string $id,
 
-    protected static array $map = [
-        'id' => true,
-        'from' => User::class,
-        'invoice_payload' => true,
-        'shipping_address' => ShippingAddress::class,
-    ];
+        /**
+         * User who sent the query
+         */
+        public User $from,
 
-    /**
-     * Unique query identifier
-     */
-    protected string $id;
+        /**
+         * Bot specified invoice payload
+         */
+        public string $invoicePayload,
 
-    /**
-     * User who sent the query
-     */
-    protected User $from;
-
-    /**
-     * Bot specified invoice payload
-     */
-    protected string $invoicePayload;
-
-    /**
-     * User specified shipping address
-     */
-    protected ShippingAddress $shippingAddress;
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    public function getFrom(): User
-    {
-        return $this->from;
-    }
-
-    public function getInvoicePayload(): string
-    {
-        return $this->invoicePayload;
-    }
-
-    public function getShippingAddress(): ShippingAddress
-    {
-        return $this->shippingAddress;
+        /**
+         * User specified shipping address
+         */
+        public ShippingAddress $shippingAddress,
+    ) {
     }
 }

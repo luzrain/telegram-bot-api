@@ -13,63 +13,23 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class ShippingOption extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'id',
-        'title',
-        'prices',
-    ];
+    public function __construct(
+        /**
+         * Shipping option identifier
+         */
+        public string $id,
 
-    protected static array $map = [
-        'id' => true,
-        'title' => true,
-        'prices' => ArrayOfLabeledPrice::class,
-    ];
+        /**
+         * Option title
+         */
+        public string $title,
 
-    /**
-     * Shipping option identifier
-     */
-    protected string $id;
-
-    /**
-     * Option title
-     */
-    protected string $title;
-
-    /**
-     * List of price portions
-     *
-     * @var LabeledPrice[]
-     */
-    protected array $prices;
-
-    public static function create(
-        string $id,
-        string $title,
-        array $prices,
-    ): self {
-        $instance = new self();
-        $instance->id = $id;
-        $instance->title = $title;
-        $instance->prices = $prices;
-
-        return $instance;
-    }
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-
-    /**
-     * @return LabeledPrice[]
-     */
-    public function getPrices(): array
-    {
-        return $this->prices;
+        /**
+         * List of price portions
+         *
+         * @var list<LabeledPrice>
+         */
+        public array $prices,
+    ) {
     }
 }

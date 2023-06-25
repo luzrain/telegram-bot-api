@@ -12,7 +12,7 @@ final class BaseTypeTest extends TestCase
 {
     public function testValidate(): void
     {
-        TestBaseType::fromResponse([
+        TestBaseType::fromArray([
             'test1' => 1,
             'test2' => 2,
             'test3' => 3,
@@ -25,7 +25,7 @@ final class BaseTypeTest extends TestCase
     {
         $this->expectException(TelegramTypeException::class);
 
-        TestBaseType::fromResponse([
+        TestBaseType::fromArray([
             'test1' => 1,
         ]);
     }

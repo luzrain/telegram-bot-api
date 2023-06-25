@@ -12,21 +12,11 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class MessageId extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'message_id',
-    ];
-
-    protected static array $map = [
-        'message_id' => true,
-    ];
-
-    /**
-     * Unique message identifier
-     */
-    protected int $messageId;
-
-    public function getMessageId(): int
-    {
-        return $this->messageId;
+    protected function __construct(
+        /**
+         * Unique message identifier
+         */
+        public int $messageId,
+    ) {
     }
 }

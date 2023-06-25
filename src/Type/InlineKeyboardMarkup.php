@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\PropertyType;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfArrayOfInlineKeyboardButton;
 use Luzrain\TelegramBotApi\TypeInterface;
 
@@ -13,33 +14,29 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class InlineKeyboardMarkup extends BaseType implements TypeInterface
 {
-    private const BREAK = 2;
+    private const BREAK = 'break';
 
-    protected static array $requiredParams = [
-        'inline_keyboard',
-    ];
-
-    protected static array $map = [
-        'inline_keyboard' => ArrayOfArrayOfInlineKeyboardButton::class,
-    ];
-
-    /**
-     * Array of button rows, each represented by an Array of InlineKeyboardButton objects
-     */
-    protected array $inlineKeyboard;
+    protected function __construct(
+        /**
+         * Array of button rows, each represented by an Array of InlineKeyboardButton objects
+         */
+        #[PropertyType(ArrayOfArrayOfInlineKeyboardButton::class)]
+        public array $inlineKeyboard,
+    ) {
+    }
 
     /**
      * Create new instance of InlineKeyboardMarkup
      */
     public static function create(): self
     {
-        return new self();
+        return new self(inlineKeyboard: [[]]);
     }
 
     /**
      * Add buttons into markup
      */
-    public function addButtons(InlineKeyboardButton|int ...$arrayOfButtons): self
+    public function addButtons(InlineKeyboardButton|string ...$arrayOfButtons): self
     {
         $rowIndex = 0;
         $this->inlineKeyboard = [$rowIndex => []];
@@ -58,7 +55,7 @@ final class InlineKeyboardMarkup extends BaseType implements TypeInterface
     /**
      * Break buttons row to tne next row
      */
-    public static function break(): int
+    public static function break(): string
     {
         return self::BREAK;
     }

@@ -9,26 +9,15 @@ namespace Luzrain\TelegramBotApi\Type;
  */
 final class MenuButtonCommands extends MenuButton
 {
-    protected static array $requiredParams = [
-        'type',
-    ];
-
-    protected static array $map = [
-        'type' => true,
-    ];
-
-    /**
-     * Type of the button, must be commands
-     */
-    protected string $type = 'commands';
-
-    public static function create(): self
-    {
-        return new self();
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
+    public function __construct(
+        /**
+         * Type of the button, must be commands
+         */
+        public string $type = 'commands',
+    ) {
+        if ($this->type !== 'commands') {
+            throw new \InvalidArgumentException('type should be "commands"');
+        }
+        parent::__construct($this->type);
     }
 }

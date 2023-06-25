@@ -4,27 +4,20 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
+use Luzrain\TelegramBotApi\BaseType;
+
 /**
  * Represents the default scope of bot commands. Default commands are used if no commands with a narrower scope are specified for the user.
  */
-final class BotCommandScopeDefault extends BotCommandScope
+final class BotCommandScopeDefault extends BaseType implements BotCommandScope
 {
-    protected static array $map = [
-        'type' => true,
-    ];
-
     /**
      * Scope type, must be default
      */
-    protected string $type = 'default';
+    public string $type;
 
-    public static function create(): self
+    public function __construct()
     {
-        return new self();
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
+        $this->type = 'default';
     }
 }

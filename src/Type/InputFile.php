@@ -17,16 +17,16 @@ final class InputFile implements \JsonSerializable
 
     private function __construct(string $filePath)
     {
+        if (is_file($filePath) === false) {
+            throw new TelegramInputFileException($filePath);
+        }
+
         $this->filePath = $filePath;
         $this->uniqueName = uniqid('attach_', true);
     }
 
     public static function create(string $filePath): self
     {
-        if (is_file($filePath) === false) {
-            throw new TelegramInputFileException($filePath);
-        }
-
         return new self($filePath);
     }
 

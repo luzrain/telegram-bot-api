@@ -9,56 +9,27 @@ namespace Luzrain\TelegramBotApi\Type;
  */
 final class ChatMemberOwner extends ChatMember
 {
-    protected static array $requiredParams = [
-        'status',
-        'user',
-        'is_anonymous',
-    ];
+    protected function __construct(
+        /**
+         * The member's status in the chat, always “creator”
+         */
+        public string $status,
 
-    protected static array $map = [
-        'status' => true,
-        'user' => User::class,
-        'is_anonymous' => true,
-        'custom_title' => true,
-    ];
+        /**
+         * Information about the user
+         */
+        public User $user,
 
-    /**
-     * The member's status in the chat, always “creator”
-     */
-    protected string $status;
+        /**
+         * True, if the user's presence in the chat is hidden
+         */
+        public bool $isAnonymous,
 
-    /**
-     * Information about the user
-     */
-    protected User $user;
-
-    /**
-     * True, if the user's presence in the chat is hidden
-     */
-    protected bool $isAnonymous;
-
-    /**
-     * Optional. Custom title for this user
-     */
-    protected string|null $customTitle = null;
-
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-
-    public function getUser(): User
-    {
-        return $this->user;
-    }
-
-    public function isAnonymous(): bool
-    {
-        return $this->isAnonymous;
-    }
-
-    public function getCustomTitle(): string|null
-    {
-        return $this->customTitle;
+        /**
+         * Optional. Custom title for this user
+         */
+        public string|null $customTitle = null,
+    ) {
+        parent::__construct($this->status);
     }
 }

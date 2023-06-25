@@ -104,9 +104,9 @@ final class ClientTest extends TestCase
         $editedChannelPostClosure = new ClosureTestHelper();
 
         $updates = [
-            Update::fromResponse(json_decode(file_get_contents(__DIR__ . '/data/events/command.json'), true)),
-            Update::fromResponse(json_decode(file_get_contents(__DIR__ . '/data/events/editedMessage.json'), true)),
-            Update::fromResponse(json_decode(file_get_contents(__DIR__ . '/data/events/channelPost.json'), true)),
+            Update::fromArray(json_decode(file_get_contents(__DIR__ . '/data/events/command.json'), true)),
+            Update::fromArray(json_decode(file_get_contents(__DIR__ . '/data/events/editedMessage.json'), true)),
+            Update::fromArray(json_decode(file_get_contents(__DIR__ . '/data/events/channelPost.json'), true)),
         ];
 
         $this->client

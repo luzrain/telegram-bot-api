@@ -12,21 +12,11 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class VideoChatEnded extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'duration',
-    ];
-
-    protected static array $map = [
-        'duration' => true,
-    ];
-
-    /**
-     * Video chat duration in seconds
-     */
-    protected int $duration;
-
-    public function getDuration(): int
-    {
-        return $this->duration;
+    protected function __construct(
+        /**
+         * Video chat duration in seconds
+         */
+        public int $duration,
+    ) {
     }
 }

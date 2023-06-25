@@ -13,53 +13,30 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class LoginUrl extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'url',
-    ];
+    public function __construct(
+        /**
+         * An HTTP URL to be opened with user authorization data added to the query string when the button is pressed.
+         * If the user refuses to provide authorization data, the original URL without information about the user will be opened.
+         * The data added is the same as described in Receiving authorization data.
+         */
+        public string $url,
 
-    protected static array $map = [
-        'url' => true,
-        'forward_text' => true,
-        'bot_username' => true,
-        'request_write_access' => true,
-    ];
+        /**
+         * Optional. New text of the button in forwarded messages.
+         */
+        public string|null $forwardText = null,
 
-    /**
-     * An HTTP URL to be opened with user authorization data added to the query string when the button is pressed.
-     * If the user refuses to provide authorization data, the original URL without information about the user will be opened.
-     * The data added is the same as described in Receiving authorization data.
-     */
-    protected string $url;
+        /**
+         * Optional. Username of a bot, which will be used for user authorization.
+         * See Setting up a bot for more details. If not specified, the current bot's username will be assumed.
+         * The url's domain must be the same as the domain linked with the bot. See Linking your domain to the bot for more details.
+         */
+        public string|null $botUsername = null,
 
-    /**
-     * Optional. New text of the button in forwarded messages.
-     */
-    protected string|null $forwardText = null;
-
-    /**
-     * Optional. Username of a bot, which will be used for user authorization.
-     * See Setting up a bot for more details. If not specified, the current bot's username will be assumed.
-     * The url's domain must be the same as the domain linked with the bot. See Linking your domain to the bot for more details.
-     */
-    protected string|null $botUsername = null;
-
-    /**
-     * Optional. Pass True to request the permission for your bot to send messages to the user.
-     */
-    protected bool|null $requestWriteAccess = null;
-
-    public static function create(
-        string $url,
-        string|null $forwardText = null,
-        string|null $botUsername = null,
-        bool|null $requestWriteAccess = null,
+        /**
+         * Optional. Pass True to request the permission for your bot to send messages to the user.
+         */
+        public bool|null $requestWriteAccess = null,
     ) {
-        $instance = new self();
-        $instance->url = $url;
-        $instance->forwardText = $forwardText;
-        $instance->botUsername = $botUsername;
-        $instance->requestWriteAccess = $requestWriteAccess;
-
-        return $instance;
     }
 }

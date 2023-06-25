@@ -96,7 +96,7 @@ final class BotApi
         $response = json_decode((string) $httpResponse->getBody(), true);
 
         if ($response['ok'] === false) {
-            $parameters = isset($response['parameters']) ? ResponseParameters::fromResponse($response['parameters']) : null;
+            $parameters = isset($response['parameters']) ? ResponseParameters::fromArray($response['parameters']) : null;
             throw new TelegramApiException($response['description'], $response['error_code'], $exception ?? null, $parameters);
         }
 
@@ -110,7 +110,7 @@ final class BotApi
         $responseClass = $method->getResponseClass();
 
         /** @psalm-suppress InvalidReturnStatement */
-        return $responseClass::fromResponse($result);
+        return $responseClass::fromArray($result);
     }
 
     /**

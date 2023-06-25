@@ -12,80 +12,37 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class VideoNote extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'file_id',
-        'file_unique_id',
-        'length',
-        'duration',
-    ];
+    protected function __construct(
+        /**
+         * Identifier for this file, which can be used to download or reuse the file
+         */
+        public string $fileId,
 
-    protected static array $map = [
-        'file_id' => true,
-        'file_unique_id' => true,
-        'length' => true,
-        'duration' => true,
-        'thumbnail' => PhotoSize::class,
-        'file_size' => true,
-    ];
+        /**
+         * Unique identifier for this file, which is supposed to be the same over time and for different bots.
+         * Can't be used to download or reuse the file.
+         */
+        public string $fileUniqueId,
 
-    /**
-     * Identifier for this file, which can be used to download or reuse the file
-     */
-    protected string $fileId;
+        /**
+         * Video width and height (diameter of the video message) as defined by sender
+         */
+        public int $length,
 
-    /**
-     * Unique identifier for this file, which is supposed to be the same over time and for different bots.
-     * Can't be used to download or reuse the file.
-     */
-    protected string $fileUniqueId;
+        /**
+         * Duration of the video in seconds as defined by sender
+         */
+        public int $duration,
 
-    /**
-     * Video width and height (diameter of the video message) as defined by sender
-     */
-    protected int $length;
+        /**
+         * Optional. Video thumbnail
+         */
+        public PhotoSize|null $thumbnail = null,
 
-    /**
-     * Duration of the video in seconds as defined by sender
-     */
-    protected int $duration;
-
-    /**
-     * Optional. Video thumbnail
-     */
-    protected PhotoSize|null $thumbnail = null;
-
-    /**
-     * Optional. File size in bytes
-     */
-    protected int|null $fileSize = null;
-
-    public function getFileId(): string
-    {
-        return $this->fileId;
-    }
-
-    public function getFileUniqueId(): string
-    {
-        return $this->fileUniqueId;
-    }
-
-    public function getLength(): int
-    {
-        return $this->length;
-    }
-
-    public function getDuration(): int
-    {
-        return $this->duration;
-    }
-
-    public function getThumbnail(): PhotoSize|null
-    {
-        return $this->thumbnail;
-    }
-
-    public function getFileSize(): int|null
-    {
-        return $this->fileSize;
+        /**
+         * Optional. File size in bytes
+         */
+        public int|null $fileSize = null,
+    ) {
     }
 }

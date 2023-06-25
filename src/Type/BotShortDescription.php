@@ -12,21 +12,11 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class BotShortDescription extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'short_description',
-    ];
-
-    protected static array $map = [
-        'short_description' => true,
-    ];
-
-    /**
-     * The bot's short description
-     */
-    protected string $shortDescription;
-
-    public function getShortDescription(): string
-    {
-        return $this->shortDescription;
+    protected function __construct(
+        /**
+         * The bot's short description
+         */
+        public string $shortDescription,
+    ) {
     }
 }

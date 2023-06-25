@@ -17,56 +17,27 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class File extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'file_id',
-        'file_unique_id',
-    ];
+    protected function __construct(
+        /**
+         * Identifier for this file, which can be used to download or reuse the file
+         */
+        public string $fileId,
 
-    protected static array $map = [
-        'file_id' => true,
-        'file_unique_id' => true,
-        'file_size' => true,
-        'file_path' => true,
-    ];
+        /**
+         * Unique identifier for this file, which is supposed to be the same over time and for different bots.
+         * Can't be used to download or reuse the file.
+         */
+        public string $fileUniqueId,
 
-    /**
-     * Identifier for this file, which can be used to download or reuse the file
-     */
-    protected string $fileId;
+        /**
+         * Optional. File size in bytes, if known
+         */
+        public int|null $fileSize = null,
 
-    /**
-     * Unique identifier for this file, which is supposed to be the same over time and for different bots.
-     * Can't be used to download or reuse the file.
-     */
-    protected string $fileUniqueId;
-
-    /**
-     * Optional. File size in bytes, if known
-     */
-    protected int|null $fileSize = null;
-
-    /**
-     * Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
-     */
-    protected string|null $filePath = null;
-
-    public function getFileId(): string
-    {
-        return $this->fileId;
-    }
-
-    public function getFileUniqueId(): string
-    {
-        return $this->fileUniqueId;
-    }
-
-    public function getFileSize(): int|null
-    {
-        return $this->fileSize;
-    }
-
-    public function getFilePath(): string|null
-    {
-        return $this->filePath;
+        /**
+         * Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
+         */
+        public string|null $filePath = null,
+    ) {
     }
 }

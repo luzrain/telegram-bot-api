@@ -12,52 +12,26 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class OrderInfo extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [];
+    protected function __construct(
+        /**
+         * Optional. User name
+         */
+        public string|null $name = null,
 
-    protected static array $map = [
-        'name' => true,
-        'phone_number' => true,
-        'email' => true,
-        'shipping_address' => ShippingAddress::class,
-    ];
+        /**
+         * Optional. User's phone number
+         */
+        public string|null $phoneNumber = null,
 
-    /**
-     * Optional. User name
-     */
-    protected string|null $name = null;
+        /**
+         * Optional. User email
+         */
+        public string|null $email = null,
 
-    /**
-     * Optional. User's phone number
-     */
-    protected string|null $phoneNumber = null;
-
-    /**
-     * Optional. User email
-     */
-    protected string|null $email = null;
-
-    /**
-     * Optional. User shipping address
-     */
-    protected ShippingAddress|null $shippingAddress = null;
-
-    public function getName(): string|null
-    {
-        return $this->name;
-    }
-
-    public function getPhoneNumber(): string|null
-    {
-        return $this->phoneNumber;
-    }
-
-    public function getEmail(): string|null
-    {
-        return $this->email;
-    }
-
-    public function getShippingAddress(): ShippingAddress|null
-    {
-        return $this->shippingAddress;
+        /**
+         * Optional. User shipping address
+         */
+        public ShippingAddress|null $shippingAddress = null,
+    ) {
     }
 }

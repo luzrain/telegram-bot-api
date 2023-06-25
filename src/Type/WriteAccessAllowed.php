@@ -13,19 +13,11 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class WriteAccessAllowed extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [];
-
-    protected static array $map = [
-        'web_app_name' => true,
-    ];
-
-    /**
-     * Optional. Name of the Web App which was launched from a link
-     */
-    protected string|null $webAppName = null;
-
-    public function getWebAppName(): string|null
-    {
-        return $this->webAppName;
+    protected function __construct(
+        /**
+         * Optional. Name of the Web App which was launched from a link
+         */
+        public string|null $webAppName = null,
+    ) {
     }
 }

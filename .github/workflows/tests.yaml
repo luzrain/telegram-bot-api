@@ -22,7 +22,7 @@ jobs:
         run: mkdir var
 
       - name: Composer install
-        run: composer install --optimize-autoloader
+        run: composer install
 
       - name: Codestyle
         run: composer php-cs

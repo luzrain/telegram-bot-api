@@ -14,184 +14,84 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class Sticker extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'file_id',
-        'file_unique_id',
-        'type',
-        'width',
-        'height',
-        'is_animated',
-        'is_video',
-    ];
+    protected function __construct(
+        /**
+         * Identifier for this file, which can be used to download or reuse the file
+         */
+        public string $fileId,
 
-    protected static array $map = [
-        'file_id' => true,
-        'file_unique_id' => true,
-        'type' => true,
-        'width' => true,
-        'height' => true,
-        'is_animated' => true,
-        'is_video' => true,
-        'thumbnail' => PhotoSize::class,
-        'emoji' => true,
-        'set_name' => true,
-        'premium_animation' => File::class,
-        'mask_position' => MaskPosition::class,
-        'custom_emoji_id' => true,
-        'needs_repainting' => true,
-        'file_size' => true,
-    ];
+        /**
+         * Unique identifier for this file, which is supposed to be the same over time and for different bots.
+         * Can't be used to download or reuse the file.
+         */
+        public string $fileUniqueId,
 
-    /**
-     * Identifier for this file, which can be used to download or reuse the file
-     */
-    protected string $fileId;
+        /**
+         * Type of the sticker, currently one of “regular”, “mask”, “custom_emoji”.
+         * The type of the sticker is independent from its format, which is determined by the fields is_animated and is_video.
+         */
+        public string $type,
 
-    /**
-     * Unique identifier for this file, which is supposed to be the same over time and for different bots.
-     * Can't be used to download or reuse the file.
-     */
-    protected string $fileUniqueId;
+        /**
+         * Sticker width
+         */
+        public int $width,
 
-    /**
-     * Type of the sticker, currently one of “regular”, “mask”, “custom_emoji”.
-     * The type of the sticker is independent from its format, which is determined by the fields is_animated and is_video.
-     */
-    protected string $type;
+        /**
+         * Sticker height
+         */
+        public int $height,
 
-    /**
-     * Sticker width
-     */
-    protected int $width;
+        /**
+         * True, if the sticker is animated
+         */
+        public bool $isAnimated,
 
-    /**
-     * Sticker height
-     */
-    protected int $height;
+        /**
+         * True, if the sticker is a video sticker
+         */
+        public bool $isVideo,
 
-    /**
-     * True, if the sticker is animated
-     */
-    protected bool $isAnimated;
+        /**
+         * Optional. Sticker thumbnail in the .WEBP or .JPG format
+         */
+        public PhotoSize|null $thumbnail = null,
 
-    /**
-     * True, if the sticker is a video sticker
-     */
-    protected bool $isVideo;
+        /**
+         * Optional. Emoji associated with the sticker
+         */
+        public string|null $emoji = null,
 
-    /**
-     * Optional. Sticker thumbnail in the .WEBP or .JPG format
-     */
-    protected PhotoSize|null $thumbnail = null;
+        /**
+         * Optional. Name of the sticker set to which the sticker belongs
+         */
+        public string|null $setName = null,
 
-    /**
-     * Optional. Emoji associated with the sticker
-     */
-    protected string|null $emoji = null;
+        /**
+         * Optional. For premium regular stickers, premium animation for the sticker
+         */
+        public File|null $premiumAnimation = null,
 
-    /**
-     * Optional. Name of the sticker set to which the sticker belongs
-     */
-    protected string|null $setName = null;
+        /**
+         * Optional. For mask stickers, the position where the mask should be placed
+         */
+        public MaskPosition|null $maskPosition = null,
 
-    /**
-     * Optional. For premium regular stickers, premium animation for the sticker
-     */
-    protected File|null $premiumAnimation = null;
+        /**
+         * Optional. For custom emoji stickers, unique identifier of the custom emoji
+         */
+        public string|null $customEmojiId = null,
 
-    /**
-     * Optional. For mask stickers, the position where the mask should be placed
-     */
-    protected MaskPosition|null $maskPosition = null;
+        /**
+         * Optional. True, if the sticker must be repainted to a text color in messages,
+         * the color of the Telegram Premium badge in emoji status, white color on chat photos, or another appropriate color in other places
+         */
+        public true|null $needsRepainting = null,
 
-    /**
-     * Optional. For custom emoji stickers, unique identifier of the custom emoji
-     */
-    protected string|null $customEmojiId = null;
-
-    /**
-     * Optional. True, if the sticker must be repainted to a text color in messages,
-     * the color of the Telegram Premium badge in emoji status, white color on chat photos, or another appropriate color in other places
-     */
-    protected bool|null $needsRepainting = null;
-
-    /**
-     * Optional. File size in bytes
-     */
-    protected int|null $fileSize = null;
-
-    public function getFileId(): string
-    {
-        return $this->fileId;
-    }
-
-    public function getFileUniqueId(): string
-    {
-        return $this->fileUniqueId;
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    public function getWidth(): int
-    {
-        return $this->width;
-    }
-
-    public function getHeight(): int
-    {
-        return $this->height;
-    }
-
-    public function isAnimated(): bool
-    {
-        return $this->isAnimated;
-    }
-
-    public function isVideo(): bool
-    {
-        return $this->isVideo;
-    }
-
-    public function getThumbnail(): PhotoSize|null
-    {
-        return $this->thumbnail;
-    }
-
-    public function getEmoji(): string|null
-    {
-        return $this->emoji;
-    }
-
-    public function getSetName(): string|null
-    {
-        return $this->setName;
-    }
-
-    public function getPremiumAnimation(): File|null
-    {
-        return $this->premiumAnimation;
-    }
-
-    public function getMaskPosition(): MaskPosition|null
-    {
-        return $this->maskPosition;
-    }
-
-    public function getCustomEmojiId(): string|null
-    {
-        return $this->customEmojiId;
-    }
-
-    public function getNeedsRepainting(): bool|null
-    {
-        return $this->needsRepainting;
-    }
-
-    public function fileSize(): int|null
-    {
-        return $this->fileSize;
+        /**
+         * Optional. File size in bytes
+         */
+        public int|null $fileSize = null,
+    ) {
     }
 }

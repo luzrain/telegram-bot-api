@@ -12,33 +12,16 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class Dice extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'emoji',
-        'value',
-    ];
+    protected function __construct(
+        /**
+         * Emoji on which the dice throw animation is based
+         */
+        public string $emoji,
 
-    protected static array $map = [
-        'emoji' => true,
-        'value' => true,
-    ];
-
-    /**
-     * Emoji on which the dice throw animation is based
-     */
-    protected string $emoji;
-
-    /**
-     * Value of the dice, 1-6 for “🎲”, “🎯” and “🎳” base emoji, 1-5 for “🏀” and “⚽” base emoji, 1-64 for “🎰” base emoji
-     */
-    protected int $value;
-
-    public function getEmoji(): string
-    {
-        return $this->emoji;
-    }
-
-    public function getValue(): int
-    {
-        return $this->value;
+        /**
+         * Value of the dice, 1-6 for “🎲”, “🎯” and “🎳” base emoji, 1-5 for “🏀” and “⚽” base emoji, 1-64 for “🎰” base emoji
+         */
+        public int $value,
+    ) {
     }
 }

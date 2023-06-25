@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\BaseType;
-
 /**
  * This object represents one result of an inline query. Telegram clients currently support results of the following 20 types:
  *
@@ -30,10 +28,6 @@ use Luzrain\TelegramBotApi\BaseType;
  * @see InlineQueryResultVideo
  * @see InlineQueryResultVoice
  */
-abstract class InlineQueryResult extends BaseType
+interface InlineQueryResult
 {
-    protected function __construct()
-    {
-        parent::__construct();
-    }
 }

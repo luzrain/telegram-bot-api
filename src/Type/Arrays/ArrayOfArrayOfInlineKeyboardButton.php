@@ -8,8 +8,8 @@ use Luzrain\TelegramBotApi\ArrayTypeInterface;
 
 final class ArrayOfArrayOfInlineKeyboardButton extends BaseArray implements ArrayTypeInterface
 {
-    public static function fromResponse(array $data): array
+    public static function fromArray(array $data): array
     {
-        return array_map(fn (array $array) => ArrayOfInlineKeyboardButton::fromResponse($array), $data);
+        return array_map(fn (array $array) => ArrayOfInlineKeyboardButton::fromArray($array), $data);
     }
 }

@@ -12,21 +12,11 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class VideoChatScheduled extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'start_date',
-    ];
-
-    protected static array $map = [
-        'start_date' => true,
-    ];
-
-    /**
-     * Point in time (Unix timestamp) when the video chat is supposed to be started by a chat administrator
-     */
-    protected int $startDate;
-
-    public function getStartDate(): int
-    {
-        return $this->startDate;
+    protected function __construct(
+        /**
+         * Point in time (Unix timestamp) when the video chat is supposed to be started by a chat administrator
+         */
+        public int $startDate,
+    ) {
     }
 }

@@ -12,21 +12,11 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class BotName extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'name',
-    ];
-
-    protected static array $map = [
-        'name' => true,
-    ];
-
-    /**
-     * The bot's name
-     */
-    protected string $name;
-
-    public function getName(): string
-    {
-        return $this->name;
+    protected function __construct(
+        /**
+         * The bot's name
+         */
+        public string $name,
+    ) {
     }
 }

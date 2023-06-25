@@ -12,77 +12,36 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class Location extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'longitude',
-        'latitude',
-    ];
+    protected function __construct(
+        /**
+         * Longitude as defined by sender
+         */
+        public float $longitude,
 
-    protected static array $map = [
-        'longitude' => true,
-        'latitude' => true,
-        'horizontal_accuracy' => true,
-        'live_period' => true,
-        'heading' => true,
-        'proximity_alert_radius' => true,
-    ];
+        /**
+         * Latitude as defined by sender
+         */
+        public float $latitude,
 
-    /**
-     * Longitude as defined by sender
-     */
-    protected float $longitude;
+        /**
+         * Optional. The radius of uncertainty for the location, measured in meters; 0-1500
+         */
+        public float|null $horizontalAccuracy = null,
 
-    /**
-     * Latitude as defined by sender
-     */
-    protected float $latitude;
+        /**
+         * Optional. Time relative to the message sending date, during which the location can be updated; in seconds. For active live locations only.
+         */
+        public int|null $livePeriod = null,
 
-    /**
-     * Optional. The radius of uncertainty for the location, measured in meters; 0-1500
-     */
-    protected float|null $horizontalAccuracy = null;
+        /**
+         * Optional. The direction in which user is moving, in degrees; 1-360. For active live locations only.
+         */
+        public int|null $heading = null,
 
-    /**
-     * Optional. Time relative to the message sending date, during which the location can be updated; in seconds. For active live locations only.
-     */
-    protected int|null $livePeriod = null;
-
-    /**
-     * Optional. The direction in which user is moving, in degrees; 1-360. For active live locations only.
-     */
-    protected int|null $heading = null;
-
-    /**
-     * Optional. Maximum distance for proximity alerts about approaching another chat member, in meters. For sent live locations only.
-     */
-    protected int|null $proximityAlertRadius = null;
-
-    public function getLongitude(): float
-    {
-        return $this->longitude;
-    }
-
-    public function getLatitude(): float
-    {
-        return $this->latitude;
-    }
-
-    public function getHorizontalAccuracy(): float|null
-    {
-        return $this->horizontalAccuracy;
-    }
-
-    public function getLivePeriod(): int|null
-    {
-        return $this->livePeriod;
-    }
-
-    public function getHeading(): int|null
-    {
-        return $this->heading;
-    }
-
-    public function getProximityAlertRadius(): int|null
-    {
-        return $this->proximityAlertRadius;
+        /**
+         * Optional. Maximum distance for proximity alerts about approaching another chat member, in meters. For sent live locations only.
+         */
+        public int|null $proximityAlertRadius = null,
+    ) {
     }
 }

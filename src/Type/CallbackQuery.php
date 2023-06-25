@@ -15,91 +15,43 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class CallbackQuery extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'id',
-        'from',
-        'chat_instance',
-    ];
+    protected function __construct(
+        /**
+         * Unique identifier for this query
+         */
+        public string $id,
 
-    protected static array $map = [
-        'id' => true,
-        'from' => User::class,
-        'message' => Message::class,
-        'inline_message_id' => true,
-        'chat_instance' => true,
-        'data' => true,
-        'game_short_name' => true,
-    ];
+        /**
+         * Sender
+         */
+        public User $from,
 
-    /**
-     * Unique identifier for this query
-     */
-    protected string $id;
+        /**
+         * Global identifier, uniquely corresponding to the chat to which the message with the callback button was sent.
+         * Useful for high scores in games.
+         */
+        public string $chatInstance,
 
-    /**
-     * Sender
-     */
-    protected User $from;
+        /**
+         * Optional. Message with the callback button that originated the query.
+         * Note that message content and message date will not be available if the message is too old
+         */
+        public Message|null $message = null,
 
-    /**
-     * Optional. Message with the callback button that originated the query.
-     * Note that message content and message date will not be available if the message is too old
-     */
-    protected Message|null $message = null;
+        /**
+         * Optional. Identifier of the message sent via the bot in inline mode, that originated the query.
+         */
+        public string|null $inlineMessageId = null,
 
-    /**
-     * Optional. Identifier of the message sent via the bot in inline mode, that originated the query.
-     */
-    protected string|null $inlineMessageId = null;
+        /**
+         * Optional. Data associated with the callback button.Be aware that a bad client can send arbitrary data in this field.
+         */
+        public string|null $data = null,
 
-    /**
-     * Global identifier, uniquely corresponding to the chat to which the message with the callback button was sent.
-     * Useful for high scores in games.
-     */
-    protected string $chatInstance;
-
-    /**
-     * Optional. Data associated with the callback button.Be aware that a bad client can send arbitrary data in this field.
-     */
-    protected string|null $data = null;
-
-    /**
-     * Optional. Short name of a Game to be returned, serves as the unique identifier for the game
-     */
-    protected string|null $gameShortName = null;
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    public function getFrom(): User
-    {
-        return $this->from;
-    }
-
-    public function getMessage(): Message|null
-    {
-        return $this->message;
-    }
-
-    public function getInlineMessageId(): string|null
-    {
-        return $this->inlineMessageId;
-    }
-
-    public function getChatInstance(): string
-    {
-        return $this->chatInstance;
-    }
-
-    public function getData(): string|null
-    {
-        return $this->data;
-    }
-
-    public function getGameShortName(): string|null
-    {
-        return $this->gameShortName;
+        /**
+         * Optional. Short name of a Game to be returned, serves as the unique identifier for the game
+         */
+        public string|null $gameShortName = null,
+    ) {
     }
 }

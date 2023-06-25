@@ -12,69 +12,32 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class PhotoSize extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'file_id',
-        'file_unique_id',
-        'width',
-        'height',
-    ];
+    protected function __construct(
+        /**
+         * Identifier for this file, which can be used to download or reuse the file
+         */
+        public string $fileId,
 
-    protected static array $map = [
-        'file_id' => true,
-        'file_unique_id' => true,
-        'width' => true,
-        'height' => true,
-        'file_size' => true,
-    ];
+        /**
+         * Unique identifier for this file, which is supposed to be the same over time and for different bots.
+         * Can't be used to download or reuse the file.
+         */
+        public string $fileUniqueId,
 
-    /**
-     * Identifier for this file, which can be used to download or reuse the file
-     */
-    protected string $fileId;
+        /**
+         * Photo width
+         */
+        public int $width,
 
-    /**
-     * Unique identifier for this file, which is supposed to be the same over time and for different bots.
-     * Can't be used to download or reuse the file.
-     */
-    protected string $fileUniqueId;
+        /**
+         * Photo height
+         */
+        public int $height,
 
-    /**
-     * Photo width
-     */
-    protected int $width;
-
-    /**
-     * Photo height
-     */
-    protected int $height;
-
-    /**
-     * Optional. File size in bytes
-     */
-    protected int|null $fileSize = null;
-
-    public function getFileId(): string
-    {
-        return $this->fileId;
-    }
-
-    public function getFileUniqueId(): string
-    {
-        return $this->fileUniqueId;
-    }
-
-    public function getWidth(): int
-    {
-        return $this->width;
-    }
-
-    public function getHeight(): int
-    {
-        return $this->height;
-    }
-
-    public function getFileSize(): int|null
-    {
-        return $this->fileSize;
+        /**
+         * Optional. File size in bytes
+         */
+        public int|null $fileSize = null,
+    ) {
     }
 }

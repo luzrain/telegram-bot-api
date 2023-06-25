@@ -4,41 +4,26 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
+use Luzrain\TelegramBotApi\BaseType;
+
 /**
  * Represents the scope of bot commands, covering all administrators of a specific group or supergroup chat.
  */
-final class BotCommandScopeChatAdministrators extends BotCommandScope
+final class BotCommandScopeChatAdministrators extends BaseType implements BotCommandScope
 {
-    protected static array $map = [
-        'type' => true,
-        'chat_id' => true,
-    ];
-
     /**
      * Scope type, must be chat_administrators
      */
-    protected string $type = 'chat_administrators';
+    public string $type;
 
     /**
      * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
      */
-    protected int|string $chatId;
+    public int|string $chatId;
 
-    public static function create(int|string $chatId): self
+    public function __construct(int|string $chatId)
     {
-        $instance = new self();
-        $instance->chatId = $chatId;
-
-        return $instance;
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    public function getChatId(): int|string
-    {
-        return $this->chatId;
+        $this->type = 'chat_administrators';
+        $this->chatId = $chatId;
     }
 }

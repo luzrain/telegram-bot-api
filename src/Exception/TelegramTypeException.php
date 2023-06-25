@@ -4,11 +4,19 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Exception;
 
+use Luzrain\TelegramBotApi\StringUtils;
+
 final class TelegramTypeException extends \Exception
 {
-    public function __construct(string $typeClass, array $missingKeys)
+    public function __construct(string $class, array $data, \ReflectionClass $refl, \Throwable $previous)
     {
-        $typeClassParts = explode('\\', $typeClass);
-        parent::__construct(sprintf('%s object creation error. Missing keys: %s', array_pop($typeClassParts), implode(', ', $missingKeys)));
+        $requiredProps = [];
+        foreach ($refl->getProperties() as $reflProperty) {
+            if ($reflProperty->isPublic() && !$reflProperty->getType()->allowsNull()) {
+                $requiredProps[] = StringUtils::toSnakeCase($reflProperty->getName());
+            }
+        }
+        $missingKeys = array_keys(array_diff_key(array_flip($requiredProps), $data));
+        parent::__construct(sprintf('%s object creation error. Missing keys: %s', $class, implode(', ', $missingKeys)), 0, $previous);
     }
 }

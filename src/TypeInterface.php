@@ -6,5 +6,5 @@ namespace Luzrain\TelegramBotApi;
 
 interface TypeInterface
 {
-    public static function fromResponse(array $data): BaseType;
+    public static function fromArray(array $data): BaseType;
 }

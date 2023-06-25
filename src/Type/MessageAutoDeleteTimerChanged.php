@@ -12,21 +12,11 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class MessageAutoDeleteTimerChanged extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'message_auto_delete_time',
-    ];
-
-    protected static array $map = [
-        'message_auto_delete_time' => true,
-    ];
-
-    /**
-     * New auto-delete time for messages in the chat; in seconds
-     */
-    protected int $messageAutoDeleteTime;
-
-    public function getMessageAutoDeleteTime(): int
-    {
-        return $this->messageAutoDeleteTime;
+    protected function __construct(
+        /**
+         * New auto-delete time for messages in the chat; in seconds
+         */
+        public int $messageAutoDeleteTime,
+    ) {
     }
 }

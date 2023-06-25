@@ -11,50 +11,23 @@ use Luzrain\TelegramBotApi\BaseType;
  */
 final class PollAnswer extends BaseType
 {
-    protected static array $requiredParams = [
-        'poll_id',
-        'user',
-        'option_ids',
-    ];
+    protected function __construct(
+        /**
+         * Unique poll identifier
+         */
+        public string $pollId,
 
-    protected static array $map = [
-        'poll_id' => true,
-        'user' => User::class,
-        'option_ids' => true,
-    ];
+        /**
+         * The user, who changed the answer to the poll
+         */
+        public User $user,
 
-    /**
-     * Unique poll identifier
-     */
-    protected string $pollId;
-
-    /**
-     * The user, who changed the answer to the poll
-     */
-    protected User $user;
-
-    /**
-     * 0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their vote.
-     *
-     * @var int[]
-     */
-    protected array $optionIds;
-
-    public function getPollId(): string
-    {
-        return $this->pollId;
-    }
-
-    public function getUser(): User
-    {
-        return $this->user;
-    }
-
-    /**
-     * @return int[]
-     */
-    public function getOptionIds(): array
-    {
-        return $this->optionIds;
+        /**
+         * 0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their vote.
+         *
+         * @var list<int>
+         */
+        public array $optionIds,
+    ) {
     }
 }

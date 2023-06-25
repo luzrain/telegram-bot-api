@@ -12,44 +12,21 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class ForumTopicCreated extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'name',
-        'icon_color',
-    ];
+    protected function __construct(
+        /**
+         * Name of the topic
+         */
+        public string $name,
 
-    protected static array $map = [
-        'name' => true,
-        'icon_color' => true,
-        'icon_custom_emoji_id' => true,
-    ];
+        /**
+         * Color of the topic icon in RGB format
+         */
+        public int $iconColor,
 
-    /**
-     * Name of the topic
-     */
-    protected string $name;
-
-    /**
-     * Color of the topic icon in RGB format
-     */
-    protected int $iconColor;
-
-    /**
-     * Optional. Unique identifier of the custom emoji shown as the topic icon
-     */
-    protected string|null $iconCustomEmojiId = null;
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getIconColor(): int
-    {
-        return $this->iconColor;
-    }
-
-    public function getIconCustomEmojiId(): string|null
-    {
-        return $this->iconCustomEmojiId;
+        /**
+         * Optional. Unique identifier of the custom emoji shown as the topic icon
+         */
+        public string|null $iconCustomEmojiId = null,
+    ) {
     }
 }

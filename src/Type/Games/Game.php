@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Games;
 
 use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\PropertyType;
 use Luzrain\TelegramBotApi\Type\Animation;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessageEntity;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPhotoSize;
@@ -17,90 +18,44 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class Game extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'title',
-        'description',
-        'photo',
-    ];
+    protected function __construct(
+        /**
+         * Title of the game
+         */
+        public string $title,
 
-    protected static array $map = [
-        'title' => true,
-        'description' => true,
-        'photo' => ArrayOfPhotoSize::class,
-        'text' => true,
-        'text_entities' => ArrayOfMessageEntity::class,
-        'animation' => Animation::class,
-    ];
+        /**
+         * Description of the game
+         */
+        public string $description,
 
-    /**
-     * Title of the game
-     */
-    protected string $title;
+        /**
+         * Photo that will be displayed in the game message in chats.
+         *
+         * @var list<PhotoSize>
+         */
+        #[PropertyType(ArrayOfPhotoSize::class)]
+        public array $photo,
 
-    /**
-     * Description of the game
-     */
-    protected string $description;
+        /**
+         * Optional. Brief description of the game or high scores included in the game message.
+         * Can be automatically edited to include current high scores for the game when the bot calls setGameScore,
+         * or manually edited using editMessageText. 0-4096 characters.
+         */
+        public string|null $text = null,
 
-    /**
-     * Photo that will be displayed in the game message in chats.
-     *
-     * @var PhotoSize[]
-     */
-    protected array $photo;
+        /**
+         * Optional. Special entities that appear in text, such as usernames, URLs, bot commands, etc.
+         *
+         * @var list<MessageEntity>
+         */
+        #[PropertyType(ArrayOfMessageEntity::class)]
+        public array|null $textEntities = null,
 
-    /**
-     * Optional. Brief description of the game or high scores included in the game message.
-     * Can be automatically edited to include current high scores for the game when the bot calls setGameScore,
-     * or manually edited using editMessageText. 0-4096 characters.
-     */
-    protected string|null $text = null;
-
-    /**
-     * Optional. Special entities that appear in text, such as usernames, URLs, bot commands, etc.
-     *
-     * @var MessageEntity[]
-     */
-    protected array|null $textEntities = null;
-
-    /**
-     * Optional. Animation that will be displayed in the game message in chats. Upload via BotFather
-     */
-    protected Animation|null $animation = null;
-
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-
-    /**
-     * @return PhotoSize[]
-     */
-    public function getPhoto(): array
-    {
-        return $this->photo;
-    }
-
-    public function getText(): string|null
-    {
-        return $this->text;
-    }
-
-    /**
-     * @return MessageEntity[]
-     */
-    public function getTextEntities(): array|null
-    {
-        return $this->textEntities;
-    }
-
-    public function getAnimation(): Animation|null
-    {
-        return $this->animation;
+        /**
+         * Optional. Animation that will be displayed in the game message in chats. Upload via BotFather
+         */
+        public Animation|null $animation = null,
+    ) {
     }
 }

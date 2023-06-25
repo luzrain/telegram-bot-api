@@ -12,33 +12,16 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class ChatLocation extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [
-        'location',
-        'address',
-    ];
+    protected function __construct(
+        /**
+         * The location to which the supergroup is connected. Can't be a live location.
+         */
+        public Location $location,
 
-    protected static array $map = [
-        'location' => Location::class,
-        'address' => true,
-    ];
-
-    /**
-     * The location to which the supergroup is connected. Can't be a live location.
-     */
-    protected Location $location;
-
-    /**
-     * Location address; 1-64 characters, as defined by the chat owner
-     */
-    protected string $address;
-
-    public function getLocation(): Location
-    {
-        return $this->location;
-    }
-
-    public function getAddress(): string
-    {
-        return $this->address;
+        /**
+         * Location address; 1-64 characters, as defined by the chat owner
+         */
+        public string $address,
+    ) {
     }
 }

@@ -12,30 +12,16 @@ use Luzrain\TelegramBotApi\TypeInterface;
  */
 final class ForumTopicEdited extends BaseType implements TypeInterface
 {
-    protected static array $requiredParams = [];
+    protected function __construct(
+        /**
+         * Optional. New name of the topic, if it was edited
+         */
+        public string|null $name = null,
 
-    protected static array $map = [
-        'name' => true,
-        'icon_custom_emoji_id' => true,
-    ];
-
-    /**
-     * Optional. New name of the topic, if it was edited
-     */
-    protected string $name;
-
-    /**
-     * Optional. New identifier of the custom emoji shown as the topic icon, if it was edited; an empty string if the icon was removed
-     */
-    protected string|null $iconCustomEmojiId = null;
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getIconCustomEmojiId(): string|null
-    {
-        return $this->iconCustomEmojiId;
+        /**
+         * Optional. New identifier of the custom emoji shown as the topic icon, if it was edited; an empty string if the icon was removed
+         */
+        public string|null $iconCustomEmojiId = null,
+    ) {
     }
 }
