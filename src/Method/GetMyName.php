@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\BotName;
 
 /**
  * Use this method to get the current bot name for the given user language.
  * Returns BotName on success.
  *
- * @extends BaseMethod<BotName>
+ * @extends Method<BotName>
  */
-final class GetMyName extends BaseMethod
+final class GetMyName extends Method
 {
     protected static string $methodName = 'getMyName';
     protected static string $responseClass = BotName::class;

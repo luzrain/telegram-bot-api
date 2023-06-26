@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * This object defines the criteria used to request a suitable user.
@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\BaseType;
  * More about requesting users »
  * @see https://core.telegram.org/bots/features#chat-and-user-selection
  */
-final readonly class KeyboardButtonRequestUser extends BaseType
+final readonly class KeyboardButtonRequestUser extends Type
 {
     public function __construct(
         /**

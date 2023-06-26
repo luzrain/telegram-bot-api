@@ -14,7 +14,7 @@ final class PollAnswer extends Event
         return $update->pollAnswer !== null;
     }
 
-    public function executeAction(Update $update): mixed
+    public function executeCallback(Update $update): mixed
     {
         return $this->callback($update->pollAnswer);
     }

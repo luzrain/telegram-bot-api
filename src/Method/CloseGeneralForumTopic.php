@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to close an open 'General' topic in a forum supergroup chat.
  * The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class CloseGeneralForumTopic extends BaseMethod
+final class CloseGeneralForumTopic extends Method
 {
     protected static string $methodName = 'closeGeneralForumTopic';
 

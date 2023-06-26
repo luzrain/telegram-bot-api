@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method when you need to tell the user that something is happening on the bot's side.
  * The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status).
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SendChatAction extends BaseMethod
+final class SendChatAction extends Method
 {
     public const TYPING_ACTION = 'typing';
     public const UPLOAD_PHOTO_ACTION = 'upload_photo';

@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ChatMember;
 
 /**
  * Use this method to get information about a member of a chat.
  * Returns a ChatMember object on success.
  *
- * @extends BaseMethod<ChatMember>
+ * @extends Method<ChatMember>
  */
-final class GetChatMember extends BaseMethod
+final class GetChatMember extends Method
 {
     protected static string $methodName = 'getChatMember';
     protected static string $responseClass = ChatMember::class;

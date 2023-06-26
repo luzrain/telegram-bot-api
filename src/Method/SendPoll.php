@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ForceReply;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\Message;
@@ -15,9 +15,9 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 /**
  * Use this method to send a native poll. On success, the sent Message is returned.
  *
- * @extends BaseMethod<Message>
+ * @extends Method<Message>
  */
-final class SendPoll extends BaseMethod
+final class SendPoll extends Method
 {
     public const QUIZ_TYPE = 'quiz';
     public const REGULAR_TYPE = 'regular';

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to remove a message from the list of pinned messages in a chat.
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class UnpinChatMessage extends BaseMethod
+final class UnpinChatMessage extends Method
 {
     protected static string $methodName = 'unpinChatMessage';
 

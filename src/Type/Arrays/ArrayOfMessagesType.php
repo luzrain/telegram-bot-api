@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Arrays;
 
-use Luzrain\TelegramBotApi\BaseArray;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type\Message;
 
-final class ArrayOfMessages extends BaseArray
+final class ArrayOfMessagesType extends ArrayType
 {
     protected static string $type = Message::class;
 }

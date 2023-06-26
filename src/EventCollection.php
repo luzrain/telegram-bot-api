@@ -27,7 +27,7 @@ final class EventCollection
     {
         foreach ($this->events as $event) {
             if ($event->executeChecker($update)) {
-                $callbackResponse = $event->executeAction($update);
+                $callbackResponse = $event->executeCallback($update);
                 if ($callbackResponse !== null) {
                     return $callbackResponse;
                 }

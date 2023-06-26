@@ -14,7 +14,7 @@ final class Update extends Event
         return true;
     }
 
-    public function executeAction(UpdateType $update): mixed
+    public function executeCallback(UpdateType $update): mixed
     {
         return $this->callback($update);
     }

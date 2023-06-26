@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\Type\MessageEntity;
  * Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with optional caption.
  * Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
  */
-final readonly class InlineQueryResultGif extends BaseType implements InlineQueryResult
+final readonly class InlineQueryResultGif extends Type implements InlineQueryResult
 {
     /**
      * Type of the result, must be gif

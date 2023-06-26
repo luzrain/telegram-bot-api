@@ -39,12 +39,12 @@ final class BotApi
      * Execute telergam method
      *
      * @template T
-     * @psalm-param BaseMethod<T> $method
+     * @psalm-param Method<T> $method
      * @psalm-return T
      */
-    public function call(BaseMethod $method): BaseType|array|string|int|bool
+    public function call(Method $method): Type|array|string|int|bool
     {
-        $url = sprintf(self::URL_API_ENDPOINT, $this->token, $method->getMethodName());
+        $url = sprintf(self::URL_API_ENDPOINT, $this->token, $method->getName());
         $options = [];
         $multiparts = [];
         $files = [];
@@ -106,7 +106,7 @@ final class BotApi
             return $result;
         }
 
-        /** @var class-string<BaseType> $responseClass */
+        /** @var class-string<Type> $responseClass */
         $responseClass = $method->getResponseClass();
 
         /** @psalm-suppress InvalidReturnStatement */

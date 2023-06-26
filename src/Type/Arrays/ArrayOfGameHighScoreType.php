@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Arrays;
 
-use Luzrain\TelegramBotApi\BaseArray;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type\Games\GameHighScore;
 
-final class ArrayOfGameHighScore extends BaseArray
+final class ArrayOfGameHighScoreType extends ArrayType
 {
     protected static string $type = GameHighScore::class;
 }

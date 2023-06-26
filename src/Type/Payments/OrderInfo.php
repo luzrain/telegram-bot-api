@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Payments;
 
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents information about an order.
  */
-final readonly class OrderInfo extends BaseType implements TypeInterface
+final readonly class OrderInfo extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**

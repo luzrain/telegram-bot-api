@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to delete a message, including service messages, with the following limitations:
@@ -17,9 +17,9 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * - If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class DeleteMessage extends BaseMethod
+final class DeleteMessage extends Method
 {
     protected static string $methodName = 'deleteMessage';
 

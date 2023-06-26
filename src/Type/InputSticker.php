@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Stickers\MaskPosition;
 
 /**
  * This object describes a sticker to be added to a sticker set.
  */
-final readonly class InputSticker extends BaseType
+final readonly class InputSticker extends Type
 {
     public function __construct(
         /**

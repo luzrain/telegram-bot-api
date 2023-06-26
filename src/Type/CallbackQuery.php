@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents an incoming callback query from a callback button in an inline keyboard.
@@ -13,7 +13,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  * If the button was attached to a message sent via the bot (in inline mode), the field inline_message_id will be present.
  * Exactly one of the fields data or game_short_name will be present.
  */
-final readonly class CallbackQuery extends BaseType implements TypeInterface
+final readonly class CallbackQuery extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**

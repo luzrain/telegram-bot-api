@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Describes an inline message sent by a Web App on behalf of a user.
  */
-final readonly class SentWebAppMessage extends BaseType implements TypeInterface
+final readonly class SentWebAppMessage extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ChatPermissions;
 
 /**
@@ -13,9 +13,9 @@ use Luzrain\TelegramBotApi\Type\ChatPermissions;
  * Pass True for all permissions to lift restrictions from a user.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class RestrictChatMember extends BaseMethod
+final class RestrictChatMember extends Method
 {
     protected static string $methodName = 'restrictChatMember';
 

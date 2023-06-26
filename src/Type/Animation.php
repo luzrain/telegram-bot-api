@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
  */
-final readonly class Animation extends BaseType implements TypeInterface
+final readonly class Animation extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**

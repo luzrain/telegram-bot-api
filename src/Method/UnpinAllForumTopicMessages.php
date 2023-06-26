@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to clear the list of pinned messages in a forum topic.
  * The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class UnpinAllForumTopicMessages extends BaseMethod
+final class UnpinAllForumTopicMessages extends Method
 {
     protected static string $methodName = 'unpinAllForumTopicMessages';
 

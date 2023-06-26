@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ForceReply;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\InputFile;
@@ -16,9 +16,9 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
  * Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound).
  * On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
  *
- * @extends BaseMethod<Message>
+ * @extends Method<Message>
  */
-final class SendAnimation extends BaseMethod
+final class SendAnimation extends Method
 {
     protected static string $methodName = 'sendAnimation';
     protected static string $responseClass = Message::class;

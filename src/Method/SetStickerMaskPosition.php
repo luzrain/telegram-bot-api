@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\Stickers\MaskPosition;
 
 /**
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\Type\Stickers\MaskPosition;
  * The sticker must belong to a sticker set that was created by the bot.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SetStickerMaskPosition extends BaseMethod
+final class SetStickerMaskPosition extends Method
 {
     protected static string $methodName = 'setStickerMaskPosition';
 

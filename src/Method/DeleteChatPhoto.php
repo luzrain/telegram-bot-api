@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to delete a chat photo. Photos can't be changed for private chats.
  * The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class DeleteChatPhoto extends BaseMethod
+final class DeleteChatPhoto extends Method
 {
     protected static string $methodName = 'deleteChatPhoto';
 

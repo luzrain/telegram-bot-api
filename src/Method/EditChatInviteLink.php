@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ChatInviteLink;
 
 /**
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\Type\ChatInviteLink;
  * The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights.
  * Returns the edited invite link as a ChatInviteLink object.
  *
- * @extends BaseMethod<ChatInviteLink>
+ * @extends Method<ChatInviteLink>
  */
-final class EditChatInviteLink extends BaseMethod
+final class EditChatInviteLink extends Method
 {
     protected static string $methodName = 'editChatInviteLink';
     protected static string $responseClass = ChatInviteLink::class;

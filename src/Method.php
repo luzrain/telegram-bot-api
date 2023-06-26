@@ -11,12 +11,12 @@ namespace Luzrain\TelegramBotApi;
  *
  * @template T
  */
-abstract class BaseMethod
+abstract class Method
 {
     protected static string $methodName;
     protected static string $responseClass;
 
-    public function getMethodName(): string
+    public function getName(): string
     {
         return static::$methodName;
     }

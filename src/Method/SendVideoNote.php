@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ForceReply;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\InputFile;
@@ -16,9 +16,9 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
  * As of v.4.0, Telegram clients support rounded square mp4 videos of up to 1 minute long. Use this method to send video messages.
  * On success, the sent Message is returned.
  *
- * @extends BaseMethod<Message>
+ * @extends Method<Message>
  */
-final class SendVideoNote extends BaseMethod
+final class SendVideoNote extends Method
 {
     protected static string $methodName = 'sendVideoNote';
     protected static string $responseClass = Message::class;

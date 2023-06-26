@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\Passport\PassportElementError;
 
 /**
@@ -17,9 +17,9 @@ use Luzrain\TelegramBotApi\Type\Passport\PassportElementError;
  * For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc.
  * Supply some details in the error message to make sure the user knows how to correct the issues.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SetPassportDataErrors extends BaseMethod
+final class SetPassportDataErrors extends Method
 {
     protected static string $methodName = 'setPassportDataErrors';
 

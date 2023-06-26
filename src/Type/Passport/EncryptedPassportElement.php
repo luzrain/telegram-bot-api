@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\PropertyType;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPassportFile;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPassportFileType;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Describes documents or other Telegram Passport elements shared with the bot by the user.
  */
-final readonly class EncryptedPassportElement extends BaseType implements TypeInterface
+final readonly class EncryptedPassportElement extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**
@@ -50,7 +50,7 @@ final readonly class EncryptedPassportElement extends BaseType implements TypeIn
          *
          * @var list<PassportFile>|null
          */
-        #[PropertyType(ArrayOfPassportFile::class)]
+        #[PropertyType(ArrayOfPassportFileType::class)]
         public array|null $files = null,
 
         /**
@@ -81,7 +81,7 @@ final readonly class EncryptedPassportElement extends BaseType implements TypeIn
          *
          * @var list<PassportFile>|null
          */
-        #[PropertyType(ArrayOfPassportFile::class)]
+        #[PropertyType(ArrayOfPassportFileType::class)]
         public array|null $translation = null,
     ) {
     }

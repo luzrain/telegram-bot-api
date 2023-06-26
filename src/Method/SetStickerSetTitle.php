@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to set the title of a created sticker set.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SetStickerSetTitle extends BaseMethod
+final class SetStickerSetTitle extends Method
 {
     protected static string $methodName = 'setStickerSetTitle';
 

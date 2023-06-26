@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to send answers to callback queries sent from inline keyboards.
  * The answer will be displayed to the user as a notification at the top of the chat screen or as an alert.
  * On success, True is returned.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class AnswerCallbackQuery extends BaseMethod
+final class AnswerCallbackQuery extends Method
 {
     protected static string $methodName = 'answerCallbackQuery';
 

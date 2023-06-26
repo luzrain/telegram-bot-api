@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfChatMemberEntity;
+use Luzrain\TelegramBotApi\Method;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfChatMemberEntityType;
 use Luzrain\TelegramBotApi\Type\ChatMember;
 
 /**
  * Use this method to get a list of administrators in a chat, which aren't bots.
  * Returns an Array of ChatMember objects.
  *
- * @extends BaseMethod<list<ChatMember>>
+ * @extends Method<list<ChatMember>>
  */
-final class GetChatAdministrators extends BaseMethod
+final class GetChatAdministrators extends Method
 {
     protected static string $methodName = 'getChatAdministrators';
-    protected static string $responseClass = ArrayOfChatMemberEntity::class;
+    protected static string $responseClass = ArrayOfChatMemberEntityType::class;
 
     public function __construct(
         /**

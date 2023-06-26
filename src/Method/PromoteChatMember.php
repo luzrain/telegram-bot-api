@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to promote or demote a user in a supergroup or a channel.
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * Pass False for all boolean parameters to demote a user.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class PromoteChatMember extends BaseMethod
+final class PromoteChatMember extends Method
 {
     protected static string $methodName = 'promoteChatMember';
 

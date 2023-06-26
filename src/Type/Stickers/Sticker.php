@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Stickers;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\File;
 use Luzrain\TelegramBotApi\Type\PhotoSize;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a sticker.
  */
-final readonly class Sticker extends BaseType implements TypeInterface
+final readonly class Sticker extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**

@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\UserProfilePhotos;
 
 /**
  * Use this method to get a list of profile pictures for a user.
  * Returns a UserProfilePhotos object.
  *
- * @extends BaseMethod<UserProfilePhotos>
+ * @extends Method<UserProfilePhotos>
  */
-final class GetUserProfilePhotos extends BaseMethod
+final class GetUserProfilePhotos extends Method
 {
     protected static string $methodName = 'getUserProfilePhotos';
     protected static string $responseClass = UserProfilePhotos::class;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to ban a channel chat in a supergroup or a channel.
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class BanChatSenderChat extends BaseMethod
+final class BanChatSenderChat extends Method
 {
     protected static string $methodName = 'banChatSenderChat';
 

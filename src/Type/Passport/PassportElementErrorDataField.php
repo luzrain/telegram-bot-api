@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field's value changes.
  */
-final readonly class PassportElementErrorDataField extends BaseType implements PassportElementError
+final readonly class PassportElementErrorDataField extends Type implements PassportElementError
 {
     /**
      * Error source, must be data

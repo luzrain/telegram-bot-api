@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\Stickers\StickerSet;
 
 /**
  * Use this method to get a sticker set.
  * On success, a StickerSet object is returned.
  *
- * @extends BaseMethod<StickerSet>
+ * @extends Method<StickerSet>
  */
-final class GetStickerSet extends BaseMethod
+final class GetStickerSet extends Method
 {
     protected static string $methodName = 'getStickerSet';
     protected static string $responseClass = StickerSet::class;

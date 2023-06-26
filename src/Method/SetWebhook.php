@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\InputFile;
 
 /**
@@ -16,9 +16,9 @@ use Luzrain\TelegramBotApi\Type\InputFile;
  * If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token.
  * If specified, the request will contain a header “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SetWebhook extends BaseMethod
+final class SetWebhook extends Method
 {
     protected static string $methodName = 'setWebhook';
 

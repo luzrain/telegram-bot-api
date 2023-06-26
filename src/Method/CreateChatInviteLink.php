@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ChatInviteLink;
 
 /**
@@ -13,9 +13,9 @@ use Luzrain\TelegramBotApi\Type\ChatInviteLink;
  * The link can be revoked using the method revokeChatInviteLink.
  * Returns the new invite link as ChatInviteLink object.
  *
- * @extends BaseMethod<ChatInviteLink>
+ * @extends Method<ChatInviteLink>
  */
-final class CreateChatInviteLink extends BaseMethod
+final class CreateChatInviteLink extends Method
 {
     protected static string $methodName = 'createChatInviteLink';
     protected static string $responseClass = ChatInviteLink::class;

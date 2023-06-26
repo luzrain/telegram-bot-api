@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi;
 
-abstract class BaseArray implements TypeInterface
+abstract class ArrayType implements TypeDenormalizable
 {
     protected static string $type;
 
@@ -14,11 +14,11 @@ abstract class BaseArray implements TypeInterface
 
     /**
      * @psalm-suppress LessSpecificImplementedReturnType
-     * @return array|list<BaseType>|list<list<BaseType>>
+     * @return array|list<Type>|list<list<Type>>
      */
     public static function fromArray(array $data): array
     {
-        /** @var TypeInterface $type */
+        /** @var TypeDenormalizable $type */
         $type = static::$type;
         $array = [];
         foreach ($data as $item) {

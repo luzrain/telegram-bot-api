@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to get the number of members in a chat.
  * Returns Int on success.
  *
- * @extends BaseMethod<int>
+ * @extends Method<int>
  */
-final class GetChatMemberCount extends BaseMethod
+final class GetChatMemberCount extends Method
 {
     protected static string $methodName = 'getChatMemberCount';
 

@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Stickers;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\PropertyType;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfStickers;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfStickersType;
 use Luzrain\TelegramBotApi\Type\PhotoSize;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a sticker set.
  */
-final readonly class StickerSet extends BaseType implements TypeInterface
+final readonly class StickerSet extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**
@@ -46,7 +46,7 @@ final readonly class StickerSet extends BaseType implements TypeInterface
          *
          * @var list<Sticker>
          */
-        #[PropertyType(ArrayOfStickers::class)]
+        #[PropertyType(ArrayOfStickersType::class)]
         public array $stickers,
 
         /**

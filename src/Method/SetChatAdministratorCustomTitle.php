@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to set a custom title for an administrator in a supergroup promoted by the bot.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SetChatAdministratorCustomTitle extends BaseMethod
+final class SetChatAdministratorCustomTitle extends Method
 {
     protected static string $methodName = 'setChatAdministratorCustomTitle';
 

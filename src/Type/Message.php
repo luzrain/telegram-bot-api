@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\PropertyType;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessageEntity;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPhotoSize;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfUser;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessageEntityType;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPhotoSizeType;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfUserType;
 use Luzrain\TelegramBotApi\Type\Games\Game;
 use Luzrain\TelegramBotApi\Type\Passport\PassportData;
 use Luzrain\TelegramBotApi\Type\Payments\Invoice;
 use Luzrain\TelegramBotApi\Type\Payments\SuccessfulPayment;
 use Luzrain\TelegramBotApi\Type\Stickers\Sticker;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a message.
  */
-final readonly class Message extends BaseType implements TypeInterface
+final readonly class Message extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**
@@ -138,7 +138,7 @@ final readonly class Message extends BaseType implements TypeInterface
          *
          * @var list<MessageEntity>|null
          */
-        #[PropertyType(ArrayOfMessageEntity::class)]
+        #[PropertyType(ArrayOfMessageEntityType::class)]
         public array|null $entities = null,
 
         /**
@@ -162,7 +162,7 @@ final readonly class Message extends BaseType implements TypeInterface
          *
          * @var list<PhotoSize>|null
          */
-        #[PropertyType(ArrayOfPhotoSize::class)]
+        #[PropertyType(ArrayOfPhotoSizeType::class)]
         public array|null $photo = null,
 
         /**
@@ -195,7 +195,7 @@ final readonly class Message extends BaseType implements TypeInterface
          *
          * @var list<MessageEntity>|null
          */
-        #[PropertyType(ArrayOfMessageEntity::class)]
+        #[PropertyType(ArrayOfMessageEntityType::class)]
         public array|null $captionEntities = null,
 
         /**
@@ -239,7 +239,7 @@ final readonly class Message extends BaseType implements TypeInterface
          *
          * @var list<User>|null
          */
-        #[PropertyType(ArrayOfUser::class)]
+        #[PropertyType(ArrayOfUserType::class)]
         public array|null $newChatMembers = null,
 
         /**
@@ -257,7 +257,7 @@ final readonly class Message extends BaseType implements TypeInterface
          *
          * @var list<PhotoSize>|null
          */
-        #[PropertyType(ArrayOfPhotoSize::class)]
+        #[PropertyType(ArrayOfPhotoSizeType::class)]
         public array|null $newChatPhoto = null,
 
         /**

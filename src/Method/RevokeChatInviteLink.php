@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ChatInviteLink;
 
 /**
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\Type\ChatInviteLink;
  * The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights.
  * Returns the revoked invite link as ChatInviteLink object.
  *
- * @extends BaseMethod<ChatInviteLink>
+ * @extends Method<ChatInviteLink>
  */
-final class RevokeChatInviteLink extends BaseMethod
+final class RevokeChatInviteLink extends Method
 {
     protected static string $methodName = 'revokeChatInviteLink';
     protected static string $responseClass = ChatInviteLink::class;

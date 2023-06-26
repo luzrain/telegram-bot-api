@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Payments;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * This object represents a portion of the price for goods or services.
  */
-final readonly class LabeledPrice extends BaseType
+final readonly class LabeledPrice extends Type
 {
     public function __construct(
         /**

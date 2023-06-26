@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to log out from the cloud Bot API server before launching the bot locally.
@@ -13,9 +13,9 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * cloud Bot API server for 10 minutes.
  * Returns True on success. Requires no parameters.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class LogOut extends BaseMethod
+final class LogOut extends Method
 {
     protected static string $methodName = 'logOut';
 

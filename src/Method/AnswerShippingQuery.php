@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\Payments\ShippingOption;
 
 /**
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\Type\Payments\ShippingOption;
  * the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries.
  * On success, True is returned.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class AnswerShippingQuery extends BaseMethod
+final class AnswerShippingQuery extends Method
 {
     protected static string $methodName = 'answerShippingQuery';
 

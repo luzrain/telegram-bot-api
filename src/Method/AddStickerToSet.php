@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\InputSticker;
 
 /**
@@ -14,9 +14,9 @@ use Luzrain\TelegramBotApi\Type\InputSticker;
  * Static sticker sets can have up to 120 stickers.
  * Returns True on success.
  *
- * @extends BaseMethod<bool>
+ * @extends Method<bool>
  */
-final class AddStickerToSet extends BaseMethod
+final class AddStickerToSet extends Method
 {
     protected static string $methodName = 'addStickerToSet';
 

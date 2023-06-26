@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ForumTopic;
 
 /**
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\Type\ForumTopic;
  * The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights.
  * Returns information about the created topic as a ForumTopic object.
  *
- * @extends BaseMethod<ForumTopic>
+ * @extends Method<ForumTopic>
  */
-final class CreateForumTopic extends BaseMethod
+final class CreateForumTopic extends Method
 {
     protected static string $methodName = 'createForumTopic';
     protected static string $responseClass = ForumTopic::class;

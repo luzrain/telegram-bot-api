@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents the content of a venue message to be sent as the result of an inline query.
  */
-final readonly class InputVenueMessageContent extends BaseType implements InputMessageContent
+final readonly class InputVenueMessageContent extends Type implements InputMessageContent
 {
     public function __construct(
         /**

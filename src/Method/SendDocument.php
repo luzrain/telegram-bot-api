@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ForceReply;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\InputFile;
@@ -16,9 +16,9 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
  * Use this method to send general files. On success, the sent Message is returned.
  * Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
  *
- * @extends BaseMethod<Message>
+ * @extends Method<Message>
  */
-final class SendDocument extends BaseMethod
+final class SendDocument extends Method
 {
     protected static string $methodName = 'sendDocument';
     protected static string $responseClass = Message::class;

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a service message about a change in auto-delete timer settings.
  */
-final readonly class MessageAutoDeleteTimerChanged extends BaseType implements TypeInterface
+final readonly class MessageAutoDeleteTimerChanged extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**

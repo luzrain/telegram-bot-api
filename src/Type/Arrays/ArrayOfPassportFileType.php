@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Arrays;
 
-use Luzrain\TelegramBotApi\BaseArray;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type\Passport\PassportFile;
 
-final class ArrayOfPassportFile extends BaseArray
+final class ArrayOfPassportFileType extends ArrayType
 {
     protected static string $type = PassportFile::class;
 }

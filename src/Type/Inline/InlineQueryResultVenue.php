@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 
 /**
  * Represents a venue. By default, the venue will be sent by the user.
  * Alternatively, you can use input_message_content to send a message with the specified content instead of the venue.
  */
-final readonly class InlineQueryResultVenue extends BaseType implements InlineQueryResult
+final readonly class InlineQueryResultVenue extends Type implements InlineQueryResult
 {
     /**
      * Type of the result, must be venue

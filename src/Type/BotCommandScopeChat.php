@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents the scope of bot commands, covering a specific chat.
  */
-final readonly class BotCommandScopeChat extends BaseType implements BotCommandScope
+final readonly class BotCommandScopeChat extends Type implements BotCommandScope
 {
     /**
      * Scope type, must be chat

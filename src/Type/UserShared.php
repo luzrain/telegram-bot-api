@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object contains information about the user whose identifier was shared with the bot using a KeyboardButtonRequestUser button.
  */
-final readonly class UserShared extends BaseType implements TypeInterface
+final readonly class UserShared extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**

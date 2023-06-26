@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\MenuButton;
 
 /**
  * Use this method to change the bot's menu button in a private chat, or the default menu button.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SetChatMenuButton extends BaseMethod
+final class SetChatMenuButton extends Method
 {
     protected static string $methodName = 'setChatMenuButton';
 

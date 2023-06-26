@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a video message (available in Telegram apps as of v.4.0).
  */
-final readonly class VideoNote extends BaseType implements TypeInterface
+final readonly class VideoNote extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**

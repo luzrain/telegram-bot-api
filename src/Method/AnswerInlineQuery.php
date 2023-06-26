@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\Inline\InlineQueryResult;
 use Luzrain\TelegramBotApi\Type\InlineQueryResultsButton;
 
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\Type\InlineQueryResultsButton;
  * Use this method to send answers to an inline query. On success, True is returned.
  * No more than 50 results per query are allowed.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class AnswerInlineQuery extends BaseMethod
+final class AnswerInlineQuery extends Method
 {
     protected static string $methodName = 'answerInlineQuery';
 

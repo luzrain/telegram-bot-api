@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to unban a previously banned user in a supergroup or channel.
@@ -14,9 +14,9 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * If you don't want this, use the parameter only_if_banned.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class UnbanChatMember extends BaseMethod
+final class UnbanChatMember extends Method
 {
     protected static string $methodName = 'unbanChatMember';
 

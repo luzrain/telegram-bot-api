@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Arrays;
 
-use Luzrain\TelegramBotApi\BaseArray;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type\ChatMember;
 
-final class ArrayOfChatMemberEntity extends BaseArray
+final class ArrayOfChatMemberEntityType extends ArrayType
 {
     protected static string $type = ChatMember::class;
 }

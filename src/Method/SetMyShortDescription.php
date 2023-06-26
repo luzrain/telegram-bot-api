@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to change the bot's short description, which is shown on the bot's profile page
  * and is sent together with the link when users share the bot.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SetMyShortDescription extends BaseMethod
+final class SetMyShortDescription extends Method
 {
     protected static string $methodName = 'setMyShortDescription';
 

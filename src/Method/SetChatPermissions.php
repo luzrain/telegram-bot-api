@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ChatPermissions;
 
 /**
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\Type\ChatPermissions;
  * The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SetChatPermissions extends BaseMethod
+final class SetChatPermissions extends Method
 {
     protected static string $methodName = 'setChatPermissions';
 

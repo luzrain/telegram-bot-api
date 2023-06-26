@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to add a message to the list of pinned messages in a chat.
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class PinChatMessage extends BaseMethod
+final class PinChatMessage extends Method
 {
     protected static string $methodName = 'pinChatMessage';
 

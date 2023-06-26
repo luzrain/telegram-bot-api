@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ForceReply;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\InputFile;
@@ -17,9 +17,9 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
  * For this to work, your audio must be in an .OGG file encoded with OPUS (other formats may be sent as Audio or Document).
  * On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
  *
- * @extends BaseMethod<Message>
+ * @extends Method<Message>
  */
-final class SendVoice extends BaseMethod
+final class SendVoice extends Method
 {
     protected static string $methodName = 'sendVoice';
     protected static string $responseClass = Message::class;

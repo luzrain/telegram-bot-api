@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Represents the rights of an administrator in a chat.
  */
-final readonly class ChatAdministratorRights extends BaseType implements TypeInterface
+final readonly class ChatAdministratorRights extends Type implements TypeDenormalizable
 {
     public function __construct(
         /**

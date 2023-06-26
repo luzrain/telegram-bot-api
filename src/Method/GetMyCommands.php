@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfBotCommand;
+use Luzrain\TelegramBotApi\Method;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfBotCommandType;
 use Luzrain\TelegramBotApi\Type\BotCommand;
 use Luzrain\TelegramBotApi\Type\BotCommandScope;
 
@@ -13,12 +13,12 @@ use Luzrain\TelegramBotApi\Type\BotCommandScope;
  * Use this method to get the current list of the bot's commands for the given scope and user language.
  * Returns Array of BotCommand on success. If commands aren't set, an empty list is returned.
  *
- * @extends BaseMethod<list<BotCommand>>
+ * @extends Method<list<BotCommand>>
  */
-final class GetMyCommands extends BaseMethod
+final class GetMyCommands extends Method
 {
     protected static string $methodName = 'getMyCommands';
-    protected static string $responseClass = ArrayOfBotCommand::class;
+    protected static string $responseClass = ArrayOfBotCommandType::class;
 
     public function __construct(
         /**

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Arrays;
 
-use Luzrain\TelegramBotApi\BaseArray;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type\BotCommand;
 
-final class ArrayOfBotCommand extends BaseArray
+final class ArrayOfBotCommandType extends ArrayType
 {
     protected static string $type = BotCommand::class;
 }

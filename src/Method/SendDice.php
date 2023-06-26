@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ForceReply;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\Message;
@@ -15,9 +15,9 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
  * Use this method to send an animated emoji that will display a random value.
  * On success, the sent Message is returned.
  *
- * @extends BaseMethod<Message>
+ * @extends Method<Message>
  */
-final class SendDice extends BaseMethod
+final class SendDice extends Method
 {
     protected static string $methodName = 'sendDice';
     protected static string $responseClass = Message::class;

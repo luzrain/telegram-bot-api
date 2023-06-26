@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Arrays;
 
-use Luzrain\TelegramBotApi\BaseArray;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type\PhotoSize;
 
-final class ArrayOfPhotoSize extends BaseArray
+final class ArrayOfPhotoSizeType extends ArrayType
 {
     protected static string $type = PhotoSize::class;
 }

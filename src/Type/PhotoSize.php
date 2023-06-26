@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents one size of a photo or a file / sticker thumbnail.
  */
-final readonly class PhotoSize extends BaseType implements TypeInterface
+final readonly class PhotoSize extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**

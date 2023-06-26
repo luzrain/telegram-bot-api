@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\Poll;
 
 /**
  * Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.
  *
- * @extends BaseMethod<Poll>
+ * @extends Method<Poll>
  */
-final class StopPoll extends BaseMethod
+final class StopPoll extends Method
 {
     protected static string $methodName = 'stopPoll';
     protected static string $responseClass = Poll::class;

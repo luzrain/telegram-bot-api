@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Describes actions that a non-administrator user is allowed to take in a chat.
  */
-final readonly class ChatPermissions extends BaseType implements TypeInterface
+final readonly class ChatPermissions extends Type implements TypeDenormalizable
 {
     public function __construct(
         /**

@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\Message;
 
 /**
  * Use this method to send a game. On success, the sent Message is returned.
  *
- * @extends BaseMethod<Message>
+ * @extends Method<Message>
  */
-final class SendGame extends BaseMethod
+final class SendGame extends Method
 {
     protected static string $methodName = 'sendGame';
     protected static string $responseClass = Message::class;

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Payments;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\User;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object contains information about an incoming pre-checkout query.
  */
-final readonly class PreCheckoutQuery extends BaseType implements TypeInterface
+final readonly class PreCheckoutQuery extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**

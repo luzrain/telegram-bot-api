@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Payments\LabeledPrice;
 
 /**
  * Represents the content of an invoice message to be sent as the result of an inline query.
  */
-final readonly class InputInvoiceMessageContent extends BaseType implements InputMessageContent
+final readonly class InputInvoiceMessageContent extends Type implements InputMessageContent
 {
     public function __construct(
         /**

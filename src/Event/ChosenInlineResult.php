@@ -14,7 +14,7 @@ final class ChosenInlineResult extends Event
         return $update->chosenInlineResult !== null;
     }
 
-    public function executeAction(Update $update): mixed
+    public function executeCallback(Update $update): mixed
     {
         return $this->callback($update->chosenInlineResult);
     }

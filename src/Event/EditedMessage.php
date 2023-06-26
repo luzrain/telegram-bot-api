@@ -14,7 +14,7 @@ final class EditedMessage extends Event
         return $update->editedMessage !== null;
     }
 
-    public function executeAction(Update $update): mixed
+    public function executeCallback(Update $update): mixed
     {
         return $this->callback($update->editedMessage);
     }

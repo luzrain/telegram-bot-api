@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents an issue with a document scan. The error is considered resolved when the file with the document scan changes.
  */
-final readonly class PassportElementErrorFile extends BaseType implements PassportElementError
+final readonly class PassportElementErrorFile extends Type implements PassportElementError
 {
     /**
      * Error source, must be file

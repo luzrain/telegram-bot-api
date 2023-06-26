@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfUpdates;
+use Luzrain\TelegramBotApi\Method;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfUpdatesType;
 use Luzrain\TelegramBotApi\Type\Update;
 
 /**
  * Use this method to receive incoming updates using long polling (wiki).
  * An Array of Update objects is returned.
  *
- * @extends BaseMethod<list<Update>>
+ * @extends Method<list<Update>>
  */
-final class GetUpdates extends BaseMethod
+final class GetUpdates extends Method
 {
     protected static string $methodName = 'getUpdates';
-    protected static string $responseClass = ArrayOfUpdates::class;
+    protected static string $responseClass = ArrayOfUpdatesType::class;
 
     public function __construct(
         /**

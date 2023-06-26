@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
 /**
  * Represents the content of a text message to be sent as the result of an inline query.
  */
-final readonly class InputTextMessageContent extends BaseType implements InputMessageContent
+final readonly class InputTextMessageContent extends Type implements InputMessageContent
 {
     public function __construct(
         /**

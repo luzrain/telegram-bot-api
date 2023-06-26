@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents an issue with the front side of a document. The error is considered resolved when the file with the front side of the document changes.
  */
-final readonly class PassportElementErrorFrontSide extends BaseType implements PassportElementError
+final readonly class PassportElementErrorFrontSide extends Type implements PassportElementError
 {
     /**
      * Error source, must be front_side

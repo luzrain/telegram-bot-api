@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to delete a forum topic along with all its messages in a forum supergroup chat.
  * The bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class DeleteForumTopic extends BaseMethod
+final class DeleteForumTopic extends Method
 {
     protected static string $methodName = 'deleteForumTopic';
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\Message;
 use Luzrain\TelegramBotApi\Type\Payments\LabeledPrice;
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\Type\Payments\LabeledPrice;
 /**
  * Use this method to send invoices. On success, the sent Message is returned.
  *
- * @extends BaseMethod<Message>
+ * @extends Method<Message>
  */
-final class SendInvoice extends BaseMethod
+final class SendInvoice extends Method
 {
     protected static string $methodName = 'sendInvoice';
     protected static string $responseClass = Message::class;

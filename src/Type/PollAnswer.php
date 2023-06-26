@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents an answer of a user in a non-anonymous poll.
  */
-final readonly class PollAnswer extends BaseType implements TypeInterface
+final readonly class PollAnswer extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**

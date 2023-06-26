@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\Message;
 
 /**
  * Use this method to forward messages of any kind. Service messages can't be forwarded.
  * On success, the sent Message is returned.
  *
- * @extends BaseMethod<Message>
+ * @extends Method<Message>
  */
-final class ForwardMessage extends BaseMethod
+final class ForwardMessage extends Method
 {
     protected static string $methodName = 'forwardMessage';
     protected static string $responseClass = Message::class;

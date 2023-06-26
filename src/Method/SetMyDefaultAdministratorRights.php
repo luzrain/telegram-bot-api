@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ChatAdministratorRights;
 
 /**
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\Type\ChatAdministratorRights;
  * These rights will be suggested to users, but they are are free to modify the list before adding the bot.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SetMyDefaultAdministratorRights extends BaseMethod
+final class SetMyDefaultAdministratorRights extends Method
 {
     protected static string $methodName = 'setMyDefaultAdministratorRights';
 

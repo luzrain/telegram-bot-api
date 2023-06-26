@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents an audio file to be treated as music to be sent.
  */
-final readonly class InputMediaAudio extends BaseType implements InputMedia
+final readonly class InputMediaAudio extends Type implements InputMedia
 {
     /**
      * Type of the result, must be audio

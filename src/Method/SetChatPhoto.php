@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\InputFile;
 
 /**
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\Type\InputFile;
  * The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SetChatPhoto extends BaseMethod
+final class SetChatPhoto extends Method
 {
     protected static string $methodName = 'setChatPhoto';
 

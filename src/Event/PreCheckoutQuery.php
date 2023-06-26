@@ -14,7 +14,7 @@ final class PreCheckoutQuery extends Event
         return $update->preCheckoutQuery !== null;
     }
 
-    public function executeAction(Update $update): mixed
+    public function executeCallback(Update $update): mixed
     {
         return $this->callback($update->preCheckoutQuery);
     }

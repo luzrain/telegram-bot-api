@@ -14,7 +14,7 @@ final class ChatMember extends Event
         return $update->chatMember !== null;
     }
 
-    public function executeAction(Update $update): mixed
+    public function executeCallback(Update $update): mixed
     {
         return $this->callback($update->chatMember);
     }

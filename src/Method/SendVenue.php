@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ForceReply;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\Message;
@@ -14,9 +14,9 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 /**
  * Use this method to send information about a venue. On success, the sent Message is returned.
  *
- * @extends BaseMethod<Message>
+ * @extends Method<Message>
  */
-final class SendVenue extends BaseMethod
+final class SendVenue extends Method
 {
     protected static string $methodName = 'sendVenue';
     protected static string $responseClass = Message::class;

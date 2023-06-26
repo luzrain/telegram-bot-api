@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Games;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\PropertyType;
 use Luzrain\TelegramBotApi\Type\Animation;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessageEntity;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPhotoSize;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessageEntityType;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPhotoSizeType;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 use Luzrain\TelegramBotApi\Type\PhotoSize;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
  */
-final readonly class Game extends BaseType implements TypeInterface
+final readonly class Game extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**
@@ -34,7 +34,7 @@ final readonly class Game extends BaseType implements TypeInterface
          *
          * @var list<PhotoSize>
          */
-        #[PropertyType(ArrayOfPhotoSize::class)]
+        #[PropertyType(ArrayOfPhotoSizeType::class)]
         public array $photo,
 
         /**
@@ -49,7 +49,7 @@ final readonly class Game extends BaseType implements TypeInterface
          *
          * @var list<MessageEntity>|null
          */
-        #[PropertyType(ArrayOfMessageEntity::class)]
+        #[PropertyType(ArrayOfMessageEntityType::class)]
         public array|null $textEntities = null,
 
         /**

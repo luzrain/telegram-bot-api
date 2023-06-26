@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\BotCommandScope;
 
 /**
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\Type\BotCommandScope;
  * After deletion, higher level commands will be shown to affected users.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class DeleteMyCommands extends BaseMethod
+final class DeleteMyCommands extends Method
 {
     protected static string $methodName = 'deleteMyCommands';
 

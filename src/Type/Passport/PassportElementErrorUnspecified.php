@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents an issue in an unspecified place. The error is considered resolved when new data is added.
  */
-final readonly class PassportElementErrorUnspecified extends BaseType implements PassportElementError
+final readonly class PassportElementErrorUnspecified extends Type implements PassportElementError
 {
     /**
      * Error source, must be unspecified

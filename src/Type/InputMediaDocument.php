@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents a general file to be sent.
  */
-final readonly class InputMediaDocument extends BaseType implements InputMedia
+final readonly class InputMediaDocument extends Type implements InputMedia
 {
     /**
      * Type of the result, must be document

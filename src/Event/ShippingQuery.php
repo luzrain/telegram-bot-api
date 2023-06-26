@@ -14,7 +14,7 @@ final class ShippingQuery extends Event
         return $update->shippingQuery !== null;
     }
 
-    public function executeAction(Update $update): mixed
+    public function executeCallback(Update $update): mixed
     {
         return $this->callback($update->shippingQuery);
     }

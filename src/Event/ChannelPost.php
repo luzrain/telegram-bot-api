@@ -14,7 +14,7 @@ final class ChannelPost extends Event
         return $update->channelPost !== null;
     }
 
-    public function executeAction(Update $update): mixed
+    public function executeCallback(Update $update): mixed
     {
         return $this->callback($update->channelPost);
     }

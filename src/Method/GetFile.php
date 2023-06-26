@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\File;
 
 /**
@@ -13,9 +13,9 @@ use Luzrain\TelegramBotApi\Type\File;
  * The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response.
  * It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
  *
- * @extends BaseMethod<File>
+ * @extends Method<File>
  */
-final class GetFile extends BaseMethod
+final class GetFile extends Method
 {
     protected static string $methodName = 'getFile';
     protected static string $responseClass = File::class;

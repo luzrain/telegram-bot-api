@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).
  */
-final readonly class ReplyKeyboardMarkup extends BaseType
+final readonly class ReplyKeyboardMarkup extends Type
 {
     public array $keyboard;
 

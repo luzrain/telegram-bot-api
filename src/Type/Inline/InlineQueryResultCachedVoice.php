@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\Type\MessageEntity;
  * Represents a link to a voice message stored on the Telegram servers. By default, this voice message will be sent by the user.
  * Alternatively, you can use input_message_content to send a message with the specified content instead of the voice message.
  */
-final readonly class InlineQueryResultCachedVoice extends BaseType implements InlineQueryResult
+final readonly class InlineQueryResultCachedVoice extends Type implements InlineQueryResult
 {
     /**
      * Type of the result, must be voice

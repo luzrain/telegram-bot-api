@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents an issue with the translated version of a document. The error is considered resolved when a file with the document translation change.
  */
-final readonly class PassportElementErrorTranslationFiles extends BaseType implements PassportElementError
+final readonly class PassportElementErrorTranslationFiles extends Type implements PassportElementError
 {
     /**
      * Error source, must be translation_files

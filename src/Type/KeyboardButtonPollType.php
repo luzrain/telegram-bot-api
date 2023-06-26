@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * This object represents type of a poll, which is allowed to be created and sent when the corresponding button is pressed.
  */
-final readonly class KeyboardButtonPollType extends BaseType
+final readonly class KeyboardButtonPollType extends Type
 {
     public function __construct(
         /**

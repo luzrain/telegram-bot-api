@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\BotCommand;
 use Luzrain\TelegramBotApi\Type\BotCommandScope;
 
@@ -14,9 +14,9 @@ use Luzrain\TelegramBotApi\Type\BotCommandScope;
  * Returns True on success.
  *
  * @see https://core.telegram.org/bots/features#commands
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SetMyCommands extends BaseMethod
+final class SetMyCommands extends Method
 {
     protected static string $methodName = 'setMyCommands';
 

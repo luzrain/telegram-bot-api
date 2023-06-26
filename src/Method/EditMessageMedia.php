@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\InputMedia;
 use Luzrain\TelegramBotApi\Type\Message;
@@ -17,9 +17,9 @@ use Luzrain\TelegramBotApi\Type\Message;
  * the edited Message is returned, otherwise True is returned.
  *
  * @todo: Check return type in real case
- * @extends BaseMethod<Message>
+ * @extends Method<Message>
  */
-final class EditMessageMedia extends BaseMethod
+final class EditMessageMedia extends Method
 {
     protected static string $methodName = 'editMessageMedia';
     protected static string $responseClass = Message::class;

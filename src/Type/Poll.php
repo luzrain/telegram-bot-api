@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\PropertyType;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessageEntity;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPollOption;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessageEntityType;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPollOptionType;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object contains information about a poll.
  */
-final readonly class Poll extends BaseType implements TypeInterface
+final readonly class Poll extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**
@@ -31,7 +31,7 @@ final readonly class Poll extends BaseType implements TypeInterface
          *
          * @var list<PollOption>
          */
-        #[PropertyType(ArrayOfPollOption::class)]
+        #[PropertyType(ArrayOfPollOptionType::class)]
         public array $options,
 
         /**
@@ -74,7 +74,7 @@ final readonly class Poll extends BaseType implements TypeInterface
          *
          * @var list<MessageEntity>|null
          */
-        #[PropertyType(ArrayOfMessageEntity::class)]
+        #[PropertyType(ArrayOfMessageEntityType::class)]
         public array|null $explanationEntities = null,
 
         /**

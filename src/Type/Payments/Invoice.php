@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Payments;
 
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object contains basic information about an invoice.
  */
-final readonly class Invoice extends BaseType implements TypeInterface
+final readonly class Invoice extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Arrays;
 
-use Luzrain\TelegramBotApi\BaseArray;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type\PollOption;
 
-final class ArrayOfPollOption extends BaseArray
+final class ArrayOfPollOptionType extends ArrayType
 {
     protected static string $type = PollOption::class;
 }

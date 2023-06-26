@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Test;
 
 use Luzrain\TelegramBotApi\Exception\TelegramTypeException;
-use Luzrain\TelegramBotApi\Test\Helper\TestBaseType;
+use Luzrain\TelegramBotApi\Test\Helper\TestTypeDenormalizable;
 use PHPUnit\Framework\TestCase;
 
 final class BaseTypeTest extends TestCase
 {
     public function testValidate(): void
     {
-        TestBaseType::fromArray([
+        TestTypeDenormalizable::fromArray([
             'test1' => 1,
             'test2' => 2,
             'test3' => 3,
@@ -25,7 +25,7 @@ final class BaseTypeTest extends TestCase
     {
         $this->expectException(TelegramTypeException::class);
 
-        TestBaseType::fromArray([
+        TestTypeDenormalizable::fromArray([
             'test1' => 1,
         ]);
     }

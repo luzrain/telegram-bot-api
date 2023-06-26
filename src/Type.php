@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\Exception\TelegramTypeException;
  *
  * @see https://core.telegram.org/bots/api#available-types
  */
-abstract readonly class BaseType implements \JsonSerializable
+abstract readonly class Type implements \JsonSerializable
 {
     /**
      * @internal
@@ -20,8 +20,8 @@ abstract readonly class BaseType implements \JsonSerializable
      */
     public static function fromArray(array $data): static
     {
-        if (!is_subclass_of(static::class, TypeInterface::class)) {
-            throw new \Exception(sprintf('%s should implement %s to perform fromArray method', static::class, TypeInterface::class));
+        if (!is_subclass_of(static::class, TypeDenormalizable::class)) {
+            throw new \Exception(sprintf('%s should implement %s to perform %s method', static::class, TypeDenormalizable::class, __FUNCTION__));
         }
 
         $reflClass = new \ReflectionClass(static::class);
@@ -38,7 +38,7 @@ abstract readonly class BaseType implements \JsonSerializable
             $propertyType = $attributeType?->getArguments()[0] ?? $reflProperty->getType()->getName();
 
             if (isset($data[$propertyKey])) {
-                $constructorMap[$property] = is_subclass_of($propertyType, TypeInterface::class)
+                $constructorMap[$property] = is_subclass_of($propertyType, TypeDenormalizable::class)
                     ? $propertyType::fromArray((array) $data[$propertyKey])
                     : $data[$propertyKey]
                 ;
@@ -63,9 +63,9 @@ abstract readonly class BaseType implements \JsonSerializable
             $propertyKey = StringUtils::toSnakeCase($property);
             if ($this->$property !== null) {
                 if (is_array($this->$property)) {
-                    $data[$propertyKey] = array_map(fn ($v) => $v instanceof BaseType ? $v->toArray() : $v, $this->$property);
+                    $data[$propertyKey] = array_map(fn ($v) => $v instanceof Type ? $v->toArray() : $v, $this->$property);
                 } else {
-                    $data[$propertyKey] = $value instanceof TypeInterface ? $this->$property->toArray() : $this->$property;
+                    $data[$propertyKey] = $value instanceof TypeDenormalizable ? $this->$property->toArray() : $this->$property;
                 }
             }
         }

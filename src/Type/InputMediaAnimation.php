@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
  */
-final readonly class InputMediaAnimation extends BaseType implements InputMedia
+final readonly class InputMediaAnimation extends Type implements InputMedia
 {
     /**
      * Type of the result, must be animation

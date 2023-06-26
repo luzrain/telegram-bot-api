@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to move a sticker in a set created by the bot to a specific position.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SetStickerPositionInSet extends BaseMethod
+final class SetStickerPositionInSet extends Method
 {
     protected static string $methodName = 'setStickerPositionInSet';
 

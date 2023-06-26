@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\Message;
 
 /**
@@ -13,9 +13,9 @@ use Luzrain\TelegramBotApi\Type\Message;
  * Returns an error, if the new score is not greater than the user's current score in the chat and force is False.
  *
  * @todo: Check return type in real case
- * @extends BaseMethod<Message>
+ * @extends Method<Message>
  */
-final class SetGameScore extends BaseMethod
+final class SetGameScore extends Method
 {
     protected static string $methodName = 'setGameScore';
     protected static string $responseClass = Message::class;

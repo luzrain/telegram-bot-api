@@ -62,12 +62,12 @@ final class Client
             return json_encode(null);
         }
 
-        if (!$callbackResponse instanceof BaseMethod) {
+        if (!$callbackResponse instanceof Method) {
             throw new TelegramCallbackException(get_debug_type($callbackResponse));
         }
 
         $webhookResponse = array_merge(
-            ['method' => $callbackResponse->getMethodName()],
+            ['method' => $callbackResponse->getName()],
             iterator_to_array($callbackResponse->iterateRequestProps()),
         );
 

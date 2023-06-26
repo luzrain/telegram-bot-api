@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked.
  * The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights.
  * Returns the new invite link as String on success.
  *
- * @extends BaseMethod<string>
+ * @extends Method<string>
  */
-final class ExportChatInviteLink extends BaseMethod
+final class ExportChatInviteLink extends Method
 {
     protected static string $methodName = 'exportChatInviteLink';
 

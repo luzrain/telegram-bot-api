@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ForceReply;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\MessageId;
@@ -16,9 +16,9 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
  * The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message.
  * Returns the MessageId of the sent message on success.
  *
- * @extends BaseMethod<MessageId>
+ * @extends Method<MessageId>
  */
-final class CopyMessage extends BaseMethod
+final class CopyMessage extends Method
 {
     protected static string $methodName = 'copyMessage';
     protected static string $responseClass = MessageId::class;

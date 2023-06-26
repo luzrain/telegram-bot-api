@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Games\CallbackGame;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
  */
-final readonly class InlineKeyboardButton extends BaseType implements TypeInterface
+final readonly class InlineKeyboardButton extends Type implements TypeDenormalizable
 {
     public function __construct(
         /**

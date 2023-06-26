@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to change search keywords assigned to a regular or custom emoji sticker.
  * The sticker must belong to a sticker set created by the bot.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SetStickerKeywords extends BaseMethod
+final class SetStickerKeywords extends Method
 {
     protected static string $methodName = 'setStickerKeywords';
 

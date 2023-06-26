@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\InputFile;
 
 /**
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\Type\InputFile;
  * The format of the thumbnail file must match the format of the stickers in the set.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class SetStickerSetThumbnail extends BaseMethod
+final class SetStickerSetThumbnail extends Method
 {
     protected static string $methodName = 'setStickerSetThumbnail';
 

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a parameter of the inline keyboard button used to automatically authorize a user.
  * Serves as a great replacement for the Telegram Login Widget when the user is coming from Telegram.
  */
-final readonly class LoginUrl extends BaseType implements TypeInterface
+final readonly class LoginUrl extends Type implements TypeDenormalizable
 {
     public function __construct(
         /**

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Games;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\User;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents one row of the high scores table for a game.
  */
-final readonly class GameHighScore extends BaseType implements TypeInterface
+final readonly class GameHighScore extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**

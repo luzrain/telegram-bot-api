@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfStickers;
+use Luzrain\TelegramBotApi\Method;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfStickersType;
 use Luzrain\TelegramBotApi\Type\Stickers\Sticker;
 
 /**
  * Use this method to get information about custom emoji stickers by their identifiers.
  * Returns an Array of Sticker objects.
  *
- * @extends BaseMethod<list<Sticker>>
+ * @extends Method<list<Sticker>>
  */
-final class GetCustomEmojiStickers extends BaseMethod
+final class GetCustomEmojiStickers extends Method
 {
     protected static string $methodName = 'getCustomEmojiStickers';
-    protected static string $responseClass = ArrayOfStickers::class;
+    protected static string $responseClass = ArrayOfStickersType::class;
 
     public function __construct(
         /**

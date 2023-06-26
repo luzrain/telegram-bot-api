@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\File;
 use Luzrain\TelegramBotApi\Type\InputFile;
 
@@ -13,9 +13,9 @@ use Luzrain\TelegramBotApi\Type\InputFile;
  * and addStickerToSet methods (the file can be used multiple times).
  * Returns the uploaded File on success.
  *
- * @extends BaseMethod<File>
+ * @extends Method<File>
  */
-final class UploadStickerFile extends BaseMethod
+final class UploadStickerFile extends Method
 {
     protected static string $methodName = 'uploadStickerFile';
     protected static string $responseClass = File::class;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\Message;
 
@@ -13,9 +13,9 @@ use Luzrain\TelegramBotApi\Type\Message;
  * On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
  *
  * @todo: Check return type in real case
- * @extends BaseMethod<Message>
+ * @extends Method<Message>
  */
-final class EditMessageReplyMarkup extends BaseMethod
+final class EditMessageReplyMarkup extends Method
 {
     protected static string $methodName = 'editMessageReplyMarkup';
     protected static string $responseClass = Message::class;

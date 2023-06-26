@@ -14,7 +14,7 @@ final class ChatJoinRequest extends Event
         return $update->chatJoinRequest !== null;
     }
 
-    public function executeAction(Update $update): mixed
+    public function executeCallback(Update $update): mixed
     {
         return $this->callback($update->chatJoinRequest);
     }

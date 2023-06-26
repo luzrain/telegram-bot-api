@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\PropertyType;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfEncryptedPassportElement;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfEncryptedPassportElementType;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Describes Telegram Passport data shared with the bot by the user.
  */
-final readonly class PassportData extends BaseType implements TypeInterface
+final readonly class PassportData extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**
@@ -20,7 +20,7 @@ final readonly class PassportData extends BaseType implements TypeInterface
          *
          * @var list<EncryptedPassportElement>
          */
-        #[PropertyType(ArrayOfEncryptedPassportElement::class)]
+        #[PropertyType(ArrayOfEncryptedPassportElementType::class)]
         public array $data,
 
         /**

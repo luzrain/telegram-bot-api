@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to delete a group sticker set from a supergroup.
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class DeleteChatStickerSet extends BaseMethod
+final class DeleteChatStickerSet extends Method
 {
     protected static string $methodName = 'deleteChatStickerSet';
 

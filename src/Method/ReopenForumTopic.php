@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to reopen a closed topic in a forum supergroup chat.
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * unless it is the creator of the topic.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class ReopenForumTopic extends BaseMethod
+final class ReopenForumTopic extends Method
 {
     protected static string $methodName = 'reopenForumTopic';
 

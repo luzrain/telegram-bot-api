@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\InputSticker;
 
 /**
  * Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class CreateNewStickerSet extends BaseMethod
+final class CreateNewStickerSet extends Method
 {
     protected static string $methodName = 'createNewStickerSet';
 

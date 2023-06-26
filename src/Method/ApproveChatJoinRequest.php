@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to approve a chat join request.
  * The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class ApproveChatJoinRequest extends BaseMethod
+final class ApproveChatJoinRequest extends Method
 {
     protected static string $methodName = 'approveChatJoinRequest';
 

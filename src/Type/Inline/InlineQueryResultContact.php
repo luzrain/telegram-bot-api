@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\BaseType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 
 /**
  * Represents a contact with a phone number. By default, this contact will be sent by the user.
  * Alternatively, you can use input_message_content to send a message with the specified content instead of the contact.
  */
-final readonly class InlineQueryResultContact extends BaseType implements InlineQueryResult
+final readonly class InlineQueryResultContact extends Type implements InlineQueryResult
 {
     /**
      * Type of the result, must be contact

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Arrays;
 
-use Luzrain\TelegramBotApi\BaseArray;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardButton;
 
-final class ArrayOfInlineKeyboardButton extends BaseArray
+final class ArrayOfInlineKeyboardButtonType extends ArrayType
 {
     protected static string $type = InlineKeyboardButton::class;
 }

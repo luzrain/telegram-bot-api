@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to hide the 'General' topic in a forum supergroup chat.
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * The topic will be automatically closed if it was open.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class HideGeneralForumTopic extends BaseMethod
+final class HideGeneralForumTopic extends Method
 {
     protected static string $methodName = 'hideGeneralForumTopic';
 

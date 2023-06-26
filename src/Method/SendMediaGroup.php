@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessages;
+use Luzrain\TelegramBotApi\Method;
+use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessagesType;
 use Luzrain\TelegramBotApi\Type\InputMediaAudio;
 use Luzrain\TelegramBotApi\Type\InputMediaDocument;
 use Luzrain\TelegramBotApi\Type\InputMediaPhoto;
@@ -17,12 +17,12 @@ use Luzrain\TelegramBotApi\Type\Message;
  * Documents and audio files can be only grouped in an album with messages of the same type.
  * On success, an array of Messages that were sent is returned.
  *
- * @extends BaseMethod<list<Message>>
+ * @extends Method<list<Message>>
  */
-final class SendMediaGroup extends BaseMethod
+final class SendMediaGroup extends Method
 {
     protected static string $methodName = 'sendMediaGroup';
-    protected static string $responseClass = ArrayOfMessages::class;
+    protected static string $responseClass = ArrayOfMessagesType::class;
 
     public function __construct(
         /**

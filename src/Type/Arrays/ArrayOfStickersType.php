@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Arrays;
 
-use Luzrain\TelegramBotApi\BaseArray;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type\Stickers\Sticker;
 
-final class ArrayOfStickers extends BaseArray
+final class ArrayOfStickersType extends ArrayType
 {
     protected static string $type = Sticker::class;
 }

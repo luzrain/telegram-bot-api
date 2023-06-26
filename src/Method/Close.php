@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to close the bot instance before moving it from one local server to another.
@@ -12,9 +12,9 @@ use Luzrain\TelegramBotApi\BaseMethod;
  * The method will return error 429 in the first 10 minutes after the bot is launched.
  * Returns True on success. Requires no parameters.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class Close extends BaseMethod
+final class Close extends Method
 {
     protected static string $methodName = 'close';
 

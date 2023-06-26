@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a bot command.
  */
-final readonly class BotCommand extends BaseType implements TypeInterface
+final readonly class BotCommand extends Type implements TypeDenormalizable
 {
     public function __construct(
         /**

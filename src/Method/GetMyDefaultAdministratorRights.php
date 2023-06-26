@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ChatAdministratorRights;
 
 /**
  * Use this method to get the current default administrator rights of the bot.
  * Returns ChatAdministratorRights on success.
  *
- * @extends BaseMethod<ChatAdministratorRights>
+ * @extends Method<ChatAdministratorRights>
  */
-final class GetMyDefaultAdministratorRights extends BaseMethod
+final class GetMyDefaultAdministratorRights extends Method
 {
     protected static string $methodName = 'getMyDefaultAdministratorRights';
     protected static string $responseClass = ChatAdministratorRights::class;

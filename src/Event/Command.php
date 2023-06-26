@@ -27,7 +27,7 @@ final class Command extends Event
         return $this->command === \substr($message->text, $entity->offset, $entity->length);
     }
 
-    public function executeAction(Update $update): mixed
+    public function executeCallback(Update $update): mixed
     {
         $message = $update->message;
         $params = \array_filter(\explode(' ', $message->text));

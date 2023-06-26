@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Arrays;
 
-use Luzrain\TelegramBotApi\BaseArray;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type\Payments\LabeledPrice;
 
-final class ArrayOfLabeledPrice extends BaseArray
+final class ArrayOfLabeledPriceType extends ArrayType
 {
     protected static string $type = LabeledPrice::class;
 }

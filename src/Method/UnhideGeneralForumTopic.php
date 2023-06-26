@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Method;
 
-use Luzrain\TelegramBotApi\BaseMethod;
+use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to unhide the 'General' topic in a forum supergroup chat.
  * The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights.
  * Returns True on success.
  *
- * @extends BaseMethod<true>
+ * @extends Method<true>
  */
-final class UnhideGeneralForumTopic extends BaseMethod
+final class UnhideGeneralForumTopic extends Method
 {
     protected static string $methodName = 'unhideGeneralForumTopic';
 
