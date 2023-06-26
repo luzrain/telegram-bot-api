@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Event;
 
-use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Event;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ChatMemberBanned as ChatMemberBannedType;
 use Luzrain\TelegramBotApi\Type\Update;
 

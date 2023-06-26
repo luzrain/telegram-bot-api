@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Games;
 
-use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\PropertyType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Animation;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessageEntityType;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPhotoSizeType;

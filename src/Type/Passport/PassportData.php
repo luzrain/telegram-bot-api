@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\PropertyType;
+use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfEncryptedPassportElementType;
 use Luzrain\TelegramBotApi\TypeDenormalizable;
 
