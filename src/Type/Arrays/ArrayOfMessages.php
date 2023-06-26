@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Arrays;
 
+use Luzrain\TelegramBotApi\BaseArray;
 use Luzrain\TelegramBotApi\Type\Message;
 
 final class ArrayOfMessages extends BaseArray

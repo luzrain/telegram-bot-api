@@ -2,10 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Luzrain\TelegramBotApi\Type\Arrays;
-
-use Luzrain\TelegramBotApi\BaseType;
-use Luzrain\TelegramBotApi\TypeInterface;
+namespace Luzrain\TelegramBotApi;
 
 abstract class BaseArray implements TypeInterface
 {
