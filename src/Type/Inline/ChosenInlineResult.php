@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Represents a result of an inline query that was chosen by the user and sent to their chat partner.
  */
-final class ChosenInlineResult extends BaseType implements TypeInterface
+final readonly class ChosenInlineResult extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

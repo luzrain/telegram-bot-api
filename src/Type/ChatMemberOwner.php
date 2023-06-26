@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Type;
 /**
  * Represents a chat member that owns the chat and has all administrator privileges.
  */
-final class ChatMemberOwner extends ChatMember
+final readonly class ChatMemberOwner extends ChatMember
 {
     protected function __construct(
         /**
@@ -30,6 +30,5 @@ final class ChatMemberOwner extends ChatMember
          */
         public string|null $customTitle = null,
     ) {
-        parent::__construct($this->status);
     }
 }

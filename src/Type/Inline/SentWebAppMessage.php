@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Describes an inline message sent by a Web App on behalf of a user.
  */
-final class SentWebAppMessage extends BaseType implements TypeInterface
+final readonly class SentWebAppMessage extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

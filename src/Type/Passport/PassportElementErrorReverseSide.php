@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents an issue with the reverse side of a document. The error is considered resolved when the file with reverse side of the document changes.
  */
-final class PassportElementErrorReverseSide extends BaseType implements PassportElementError
+final readonly class PassportElementErrorReverseSide extends BaseType implements PassportElementError
 {
     /**
      * Error source, must be reverse_side

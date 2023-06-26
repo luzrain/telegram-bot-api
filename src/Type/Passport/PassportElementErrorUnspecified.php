@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents an issue in an unspecified place. The error is considered resolved when new data is added.
  */
-final class PassportElementErrorUnspecified extends BaseType implements PassportElementError
+final readonly class PassportElementErrorUnspecified extends BaseType implements PassportElementError
 {
     /**
      * Error source, must be unspecified

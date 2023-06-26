@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents the bot's name.
  */
-final class BotName extends BaseType implements TypeInterface
+final readonly class BotName extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

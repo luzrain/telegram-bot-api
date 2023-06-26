@@ -13,7 +13,7 @@ use Luzrain\TelegramBotApi\Type\MessageEntity;
  * Alternatively, you can use input_message_content to send a message with the specified content instead of the file.
  * Currently, only .PDF and .ZIP files can be sent using this method.
  */
-final class InlineQueryResultDocument extends BaseType implements InlineQueryResult
+final readonly class InlineQueryResultDocument extends BaseType implements InlineQueryResult
 {
     /**
      * Type of the result, must be document

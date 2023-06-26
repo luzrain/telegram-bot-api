@@ -6,7 +6,7 @@ namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\BaseType;
 
-final class InlineQueryResultsButton extends BaseType
+final readonly class InlineQueryResultsButton extends BaseType
 {
     public function __construct(
         /**

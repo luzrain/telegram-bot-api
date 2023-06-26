@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\Type\Stickers\MaskPosition;
 /**
  * This object describes a sticker to be added to a sticker set.
  */
-final class InputSticker extends BaseType
+final readonly class InputSticker extends BaseType
 {
     public function __construct(
         /**

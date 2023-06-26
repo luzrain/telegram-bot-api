@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a service message about a video chat scheduled in the chat.
  */
-final class VideoChatScheduled extends BaseType implements TypeInterface
+final readonly class VideoChatScheduled extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

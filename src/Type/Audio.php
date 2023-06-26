@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents an audio file to be treated as music by the Telegram clients.
  */
-final class Audio extends BaseType implements TypeInterface
+final readonly class Audio extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Type;
 /**
  * Represents a chat member that has some additional privileges.
  */
-final class ChatMemberAdministrator extends ChatMember
+final readonly class ChatMemberAdministrator extends ChatMember
 {
     protected function __construct(
         /**
@@ -91,6 +91,5 @@ final class ChatMemberAdministrator extends ChatMember
          */
         public bool|null $canManageTopics = null,
     ) {
-        parent::__construct($this->status);
     }
 }

@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents an issue with one of the files that constitute the translation of a document. The error is considered resolved when the file changes.
  */
-final class PassportElementErrorTranslationFile extends BaseType implements PassportElementError
+final readonly class PassportElementErrorTranslationFile extends BaseType implements PassportElementError
 {
     /**
      * Error source, must be translation_file

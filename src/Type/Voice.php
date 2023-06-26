@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a voice note.
  */
-final class Voice extends BaseType implements TypeInterface
+final readonly class Voice extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

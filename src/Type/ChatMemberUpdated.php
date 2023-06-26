@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents changes in the status of a chat member.
  */
-final class ChatMemberUpdated extends BaseType implements TypeInterface
+final readonly class ChatMemberUpdated extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

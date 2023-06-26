@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents the content of a contact message to be sent as the result of an inline query.
  */
-final class InputContactMessageContent extends BaseType implements InputMessageContent
+final readonly class InputContactMessageContent extends BaseType implements InputMessageContent
 {
     public function __construct(
         /**

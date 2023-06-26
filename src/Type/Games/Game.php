@@ -16,7 +16,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
  */
-final class Game extends BaseType implements TypeInterface
+final readonly class Game extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

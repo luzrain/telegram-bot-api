@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a sticker.
  */
-final class Sticker extends BaseType implements TypeInterface
+final readonly class Sticker extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

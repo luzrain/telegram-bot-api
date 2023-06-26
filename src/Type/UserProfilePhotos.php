@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represent a user's profile pictures.
  */
-final class UserProfilePhotos extends BaseType implements TypeInterface
+final readonly class UserProfilePhotos extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

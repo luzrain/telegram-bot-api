@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a Telegram user or bot.
  */
-final class User extends BaseType implements TypeInterface
+final readonly class User extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

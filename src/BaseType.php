@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\Exception\TelegramTypeException;
  *
  * @see https://core.telegram.org/bots/api#available-types
  */
-abstract class BaseType implements \JsonSerializable
+abstract readonly class BaseType implements \JsonSerializable
 {
     /**
      * @internal

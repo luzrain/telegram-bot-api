@@ -13,7 +13,7 @@ use Luzrain\TelegramBotApi\Type\MessageEntity;
  * By default, this video file will be sent by the user with an optional caption.
  * Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
  */
-final class InlineQueryResultVideo extends BaseType implements InlineQueryResult
+final readonly class InlineQueryResultVideo extends BaseType implements InlineQueryResult
 {
     /**
      * Type of the result, must be video

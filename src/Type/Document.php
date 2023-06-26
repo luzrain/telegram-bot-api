@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a general file (as opposed to photos, voice messages and audio files).
  */
-final class Document extends BaseType implements TypeInterface
+final readonly class Document extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

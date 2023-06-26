@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Represents a join request sent to a chat.
  */
-final class ChatJoinRequest extends BaseType implements TypeInterface
+final readonly class ChatJoinRequest extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

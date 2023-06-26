@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Type;
 /**
  * Represents a chat member that has no additional privileges or restrictions.
  */
-final class ChatMemberMember extends ChatMember
+final readonly class ChatMemberMember extends ChatMember
 {
     protected function __construct(
         /**
@@ -20,6 +20,5 @@ final class ChatMemberMember extends ChatMember
          */
         public User $user,
     ) {
-        parent::__construct($this->status);
     }
 }

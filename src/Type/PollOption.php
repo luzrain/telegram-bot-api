@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object contains information about one answer option in a poll.
  */
-final class PollOption extends BaseType implements TypeInterface
+final readonly class PollOption extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

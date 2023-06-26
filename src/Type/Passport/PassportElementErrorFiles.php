@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents an issue with a list of scans. The error is considered resolved when the list of files containing the scans changes.
  */
-final class PassportElementErrorFiles extends BaseType implements PassportElementError
+final readonly class PassportElementErrorFiles extends BaseType implements PassportElementError
 {
     /**
      * Error source, must be files

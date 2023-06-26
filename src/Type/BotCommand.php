@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a bot command.
  */
-final class BotCommand extends BaseType implements TypeInterface
+final readonly class BotCommand extends BaseType implements TypeInterface
 {
     public function __construct(
         /**

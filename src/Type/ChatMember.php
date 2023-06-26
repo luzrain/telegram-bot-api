@@ -17,7 +17,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  * @see ChatMemberLeft
  * @see ChatMemberBanned
  */
-class ChatMember extends BaseType implements TypeInterface
+readonly class ChatMember extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

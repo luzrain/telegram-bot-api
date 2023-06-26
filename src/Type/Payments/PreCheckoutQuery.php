@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object contains information about an incoming pre-checkout query.
  */
-final class PreCheckoutQuery extends BaseType implements TypeInterface
+final readonly class PreCheckoutQuery extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

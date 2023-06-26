@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Type;
 /**
  * Describes that no specific value for the menu button was set.
  */
-final class MenuButtonDefault extends MenuButton
+final readonly class MenuButtonDefault extends MenuButton
 {
     public function __construct(
         /**

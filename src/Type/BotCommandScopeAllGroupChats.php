@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents the scope of bot commands, covering all group and supergroup chats.
  */
-final class BotCommandScopeAllGroupChats extends BaseType implements BotCommandScope
+final readonly class BotCommandScopeAllGroupChats extends BaseType implements BotCommandScope
 {
     /**
      * Scope type, must be all_group_chats

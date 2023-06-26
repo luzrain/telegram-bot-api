@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 /**
  * Represents a link to an article or web page.
  */
-final class InlineQueryResultArticle extends BaseType implements InlineQueryResult
+final readonly class InlineQueryResultArticle extends BaseType implements InlineQueryResult
 {
     /**
      * Type of the result, must be article

@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field's value changes.
  */
-final class PassportElementErrorDataField extends BaseType implements PassportElementError
+final readonly class PassportElementErrorDataField extends BaseType implements PassportElementError
 {
     /**
      * Error source, must be data

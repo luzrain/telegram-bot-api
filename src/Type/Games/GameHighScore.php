@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents one row of the high scores table for a game.
  */
-final class GameHighScore extends BaseType implements TypeInterface
+final readonly class GameHighScore extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

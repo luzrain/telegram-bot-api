@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Describes why a request was unsuccessful.
  */
-final class ResponseParameters extends BaseType implements TypeInterface
+final readonly class ResponseParameters extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

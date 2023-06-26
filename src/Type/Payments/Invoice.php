@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object contains basic information about an invoice.
  */
-final class Invoice extends BaseType implements TypeInterface
+final readonly class Invoice extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

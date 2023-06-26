@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 /**
  * Represents a Game.
  */
-final class InlineQueryResultGame extends BaseType implements InlineQueryResult
+final readonly class InlineQueryResultGame extends BaseType implements InlineQueryResult
 {
     /**
      * Type of the result, must be game

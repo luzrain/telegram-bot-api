@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a service message about new members invited to a video chat.
  */
-final class VideoChatParticipantsInvited extends BaseType implements TypeInterface
+final readonly class VideoChatParticipantsInvited extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

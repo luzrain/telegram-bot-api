@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\Exception\TelegramInputFileException;
  * This object represents the contents of a file to be uploaded.
  * Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.
  */
-final class InputFile implements \JsonSerializable
+final readonly class InputFile implements \JsonSerializable
 {
     private string $filePath;
     private string $uniqueName;

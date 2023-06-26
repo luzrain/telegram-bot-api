@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a service message about a video chat ended in the chat.
  */
-final class VideoChatEnded extends BaseType implements TypeInterface
+final readonly class VideoChatEnded extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

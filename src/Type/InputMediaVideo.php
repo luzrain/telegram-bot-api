@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents a video to be sent.
  */
-final class InputMediaVideo extends BaseType implements InputMedia
+final readonly class InputMediaVideo extends BaseType implements InputMedia
 {
     /**
      * Type of the result, must be video

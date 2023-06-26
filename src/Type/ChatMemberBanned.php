@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Type;
 /**
  * Represents a chat member that was banned in the chat and can't return to the chat or view chat messages.
  */
-final class ChatMemberBanned extends ChatMember
+final readonly class ChatMemberBanned extends ChatMember
 {
     protected function __construct(
         /**
@@ -25,6 +25,5 @@ final class ChatMemberBanned extends ChatMember
          */
         public int $untilDate,
     ) {
-        parent::__construct($this->status);
     }
 }

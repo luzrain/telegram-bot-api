@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object contains information about the user whose identifier was shared with the bot using a KeyboardButtonRequestUser button.
  */
-final class UserShared extends BaseType implements TypeInterface
+final readonly class UserShared extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

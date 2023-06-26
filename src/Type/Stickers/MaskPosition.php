@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object describes the position on faces where a mask should be placed by default.
  */
-final class MaskPosition extends BaseType implements TypeInterface
+final readonly class MaskPosition extends BaseType implements TypeInterface
 {
     public function __construct(
         /**

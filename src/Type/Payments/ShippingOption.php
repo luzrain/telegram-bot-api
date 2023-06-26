@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents one shipping option.
  */
-final class ShippingOption extends BaseType implements TypeInterface
+final readonly class ShippingOption extends BaseType implements TypeInterface
 {
     public function __construct(
         /**

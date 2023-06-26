@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a service message about an edited forum topic.
  */
-final class ForumTopicEdited extends BaseType implements TypeInterface
+final readonly class ForumTopicEdited extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

@@ -14,7 +14,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  * @see MenuButtonWebApp
  * @see MenuButtonDefault
  */
-class MenuButton extends BaseType implements TypeInterface
+readonly class MenuButton extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

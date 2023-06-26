@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a service message about a new forum topic created in the chat.
  */
-final class ForumTopicCreated extends BaseType implements TypeInterface
+final readonly class ForumTopicCreated extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

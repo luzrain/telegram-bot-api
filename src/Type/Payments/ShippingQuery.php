@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object contains information about an incoming shipping query.
  */
-final class ShippingQuery extends BaseType implements TypeInterface
+final readonly class ShippingQuery extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

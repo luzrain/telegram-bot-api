@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents a photo to be sent.
  */
-final class InputMediaPhoto extends BaseType implements InputMedia
+final readonly class InputMediaPhoto extends BaseType implements InputMedia
 {
     /**
      * Type of the result, must be photo

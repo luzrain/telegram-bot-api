@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents an audio file to be treated as music to be sent.
  */
-final class InputMediaAudio extends BaseType implements InputMedia
+final readonly class InputMediaAudio extends BaseType implements InputMedia
 {
     /**
      * Type of the result, must be audio

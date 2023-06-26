@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Describes Telegram Passport data shared with the bot by the user.
  */
-final class PassportData extends BaseType implements TypeInterface
+final readonly class PassportData extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

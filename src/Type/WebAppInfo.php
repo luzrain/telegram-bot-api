@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Describes a Web App.
  */
-final class WebAppInfo extends BaseType implements TypeInterface
+final readonly class WebAppInfo extends BaseType implements TypeInterface
 {
     public function __construct(
         /**

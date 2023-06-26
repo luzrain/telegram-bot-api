@@ -13,7 +13,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  * This object represents an incoming inline query.
  * When the user sends an empty query, your bot could return some default or trending results.
  */
-final class InlineQuery extends BaseType implements TypeInterface
+final readonly class InlineQuery extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

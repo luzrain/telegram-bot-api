@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents a general file to be sent.
  */
-final class InputMediaDocument extends BaseType implements InputMedia
+final readonly class InputMediaDocument extends BaseType implements InputMedia
 {
     /**
      * Type of the result, must be document

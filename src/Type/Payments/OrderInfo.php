@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents information about an order.
  */
-final class OrderInfo extends BaseType implements TypeInterface
+final readonly class OrderInfo extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

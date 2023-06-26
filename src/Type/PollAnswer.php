@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents an answer of a user in a non-anonymous poll.
  */
-final class PollAnswer extends BaseType implements TypeInterface
+final readonly class PollAnswer extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
  */
-final class InlineKeyboardButton extends BaseType implements TypeInterface
+final readonly class InlineKeyboardButton extends BaseType implements TypeInterface
 {
     public function __construct(
         /**

@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  * This object represents a file uploaded to Telegram Passport.
  * Currently all Telegram Passport files are in JPEG format when decrypted and don't exceed 10MB.
  */
-final class PassportFile extends BaseType implements TypeInterface
+final readonly class PassportFile extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

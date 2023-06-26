@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object contains basic information about a successful payment.
  */
-final class SuccessfulPayment extends BaseType implements TypeInterface
+final readonly class SuccessfulPayment extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

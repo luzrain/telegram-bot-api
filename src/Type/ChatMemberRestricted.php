@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Type;
 /**
  * Represents a chat member that is under certain restrictions in the chat. Supergroups only.
  */
-final class ChatMemberRestricted extends ChatMember
+final readonly class ChatMemberRestricted extends ChatMember
 {
     protected function __construct(
         /**
@@ -99,6 +99,5 @@ final class ChatMemberRestricted extends ChatMember
          */
         public int $untilDate,
     ) {
-        parent::__construct($this->status);
     }
 }

@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents the default scope of bot commands. Default commands are used if no commands with a narrower scope are specified for the user.
  */
-final class BotCommandScopeDefault extends BaseType implements BotCommandScope
+final readonly class BotCommandScopeDefault extends BaseType implements BotCommandScope
 {
     /**
      * Scope type, must be default

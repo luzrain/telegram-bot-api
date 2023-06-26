@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
  */
-final class InputMediaAnimation extends BaseType implements InputMedia
+final readonly class InputMediaAnimation extends BaseType implements InputMedia
 {
     /**
      * Type of the result, must be animation

@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Describes actions that a non-administrator user is allowed to take in a chat.
  */
-final class ChatPermissions extends BaseType implements TypeInterface
+final readonly class ChatPermissions extends BaseType implements TypeInterface
 {
     public function __construct(
         /**

@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a video message (available in Telegram apps as of v.4.0).
  */
-final class VideoNote extends BaseType implements TypeInterface
+final readonly class VideoNote extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

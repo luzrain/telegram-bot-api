@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  * Describes data required for decrypting and authenticating EncryptedPassportElement.
  * See the Telegram Passport Documentation for a complete description of the data decryption and authentication processes.
  */
-final class EncryptedCredentials extends BaseType implements TypeInterface
+final readonly class EncryptedCredentials extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents the content of a location message to be sent as the result of an inline query.
  */
-final class InputLocationMessageContent extends BaseType implements InputMessageContent
+final readonly class InputLocationMessageContent extends BaseType implements InputMessageContent
 {
     public function __construct(
         /**

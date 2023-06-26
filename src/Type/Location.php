@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a point on the map.
  */
-final class Location extends BaseType implements TypeInterface
+final readonly class Location extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

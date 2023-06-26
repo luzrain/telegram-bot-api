@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\Type\Payments\LabeledPrice;
 /**
  * Represents the content of an invoice message to be sent as the result of an inline query.
  */
-final class InputInvoiceMessageContent extends BaseType implements InputMessageContent
+final readonly class InputInvoiceMessageContent extends BaseType implements InputMessageContent
 {
     public function __construct(
         /**

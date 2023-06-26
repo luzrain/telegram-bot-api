@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\Type\MessageEntity;
 /**
  * Represents the content of a text message to be sent as the result of an inline query.
  */
-final class InputTextMessageContent extends BaseType implements InputMessageContent
+final readonly class InputTextMessageContent extends BaseType implements InputMessageContent
 {
     public function __construct(
         /**

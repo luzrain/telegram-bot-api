@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * This object represents a portion of the price for goods or services.
  */
-final class LabeledPrice extends BaseType
+final readonly class LabeledPrice extends BaseType
 {
     public function __construct(
         /**

@@ -15,7 +15,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  *
  * !Maximum file size to download is 20 MB!
  */
-final class File extends BaseType implements TypeInterface
+final readonly class File extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

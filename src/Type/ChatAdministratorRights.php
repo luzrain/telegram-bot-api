@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Represents the rights of an administrator in a chat.
  */
-final class ChatAdministratorRights extends BaseType implements TypeInterface
+final readonly class ChatAdministratorRights extends BaseType implements TypeInterface
 {
     public function __construct(
         /**

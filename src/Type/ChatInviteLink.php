@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Represents an invite link for a chat.
  */
-final class ChatInviteLink extends BaseType implements TypeInterface
+final readonly class ChatInviteLink extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

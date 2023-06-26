@@ -19,7 +19,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a message.
  */
-final class Message extends BaseType implements TypeInterface
+final readonly class Message extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

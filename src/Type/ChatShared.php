@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object contains information about the chat whose identifier was shared with the bot using a KeyboardButtonRequestChat button.
  */
-final class ChatShared extends BaseType implements TypeInterface
+final readonly class ChatShared extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

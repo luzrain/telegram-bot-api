@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Represents a location to which a chat is connected.
  */
-final class ChatLocation extends BaseType implements TypeInterface
+final readonly class ChatLocation extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

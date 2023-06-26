@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Type;
 /**
  * Represents a menu button, which launches a Web App.
  */
-final class MenuButtonWebApp extends MenuButton
+final readonly class MenuButtonWebApp extends MenuButton
 {
     public function __construct(
         /**

@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * Describes the current status of a webhook.
  */
-final class WebhookInfo extends BaseType implements TypeInterface
+final readonly class WebhookInfo extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

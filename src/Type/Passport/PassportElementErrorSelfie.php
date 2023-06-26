@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\BaseType;
 /**
  * Represents an issue with the selfie with a document. The error is considered resolved when the file with the selfie changes.
  */
-final class PassportElementErrorSelfie extends BaseType implements PassportElementError
+final readonly class PassportElementErrorSelfie extends BaseType implements PassportElementError
 {
     /**
      * Error source, must be selfie

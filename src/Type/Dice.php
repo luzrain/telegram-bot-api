@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents an animated emoji that displays a random value.
  */
-final class Dice extends BaseType implements TypeInterface
+final readonly class Dice extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

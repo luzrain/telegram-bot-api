@@ -12,7 +12,7 @@ use Luzrain\TelegramBotApi\BaseType;
  * More about requesting chats »
  * @see https://core.telegram.org/bots/features#chat-and-user-selection
  */
-final class KeyboardButtonRequestChat extends BaseType
+final readonly class KeyboardButtonRequestChat extends BaseType
 {
     public function __construct(
         /**

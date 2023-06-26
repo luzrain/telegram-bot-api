@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\BaseType;
  * For simple text buttons, String can be used instead of this object to specify the button text.
  * The optional fields web_app, request_user, request_chat, request_contact, request_location, and request_poll are mutually exclusive.
  */
-final class KeyboardButton extends BaseType
+final readonly class KeyboardButton extends BaseType
 {
     public function __construct(
         /**

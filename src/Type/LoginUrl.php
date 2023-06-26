@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
  * This object represents a parameter of the inline keyboard button used to automatically authorize a user.
  * Serves as a great replacement for the Telegram Login Widget when the user is coming from Telegram.
  */
-final class LoginUrl extends BaseType implements TypeInterface
+final readonly class LoginUrl extends BaseType implements TypeInterface
 {
     public function __construct(
         /**

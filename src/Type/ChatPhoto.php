@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a chat photo.
  */
-final class ChatPhoto extends BaseType implements TypeInterface
+final readonly class ChatPhoto extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**

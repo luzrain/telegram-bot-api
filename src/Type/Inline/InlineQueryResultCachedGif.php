@@ -13,7 +13,7 @@ use Luzrain\TelegramBotApi\Type\MessageEntity;
  * By default, this animated GIF file will be sent by the user with an optional caption.
  * Alternatively, you can use input_message_content to send a message with specified content instead of the animation.
  */
-final class InlineQueryResultCachedGif extends BaseType implements InlineQueryResult
+final readonly class InlineQueryResultCachedGif extends BaseType implements InlineQueryResult
 {
     /**
      * Type of the result, must be gif

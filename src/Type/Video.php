@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\TypeInterface;
 /**
  * This object represents a video file.
  */
-final class Video extends BaseType implements TypeInterface
+final readonly class Video extends BaseType implements TypeInterface
 {
     protected function __construct(
         /**
