@@ -22,22 +22,12 @@ final readonly class InputFile implements \JsonSerializable
         }
 
         $this->filePath = $filePath;
-        $this->uniqueName = uniqid('attach_', true);
+        $this->uniqueName = uniqid('attach.', true);
     }
 
     public static function create(string $filePath): self
     {
         return new self($filePath);
-    }
-
-    public function jsonSerialize(): mixed
-    {
-        return $this->getAttachPath();
-    }
-
-    public function getAttachPath(): string
-    {
-        return 'attach://' . $this->uniqueName;
     }
 
     public function getFilePath(): string
@@ -48,5 +38,15 @@ final readonly class InputFile implements \JsonSerializable
     public function getUniqueName(): string
     {
         return $this->uniqueName;
+    }
+
+    public function getAttachPath(): string
+    {
+        return 'attach://' . $this->uniqueName;
+    }
+
+    public function jsonSerialize(): string
+    {
+        return $this->getAttachPath();
     }
 }

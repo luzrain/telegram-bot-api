@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi;
 
-use GuzzleHttp\Client as HttpClient;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\RequestOptions;
 use Luzrain\TelegramBotApi\Exception\TelegramApiException;
+use Luzrain\TelegramBotApi\HttpClient\RequestBuilder;
 use Luzrain\TelegramBotApi\Method\GetFile;
 use Luzrain\TelegramBotApi\Method\SendMediaGroup;
 use Luzrain\TelegramBotApi\Type\File;
@@ -17,6 +15,9 @@ use Luzrain\TelegramBotApi\Type\InputMediaDocument;
 use Luzrain\TelegramBotApi\Type\InputMediaPhoto;
 use Luzrain\TelegramBotApi\Type\InputMediaVideo;
 use Luzrain\TelegramBotApi\Type\ResponseParameters;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 
 /**
  * Service for execute telegram methods
@@ -26,13 +27,15 @@ final class BotApi
     private const URL_API_ENDPOINT = 'https://api.telegram.org/bot%s/%s';
     private const URL_FILE_ENDPOINT = 'https://api.telegram.org/file/bot%s/%s';
 
-    private string $token;
-    private HttpClient $httpClient;
+    private RequestBuilder $requestBuilder;
 
-    public function __construct(string $token, array $options = [])
-    {
-        $this->token = $token;
-        $this->httpClient = new HttpClient($options);
+    public function __construct(
+        RequestFactoryInterface $requestFactory,
+        StreamFactoryInterface $streamFactory,
+        private ClientInterface $client,
+        private string $token,
+    ) {
+        $this->requestBuilder = new RequestBuilder($requestFactory, $streamFactory);
     }
 
     /**
@@ -44,73 +47,57 @@ final class BotApi
      */
     public function call(Method $method): Type|array|string|int|bool
     {
-        $url = sprintf(self::URL_API_ENDPOINT, $this->token, $method->getName());
-        $options = [];
         $multiparts = [];
         $files = [];
-
-        foreach ($method->iterateRequestProps() as $name => $result) {
-            if ($result instanceof InputFile) {
-                $files[] = $result;
-                $contents = $result->getAttachPath();
+        foreach ($method->iterateRequestProps() as $name => $value) {
+            if ($value instanceof InputFile) {
+                $content = $value->getAttachPath();
+                $files[] = $value;
             } else {
-                $contents = is_scalar($result) ? $result : json_encode($result);
+                $content = is_scalar($value) ? $value : json_encode($value);
             }
+
+            $multiparts[] = compact('name', 'content');
 
             /** @psalm-suppress TypeDoesNotContainType */
             if ($method instanceof SendMediaGroup && $name === 'media') {
-                /** @var list<InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo> $result */
-                foreach ($result as $inputMedia) {
-                    $mediaFile = $inputMedia->media;
-                    if ($mediaFile instanceof InputFile) {
-                        $files[] = $mediaFile;
+                /** @var list<InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo> $value */
+                foreach ($value as $inputMedia) {
+                    if ($inputMedia->media instanceof InputFile) {
+                        $files[] = $inputMedia->media;
                     }
-                    if (!$inputMedia instanceof InputMediaPhoto) {
-                        $mediaThumbnail = $inputMedia->thumbnail;
-                        if ($mediaThumbnail instanceof InputFile) {
-                            $files[] = $mediaThumbnail;
-                        }
+                    if (!$inputMedia instanceof InputMediaPhoto && $inputMedia->thumbnail instanceof InputFile) {
+                        $files[] = $inputMedia->thumbnail;
                     }
                 }
             }
-
-            $multiparts[] = compact('name', 'contents');
-        }
-
-        if ($multiparts !== []) {
-            $options[RequestOptions::MULTIPART] = $multiparts;
         }
 
         foreach ($files as $file) {
             $name = $file->getUniqueName();
-            $contents = fopen($file->getFilePath(), 'r');
-            $options[RequestOptions::MULTIPART][] = compact('name', 'contents');
+            $content = fopen($file->getFilePath(), 'r');
+            $multiparts[] = compact('name', 'content');
         }
 
-        try {
-            $httpResponse = $this->httpClient->request('POST', $url, $options);
-        } catch (ClientException $exception) {
-            $httpResponse = $exception->getResponse();
-        }
-
+        $url = sprintf(self::URL_API_ENDPOINT, $this->token, $method->getName());
+        $httpRequest = $this->requestBuilder->create('POST', $url, $multiparts);
+        $httpResponse = $this->client->sendRequest($httpRequest);
         $response = json_decode((string) $httpResponse->getBody(), true);
 
         if ($response['ok'] === false) {
             $parameters = isset($response['parameters']) ? ResponseParameters::fromArray($response['parameters']) : null;
-            throw new TelegramApiException($response['description'], $response['error_code'], $exception ?? null, $parameters);
+            throw new TelegramApiException($response['description'], $response['error_code'], $parameters);
         }
 
-        $result = $response['result'];
-
-        if (!is_array($result)) {
-            return $result;
+        if (!\is_array($response['result'])) {
+            return $response['result'];
         }
 
         /** @var class-string<Type> $responseClass */
         $responseClass = $method->getResponseClass();
 
         /** @psalm-suppress InvalidReturnStatement */
-        return $responseClass::fromArray($result);
+        return $responseClass::fromArray($response['result']);
     }
 
     /**
@@ -126,21 +113,28 @@ final class BotApi
             $file = $this->call(new GetFile($file));
         }
 
-        $fileUrl = sprintf(self::URL_FILE_ENDPOINT, $this->token, $file->filePath);
-        $fileExtension = pathinfo($file->filePath, PATHINFO_EXTENSION);
-        $downloadFilePath = sys_get_temp_dir() . '/' . uniqid('tgfile_', true) . '.' . $fileExtension;
-        $options = [RequestOptions::SINK => $downloadFilePath];
+        $url = sprintf(self::URL_FILE_ENDPOINT, $this->token, $file->filePath);
+        $extension = pathinfo($file->filePath, PATHINFO_EXTENSION);
+        $downloadFilePath = sys_get_temp_dir() . DIRECTORY_SEPARATOR . uniqid('tg.', true) . '.' . $extension;
 
-        try {
-            $this->httpClient->request('GET', $fileUrl, $options);
-        } catch (ClientException $exception) {
-            if (is_file($downloadFilePath)) {
-                unlink($downloadFilePath);
-            }
+        $httpRequest = $this->requestBuilder->create('GET', $url);
+        $httpResponse = $this->client->sendRequest($httpRequest);
 
-            $response = json_decode((string) $exception->getResponse()->getBody(), true);
-            throw new TelegramApiException($response['description'], $response['error_code'], $exception);
+        if ($httpResponse->getStatusCode() !== 200) {
+            $response = json_decode($httpResponse->getBody()->getContents(), true);
+            throw new TelegramApiException($response['description'], $response['error_code']);
         }
+
+        $outStream = $httpResponse->getBody();
+        $inStream = fopen($downloadFilePath, 'w');
+
+        while (!$outStream->eof()) {
+            $data = $outStream->read(1024);
+            fwrite($inStream, $data);
+        }
+
+        $outStream->close();
+        fclose($inStream);
 
         return $downloadFilePath;
     }
