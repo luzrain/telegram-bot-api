@@ -67,14 +67,15 @@ final class MultipartStreamBuilder
         return $this;
     }
 
+    /** @psalm-suppress RedundantCast */
     private function createStream(mixed $resource): StreamInterface
     {
         return match (true) {
             $resource instanceof StreamInterface => $resource,
-            is_string($resource), is_int($resource), is_bool($resource) => $this->streamFactory->createStream((string) $resource),
+            is_int($resource), is_string($resource), is_bool($resource) => $this->streamFactory->createStream((string) $resource),
             is_resource($resource) => $this->streamFactory->createStreamFromResource($resource),
             default => throw new \InvalidArgumentException(
-                sprintf('First argument to "%s" must be a string, resource or StreamInterface. %s given.', __METHOD__, get_debug_type($resource))
+                sprintf('First argument to "%s" must be a string, resource or StreamInterface. %s given.', __METHOD__, get_debug_type($resource)),
             ),
         };
     }
