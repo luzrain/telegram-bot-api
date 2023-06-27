@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Test;
 
-use Luzrain\TelegramBotApi\Client;
+use Luzrain\TelegramBotApi\ClientApi;
 use Luzrain\TelegramBotApi\Event;
 use Luzrain\TelegramBotApi\Test\Helper\ClosureTestHelper;
 use Luzrain\TelegramBotApi\Type\Update;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-final class ClientTest extends TestCase
+final class ClientApiTest extends TestCase
 {
-    private Client $client;
+    private ClientApi $client;
 
     public function setUp(): void
     {
-        $this->client = new Client();
+        $this->client = new ClientApi();
     }
 
     public static function clientWebhookData(): iterable
@@ -57,11 +57,6 @@ final class ClientTest extends TestCase
         $pollAnswerClosure = new ClosureTestHelper();
         $myChatMember = new ClosureTestHelper();
         $chatMemberBanned = new ClosureTestHelper();
-
-        $this->client
-            ->on(new Event\Command('/testcommand', $commandClosure->getClosure()))
-            ->webhookHandle($requestBody)
-        ;
 
         $this->client
             ->on(new Event\Update($updateClosure->getClosure()))
@@ -122,9 +117,9 @@ final class ClientTest extends TestCase
             ->updatesHandle($updates)
         ;
 
-        $this->assertTrue($commandClosure->isCalled());
-        $this->assertTrue($editedMessageClosure->isCalled());
-        $this->assertTrue($channelPostClosure->isCalled());
-        $this->assertFalse($editedChannelPostClosure->isCalled());
+        $this->assertTrue($commandClosure->isCalled(), 'Event\Command (/testcommand)');
+        $this->assertTrue($editedMessageClosure->isCalled(), 'Event\EditedMessage');
+        $this->assertTrue($channelPostClosure->isCalled(), 'Event\ChannelPost');
+        $this->assertFalse($editedChannelPostClosure->isCalled(), 'Event\EditedChannelPost');
     }
 }

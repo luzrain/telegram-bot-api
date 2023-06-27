@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\Type\Update;
 /**
  * Service for handle telegram updates
  */
-final class Client
+final class ClientApi
 {
     private EventCollection $events;
 

@@ -185,13 +185,13 @@ $response = $bot->call(new SendMediaGroup(
 #### Webhook client
 
 ```php
-use Luzrain\TelegramBotApi\Client;
+use Luzrain\TelegramBotApi\ClientApi;
 use Luzrain\TelegramBotApi\Method\SendMessage;
 use Luzrain\TelegramBotApi\Type\Message;
 use Luzrain\TelegramBotApi\Type\Update;
 use Luzrain\TelegramBotApi\Event;
 
-$client = new Client();
+$client = new ClientApi();
 
 // Handle any type of update
 $client->on(new Event\Update(function(Update $update) {
