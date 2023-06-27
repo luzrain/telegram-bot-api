@@ -5,7 +5,7 @@
 [![PHP ^8.2](https://img.shields.io/badge/PHP-^8.2-777bb3.svg?style=flat)](https://www.php.net/releases/8.2/en.php)
 [![Tests Status](https://img.shields.io/github/actions/workflow/status/luzrain/telegram-bot-api/tests.yaml?branch=master)](../../actions/workflows/tests.yaml)
 
-An extended native php wrapper for [Telegram Bot API](https://core.telegram.org/bots/api). Supports all methods and types of responses.  
+An object-oriented php wrapper for [Telegram Bot API](https://core.telegram.org/bots/api). Supports all methods and types of responses.  
 See all available methods and their parameters on [Telegram Bot API](https://core.telegram.org/bots/api#available-methods) documentation page.
 
 ## Installation
@@ -85,7 +85,7 @@ $response = $bot->call(new SendMessage(
 ));
 ```
 
-#### Send message with inline keyboard'
+#### Send message with inline keyboard
 
 ```php
 use Luzrain\TelegramBotApi\Type\InlineKeyboardButton;
@@ -126,7 +126,7 @@ use Luzrain\TelegramBotApi\Method\SendDocument;
  */
 $response = $bot->call(new SendPhoto(
     chatId: 123456789,
-    photo: InputFile::create('/app/public/img/16848497683080.jpg'),
+    photo: InputFile::create('/home/user/img/15311661465960.jpg'),
 ));
 
 /**
@@ -195,14 +195,17 @@ $client = new ClientApi();
 
 // Handle any type of update
 $client->on(new Event\Update(function(Update $update) {
-    // update received
+    // Any update received
 }));
 
 // Handle /ping command
 $client->on(new Event\Command('/ping', function(Message $message) {
-    // Be aware that your cannot sent methods with uploading local files from here, use BotApi instead.
+    /**
+     * You can return any Method object from here, and it will be sent as an answer to the webhook.
+     * Be aware that your cannot send methods with uploading local files from here, use BotApi instead.
+     */
     return new SendMessage(
-        chatId: $message->getChat()->getId(),
+        chatId: $message->chat->id,
         text: 'pong!',
     );
 }));
@@ -210,8 +213,8 @@ $client->on(new Event\Command('/ping', function(Message $message) {
 // Handle text messages
 $client->on(new Event\Message(function(Message $message) {
     return new SendMessage(
-        chatId: $message->getChat()->getId(),
-        text: 'Your message: ' . $message->getText(),
+        chatId: $message->chat->id,
+        text: 'Your message: ' . $message->text,
     );
 }));
 
