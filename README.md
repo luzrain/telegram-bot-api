@@ -5,7 +5,8 @@
 [![PHP ^8.2](https://img.shields.io/badge/PHP-^8.2-777bb3.svg?style=flat)](https://www.php.net/releases/8.2/en.php)
 [![Tests Status](https://img.shields.io/github/actions/workflow/status/luzrain/telegram-bot-api/tests.yaml?branch=master)](../../actions/workflows/tests.yaml)
 
-An extended native php wrapper for [Telegram Bot API](https://core.telegram.org/bots/api). Supports all methods and types of responses.
+An extended native php wrapper for [Telegram Bot API](https://core.telegram.org/bots/api). Supports all methods and types of responses.  
+See all available methods and their parameters on [Telegram Bot API](https://core.telegram.org/bots/api#available-methods) documentation page.
 
 ## Installation
 ``` bash
@@ -13,17 +14,35 @@ $ composer require luzrain/telegram-bot-api
 ```
 
 ## Bot API
-See all available methods and their parameters on [Telegram Bot API](https://core.telegram.org/bots/api#available-methods) documentation page.  
+The Telegram Bot Client is not hard coupled to Guzzle or any other library that sends HTTP messages.
+Instead, it uses the [PSR-18](https://www.php-fig.org/psr/psr-18/) client abstraction.
+This will give you the flexibility to choose what [PSR-7 implementation](https://packagist.org/providers/psr/http-message-implementation) and [HTTP client](https://packagist.org/providers/psr/http-client-implementation) you want to use.
 
-A few examples of usage:
+#### Example of initialising the BotApi with Guzzle client
+```php
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\HttpFactory;
+use Luzrain\TelegramBotApi\BotApi;
+
+$httpFactory = new HttpFactory();
+$httpClient = new Client(['http_errors' => false]);
+
+$botApi = new BotApi(
+    requestFactory: $httpFactory,
+    streamFactory: $httpFactory,
+    client: $httpClient,
+    token: 'API_TOKEN',
+);
+```
 
 #### Send message
 ```php
-use Luzrain\TelegramBotApi\BotApi;
 use Luzrain\TelegramBotApi\Method\SendMessage;
+use Luzrain\TelegramBotApi\Type\Message;
 
-$bot = new BotApi('BOT_API_TOKEN');
-
+/**
+ * @var Message $response
+ */
 $response = $bot->call(new SendMessage(
     chatId: 123456789,
     text: 'Example text',
@@ -33,23 +52,32 @@ $response = $bot->call(new SendMessage(
 #### Send message with reply keyboard
 
 ```php
-use Luzrain\TelegramBotApi\BotApi;
 use Luzrain\TelegramBotApi\Type\KeyboardButton;
+use Luzrain\TelegramBotApi\Type\KeyboardButtonArrayBuilder;
 use Luzrain\TelegramBotApi\Type\KeyboardButtonPollType;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardMarkup;
+use Luzrain\TelegramBotApi\Type\Message;
 use Luzrain\TelegramBotApi\Type\WebAppInfo;
 use Luzrain\TelegramBotApi\Method\SendMessage;
 
-$bot = new BotApi('BOT_API_TOKEN');
-
-$replyKeyboard = ReplyKeyboardMarkup::create(oneTimeKeyboard: true, resizeKeyboard: true)->addButtons(
-    KeyboardButton::create(text: 'Button 1'),
-    KeyboardButton::create(text: 'Button 2'),
-    ReplyKeyboardMarkup::break(),
-    KeyboardButton::create(text: 'Web App', webApp: WebAppInfo::create('https://github.com/')),
-    KeyboardButton::create(text: 'Create Poll', requestPoll: KeyboardButtonPollType::create()),
+$replyKeyboard = new ReplyKeyboardMarkup(
+    oneTimeKeyboard: true,
+    resizeKeyboard: true,
+    keyboard: KeyboardButtonArrayBuilder::create()
+        ->addButton(new KeyboardButton(text: 'Button 1'))
+        ->addButton(new KeyboardButton(text: 'Button 2'))
+        ->addBreak()
+        ->addButton(new KeyboardButton(text: 'Web App', webApp: new WebAppInfo('https://github.com/')))
+        ->addButton(new KeyboardButton(text: 'Create Poll', requestPoll: new KeyboardButtonPollType()))
+    ,
 );
 
+// For keyboard remove
+// $replyKeyboard = new ReplyKeyboardRemove();
+
+/**
+ * @var Message $response
+ */
 $response = $bot->call(new SendMessage(
     chatId: 123456789,
     text: 'Example text',
@@ -57,27 +85,26 @@ $response = $bot->call(new SendMessage(
 ));
 ```
 
-#### Send message with inline keyboard
+#### Send message with inline keyboard'
 
 ```php
-use Luzrain\TelegramBotApi\BotApi;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardButton;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
+use Luzrain\TelegramBotApi\Type\Message;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 use Luzrain\TelegramBotApi\Method\SendMessage;
 
-$bot = new BotApi('BOT_API_TOKEN');
-
-$inlineKeyboard = InlineKeyboardMarkup::create()->addButtons(
-    InlineKeyboardButton::create(text: 'Url button', url: 'https://google.com'),
-    InlineKeyboardButton::create(text: 'Callback button', callbackData: 'callback_data'),
-    InlineKeyboardMarkup::break(),
-    InlineKeyboardButton::create(text: 'Iinline query', switchInlineQueryCurrentChat: 'test'),
+$inlineKeyboard = new InlineKeyboardMarkup(
+    inlineKeyboard: InlineKeyboardButtonArrayBuilder::create()
+        ->addButton(new InlineKeyboardButton(text: 'Url button', url: 'https://google.com'))
+        ->addButton(new InlineKeyboardButton(text: 'Callback button', callbackData: 'callback_data'))
+        ->addBreak()
+        ->addButton(new InlineKeyboardButton(text: 'Iinline query', switchInlineQueryCurrentChat: 'test'))
 );
 
-// For keyboard remove
-$inlineKeyboard = ReplyKeyboardRemove::create();
-
+/**
+ * @var Message $response
+ */
 $response = $bot->call(new SendMessage(
     chatId: 123456789,
     text: 'Example text',
@@ -88,30 +115,37 @@ $response = $bot->call(new SendMessage(
 #### Send photo/video/document
 
 ```php
-use Luzrain\TelegramBotApi\BotApi;
+use Luzrain\TelegramBotApi\Type\Message;
 use Luzrain\TelegramBotApi\Type\InputFile;
 use Luzrain\TelegramBotApi\Method\SendPhoto;
 use Luzrain\TelegramBotApi\Method\SendDocument;
 
-$bot = new BotApi('BOT_API_TOKEN');
-
-// Upload image from local filesystem
+/**
+ * Upload image from local filesystem
+ * @var Message $response
+ */
 $response = $bot->call(new SendPhoto(
     chatId: 123456789,
-    photo: InputFile::create('/home/user/img/15311661465960.jpg'),
+    photo: InputFile::create('/app/public/img/16848497683080.jpg'),
 ));
 
-// Send image from the Internet
+/**
+ * Send image from the Internet
+ * @var Message $response
+ */
 $response = $bot->call(new SendPhoto(
     chatId: 123456789,
     photo: 'https://avatars3.githubusercontent.com/u/9335727',
 ));
 
-// Upload Document
+/**
+ * Upload Document
+ * @var Message $response
+ */
 $response = $bot->call(new SendDocument(
     chatId: 123456789,
     document: InputFile::create('/home/user/files/file.zip'),
-    thumb: InputFile::create('/home/user/img/thumb.jpg'),
+    thumbnail: InputFile::create('/home/user/img/thumb.jpg'),
     caption: 'Test file',
 ));
 
@@ -124,21 +158,22 @@ $response = $bot->call(new SendDocument(
 #### Send media group
 
 ```php
-use Luzrain\TelegramBotApi\BotApi;
+use Luzrain\TelegramBotApi\Type\Message;
 use Luzrain\TelegramBotApi\Type\InputFile;
 use Luzrain\TelegramBotApi\Type\InputMediaPhoto;
 use Luzrain\TelegramBotApi\Method\SendMediaGroup;
 
-$bot = new BotApi('BOT_API_TOKEN');
-
+/**
+ * @var Message[] $response
+ */
 $response = $bot->call(new SendMediaGroup(
     chatId: 123456789,
     media: [
-        InputMediaPhoto::create(
+        new InputMediaPhoto(
             media: InputFile::create('/home/user/img/15311661465960.jpg'),
             caption: 'Test media 1',
         ),
-        InputMediaPhoto::create(
+        new InputMediaPhoto(
             media: InputFile::create('/home/user/img/16176321866250.png'),
             caption: 'Test media 2',
         ),
