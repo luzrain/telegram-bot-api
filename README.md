@@ -27,7 +27,7 @@ use Luzrain\TelegramBotApi\BotApi;
 $httpFactory = new HttpFactory();
 $httpClient = new Client(['http_errors' => false]);
 
-$botApi = new BotApi(
+$bot = new BotApi(
     requestFactory: $httpFactory,
     streamFactory: $httpFactory,
     client: $httpClient,
