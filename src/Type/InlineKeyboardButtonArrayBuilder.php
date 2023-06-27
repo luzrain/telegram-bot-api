@@ -20,7 +20,7 @@ final class InlineKeyboardButtonArrayBuilder
 
     public function addButton(InlineKeyboardButton $button): self
     {
-        $this->keyboard[$this->rowIndex][] = $button->toArray();
+        $this->keyboard[$this->rowIndex][] = $button->toStdObject();
 
         return $this;
     }

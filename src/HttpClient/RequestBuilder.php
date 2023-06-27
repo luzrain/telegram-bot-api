@@ -31,7 +31,7 @@ final class RequestBuilder
 
         foreach ($body as $item) {
             $name = $item['name'];
-            $content = is_bool($item['content']) ? (string) $item['content'] : $item['content'];
+            $content = $item['content'];
             unset($item['name'], $item['content']);
             $this->multipartStreamBuilder->addResource($name, $content, $item);
         }

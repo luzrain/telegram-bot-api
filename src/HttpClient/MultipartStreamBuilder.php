@@ -71,9 +71,11 @@ final class MultipartStreamBuilder
     {
         return match (true) {
             $resource instanceof StreamInterface => $resource,
-            \is_string($resource) => $this->streamFactory->createStream($resource),
-            \is_resource($resource) => $this->streamFactory->createStreamFromResource($resource),
-            default => throw new \InvalidArgumentException(sprintf('First argument to "%s" must be a string, resource or StreamInterface.', __METHOD__)),
+            is_string($resource), is_int($resource), is_bool($resource) => $this->streamFactory->createStream((string) $resource),
+            is_resource($resource) => $this->streamFactory->createStreamFromResource($resource),
+            default => throw new \InvalidArgumentException(
+                sprintf('First argument to "%s" must be a string, resource or StreamInterface. %s given.', __METHOD__, get_debug_type($resource))
+            ),
         };
     }
 

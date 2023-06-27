@@ -79,7 +79,7 @@ final class Client
      * @throws TelegramTypeException
      * @throws \JsonException
      */
-    public function run(): void
+    public function run(): never
     {
         $requestBody = file_get_contents('php://input');
         $responseBody = $this->webhookHandle($requestBody);

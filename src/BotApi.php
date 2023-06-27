@@ -54,7 +54,7 @@ final class BotApi
                 $content = $value->getAttachPath();
                 $files[] = $value;
             } else {
-                $content = is_scalar($value) ? $value : json_encode($value);
+                $content = is_scalar($value) ? $value : json_encode($value, JSON_UNESCAPED_UNICODE);
             }
 
             $multiparts[] = compact('name', 'content');

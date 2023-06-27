@@ -56,16 +56,16 @@ abstract readonly class Type implements \JsonSerializable
     /**
      * @internal
      */
-    public function toArray(): array
+    public function toStdObject(): \stdClass
     {
-        $data = [];
+        $data = new \stdClass();
         foreach ($this as $property => $value) {
             $propertyKey = StringUtils::toSnakeCase($property);
             if ($this->$property !== null) {
                 if (is_array($this->$property)) {
-                    $data[$propertyKey] = array_map(fn ($v) => $v instanceof Type ? $v->toArray() : $v, $this->$property);
+                    $data->$propertyKey = array_map(fn ($value) => $value instanceof self ? $value->toStdObject() : $value, $this->$property);
                 } else {
-                    $data[$propertyKey] = $value instanceof TypeDenormalizable ? $this->$property->toArray() : $this->$property;
+                    $data->$propertyKey = $value instanceof self ? $value->toStdObject() : $this->$property;
                 }
             }
         }
@@ -76,8 +76,8 @@ abstract readonly class Type implements \JsonSerializable
     /**
      * @internal
      */
-    public function jsonSerialize(): array
+    public function jsonSerialize(): \stdClass
     {
-        return $this->toArray();
+        return $this->toStdObject();
     }
 }
