@@ -47,6 +47,7 @@ final class BotApi
      */
     public function call(Method $method): Type|array|string|int|bool
     {
+        $url = sprintf(self::URL_API_ENDPOINT, $this->token, $method->getName());
         $multiparts = [];
         $files = [];
         foreach ($method->iterateRequestProps() as $name => $value) {
@@ -79,8 +80,11 @@ final class BotApi
             $multiparts[] = compact('name', 'content');
         }
 
-        $url = sprintf(self::URL_API_ENDPOINT, $this->token, $method->getName());
-        $httpRequest = $this->requestBuilder->create('POST', $url, $multiparts);
+        $httpRequest = $multiparts === []
+            ? $this->requestBuilder->create('GET', $url)
+            : $this->requestBuilder->create('POST', $url, $multiparts)
+        ;
+
         $httpResponse = $this->client->sendRequest($httpRequest);
         $response = json_decode((string) $httpResponse->getBody(), true);
 
