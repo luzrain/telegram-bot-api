@@ -44,10 +44,5 @@
         "psr-4": {
             "Luzrain\\TelegramBotApi\\Test\\": "tests"
         }
-    },
-    "scripts": {
-        "test": "phpunit",
-        "php-cs": "php-cs-fixer fix -v --dry-run",
-        "psalm": "psalm --no-cache"
     }
 }

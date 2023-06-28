@@ -25,10 +25,10 @@ jobs:
         run: composer install
 
       - name: Codestyle
-        run: composer php-cs
+        run: vendor/bin/php-cs-fixer fix -v --dry-run
 
       - name: Psalm
-        run: composer psalm
+        run: vendor/bin/psalm --no-cache
 
       - name: Tests
-        run: composer test
+        run: vendor/bin/phpunit
