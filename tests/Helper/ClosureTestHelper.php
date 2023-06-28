@@ -10,12 +10,12 @@ final class ClosureTestHelper
     private bool $isCalled = false;
     private mixed $parameter = null;
 
-    public function __construct()
+    public function __construct(mixed $closureReturn = null)
     {
-        $this->closure = function (mixed $parameter) {
+        $this->closure = function (mixed $parameter) use ($closureReturn) {
             $this->isCalled = true;
             $this->parameter = $parameter;
-            return null;
+            return $closureReturn;
         };
     }
 

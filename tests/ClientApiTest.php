@@ -6,6 +6,7 @@ namespace Luzrain\TelegramBotApi\Test;
 
 use Luzrain\TelegramBotApi\ClientApi;
 use Luzrain\TelegramBotApi\Event;
+use Luzrain\TelegramBotApi\Exception\TelegramCallbackException;
 use Luzrain\TelegramBotApi\Test\Helper\ClosureTestHelper;
 use Luzrain\TelegramBotApi\Type\Update;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -121,5 +122,17 @@ final class ClientApiTest extends TestCase
         $this->assertTrue($editedMessageClosure->isCalled(), 'Event\EditedMessage');
         $this->assertTrue($channelPostClosure->isCalled(), 'Event\ChannelPost');
         $this->assertFalse($editedChannelPostClosure->isCalled(), 'Event\EditedChannelPost');
+    }
+
+    public function testCallbacksReturnWrongType(): void
+    {
+        $this->expectException(TelegramCallbackException::class);
+
+        $closure1 = new ClosureTestHelper(new \stdClass());
+
+        $this->client
+            ->on(new Event\Message($closure1->getClosure()))
+            ->webhookHandle(file_get_contents(__DIR__ . '/data/events/message.json'))
+        ;
     }
 }

@@ -113,11 +113,11 @@ final class ApacheMimetypeHelper
 
     public function getMimetypeFromFilename(string $filename): string|null
     {
-        return $this->getMimetypeFromExtension(pathinfo($filename, \PATHINFO_EXTENSION));
+        return $this->getMimetypeFromExtension(pathinfo($filename, PATHINFO_EXTENSION));
     }
 
     public function getMimetypeFromExtension(string $extension): string|null
     {
-        return self::MIMETYPES[\strtolower($extension)] ?? null;
+        return self::MIMETYPES[strtolower($extension)] ?? null;
     }
 }
