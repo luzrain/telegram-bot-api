@@ -18,6 +18,6 @@ final class ChatMemberBanned extends Event
 
     public function executeCallback(Update $update): Method|null
     {
-        return $this->callback($update->myChatMember->from);
+        return $this->callback($update->myChatMember);
     }
 }

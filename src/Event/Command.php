@@ -17,22 +17,19 @@ final class Command extends Event
 
     public function executeChecker(Update $update): bool
     {
-        $message = $update->message;
-        $entity = $message?->entities[0] ?? null;
-
+        $entity = $update->message?->entities[0] ?? null;
         if ($entity?->type !== MessageEntity::TYPE_BOT_COMMAND || $entity?->offset !== 0) {
             return false;
         }
 
-        return $this->command === \substr($message->text, $entity->offset, $entity->length);
+        return $this->command === \substr($update->message->text, $entity->offset, $entity->length);
     }
 
     public function executeCallback(Update $update): mixed
     {
-        $message = $update->message;
-        $params = \array_filter(\explode(' ', $message->text));
-        $params[0] = $message;
+        $params = \array_filter(\explode(' ', $update->message->text));
+        array_shift($params);
 
-        return $this->callback(...$params);
+        return $this->callback($update->message, ...$params);
     }
 }

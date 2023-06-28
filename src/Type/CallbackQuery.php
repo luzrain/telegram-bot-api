@@ -44,7 +44,8 @@ final readonly class CallbackQuery extends Type implements TypeDenormalizable
         public string|null $inlineMessageId = null,
 
         /**
-         * Optional. Data associated with the callback button.Be aware that a bad client can send arbitrary data in this field.
+         * Optional. Data associated with the callback button.
+         * Be aware that the message originated the query can contain no callback buttons with this data.
          */
         public string|null $data = null,
 
