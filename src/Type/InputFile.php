@@ -15,7 +15,7 @@ final readonly class InputFile implements \JsonSerializable
     private string $filePath;
     private string $uniqueName;
 
-    private function __construct(string $filePath)
+    public function __construct(string $filePath)
     {
         if (is_file($filePath) === false) {
             throw new TelegramInputFileException($filePath);
@@ -23,11 +23,6 @@ final readonly class InputFile implements \JsonSerializable
 
         $this->filePath = $filePath;
         $this->uniqueName = uniqid('attach.', true);
-    }
-
-    public static function create(string $filePath): self
-    {
-        return new self($filePath);
     }
 
     public function getFilePath(): string

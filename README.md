@@ -126,7 +126,7 @@ use Luzrain\TelegramBotApi\Method\SendDocument;
  */
 $response = $bot->call(new SendPhoto(
     chatId: 123456789,
-    photo: InputFile::create('/home/user/img/15311661465960.jpg'),
+    photo: new InputFile('/home/user/img/15311661465960.jpg'),
 ));
 
 /**
@@ -144,8 +144,8 @@ $response = $bot->call(new SendPhoto(
  */
 $response = $bot->call(new SendDocument(
     chatId: 123456789,
-    document: InputFile::create('/home/user/files/file.zip'),
-    thumbnail: InputFile::create('/home/user/img/thumb.jpg'),
+    document: new InputFile('/home/user/files/file.zip'),
+    thumbnail: new InputFile('/home/user/img/thumb.jpg'),
     caption: 'Test file',
 ));
 
@@ -170,11 +170,11 @@ $response = $bot->call(new SendMediaGroup(
     chatId: 123456789,
     media: [
         new InputMediaPhoto(
-            media: InputFile::create('/home/user/img/15311661465960.jpg'),
+            media: new InputFile('/home/user/img/15311661465960.jpg'),
             caption: 'Test media 1',
         ),
         new InputMediaPhoto(
-            media: InputFile::create('/home/user/img/16176321866250.png'),
+            media: new InputFile('/home/user/img/16176321866250.png'),
             caption: 'Test media 2',
         ),
     ],
