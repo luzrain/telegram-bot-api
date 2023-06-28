@@ -1,4 +1,3 @@
-
 # PHP Wrapper for Telegram Bot API
 
 [![Bot Api 6.7](https://img.shields.io/badge/Bot%20API-6.7-0088cc.svg?style=flat)](https://core.telegram.org/bots/api-changelog#april-21-2023)
@@ -63,8 +62,7 @@ $replyKeyboard = new Type\ReplyKeyboardMarkup(
         ->addButton(new Type\KeyboardButton(text: 'Button 2'))
         ->addBreak()
         ->addButton(new Type\KeyboardButton(text: 'Web App', webApp: new Type\WebAppInfo('https://github.com/')))
-        ->addButton(new Type\KeyboardButton(text: 'Create Poll', requestPoll: new Type\KeyboardButtonPollType()))
-    ,
+        ->addButton(new Type\KeyboardButton(text: 'Create Poll', requestPoll: new Type\KeyboardButtonPollType())),
 );
 
 // For keyboard remove
@@ -91,7 +89,7 @@ $inlineKeyboard = new Type\InlineKeyboardMarkup(
         ->addButton(new Type\InlineKeyboardButton(text: 'Url button', url: 'https://google.com'))
         ->addButton(new Type\InlineKeyboardButton(text: 'Callback button', callbackData: 'callback_data'))
         ->addBreak()
-        ->addButton(new Type\InlineKeyboardButton(text: 'Iinline query', switchInlineQueryCurrentChat: 'test'))
+        ->addButton(new Type\InlineKeyboardButton(text: 'Iinline query', switchInlineQueryCurrentChat: 'test')),
 );
 
 /**
@@ -140,7 +138,7 @@ $response = $bot->call(new Method\SendDocument(
 ));
 
 /**
- * You can also use this methods:
+ * You can also use these methods:
  * SendPhoto, SendAudio, SendDocument, SendVideo, SendAnimation, SendVoice, SendVideoNote
  */
 ```
