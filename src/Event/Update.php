@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Event;
 
 use Luzrain\TelegramBotApi\Event;
-use Luzrain\TelegramBotApi\Type\Update as UpdateType;
+use Luzrain\TelegramBotApi\Type;
 
 final class Update extends Event
 {
-    public function executeChecker(UpdateType $update): bool
+    public function executeChecker(Type\Update $update): bool
     {
         return true;
     }
 
-    public function executeCallback(UpdateType $update): mixed
+    public function executeCallback(Type\Update $update): mixed
     {
         return $this->callback($update);
     }

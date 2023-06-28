@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Event;
 
 use Luzrain\TelegramBotApi\Event;
-use Luzrain\TelegramBotApi\Type\Update;
+use Luzrain\TelegramBotApi\Type;
 
 final class NamedCallbackQuery extends Event
 {
@@ -14,12 +14,12 @@ final class NamedCallbackQuery extends Event
         parent::__construct($action);
     }
 
-    public function executeChecker(Update $update): bool
+    public function executeChecker(Type\Update $update): bool
     {
         return $this->callbackData !== '' && $update->callbackQuery?->data === $this->callbackData;
     }
 
-    public function executeCallback(Update $update): mixed
+    public function executeCallback(Type\Update $update): mixed
     {
         return $this->callback($update->callbackQuery);
     }
