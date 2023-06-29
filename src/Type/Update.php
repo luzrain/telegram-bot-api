@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
+use Luzrain\TelegramBotApi\Exception\TelegramTypeException;
 use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Inline\ChosenInlineResult;
 use Luzrain\TelegramBotApi\Type\Inline\InlineQuery;
@@ -114,5 +115,19 @@ final readonly class Update extends Type implements TypeDenormalizable
          */
         public ChatJoinRequest|null $chatJoinRequest = null,
     ) {
+    }
+
+    /**
+     * @throws TelegramTypeException
+     */
+    public static function fromJson(string $json): self
+    {
+        try {
+            $data = json_decode(json: $json, associative: true, flags: JSON_THROW_ON_ERROR);
+        } catch (\JsonException $e) {
+            throw TelegramTypeException::parseError(new \ReflectionClass(self::class), $e);
+        }
+
+        return self::fromArray($data);
     }
 }

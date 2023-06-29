@@ -49,7 +49,7 @@ abstract readonly class Type implements \JsonSerializable
             /** @psalm-suppress TooManyArguments */
             return new static(...$constructorMap);
         } catch (\ArgumentCountError $e) {
-            throw new TelegramTypeException(static::class, $data, $reflClass, $e);
+            throw TelegramTypeException::missingKeys($data, $reflClass, $e);
         }
     }
 

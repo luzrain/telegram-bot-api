@@ -8,7 +8,7 @@ use Luzrain\TelegramBotApi\StringUtils;
 
 final class TelegramTypeException extends \Exception
 {
-    public function __construct(string $class, array $data, \ReflectionClass $refl, \Throwable $previous)
+    public static function missingKeys(array $data, \ReflectionClass $refl, \Throwable $previous): self
     {
         $requiredProps = [];
         foreach ($refl->getProperties() as $reflProperty) {
@@ -16,7 +16,19 @@ final class TelegramTypeException extends \Exception
                 $requiredProps[] = StringUtils::toSnakeCase($reflProperty->getName());
             }
         }
-        $missingKeys = array_keys(array_diff_key(array_flip($requiredProps), $data));
-        parent::__construct(sprintf('%s object creation error. Missing keys: %s', $class, implode(', ', $missingKeys)), 0, $previous);
+        $objectName = $refl->getShortName();
+        $missingKeys = implode(', ', array_keys(array_diff_key(array_flip($requiredProps), $data)));
+        $message = sprintf('"%s" object creation error. Missing keys: %s', $objectName, $missingKeys);
+
+        return new self($message, 0, $previous);
+    }
+
+    public static function parseError(\ReflectionClass $refl, \Throwable $previous): self
+    {
+        $objectName = $refl->getShortName();
+        $reason = $previous->getMessage();
+        $message = sprintf('"%s" object creation error. %s', $objectName, $reason);
+
+        return new self($message, 0, $previous);
     }
 }
