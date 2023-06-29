@@ -46,8 +46,8 @@ final class ClientApi
     /**
      * Webhook handler
      *
-     * @param string $body json request
-     * @return string json response
+     * @param string $body raw json request
+     * @return string json raw response
      * @throws TelegramTypeException
      * @throws TelegramCallbackException
      * @throws \JsonException
@@ -66,12 +66,7 @@ final class ClientApi
             throw new TelegramCallbackException(get_debug_type($callbackResponse));
         }
 
-        $webhookResponse = array_merge(
-            ['method' => $callbackResponse->getName()],
-            iterator_to_array($callbackResponse->iterateRequestProps()),
-        );
-
-        return json_encode($webhookResponse, JSON_UNESCAPED_UNICODE);
+        return json_encode($callbackResponse, JSON_UNESCAPED_UNICODE);
     }
 
     /**

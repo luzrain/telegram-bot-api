@@ -11,7 +11,7 @@ namespace Luzrain\TelegramBotApi;
  *
  * @template T
  */
-abstract class Method
+abstract class Method implements \JsonSerializable
 {
     protected static string $methodName;
     protected static string $responseClass;
@@ -33,5 +33,13 @@ abstract class Method
                 yield StringUtils::toSnakeCase($key) => $value;
             }
         }
+    }
+
+    public function jsonSerialize(): array
+    {
+        return array_merge(
+            ['method' => $this->getName()],
+            iterator_to_array($this->iterateRequestProps()),
+        );
     }
 }
