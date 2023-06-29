@@ -76,7 +76,7 @@ final class ClientApiTest extends TestCase
             ->on(new Event\PollAnswer($pollAnswerClosure->getClosure()))
             ->on(new Event\MyChatMember($myChatMember->getClosure()))
             ->on(new Event\ChatMemberBanned($chatMemberBanned->getClosure()))
-            ->handle(Update::fromArray(json_decode($requestBody, true)))
+            ->handle(Update::fromJson($requestBody))
         ;
 
         $this->assertSame(true, $updateClosure->isCalled(), 'Event\Update');
@@ -105,9 +105,9 @@ final class ClientApiTest extends TestCase
         $editedChannelPostClosure = new ClosureTestHelper();
 
         $updates = [
-            Update::fromArray(json_decode(file_get_contents(__DIR__ . '/data/events/command.json'), true)),
-            Update::fromArray(json_decode(file_get_contents(__DIR__ . '/data/events/editedMessage.json'), true)),
-            Update::fromArray(json_decode(file_get_contents(__DIR__ . '/data/events/channelPost.json'), true)),
+            Update::fromJson(file_get_contents(__DIR__ . '/data/events/command.json')),
+            Update::fromJson(file_get_contents(__DIR__ . '/data/events/editedMessage.json')),
+            Update::fromJson(file_get_contents(__DIR__ . '/data/events/channelPost.json')),
         ];
 
         $this->client
@@ -135,7 +135,7 @@ final class ClientApiTest extends TestCase
 
         $this->client
             ->on(new Event\Message($closure1->getClosure()))
-            ->handle(Update::fromArray(json_decode(file_get_contents(__DIR__ . '/data/events/message.json'), true)))
+            ->handle(Update::fromJson(file_get_contents(__DIR__ . '/data/events/message.json')))
         ;
     }
 }
