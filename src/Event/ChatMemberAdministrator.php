@@ -12,11 +12,11 @@ final class ChatMemberAdministrator extends Event
 {
     public function executeChecker(Type\Update $update): bool
     {
-        return $update->myChatMember?->newChatMember instanceof Type\ChatMemberAdministrator;
+        return $update->chatMember?->newChatMember instanceof Type\ChatMemberAdministrator;
     }
 
     public function executeCallback(Type\Update $update): Method|null
     {
-        return $this->callback($update->myChatMember);
+        return $this->callback($update->chatMember);
     }
 }
