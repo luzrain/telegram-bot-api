@@ -31,8 +31,39 @@ final class ClientApi
     }
 
     /**
-     * Handle array of updates
-     *
+     * @throws TelegramCallbackException
+     */
+    public function handle(Update $update): Method|null
+    {
+        $callbackResponse = $this->events->handle($update);
+
+        if ($callbackResponse === null) {
+            return null;
+        }
+
+        if (!$callbackResponse instanceof Method) {
+            throw new TelegramCallbackException(get_debug_type($callbackResponse));
+        }
+
+        return $callbackResponse;
+    }
+
+    /**
+     * @deprecated use ClientApi::handle() instead
+     * @param string $body raw json request
+     * @return string json raw response
+     * @throws TelegramCallbackException
+     * @throws \JsonException
+     */
+    public function webhookHandle(string $body): string
+    {
+        $data = json_decode(json: $body, associative: true, flags: JSON_THROW_ON_ERROR);
+        $callbackResponse = $this->handle(Update::fromArray($data));
+        return json_encode($callbackResponse, JSON_UNESCAPED_UNICODE);
+    }
+
+    /**
+     * @deprecated
      * @param list<Update> $updates
      */
     public function updatesHandle(array $updates): void
@@ -44,32 +75,6 @@ final class ClientApi
     }
 
     /**
-     * Webhook handler
-     *
-     * @param string $body raw json request
-     * @return string json raw response
-     * @throws TelegramTypeException
-     * @throws TelegramCallbackException
-     * @throws \JsonException
-     */
-    public function webhookHandle(string $body): string
-    {
-        $data = json_decode(json: $body, associative: true, flags: JSON_THROW_ON_ERROR);
-        $callbackResponse = $this->events->handle(Update::fromArray($data));
-        $this->events->reset();
-
-        if ($callbackResponse === null) {
-            return json_encode(null);
-        }
-
-        if (!$callbackResponse instanceof Method) {
-            throw new TelegramCallbackException(get_debug_type($callbackResponse));
-        }
-
-        return json_encode($callbackResponse, JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
      * @throws TelegramCallbackException
      * @throws TelegramTypeException
      * @throws \JsonException
@@ -77,7 +82,9 @@ final class ClientApi
     public function run(): never
     {
         $requestBody = file_get_contents('php://input');
-        $responseBody = $this->webhookHandle($requestBody);
+        $data = json_decode(json: $requestBody, associative: true, flags: JSON_THROW_ON_ERROR);
+        $response = $this->handle(Update::fromArray($data));
+        $responseBody = json_encode($response, JSON_UNESCAPED_UNICODE);
         header('Content-Type: application/json');
         header('Content-Length: ' . strlen($responseBody));
         echo $responseBody;

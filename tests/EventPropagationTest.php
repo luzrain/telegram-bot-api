@@ -9,6 +9,7 @@ use Luzrain\TelegramBotApi\Event;
 use Luzrain\TelegramBotApi\EventCallbackReturn;
 use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Test\Helper\ClosureTestHelper;
+use Luzrain\TelegramBotApi\Type\Update;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -86,13 +87,13 @@ final class EventPropagationTest extends TestCase
             ->on(new Event\Message($closure2->getClosure()))
             ->on(new Event\Message($closure3->getClosure()))
             ->on(new Event\Message($closure4->getClosure()))
-            ->webhookHandle(file_get_contents(__DIR__ . '/data/events/message.json'))
+            ->handle(Update::fromArray(json_decode(file_get_contents(__DIR__ . '/data/events/message.json'), true)))
         ;
 
         $this->assertSame($isClosure1ShouldBeCalled, $closure1->isCalled());
         $this->assertSame($isClosure2ShouldBeCalled, $closure2->isCalled());
         $this->assertSame($isClosure3ShouldBeCalled, $closure3->isCalled());
         $this->assertSame($isClosure4ShouldBeCalled, $closure4->isCalled());
-        $this->assertSame($expectedCallbackResponse, $callbackResponse);
+        $this->assertSame($expectedCallbackResponse, json_encode($callbackResponse));
     }
 }
