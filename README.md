@@ -4,8 +4,8 @@
 [![PHP ^8.2](https://img.shields.io/badge/PHP-^8.2-777bb3.svg?style=flat)](https://www.php.net/releases/8.2/en.php)
 [![Tests Status](https://img.shields.io/github/actions/workflow/status/luzrain/telegram-bot-api/tests.yaml?branch=master)](../../actions/workflows/tests.yaml)
 
-An object-oriented php wrapper for [Telegram Bot API](https://core.telegram.org/bots/api). Supports all methods and types of responses.  
-See all available methods and their parameters on [Telegram Bot API](https://core.telegram.org/bots/api#available-methods) documentation page.
+A lightweight object-oriented PHP wrapper for the [Telegram Bot API](https://core.telegram.org/bots/api) with full support for all the telegram methods and types.  
+See all available methods and their parameters on the [Telegram Bot API](https://core.telegram.org/bots/api#available-methods) documentation page.
 
 ## Installation
 ``` bash
