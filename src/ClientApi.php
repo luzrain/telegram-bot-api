@@ -57,6 +57,7 @@ final class ClientApi
      */
     public function webhookHandle(string $body): string
     {
+        @trigger_error(sprintf('%s is deprecated. Use %s::handle() instead.', __METHOD__, self::class), \E_USER_DEPRECATED);
         $data = json_decode(json: $body, associative: true, flags: JSON_THROW_ON_ERROR);
         $callbackResponse = $this->handle(Update::fromArray($data));
         return json_encode($callbackResponse, JSON_UNESCAPED_UNICODE);
@@ -68,6 +69,7 @@ final class ClientApi
      */
     public function updatesHandle(array $updates): void
     {
+        @trigger_error(sprintf('%s is deprecated. Use %s::handle() instead.', __METHOD__, self::class), \E_USER_DEPRECATED);
         foreach ($updates as $update) {
             $this->events->handle($update);
         }

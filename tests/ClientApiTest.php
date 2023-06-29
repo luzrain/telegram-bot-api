@@ -75,7 +75,7 @@ final class ClientApiTest extends TestCase
             ->on(new Event\Poll($pollClosure->getClosure()))
             ->on(new Event\PollAnswer($pollAnswerClosure->getClosure()))
             ->on(new Event\MyChatMember($myChatMember->getClosure()))
-            ->on(new Event\ChatMemberBanned($chatMemberBanned->getClosure()))
+            ->on(new Event\BotMemberBlocked($chatMemberBanned->getClosure()))
             ->handle(Update::fromJson($requestBody))
         ;
 

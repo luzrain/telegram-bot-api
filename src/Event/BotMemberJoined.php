@@ -7,7 +7,6 @@ namespace Luzrain\TelegramBotApi\Event;
 use Luzrain\TelegramBotApi\Event;
 use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\Type\ChatMemberMember;
 
 final class BotMemberJoined extends Event
 {
