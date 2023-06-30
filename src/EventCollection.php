@@ -6,6 +6,9 @@ namespace Luzrain\TelegramBotApi;
 
 use Luzrain\TelegramBotApi\Type\Update;
 
+/**
+ * @internal
+ */
 final class EventCollection
 {
     /**

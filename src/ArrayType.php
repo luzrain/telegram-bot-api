@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi;
 
+/**
+ * @internal
+ */
 abstract class ArrayType implements TypeDenormalizable
 {
     protected static string $type;

@@ -53,13 +53,12 @@ final class ClientApi
      * @param string $body raw json request
      * @return string json raw response
      * @throws TelegramCallbackException
-     * @throws \JsonException
+     * @throws TelegramTypeException
      */
     public function webhookHandle(string $body): string
     {
         @trigger_error(sprintf('%s is deprecated. Use %s::handle() instead.', __METHOD__, self::class), \E_USER_DEPRECATED);
-        $data = json_decode(json: $body, associative: true, flags: JSON_THROW_ON_ERROR);
-        $callbackResponse = $this->handle(Update::fromArray($data));
+        $callbackResponse = $this->handle(Update::fromJson($body));
         return json_encode($callbackResponse, JSON_UNESCAPED_UNICODE);
     }
 
@@ -79,14 +78,12 @@ final class ClientApi
     /**
      * @throws TelegramCallbackException
      * @throws TelegramTypeException
-     * @throws \JsonException
      */
     public function run(): never
     {
         $requestBody = file_get_contents('php://input');
-        $data = json_decode(json: $requestBody, associative: true, flags: JSON_THROW_ON_ERROR);
-        $response = $this->handle(Update::fromArray($data));
-        $responseBody = json_encode($response, JSON_UNESCAPED_UNICODE);
+        $callbackResponse = $this->handle(Update::fromJson($requestBody));
+        $responseBody = json_encode($callbackResponse, JSON_UNESCAPED_UNICODE);
         header('Content-Type: application/json');
         header('Content-Length: ' . strlen($responseBody));
         echo $responseBody;
