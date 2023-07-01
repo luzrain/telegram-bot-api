@@ -11,11 +11,6 @@ final readonly class ChatMemberRestricted extends ChatMember
 {
     protected function __construct(
         /**
-         * The member's status in the chat, always “restricted”
-         */
-        public string $status,
-
-        /**
          * Information about the user
          */
         public User $user,
@@ -99,5 +94,6 @@ final readonly class ChatMemberRestricted extends ChatMember
          */
         public int $untilDate,
     ) {
+        parent::__construct('restricted');
     }
 }

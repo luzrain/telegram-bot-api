@@ -20,15 +20,7 @@ final readonly class MenuButtonWebApp extends MenuButton
          * The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery.
          */
         public WebAppInfo $webApp,
-
-        /**
-         * Type of the button, must be web_app
-         */
-        public string $type = 'web_app',
     ) {
-        if ($this->type !== 'web_app') {
-            throw new \InvalidArgumentException('type should be "web_app"');
-        }
-        parent::__construct($this->type);
+        parent::__construct('web_app');
     }
 }

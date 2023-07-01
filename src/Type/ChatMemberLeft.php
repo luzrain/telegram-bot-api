@@ -11,14 +11,10 @@ final readonly class ChatMemberLeft extends ChatMember
 {
     protected function __construct(
         /**
-         * The member's status in the chat, always “left”
-         */
-        public string $status,
-
-        /**
          * Information about the user
          */
         public User $user,
     ) {
+        parent::__construct('left');
     }
 }

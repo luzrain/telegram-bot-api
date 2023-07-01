@@ -26,16 +26,12 @@ abstract readonly class Type implements \JsonSerializable
 
         $reflClass = new \ReflectionClass(static::class);
         $constructorMap = [];
-        foreach ($reflClass->getProperties() as $reflProperty) {
-            if (!$reflProperty->isPublic()) {
-                continue;
-            }
-
-            $property = $reflProperty->getName();
+        foreach ($reflClass->getConstructor()->getParameters() as $reflParameter) {
+            $property = $reflParameter->getName();
             $propertyKey = StringUtils::toSnakeCase($property);
-            $attributeType = $reflProperty->getAttributes(PropertyType::class)[0] ?? null;
+            $attributeType = $reflParameter->getAttributes(PropertyType::class)[0] ?? null;
             /** @psalm-suppress UndefinedMethod */
-            $propertyType = $attributeType?->getArguments()[0] ?? $reflProperty->getType()->getName();
+            $propertyType = $attributeType?->getArguments()[0] ?? $reflParameter->getType()->getName();
 
             if (isset($data[$propertyKey])) {
                 $constructorMap[$property] = is_subclass_of($propertyType, TypeDenormalizable::class)

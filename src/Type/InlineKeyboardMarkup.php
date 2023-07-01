@@ -17,11 +17,12 @@ final readonly class InlineKeyboardMarkup extends Type implements TypeDenormaliz
     /**
      * Array of button rows, each represented by an Array of InlineKeyboardButton objects
      */
-    #[PropertyType(ArrayOfArrayOfInlineKeyboardButtonType::class)]
     public array $inlineKeyboard;
 
-    public function __construct(InlineKeyboardButtonArrayBuilder|array $inlineKeyboard)
-    {
+    public function __construct(
+        #[PropertyType(ArrayOfArrayOfInlineKeyboardButtonType::class)]
+        InlineKeyboardButtonArrayBuilder|array $inlineKeyboard,
+    ) {
         $this->inlineKeyboard = is_array($inlineKeyboard) ? $inlineKeyboard : $inlineKeyboard->toArray();
     }
 }

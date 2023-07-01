@@ -28,13 +28,12 @@ readonly class ChatMember extends Type implements TypeDenormalizable
     }
 
     /**
-     * @psalm-suppress UndefinedPropertyFetch
-     * @psalm-suppress UnhandledMatchCondition
      * @psalm-suppress LessSpecificReturnStatement
      * @psalm-suppress MoreSpecificReturnType
      */
     public static function fromArray(array $data): static
     {
+        /** @var self $instance */
         $instance = parent::fromArray($data);
 
         if (self::class !== static::class) {

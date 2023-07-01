@@ -11,11 +11,6 @@ final readonly class ChatMemberAdministrator extends ChatMember
 {
     protected function __construct(
         /**
-         * The member's status in the chat, always “administrator”
-         */
-        public string $status,
-
-        /**
          * Information about the user
          */
         public User $user,
@@ -91,5 +86,6 @@ final readonly class ChatMemberAdministrator extends ChatMember
          */
         public bool|null $canManageTopics = null,
     ) {
+        parent::__construct('administrator');
     }
 }

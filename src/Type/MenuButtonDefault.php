@@ -9,15 +9,8 @@ namespace Luzrain\TelegramBotApi\Type;
  */
 final readonly class MenuButtonDefault extends MenuButton
 {
-    public function __construct(
-        /**
-         * Type of the button, must be default
-         */
-        public string $type = 'default',
-    ) {
-        if ($this->type !== 'default') {
-            throw new \InvalidArgumentException('type should be "default"');
-        }
-        parent::__construct($this->type);
+    public function __construct()
+    {
+        parent::__construct('default');
     }
 }

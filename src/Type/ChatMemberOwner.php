@@ -11,11 +11,6 @@ final readonly class ChatMemberOwner extends ChatMember
 {
     protected function __construct(
         /**
-         * The member's status in the chat, always “creator”
-         */
-        public string $status,
-
-        /**
          * Information about the user
          */
         public User $user,
@@ -30,5 +25,6 @@ final readonly class ChatMemberOwner extends ChatMember
          */
         public string|null $customTitle = null,
     ) {
+        parent::__construct('creator');
     }
 }
