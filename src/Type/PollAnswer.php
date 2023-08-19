@@ -19,16 +19,21 @@ final readonly class PollAnswer extends Type implements TypeDenormalizable
         public string $pollId,
 
         /**
-         * The user, who changed the answer to the poll
-         */
-        public User $user,
-
-        /**
-         * 0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their vote.
+         * 0-based identifiers of chosen answer options. May be empty if the vote was retracted.
          *
          * @var list<int>
          */
         public array $optionIds,
+
+        /**
+         * Optional. The chat that changed the answer to the poll, if the voter is anonymous
+         */
+        public Chat|null $voterChat = null,
+
+        /**
+         * Optional. The user that changed the answer to the poll, if the voter isn't anonymous
+         */
+        public User|null $user = null,
     ) {
     }
 }

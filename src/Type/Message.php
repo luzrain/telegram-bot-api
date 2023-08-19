@@ -171,6 +171,11 @@ final readonly class Message extends Type implements TypeDenormalizable
         public Sticker|null $sticker = null,
 
         /**
+         * Optional. Message is a forwarded story
+         */
+        public Story|null $story = null,
+
+        /**
          * Optional. Message is a video, information about the video
          */
         public Video|null $video = null,

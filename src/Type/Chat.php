@@ -66,6 +66,11 @@ final readonly class Chat extends Type implements TypeDenormalizable
         public string|null $emojiStatusCustomEmojiId = null,
 
         /**
+         * Optional. Expiration date of the emoji status of the other party in a private chat, if any. Returned only in getChat.
+         */
+        public int|null $emojiStatusExpirationDate = null,
+
+        /**
          * Optional. Bio of the other party in a private chat. Returned only in getChat.
          */
         public string|null $bio = null,
