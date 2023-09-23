@@ -62,6 +62,7 @@ final readonly class ChatPermissions extends Type implements TypeDenormalizable
          * Optional. True, if the user is allowed to add web page previews to their messages, implies can_send_media_messages
          */
         public bool|null $canAddWebPagePreviews = null,
+
         /**
          * Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups
          */

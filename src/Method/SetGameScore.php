@@ -32,12 +32,12 @@ final class SetGameScore extends Method
         protected int $score,
 
         /**
-         * Pass True, if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters
+         * Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters
          */
         protected bool|null $force = null,
 
         /**
-         * Pass True, if the game message should not be automatically edited to include the current scoreboard
+         * Pass True if the game message should not be automatically edited to include the current scoreboard
          */
         protected bool|null $disableEditMessage = null,
 

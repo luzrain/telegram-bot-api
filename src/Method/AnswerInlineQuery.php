@@ -37,8 +37,8 @@ final class AnswerInlineQuery extends Method
         protected int|null $cacheTime = null,
 
         /**
-         * Pass True, if results may be cached on the server side only for the user that sent the query.
-         * By default, results may be returned to any user who sends the same query
+         * Pass True if results may be cached on the server side only for the user that sent the query.
+         * By default, results may be returned to any user who sends the same query.
          */
         protected bool|null $isPersonal = null,
 

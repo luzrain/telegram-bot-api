@@ -30,7 +30,7 @@ final class PinChatMessage extends Method
         protected int $messageId,
 
         /**
-         * Pass True, if it is not necessary to send a notification to all chat members about the new pinned message.
+         * Pass True if it is not necessary to send a notification to all chat members about the new pinned message.
          * Notifications are always disabled in channels and private chats.
          */
         protected bool|null $disableNotification = null,

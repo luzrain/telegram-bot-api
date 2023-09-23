@@ -36,14 +36,14 @@ final readonly class Update extends Type implements TypeDenormalizable
     protected function __construct(
         /**
          * The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially.
-         * This ID becomes especially handy if you're using Webhooks, since it allows you to ignore repeated updates or to
+         * This ID becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates or to
          * restore the correct update sequence, should they get out of order. If there are no new updates for at least a week,
          * then identifier of the next update will be chosen randomly instead of sequentially.
          */
         public int $updateId,
 
         /**
-         * Optional. New incoming message of any kind — text, photo, sticker, etc.
+         * Optional. New incoming message of any kind - text, photo, sticker, etc.
          */
         public Message|null $message = null,
 
@@ -53,7 +53,7 @@ final readonly class Update extends Type implements TypeDenormalizable
         public Message|null $editedMessage = null,
 
         /**
-         * Optional. New incoming channel post of any kind — text, photo, sticker, etc.
+         * Optional. New incoming channel post of any kind - text, photo, sticker, etc.
          */
         public Message|null $channelPost = null,
 
@@ -82,6 +82,7 @@ final readonly class Update extends Type implements TypeDenormalizable
          * Optional. New incoming shipping query. Only for invoices with flexible price
          */
         public ShippingQuery|null $shippingQuery = null,
+
         /**
          * Optional. New incoming pre-checkout query. Contains full information about checkout
          */

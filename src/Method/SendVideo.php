@@ -13,7 +13,7 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 
 /**
- * Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document).
+ * Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document).
  * On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
  *
  * @extends Method<Message>
@@ -79,12 +79,12 @@ final class SendVideo extends Method
         protected array|null $captionEntities = null,
 
         /**
-         * Pass True if the photo needs to be covered with a spoiler animation
+         * Pass True if the video needs to be covered with a spoiler animation
          */
         protected bool|null $hasSpoiler = null,
 
         /**
-         * Pass True, if the uploaded video is suitable for streaming
+         * Pass True if the uploaded video is suitable for streaming
          */
         protected bool|null $supportsStreaming = null,
 
@@ -104,7 +104,7 @@ final class SendVideo extends Method
         protected int|null $replyToMessageId = null,
 
         /**
-         * Pass True, if the message should be sent even if the specified replied-to message is not found
+         * Pass True if the message should be sent even if the specified replied-to message is not found
          */
         protected bool|null $allowSendingWithoutReply = null,
 

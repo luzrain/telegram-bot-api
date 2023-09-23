@@ -88,7 +88,7 @@ final class SendVenue extends Method
         protected int|null $replyToMessageId = null,
 
         /**
-         * Pass True, if the message should be sent even if the specified replied-to message is not found
+         * Pass True if the message should be sent even if the specified replied-to message is not found
          */
         protected bool|null $allowSendingWithoutReply = null,
 

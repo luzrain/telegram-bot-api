@@ -16,7 +16,7 @@ final readonly class ChatMemberBanned extends ChatMember
         public User $user,
 
         /**
-         * Date when restrictions will be lifted for this user; unix time. If 0, then the user is banned forever
+         * Date when restrictions will be lifted for this user; Unix time. If 0, then the user is banned forever
          */
         public int $untilDate,
     ) {

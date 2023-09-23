@@ -39,6 +39,7 @@ final readonly class ChatMemberRestricted extends ChatMember
          * True, if the user is allowed to send photos
          */
         public bool $canSendPhotos,
+
         /**
          * True, if the user is allowed to send videos
          */
@@ -90,7 +91,7 @@ final readonly class ChatMemberRestricted extends ChatMember
         public bool $canManageTopics,
 
         /**
-         * Date when restrictions will be lifted for this user; unix time. If 0, then the user is restricted forever
+         * Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever
          */
         public int $untilDate,
     ) {

@@ -25,7 +25,7 @@ final class SendGame extends Method
         protected int $userId,
 
         /**
-         * Short name of the game, serves as the unique identifier for the game. Set up your games via Botfather.
+         * Short name of the game, serves as the unique identifier for the game. Set up your games via @BotFather.
          */
         protected string $gameShortName,
 
@@ -50,7 +50,7 @@ final class SendGame extends Method
         protected int|null $replyToMessageId = null,
 
         /**
-         * Pass True, if the message should be sent even if the specified replied-to message is not found
+         * Pass True if the message should be sent even if the specified replied-to message is not found
          */
         protected bool|null $allowSendingWithoutReply = null,
 

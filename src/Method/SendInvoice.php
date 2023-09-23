@@ -41,7 +41,7 @@ final class SendInvoice extends Method
         protected string $payload,
 
         /**
-         * Payments provider token, obtained via Botfather
+         * Payment provider token, obtained via @BotFather
          */
         protected string $providerToken,
 
@@ -85,12 +85,12 @@ final class SendInvoice extends Method
          * Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay button,
          * allowing multiple users to pay directly from the forwarded message, using the same invoice.
          * If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the bot
-         * (instead of a Pay button),with the value used as the start parameter
+         * (instead of a Pay button), with the value used as the start parameter
          */
         protected string|null $startParameter = null,
 
         /**
-         * A JSON-serialized data about the invoice, which will be shared with the payment provider.
+         * JSON-serialized data about the invoice, which will be shared with the payment provider.
          * A detailed description of required fields should be provided by the payment provider.
          */
         protected string|null $providerData = null,
@@ -117,37 +117,37 @@ final class SendInvoice extends Method
         protected int|null $photoHeight = null,
 
         /**
-         * Pass True, if you require the user's full name to complete the order
+         * Pass True if you require the user's full name to complete the order
          */
         protected bool|null $needName = null,
 
         /**
-         * Pass True, if you require the user's phone number to complete the order
+         * Pass True if you require the user's phone number to complete the order
          */
         protected bool|null $needPhoneNumber = null,
 
         /**
-         * Pass True, if you require the user's email address to complete the order
+         * Pass True if you require the user's email address to complete the order
          */
         protected bool|null $needEmail = null,
 
         /**
-         * Pass True, if you require the user's shipping address to complete the order
+         * Pass True if you require the user's shipping address to complete the order
          */
         protected bool|null $needShippingAddress = null,
 
         /**
-         * Pass True, if user's phone number should be sent to provider
+         * Pass True if the user's phone number should be sent to provider
          */
         protected bool|null $sendPhoneNumberToProvider = null,
 
         /**
-         * Pass True, if user's email address should be sent to provider
+         * Pass True if the user's email address should be sent to provider
          */
         protected bool|null $sendEmailToProvider = null,
 
         /**
-         * Pass True, if the final price depends on the shipping method
+         * Pass True if the final price depends on the shipping method
          */
         protected bool|null $isFlexible = null,
 
@@ -167,7 +167,7 @@ final class SendInvoice extends Method
         protected int|null $replyToMessageId = null,
 
         /**
-         * Pass True, if the message should be sent even if the specified replied-to message is not found
+         * Pass True if the message should be sent even if the specified replied-to message is not found
          */
         protected bool|null $allowSendingWithoutReply = null,
 

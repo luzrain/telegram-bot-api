@@ -13,7 +13,7 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 
 /**
- * As of v.4.0, Telegram clients support rounded square mp4 videos of up to 1 minute long. Use this method to send video messages.
+ * As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages.
  * On success, the sent Message is returned.
  *
  * @extends Method<Message>
@@ -73,7 +73,7 @@ final class SendVideoNote extends Method
         protected int|null $replyToMessageId = null,
 
         /**
-         * Pass True, if the message should be sent even if the specified replied-to message is not found
+         * Pass True if the message should be sent even if the specified replied-to message is not found
          */
         protected bool|null $allowSendingWithoutReply = null,
 
