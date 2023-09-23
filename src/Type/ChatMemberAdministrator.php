@@ -26,8 +26,8 @@ final readonly class ChatMemberAdministrator extends ChatMember
         public bool $isAnonymous,
 
         /**
-         * True, if the administrator can access the chat event log, chat statistics, message statistics in channels, see channel members,
-         * see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege
+         * True, if the administrator can access the chat event log, chat statistics, boost list in channels, message statistics in channels,
+         * see channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege
          */
         public bool $canManageChat,
 
@@ -48,12 +48,13 @@ final readonly class ChatMemberAdministrator extends ChatMember
 
         /**
          * True, if the administrator can add new administrators with a subset of their own privileges or demote administrators
-         * that he has promoted, directly or indirectly (promoted by administrators that were appointed by the user)
+         * that they have promoted, directly or indirectly (promoted by administrators that were appointed by the user)
          */
         public bool $canPromoteMembers,
 
         /**
-         * True, if the user is allowed to change the chat title, photo and other settings */
+         * True, if the user is allowed to change the chat title, photo and other settings
+         */
         public bool $canChangeInfo,
 
         /**
@@ -62,7 +63,7 @@ final readonly class ChatMemberAdministrator extends ChatMember
         public bool $canInviteUsers,
 
         /**
-         * Optional. True, if the administrator can post in the channel; channels only
+         * Optional. True, if the administrator can post messages in the channel; channels only
          */
         public bool|null $canPostMessages = null,
 
@@ -77,14 +78,29 @@ final readonly class ChatMemberAdministrator extends ChatMember
         public bool|null $canPinMessages = null,
 
         /**
-         * Optional. Custom title for this user
+         * Optional. True, if the administrator can post stories in the channel; channels only
          */
-        public string|null $customTitle = null,
+        public bool|null $canPostStories = null,
+
+        /**
+         * Optional. True, if the administrator can edit stories posted by other users; channels only
+         */
+        public bool|null $canEditStories = null,
+
+        /**
+         * Optional. True, if the administrator can delete stories posted by other users; channels only
+         */
+        public bool|null $canDeleteStories = null,
 
         /**
          * Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
          */
         public bool|null $canManageTopics = null,
+
+        /**
+         * Optional. Custom title for this user
+         */
+        public string|null $customTitle = null,
     ) {
         parent::__construct('administrator');
     }

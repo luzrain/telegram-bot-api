@@ -19,8 +19,9 @@ final readonly class ChatAdministratorRights extends Type implements TypeDenorma
         public bool $isAnonymous,
 
         /**
-         * True, if the administrator can access the chat event log, chat statistics, message statistics in channels, see
-         * channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege
+         * True, if the administrator can access the chat event log, chat statistics, boost list in channels,
+         * message statistics in channels, see channel members, see anonymous administrators in supergroups and ignore slow mode.
+         * Implied by any other administrator privilege
          */
         public bool $canManageChat,
 
@@ -40,8 +41,8 @@ final readonly class ChatAdministratorRights extends Type implements TypeDenorma
         public bool $canRestrictMembers,
 
         /**
-         * True, if the administrator can add new administrators with a subset of their own privileges or demoteadministrators
-         * that he has promoted, directly or indirectly (promoted by administrators that were appointed by the user)
+         * True, if the administrator can add new administrators with a subset of their own privileges or demote administrators
+         * that they have promoted, directly or indirectly (promoted by administrators that were appointed by the user)
          */
         public bool $canPromoteMembers,
 
@@ -56,18 +57,34 @@ final readonly class ChatAdministratorRights extends Type implements TypeDenorma
         public bool $canInviteUsers,
 
         /**
-         * Optional. True, if the administrator can post in the channel; channels only
+         * Optional. True, if the administrator can post messages in the channel; channels only
          */
         public bool|null $canPostMessages = null,
 
         /**
-         * Optional. True, if the administrator can edit messages of other users and can pin messages; channels only */
+         * Optional. True, if the administrator can edit messages of other users and can pin messages; channels only
+         */
         public bool|null $canEditMessages = null,
 
         /**
          * Optional. True, if the user is allowed to pin messages; groups and supergroups only
          */
         public bool|null $canPinMessages = null,
+
+        /**
+         * Optional. True, if the administrator can post stories in the channel; channels only
+         */
+        public bool|null $canPostStories = null,
+
+        /**
+         * Optional. True, if the administrator can edit stories posted by other users; channels only
+         */
+        public bool|null $canEditStories = null,
+
+        /**
+         * Optional. True, if the administrator can delete stories posted by other users; channels only
+         */
+        public bool|null $canDeleteStories = null,
 
         /**
          * Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only

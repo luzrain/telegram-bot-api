@@ -1,6 +1,6 @@
 # PHP Wrapper for Telegram Bot API
 
-[![Bot Api 6.8](https://img.shields.io/badge/Bot%20API-6.8-0088cc.svg?style=flat)](https://core.telegram.org/bots/api-changelog#august-18-2023)
+[![Bot Api 6.9](https://img.shields.io/badge/Bot%20API-6.9-0088cc.svg?style=flat)](https://core.telegram.org/bots/api-changelog#september-22-2023)
 [![PHP ^8.2](https://img.shields.io/badge/PHP-^8.2-777bb3.svg?style=flat)](https://www.php.net/releases/8.2/en.php)
 [![Tests Status](https://img.shields.io/github/actions/workflow/status/luzrain/telegram-bot-api/tests.yaml?branch=master)](../../actions/workflows/tests.yaml)
 
