@@ -41,11 +41,11 @@ final class ClientApi
             return null;
         }
 
-        if (!$callbackResponse instanceof Method) {
-            throw new TelegramCallbackException(get_debug_type($callbackResponse));
+        if ($callbackResponse instanceof Method) {
+            return $callbackResponse;
         }
 
-        return $callbackResponse;
+        throw new TelegramCallbackException(get_debug_type($callbackResponse));
     }
 
     /**
