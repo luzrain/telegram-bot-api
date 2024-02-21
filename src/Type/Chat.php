@@ -158,6 +158,12 @@ final readonly class Chat extends Type implements TypeDenormalizable
         public int|null $slowModeDelay = null,
 
         /**
+         * Optional. For supergroups, the minimum number of boosts that a non-administrator user needs to add
+         * in order to ignore slow mode and chat permissions. Returned only in getChat.
+         */
+        public int|null $unrestrictBoostCount = null,
+
+        /**
          * Optional. The time after which all messages sent to the chat will be automatically deleted, in seconds. Returned only in getChat.
          */
         public int|null $messageAutoDeleteTime = null,
@@ -193,6 +199,12 @@ final readonly class Chat extends Type implements TypeDenormalizable
          * Optional. True, if the bot can change the group sticker set. Returned only in getChat.
          */
         public true|null $canSetStickerSet = null,
+
+        /**
+         * Optional. For supergroups, the name of the group's custom emoji sticker set.
+         * Custom emoji from this set can be used by all users and bots in the group. Returned only in getChat.
+         */
+        public string|null $customEmojiStickerSetName = null,
 
         /**
          * Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa,

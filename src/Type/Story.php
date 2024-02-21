@@ -8,11 +8,20 @@ use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
- * This object represents a message about a forwarded story in the chat. Currently holds no information.
+ * This object represents a story.
  */
 final readonly class Story extends Type implements TypeDenormalizable
 {
-    protected function __construct()
-    {
+    public function __construct(
+        /**
+         * Chat that posted the story
+         */
+        public Chat $chat,
+
+        /**
+         * Unique identifier for the story in the chat
+         */
+        public int $id,
+    ) {
     }
 }

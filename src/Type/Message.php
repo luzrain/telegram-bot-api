@@ -57,6 +57,11 @@ final readonly class Message extends Type implements MaybeInaccessibleMessage, T
         public Chat|null $senderChat = null,
 
         /**
+         * Optional. If the sender of the message boosted the chat, the number of boosts added by the user
+         */
+        public int|null $senderBoostCount = null,
+
+        /**
          * Optional. Information about the original message for forwarded messages
          */
         public MessageOrigin|null $forwardOrigin = null,
@@ -86,6 +91,11 @@ final readonly class Message extends Type implements MaybeInaccessibleMessage, T
          * Optional. For replies that quote part of the original message, the quoted part of the message
          */
         public TextQuote|null $quote = null,
+
+        /**
+         * Optional. For replies to a story, the original story
+         */
+        public Story|null $replyToStory = null,
 
         /**
          * Optional. Bot through which the message was sent
@@ -346,6 +356,11 @@ final readonly class Message extends Type implements MaybeInaccessibleMessage, T
          * Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
          */
         public ProximityAlertTriggered|null $proximityAlertTriggered = null,
+
+        /**
+         * Optional. Service message: user boosted the chat
+         */
+        public ChatBoostAdded|null $boostAdded = null,
 
         /**
          * Optional. Service message: forum topic created
