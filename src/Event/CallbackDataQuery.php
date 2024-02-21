@@ -7,16 +7,16 @@ namespace Luzrain\TelegramBotApi\Event;
 use Luzrain\TelegramBotApi\Event;
 use Luzrain\TelegramBotApi\Type;
 
-final class NamedCallbackQuery extends Event
+final class CallbackDataQuery extends Event
 {
-    public function __construct(private readonly string $callbackData, \Closure $action)
+    public function __construct(private readonly string $data, \Closure $action)
     {
         parent::__construct($action);
     }
 
     public function executeChecker(Type\Update $update): bool
     {
-        return $this->callbackData !== '' && $update->callbackQuery?->data === $this->callbackData;
+        return $this->data !== '' && $update->callbackQuery?->data === $this->data;
     }
 
     public function executeCallback(Type\Update $update): mixed

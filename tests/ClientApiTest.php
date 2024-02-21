@@ -35,8 +35,7 @@ final class ClientApiTest extends TestCase
         yield ['preCheckoutQuery', file_get_contents(__DIR__ . '/data/events/preCheckoutQuery.json')];
         yield ['poll', file_get_contents(__DIR__ . '/data/events/poll.json')];
         yield ['pollAnswer', file_get_contents(__DIR__ . '/data/events/pollAnswer.json')];
-        yield ['myChatMember', file_get_contents(__DIR__ . '/data/events/myChatMember.json')];
-        yield ['chatMemberBanned', file_get_contents(__DIR__ . '/data/events/chatMemberBanned.json')];
+        yield ['botMemberBanned', file_get_contents(__DIR__ . '/data/events/botMemberBanned.json')];
     }
 
     #[DataProvider('clientWebhookData')]
@@ -56,8 +55,7 @@ final class ClientApiTest extends TestCase
         $preCheckoutQueryClosure = new ClosureTestHelper();
         $pollClosure = new ClosureTestHelper();
         $pollAnswerClosure = new ClosureTestHelper();
-        $myChatMember = new ClosureTestHelper();
-        $chatMemberBanned = new ClosureTestHelper();
+        $botMemberBanned = new ClosureTestHelper();
 
         $this->client
             ->on(new Event\Update($updateClosure->getClosure()))
@@ -74,8 +72,7 @@ final class ClientApiTest extends TestCase
             ->on(new Event\PreCheckoutQuery($preCheckoutQueryClosure->getClosure()))
             ->on(new Event\Poll($pollClosure->getClosure()))
             ->on(new Event\PollAnswer($pollAnswerClosure->getClosure()))
-            ->on(new Event\MyChatMember($myChatMember->getClosure()))
-            ->on(new Event\BotMemberBlocked($chatMemberBanned->getClosure()))
+            ->on(new Event\BotMemberBanned($botMemberBanned->getClosure()))
             ->handle(Update::fromJson($requestBody))
         ;
 
@@ -93,8 +90,7 @@ final class ClientApiTest extends TestCase
         $this->assertSame($eventName === 'preCheckoutQuery', $preCheckoutQueryClosure->isCalled(), 'Event\PreCheckoutQuery');
         $this->assertSame($eventName === 'poll', $pollClosure->isCalled(), 'Event\Poll');
         $this->assertSame($eventName === 'pollAnswer', $pollAnswerClosure->isCalled(), 'Event\PollAnswer');
-        $this->assertSame(in_array($eventName, ['myChatMember', 'chatMemberBanned']), $myChatMember->isCalled(), 'Event\MyChatMember');
-        $this->assertSame(in_array($eventName, ['myChatMember', 'chatMemberBanned']), $chatMemberBanned->isCalled(), 'Event\ChatMemberBanned');
+        $this->assertSame($eventName === 'botMemberBanned', $botMemberBanned->isCalled(), 'Event\BotMemberBanned');
     }
 
     public function testClientHandler(): void

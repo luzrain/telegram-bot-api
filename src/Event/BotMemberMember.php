@@ -8,11 +8,14 @@ use Luzrain\TelegramBotApi\Event;
 use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type;
 
-final class BotMemberBlocked extends Event
+/**
+ * New member has joined the bot
+ */
+final class BotMemberMember extends Event
 {
     public function executeChecker(Type\Update $update): bool
     {
-        return $update->myChatMember?->newChatMember instanceof Type\ChatMemberBanned;
+        return $update->myChatMember?->newChatMember instanceof Type\ChatMemberMember;
     }
 
     public function executeCallback(Type\Update $update): Method|null

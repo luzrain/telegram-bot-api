@@ -105,7 +105,8 @@ final readonly class Update extends Type implements TypeDenormalizable
 
         /**
          * Optional. A chat member's status was updated in a chat.
-         * The bot must be an administrator in the chat and must explicitly specify “chat_member” in the list of allowed_updates to receive these updates.
+         * The bot must be an administrator in the chat and must explicitly specify "chat_member" in the list of
+         * allowed_updates to receive these updates.
          */
         public ChatMemberUpdated|null $chatMember = null,
 

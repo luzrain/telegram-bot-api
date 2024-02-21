@@ -5,16 +5,20 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Event;
 
 use Luzrain\TelegramBotApi\Event;
+use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type;
 
-final class MyChatMember extends Event
+/**
+ * A bot member was banned
+ */
+final class BotMemberBanned extends Event
 {
     public function executeChecker(Type\Update $update): bool
     {
-        return $update->myChatMember !== null;
+        return $update->myChatMember?->newChatMember instanceof Type\ChatMemberBanned;
     }
 
-    public function executeCallback(Type\Update $update): mixed
+    public function executeCallback(Type\Update $update): Method|null
     {
         return $this->callback($update->myChatMember);
     }
