@@ -49,33 +49,6 @@ final class ClientApi
     }
 
     /**
-     * @deprecated use ClientApi::handle() instead
-     * @param string $body raw json request
-     * @return string json raw response
-     * @throws TelegramCallbackException
-     * @throws TelegramTypeException
-     */
-    public function webhookHandle(string $body): string
-    {
-        @trigger_error(sprintf('%s is deprecated. Use %s::handle() instead.', __METHOD__, self::class), \E_USER_DEPRECATED);
-        $callbackResponse = $this->handle(Update::fromJson($body));
-        return json_encode($callbackResponse, JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-     * @deprecated
-     * @param list<Update> $updates
-     */
-    public function updatesHandle(array $updates): void
-    {
-        @trigger_error(sprintf('%s is deprecated. Use %s::handle() instead.', __METHOD__, self::class), \E_USER_DEPRECATED);
-        foreach ($updates as $update) {
-            $this->events->handle($update);
-        }
-        $this->events->reset();
-    }
-
-    /**
      * @throws TelegramCallbackException
      * @throws TelegramTypeException
      */
