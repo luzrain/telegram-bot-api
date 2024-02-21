@@ -56,7 +56,7 @@ final readonly class ExternalReplyInfo extends Type implements TypeDenormalizabl
         /**
          * Optional. Message is a photo, available sizes of the photo
          *
-         * @var list<PhotoSize>
+         * @var list<PhotoSize>|null
          */
         #[PropertyType(ArrayOfPhotoSizeType::class)]
         public array|null $photo = null,

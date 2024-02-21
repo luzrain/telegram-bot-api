@@ -6,7 +6,6 @@ namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ReactionType;
-use Luzrain\TelegramBotApi\Type\UserProfilePhotos;
 
 /**
  * Use this method to change the chosen reactions on a message.
