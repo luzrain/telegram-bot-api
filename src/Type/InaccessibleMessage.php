@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
-
 /**
  * This object describes a message that was deleted or is otherwise inaccessible to the bot.
  */
-final readonly class InaccessibleMessage extends Type implements MaybeInaccessibleMessage, TypeDenormalizable
+final readonly class InaccessibleMessage extends MaybeInaccessibleMessage
 {
     public function __construct(
         /**
@@ -28,5 +25,6 @@ final readonly class InaccessibleMessage extends Type implements MaybeInaccessib
          */
         public Chat $chat,
     ) {
+        parent::__construct($this->date);
     }
 }

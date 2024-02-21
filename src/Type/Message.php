@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\PropertyType;
-use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessageEntityType;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPhotoSizeType;
 use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfUserType;
@@ -14,12 +13,11 @@ use Luzrain\TelegramBotApi\Type\Passport\PassportData;
 use Luzrain\TelegramBotApi\Type\Payments\Invoice;
 use Luzrain\TelegramBotApi\Type\Payments\SuccessfulPayment;
 use Luzrain\TelegramBotApi\Type\Stickers\Sticker;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a message.
  */
-final readonly class Message extends Type implements MaybeInaccessibleMessage, TypeDenormalizable
+final readonly class Message extends MaybeInaccessibleMessage
 {
     protected function __construct(
         /**
@@ -442,5 +440,6 @@ final readonly class Message extends Type implements MaybeInaccessibleMessage, T
          */
         public InlineKeyboardMarkup|null $replyMarkup = null,
     ) {
+        parent::__construct($this->date);
     }
 }
