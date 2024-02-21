@@ -20,8 +20,8 @@ abstract readonly class Type implements \JsonSerializable
      */
     public static function fromArray(array $data): static
     {
-        if (!is_subclass_of(static::class, TypeDenormalizable::class)) {
-            throw new \Exception(sprintf('%s should implement %s to perform %s method', static::class, TypeDenormalizable::class, __FUNCTION__));
+        if (!\is_subclass_of(static::class, TypeDenormalizable::class)) {
+            throw new \Exception(\sprintf('%s should implement %s to perform %s method', static::class, TypeDenormalizable::class, __FUNCTION__));
         }
 
         $reflClass = new \ReflectionClass(static::class);
@@ -34,7 +34,7 @@ abstract readonly class Type implements \JsonSerializable
             $propertyType = $attributeType?->getArguments()[0] ?? $reflParameter->getType()->getName();
 
             if (isset($data[$propertyKey])) {
-                $constructorMap[$property] = is_subclass_of($propertyType, TypeDenormalizable::class)
+                $constructorMap[$property] = \is_subclass_of($propertyType, TypeDenormalizable::class)
                     ? $propertyType::fromArray((array) $data[$propertyKey])
                     : $data[$propertyKey]
                 ;
@@ -58,8 +58,8 @@ abstract readonly class Type implements \JsonSerializable
         foreach ($this as $property => $value) {
             $propertyKey = StringUtils::toSnakeCase($property);
             if ($this->$property !== null) {
-                if (is_array($this->$property)) {
-                    $data->$propertyKey = array_map(fn ($value) => $value instanceof self ? $value->toStdObject() : $value, $this->$property);
+                if (\is_array($this->$property)) {
+                    $data->$propertyKey = \array_map(fn($value) => $value instanceof self ? $value->toStdObject() : $value, $this->$property);
                 } else {
                     $data->$propertyKey = $value instanceof self ? $value->toStdObject() : $this->$property;
                 }

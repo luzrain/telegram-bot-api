@@ -134,7 +134,7 @@ final readonly class Update extends Type implements TypeDenormalizable
     public static function fromJson(string $json): self
     {
         try {
-            $data = json_decode(json: $json, associative: true, flags: JSON_THROW_ON_ERROR);
+            $data = \json_decode(json: $json, associative: true, flags: JSON_THROW_ON_ERROR);
         } catch (\JsonException $e) {
             throw TelegramTypeException::parseError(new \ReflectionClass(self::class), $e);
         }

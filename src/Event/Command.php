@@ -29,7 +29,7 @@ final class Command extends Event
 
     public function executeCallback(Type\Update $update): mixed
     {
-        $params = \array_filter(explode(' ', $update->message->text));
+        $params = \array_filter(\explode(' ', $update->message->text));
         \array_shift($params);
 
         return $this->callback($update->message, ...$params);

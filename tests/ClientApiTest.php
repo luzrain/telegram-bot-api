@@ -23,19 +23,19 @@ final class ClientApiTest extends TestCase
 
     public static function clientWebhookData(): iterable
     {
-        yield ['command', file_get_contents(__DIR__ . '/data/events/command.json')];
-        yield ['message', file_get_contents(__DIR__ . '/data/events/message.json')];
-        yield ['editedMessage', file_get_contents(__DIR__ . '/data/events/editedMessage.json')];
-        yield ['channelPost', file_get_contents(__DIR__ . '/data/events/channelPost.json')];
-        yield ['editedChannelPost', file_get_contents(__DIR__ . '/data/events/editedChannelPost.json')];
-        yield ['inlineQuery', file_get_contents(__DIR__ . '/data/events/inlineQuery.json')];
-        yield ['chosenInlineResult', file_get_contents(__DIR__ . '/data/events/chosenInlineResult.json')];
-        yield ['callbackQuery', file_get_contents(__DIR__ . '/data/events/callbackQuery.json')];
-        yield ['shippingQuery', file_get_contents(__DIR__ . '/data/events/shippingQuery.json')];
-        yield ['preCheckoutQuery', file_get_contents(__DIR__ . '/data/events/preCheckoutQuery.json')];
-        yield ['poll', file_get_contents(__DIR__ . '/data/events/poll.json')];
-        yield ['pollAnswer', file_get_contents(__DIR__ . '/data/events/pollAnswer.json')];
-        yield ['botMemberBanned', file_get_contents(__DIR__ . '/data/events/botMemberBanned.json')];
+        yield ['command', \file_get_contents(__DIR__ . '/data/events/command.json')];
+        yield ['message', \file_get_contents(__DIR__ . '/data/events/message.json')];
+        yield ['editedMessage', \file_get_contents(__DIR__ . '/data/events/editedMessage.json')];
+        yield ['channelPost', \file_get_contents(__DIR__ . '/data/events/channelPost.json')];
+        yield ['editedChannelPost', \file_get_contents(__DIR__ . '/data/events/editedChannelPost.json')];
+        yield ['inlineQuery', \file_get_contents(__DIR__ . '/data/events/inlineQuery.json')];
+        yield ['chosenInlineResult', \file_get_contents(__DIR__ . '/data/events/chosenInlineResult.json')];
+        yield ['callbackQuery', \file_get_contents(__DIR__ . '/data/events/callbackQuery.json')];
+        yield ['shippingQuery', \file_get_contents(__DIR__ . '/data/events/shippingQuery.json')];
+        yield ['preCheckoutQuery', \file_get_contents(__DIR__ . '/data/events/preCheckoutQuery.json')];
+        yield ['poll', \file_get_contents(__DIR__ . '/data/events/poll.json')];
+        yield ['pollAnswer', \file_get_contents(__DIR__ . '/data/events/pollAnswer.json')];
+        yield ['botMemberBanned', \file_get_contents(__DIR__ . '/data/events/botMemberBanned.json')];
     }
 
     #[DataProvider('clientWebhookData')]
@@ -79,7 +79,7 @@ final class ClientApiTest extends TestCase
         $this->assertSame(true, $updateClosure->isCalled(), 'Event\Update');
         $this->assertSame($eventName === 'command', $commandClosure->isCalled(), 'Event\Command (/testcommand)');
         $this->assertSame(false, $wrongCommandClosure->isCalled(), 'Event\Command (/wrongcommand)');
-        $this->assertSame(in_array($eventName, ['command', 'message']), $messageClosure->isCalled(), 'Event\Message');
+        $this->assertSame(\in_array($eventName, ['command', 'message'], true), $messageClosure->isCalled(), 'Event\Message');
         $this->assertSame($eventName === 'editedMessage', $editedMessageClosure->isCalled(), 'Event\EditedMessage');
         $this->assertSame($eventName === 'channelPost', $channelPostClosure->isCalled(), 'Event\ChannelPost');
         $this->assertSame($eventName === 'editedChannelPost', $editedChannelPostClosure->isCalled(), 'Event\EditedChannelPost');
@@ -101,9 +101,9 @@ final class ClientApiTest extends TestCase
         $editedChannelPostClosure = new ClosureTestHelper();
 
         $updates = [
-            Update::fromJson(file_get_contents(__DIR__ . '/data/events/command.json')),
-            Update::fromJson(file_get_contents(__DIR__ . '/data/events/editedMessage.json')),
-            Update::fromJson(file_get_contents(__DIR__ . '/data/events/channelPost.json')),
+            Update::fromJson(\file_get_contents(__DIR__ . '/data/events/command.json')),
+            Update::fromJson(\file_get_contents(__DIR__ . '/data/events/editedMessage.json')),
+            Update::fromJson(\file_get_contents(__DIR__ . '/data/events/channelPost.json')),
         ];
 
         $this->client
@@ -131,7 +131,7 @@ final class ClientApiTest extends TestCase
 
         $this->client
             ->on(new Event\Message($closure1->getClosure()))
-            ->handle(Update::fromJson(file_get_contents(__DIR__ . '/data/events/message.json')))
+            ->handle(Update::fromJson(\file_get_contents(__DIR__ . '/data/events/message.json')))
         ;
     }
 }

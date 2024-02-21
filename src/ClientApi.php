@@ -45,7 +45,7 @@ final class ClientApi
             return $callbackResponse;
         }
 
-        throw new TelegramCallbackException(get_debug_type($callbackResponse));
+        throw new TelegramCallbackException(\get_debug_type($callbackResponse));
     }
 
     /**
@@ -54,11 +54,11 @@ final class ClientApi
      */
     public function run(): never
     {
-        $requestBody = file_get_contents('php://input');
+        $requestBody = \file_get_contents('php://input');
         $callbackResponse = $this->handle(Update::fromJson($requestBody));
-        $responseBody = json_encode($callbackResponse, JSON_UNESCAPED_UNICODE);
-        header('Content-Type: application/json');
-        header('Content-Length: ' . strlen($responseBody));
+        $responseBody = \json_encode($callbackResponse, JSON_UNESCAPED_UNICODE);
+        \header('Content-Type: application/json');
+        \header('Content-Length: ' . \strlen($responseBody));
         echo $responseBody;
         exit;
     }

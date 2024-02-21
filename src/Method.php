@@ -37,9 +37,9 @@ abstract class Method implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return array_merge(
+        return \array_merge(
             ['method' => $this->getName()],
-            iterator_to_array($this->iterateRequestProps()),
+            \iterator_to_array($this->iterateRequestProps()),
         );
     }
 }

@@ -42,7 +42,7 @@ final class MultipartStreamBuilder
         if (empty($options['filename'])) {
             $options['filename'] = null;
             $uri = $stream->getMetadata('uri');
-            if (is_string($uri) && !str_starts_with($uri, 'php://') && !str_starts_with($uri, 'data://')) {
+            if (\is_string($uri) && !\str_starts_with($uri, 'php://') && !\str_starts_with($uri, 'data://')) {
                 $options['filename'] = $uri;
             }
         }
@@ -72,10 +72,10 @@ final class MultipartStreamBuilder
     {
         return match (true) {
             $resource instanceof StreamInterface => $resource,
-            is_int($resource), is_string($resource), is_bool($resource) => $this->streamFactory->createStream((string) $resource),
-            is_resource($resource) => $this->streamFactory->createStreamFromResource($resource),
+            \is_int($resource), \is_string($resource), \is_bool($resource) => $this->streamFactory->createStream((string) $resource),
+            \is_resource($resource) => $this->streamFactory->createStreamFromResource($resource),
             default => throw new \InvalidArgumentException(
-                sprintf('First argument to "%s" must be a string, resource or StreamInterface. %s given.', __METHOD__, get_debug_type($resource)),
+                \sprintf('First argument to "%s" must be a string, resource or StreamInterface. %s given.', __METHOD__, \get_debug_type($resource)),
             ),
         };
     }
@@ -87,9 +87,9 @@ final class MultipartStreamBuilder
     {
         // Set a default content-disposition header if one was not provided
         if (!$this->hasHeader($headers, 'content-disposition')) {
-            $headers['Content-Disposition'] = sprintf('form-data; name="%s"', $name);
+            $headers['Content-Disposition'] = \sprintf('form-data; name="%s"', $name);
             if ($filename !== null) {
-                $headers['Content-Disposition'] .= sprintf('; filename="%s"', \basename($filename));
+                $headers['Content-Disposition'] .= \sprintf('; filename="%s"', \basename($filename));
             }
         }
 
@@ -113,10 +113,10 @@ final class MultipartStreamBuilder
         // Open a temporary read-write stream as buffer.
         // If the size is less than predefined limit, things will stay in memory.
         // If the size is more than that, things will be stored in temp file.
-        $buffer = fopen('php://temp', 'r+');
+        $buffer = \fopen('php://temp', 'r+');
         foreach ($this->data as $data) {
             // Add start and headers
-            fwrite($buffer, "--{$this->getBoundary()}\r\n" . $this->getHeaders($data['headers'])."\r\n");
+            \fwrite($buffer, "--{$this->getBoundary()}\r\n" . $this->getHeaders($data['headers']) . "\r\n");
 
             /** @var StreamInterface $contentStream */
             $contentStream = $data['contents'];
@@ -128,19 +128,19 @@ final class MultipartStreamBuilder
             if ($contentStream->isReadable()) {
                 while (!$contentStream->eof()) {
                     // Read 1MB chunk into buffer until reached EOF
-                    fwrite($buffer, $contentStream->read(1048576));
+                    \fwrite($buffer, $contentStream->read(1048576));
                 }
             } else {
-                fwrite($buffer, $contentStream->__toString());
+                \fwrite($buffer, $contentStream->__toString());
             }
-            fwrite($buffer, "\r\n");
+            \fwrite($buffer, "\r\n");
         }
 
         // Append end
-        fwrite($buffer, "--{$this->getBoundary()}--\r\n");
+        \fwrite($buffer, "--{$this->getBoundary()}--\r\n");
 
         // Rewind to starting position for reading.
-        fseek($buffer, 0);
+        \fseek($buffer, 0);
 
         return $this->createStream($buffer);
     }
@@ -152,7 +152,7 @@ final class MultipartStreamBuilder
     {
         $str = '';
         foreach ($headers as $key => $value) {
-            $str .= sprintf("%s: %s\r\n", $key, $value);
+            $str .= \sprintf("%s: %s\r\n", $key, $value);
         }
 
         return $str;
@@ -160,9 +160,9 @@ final class MultipartStreamBuilder
 
     private function hasHeader(array $headers, string $key): bool
     {
-        $lowercaseHeader = strtolower($key);
+        $lowercaseHeader = \strtolower($key);
         foreach ($headers as $k => $v) {
-            if (strtolower($k) === $lowercaseHeader) {
+            if (\strtolower($k) === $lowercaseHeader) {
                 return true;
             }
         }
@@ -173,7 +173,7 @@ final class MultipartStreamBuilder
     public function getBoundary(): string
     {
         if ($this->boundary === '') {
-            $this->boundary = uniqid('', true);
+            $this->boundary = \uniqid('', true);
         }
 
         return $this->boundary;

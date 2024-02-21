@@ -46,7 +46,6 @@ final readonly class ChatJoinRequest extends Type implements TypeDenormalizable
          * Optional. Chat invite link that was used by the user to send the join request
          */
         public ChatInviteLink|null $inviteLink = null,
-
     ) {
     }
 }

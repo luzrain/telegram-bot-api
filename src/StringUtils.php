@@ -11,6 +11,6 @@ final class StringUtils
 {
     public static function toSnakeCase(string $string): string
     {
-        return strtolower(preg_replace('/[A-Z]/', '_\\0', lcfirst($string)));
+        return \strtolower(\preg_replace('/[A-Z]/', '_\\0', \lcfirst($string)));
     }
 }

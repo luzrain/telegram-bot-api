@@ -87,13 +87,13 @@ final class EventPropagationTest extends TestCase
             ->on(new Event\Message($closure2->getClosure()))
             ->on(new Event\Message($closure3->getClosure()))
             ->on(new Event\Message($closure4->getClosure()))
-            ->handle(Update::fromJson(file_get_contents(__DIR__ . '/data/events/message.json')))
+            ->handle(Update::fromJson(\file_get_contents(__DIR__ . '/data/events/message.json')))
         ;
 
         $this->assertSame($isClosure1ShouldBeCalled, $closure1->isCalled());
         $this->assertSame($isClosure2ShouldBeCalled, $closure2->isCalled());
         $this->assertSame($isClosure3ShouldBeCalled, $closure3->isCalled());
         $this->assertSame($isClosure4ShouldBeCalled, $closure4->isCalled());
-        $this->assertSame($expectedCallbackResponse, json_encode($callbackResponse));
+        $this->assertSame($expectedCallbackResponse, \json_encode($callbackResponse));
     }
 }

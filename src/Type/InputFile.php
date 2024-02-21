@@ -17,12 +17,12 @@ final readonly class InputFile implements \JsonSerializable
 
     public function __construct(string $filePath)
     {
-        if (is_file($filePath) === false) {
+        if (\is_file($filePath) === false) {
             throw new TelegramInputFileException($filePath);
         }
 
         $this->filePath = $filePath;
-        $this->uniqueName = uniqid('attach.', true);
+        $this->uniqueName = \uniqid('attach.', true);
     }
 
     public function getFilePath(): string

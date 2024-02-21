@@ -10,6 +10,6 @@ final class ArrayOfArrayOfPhotoSizeType extends ArrayType
 {
     public static function fromArray(array $data): array
     {
-        return array_map(fn (array $array) => ArrayOfPhotoSizeType::fromArray($array), $data);
+        return \array_map(fn(array $array) => ArrayOfPhotoSizeType::fromArray($array), $data);
     }
 }

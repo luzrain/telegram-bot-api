@@ -10,6 +10,6 @@ final class ArrayOfArrayOfInlineKeyboardButtonType extends ArrayType
 {
     public static function fromArray(array $data): array
     {
-        return array_map(fn (array $array) => ArrayOfInlineKeyboardButtonType::fromArray($array), $data);
+        return \array_map(fn(array $array) => ArrayOfInlineKeyboardButtonType::fromArray($array), $data);
     }
 }

@@ -47,7 +47,7 @@ final class BotApi
      */
     public function call(Method $method): Type|array|string|int|bool
     {
-        $url = sprintf(self::URL_API_ENDPOINT, $this->token, $method->getName());
+        $url = \sprintf(self::URL_API_ENDPOINT, $this->token, $method->getName());
         $multiparts = [];
         $files = [];
         foreach ($method->iterateRequestProps() as $name => $value) {
@@ -55,10 +55,10 @@ final class BotApi
                 $content = $value->getAttachPath();
                 $files[] = $value;
             } else {
-                $content = is_scalar($value) ? $value : json_encode($value, JSON_UNESCAPED_UNICODE);
+                $content = \is_scalar($value) ? $value : \json_encode($value, JSON_UNESCAPED_UNICODE);
             }
 
-            $multiparts[] = compact('name', 'content');
+            $multiparts[] = \compact('name', 'content');
 
             /** @psalm-suppress TypeDoesNotContainType */
             if ($method instanceof SendMediaGroup && $name === 'media') {
@@ -76,8 +76,8 @@ final class BotApi
 
         foreach ($files as $file) {
             $name = $file->getUniqueName();
-            $content = fopen($file->getFilePath(), 'r');
-            $multiparts[] = compact('name', 'content');
+            $content = \fopen($file->getFilePath(), 'r');
+            $multiparts[] = \compact('name', 'content');
         }
 
         $httpRequest = $multiparts === []
@@ -86,7 +86,7 @@ final class BotApi
         ;
 
         $httpResponse = $this->client->sendRequest($httpRequest);
-        $response = json_decode((string) $httpResponse->getBody(), true);
+        $response = \json_decode((string) $httpResponse->getBody(), true);
 
         if ($response['ok'] === false) {
             $parameters = isset($response['parameters']) ? ResponseParameters::fromArray($response['parameters']) : null;
@@ -113,32 +113,32 @@ final class BotApi
      */
     public function downloadFile(File|string $file): string
     {
-        if (is_string($file)) {
+        if (\is_string($file)) {
             $file = $this->call(new GetFile($file));
         }
 
-        $url = sprintf(self::URL_FILE_ENDPOINT, $this->token, $file->filePath);
-        $extension = pathinfo($file->filePath, PATHINFO_EXTENSION);
-        $downloadFilePath = sys_get_temp_dir() . DIRECTORY_SEPARATOR . uniqid('tg.', true) . '.' . $extension;
+        $url = \sprintf(self::URL_FILE_ENDPOINT, $this->token, $file->filePath);
+        $extension = \pathinfo($file->filePath, PATHINFO_EXTENSION);
+        $downloadFilePath = \sys_get_temp_dir() . DIRECTORY_SEPARATOR . \uniqid('tg.', true) . '.' . $extension;
 
         $httpRequest = $this->requestBuilder->create('GET', $url);
         $httpResponse = $this->client->sendRequest($httpRequest);
 
         if ($httpResponse->getStatusCode() !== 200) {
-            $response = json_decode($httpResponse->getBody()->getContents(), true);
+            $response = \json_decode($httpResponse->getBody()->getContents(), true);
             throw new TelegramApiException($response['description'], $response['error_code']);
         }
 
         $outStream = $httpResponse->getBody();
-        $inStream = fopen($downloadFilePath, 'w');
+        $inStream = \fopen($downloadFilePath, 'w');
 
         while (!$outStream->eof()) {
             $data = $outStream->read(1024);
-            fwrite($inStream, $data);
+            \fwrite($inStream, $data);
         }
 
         $outStream->close();
-        fclose($inStream);
+        \fclose($inStream);
 
         return $downloadFilePath;
     }

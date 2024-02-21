@@ -25,7 +25,7 @@ final class RequestBuilder
 
     public function create(string $method, string $uri, array|string $body = '', array $headers = []): RequestInterface
     {
-        if (is_string($body)) {
+        if (\is_string($body)) {
             return $this->doCreateRequest($method, $uri, $headers, $this->streamFactory->createStream($body));
         }
 
@@ -40,7 +40,7 @@ final class RequestBuilder
         $boundary = $this->multipartStreamBuilder->getBoundary();
         $this->multipartStreamBuilder->reset();
 
-        $headers['Content-Type'] = sprintf('multipart/form-data; boundary="%s"', $boundary);
+        $headers['Content-Type'] = \sprintf('multipart/form-data; boundary="%s"', $boundary);
 
         return $this->doCreateRequest($method, $uri, $headers, $multipartStream);
     }

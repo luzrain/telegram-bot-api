@@ -51,6 +51,6 @@ final readonly class ReplyKeyboardMarkup extends Type
          */
         public bool|null $selective = null,
     ) {
-        $this->keyboard = is_array($keyboard) ? $keyboard : $keyboard->toArray();
+        $this->keyboard = \is_array($keyboard) ? $keyboard : $keyboard->toArray();
     }
 }

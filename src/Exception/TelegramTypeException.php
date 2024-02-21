@@ -17,8 +17,8 @@ final class TelegramTypeException extends \Exception
             }
         }
         $objectName = $refl->getShortName();
-        $missingKeys = implode(', ', array_keys(array_diff_key(array_flip($requiredProps), $data)));
-        $message = sprintf('"%s" object creation error. Missing keys: %s', $objectName, $missingKeys);
+        $missingKeys = \implode(', ', \array_keys(\array_diff_key(\array_flip($requiredProps), $data)));
+        $message = \sprintf('"%s" object creation error. Missing keys: %s', $objectName, $missingKeys);
 
         return new self($message, 0, $previous);
     }
@@ -27,7 +27,7 @@ final class TelegramTypeException extends \Exception
     {
         $objectName = $refl->getShortName();
         $reason = $previous->getMessage();
-        $message = sprintf('"%s" object creation error. %s', $objectName, $reason);
+        $message = \sprintf('"%s" object creation error. %s', $objectName, $reason);
 
         return new self($message, 0, $previous);
     }

@@ -23,6 +23,6 @@ final readonly class InlineKeyboardMarkup extends Type implements TypeDenormaliz
         #[PropertyType(ArrayOfArrayOfInlineKeyboardButtonType::class)]
         InlineKeyboardButtonArrayBuilder|array $inlineKeyboard,
     ) {
-        $this->inlineKeyboard = is_array($inlineKeyboard) ? $inlineKeyboard : $inlineKeyboard->toArray();
+        $this->inlineKeyboard = \is_array($inlineKeyboard) ? $inlineKeyboard : $inlineKeyboard->toArray();
     }
 }
