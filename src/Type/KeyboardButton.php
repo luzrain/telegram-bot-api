@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\Type;
 /**
  * This object represents one button of the reply keyboard.
  * For simple text buttons, String can be used instead of this object to specify the button text.
- * The optional fields web_app, request_user, request_chat, request_contact, request_location, and request_poll are mutually exclusive.
+ * The optional fields web_app, request_users, request_chat, request_contact, request_location, and request_poll are mutually exclusive.
  */
 final readonly class KeyboardButton extends Type
 {
@@ -21,17 +21,17 @@ final readonly class KeyboardButton extends Type
 
         /**
          * Optional. If specified, pressing the button will open a list of suitable users.
-         * Tapping on any user will send their identifier to the bot in a “user_shared” service message.
+         * Identifiers of selected users will be sent to the bot in a "users_shared" service message.
          * Available in private chats only.
          */
-        public KeyboardButtonRequestUser|null $requestUser = null,
+        public KeyboardButtonRequestUsers|null $requestUsers = null,
 
         /**
          * Optional. If specified, pressing the button will open a list of suitable chats.
-         * Tapping on a chat will send its identifier to the bot in a “chat_shared” service message.
+         * Tapping on a chat will send its identifier to the bot in a "chat_shared" service message.
          * Available in private chats only.
          */
-        public KeyboardButtonRequestChat|null $requestChat = null,
+        public KeyboardButtonRequestChat|null  $requestChat = null,
 
         /**
          * Optional. If True, the user's phone number will be sent as a contact when the button is pressed.
@@ -53,7 +53,7 @@ final readonly class KeyboardButton extends Type
 
         /**
          * Optional. If specified, the described Web App will be launched when the button is pressed.
-         * The Web App will be able to send a “web_app_data” service message.
+         * The Web App will be able to send a "web_app_data" service message.
          * Available in private chats only.
          */
         public WebAppInfo|null $webApp = null,

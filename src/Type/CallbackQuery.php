@@ -33,10 +33,9 @@ final readonly class CallbackQuery extends Type implements TypeDenormalizable
         public string $chatInstance,
 
         /**
-         * Optional. Message with the callback button that originated the query.
-         * Note that message content and message date will not be available if the message is too old
+         * Optional. Message sent by the bot with the callback button that originated the query
          */
-        public Message|null $message = null,
+        public MaybeInaccessibleMessage|null $message = null,
 
         /**
          * Optional. Identifier of the message sent via the bot in inline mode, that originated the query.

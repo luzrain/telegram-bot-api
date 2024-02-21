@@ -9,7 +9,7 @@ namespace Luzrain\TelegramBotApi;
  *
  * @see https://core.telegram.org/bots/api#available-methods
  *
- * @template T
+ * @template TReturn
  */
 abstract class Method implements \JsonSerializable
 {

@@ -33,11 +33,7 @@ readonly class MenuButton extends Type implements TypeDenormalizable
         /** @var self $instance */
         $instance = parent::fromArray($data);
 
-        if (self::class !== static::class) {
-            return $instance;
-        }
-
-        return match ($instance->type) {
+        return self::class !== static::class ? $instance : match ($instance->type) {
             'commands' => MenuButtonCommands::fromArray($data),
             'web_app' => MenuButtonWebApp::fromArray($data),
             'default' => MenuButtonDefault::fromArray($data),

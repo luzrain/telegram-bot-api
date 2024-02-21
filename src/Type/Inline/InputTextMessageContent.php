@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
 use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\Type\LinkPreviewOptions;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
 /**
@@ -20,6 +21,8 @@ final readonly class InputTextMessageContent extends Type implements InputMessag
 
         /**
          * Optional. Mode for parsing entities in the message text. See formatting options for more details.
+         *
+         * @link https://core.telegram.org/bots/api#formatting-options
          */
         public string|null $parseMode = null,
 
@@ -31,9 +34,9 @@ final readonly class InputTextMessageContent extends Type implements InputMessag
         public array|null $entities = null,
 
         /**
-         * Optional. Disables link previews for links in the sent message
+         * Optional. Link preview generation options for the message
          */
-        public bool|null $disableWebPagePreview = null,
+        public LinkPreviewOptions|null $linkPreviewOptions = null,
     ) {
     }
 }

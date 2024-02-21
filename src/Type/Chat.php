@@ -61,12 +61,44 @@ final readonly class Chat extends Type implements TypeDenormalizable
         public array|null $activeUsernames = null,
 
         /**
-         * Optional. Custom emoji identifier of emoji status of the other party in a private chat. Returned only in getChat.
+         * Optional. List of available reactions allowed in the chat. If omitted, then all emoji reactions are allowed. Returned only in getChat.
+         *
+         * @var null|list<ReactionType>
+         */
+        public array|null $availableReactions = null,
+
+        /**
+         * Optional. Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header, and link preview.
+         * See accent colors for more details. Returned only in getChat. Always returned in getChat.
+         */
+        public int|null $accentColorId = null,
+
+        /**
+         * Optional. Custom emoji identifier of emoji chosen by the chat for the reply header and link preview background.
+         * Returned only in getChat.
+         */
+        public string|null $backgroundCustomEmojiId = null,
+
+        /**
+         * Optional. Identifier of the accent color for the chat's profile background. See profile accent colors for more details.
+         * Returned only in getChat.
+         */
+        public string|null $profileAccentColorId = null,
+
+        /**
+         * Optional. Custom emoji identifier of the emoji chosen by the chat for its profile background. Returned only in getChat.
+         */
+        public string|null $profileBackgroundCustomEmojiId = null,
+
+        /**
+         * Optional. Custom emoji identifier of the emoji status of the chat or the other party in a private chat.
+         * Returned only in getChat.
          */
         public string|null $emojiStatusCustomEmojiId = null,
 
         /**
-         * Optional. Expiration date of the emoji status of the other party in a private chat, if any. Returned only in getChat.
+         * Optional. Expiration date of the emoji status of the chat or the other party in a private chat, in Unix time, if any.
+         * Returned only in getChat.
          */
         public int|null $emojiStatusExpirationDate = null,
 
@@ -76,8 +108,8 @@ final readonly class Chat extends Type implements TypeDenormalizable
         public string|null $bio = null,
 
         /**
-         * Optional. True, if privacy settings of the other party in the private chat allows to use tg://user?id=<user_id> links only in chats with the user.
-         * Returned only in getChat.
+         * Optional. True, if privacy settings of the other party in the private chat allows to use tg://user?id=<user_id>
+         * links only in chats with the user. Returned only in getChat.
          */
         public true|null $hasPrivateForwards = null,
 
@@ -145,6 +177,12 @@ final readonly class Chat extends Type implements TypeDenormalizable
          * Optional. True, if messages from the chat can't be forwarded to other chats. Returned only in getChat.
          */
         public true|null $hasProtectedContent = null,
+
+        /**
+         * Optional. True, if new chat members will have access to old messages; available only to chat administrators.
+         * Returned only in getChat.
+         */
+        public true|null $hasVisibleHistory = null,
 
         /**
          * Optional. For supergroups, name of group sticker set. Returned only in getChat.

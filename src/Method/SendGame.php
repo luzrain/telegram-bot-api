@@ -7,6 +7,7 @@ namespace Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\Message;
+use Luzrain\TelegramBotApi\Type\ReplyParameters;
 
 /**
  * Use this method to send a game. On success, the sent Message is returned.
@@ -45,14 +46,9 @@ final class SendGame extends Method
         protected bool|null $protectContent = null,
 
         /**
-         * If the message is a reply, ID of the original message
+         * Description of the message to reply to
          */
-        protected int|null $replyToMessageId = null,
-
-        /**
-         * Pass True if the message should be sent even if the specified replied-to message is not found
-         */
-        protected bool|null $allowSendingWithoutReply = null,
+        protected ReplyParameters|null $replyParameters = null,
 
         /**
          * A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title' button will be shown.

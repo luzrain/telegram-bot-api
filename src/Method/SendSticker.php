@@ -11,6 +11,7 @@ use Luzrain\TelegramBotApi\Type\InputFile;
 use Luzrain\TelegramBotApi\Type\Message;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
+use Luzrain\TelegramBotApi\Type\ReplyParameters;
 
 /**
  * Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers. On success, the sent Message is returned.
@@ -55,14 +56,9 @@ final class SendSticker extends Method
         protected bool|null $protectContent = null,
 
         /**
-         * If the message is a reply, ID of the original message
+         * Description of the message to reply to
          */
-        protected int|null $replyToMessageId = null,
-
-        /**
-         * Pass True if the message should be sent even if the specified replied-to message is not found
-         */
-        protected bool|null $allowSendingWithoutReply = null,
+        protected ReplyParameters|null $replyParameters = null,
 
         /**
          * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard,

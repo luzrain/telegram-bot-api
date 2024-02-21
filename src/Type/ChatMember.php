@@ -36,11 +36,7 @@ readonly class ChatMember extends Type implements TypeDenormalizable
         /** @var self $instance */
         $instance = parent::fromArray($data);
 
-        if (self::class !== static::class) {
-            return $instance;
-        }
-
-        return match ($instance->status) {
+        return self::class !== static::class ? $instance : match ($instance->status) {
             'creator' => ChatMemberOwner::fromArray($data),
             'administrator' => ChatMemberAdministrator::fromArray($data),
             'member' => ChatMemberMember::fromArray($data),

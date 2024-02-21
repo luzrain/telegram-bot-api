@@ -19,7 +19,7 @@ use Luzrain\TelegramBotApi\TypeDenormalizable;
 /**
  * This object represents a message.
  */
-final readonly class Message extends Type implements TypeDenormalizable
+final readonly class Message extends Type implements MaybeInaccessibleMessage, TypeDenormalizable
 {
     protected function __construct(
         /**
@@ -28,12 +28,12 @@ final readonly class Message extends Type implements TypeDenormalizable
         public int $messageId,
 
         /**
-         * Date the message was sent in Unix time
+         * Date the message was sent in Unix time. It is always a positive number, representing a valid date.
          */
         public int $date,
 
         /**
-         * Conversation the message belongs to
+         * Chat the message belongs to
          */
         public Chat $chat,
 
@@ -57,35 +57,9 @@ final readonly class Message extends Type implements TypeDenormalizable
         public Chat|null $senderChat = null,
 
         /**
-         * Optional. For forwarded messages, sender of the original message
+         * Optional. Information about the original message for forwarded messages
          */
-        public User|null $forwardFrom = null,
-
-        /**
-         * Optional. For messages forwarded from channels or from anonymous administrators, information about the original sender chat
-         */
-        public Chat|null $forwardFromChat = null,
-
-        /**
-         * Optional. For messages forwarded from channels, identifier of the original message in the channel
-         */
-        public int|null $forwardFromMessageId = null,
-
-        /**
-         * Optional. For forwarded messages that were originally sent in channels or by an anonymous chat administrator,
-         * signature of the message sender if present
-         */
-        public string|null $forwardSignature = null,
-
-        /**
-         * Optional. Sender's name for messages forwarded from users who disallow adding a link to their account in forwarded messages
-         */
-        public string|null $forwardSenderName = null,
-
-        /**
-         * Optional. For forwarded messages, date the original message was sent in Unix time
-         */
-        public int|null $forwardDate = null,
+        public MessageOrigin|null $forwardOrigin = null,
 
         /**
          * Optional. True, if the message is sent to a forum topic
@@ -102,6 +76,16 @@ final readonly class Message extends Type implements TypeDenormalizable
          * reply_to_message fields even if it itself is a reply.
          */
         public Message|null $replyToMessage = null,
+
+        /**
+         * Optional. Information about the message that is being replied to, which may come from another chat or forum topic
+         */
+        public ExternalReplyInfo|null $externalReply = null,
+
+        /**
+         * Optional. For replies that quote part of the original message, the quoted part of the message
+         */
+        public TextQuote|null $quote = null,
 
         /**
          * Optional. Bot through which the message was sent
@@ -140,6 +124,11 @@ final readonly class Message extends Type implements TypeDenormalizable
          */
         #[PropertyType(ArrayOfMessageEntityType::class)]
         public array|null $entities = null,
+
+        /**
+         * Optional. Options used for link preview generation for the message, if it is a text message and link preview options were changed
+         */
+        public LinkPreviewOptions|null $linkPreviewOptions = null,
 
         /**
          * Optional. Message is an animation, information about the animation.
@@ -220,6 +209,8 @@ final readonly class Message extends Type implements TypeDenormalizable
 
         /**
          * Optional. Message is a game, information about the game.
+         *
+         * @llink https://core.telegram.org/bots/api#games
          */
         public Game|null $game = null,
 
@@ -310,12 +301,14 @@ final readonly class Message extends Type implements TypeDenormalizable
 
         /**
          * Optional. Specified message was pinned.
-         * Note that the Message object in this field will not contain further reply_to_message fields even if it is itself a reply.
+         * Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
          */
-        public Message|null $pinnedMessage = null,
+        public MaybeInaccessibleMessage|null $pinnedMessage = null,
 
         /**
          * Optional. Message is an invoice for a payment, information about the invoice.
+         *
+         * @link https://core.telegram.org/bots/api#payments
          */
         public Invoice|null $invoice = null,
 
@@ -325,9 +318,9 @@ final readonly class Message extends Type implements TypeDenormalizable
         public SuccessfulPayment|null $successfulPayment = null,
 
         /**
-         * Optional. Service message: a user was shared with the bot
+         * Optional. Service message: users were shared with the bot
          */
-        public UserShared|null $userShared = null,
+        public UsersShared|null $usersShared = null,
 
         /**
          * Optional. Service message: a chat was shared with the bot
@@ -383,6 +376,26 @@ final readonly class Message extends Type implements TypeDenormalizable
          * Optional. Service message: the 'General' forum topic unhidden
          */
         public GeneralForumTopicUnhidden|null $generalForumTopicUnhidden = null,
+
+        /**
+         * Optional. Service message: a scheduled giveaway was created
+         */
+        public GiveawayCreated|null $giveawayCreated = null,
+
+        /**
+         * Optional. The message is a scheduled giveaway message
+         */
+        public Giveaway|null $giveaway = null,
+
+        /**
+         * Optional. A giveaway with public winners was completed
+         */
+        public GiveawayWinners|null $giveawayWinners = null,
+
+        /**
+         * Optional. Service message: a giveaway without public winners was completed
+         */
+        public GiveawayCompleted|null $giveawayCompleted = null,
 
         /**
          * Optional. Service message: video chat scheduled

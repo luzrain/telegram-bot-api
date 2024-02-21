@@ -11,6 +11,7 @@ use Luzrain\TelegramBotApi\Type\InputMediaDocument;
 use Luzrain\TelegramBotApi\Type\InputMediaPhoto;
 use Luzrain\TelegramBotApi\Type\InputMediaVideo;
 use Luzrain\TelegramBotApi\Type\Message;
+use Luzrain\TelegramBotApi\Type\ReplyParameters;
 
 /**
  * Use this method to send a group of photos, videos, documents or audios as an album.
@@ -53,14 +54,9 @@ final class SendMediaGroup extends Method
         protected bool|null $protectContent = null,
 
         /**
-         * If the messages are a reply, ID of the original message
+         * Description of the message to reply to
          */
-        protected int|null $replyToMessageId = null,
-
-        /**
-         * Pass True if the message should be sent even if the specified replied-to message is not found
-         */
-        protected bool|null $allowSendingWithoutReply = null,
+        protected ReplyParameters|null $replyParameters = null,
     ) {
     }
 }

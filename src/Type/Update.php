@@ -18,21 +18,6 @@ use Luzrain\TelegramBotApi\TypeDenormalizable;
  */
 final readonly class Update extends Type implements TypeDenormalizable
 {
-    public const MESSAGE_TYPE = 'message';
-    public const EDITED_MESSAGE_TYPE = 'edited_message';
-    public const CHANNEL_POST_TYPE = 'channel_post';
-    public const EDITED_CHANNEL_POST_TYPE = 'edited_channel_post';
-    public const INLINE_QUERY_TYPE = 'inline_query';
-    public const CHOSEN_INLINE_RESULT_TYPE = 'chosen_inline_result';
-    public const CALLBACK_QUERY_TYPE = 'callback_query';
-    public const SHIPPING_QUERY_TYPE = 'shipping_query';
-    public const PRE_CHECKOUT_QUERY_TYPE = 'pre_checkout_query';
-    public const POLL_TYPE = 'poll';
-    public const POLL_ANSWER_TYPE = 'poll_answer';
-    public const MY_CHAT_MEMBER_TYPE = 'my_chat_member';
-    public const CHAT_MEMBER_TYPE = 'chat_member';
-    public const CHAT_JOIN_REQUEST_TYPE = 'chat_join_request';
-
     protected function __construct(
         /**
          * The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially.
@@ -61,6 +46,20 @@ final readonly class Update extends Type implements TypeDenormalizable
          * Optional. New version of a channel post that is known to the bot and was edited
          */
         public Message|null $editedChannelPost = null,
+
+        /**
+         * Optional. A reaction to a message was changed by a user.
+         * The bot must be an administrator in the chat and must explicitly specify "message_reaction" in the list of
+         * allowed_updates to receive these updates. The update isn't received for reactions set by bots.
+         */
+        public MessageReactionUpdated|null $messageReaction = null,
+
+        /**
+         * Optional. Reactions to a message with anonymous reactions were changed.
+         * The bot must be an administrator in the chat and must explicitly specify "message_reaction_count" in the list of
+         * allowed_updates to receive these updates. The updates are grouped and can be sent with delay up to a few minutes.
+         */
+        public MessageReactionCountUpdated|null $messageReactionCount = null,
 
         /**
          * Optional. New incoming inline query
@@ -115,6 +114,16 @@ final readonly class Update extends Type implements TypeDenormalizable
          * The bot must have the can_invite_users administrator right in the chat to receive these updates.
          */
         public ChatJoinRequest|null $chatJoinRequest = null,
+
+        /**
+         * Optional. A chat boost was added or changed. The bot must be an administrator in the chat to receive these updates.
+         */
+        public ChatBoostUpdated|null $chatBoost = null,
+
+        /**
+         * Optional. A boost was removed from a chat. The bot must be an administrator in the chat to receive these updates.
+         */
+        public ChatBoostRemoved|null $removedChatBoost = null,
     ) {
     }
 

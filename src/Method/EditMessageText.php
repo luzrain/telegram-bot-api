@@ -6,6 +6,7 @@ namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
+use Luzrain\TelegramBotApi\Type\LinkPreviewOptions;
 use Luzrain\TelegramBotApi\Type\Message;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
@@ -58,9 +59,9 @@ final class EditMessageText extends Method
         protected array|null $entities = null,
 
         /**
-         * Disables link previews for links in this message
+         * Link preview generation options for the message
          */
-        protected bool|null $disableWebPagePreview = null,
+        protected LinkPreviewOptions|null $linkPreviewOptions = null,
 
         /**
          * A JSON-serialized object for an inline keyboard.
