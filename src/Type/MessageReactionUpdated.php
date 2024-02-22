@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\PropertyType;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfReactionType;
 use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
@@ -35,7 +34,7 @@ final readonly class MessageReactionUpdated extends Type implements TypeDenormal
          *
          * @var list<ReactionType>
          */
-        #[PropertyType(ArrayOfReactionType::class)]
+        #[ArrayType(ReactionType::class)]
         public array $oldReaction,
 
         /**
@@ -43,7 +42,7 @@ final readonly class MessageReactionUpdated extends Type implements TypeDenormal
          *
          * @var list<ReactionType>
          */
-        #[PropertyType(ArrayOfReactionType::class)]
+        #[ArrayType(ReactionType::class)]
         public array $newReaction,
 
         /**

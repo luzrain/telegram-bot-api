@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\Method;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfUpdatesType;
 use Luzrain\TelegramBotApi\Type\Update;
 
 /**
@@ -17,7 +16,8 @@ use Luzrain\TelegramBotApi\Type\Update;
 final class GetUpdates extends Method
 {
     protected static string $methodName = 'getUpdates';
-    protected static string $responseClass = ArrayOfUpdatesType::class;
+    protected static string $responseClass = Update::class;
+    protected static bool $isArrayOfResponse = true;
 
     public function __construct(
         /**

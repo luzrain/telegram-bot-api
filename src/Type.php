@@ -29,11 +29,17 @@ abstract readonly class Type implements \JsonSerializable
         foreach ($reflClass->getConstructor()->getParameters() as $reflParameter) {
             $property = $reflParameter->getName();
             $propertyKey = StringUtils::toSnakeCase($property);
-            $attributeType = $reflParameter->getAttributes(PropertyType::class)[0] ?? null;
-            /** @psalm-suppress UndefinedMethod */
-            $propertyType = $attributeType?->getArguments()[0] ?? $reflParameter->getType()->getName();
 
-            if (isset($data[$propertyKey])) {
+            if (!isset($data[$propertyKey])) {
+                continue;
+            }
+
+            /** @var ArrayType|null $arrayType */
+            $arrayType = ($reflParameter->getAttributes(ArrayType::class)[0] ?? null)?->newInstance();
+            if ($arrayType !== null) {
+                $constructorMap[$property] = $arrayType->create((array) $data[$propertyKey]);
+            } else {
+                $propertyType = $reflParameter->getType()->getName();
                 $constructorMap[$property] = \is_subclass_of($propertyType, TypeDenormalizable::class)
                     ? $propertyType::fromArray((array) $data[$propertyKey])
                     : $data[$propertyKey]

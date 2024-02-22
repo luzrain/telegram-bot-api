@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\PropertyType;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPhotoSizeType;
 use Luzrain\TelegramBotApi\Type\Games\Game;
 use Luzrain\TelegramBotApi\Type\Payments\Invoice;
 use Luzrain\TelegramBotApi\Type\Stickers\Sticker;
@@ -58,7 +57,7 @@ final readonly class ExternalReplyInfo extends Type implements TypeDenormalizabl
          *
          * @var list<PhotoSize>|null
          */
-        #[PropertyType(ArrayOfPhotoSizeType::class)]
+        #[ArrayType(PhotoSize::class)]
         public array|null $photo = null,
 
         /**

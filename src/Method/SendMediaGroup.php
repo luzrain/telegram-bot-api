@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\Method;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessagesType;
 use Luzrain\TelegramBotApi\Type\InputMediaAudio;
 use Luzrain\TelegramBotApi\Type\InputMediaDocument;
 use Luzrain\TelegramBotApi\Type\InputMediaPhoto;
@@ -23,7 +22,8 @@ use Luzrain\TelegramBotApi\Type\ReplyParameters;
 final class SendMediaGroup extends Method
 {
     protected static string $methodName = 'sendMediaGroup';
-    protected static string $responseClass = ArrayOfMessagesType::class;
+    protected static string $responseClass = Message::class;
+    protected static bool $isArrayOfResponse = true;
 
     public function __construct(
         /**

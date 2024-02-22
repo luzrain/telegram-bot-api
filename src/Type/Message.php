@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\PropertyType;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessageEntityType;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfPhotoSizeType;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfUserType;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type\Games\Game;
 use Luzrain\TelegramBotApi\Type\Passport\PassportData;
 use Luzrain\TelegramBotApi\Type\Payments\Invoice;
@@ -130,7 +127,7 @@ final readonly class Message extends MaybeInaccessibleMessage
          *
          * @var list<MessageEntity>|null
          */
-        #[PropertyType(ArrayOfMessageEntityType::class)]
+        #[ArrayType(MessageEntity::class)]
         public array|null $entities = null,
 
         /**
@@ -159,7 +156,7 @@ final readonly class Message extends MaybeInaccessibleMessage
          *
          * @var list<PhotoSize>|null
          */
-        #[PropertyType(ArrayOfPhotoSizeType::class)]
+        #[ArrayType(PhotoSize::class)]
         public array|null $photo = null,
 
         /**
@@ -197,7 +194,7 @@ final readonly class Message extends MaybeInaccessibleMessage
          *
          * @var list<MessageEntity>|null
          */
-        #[PropertyType(ArrayOfMessageEntityType::class)]
+        #[ArrayType(MessageEntity::class)]
         public array|null $captionEntities = null,
 
         /**
@@ -243,7 +240,7 @@ final readonly class Message extends MaybeInaccessibleMessage
          *
          * @var list<User>|null
          */
-        #[PropertyType(ArrayOfUserType::class)]
+        #[ArrayType(User::class)]
         public array|null $newChatMembers = null,
 
         /**
@@ -261,7 +258,7 @@ final readonly class Message extends MaybeInaccessibleMessage
          *
          * @var list<PhotoSize>|null
          */
-        #[PropertyType(ArrayOfPhotoSizeType::class)]
+        #[ArrayType(PhotoSize::class)]
         public array|null $newChatPhoto = null,
 
         /**

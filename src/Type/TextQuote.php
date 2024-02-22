@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\PropertyType;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessageEntityType;
 use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
@@ -26,7 +25,7 @@ final readonly class TextQuote extends Type implements TypeDenormalizable
          *
          * @var list<MessageEntity>|null
          */
-        #[PropertyType(ArrayOfMessageEntityType::class)]
+        #[ArrayType(MessageEntity::class)]
         public array|null $entities = null,
 
         /**

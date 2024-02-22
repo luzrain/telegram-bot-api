@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\Method;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfStickersType;
 use Luzrain\TelegramBotApi\Type\Stickers\Sticker;
 
 /**
@@ -17,7 +16,8 @@ use Luzrain\TelegramBotApi\Type\Stickers\Sticker;
 final class GetForumTopicIconStickers extends Method
 {
     protected static string $methodName = 'getForumTopicIconStickers';
-    protected static string $responseClass = ArrayOfStickersType::class;
+    protected static string $responseClass = Sticker::class;
+    protected static bool $isArrayOfResponse = true;
 
     public function __construct()
     {

@@ -97,11 +97,7 @@ final class BotApi
             return $response['result'];
         }
 
-        /** @var class-string<Type> $responseClass */
-        $responseClass = $method->getResponseClass();
-
-        /** @psalm-suppress InvalidReturnStatement */
-        return $responseClass::fromArray($response['result']);
+        return $method->createResponse($response['result']);
     }
 
     /**
@@ -133,7 +129,7 @@ final class BotApi
         $inStream = \fopen($downloadFilePath, 'w');
 
         while (!$outStream->eof()) {
-            $data = $outStream->read(1024);
+            $data = $outStream->read(10240);
             \fwrite($inStream, $data);
         }
 

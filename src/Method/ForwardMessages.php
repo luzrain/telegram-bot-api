@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\Method;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfMessageIdType;
 use Luzrain\TelegramBotApi\Type\MessageId;
 
 /**
@@ -19,7 +18,8 @@ use Luzrain\TelegramBotApi\Type\MessageId;
 final class ForwardMessages extends Method
 {
     protected static string $methodName = 'forwardMessages';
-    protected static string $responseClass = ArrayOfMessageIdType::class;
+    protected static string $responseClass = MessageId::class;
+    protected static bool $isArrayOfResponse = true;
 
     public function __construct(
         /**

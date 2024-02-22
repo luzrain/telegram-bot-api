@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\Method;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfGameHighScoreType;
 use Luzrain\TelegramBotApi\Type\Games\GameHighScore;
 
 /**
@@ -17,7 +16,8 @@ use Luzrain\TelegramBotApi\Type\Games\GameHighScore;
 final class GetGameHighScores extends Method
 {
     protected static string $methodName = 'getGameHighScores';
-    protected static string $responseClass = ArrayOfGameHighScoreType::class;
+    protected static string $responseClass = GameHighScore::class;
+    protected static bool $isArrayOfResponse = true;
 
     public function __construct(
         /**

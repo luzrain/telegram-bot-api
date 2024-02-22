@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\PropertyType;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfChatType;
 use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
@@ -20,7 +19,7 @@ final readonly class Giveaway extends Type implements TypeDenormalizable
          *
          * @var list<Chat>
          */
-        #[PropertyType(ArrayOfChatType::class)]
+        #[ArrayType(Chat::class)]
         public array $chats,
 
         /**

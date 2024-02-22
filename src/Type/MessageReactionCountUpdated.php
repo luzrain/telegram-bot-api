@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\PropertyType;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfReactionCountType;
 use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
@@ -35,7 +34,7 @@ final readonly class MessageReactionCountUpdated extends Type implements TypeDen
          *
          * @var list<ReactionCount>
          */
-        #[PropertyType(ArrayOfReactionCountType::class)]
+        #[ArrayType(ReactionCount::class)]
         public array $reactions,
     ) {
     }

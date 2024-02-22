@@ -7,6 +7,10 @@ namespace Luzrain\TelegramBotApi\Event;
 use Luzrain\TelegramBotApi\Event;
 use Luzrain\TelegramBotApi\Type;
 
+/**
+ * A change of a reaction on a message performed by a user.
+ * The bot must explicitly allow the update "message_reaction" to receive it.
+ */
 final class MessageReactionUpdated extends Event
 {
     public function executeChecker(Type\Update $update): bool

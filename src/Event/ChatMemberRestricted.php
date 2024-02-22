@@ -8,6 +8,9 @@ use Luzrain\TelegramBotApi\Event;
 use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type;
 
+/**
+ * The bot must explicitly allow the update "chat_member" to receive it.
+ */
 final class ChatMemberRestricted extends Event
 {
     public function executeChecker(Type\Update $update): bool

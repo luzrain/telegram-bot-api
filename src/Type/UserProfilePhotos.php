@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\PropertyType;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfArrayOfPhotoSizeType;
 use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
@@ -25,7 +24,7 @@ final readonly class UserProfilePhotos extends Type implements TypeDenormalizabl
          *
          * @var list<list<PhotoSize>>
          */
-        #[PropertyType(ArrayOfArrayOfPhotoSizeType::class)]
+        #[ArrayType(PhotoSize::class, arrayOfArray: true)]
         public array $photos,
     ) {
     }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\Method;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfBotCommandType;
 use Luzrain\TelegramBotApi\Type\BotCommand;
 use Luzrain\TelegramBotApi\Type\BotCommandScope;
 
@@ -18,7 +17,8 @@ use Luzrain\TelegramBotApi\Type\BotCommandScope;
 final class GetMyCommands extends Method
 {
     protected static string $methodName = 'getMyCommands';
-    protected static string $responseClass = ArrayOfBotCommandType::class;
+    protected static string $responseClass = BotCommand::class;
+    protected static bool $isArrayOfResponse = true;
 
     public function __construct(
         /**

@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\PropertyType;
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\Type\Arrays\ArrayOfEncryptedPassportElementType;
 use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
@@ -20,7 +19,7 @@ final readonly class PassportData extends Type implements TypeDenormalizable
          *
          * @var list<EncryptedPassportElement>
          */
-        #[PropertyType(ArrayOfEncryptedPassportElementType::class)]
+        #[ArrayType(EncryptedPassportElement::class)]
         public array $data,
 
         /**

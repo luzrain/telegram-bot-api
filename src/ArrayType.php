@@ -7,27 +7,44 @@ namespace Luzrain\TelegramBotApi;
 /**
  * @internal
  */
-abstract class ArrayType implements TypeDenormalizable
+#[\Attribute(\Attribute::TARGET_PROPERTY | \Attribute::TARGET_PARAMETER)]
+final readonly class ArrayType
 {
-    protected static string $type;
-
-    private function __construct()
+    /**
+     * @param class-string<Type> $type
+     */
+    public function __construct(public string $type, private bool $arrayOfArray = false)
     {
     }
 
     /**
-     * @psalm-suppress LessSpecificImplementedReturnType
-     * @return array|list<Type>|list<list<Type>>
+     * @return list<Type>
      */
-    public static function fromArray(array $data): array
+    public function create(array $data): array
     {
-        /** @var TypeDenormalizable $type */
-        $type = static::$type;
+        return $this->arrayOfArray ? self::createArrayOfArray($this->type, $data) : self::createArray($this->type, $data);
+    }
+
+    /**
+     * @param class-string<TypeDenormalizable> $type
+     * @return list<Type>
+     */
+    public static function createArray(string $type, array $data): array
+    {
         $array = [];
         foreach ($data as $item) {
             $array[] = $type::fromArray($item);
         }
 
         return $array;
+    }
+
+    /**
+     * @param class-string<TypeDenormalizable> $type
+     * @return list<list<Type>>
+     */
+    public static function createArrayOfArray(string $type, array $data): array
+    {
+        return \array_map(fn(array $array) => self::createArray($type, $array), $data);
     }
 }

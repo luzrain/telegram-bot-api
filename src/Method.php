@@ -14,18 +14,30 @@ namespace Luzrain\TelegramBotApi;
 abstract class Method implements \JsonSerializable
 {
     protected static string $methodName;
+    /** @var class-string<TypeDenormalizable> */
     protected static string $responseClass;
+    protected static bool $isArrayOfResponse = false;
 
     public function getName(): string
     {
         return static::$methodName;
     }
 
-    public function getResponseClass(): string
+    /**
+     * @return list<Type>|Type
+     */
+    public function createResponse(array $data): array|Type
     {
-        return static::$responseClass;
+        if (static::$isArrayOfResponse) {
+            return ArrayType::createArray(static::$responseClass, $data);
+        } else {
+            return (static::$responseClass)::fromArray($data);
+        }
     }
 
+    /**
+     * @return \Generator<string>
+     */
     public function iterateRequestProps(): \Generator
     {
         foreach ($this as $key => $value) {
