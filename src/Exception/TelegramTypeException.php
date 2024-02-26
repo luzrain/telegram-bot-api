@@ -8,7 +8,7 @@ use Luzrain\TelegramBotApi\StringUtils;
 
 final class TelegramTypeException extends \Exception
 {
-    public static function missingKeys(array $data, \ReflectionClass $refl, \Throwable $previous): self
+    public static function createExceptionWithMissingKeys(\ReflectionClass $refl, \Throwable $previous, array $data): self
     {
         $requiredProps = [];
         foreach ($refl->getProperties() as $reflProperty) {
@@ -23,7 +23,7 @@ final class TelegramTypeException extends \Exception
         return new self($message, 0, $previous);
     }
 
-    public static function parseError(\ReflectionClass $refl, \Throwable $previous): self
+    public static function createException(\ReflectionClass $refl, \Throwable $previous): self
     {
         $objectName = $refl->getShortName();
         $reason = $previous->getMessage();

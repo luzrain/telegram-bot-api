@@ -18,22 +18,22 @@ use Luzrain\TelegramBotApi\TypeDenormalizable;
  */
 final readonly class Update extends Type implements TypeDenormalizable
 {
-    public const MESSAGE_TYPE = 'message';
-    public const EDITED_MESSAGE_TYPE = 'edited_message';
-    public const CHANNEL_POST_TYPE = 'channel_post';
-    public const EDITED_CHANNEL_POST_TYPE = 'edited_channel_post';
-    public const MESSAGE_REACTION_TYPE = 'message_reaction';
-    public const MESSAGE_REACTION_COUNT_TYPE = 'message_reaction_count';
-    public const INLINE_QUERY_TYPE = 'inline_query';
-    public const CHOSEN_INLINE_RESULT_TYPE = 'chosen_inline_result';
-    public const CALLBACK_QUERY_TYPE = 'callback_query';
-    public const SHIPPING_QUERY_TYPE = 'shipping_query';
-    public const PRE_CHECKOUT_QUERY_TYPE = 'pre_checkout_query';
-    public const POLL_TYPE = 'poll';
-    public const POLL_ANSWER_TYPE = 'poll_answer';
-    public const MY_CHAT_MEMBER_TYPE = 'my_chat_member';
-    public const CHAT_MEMBER_TYPE = 'chat_member';
-    public const CHAT_JOIN_REQUEST_TYPE = 'chat_join_request';
+    private const UPDATE_TYPES = [
+        'message',
+        'edited_message',
+        'channel_post',
+        'edited_channel_post',
+        'inline_query',
+        'chosen_inline_result',
+        'callback_query',
+        'shipping_query',
+        'pre_checkout_query',
+        'poll',
+        'poll_answer',
+        'my_chat_member',
+        'chat_member',
+        'chat_join_request',
+    ];
 
     protected function __construct(
         /**
@@ -153,9 +153,14 @@ final readonly class Update extends Type implements TypeDenormalizable
         try {
             $data = \json_decode(json: $json, associative: true, flags: JSON_THROW_ON_ERROR);
         } catch (\JsonException $e) {
-            throw TelegramTypeException::parseError(new \ReflectionClass(self::class), $e);
+            throw TelegramTypeException::createException(new \ReflectionClass(self::class), $e);
         }
 
         return self::fromArray($data);
+    }
+
+    public static function getUpdateTypes(): array
+    {
+        return self::UPDATE_TYPES;
     }
 }
