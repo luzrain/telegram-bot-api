@@ -24,22 +24,4 @@ readonly class InputMedia extends Type
         public string $type,
     ) {
     }
-
-    /**
-     * @psalm-suppress LessSpecificReturnStatement
-     * @psalm-suppress MoreSpecificReturnType
-     */
-    public static function fromArray(array $data): static
-    {
-        /** @var self $instance */
-        $instance = parent::fromArray($data);
-
-        return self::class !== static::class ? $instance : match ($instance->type) {
-            InputMediaAnimation::TYPE => InputMediaAnimation::fromArray($data),
-            InputMediaDocument::TYPE => InputMediaDocument::fromArray($data),
-            InputMediaAudio::TYPE => InputMediaAudio::fromArray($data),
-            InputMediaPhoto::TYPE => InputMediaPhoto::fromArray($data),
-            InputMediaVideo::TYPE => InputMediaVideo::fromArray($data),
-        };
-    }
 }

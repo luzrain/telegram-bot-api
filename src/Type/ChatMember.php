@@ -36,12 +36,12 @@ readonly class ChatMember extends Type
         $instance = parent::fromArray($data);
 
         return self::class !== static::class ? $instance : match ($instance->status) {
-            'creator' => ChatMemberOwner::fromArray($data),
-            'administrator' => ChatMemberAdministrator::fromArray($data),
-            'member' => ChatMemberMember::fromArray($data),
-            'restricted' => ChatMemberRestricted::fromArray($data),
-            'left' => ChatMemberLeft::fromArray($data),
-            'kicked' => ChatMemberBanned::fromArray($data),
+            ChatMemberOwner::STATUS => ChatMemberOwner::fromArray($data),
+            ChatMemberAdministrator::STATUS => ChatMemberAdministrator::fromArray($data),
+            ChatMemberMember::STATUS => ChatMemberMember::fromArray($data),
+            ChatMemberRestricted::STATUS => ChatMemberRestricted::fromArray($data),
+            ChatMemberLeft::STATUS => ChatMemberLeft::fromArray($data),
+            ChatMemberBanned::STATUS => ChatMemberBanned::fromArray($data),
         };
     }
 }

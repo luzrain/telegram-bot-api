@@ -33,9 +33,9 @@ readonly class MenuButton extends Type
         $instance = parent::fromArray($data);
 
         return self::class !== static::class ? $instance : match ($instance->type) {
-            'commands' => MenuButtonCommands::fromArray($data),
-            'web_app' => MenuButtonWebApp::fromArray($data),
-            'default' => MenuButtonDefault::fromArray($data),
+            MenuButtonCommands::TYPE => MenuButtonCommands::fromArray($data),
+            MenuButtonWebApp::TYPE => MenuButtonWebApp::fromArray($data),
+            MenuButtonDefault::TYPE => MenuButtonDefault::fromArray($data),
         };
     }
 }

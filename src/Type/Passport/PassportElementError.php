@@ -28,26 +28,4 @@ readonly class PassportElementError extends Type
         public string $source,
     ) {
     }
-
-    /**
-     * @psalm-suppress LessSpecificReturnStatement
-     * @psalm-suppress MoreSpecificReturnType
-     */
-    public static function fromArray(array $data): static
-    {
-        /** @var self $instance */
-        $instance = parent::fromArray($data);
-
-        return self::class !== static::class ? $instance : match ($instance->source) {
-            PassportElementErrorDataField::SOURCE => PassportElementErrorDataField::fromArray($data),
-            PassportElementErrorFrontSide::SOURCE => PassportElementErrorFrontSide::fromArray($data),
-            PassportElementErrorReverseSide::SOURCE => PassportElementErrorReverseSide::fromArray($data),
-            PassportElementErrorSelfie::SOURCE => PassportElementErrorSelfie::fromArray($data),
-            PassportElementErrorFile::SOURCE => PassportElementErrorFile::fromArray($data),
-            PassportElementErrorFiles::SOURCE => PassportElementErrorFiles::fromArray($data),
-            PassportElementErrorTranslationFile::SOURCE => PassportElementErrorTranslationFile::fromArray($data),
-            PassportElementErrorTranslationFiles::SOURCE => PassportElementErrorTranslationFiles::fromArray($data),
-            PassportElementErrorUnspecified::SOURCE => PassportElementErrorUnspecified::fromArray($data),
-        };
-    }
 }

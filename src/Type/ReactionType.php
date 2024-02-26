@@ -32,8 +32,8 @@ readonly class ReactionType extends Type
         $instance = parent::fromArray($data);
 
         return self::class !== static::class ? $instance : match ($instance->type) {
-            'emoji' => ReactionTypeEmoji::fromArray($data),
-            'custom_emoji' => ReactionTypeCustomEmoji::fromArray($data),
+            ReactionTypeEmoji::TYPE => ReactionTypeEmoji::fromArray($data),
+            ReactionTypeCustomEmoji::TYPE => ReactionTypeCustomEmoji::fromArray($data),
         };
     }
 }

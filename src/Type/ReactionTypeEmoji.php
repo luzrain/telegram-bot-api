@@ -9,6 +9,8 @@ namespace Luzrain\TelegramBotApi\Type;
  */
 final readonly class ReactionTypeEmoji extends ReactionType
 {
+    public const TYPE = 'emoji';
+
     public function __construct(
         /**
          * Reaction emoji. Currently, it can be one of "👍", "👎", "❤", "🔥", "🥰", "👏", "😁", "🤔", "🤯", "😱", "🤬", "😢", "🎉",
@@ -18,6 +20,6 @@ final readonly class ReactionTypeEmoji extends ReactionType
          */
         public string $emoji,
     ) {
-        parent::__construct('emoji');
+        parent::__construct(self::TYPE);
     }
 }

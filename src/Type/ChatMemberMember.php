@@ -9,12 +9,14 @@ namespace Luzrain\TelegramBotApi\Type;
  */
 final readonly class ChatMemberMember extends ChatMember
 {
+    public const STATUS = 'member';
+
     protected function __construct(
         /**
          * Information about the user
          */
         public User $user,
     ) {
-        parent::__construct('member');
+        parent::__construct(self::STATUS);
     }
 }

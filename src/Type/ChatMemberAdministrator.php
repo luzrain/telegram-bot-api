@@ -9,6 +9,8 @@ namespace Luzrain\TelegramBotApi\Type;
  */
 final readonly class ChatMemberAdministrator extends ChatMember
 {
+    public const STATUS = 'administrator';
+
     protected function __construct(
         /**
          * Information about the user
@@ -102,6 +104,6 @@ final readonly class ChatMemberAdministrator extends ChatMember
          */
         public string|null $customTitle = null,
     ) {
-        parent::__construct('administrator');
+        parent::__construct(self::STATUS);
     }
 }
