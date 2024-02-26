@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object describes the origin of a message. It can be one of
@@ -15,7 +14,7 @@ use Luzrain\TelegramBotApi\TypeDenormalizable;
  * @see MessageOriginChat
  * @see MessageOriginChannel
  */
-readonly class MessageOrigin extends Type implements TypeDenormalizable
+readonly class MessageOrigin extends Type
 {
     protected function __construct(
         /**

@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a file uploaded to Telegram Passport.
  * Currently all Telegram Passport files are in JPEG format when decrypted and don't exceed 10MB.
  */
-final readonly class PassportFile extends Type implements TypeDenormalizable
+final readonly class PassportFile extends Type
 {
     protected function __construct(
         /**

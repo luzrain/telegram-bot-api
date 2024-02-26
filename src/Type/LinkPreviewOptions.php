@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Describes the options used for link preview generation.
  */
-final readonly class LinkPreviewOptions extends Type implements TypeDenormalizable
+final readonly class LinkPreviewOptions extends Type
 {
     public function __construct(
         /**

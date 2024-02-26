@@ -37,7 +37,7 @@ abstract class Method implements \JsonSerializable
         $responseClass = static::$responseClass;
 
         return match(true) {
-            \is_array($data) && \is_subclass_of($responseClass, TypeDenormalizable::class) => $responseClass::fromArray($data),
+            \is_array($data) && \is_subclass_of($responseClass, Type::class) => $responseClass::fromArray($data),
             \is_array($data) && static::$isArrayOfResponse => ArrayType::createArray($responseClass, $data),
             \is_array($data) && static::$isArrayOfArrayOfResponse => ArrayType::createArrayOfArray($responseClass, $data),
             default => $data,

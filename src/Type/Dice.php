@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents an animated emoji that displays a random value.
  */
-final readonly class Dice extends Type implements TypeDenormalizable
+final readonly class Dice extends Type
 {
     protected function __construct(
         /**

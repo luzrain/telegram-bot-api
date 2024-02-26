@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a boost removed from a chat.
  */
-final readonly class ChatBoostRemoved extends Type implements TypeDenormalizable
+final readonly class ChatBoostRemoved extends Type
 {
     public function __construct(
         /**

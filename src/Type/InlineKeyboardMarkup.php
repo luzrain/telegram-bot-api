@@ -6,12 +6,11 @@ namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents an inline keyboard that appears right next to the message it belongs to.
  */
-final readonly class InlineKeyboardMarkup extends Type implements TypeDenormalizable
+final readonly class InlineKeyboardMarkup extends Type
 {
     /**
      * Array of button rows, each represented by an Array of InlineKeyboardButton objects

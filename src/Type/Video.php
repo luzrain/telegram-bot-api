@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a video file.
  */
-final readonly class Video extends Type implements TypeDenormalizable
+final readonly class Video extends Type
 {
     protected function __construct(
         /**

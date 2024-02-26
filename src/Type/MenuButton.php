@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object describes the bot's menu button in a private chat. It should be one of
@@ -14,7 +13,7 @@ use Luzrain\TelegramBotApi\TypeDenormalizable;
  * @see MenuButtonWebApp
  * @see MenuButtonDefault
  */
-readonly class MenuButton extends Type implements TypeDenormalizable
+readonly class MenuButton extends Type
 {
     protected function __construct(
         /**

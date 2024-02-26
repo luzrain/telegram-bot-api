@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a service message about a video chat scheduled in the chat.
  */
-final readonly class VideoChatScheduled extends Type implements TypeDenormalizable
+final readonly class VideoChatScheduled extends Type
 {
     protected function __construct(
         /**

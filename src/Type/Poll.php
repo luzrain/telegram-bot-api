@@ -6,12 +6,11 @@ namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object contains information about a poll.
  */
-final readonly class Poll extends Type implements TypeDenormalizable
+final readonly class Poll extends Type
 {
     protected function __construct(
         /**

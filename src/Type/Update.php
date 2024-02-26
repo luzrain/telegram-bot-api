@@ -10,13 +10,12 @@ use Luzrain\TelegramBotApi\Type\Inline\ChosenInlineResult;
 use Luzrain\TelegramBotApi\Type\Inline\InlineQuery;
 use Luzrain\TelegramBotApi\Type\Payments\PreCheckoutQuery;
 use Luzrain\TelegramBotApi\Type\Payments\ShippingQuery;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents an incoming update.
  * At most one of the optional parameters can be present in any given update.
  */
-final readonly class Update extends Type implements TypeDenormalizable
+final readonly class Update extends Type
 {
     private const UPDATE_TYPES = [
         'message',

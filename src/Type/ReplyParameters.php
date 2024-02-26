@@ -6,12 +6,11 @@ namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Describes reply parameters for the message that is being sent.
  */
-final readonly class ReplyParameters extends Type implements TypeDenormalizable
+final readonly class ReplyParameters extends Type
 {
     public function __construct(
         /**

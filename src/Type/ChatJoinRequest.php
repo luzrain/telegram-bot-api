@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Represents a join request sent to a chat.
  */
-final readonly class ChatJoinRequest extends Type implements TypeDenormalizable
+final readonly class ChatJoinRequest extends Type
 {
     protected function __construct(
         /**

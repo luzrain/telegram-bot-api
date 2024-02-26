@@ -7,12 +7,11 @@ namespace Luzrain\TelegramBotApi\Type\Stickers;
 use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\PhotoSize;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a sticker set.
  */
-final readonly class StickerSet extends Type implements TypeDenormalizable
+final readonly class StickerSet extends Type
 {
     protected function __construct(
         /**

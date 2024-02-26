@@ -9,12 +9,11 @@ use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Games\Game;
 use Luzrain\TelegramBotApi\Type\Payments\Invoice;
 use Luzrain\TelegramBotApi\Type\Stickers\Sticker;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object contains information about a message that is being replied to, which may come from another chat or forum topic.
  */
-final readonly class ExternalReplyInfo extends Type implements TypeDenormalizable
+final readonly class ExternalReplyInfo extends Type
 {
     public function __construct(
         /**

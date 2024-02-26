@@ -6,12 +6,11 @@ namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a list of boosts added to a chat by a user.
  */
-final readonly class UserChatBoosts extends Type implements TypeDenormalizable
+final readonly class UserChatBoosts extends Type
 {
     public function __construct(
         /**

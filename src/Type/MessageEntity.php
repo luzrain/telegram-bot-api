@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
  */
-final readonly class MessageEntity extends Type implements TypeDenormalizable
+final readonly class MessageEntity extends Type
 {
     public const TYPE_MENTION = 'mention';
     public const TYPE_HASHTAG = 'hashtag';

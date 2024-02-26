@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Stickers;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object describes the position on faces where a mask should be placed by default.
  */
-final readonly class MaskPosition extends Type implements TypeDenormalizable
+final readonly class MaskPosition extends Type
 {
     public function __construct(
         /**

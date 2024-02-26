@@ -6,12 +6,11 @@ namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object contains information about the quoted part of a message that is replied to by the given message.
  */
-final readonly class TextQuote extends Type implements TypeDenormalizable
+final readonly class TextQuote extends Type
 {
     public function __construct(
         /**

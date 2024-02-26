@@ -7,13 +7,12 @@ namespace Luzrain\TelegramBotApi\Type\Inline;
 use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Location;
 use Luzrain\TelegramBotApi\Type\User;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents an incoming inline query.
  * When the user sends an empty query, your bot could return some default or trending results.
  */
-final readonly class InlineQuery extends Type implements TypeDenormalizable
+final readonly class InlineQuery extends Type
 {
     protected function __construct(
         /**

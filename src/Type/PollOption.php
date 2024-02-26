@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object contains information about one answer option in a poll.
  */
-final readonly class PollOption extends Type implements TypeDenormalizable
+final readonly class PollOption extends Type
 {
     protected function __construct(
         /**

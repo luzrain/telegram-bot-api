@@ -6,12 +6,11 @@ namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a message about a scheduled giveaway.
  */
-final readonly class Giveaway extends Type implements TypeDenormalizable
+final readonly class Giveaway extends Type
 {
     protected function __construct(
         /**

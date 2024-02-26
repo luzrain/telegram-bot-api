@@ -6,12 +6,11 @@ namespace Luzrain\TelegramBotApi\Type\Passport;
 
 use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Describes documents or other Telegram Passport elements shared with the bot by the user.
  */
-final readonly class EncryptedPassportElement extends Type implements TypeDenormalizable
+final readonly class EncryptedPassportElement extends Type
 {
     protected function __construct(
         /**

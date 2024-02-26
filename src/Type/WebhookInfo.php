@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Describes the current status of a webhook.
  */
-final readonly class WebhookInfo extends Type implements TypeDenormalizable
+final readonly class WebhookInfo extends Type
 {
     protected function __construct(
         /**

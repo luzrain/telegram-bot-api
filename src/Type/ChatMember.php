@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object contains information about one member of a chat. Currently, the following 6 types of chat members are supported:
@@ -17,7 +16,7 @@ use Luzrain\TelegramBotApi\TypeDenormalizable;
  * @see ChatMemberLeft
  * @see ChatMemberBanned
  */
-readonly class ChatMember extends Type implements TypeDenormalizable
+readonly class ChatMember extends Type
 {
     protected function __construct(
         /**

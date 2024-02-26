@@ -20,10 +20,6 @@ abstract readonly class Type implements \JsonSerializable
      */
     public static function fromArray(array $data): static
     {
-        if (!\is_subclass_of(static::class, TypeDenormalizable::class)) {
-            throw new \Exception(\sprintf('%s should implement %s to perform %s method', static::class, TypeDenormalizable::class, __FUNCTION__));
-        }
-
         $reflClass = new \ReflectionClass(static::class);
         $constructorMap = [];
         foreach ($reflClass->getConstructor()->getParameters() as $reflParameter) {
@@ -41,7 +37,7 @@ abstract readonly class Type implements \JsonSerializable
             } else {
                 /** @psalm-suppress UndefinedMethod */
                 $propertyType = $reflParameter->getType()->getName();
-                $constructorMap[$property] = \is_subclass_of($propertyType, TypeDenormalizable::class)
+                $constructorMap[$property] = \is_subclass_of($propertyType, self::class)
                     ? $propertyType::fromArray((array) $data[$propertyKey])
                     : $data[$propertyKey]
                 ;
