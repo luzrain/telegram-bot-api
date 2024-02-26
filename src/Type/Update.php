@@ -23,6 +23,8 @@ final readonly class Update extends Type implements TypeDenormalizable
         'edited_message',
         'channel_post',
         'edited_channel_post',
+        'message_reaction',
+        'message_reaction_count',
         'inline_query',
         'chosen_inline_result',
         'callback_query',
@@ -33,6 +35,8 @@ final readonly class Update extends Type implements TypeDenormalizable
         'my_chat_member',
         'chat_member',
         'chat_join_request',
+        'chat_boost',
+        'removed_chat_boost',
     ];
 
     protected function __construct(
