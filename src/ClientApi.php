@@ -6,6 +6,7 @@ namespace Luzrain\TelegramBotApi;
 
 use Luzrain\TelegramBotApi\Exception\TelegramCallbackException;
 use Luzrain\TelegramBotApi\Exception\TelegramTypeException;
+use Luzrain\TelegramBotApi\Internal\EventCollection;
 use Luzrain\TelegramBotApi\Type\Update;
 
 /**

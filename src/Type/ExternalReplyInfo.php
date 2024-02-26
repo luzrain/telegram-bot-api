@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\ArrayType;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Games\Game;
 use Luzrain\TelegramBotApi\Type\Payments\Invoice;

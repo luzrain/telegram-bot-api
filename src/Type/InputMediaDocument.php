@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\ArrayType;
-use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 
 /**
  * Represents a general file to be sent.

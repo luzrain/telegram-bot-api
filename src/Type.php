@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi;
 
 use Luzrain\TelegramBotApi\Exception\TelegramTypeException;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
+use Luzrain\TelegramBotApi\Internal\StringUtils;
 
 /**
  * Base class for Telegram Types
