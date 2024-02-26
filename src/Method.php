@@ -4,19 +4,21 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi;
 
+use Luzrain\TelegramBotApi\Exception\TelegramTypeException;
+
 /**
  * Base class for Telegram Method
  *
  * @see https://core.telegram.org/bots/api#available-methods
  *
- * @template TReturn
+ * @template TReturn of Type|list<Type>|list<list<Type>>|int|string|bool
  */
 abstract class Method implements \JsonSerializable
 {
     protected static string $methodName;
-    /** @var class-string<TypeDenormalizable> */
-    protected static string $responseClass;
+    protected static string $responseClass = '';
     protected static bool $isArrayOfResponse = false;
+    protected static bool $isArrayOfArrayOfResponse = false;
 
     public function getName(): string
     {
@@ -24,15 +26,22 @@ abstract class Method implements \JsonSerializable
     }
 
     /**
-     * @return list<Type>|Type
+     * @return TReturn
+     * @throws TelegramTypeException
+     * @psalm-suppress MoreSpecificReturnType
+     * @psalm-suppress LessSpecificReturnStatement
      */
-    public function createResponse(array $data): array|Type
+    public function createResponse(array|int|string|bool $data): Type|array|int|string|bool
     {
-        if (static::$isArrayOfResponse) {
-            return ArrayType::createArray(static::$responseClass, $data);
-        } else {
-            return (static::$responseClass)::fromArray($data);
-        }
+        /** @var class-string<Type> $responseClass */
+        $responseClass = static::$responseClass;
+
+        return match(true) {
+            \is_array($data) && \is_subclass_of($responseClass, TypeDenormalizable::class) => $responseClass::fromArray($data),
+            \is_array($data) && static::$isArrayOfResponse => ArrayType::createArray($responseClass, $data),
+            \is_array($data) && static::$isArrayOfArrayOfResponse => ArrayType::createArrayOfArray($responseClass, $data),
+            default => $data,
+        };
     }
 
     /**

@@ -41,11 +41,11 @@ final class BotApi
     /**
      * Execute telergam method
      *
-     * @template T
-     * @psalm-param Method<T> $method
-     * @psalm-return T
+     * @template TReturn of Type|list<Type>|list<list<Type>>|int|string|bool
+     * @param Method<TReturn> $method
+     * @return TReturn
      */
-    public function call(Method $method): Type|array|string|int|bool
+    public function call(Method $method): Type|array|int|string|bool
     {
         $url = \sprintf(self::URL_API_ENDPOINT, $this->token, $method->getName());
         $multiparts = [];
@@ -91,10 +91,6 @@ final class BotApi
         if ($response['ok'] === false) {
             $parameters = isset($response['parameters']) ? ResponseParameters::fromArray($response['parameters']) : null;
             throw new TelegramApiException($response['description'], $response['error_code'], $parameters);
-        }
-
-        if (!\is_array($response['result'])) {
-            return $response['result'];
         }
 
         return $method->createResponse($response['result']);

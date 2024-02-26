@@ -39,6 +39,7 @@ abstract readonly class Type implements \JsonSerializable
             if ($arrayType !== null) {
                 $constructorMap[$property] = $arrayType->create((array) $data[$propertyKey]);
             } else {
+                /** @psalm-suppress UndefinedMethod */
                 $propertyType = $reflParameter->getType()->getName();
                 $constructorMap[$property] = \is_subclass_of($propertyType, TypeDenormalizable::class)
                     ? $propertyType::fromArray((array) $data[$propertyKey])
