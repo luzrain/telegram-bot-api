@@ -4,17 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\Type;
-
 /**
  * Represents an issue with the selfie with a document. The error is considered resolved when the file with the selfie changes.
  */
-final readonly class PassportElementErrorSelfie extends Type implements PassportElementError
+final readonly class PassportElementErrorSelfie extends PassportElementError
 {
-    /**
-     * Error source, must be selfie
-     */
-    public string $source;
+    public const SOURCE = 'selfie';
 
     public function __construct(
         /**
@@ -33,6 +28,6 @@ final readonly class PassportElementErrorSelfie extends Type implements Passport
          */
         public string $message,
     ) {
-        $this->source = 'selfie';
+        parent::__construct(self::SOURCE);
     }
 }

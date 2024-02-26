@@ -5,17 +5,13 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\ArrayType;
-use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents a video to be sent.
  */
-final readonly class InputMediaVideo extends Type implements InputMedia
+final readonly class InputMediaVideo extends InputMedia
 {
-    /**
-     * Type of the result, must be video
-     */
-    public string $type;
+    public const TYPE = 'video';
 
     public function __construct(
         /**
@@ -82,6 +78,6 @@ final readonly class InputMediaVideo extends Type implements InputMedia
          */
         public bool|null $hasSpoiler = null,
     ) {
-        $this->type = 'video';
+        parent::__construct(self::TYPE);
     }
 }

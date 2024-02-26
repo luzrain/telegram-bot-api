@@ -4,17 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\Type;
-
 /**
  * Represents an issue with the front side of a document. The error is considered resolved when the file with the front side of the document changes.
  */
-final readonly class PassportElementErrorFrontSide extends Type implements PassportElementError
+final readonly class PassportElementErrorFrontSide extends PassportElementError
 {
-    /**
-     * Error source, must be front_side
-     */
-    public string $source;
+    public const SOURCE = 'front_side';
 
     public function __construct(
         /**
@@ -33,6 +28,6 @@ final readonly class PassportElementErrorFrontSide extends Type implements Passp
          */
         public string $message,
     ) {
-        $this->source = 'front_side';
+        parent::__construct(self::SOURCE);
     }
 }

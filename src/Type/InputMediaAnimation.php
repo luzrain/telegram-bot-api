@@ -5,17 +5,13 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\ArrayType;
-use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
  */
-final readonly class InputMediaAnimation extends Type implements InputMedia
+final readonly class InputMediaAnimation extends InputMedia
 {
-    /**
-     * Type of the result, must be animation
-     */
-    public string $type;
+    public const TYPE = 'animation';
 
     public function __construct(
         /**
@@ -77,6 +73,6 @@ final readonly class InputMediaAnimation extends Type implements InputMedia
          */
         public bool|null $hasSpoiler = null,
     ) {
-        $this->type = 'animation';
+        parent::__construct(self::TYPE);
     }
 }

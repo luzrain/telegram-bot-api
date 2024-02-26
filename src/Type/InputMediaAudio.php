@@ -5,17 +5,13 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\ArrayType;
-use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents an audio file to be treated as music to be sent.
  */
-final readonly class InputMediaAudio extends Type implements InputMedia
+final readonly class InputMediaAudio extends InputMedia
 {
-    /**
-     * Type of the result, must be audio
-     */
-    public string $type;
+    public const TYPE = 'audio';
 
     public function __construct(
         /**
@@ -72,6 +68,6 @@ final readonly class InputMediaAudio extends Type implements InputMedia
          */
         public string|null $title = null,
     ) {
-        $this->type = 'audio';
+        parent::__construct(self::TYPE);
     }
 }

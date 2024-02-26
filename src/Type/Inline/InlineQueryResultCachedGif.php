@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
 use Luzrain\TelegramBotApi\ArrayType;
-use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
@@ -14,12 +13,9 @@ use Luzrain\TelegramBotApi\Type\MessageEntity;
  * By default, this animated GIF file will be sent by the user with an optional caption.
  * Alternatively, you can use input_message_content to send a message with specified content instead of the animation.
  */
-final readonly class InlineQueryResultCachedGif extends Type implements InlineQueryResult
+final readonly class InlineQueryResultCachedGif extends InlineQueryResult
 {
-    /**
-     * Type of the result, must be gif
-     */
-    public string $type;
+    public const TYPE = 'gif';
 
     public function __construct(
         /**
@@ -67,6 +63,6 @@ final readonly class InlineQueryResultCachedGif extends Type implements InlineQu
          */
         public InputMessageContent|null $inputMessageContent = null,
     ) {
-        $this->type = 'gif';
+        parent::__construct(self::TYPE);
     }
 }

@@ -4,17 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\Type;
-
 /**
  * Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field's value changes.
  */
-final readonly class PassportElementErrorDataField extends Type implements PassportElementError
+final readonly class PassportElementErrorDataField extends PassportElementError
 {
-    /**
-     * Error source, must be data
-     */
-    public string $source;
+    public const SOURCE = 'data';
 
     public function __construct(
         /**
@@ -38,6 +33,6 @@ final readonly class PassportElementErrorDataField extends Type implements Passp
          */
         public string $message,
     ) {
-        $this->source = 'data';
+        parent::__construct(self::SOURCE);
     }
 }

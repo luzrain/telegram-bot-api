@@ -5,17 +5,13 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\ArrayType;
-use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents a photo to be sent.
  */
-final readonly class InputMediaPhoto extends Type implements InputMedia
+final readonly class InputMediaPhoto extends InputMedia
 {
-    /**
-     * Type of the result, must be photo
-     */
-    public string $type;
+    public const TYPE = 'photo';
 
     public function __construct(
         /**
@@ -52,6 +48,6 @@ final readonly class InputMediaPhoto extends Type implements InputMedia
          */
         public bool|null $hasSpoiler = null,
     ) {
-        $this->type = 'photo';
+        parent::__construct(self::TYPE);
     }
 }

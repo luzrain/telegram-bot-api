@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
 use Luzrain\TelegramBotApi\ArrayType;
-use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
@@ -14,12 +13,9 @@ use Luzrain\TelegramBotApi\Type\MessageEntity;
  * By default, this photo will be sent by the user with an optional caption. Alternatively, you can use
  * input_message_content to send a message with the specified content instead of the photo.
  */
-final readonly class InlineQueryResultCachedPhoto extends Type implements InlineQueryResult
+final readonly class InlineQueryResultCachedPhoto extends InlineQueryResult
 {
-    /**
-     * Type of the result, must be photo
-     */
-    public string $type;
+    public const TYPE = 'photo';
 
     public function __construct(
         /**
@@ -72,6 +68,6 @@ final readonly class InlineQueryResultCachedPhoto extends Type implements Inline
          */
         public InputMessageContent|null $inputMessageContent = null,
     ) {
-        $this->type = 'photo';
+        parent::__construct(self::TYPE);
     }
 }

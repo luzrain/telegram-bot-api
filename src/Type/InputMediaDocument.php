@@ -10,12 +10,9 @@ use Luzrain\TelegramBotApi\Type;
 /**
  * Represents a general file to be sent.
  */
-final readonly class InputMediaDocument extends Type implements InputMedia
+final readonly class InputMediaDocument extends InputMedia
 {
-    /**
-     * Type of the result, must be document
-     */
-    public string $type;
+    public const TYPE = 'document';
 
     public function __construct(
         /**
@@ -63,6 +60,6 @@ final readonly class InputMediaDocument extends Type implements InputMedia
          */
         public bool|null $disableContentTypeDetection = null,
     ) {
-        $this->type = 'document';
+        parent::__construct(self::TYPE);
     }
 }
