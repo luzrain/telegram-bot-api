@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Payments;
 
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
 
 /**
@@ -27,6 +28,7 @@ final readonly class ShippingOption extends Type
          *
          * @var list<LabeledPrice>
          */
+        #[ArrayType(LabeledPrice::class)]
         public array $prices,
     ) {
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
 
 /**
@@ -64,6 +65,7 @@ final readonly class Chat extends Type
          *
          * @var null|list<ReactionType>
          */
+        #[ArrayType(ReactionType::class)]
         public array|null $availableReactions = null,
 
         /**

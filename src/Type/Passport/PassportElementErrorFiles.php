@@ -26,7 +26,7 @@ final readonly class PassportElementErrorFiles extends Type implements PassportE
         /**
          * List of base64-encoded file hashes
          *
-         * @var string[]
+         * @var list<string>
          */
         public array $fileHashes,
 

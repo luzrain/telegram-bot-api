@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Payments\LabeledPrice;
 
@@ -45,6 +46,7 @@ final readonly class InputInvoiceMessageContent extends Type implements InputMes
          *
          * @var list<LabeledPrice>
          */
+        #[ArrayType(LabeledPrice::class)]
         public array $prices,
 
         /**

@@ -18,6 +18,9 @@ final readonly class InlineKeyboardMarkup extends Type
     public array $inlineKeyboard;
 
     public function __construct(
+        /**
+         * Array of button rows, each represented by an Array of InlineKeyboardButton objects
+         */
         #[ArrayType(InlineKeyboardButton::class, arrayOfArray: true)]
         InlineKeyboardButtonArrayBuilder|array $inlineKeyboard,
     ) {

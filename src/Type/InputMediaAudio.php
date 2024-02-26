@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
+use Luzrain\TelegramBotApi\ArrayType;
 use Luzrain\TelegramBotApi\Type;
 
 /**
@@ -53,6 +54,7 @@ final readonly class InputMediaAudio extends Type implements InputMedia
          *
          * @var list<MessageEntity>|null
          */
+        #[ArrayType(MessageEntity::class)]
         public array|null $captionEntities = null,
 
         /**
