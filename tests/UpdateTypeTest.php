@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Test;
 
-use Luzrain\TelegramBotApi\Exception\TelegramTypeException;
-use Luzrain\TelegramBotApi\Test\Helper\TestTypeDenormalizable;
 use Luzrain\TelegramBotApi\Type\Chat;
 use Luzrain\TelegramBotApi\Type\ChatMember;
 use Luzrain\TelegramBotApi\Type\ChatMemberBanned;
