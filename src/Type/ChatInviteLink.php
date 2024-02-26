@@ -14,7 +14,7 @@ final readonly class ChatInviteLink extends Type implements TypeDenormalizable
 {
     protected function __construct(
         /**
-         * The invite link. If the link was created by another chat administrator, then the second part of the link will be replaced with “…”.
+         * The invite link. If the link was created by another chat administrator, then the second part of the link will be replaced with "…".
          */
         public string $inviteLink,
 

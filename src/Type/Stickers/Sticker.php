@@ -27,7 +27,7 @@ final readonly class Sticker extends Type implements TypeDenormalizable
         public string $fileUniqueId,
 
         /**
-         * Type of the sticker, currently one of “regular”, “mask”, “custom_emoji”.
+         * Type of the sticker, currently one of "regular", "mask", "custom_emoji".
          * The type of the sticker is independent from its format, which is determined by the fields is_animated and is_video.
          */
         public string $type,

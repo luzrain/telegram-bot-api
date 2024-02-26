@@ -43,12 +43,12 @@ final class CreateNewStickerSet extends Method
         protected array $stickers,
 
         /**
-         * Format of stickers in the set, must be one of “static”, “animated”, “video”
+         * Format of stickers in the set, must be one of "static", "animated", "video"
          */
         protected string $stickerFormat,
 
         /**
-         * Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”. By default, a regular sticker set is created.
+         * Type of stickers in the set, pass "regular", "mask", or "custom_emoji". By default, a regular sticker set is created.
          */
         protected string|null $stickerType = null,
 

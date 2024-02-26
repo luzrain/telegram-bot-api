@@ -35,7 +35,7 @@ final class UploadStickerFile extends Method
         protected InputFile $sticker,
 
         /**
-         * Format of the sticker, must be one of “static”, “animated”, “video”
+         * Format of the sticker, must be one of "static", "animated", "video"
          */
         protected string $stickerFormat,
     ) {

@@ -34,7 +34,7 @@ final readonly class Venue extends Type implements TypeDenormalizable
         public string|null $foursquareId = null,
 
         /**
-         * Optional. Foursquare type of the venue. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+         * Optional. Foursquare type of the venue. (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
          */
         public string|null $foursquareType = null,
 

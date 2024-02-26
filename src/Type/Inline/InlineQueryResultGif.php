@@ -51,7 +51,7 @@ final readonly class InlineQueryResultGif extends Type implements InlineQueryRes
         public int|null $gifDuration = null,
 
         /**
-         * Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
+         * Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg"
          */
         public string|null $thumbnailMimeType = null,
 

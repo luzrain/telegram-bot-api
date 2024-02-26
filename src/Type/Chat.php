@@ -19,7 +19,7 @@ final readonly class Chat extends Type implements TypeDenormalizable
         public int $id,
 
         /**
-         * Type of chat, can be either “private”, “group”, “supergroup” or “channel”
+         * Type of chat, can be either "private", "group", "supergroup" or "channel"
          */
         public string $type,
 

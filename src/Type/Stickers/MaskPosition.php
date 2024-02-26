@@ -14,7 +14,7 @@ final readonly class MaskPosition extends Type implements TypeDenormalizable
 {
     public function __construct(
         /**
-         * The part of the face relative to which the mask should be placed. One of “forehead”, “eyes”, “mouth”, or “chin”.
+         * The part of the face relative to which the mask should be placed. One of "forehead", "eyes", "mouth", or "chin".
          */
         public float $point,
 

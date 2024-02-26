@@ -26,7 +26,7 @@ final readonly class StickerSet extends Type implements TypeDenormalizable
         public string $title,
 
         /**
-         * Type of stickers in the set, currently one of “regular”, “mask”, “custom_emoji”
+         * Type of stickers in the set, currently one of "regular", "mask", "custom_emoji"
          */
         public string $stickerType,
 

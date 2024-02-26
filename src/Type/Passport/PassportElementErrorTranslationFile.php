@@ -18,8 +18,8 @@ final readonly class PassportElementErrorTranslationFile extends Type implements
 
     public function __construct(
         /**
-         * Type of element of the user's Telegram Passport which has the issue, one of“passport”, “driver_license”,“identity_card”,
-         * “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
+         * Type of element of the user's Telegram Passport which has the issue, one of"passport", "driver_license","identity_card",
+         * "internal_passport", "utility_bill", "bank_statement", "rental_agreement", "passport_registration", "temporary_registration"
          */
         public string $type,
 

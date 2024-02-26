@@ -48,7 +48,7 @@ final readonly class Poll extends Type implements TypeDenormalizable
         public bool $isAnonymous,
 
         /**
-         * Poll type, currently can be “regular” or “quiz”
+         * Poll type, currently can be "regular" or "quiz"
          */
         public string $type,
 

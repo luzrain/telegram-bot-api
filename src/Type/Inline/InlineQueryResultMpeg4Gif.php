@@ -52,7 +52,7 @@ final readonly class InlineQueryResultMpeg4Gif extends Type implements InlineQue
         public int|null $mpeg4Duration = null,
 
         /**
-         * Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
+         * Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg"
          */
         public string|null $thumbnailMimeType = null,
 

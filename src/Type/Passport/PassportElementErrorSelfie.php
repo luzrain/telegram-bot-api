@@ -19,7 +19,7 @@ final readonly class PassportElementErrorSelfie extends Type implements Passport
     public function __construct(
         /**
          * The section of the user's Telegram Passport which has the issue,
-         * one of “passport”, “driver_license”, “identity_card”, “internal_passport”
+         * one of "passport", "driver_license", "identity_card", "internal_passport"
          */
         public string $type,
 

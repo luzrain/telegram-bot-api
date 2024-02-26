@@ -54,7 +54,7 @@ final readonly class InlineQueryResultDocument extends Type implements InlineQue
         public string|null $documentUrl = null,
 
         /**
-         * Mime type of the content of the file, either “application/pdf” or “application/zip”
+         * Mime type of the content of the file, either "application/pdf" or "application/zip"
          */
         public string|null $mimeType = null,
 

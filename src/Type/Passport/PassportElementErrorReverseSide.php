@@ -19,7 +19,7 @@ final readonly class PassportElementErrorReverseSide extends Type implements Pas
     public function __construct(
         /**
          * The section of the user's Telegram Passport which has the issue,
-         * one of “driver_license”, “identity_card”
+         * one of "driver_license", "identity_card"
          */
         public string $type,
 

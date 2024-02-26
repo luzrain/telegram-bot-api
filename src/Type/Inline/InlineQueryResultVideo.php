@@ -32,7 +32,7 @@ final readonly class InlineQueryResultVideo extends Type implements InlineQueryR
         public string $videoUrl,
 
         /**
-         * Mime type of the content of video url, “text/html” or “video/mp4”
+         * Mime type of the content of video url, "text/html" or "video/mp4"
          */
         public string $mimeType,
 

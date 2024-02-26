@@ -19,7 +19,7 @@ final readonly class PassportElementErrorDataField extends Type implements Passp
     public function __construct(
         /**
          * The section of the user's Telegram Passport which has the error,
-         * one of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”
+         * one of "personal_details", "passport", "driver_license", "identity_card", "internal_passport", "address"
          */
         public string $type,
 
