@@ -4,18 +4,14 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 
 /**
  * Represents a Game.
  */
-final readonly class InlineQueryResultGame extends Type implements InlineQueryResult
+final readonly class InlineQueryResultGame extends InlineQueryResult
 {
-    /**
-     * Type of the result, must be game
-     */
-    public string $type;
+    public const TYPE = 'game';
 
     public function __construct(
         /**
@@ -33,6 +29,6 @@ final readonly class InlineQueryResultGame extends Type implements InlineQueryRe
          */
         public InlineKeyboardMarkup|null $replyMarkup = null,
     ) {
-        $this->type = 'game';
+        parent::__construct(self::TYPE);
     }
 }

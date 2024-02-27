@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents an audio file to be treated as music by the Telegram clients.
  */
-final readonly class Audio extends Type implements TypeDenormalizable
+final readonly class Audio extends Type
 {
     protected function __construct(
         /**

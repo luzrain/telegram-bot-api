@@ -5,16 +5,15 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Represents an invite link for a chat.
  */
-final readonly class ChatInviteLink extends Type implements TypeDenormalizable
+final readonly class ChatInviteLink extends Type
 {
     protected function __construct(
         /**
-         * The invite link. If the link was created by another chat administrator, then the second part of the link will be replaced with “…”.
+         * The invite link. If the link was created by another chat administrator, then the second part of the link will be replaced with "…".
          */
         public string $inviteLink,
 

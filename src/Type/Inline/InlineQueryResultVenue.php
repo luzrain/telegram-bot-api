@@ -11,12 +11,9 @@ use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
  * Represents a venue. By default, the venue will be sent by the user.
  * Alternatively, you can use input_message_content to send a message with the specified content instead of the venue.
  */
-final readonly class InlineQueryResultVenue extends Type implements InlineQueryResult
+final readonly class InlineQueryResultVenue extends InlineQueryResult
 {
-    /**
-     * Type of the result, must be venue
-     */
-    public string $type;
+    public const TYPE = 'venue';
 
     public function __construct(
         /**
@@ -50,7 +47,7 @@ final readonly class InlineQueryResultVenue extends Type implements InlineQueryR
         public string|null $foursquareId = null,
 
         /**
-         * Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+         * Optional. Foursquare type of the venue, if known. (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
          */
         public string|null $foursquareType = null,
 
@@ -91,6 +88,6 @@ final readonly class InlineQueryResultVenue extends Type implements InlineQueryR
          */
         public int|null $thumbnailHeight = null,
     ) {
-        $this->type = 'venue';
+        parent::__construct(self::TYPE);
     }
 }

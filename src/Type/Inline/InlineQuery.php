@@ -7,13 +7,12 @@ namespace Luzrain\TelegramBotApi\Type\Inline;
 use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Location;
 use Luzrain\TelegramBotApi\Type\User;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents an incoming inline query.
  * When the user sends an empty query, your bot could return some default or trending results.
  */
-final readonly class InlineQuery extends Type implements TypeDenormalizable
+final readonly class InlineQuery extends Type
 {
     protected function __construct(
         /**
@@ -38,7 +37,7 @@ final readonly class InlineQuery extends Type implements TypeDenormalizable
 
         /**
          * Optional. Type of the chat, from which the inline query was sent.
-         * Can be either “sender” for a private chat with the inline query sender, “private”, “group”, “supergroup”, or “channel”.
+         * Can be either "sender" for a private chat with the inline query sender, "private", "group", "supergroup", or "channel".
          * The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat
          */
         public string|null $chatType = null,

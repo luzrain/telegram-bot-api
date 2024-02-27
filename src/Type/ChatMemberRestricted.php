@@ -9,6 +9,8 @@ namespace Luzrain\TelegramBotApi\Type;
  */
 final readonly class ChatMemberRestricted extends ChatMember
 {
+    public const STATUS = 'restricted';
+
     protected function __construct(
         /**
          * Information about the user
@@ -95,6 +97,6 @@ final readonly class ChatMemberRestricted extends ChatMember
          */
         public int $untilDate,
     ) {
-        parent::__construct('restricted');
+        parent::__construct(self::STATUS);
     }
 }

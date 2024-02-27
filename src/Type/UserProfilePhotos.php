@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\ArrayType;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represent a user's profile pictures.
  */
-final readonly class UserProfilePhotos extends Type implements TypeDenormalizable
+final readonly class UserProfilePhotos extends Type
 {
     protected function __construct(
         /**

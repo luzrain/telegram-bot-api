@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\ArrayType;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object contains information about a poll.
  */
-final readonly class Poll extends Type implements TypeDenormalizable
+final readonly class Poll extends Type
 {
     protected function __construct(
         /**
@@ -48,7 +47,7 @@ final readonly class Poll extends Type implements TypeDenormalizable
         public bool $isAnonymous,
 
         /**
-         * Poll type, currently can be “regular” or “quiz”
+         * Poll type, currently can be "regular" or "quiz"
          */
         public string $type,
 

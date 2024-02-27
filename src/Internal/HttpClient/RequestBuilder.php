@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Luzrain\TelegramBotApi\HttpClient;
+namespace Luzrain\TelegramBotApi\Internal\HttpClient;
 
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
@@ -23,23 +23,20 @@ final class RequestBuilder
         $this->multipartStreamBuilder = new MultipartStreamBuilder($this->streamFactory);
     }
 
-    public function create(string $method, string $uri, array|string $body = '', array $headers = []): RequestInterface
+    public function create(string $method, string $uri, array|string $body = ''): RequestInterface
     {
         if (\is_string($body)) {
-            return $this->doCreateRequest($method, $uri, $headers, $this->streamFactory->createStream($body));
+            return $this->doCreateRequest($method, $uri, [], $this->streamFactory->createStream($body));
         }
 
-        foreach ($body as $item) {
-            $name = $item['name'];
-            $content = $item['content'];
-            unset($item['name'], $item['content']);
-            $this->multipartStreamBuilder->addResource($name, $content, $item);
+        foreach ($body as $name => $content) {
+            $this->multipartStreamBuilder->addResource($name, $content);
         }
 
         $multipartStream = $this->multipartStreamBuilder->build();
         $boundary = $this->multipartStreamBuilder->getBoundary();
         $this->multipartStreamBuilder->reset();
-
+        $headers = [];
         $headers['Content-Type'] = \sprintf('multipart/form-data; boundary="%s"', $boundary);
 
         return $this->doCreateRequest($method, $uri, $headers, $multipartStream);

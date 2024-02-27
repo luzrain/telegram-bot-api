@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Describes why a request was unsuccessful.
  */
-final readonly class ResponseParameters extends Type implements TypeDenormalizable
+final readonly class ResponseParameters extends Type
 {
     protected function __construct(
         /**

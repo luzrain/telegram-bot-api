@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a story.
  */
-final readonly class Story extends Type implements TypeDenormalizable
+final readonly class Story extends Type
 {
     public function __construct(
         /**

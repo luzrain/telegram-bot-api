@@ -7,12 +7,11 @@ namespace Luzrain\TelegramBotApi\Type\Stickers;
 use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\File;
 use Luzrain\TelegramBotApi\Type\PhotoSize;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a sticker.
  */
-final readonly class Sticker extends Type implements TypeDenormalizable
+final readonly class Sticker extends Type
 {
     protected function __construct(
         /**
@@ -27,7 +26,7 @@ final readonly class Sticker extends Type implements TypeDenormalizable
         public string $fileUniqueId,
 
         /**
-         * Type of the sticker, currently one of “regular”, “mask”, “custom_emoji”.
+         * Type of the sticker, currently one of "regular", "mask", "custom_emoji".
          * The type of the sticker is independent from its format, which is determined by the fields is_animated and is_video.
          */
         public string $type,

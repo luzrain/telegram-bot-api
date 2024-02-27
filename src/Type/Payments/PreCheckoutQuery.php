@@ -6,12 +6,11 @@ namespace Luzrain\TelegramBotApi\Type\Payments;
 
 use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\User;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object contains information about an incoming pre-checkout query.
  */
-final readonly class PreCheckoutQuery extends Type implements TypeDenormalizable
+final readonly class PreCheckoutQuery extends Type
 {
     protected function __construct(
         /**

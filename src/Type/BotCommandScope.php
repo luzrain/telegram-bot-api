@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
+use Luzrain\TelegramBotApi\Type;
+
 /**
  * This object represents the scope to which bot commands are applied. Currently, the following 7 scopes are supported:
  *
@@ -15,6 +17,13 @@ namespace Luzrain\TelegramBotApi\Type;
  * @see BotCommandScopeChatAdministrators
  * @see BotCommandScopeChatMember
  */
-interface BotCommandScope
+readonly class BotCommandScope extends Type
 {
+    protected function __construct(
+        /**
+         * Scope type
+         */
+        public string $type,
+    ) {
+    }
 }

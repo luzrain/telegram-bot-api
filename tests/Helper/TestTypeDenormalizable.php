@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Test\Helper;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
-final readonly class TestTypeDenormalizable extends Type implements TypeDenormalizable
+final readonly class TestTypeDenormalizable extends Type
 {
     protected function __construct(
         public int $test1,

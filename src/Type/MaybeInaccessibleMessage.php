@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object describes a message that can be inaccessible to the bot. It can be one of
@@ -17,7 +16,7 @@ use Luzrain\TelegramBotApi\TypeDenormalizable;
  * @property-read int $date Date the message was sent in Unix time
  * @property-read Chat $chat Chat the message belongs to
  */
-readonly class MaybeInaccessibleMessage extends Type implements TypeDenormalizable
+readonly class MaybeInaccessibleMessage extends Type
 {
     protected function __construct(private int $date)
     {

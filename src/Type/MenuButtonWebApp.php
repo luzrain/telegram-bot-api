@@ -9,6 +9,8 @@ namespace Luzrain\TelegramBotApi\Type;
  */
 final readonly class MenuButtonWebApp extends MenuButton
 {
+    public const TYPE = 'web_app';
+
     public function __construct(
         /**
          * Text on the button
@@ -21,6 +23,6 @@ final readonly class MenuButtonWebApp extends MenuButton
          */
         public WebAppInfo $webApp,
     ) {
-        parent::__construct('web_app');
+        parent::__construct(self::TYPE);
     }
 }

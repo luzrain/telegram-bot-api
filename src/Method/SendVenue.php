@@ -59,7 +59,7 @@ final class SendVenue extends Method
         protected string|null $foursquareId = null,
 
         /**
-         * Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+         * Foursquare type of the venue, if known. (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
          */
         protected string|null $foursquareType = null,
 

@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a service message about the completion of a giveaway without public winners.
  */
-final readonly class GiveawayCompleted extends Type implements TypeDenormalizable
+final readonly class GiveawayCompleted extends Type
 {
     protected function __construct(
         /**

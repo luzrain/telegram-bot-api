@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a general file (as opposed to photos, voice messages and audio files).
  */
-final readonly class Document extends Type implements TypeDenormalizable
+final readonly class Document extends Type
 {
     protected function __construct(
         /**

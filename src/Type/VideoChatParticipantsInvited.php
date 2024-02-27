@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\ArrayType;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a service message about new members invited to a video chat.
  */
-final readonly class VideoChatParticipantsInvited extends Type implements TypeDenormalizable
+final readonly class VideoChatParticipantsInvited extends Type
 {
     protected function __construct(
         /**

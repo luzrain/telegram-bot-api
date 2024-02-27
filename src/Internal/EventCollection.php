@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Luzrain\TelegramBotApi;
+namespace Luzrain\TelegramBotApi\Internal;
 
+use Luzrain\TelegramBotApi\Event;
+use Luzrain\TelegramBotApi\EventCallbackReturn;
 use Luzrain\TelegramBotApi\Type\Update;
 
 /**

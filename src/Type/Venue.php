@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a venue.
  */
-final readonly class Venue extends Type implements TypeDenormalizable
+final readonly class Venue extends Type
 {
     protected function __construct(
         /**
@@ -34,7 +33,7 @@ final readonly class Venue extends Type implements TypeDenormalizable
         public string|null $foursquareId = null,
 
         /**
-         * Optional. Foursquare type of the venue. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+         * Optional. Foursquare type of the venue. (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
          */
         public string|null $foursquareType = null,
 

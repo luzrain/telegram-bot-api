@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a file ready to be downloaded.
@@ -15,7 +14,7 @@ use Luzrain\TelegramBotApi\TypeDenormalizable;
  *
  * !Maximum file size to download is 20 MB!
  */
-final readonly class File extends Type implements TypeDenormalizable
+final readonly class File extends Type
 {
     protected function __construct(
         /**

@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Describes data required for decrypting and authenticating EncryptedPassportElement.
  * See the Telegram Passport Documentation for a complete description of the data decryption and authentication processes.
  */
-final readonly class EncryptedCredentials extends Type implements TypeDenormalizable
+final readonly class EncryptedCredentials extends Type
 {
     protected function __construct(
         /**

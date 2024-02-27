@@ -14,7 +14,7 @@ use Luzrain\TelegramBotApi\Type\InputFile;
  * Returns True on success.
  *
  * If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token.
- * If specified, the request will contain a header “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
+ * If specified, the request will contain a header "X-Telegram-Bot-Api-Secret-Token" with the secret token as content.
  *
  * @extends Method<true>
  */
@@ -46,7 +46,7 @@ final class SetWebhook extends Method
 
         /**
          * A JSON-serialized list of the update types you want your bot to receive.
-         * For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types.
+         * For example, specify ["message", "edited_channel_post", "callback_query"] to only receive updates of these types.
          * See Update for a complete list of available update types. Specify an empty list to receive all update types except
          * chat_member (default). If not specified, the previous setting will be used.
          * Please note that this parameter doesn't affect updates created before the call to the setWebhook,
@@ -62,7 +62,7 @@ final class SetWebhook extends Method
         protected bool|null $dropPendingUpdates = null,
 
         /**
-         * A secret token to be sent in a header “X-Telegram-Bot-Api-Secret-Token” in every webhook request, 1-256 characters.
+         * A secret token to be sent in a header "X-Telegram-Bot-Api-Secret-Token" in every webhook request, 1-256 characters.
          * Only characters A-Z, a-z, 0-9, _ and - are allowed. The header is useful to ensure that the request comes from a webhook set by you.
          */
         protected string|null $secretToken = null,

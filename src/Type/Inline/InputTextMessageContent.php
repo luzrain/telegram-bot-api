@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\LinkPreviewOptions;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
@@ -31,6 +32,7 @@ final readonly class InputTextMessageContent extends Type implements InputMessag
          *
          * @var list<MessageEntity>|null
          */
+        #[ArrayType(MessageEntity::class)]
         public array|null $entities = null,
 
         /**

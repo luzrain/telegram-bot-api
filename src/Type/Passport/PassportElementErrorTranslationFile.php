@@ -4,22 +4,17 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\Type;
-
 /**
  * Represents an issue with one of the files that constitute the translation of a document. The error is considered resolved when the file changes.
  */
-final readonly class PassportElementErrorTranslationFile extends Type implements PassportElementError
+final readonly class PassportElementErrorTranslationFile extends PassportElementError
 {
-    /**
-     * Error source, must be translation_file
-     */
-    protected string $source;
+    public const SOURCE = 'translation_file';
 
     public function __construct(
         /**
-         * Type of element of the user's Telegram Passport which has the issue, one of“passport”, “driver_license”,“identity_card”,
-         * “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
+         * Type of element of the user's Telegram Passport which has the issue, one of"passport", "driver_license","identity_card",
+         * "internal_passport", "utility_bill", "bank_statement", "rental_agreement", "passport_registration", "temporary_registration"
          */
         public string $type,
 
@@ -33,6 +28,6 @@ final readonly class PassportElementErrorTranslationFile extends Type implements
          */
         public string $message,
     ) {
-        $this->source = 'translation_file';
+        parent::__construct(self::SOURCE);
     }
 }

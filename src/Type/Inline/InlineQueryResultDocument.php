@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
@@ -13,12 +13,9 @@ use Luzrain\TelegramBotApi\Type\MessageEntity;
  * Alternatively, you can use input_message_content to send a message with the specified content instead of the file.
  * Currently, only .PDF and .ZIP files can be sent using this method.
  */
-final readonly class InlineQueryResultDocument extends Type implements InlineQueryResult
+final readonly class InlineQueryResultDocument extends InlineQueryResult
 {
-    /**
-     * Type of the result, must be document
-     */
-    public string $type;
+    public const TYPE = 'document';
 
     public function __construct(
         /**
@@ -46,6 +43,7 @@ final readonly class InlineQueryResultDocument extends Type implements InlineQue
          *
          * @var list<MessageEntity>|null
          */
+        #[ArrayType(MessageEntity::class)]
         public array|null $captionEntities = null,
 
         /**
@@ -54,7 +52,7 @@ final readonly class InlineQueryResultDocument extends Type implements InlineQue
         public string|null $documentUrl = null,
 
         /**
-         * Mime type of the content of the file, either “application/pdf” or “application/zip”
+         * Mime type of the content of the file, either "application/pdf" or "application/zip"
          */
         public string|null $mimeType = null,
 
@@ -88,6 +86,6 @@ final readonly class InlineQueryResultDocument extends Type implements InlineQue
          */
         public int|null $thumbnailHeight = null,
     ) {
-        $this->type = 'document';
+        parent::__construct(self::TYPE);
     }
 }

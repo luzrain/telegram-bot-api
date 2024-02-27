@@ -4,18 +4,14 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 
 /**
  * Represents a link to an article or web page.
  */
-final readonly class InlineQueryResultArticle extends Type implements InlineQueryResult
+final readonly class InlineQueryResultArticle extends InlineQueryResult
 {
-    /**
-     * Type of the result, must be article
-     */
-    public string $type;
+    public const TYPE = 'article';
 
     public function __construct(
         /**
@@ -68,6 +64,6 @@ final readonly class InlineQueryResultArticle extends Type implements InlineQuer
          */
         public int|null $thumbnailHeight = null,
     ) {
-        $this->type = 'article';
+        parent::__construct(self::TYPE);
     }
 }

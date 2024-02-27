@@ -4,22 +4,19 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 
 /**
  * Represents a photo to be sent.
  */
-final readonly class InputMediaPhoto extends Type implements InputMedia
+final readonly class InputMediaPhoto extends InputMedia
 {
-    /**
-     * Type of the result, must be photo
-     */
-    public string $type;
+    public const TYPE = 'photo';
 
     public function __construct(
         /**
          * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
-         * pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload
+         * pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload
          * a new one using multipart/form-data under <file_attach_name> name.
          *
          * @see https://core.telegram.org/bots/api#sending-files
@@ -43,6 +40,7 @@ final readonly class InputMediaPhoto extends Type implements InputMedia
          *
          * @var list<MessageEntity>|null
          */
+        #[ArrayType(MessageEntity::class)]
         public array|null $captionEntities = null,
 
         /**
@@ -50,6 +48,6 @@ final readonly class InputMediaPhoto extends Type implements InputMedia
          */
         public bool|null $hasSpoiler = null,
     ) {
-        $this->type = 'photo';
+        parent::__construct(self::TYPE);
     }
 }

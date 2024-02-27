@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
@@ -13,12 +13,9 @@ use Luzrain\TelegramBotApi\Type\MessageEntity;
  * By default, this video file will be sent by the user with an optional caption.
  * Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
  */
-final readonly class InlineQueryResultVideo extends Type implements InlineQueryResult
+final readonly class InlineQueryResultVideo extends InlineQueryResult
 {
-    /**
-     * Type of the result, must be video
-     */
-    public string $type;
+    public const TYPE = 'video';
 
     public function __construct(
         /**
@@ -32,7 +29,7 @@ final readonly class InlineQueryResultVideo extends Type implements InlineQueryR
         public string $videoUrl,
 
         /**
-         * Mime type of the content of video url, “text/html” or “video/mp4”
+         * Mime type of the content of video url, "text/html" or "video/mp4"
          */
         public string $mimeType,
 
@@ -61,6 +58,7 @@ final readonly class InlineQueryResultVideo extends Type implements InlineQueryR
          *
          * @var list<MessageEntity>|null
          */
+        #[ArrayType(MessageEntity::class)]
         public array|null $captionEntities = null,
 
         /**
@@ -94,6 +92,6 @@ final readonly class InlineQueryResultVideo extends Type implements InlineQueryR
          */
         public InputMessageContent|null $inputMessageContent = null,
     ) {
-        $this->type = 'video';
+        parent::__construct(self::TYPE);
     }
 }

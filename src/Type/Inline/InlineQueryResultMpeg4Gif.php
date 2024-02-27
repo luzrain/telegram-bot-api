@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
@@ -13,12 +13,9 @@ use Luzrain\TelegramBotApi\Type\MessageEntity;
  * By default, this animated MPEG-4 file will be sent by the user with optional caption. Alternatively,
  * you can use input_message_content to send a message with the specified content instead of the animation.
  */
-final readonly class InlineQueryResultMpeg4Gif extends Type implements InlineQueryResult
+final readonly class InlineQueryResultMpeg4Gif extends InlineQueryResult
 {
-    /**
-     * Type of the result, must be mpeg4_gif
-     */
-    public string $type;
+    public const TYPE = 'mpeg4_gif';
 
     public function __construct(
         /**
@@ -52,7 +49,7 @@ final readonly class InlineQueryResultMpeg4Gif extends Type implements InlineQue
         public int|null $mpeg4Duration = null,
 
         /**
-         * Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
+         * Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg"
          */
         public string|null $thumbnailMimeType = null,
 
@@ -76,6 +73,7 @@ final readonly class InlineQueryResultMpeg4Gif extends Type implements InlineQue
          *
          * @var list<MessageEntity>|null
          */
+        #[ArrayType(MessageEntity::class)]
         public array|null $captionEntities = null,
 
         /**
@@ -88,6 +86,6 @@ final readonly class InlineQueryResultMpeg4Gif extends Type implements InlineQue
          */
         public InputMessageContent|null $inputMessageContent = null,
     ) {
-        $this->type = 'mpeg4_gif';
+        parent::__construct(self::TYPE);
     }
 }

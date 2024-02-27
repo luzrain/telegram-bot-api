@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Luzrain\TelegramBotApi;
+namespace Luzrain\TelegramBotApi\Internal;
 
 /**
  * @internal

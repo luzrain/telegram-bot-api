@@ -7,12 +7,11 @@ namespace Luzrain\TelegramBotApi\Type\Inline;
 use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Location;
 use Luzrain\TelegramBotApi\Type\User;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Represents a result of an inline query that was chosen by the user and sent to their chat partner.
  */
-final readonly class ChosenInlineResult extends Type implements TypeDenormalizable
+final readonly class ChosenInlineResult extends Type
 {
     protected function __construct(
         /**

@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Represents a location to which a chat is connected.
  */
-final readonly class ChatLocation extends Type implements TypeDenormalizable
+final readonly class ChatLocation extends Type
 {
     protected function __construct(
         /**

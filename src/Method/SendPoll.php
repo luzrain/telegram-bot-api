@@ -54,7 +54,7 @@ final class SendPoll extends Method
         protected bool|null $isAnonymous = null,
 
         /**
-         * Poll type, “quiz” or “regular”, defaults to “regular”
+         * Poll type, "quiz" or "regular", defaults to "regular"
          */
         protected string|null $type = null,
 

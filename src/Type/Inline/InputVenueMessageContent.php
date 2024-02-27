@@ -39,7 +39,7 @@ final readonly class InputVenueMessageContent extends Type implements InputMessa
 
         /**
          * Optional. Foursquare type of the venue, if known.
-         * (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+         * (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
          */
         public string|null $foursquareType = null,
 

@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\ArrayType;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * Describes Telegram Passport data shared with the bot by the user.
  */
-final readonly class PassportData extends Type implements TypeDenormalizable
+final readonly class PassportData extends Type
 {
     protected function __construct(
         /**

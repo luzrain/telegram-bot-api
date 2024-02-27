@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents changes in the status of a chat member.
  */
-final readonly class ChatMemberUpdated extends Type implements TypeDenormalizable
+final readonly class ChatMemberUpdated extends Type
 {
     protected function __construct(
         /**

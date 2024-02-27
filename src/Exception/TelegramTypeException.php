@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Exception;
 
-use Luzrain\TelegramBotApi\StringUtils;
+use Luzrain\TelegramBotApi\Internal\StringUtils;
 
 final class TelegramTypeException extends \Exception
 {

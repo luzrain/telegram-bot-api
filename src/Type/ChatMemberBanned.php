@@ -9,6 +9,8 @@ namespace Luzrain\TelegramBotApi\Type;
  */
 final readonly class ChatMemberBanned extends ChatMember
 {
+    public const STATUS = 'kicked';
+
     protected function __construct(
         /**
          * Information about the user
@@ -20,6 +22,6 @@ final readonly class ChatMemberBanned extends ChatMember
          */
         public int $untilDate,
     ) {
-        parent::__construct('kicked');
+        parent::__construct(self::STATUS);
     }
 }

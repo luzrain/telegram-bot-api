@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object describes the source of a chat boost. It can be one of
@@ -14,7 +13,7 @@ use Luzrain\TelegramBotApi\TypeDenormalizable;
  * @see ChatBoostSourceGiftCode
  * @see ChatBoostSourceGiveaway
  */
-readonly class ChatBoostSource extends Type implements TypeDenormalizable
+readonly class ChatBoostSource extends Type
 {
     protected function __construct(
         /**

@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Games;
 
-use Luzrain\TelegramBotApi\ArrayType;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Animation;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 use Luzrain\TelegramBotApi\Type\PhotoSize;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
  */
-final readonly class Game extends Type implements TypeDenormalizable
+final readonly class Game extends Type
 {
     protected function __construct(
         /**

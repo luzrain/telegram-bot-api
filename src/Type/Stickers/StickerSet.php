@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Stickers;
 
-use Luzrain\TelegramBotApi\ArrayType;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\PhotoSize;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a sticker set.
  */
-final readonly class StickerSet extends Type implements TypeDenormalizable
+final readonly class StickerSet extends Type
 {
     protected function __construct(
         /**
@@ -26,7 +25,7 @@ final readonly class StickerSet extends Type implements TypeDenormalizable
         public string $title,
 
         /**
-         * Type of stickers in the set, currently one of “regular”, “mask”, “custom_emoji”
+         * Type of stickers in the set, currently one of "regular", "mask", "custom_emoji"
          */
         public string $stickerType,
 

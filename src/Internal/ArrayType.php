@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Luzrain\TelegramBotApi;
+namespace Luzrain\TelegramBotApi\Internal;
+
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * @internal
@@ -18,7 +20,7 @@ final readonly class ArrayType
     }
 
     /**
-     * @return list<Type>
+     * @return list<Type>|list<list<Type>>
      */
     public function create(array $data): array
     {
@@ -26,7 +28,7 @@ final readonly class ArrayType
     }
 
     /**
-     * @param class-string<TypeDenormalizable> $type
+     * @param class-string<Type> $type
      * @return list<Type>
      */
     public static function createArray(string $type, array $data): array
@@ -40,7 +42,9 @@ final readonly class ArrayType
     }
 
     /**
-     * @param class-string<TypeDenormalizable> $type
+     * @psalm-suppress MoreSpecificReturnType
+     * @psalm-suppress LessSpecificReturnStatement
+     * @param class-string<Type> $type
      * @return list<list<Type>>
      */
     public static function createArrayOfArray(string $type, array $data): array

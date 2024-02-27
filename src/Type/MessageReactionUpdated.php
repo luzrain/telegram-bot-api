@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\ArrayType;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object represents a change of a reaction on a message performed by a user.
  */
-final readonly class MessageReactionUpdated extends Type implements TypeDenormalizable
+final readonly class MessageReactionUpdated extends Type
 {
     protected function __construct(
         /**

@@ -9,12 +9,14 @@ namespace Luzrain\TelegramBotApi\Type;
  */
 final readonly class ReactionTypeCustomEmoji extends ReactionType
 {
+    public const TYPE = 'custom_emoji';
+
     public function __construct(
         /**
          * Custom emoji identifier
          */
         public string $customEmojiId,
     ) {
-        parent::__construct('custom_emoji');
+        parent::__construct(self::TYPE);
     }
 }

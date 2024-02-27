@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
-use Luzrain\TelegramBotApi\TypeDenormalizable;
 
 /**
  * This object describes the type of a reaction. Currently, it can be one of
@@ -13,7 +12,7 @@ use Luzrain\TelegramBotApi\TypeDenormalizable;
  * @see ReactionTypeEmoji
  * @see ReactionTypeCustomEmoji
  */
-readonly class ReactionType extends Type implements TypeDenormalizable
+readonly class ReactionType extends Type
 {
     protected function __construct(
         /**
@@ -33,8 +32,8 @@ readonly class ReactionType extends Type implements TypeDenormalizable
         $instance = parent::fromArray($data);
 
         return self::class !== static::class ? $instance : match ($instance->type) {
-            'emoji' => ReactionTypeEmoji::fromArray($data),
-            'custom_emoji' => ReactionTypeCustomEmoji::fromArray($data),
+            ReactionTypeEmoji::TYPE => ReactionTypeEmoji::fromArray($data),
+            ReactionTypeCustomEmoji::TYPE => ReactionTypeCustomEmoji::fromArray($data),
         };
     }
 }

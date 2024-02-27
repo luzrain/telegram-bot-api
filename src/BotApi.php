@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi;
 
 use Luzrain\TelegramBotApi\Exception\TelegramApiException;
-use Luzrain\TelegramBotApi\HttpClient\RequestBuilder;
+use Luzrain\TelegramBotApi\Internal\HttpClient\RequestBuilder;
 use Luzrain\TelegramBotApi\Method\GetFile;
 use Luzrain\TelegramBotApi\Method\SendMediaGroup;
 use Luzrain\TelegramBotApi\Type\File;
@@ -31,7 +31,7 @@ final class BotApi
 
     public function __construct(
         RequestFactoryInterface $requestFactory,
-        StreamFactoryInterface $streamFactory,
+        private StreamFactoryInterface $streamFactory,
         private ClientInterface $client,
         private string $token,
     ) {
@@ -41,24 +41,23 @@ final class BotApi
     /**
      * Execute telergam method
      *
-     * @template T
-     * @psalm-param Method<T> $method
-     * @psalm-return T
+     * @template TReturn of Type|list<Type>|list<list<Type>>|int|string|bool
+     * @param Method<TReturn> $method
+     * @return TReturn
      */
-    public function call(Method $method): Type|array|string|int|bool
+    public function call(Method $method): Type|array|int|string|bool
     {
         $url = \sprintf(self::URL_API_ENDPOINT, $this->token, $method->getName());
         $multiparts = [];
         $files = [];
-        foreach ($method->iterateRequestProps() as $name => $value) {
+
+        foreach ($method->getIterator() as $name => $value) {
             if ($value instanceof InputFile) {
-                $content = $value->getAttachPath();
+                $multiparts[$name] = $value->getAttachPath();
                 $files[] = $value;
             } else {
-                $content = \is_scalar($value) ? $value : \json_encode($value, JSON_UNESCAPED_UNICODE);
+                $multiparts[$name] = \is_scalar($value) ? $value : \json_encode($value, JSON_UNESCAPED_UNICODE);
             }
-
-            $multiparts[] = \compact('name', 'content');
 
             /** @psalm-suppress TypeDoesNotContainType */
             if ($method instanceof SendMediaGroup && $name === 'media') {
@@ -75,26 +74,21 @@ final class BotApi
         }
 
         foreach ($files as $file) {
-            $name = $file->getUniqueName();
-            $content = \fopen($file->getFilePath(), 'r');
-            $multiparts[] = \compact('name', 'content');
+            $multiparts[$file->getUniqueName()] = $this->streamFactory->createStreamFromFile($file->getFilePath());
         }
+        unset($files);
 
-        $httpRequest = $multiparts === []
+        $httpRequest = empty($multiparts)
             ? $this->requestBuilder->create('GET', $url)
             : $this->requestBuilder->create('POST', $url, $multiparts)
         ;
 
         $httpResponse = $this->client->sendRequest($httpRequest);
-        $response = \json_decode((string) $httpResponse->getBody(), true);
+        $response = \json_decode($httpResponse->getBody()->getContents(), true);
 
         if ($response['ok'] === false) {
             $parameters = isset($response['parameters']) ? ResponseParameters::fromArray($response['parameters']) : null;
             throw new TelegramApiException($response['description'], $response['error_code'], $parameters);
-        }
-
-        if (!\is_array($response['result'])) {
-            return $response['result'];
         }
 
         return $method->createResponse($response['result']);
@@ -125,15 +119,11 @@ final class BotApi
             throw new TelegramApiException($response['description'], $response['error_code']);
         }
 
-        $outStream = $httpResponse->getBody();
-        $inStream = \fopen($downloadFilePath, 'w');
-
-        while (!$outStream->eof()) {
-            $data = $outStream->read(10240);
-            \fwrite($inStream, $data);
-        }
-
-        $outStream->close();
+        $outStream = $httpResponse->getBody()->detach();
+        $inStream = \fopen($downloadFilePath, 'a');
+        \rewind($outStream);
+        \stream_copy_to_stream($outStream, $inStream);
+        \fclose($outStream);
         \fclose($inStream);
 
         return $downloadFilePath;

@@ -9,8 +9,10 @@ namespace Luzrain\TelegramBotApi\Type;
  */
 final readonly class MenuButtonCommands extends MenuButton
 {
+    public const TYPE = 'commands';
+
     public function __construct()
     {
-        parent::__construct('commands');
+        parent::__construct(self::TYPE);
     }
 }

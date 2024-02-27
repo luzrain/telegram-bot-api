@@ -4,17 +4,12 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Passport;
 
-use Luzrain\TelegramBotApi\Type;
-
 /**
  * Represents an issue in an unspecified place. The error is considered resolved when new data is added.
  */
-final readonly class PassportElementErrorUnspecified extends Type implements PassportElementError
+final readonly class PassportElementErrorUnspecified extends PassportElementError
 {
-    /**
-     * Error source, must be unspecified
-     */
-    public string $source;
+    public const SOURCE = 'unspecified';
 
     public function __construct(
         /**
@@ -32,6 +27,6 @@ final readonly class PassportElementErrorUnspecified extends Type implements Pas
          */
         public string $message,
     ) {
-        $this->source = 'unspecified';
+        parent::__construct(self::SOURCE);
     }
 }

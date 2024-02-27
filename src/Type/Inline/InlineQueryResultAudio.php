@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Inline;
 
-use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
@@ -12,12 +12,9 @@ use Luzrain\TelegramBotApi\Type\MessageEntity;
  * Represents a link to an MP3 audio file. By default, this audio file will be sent by the user.
  * Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
  */
-final readonly class InlineQueryResultAudio extends Type implements InlineQueryResult
+final readonly class InlineQueryResultAudio extends InlineQueryResult
 {
-    /**
-     * Type of the result, must be audio
-     */
-    public string $type;
+    public const TYPE = 'audio';
 
     public function __construct(
         /**
@@ -50,6 +47,7 @@ final readonly class InlineQueryResultAudio extends Type implements InlineQueryR
          *
          * @var list<MessageEntity>|null
          */
+        #[ArrayType(MessageEntity::class)]
         public array|null $captionEntities = null,
 
         /**
@@ -72,6 +70,6 @@ final readonly class InlineQueryResultAudio extends Type implements InlineQueryR
          */
         public InputMessageContent|null $inputMessageContent = null,
     ) {
-        $this->type = 'audio';
+        parent::__construct(self::TYPE);
     }
 }
