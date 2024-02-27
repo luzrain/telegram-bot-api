@@ -46,10 +46,7 @@ abstract class Method implements \JsonSerializable
         };
     }
 
-    /**
-     * @return \Generator<string>
-     */
-    public function iterateRequestProps(): \Generator
+    public function getIterator(): \Traversable
     {
         foreach ($this as $key => $value) {
             if ($value !== null) {
@@ -62,7 +59,7 @@ abstract class Method implements \JsonSerializable
     {
         return \array_merge(
             ['method' => $this->getName()],
-            \iterator_to_array($this->iterateRequestProps()),
+            \iterator_to_array($this->getIterator()),
         );
     }
 }
