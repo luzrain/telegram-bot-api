@@ -20,7 +20,7 @@ final class Command extends Event
     public function executeChecker(Type\Update $update): bool
     {
         $entity = $update->message?->entities[0] ?? null;
-        if ($entity?->type !== Type\MessageEntity::TYPE_BOT_COMMAND || $entity?->offset !== 0) {
+        if ($entity?->type !== Type\MessageEntity::BOT_COMMAND || $entity?->offset !== 0) {
             return false;
         }
 

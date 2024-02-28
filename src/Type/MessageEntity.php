@@ -11,32 +11,28 @@ use Luzrain\TelegramBotApi\Type;
  */
 final readonly class MessageEntity extends Type
 {
-    public const TYPE_MENTION = 'mention';
-    public const TYPE_HASHTAG = 'hashtag';
-    public const TYPE_CASHTAG = 'cashtag';
-    public const TYPE_BOT_COMMAND = 'bot_command';
-    public const TYPE_URL = 'url';
-    public const TYPE_EMAIL = 'email';
-    public const TYPE_PHONE_NUMBER = 'phone_number';
-    public const TYPE_BOLD = 'bold';
-    public const TYPE_ITALIC = 'italic';
-    public const TYPE_UNDERLINE = 'underline';
-    public const TYPE_STRIKETHROUGH = 'strikethrough';
-    public const TYPE_SPOILER = 'spoiler';
-    public const TYPE_CODE = 'code';
-    public const TYPE_PRE = 'pre';
-    public const TYPE_TEXT_LINK = 'text_link';
-    public const TYPE_TEXT_MENTION = 'text_mention';
-    public const CUSTOM_EMOJI = 'custom_emoji';
+    public const MENTION = 'mention'; // @username
+    public const HASHTAG = 'hashtag'; // #hashtag
+    public const CASHTAG = 'cashtag'; // $USD
+    public const BOT_COMMAND = 'bot_command'; // /start@jobs_bot
+    public const URL = 'url'; // https://telegram.org
+    public const EMAIL = 'email'; // do-not-reply@telegram.org
+    public const PHONE_NUMBER = 'phone_number'; // +1-212-555-0123
+    public const BOLD = 'bold'; // bold text
+    public const ITALIC = 'italic'; // italic text
+    public const UNDERLINE = 'underline'; // underlined text
+    public const STRIKETHROUGH = 'strikethrough'; // strikethrough text
+    public const SPOILER = 'spoiler'; // spoiler message
+    public const BLOCKQUOTE = 'blockquote'; // block quotation
+    public const CODE = 'code'; // monowidth string
+    public const PRE = 'pre'; // monowidth block
+    public const TEXT_LINK = 'text_link'; // for clickable text URLs
+    public const TEXT_MENTION = 'text_mention'; // for users without usernames
+    public const CUSTOM_EMOJI = 'custom_emoji'; // for inline custom emoji stickers
 
     public function __construct(
         /**
-         * Type of the entity.
-         * Currently, can be "mention" (@username), "hashtag" (#hashtag), "cashtag" ($USD), "bot_command" (/start@jobs_bot),
-         * "url" (https://telegram.org), "email" (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text),
-         * "italic" (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "spoiler" (spoiler message),
-         * "code" (monowidth string), "pre" (monowidth block), "text_link" (for clickable text URLs), "text_mention" (for users without usernames),
-         * "custom_emoji" (for inline custom emoji stickers)
+         * Type of the entity
          */
         public string $type,
 
