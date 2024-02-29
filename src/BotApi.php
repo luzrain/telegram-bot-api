@@ -15,9 +15,11 @@ use Luzrain\TelegramBotApi\Type\InputMediaDocument;
 use Luzrain\TelegramBotApi\Type\InputMediaPhoto;
 use Luzrain\TelegramBotApi\Type\InputMediaVideo;
 use Luzrain\TelegramBotApi\Type\ResponseParameters;
+use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * Service for execute telegram methods
@@ -44,6 +46,8 @@ final class BotApi
      * @template TReturn of Type|list<Type>|list<list<Type>>|int|string|bool
      * @param Method<TReturn> $method
      * @return TReturn
+     * @throws TelegramApiException
+     * @throws ClientExceptionInterface
      */
     public function call(Method $method): Type|array|int|string|bool
     {
@@ -98,19 +102,16 @@ final class BotApi
      * Download telegram file
      *
      * @param File|string $file File object or string with fileId
-     * @return string path to saved file on filesystem
      * @throws TelegramApiException
+     * @throws ClientExceptionInterface
      */
-    public function downloadFile(File|string $file): string
+    public function downloadFile(File|string $file): StreamInterface
     {
         if (\is_string($file)) {
             $file = $this->call(new GetFile($file));
         }
 
         $url = \sprintf(self::URL_FILE_ENDPOINT, $this->token, $file->filePath);
-        $extension = \pathinfo($file->filePath, PATHINFO_EXTENSION);
-        $downloadFilePath = \sys_get_temp_dir() . DIRECTORY_SEPARATOR . \uniqid('tg.', true) . '.' . $extension;
-
         $httpRequest = $this->requestBuilder->create('GET', $url);
         $httpResponse = $this->client->sendRequest($httpRequest);
 
@@ -119,13 +120,6 @@ final class BotApi
             throw new TelegramApiException($response['description'], $response['error_code']);
         }
 
-        $outStream = $httpResponse->getBody()->detach();
-        $inStream = \fopen($downloadFilePath, 'a');
-        \rewind($outStream);
-        \stream_copy_to_stream($outStream, $inStream);
-        \fclose($outStream);
-        \fclose($inStream);
-
-        return $downloadFilePath;
+        return $httpResponse->getBody();
     }
 }
