@@ -88,7 +88,7 @@ final class BotApi
         ;
 
         $httpResponse = $this->client->sendRequest($httpRequest);
-        $response = \json_decode($httpResponse->getBody()->getContents(), true);
+        $response = \json_decode((string) $httpResponse->getBody(), true);
 
         if ($response['ok'] === false) {
             $parameters = isset($response['parameters']) ? ResponseParameters::fromArray($response['parameters']) : null;
@@ -116,7 +116,7 @@ final class BotApi
         $httpResponse = $this->client->sendRequest($httpRequest);
 
         if ($httpResponse->getStatusCode() !== 200) {
-            $response = \json_decode($httpResponse->getBody()->getContents(), true);
+            $response = \json_decode((string) $httpResponse->getBody(), true);
             throw new TelegramApiException($response['description'], $response['error_code']);
         }
 
