@@ -54,7 +54,7 @@ final readonly class Chat extends Type
         public ChatPhoto|null $photo = null,
 
         /**
-         * Optional. If non-empty, the list of all active chat usernames, for private chats, supergroups and channels. Returned only in getChat.
+         * Optional. If non-empty, the list of all active chat usernames; for private chats, supergroups and channels. Returned only in getChat.
          *
          * @var list<string>|null
          */
@@ -84,7 +84,7 @@ final readonly class Chat extends Type
          * Optional. Identifier of the accent color for the chat's profile background. See profile accent colors for more details.
          * Returned only in getChat.
          */
-        public string|null $profileAccentColorId = null,
+        public int|null $profileAccentColorId = null,
 
         /**
          * Optional. Custom emoji identifier of the emoji chosen by the chat for its profile background. Returned only in getChat.
