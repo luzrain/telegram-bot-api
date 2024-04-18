@@ -20,7 +20,7 @@ final readonly class MessageOriginChannel extends MessageOrigin
         /**
          * Channel chat to which the message was originally sent
          */
-        public Chat $senderChat,
+        public Chat $chat,
 
         /**
          * Unique message identifier inside the chat
