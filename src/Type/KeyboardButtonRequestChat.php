@@ -8,9 +8,10 @@ use Luzrain\TelegramBotApi\Type;
 
 /**
  * This object defines the criteria used to request a suitable chat.
- * The identifier of the selected chat will be shared with the bot when the corresponding button is pressed.
- * More about requesting chats »
- * @see https://core.telegram.org/bots/features#chat-and-user-selection
+ * Information about the selected chat will be shared with the bot when the corresponding button is pressed.
+ * The bot will be granted requested rights in the chat if appropriate.
+ *
+ * @link https://core.telegram.org/bots/features#chat-and-user-selection
  */
 final readonly class KeyboardButtonRequestChat extends Type
 {
@@ -58,6 +59,21 @@ final readonly class KeyboardButtonRequestChat extends Type
          * Optional. Pass True to request a chat with the bot as a member. Otherwise, no additional restrictions are applied.
          */
         public bool|null $botIsMember = null,
+
+        /**
+         * Optional. Pass True to request the chat's title
+         */
+        public bool|null $requestTitle = null,
+
+        /**
+         * Optional. Pass True to request the chat's username
+         */
+        public bool|null $requestUsername = null,
+
+        /**
+         * Optional. Pass True to request the chat's photo
+         */
+        public bool|null $requestPhoto = null,
     ) {
     }
 }

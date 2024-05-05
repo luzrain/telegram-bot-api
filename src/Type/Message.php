@@ -57,6 +57,19 @@ final readonly class Message extends MaybeInaccessibleMessage
         public int|null $senderBoostCount = null,
 
         /**
+         * Optional. The bot that actually sent the message on behalf of the business account.
+         * Available only for outgoing messages sent on behalf of the connected business account.
+         */
+        public User|null $senderBusinessBot = null,
+
+        /**
+         * Optional. Unique identifier of the business connection from which the message was received.
+         * If non-empty, the message belongs to a chat of the corresponding business account that is
+         * independent from any potential bot chat which might share the same identifier.
+         */
+        public string|null $businessConnectionId = null,
+
+        /**
          * Optional. Information about the original message for forwarded messages
          */
         public MessageOrigin|null $forwardOrigin = null,
@@ -106,6 +119,12 @@ final readonly class Message extends MaybeInaccessibleMessage
          * Optional. True, if the message can't be forwarded
          */
         public true|null $hasProtectedContent = null,
+
+        /**
+         * Optional. True, if the message was sent by an implicit action, for example, as an away or a greeting business message,
+         * or as a scheduled message
+         */
+        public true|null $isFromOffline = null,
 
         /**
          * Optional. The unique identifier of a media message group this message belongs to

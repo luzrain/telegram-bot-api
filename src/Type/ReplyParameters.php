@@ -20,7 +20,8 @@ final readonly class ReplyParameters extends Type
 
         /**
          * Optional. If the message to be replied to is from a different chat,
-         * unique identifier for the chat or username of the channel (in the format @channelusername)
+         * unique identifier for the chat or username of the channel (in the format @channelusername).
+         * Not supported for messages sent on behalf of a business account.
          */
         public int|string|null $chatId = null,
 

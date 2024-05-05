@@ -26,7 +26,7 @@ final class SetStickerEmojiList extends Method
         /**
          * A JSON-serialized list of 1-20 emoji associated with the sticker
          *
-         * @var string[]
+         * @var list<string>
          */
         protected array $emojiList,
     ) {

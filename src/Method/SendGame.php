@@ -31,6 +31,11 @@ final class SendGame extends Method
         protected string $gameShortName,
 
         /**
+         * Unique identifier of the business connection on behalf of which the message will be sent
+         */
+        protected string|null $businessConnectionId = null,
+
+        /**
          * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
          */
         protected int|null $messageThreadId = null,
@@ -53,6 +58,7 @@ final class SendGame extends Method
         /**
          * A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title' button will be shown.
          * If not empty, the first button must launch the game.
+         * Not supported for messages sent on behalf of a business account.
          */
         protected InlineKeyboardMarkup|null $replyMarkup = null,
     ) {

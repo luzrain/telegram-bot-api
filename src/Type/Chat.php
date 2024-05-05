@@ -61,6 +61,31 @@ final readonly class Chat extends Type
         public array|null $activeUsernames = null,
 
         /**
+         * Optional. For private chats, the date of birth of the user. Returned only in getChat.
+         */
+        public Birthdate|null $birthdate = null,
+
+        /**
+         * Optional. For private chats with business accounts, the intro of the business. Returned only in getChat.
+         */
+        public BusinessIntro|null $businessIntro = null,
+
+        /**
+         * Optional. For private chats with business accounts, the location of the business. Returned only in getChat.
+         */
+        public BusinessLocation|null $businessLocation = null,
+
+        /**
+         * Optional. For private chats with business accounts, the opening hours of the business. Returned only in getChat.
+         */
+        public BusinessOpeningHours|null $businessOpeningHours = null,
+
+        /**
+         * Optional. For private chats, the personal channel of the user. Returned only in getChat.
+         */
+        public Chat|null $personalChat = null,
+
+        /**
          * Optional. List of available reactions allowed in the chat. If omitted, then all emoji reactions are allowed. Returned only in getChat.
          *
          * @var null|list<ReactionType>

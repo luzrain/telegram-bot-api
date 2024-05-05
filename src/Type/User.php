@@ -66,6 +66,11 @@ final readonly class User extends Type
          * Optional. True, if the bot supports inline queries. Returned only in getMe.
          */
         public bool|null $supportsInlineQueries = null,
+
+        /**
+         * Optional. True, if the bot can be connected to a Telegram Business account to receive its messages. Returned only in getMe.
+         */
+        public bool|null $canConnectToBusiness = null,
     ) {
     }
 }

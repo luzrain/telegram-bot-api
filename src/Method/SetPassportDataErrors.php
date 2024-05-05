@@ -32,7 +32,7 @@ final class SetPassportDataErrors extends Method
         /**
          * A JSON-serialized array describing the errors
          *
-         * @var PassportElementError[]
+         * @var list<PassportElementError>
          */
         protected array $errors,
     ) {

@@ -38,6 +38,11 @@ final class SendVideoNote extends Method
         protected InputFile|string $videoNote,
 
         /**
+         * Unique identifier of the business connection on behalf of which the message will be sent
+         */
+        protected string|null $businessConnectionId = null,
+
+        /**
          * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
          */
         protected int|null $messageThreadId = null,
@@ -75,7 +80,8 @@ final class SendVideoNote extends Method
 
         /**
          * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard,
-         * instructions to remove reply keyboard or to force a reply from the user.
+         * instructions to remove a reply keyboard or to force a reply from the user.
+         * Not supported for messages sent on behalf of a business account.
          */
         protected InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $replyMarkup = null,
     ) {

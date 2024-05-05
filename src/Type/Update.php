@@ -68,6 +68,26 @@ final readonly class Update extends Type
         public Message|null $editedChannelPost = null,
 
         /**
+         * Optional. The bot was connected to or disconnected from a business account, or a user edited an existing connection with the bot
+         */
+        public BusinessConnection|null $businessConnection = null,
+
+        /**
+         * Optional. New non-service message from a connected business account
+         */
+        public Message|null $businessMessage = null,
+
+        /**
+         * Optional. New version of a message from a connected business account
+         */
+        public Message|null $editedBusinessMessage = null,
+
+        /**
+         * Optional. Messages were deleted from a connected business account
+         */
+        public BusinessMessagesDeleted|null $deletedBusinessMessages = null,
+
+        /**
          * Optional. A reaction to a message was changed by a user.
          * The bot must be an administrator in the chat and must explicitly specify "message_reaction" in the list of
          * allowed_updates to receive these updates. The update isn't received for reactions set by bots.

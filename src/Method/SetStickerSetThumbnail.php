@@ -30,6 +30,11 @@ final class SetStickerSetThumbnail extends Method
         protected int $userId,
 
         /**
+         * Format of the thumbnail, must be one of "static" for a .WEBP or .PNG image, "animated" for a .TGS animation, or "video" for a WEBM video
+         */
+        protected string $format,
+
+        /**
          * A .WEBP or .PNG image with the thumbnail, must be up to 128 kilobytes in size and have a width and height of exactly 100px,
          * or a .TGS animation with a thumbnail up to 32 kilobytes in size (see https://core.telegram.org/stickers#animated-sticker-requirements
          * for animated sticker technical requirements), or a WEBM video with the thumbnail up to 32 kilobytes in size;

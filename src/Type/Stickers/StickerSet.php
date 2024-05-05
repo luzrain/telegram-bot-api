@@ -30,16 +30,6 @@ final readonly class StickerSet extends Type
         public string $stickerType,
 
         /**
-         * True, if the sticker set contains animated stickers
-         */
-        public bool $isAnimated,
-
-        /**
-         * True, if the sticker set contains video stickers
-         */
-        public bool $isVideo,
-
-        /**
          * List of all set stickers
          *
          * @var list<Sticker>

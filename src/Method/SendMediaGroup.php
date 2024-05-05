@@ -39,6 +39,11 @@ final class SendMediaGroup extends Method
         protected array $media,
 
         /**
+         * Unique identifier of the business connection on behalf of which the message will be sent
+         */
+        protected string|null $businessConnectionId = null,
+
+        /**
          * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
          */
         protected int|null $messageThreadId = null,

@@ -49,6 +49,11 @@ final class SendChatAction extends Method
         protected string $action,
 
         /**
+         * Unique identifier of the business connection on behalf of which the action will be sent
+         */
+        protected string|null $businessConnectionId = null,
+
+        /**
          * Unique identifier for the target message thread; supergroups only
          */
         protected string|null $messageThreadId = null,

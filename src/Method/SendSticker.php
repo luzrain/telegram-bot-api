@@ -31,9 +31,16 @@ final class SendSticker extends Method
 
         /**
          * Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended),
-         * pass an HTTP URL as a String for Telegram to get a .WEBP file from the Internet, or upload a new one using multipart/form-data.
+         * pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet,
+         * or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data.
+         * Video and animated stickers can't be sent via an HTTP URL.
          */
         protected InputFile|string $sticker,
+
+        /**
+         * Unique identifier of the business connection on behalf of which the message will be sent
+         */
+        protected string|null $businessConnectionId = null,
 
         /**
          * Emoji associated with the sticker; only for just uploaded stickers
@@ -62,7 +69,8 @@ final class SendSticker extends Method
 
         /**
          * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard,
-         * instructions to remove reply keyboard or to force a reply from the user.
+         * instructions to remove a reply keyboard or to force a reply from the user.
+         * Not supported for messages sent on behalf of a business account.
          */
         protected InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $replyMarkup = null,
     ) {

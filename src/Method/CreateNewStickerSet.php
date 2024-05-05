@@ -38,14 +38,9 @@ final class CreateNewStickerSet extends Method
         /**
          * A JSON-serialized list of 1-50 initial stickers to be added to the sticker set
          *
-         * @var InputSticker[]
+         * @var list<InputSticker>
          */
         protected array $stickers,
-
-        /**
-         * Format of stickers in the set, must be one of "static", "animated", "video"
-         */
-        protected string $stickerFormat,
 
         /**
          * Type of stickers in the set, pass "regular", "mask", or "custom_emoji". By default, a regular sticker set is created.

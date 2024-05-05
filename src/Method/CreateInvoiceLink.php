@@ -48,7 +48,7 @@ final class CreateInvoiceLink extends Method
         /**
          * Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)
          *
-         * @var LabeledPrice[]
+         * @var list<LabeledPrice>
          */
         protected array $prices,
 
@@ -66,7 +66,7 @@ final class CreateInvoiceLink extends Method
          * At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive,
          * passed in a strictly increased order and must not exceed max_tip_amount.
          *
-         * @var int[]|null
+         * @var list<int>|null
          */
         protected array|null $suggestedTipAmounts = null,
 

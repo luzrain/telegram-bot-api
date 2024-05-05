@@ -27,7 +27,7 @@ final class AnswerInlineQuery extends Method
         /**
          * A JSON-serialized array of results for the inline query
          *
-         * @var InlineQueryResult[]
+         * @var list<InlineQueryResult>
          */
         protected array $results,
 

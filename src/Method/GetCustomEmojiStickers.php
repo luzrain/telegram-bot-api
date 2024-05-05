@@ -23,7 +23,7 @@ final class GetCustomEmojiStickers extends Method
         /**
          * List of custom emoji identifiers. At most 200 custom emoji identifiers can be specified.
          *
-         * @var string[]
+         * @var list<string>
          */
         protected array $customEmojiIds,
     ) {
