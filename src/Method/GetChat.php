@@ -5,19 +5,18 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\Method;
-use Luzrain\TelegramBotApi\Type\Chat;
+use Luzrain\TelegramBotApi\Type\ChatFullInfo;
 
 /**
- * Use this method to get up to date information about the chat (current name of the user for one-on-one conversations,
- * current username of a user, group or channel, etc.).
- * Returns a Chat object on success.
+ * Use this method to get up-to-date information about the chat.
+ * Returns a ChatFullInfo object on success.
  *
- * @extends Method<Chat>
+ * @extends Method<ChatFullInfo>
  */
 final class GetChat extends Method
 {
     protected static string $methodName = 'getChat';
-    protected static string $responseClass = Chat::class;
+    protected static string $responseClass = ChatFullInfo::class;
 
     public function __construct(
         /**

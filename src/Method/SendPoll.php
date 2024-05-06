@@ -7,6 +7,7 @@ namespace Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ForceReply;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
+use Luzrain\TelegramBotApi\Type\InputPollOption;
 use Luzrain\TelegramBotApi\Type\Message;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardMarkup;
@@ -38,10 +39,25 @@ final class SendPoll extends Method
         protected string $question,
 
         /**
-         * A JSON-serialized list of answer options, 2-10 strings 1-100 characters each
-         * Array of String
+         * A JSON-serialized list of 2-10 answer options
+         *
+         * @var list<InputPollOption>
          */
         protected array $options,
+
+        /**
+         * Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed
+         *
+         * @see https://core.telegram.org/bots/api#formatting-options
+         */
+        protected string|null $questionParseMode = null,
+
+        /**
+         * A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of question_parse_mode
+         *
+         * @var list<MessageEntity>|null
+         */
+        protected array|null $questionEntities = null,
 
         /**
          * Unique identifier of the business connection on behalf of which the message will be sent

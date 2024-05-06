@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
+use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type;
 
 /**
@@ -21,6 +22,14 @@ final readonly class PollOption extends Type
          * Number of users that voted for this option
          */
         public int $voterCount,
+
+        /**
+         * Optional. Special entities that appear in the option text. Currently, only custom emoji entities are allowed in poll option texts
+         *
+         * @var list<MessageEntity>|null
+         */
+        #[ArrayType(MessageEntity::class)]
+        public array|null $textEntities = null,
     ) {
     }
 }

@@ -377,6 +377,11 @@ final readonly class Message extends MaybeInaccessibleMessage
         public ChatBoostAdded|null $boostAdded = null,
 
         /**
+         * Optional. Service message: chat background set
+         */
+        public ChatBackground|null $chatBackgroundSet = null,
+
+        /**
          * Optional. Service message: forum topic created
          */
         public ForumTopicCreated|null $forumTopicCreated = null,

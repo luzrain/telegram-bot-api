@@ -43,6 +43,11 @@ final readonly class ChatMemberUpdated extends Type
         public ChatInviteLink|null $inviteLink = null,
 
         /**
+         * Optional. True, if the user joined the chat after sending a direct join request and being approved by an administrator
+         */
+        public bool|null $viaJoinRequest = null,
+
+        /**
          * Optional. True, if the user joined the chat via a chat folder invite link
          */
         public bool|null $viaChatFolderInviteLink = null,
