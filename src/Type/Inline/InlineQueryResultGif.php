@@ -76,6 +76,11 @@ final readonly class InlineQueryResultGif extends InlineQueryResult
         public array|null $captionEntities = null,
 
         /**
+         * Optional. Pass True, if the caption must be shown above the message media
+         */
+        public bool|null $showCaptionAboveMedia = null,
+
+        /**
          * Optional. Inline keyboard attached to the message
          */
         public InlineKeyboardMarkup|null $replyMarkup = null,

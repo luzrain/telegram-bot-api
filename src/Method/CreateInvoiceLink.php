@@ -34,28 +34,30 @@ final class CreateInvoiceLink extends Method
         protected string $payload,
 
         /**
-         * Payment provider token, obtained via BotFather
-         */
-        protected string $providerToken,
-
-        /**
-         * Three-letter ISO 4217 currency code, see more on currencies
+         * Three-letter ISO 4217 currency code, see more on currencies. Pass "XTR" for payments in Telegram Stars.
          *
          * @see https://core.telegram.org/bots/payments#supported-currencies
          */
         protected string $currency,
 
         /**
-         * Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)
+         * Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.).
+         * Must contain exactly one item for payments in Telegram Stars.
          *
          * @var list<LabeledPrice>
          */
         protected array $prices,
 
         /**
+         * Payment provider token, obtained via @BotFather. Pass an empty string for payments in Telegram Stars.
+         */
+        protected string|null $providerToken = null,
+
+        /**
          * The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double).
          * For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json,
-         * it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0
+         * it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
+         * Defaults to 0. Not supported for payments in Telegram Stars.
          *
          * @see https://core.telegram.org/bots/payments/currencies.json
          */
@@ -97,37 +99,37 @@ final class CreateInvoiceLink extends Method
         protected int|null $photoHeight = null,
 
         /**
-         * Pass True if you require the user's full name to complete the order
+         * Pass True if you require the user's full name to complete the order. Ignored for payments in Telegram Stars.
          */
         protected bool|null $needName = null,
 
         /**
-         * Pass True if you require the user's phone number to complete the order
+         * Pass True if you require the user's phone number to complete the order. Ignored for payments in Telegram Stars.
          */
         protected bool|null $needPhoneNumber = null,
 
         /**
-         * Pass True if you require the user's email address to complete the order
+         * Pass True if you require the user's email address to complete the order. Ignored for payments in Telegram Stars.
          */
         protected bool|null $needEmail = null,
 
         /**
-         * Pass True if you require the user's shipping address to complete the order
+         * Pass True if you require the user's shipping address to complete the order. Ignored for payments in Telegram Stars.
          */
         protected bool|null $needShippingAddress = null,
 
         /**
-         * Pass True if the user's phone number should be sent to the provider
+         * Pass True if the user's phone number should be sent to the provider. Ignored for payments in Telegram Stars.
          */
         protected bool|null $sendPhoneNumberToProvider = null,
 
         /**
-         * Pass True if the user's email address should be sent to the provider
+         * Pass True if the user's email address should be sent to the provider. Ignored for payments in Telegram Stars.
          */
         protected bool|null $sendEmailToProvider = null,
 
         /**
-         * Pass True if the final price depends on the shipping method
+         * Pass True if the final price depends on the shipping method. Ignored for payments in Telegram Stars.
          */
         protected bool|null $isFlexible = null,
     ) {

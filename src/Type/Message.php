@@ -155,6 +155,11 @@ final readonly class Message extends MaybeInaccessibleMessage
         public LinkPreviewOptions|null $linkPreviewOptions = null,
 
         /**
+         * Optional. Unique identifier of the message effect added to the message
+         */
+        public string|null $effectId = null,
+
+        /**
          * Optional. Message is an animation, information about the animation.
          * For backward compatibility, when this field is set, the document field will also be set
          */
@@ -215,6 +220,11 @@ final readonly class Message extends MaybeInaccessibleMessage
          */
         #[ArrayType(MessageEntity::class)]
         public array|null $captionEntities = null,
+
+        /**
+         * Optional. True, if the caption must be shown above the message media
+         */
+        public true|null $showCaptionAboveMedia = null,
 
         /**
          * Optional. True, if the message media is covered by a spoiler animation

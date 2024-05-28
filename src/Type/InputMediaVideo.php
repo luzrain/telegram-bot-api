@@ -54,6 +54,11 @@ final readonly class InputMediaVideo extends InputMedia
         public array|null $captionEntities = null,
 
         /**
+         * Optional. Pass True, if the caption must be shown above the message media
+         */
+        public bool|null $showCaptionAboveMedia = null,
+
+        /**
          * Optional. Video width
          */
         public int|null $width = null,

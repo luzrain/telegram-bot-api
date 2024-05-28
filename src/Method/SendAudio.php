@@ -97,6 +97,11 @@ final class SendAudio extends Method
         protected bool|null $protectContent = null,
 
         /**
+         * Unique identifier of the message effect to be added to the message; for private chats only
+         */
+        protected string|null $messageEffectId = null,
+
+        /**
          * Description of the message to reply to
          */
         protected ReplyParameters|null $replyParameters = null,

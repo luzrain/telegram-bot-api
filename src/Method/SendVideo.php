@@ -85,6 +85,11 @@ final class SendVideo extends Method
         protected array|null $captionEntities = null,
 
         /**
+         * Pass True, if the caption must be shown above the message media
+         */
+        protected bool|null $showCaptionAboveMedia = null,
+
+        /**
          * Pass True if the video needs to be covered with a spoiler animation
          */
         protected bool|null $hasSpoiler = null,
@@ -103,6 +108,11 @@ final class SendVideo extends Method
          * Protects the contents of the sent message from forwarding and saving
          */
         protected bool|null $protectContent = null,
+
+        /**
+         * Unique identifier of the message effect to be added to the message; for private chats only
+         */
+        protected string|null $messageEffectId = null,
 
         /**
          * Description of the message to reply to

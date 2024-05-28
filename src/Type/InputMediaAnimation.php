@@ -54,6 +54,11 @@ final readonly class InputMediaAnimation extends InputMedia
         public array|null $captionEntities = null,
 
         /**
+         * Optional. Pass True, if the caption must be shown above the message media
+         */
+        public bool|null $showCaptionAboveMedia = null,
+
+        /**
          * Optional. Animation width
          */
         public int|null $width = null,

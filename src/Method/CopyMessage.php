@@ -64,6 +64,11 @@ final class CopyMessage extends Method
         protected array|null $captionEntities = null,
 
         /**
+         * Pass True, if the caption must be shown above the message media. Ignored if a new caption isn't specified.
+         */
+        protected bool|null $showCaptionAboveMedia = null,
+
+        /**
          * Sends the message silently. Users will receive a notification with no sound.
          */
         protected bool|null $disableNotification = null,

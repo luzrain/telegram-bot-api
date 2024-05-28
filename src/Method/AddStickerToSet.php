@@ -14,14 +14,13 @@ use Luzrain\TelegramBotApi\Type\InputSticker;
  * Static sticker sets can have up to 120 stickers.
  * Returns True on success.
  *
- * @extends Method<bool>
+ * @extends Method<true>
  */
 final class AddStickerToSet extends Method
 {
     protected static string $methodName = 'addStickerToSet';
 
     public function __construct(
-
         /**
          * User identifier of sticker set owner
          */
