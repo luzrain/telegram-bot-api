@@ -22,6 +22,11 @@ final class EditMessageReplyMarkup extends Method
 
     public function __construct(
         /**
+         * Unique identifier of the business connection on behalf of which the message to be edited was sent
+         */
+        protected string|null $businessConnectionId = null,
+
+        /**
          * Required if inline_message_id is not specified.
          * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */

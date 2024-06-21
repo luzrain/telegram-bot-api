@@ -30,6 +30,11 @@ final class StopPoll extends Method
         protected int $messageId,
 
         /**
+         * Unique identifier of the business connection on behalf of which the message to be edited was sent
+         */
+        protected string|null $businessConnectionId = null,
+
+        /**
          * A JSON-serialized object for a new message inline keyboard.
          */
         protected InlineKeyboardMarkup|null $replyMarkup = null,

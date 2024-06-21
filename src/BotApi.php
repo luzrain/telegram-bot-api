@@ -82,7 +82,7 @@ final class BotApi
         }
         unset($files);
 
-        $httpRequest = empty($multiparts)
+        $httpRequest = $multiparts === []
             ? $this->requestBuilder->create('GET', $url)
             : $this->requestBuilder->create('POST', $url, $multiparts)
         ;

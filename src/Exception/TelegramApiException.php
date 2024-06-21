@@ -8,12 +8,8 @@ use Luzrain\TelegramBotApi\Type\ResponseParameters;
 
 final class TelegramApiException extends \Exception
 {
-    private ResponseParameters|null $parameters;
-
-    public function __construct(string $message, int $code, ResponseParameters $parameters = null)
+    public function __construct(string $message, int $code, private readonly ResponseParameters|null $parameters = null)
     {
-        $this->parameters = $parameters;
-
         parent::__construct($message, $code);
     }
 
