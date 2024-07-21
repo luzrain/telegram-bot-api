@@ -9,8 +9,9 @@ use Luzrain\TelegramBotApi\Type;
 /**
  * This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of
  *
- * @see TransactionPartnerFragment
  * @see TransactionPartnerUser
+ * @see TransactionPartnerFragment
+ * @see TransactionPartnerTelegramAds
  * @see TransactionPartnerOther
  */
 readonly class TransactionPartner extends Type
@@ -33,8 +34,9 @@ readonly class TransactionPartner extends Type
         $instance = parent::fromArray($data);
 
         return self::class !== static::class ? $instance : match ($instance->type) {
-            TransactionPartnerFragment::TYPE => TransactionPartnerFragment::fromArray($data),
             TransactionPartnerUser::TYPE => TransactionPartnerUser::fromArray($data),
+            TransactionPartnerFragment::TYPE => TransactionPartnerFragment::fromArray($data),
+            TransactionPartnerTelegramAds::TYPE => TransactionPartnerTelegramAds::fromArray($data),
             TransactionPartnerOther::TYPE => TransactionPartnerOther::fromArray($data),
         };
     }

@@ -9,6 +9,7 @@ use Luzrain\TelegramBotApi\Type\ForceReply;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\InputFile;
 use Luzrain\TelegramBotApi\Type\Message;
+use Luzrain\TelegramBotApi\Type\MessageEntity;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 use Luzrain\TelegramBotApi\Type\ReplyParameters;
@@ -81,6 +82,8 @@ final class SendAnimation extends Method
 
         /**
          * A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+         *
+         * @var list<MessageEntity>|null
          */
         protected array|null $captionEntities = null,
 

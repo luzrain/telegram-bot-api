@@ -176,6 +176,11 @@ final readonly class Message extends MaybeInaccessibleMessage
         public Document|null $document = null,
 
         /**
+         * Optional. Message contains paid media; information about the paid media
+         */
+        public PaidMediaInfo|null $paidMedia = null,
+
+        /**
          * Optional. Message is a photo, available sizes of the photo
          *
          * @var list<PhotoSize>|null

@@ -180,6 +180,11 @@ final readonly class ChatFullInfo extends Type
         public ChatPermissions|null $permissions = null,
 
         /**
+         * Optional. True, if paid media messages can be sent or forwarded to the channel chat. The field is available only for channel chats.
+         */
+        public true|null $canSendPaidMedia = null,
+
+        /**
          * Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unprivileged user; in seconds
          */
         public int|null $slowModeDelay = null,

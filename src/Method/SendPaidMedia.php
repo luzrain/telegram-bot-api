@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ForceReply;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
-use Luzrain\TelegramBotApi\Type\InputFile;
+use Luzrain\TelegramBotApi\Type\InputPaidMedia;
 use Luzrain\TelegramBotApi\Type\Message;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardMarkup;
@@ -15,13 +15,13 @@ use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 use Luzrain\TelegramBotApi\Type\ReplyParameters;
 
 /**
- * Use this method to send photos. On success, the sent Message is returned.
+ * Use this method to send paid media to channel chats. On success, the sent Message is returned.
  *
  * @extends Method<Message>
  */
-final class SendPhoto extends Method
+final class SendPaidMedia extends Method
 {
-    protected static string $methodName = 'sendPhoto';
+    protected static string $methodName = 'sendPaidMedia';
     protected static string $responseClass = Message::class;
 
     public function __construct(
@@ -31,30 +31,24 @@ final class SendPhoto extends Method
         protected int|string $chatId,
 
         /**
-         * Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended),
-         * pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.
-         * The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total.
-         * Width and height ratio must be at most 20. More info on Sending Files »
+         * The number of Telegram Stars that must be paid to buy access to the media
          */
-        protected InputFile|string $photo,
+        protected int $starCount,
 
         /**
-         * Unique identifier of the business connection on behalf of which the message will be sent
+         * A JSON-serialized array describing the media to be sent; up to 10 items
+         *
+         * @var list<InputPaidMedia>
          */
-        protected string|null $businessConnectionId = null,
+        protected array $media,
 
         /**
-         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
-         */
-        protected int|null $messageThreadId = null,
-
-        /**
-         * Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
+         * Media caption, 0-1024 characters after entities parsing
          */
         protected string|null $caption = null,
 
         /**
-         * Mode for parsing entities in the photo caption. See formatting options for more details.
+         * Mode for parsing entities in the media caption. See formatting options for more details.
          *
          * @see https://core.telegram.org/bots/api#formatting-options
          */
@@ -73,11 +67,6 @@ final class SendPhoto extends Method
         protected bool|null $showCaptionAboveMedia = null,
 
         /**
-         * Pass True if the photo needs to be covered with a spoiler animation
-         */
-        protected bool|null $hasSpoiler = null,
-
-        /**
          * Sends the message silently. Users will receive a notification with no sound.
          */
         protected bool|null $disableNotification = null,
@@ -88,19 +77,13 @@ final class SendPhoto extends Method
         protected bool|null $protectContent = null,
 
         /**
-         * Unique identifier of the message effect to be added to the message; for private chats only
-         */
-        protected string|null $messageEffectId = null,
-
-        /**
          * Description of the message to reply to
          */
         protected ReplyParameters|null $replyParameters = null,
 
         /**
          * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard,
-         * instructions to remove a reply keyboard or to force a reply from the user.
-         * Not supported for messages sent on behalf of a business account.
+         * instructions to remove a reply keyboard or to force a reply from the user
          */
         protected InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $replyMarkup = null,
     ) {

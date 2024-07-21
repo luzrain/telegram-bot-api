@@ -18,6 +18,11 @@ final readonly class TransactionPartnerUser extends TransactionPartner
          * Information about the user
          */
         public User $user,
+
+        /**
+         * Optional. Bot-specified invoice payload
+         */
+        public string|null $invoicePayload = null,
     ) {
         parent::__construct(self::TYPE);
     }

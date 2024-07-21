@@ -7,13 +7,15 @@ namespace Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ForceReply;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
+use Luzrain\TelegramBotApi\Type\MessageEntity;
 use Luzrain\TelegramBotApi\Type\MessageId;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 use Luzrain\TelegramBotApi\Type\ReplyParameters;
 
 /**
- * Use this method to copy messages of any kind. Service messages and invoice messages can't be copied.
+ * Use this method to copy messages of any kind.
+ * Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied.
  * A quiz poll can be copied only if the value of the field correct_option_id is known to the bot.
  * The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message.
  * Returns the MessageId of the sent message on success.
@@ -60,6 +62,8 @@ final class CopyMessage extends Method
 
         /**
          * A JSON-serialized list of special entities that appear in the new caption, which can be specified instead of parse_mode
+         *
+         * @var list<MessageEntity>|null
          */
         protected array|null $captionEntities = null,
 
@@ -85,7 +89,7 @@ final class CopyMessage extends Method
 
         /**
          * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard,
-         * instructions to remove reply keyboard or to force a reply from the user.
+         * instructions to remove a reply keyboard or to force a reply from the user
          */
         protected InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $replyMarkup = null,
     ) {
