@@ -8,6 +8,7 @@ use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type\Games\Game;
 use Luzrain\TelegramBotApi\Type\Passport\PassportData;
 use Luzrain\TelegramBotApi\Type\Payments\Invoice;
+use Luzrain\TelegramBotApi\Type\Payments\RefundedPayment;
 use Luzrain\TelegramBotApi\Type\Payments\SuccessfulPayment;
 use Luzrain\TelegramBotApi\Type\Stickers\Sticker;
 
@@ -355,6 +356,11 @@ final readonly class Message extends MaybeInaccessibleMessage
          * Optional. Message is a service message about a successful payment, information about the payment.
          */
         public SuccessfulPayment|null $successfulPayment = null,
+
+        /**
+         * Optional. Message is a service message about a refunded payment, information about the payment.
+         */
+        public RefundedPayment|null $refundedPayment = null,
 
         /**
          * Optional. Service message: users were shared with the bot
