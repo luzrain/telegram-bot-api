@@ -25,9 +25,15 @@ final class UnpinChatMessage extends Method
         protected int|string $chatId,
 
         /**
-         * Identifier of a message to unpin. If not specified, the most recent pinned message (by sending date) will be unpinned.
+         * Identifier of the message to unpin. Required if business_connection_id is specified.
+         * If not specified, the most recent pinned message (by sending date) will be unpinned.
          */
-        protected int $messageId,
+        protected int|null $messageId = null,
+
+        /**
+         * Unique identifier of the business connection on behalf of which the message will be unpinned
+         */
+        protected string|null $businessConnectionId = null,
     ) {
     }
 }

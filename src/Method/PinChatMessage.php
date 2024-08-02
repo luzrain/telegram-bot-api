@@ -30,6 +30,11 @@ final class PinChatMessage extends Method
         protected int $messageId,
 
         /**
+         * Unique identifier of the business connection on behalf of which the message will be pinned
+         */
+        protected string|null $businessConnectionId = null,
+
+        /**
          * Pass True if it is not necessary to send a notification to all chat members about the new pinned message.
          * Notifications are always disabled in channels and private chats.
          */
