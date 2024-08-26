@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\Payments;
 
+use Luzrain\TelegramBotApi\Internal\ArrayType;
+use Luzrain\TelegramBotApi\Type\PaidMedia;
 use Luzrain\TelegramBotApi\Type\User;
 
 /**
@@ -23,6 +25,14 @@ final readonly class TransactionPartnerUser extends TransactionPartner
          * Optional. Bot-specified invoice payload
          */
         public string|null $invoicePayload = null,
+
+        /**
+         * Optional. Information about the paid media bought by the user
+         *
+         * @var list<PaidMedia>|null
+         */
+        #[ArrayType(PaidMedia::class)]
+        public array|null $paidMedia = null,
     ) {
         parent::__construct(self::TYPE);
     }

@@ -43,6 +43,11 @@ final class SendPaidMedia extends Method
         protected array $media,
 
         /**
+         * Unique identifier of the business connection on behalf of which the message will be sent
+         */
+        protected string|null $businessConnectionId = null,
+
+        /**
          * Media caption, 0-1024 characters after entities parsing
          */
         protected string|null $caption = null,

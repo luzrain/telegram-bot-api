@@ -16,6 +16,11 @@ final readonly class ChatMemberMember extends ChatMember
          * Information about the user
          */
         public User $user,
+
+        /**
+         * Optional. Date when the user's subscription will expire; Unix time
+         */
+        public int|null $untilDate = null,
     ) {
         parent::__construct(self::STATUS);
     }

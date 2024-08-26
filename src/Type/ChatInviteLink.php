@@ -56,6 +56,17 @@ final readonly class ChatInviteLink extends Type
          * Optional. Number of pending join requests created using this link
          */
         public int|null $pendingJoinRequestCount = null,
+
+        /**
+         * Optional. The number of seconds the subscription will be active for before the next payment
+         */
+        public int|null $subscriptionPeriod = null,
+
+        /**
+         * Optional. The amount of Telegram Stars a user must pay initially and after each subsequent subscription period
+         * to be a member of the chat using the link
+         */
+        public int|null $subscriptionPrice = null,
     ) {
     }
 }

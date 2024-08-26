@@ -11,6 +11,7 @@ use Luzrain\TelegramBotApi\Type;
  *
  * @see ReactionTypeEmoji
  * @see ReactionTypeCustomEmoji
+ * @see ReactionTypePaid
  */
 readonly class ReactionType extends Type
 {
@@ -34,6 +35,7 @@ readonly class ReactionType extends Type
         return self::class !== static::class ? $instance : match ($instance->type) {
             ReactionTypeEmoji::TYPE => ReactionTypeEmoji::fromArray($data),
             ReactionTypeCustomEmoji::TYPE => ReactionTypeCustomEmoji::fromArray($data),
+            ReactionTypePaid::TYPE => ReactionTypePaid::fromArray($data),
         };
     }
 }
