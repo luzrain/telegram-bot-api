@@ -17,6 +17,9 @@ The Telegram Bot Client is not hard coupled to Guzzle or any other library that 
 Instead, it uses the [PSR-18](https://www.php-fig.org/psr/psr-18/) client abstraction.
 This will give you the flexibility to choose what [PSR-7 implementation](https://packagist.org/providers/psr/http-message-implementation) and [HTTP client](https://packagist.org/providers/psr/http-client-implementation) you want to use.
 
+> [!NOTE]  
+> It is highly recommended that you use named parameters, as in the examples below, because the number and order of parameters changes between releases.
+
 #### Example of initialising the BotApi with Guzzle client
 ```php
 use GuzzleHttp\Client;
