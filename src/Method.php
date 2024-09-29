@@ -38,7 +38,7 @@ abstract class Method implements \JsonSerializable
         /** @var class-string<Type> $responseClass */
         $responseClass = static::$responseClass;
 
-        return match(true) {
+        return match (true) {
             \is_array($data) && static::$isArrayOfResponse => ArrayType::createArray($responseClass, $data),
             \is_array($data) && static::$isArrayOfArrayOfResponse => ArrayType::createArrayOfArray($responseClass, $data),
             \is_array($data) => $responseClass::fromArray($data),
