@@ -33,6 +33,11 @@ final readonly class TransactionPartnerUser extends TransactionPartner
          */
         #[ArrayType(PaidMedia::class)]
         public array|null $paidMedia = null,
+
+        /**
+         * Optional. Bot-specified paid media payload
+         */
+        public string|null $paidMediaPayload = null,
     ) {
         parent::__construct(self::TYPE);
     }

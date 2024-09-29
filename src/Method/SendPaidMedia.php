@@ -48,6 +48,11 @@ final class SendPaidMedia extends Method
         protected string|null $businessConnectionId = null,
 
         /**
+         * Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.
+         */
+        protected string|null $payload = null,
+
+        /**
          * Media caption, 0-1024 characters after entities parsing
          */
         protected string|null $caption = null,

@@ -56,6 +56,11 @@ final readonly class Giveaway extends Type
         public array|null $countryCodes = null,
 
         /**
+         * Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only
+         */
+        public int|null $prizeStarCount = null,
+
+        /**
          * Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for
          */
         public int|null $premiumSubscriptionMonthCount = null,

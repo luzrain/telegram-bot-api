@@ -26,6 +26,11 @@ final readonly class GiveawayCompleted extends Type
          * Optional. Message with the giveaway that was completed, if it wasn't deleted
          */
         public Message|null $giveawayMessage = null,
+
+        /**
+         * Optional. True, if the giveaway is a Telegram Star giveaway. Otherwise, currently, the giveaway is a Telegram Premium giveaway.
+         */
+        public true|null $isStarGiveaway = null,
     ) {
     }
 }

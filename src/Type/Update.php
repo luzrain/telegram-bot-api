@@ -128,6 +128,11 @@ final readonly class Update extends Type
         public PreCheckoutQuery|null $preCheckoutQuery = null,
 
         /**
+         * Optional. A user purchased paid media with a non-empty payload sent by the bot in a non-channel chat
+         */
+        public PaidMediaPurchased|null $purchasedPaidMedia = null,
+
+        /**
          * Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot
          */
         public Poll|null $poll = null,
