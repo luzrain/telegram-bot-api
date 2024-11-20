@@ -6,6 +6,9 @@ namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
 
+/**
+ * Describes an interval of time during which a business is open.
+ */
 final readonly class BusinessOpeningHoursInterval extends Type
 {
     public function __construct(

@@ -7,6 +7,9 @@ namespace Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type;
 
+/**
+ * Describes the opening hours of a business.
+ */
 final readonly class BusinessOpeningHours extends Type
 {
     public function __construct(

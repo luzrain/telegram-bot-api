@@ -6,6 +6,9 @@ namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
 
+/**
+ * Describes the birthdate of a user.
+ */
 final readonly class Birthdate extends Type
 {
     protected function __construct(

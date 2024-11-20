@@ -6,6 +6,9 @@ namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Type;
 
+/**
+ * This object represents a button to be shown above inline query results. You must use exactly one of the optional fields.
+ */
 final readonly class InlineQueryResultsButton extends Type
 {
     public function __construct(

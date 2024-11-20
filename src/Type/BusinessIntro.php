@@ -7,6 +7,9 @@ namespace Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Stickers\Sticker;
 
+/**
+ * Contains information about the start page settings of a Telegram Business account.
+ */
 final readonly class BusinessIntro extends Type
 {
     public function __construct(
