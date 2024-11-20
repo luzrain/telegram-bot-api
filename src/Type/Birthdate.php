@@ -22,7 +22,7 @@ final readonly class Birthdate extends Type
         /**
          * Optional. Year of the user's birth
          */
-        public int $year,
+        public int|null $year = null,
     ) {
     }
 }
