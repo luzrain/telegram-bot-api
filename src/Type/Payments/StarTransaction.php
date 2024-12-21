@@ -29,6 +29,11 @@ final readonly class StarTransaction extends Type
         public int $date,
 
         /**
+         * Optional. The number of 1/1000000000 shares of Telegram Stars transferred by the transaction; from 0 to 999999999
+         */
+        public int|null $nanostarAmount = null,
+
+        /**
          * Optional. Source of an incoming transaction (e.g., a user purchasing goods or services, Fragment refunding a failed withdrawal).
          * Only for incoming transactions
          */

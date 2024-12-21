@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Payments;
 
 use Luzrain\TelegramBotApi\Internal\ArrayType;
+use Luzrain\TelegramBotApi\Type\AffiliateInfo;
 use Luzrain\TelegramBotApi\Type\PaidMedia;
 use Luzrain\TelegramBotApi\Type\Stickers\Gift;
 use Luzrain\TelegramBotApi\Type\User;
@@ -21,6 +22,11 @@ final readonly class TransactionPartnerUser extends TransactionPartner
          * Information about the user
          */
         public User $user,
+
+        /**
+         * Optional. Information about the affiliate that received a commission via this transaction
+         */
+        public AffiliateInfo|null $affiliate = null,
 
         /**
          * Optional. Bot-specified invoice payload

@@ -10,6 +10,7 @@ use Luzrain\TelegramBotApi\Type;
  * This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of
  *
  * @see TransactionPartnerUser
+ * @see TransactionPartnerAffiliateProgram
  * @see TransactionPartnerFragment
  * @see TransactionPartnerTelegramAds
  * @see TransactionPartnerTelegramApi
@@ -36,6 +37,7 @@ readonly class TransactionPartner extends Type
 
         return self::class !== static::class ? $instance : match ($instance->type) {
             TransactionPartnerUser::TYPE => TransactionPartnerUser::fromArray($data),
+            TransactionPartnerAffiliateProgram::TYPE => TransactionPartnerAffiliateProgram::fromArray($data),
             TransactionPartnerFragment::TYPE => TransactionPartnerFragment::fromArray($data),
             TransactionPartnerTelegramAds::TYPE => TransactionPartnerTelegramAds::fromArray($data),
             TransactionPartnerTelegramApi::TYPE => TransactionPartnerTelegramApi::fromArray($data),
