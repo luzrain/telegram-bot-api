@@ -6,6 +6,7 @@ namespace Luzrain\TelegramBotApi\Type\Payments;
 
 use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type\PaidMedia;
+use Luzrain\TelegramBotApi\Type\Stickers\Gift;
 use Luzrain\TelegramBotApi\Type\User;
 
 /**
@@ -27,6 +28,11 @@ final readonly class TransactionPartnerUser extends TransactionPartner
         public string|null $invoicePayload = null,
 
         /**
+         * Optional. The duration of the paid subscription
+         */
+        public int|null $subscriptionPeriod = null,
+
+        /**
          * Optional. Information about the paid media bought by the user
          *
          * @var list<PaidMedia>|null
@@ -38,6 +44,11 @@ final readonly class TransactionPartnerUser extends TransactionPartner
          * Optional. Bot-specified paid media payload
          */
         public string|null $paidMediaPayload = null,
+
+        /**
+         * Optional. The gift sent to the user by the bot
+         */
+        public Gift|null $gift = null,
     ) {
         parent::__construct(self::TYPE);
     }

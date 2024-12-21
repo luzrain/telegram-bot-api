@@ -42,6 +42,21 @@ final readonly class SuccessfulPayment extends Type
         public string $providerPaymentChargeId,
 
         /**
+         * Optional. Expiration date of the subscription, in Unix time; for recurring payments only
+         */
+        public string|null $subscriptionExpirationDate = null,
+
+        /**
+         * Optional. True, if the payment is a recurring payment for a subscription
+         */
+        public true|null $isRecurring = null,
+
+        /**
+         * Optional. True, if the payment is the first payment for a subscription
+         */
+        public true|null $isFirstRecurring = null,
+
+        /**
          * Optional. Identifier of the shipping option chosen by the user
          */
         public string|null $shippingOptionId = null,

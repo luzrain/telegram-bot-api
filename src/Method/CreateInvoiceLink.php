@@ -49,9 +49,23 @@ final class CreateInvoiceLink extends Method
         protected array $prices,
 
         /**
+         * Unique identifier of the business connection on behalf of which the link will be created. For payments in Telegram Stars only.
+         */
+        protected string|null $businessConnectionId = null,
+
+        /**
          * Payment provider token, obtained via @BotFather. Pass an empty string for payments in Telegram Stars.
          */
         protected string|null $providerToken = null,
+
+        /**
+         * The number of seconds the subscription will be active for before the next payment.
+         * The currency must be set to "XTR" (Telegram Stars) if the parameter is used.
+         * Currently, it must always be 2592000 (30 days) if specified.
+         * Any number of subscriptions can be active for a given bot at the same time, including multiple concurrent subscriptions from the same user.
+         * Subscription price must no exceed 2500 Telegram Stars.
+         */
+        protected int|null $subscriptionPeriod = null,
 
         /**
          * The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double).
