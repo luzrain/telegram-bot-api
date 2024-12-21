@@ -8,7 +8,7 @@ use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Games\CallbackGame;
 
 /**
- * This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
+ * This object represents one button of an inline keyboard. Exactly one of the optional fields must be used to specify type of the button.
  */
 final readonly class InlineKeyboardButton extends Type
 {
@@ -60,6 +60,11 @@ final readonly class InlineKeyboardButton extends Type
          * open that chat and insert the bot's username and the specified inline query in the input field
          */
         public SwitchInlineQueryChosenChat|null $switchInlineQueryChosenChat = null,
+
+        /**
+         * Optional. Description of the button that copies the specified text to the clipboard.
+         */
+        public CopyTextButton| null $copyText = null,
 
         /**
          * Optional. Description of the game that will be launched when the user presses the button.

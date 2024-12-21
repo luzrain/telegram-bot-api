@@ -87,6 +87,12 @@ final class SendPaidMedia extends Method
         protected bool|null $protectContent = null,
 
         /**
+         * Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message.
+         * The relevant Stars will be withdrawn from the bot's balance
+         */
+        protected bool|null $allowPaidBroadcast = null,
+
+        /**
          * Description of the message to reply to
          */
         protected ReplyParameters|null $replyParameters = null,

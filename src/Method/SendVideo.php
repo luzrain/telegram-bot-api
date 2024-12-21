@@ -113,6 +113,12 @@ final class SendVideo extends Method
         protected bool|null $protectContent = null,
 
         /**
+         * Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message.
+         * The relevant Stars will be withdrawn from the bot's balance
+         */
+        protected bool|null $allowPaidBroadcast = null,
+
+        /**
          * Unique identifier of the message effect to be added to the message; for private chats only
          */
         protected string|null $messageEffectId = null,

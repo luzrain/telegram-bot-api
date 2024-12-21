@@ -12,6 +12,7 @@ use Luzrain\TelegramBotApi\Type;
  * @see TransactionPartnerUser
  * @see TransactionPartnerFragment
  * @see TransactionPartnerTelegramAds
+ * @see TransactionPartnerTelegramApi
  * @see TransactionPartnerOther
  */
 readonly class TransactionPartner extends Type
@@ -37,6 +38,7 @@ readonly class TransactionPartner extends Type
             TransactionPartnerUser::TYPE => TransactionPartnerUser::fromArray($data),
             TransactionPartnerFragment::TYPE => TransactionPartnerFragment::fromArray($data),
             TransactionPartnerTelegramAds::TYPE => TransactionPartnerTelegramAds::fromArray($data),
+            TransactionPartnerTelegramApi::TYPE => TransactionPartnerTelegramApi::fromArray($data),
             TransactionPartnerOther::TYPE => TransactionPartnerOther::fromArray($data),
         };
     }
