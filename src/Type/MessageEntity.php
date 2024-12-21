@@ -24,6 +24,7 @@ final readonly class MessageEntity extends Type
     public const STRIKETHROUGH = 'strikethrough'; // strikethrough text
     public const SPOILER = 'spoiler'; // spoiler message
     public const BLOCKQUOTE = 'blockquote'; // block quotation
+    public const EXPANDABLE_BLOCKQUOTE = 'expandable_blockquote'; // block quotation
     public const CODE = 'code'; // monowidth string
     public const PRE = 'pre'; // monowidth block
     public const TEXT_LINK = 'text_link'; // for clickable text URLs
