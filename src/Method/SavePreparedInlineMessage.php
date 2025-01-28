@@ -17,6 +17,7 @@ use Luzrain\TelegramBotApi\Type\Inline\PreparedInlineMessage;
 final class SavePreparedInlineMessage extends Method
 {
     protected static string $methodName = 'savePreparedInlineMessage';
+    protected static string $responseClass = PreparedInlineMessage::class;
 
     public function __construct(
         /**
