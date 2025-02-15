@@ -49,6 +49,11 @@ final class CopyMessage extends Method
         protected int|null $messageThreadId = null,
 
         /**
+         * New start timestamp for the copied video in the message
+         */
+        protected int|null $videoStartTimestamp = null,
+
+        /**
          * New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept
          */
         protected string|null $caption = null,

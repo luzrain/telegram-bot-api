@@ -8,7 +8,7 @@ use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
 /**
- * Sends a gift to the given user. The gift can't be converted to Telegram Stars by the user.
+ * Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the receiver.
  * Returns True on success.
  *
  * @extends Method<true>
@@ -19,14 +19,19 @@ final class SendGift extends Method
 
     public function __construct(
         /**
-         * Unique identifier of the target user that will receive the gift
-         */
-        protected int $userId,
-
-        /**
          * Identifier of the gift
          */
         protected string $giftId,
+
+        /**
+         * Required if chat_id is not specified. Unique identifier of the target user who will receive the gift.
+         */
+        protected int|null $userId = null,
+
+        /**
+         * Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @channelusername) that will receive the gift.
+         */
+        protected int|string|null $chatId = null,
 
         /**
          * Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver

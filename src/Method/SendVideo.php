@@ -69,6 +69,16 @@ final class SendVideo extends Method
         protected InputFile|string|null $thumbnail = null,
 
         /**
+         * Cover for the video in the message.
+         */
+        protected InputFile|string|null $cover = null,
+
+        /**
+         * Start timestamp for the video in the message
+         */
+        protected int|null $startTimestamp = null,
+
+        /**
          * Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities parsing
          */
         protected string|null $caption = null,

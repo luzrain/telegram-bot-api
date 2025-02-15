@@ -8,7 +8,7 @@ use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\Message;
 
 /**
- * Use this method to forward messages of any kind. Service messages can't be forwarded.
+ * Use this method to forward messages of any kind. Service messages and messages with protected content can't be forwarded.
  * On success, the sent Message is returned.
  *
  * @extends Method<Message>
@@ -38,6 +38,11 @@ final class ForwardMessage extends Method
          * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
          */
         protected int|null $messageThreadId = null,
+
+        /**
+         * New start timestamp for the forwarded video in the message
+         */
+        protected int|null $videoStartTimestamp = null,
 
         /**
          * Protects the contents of the forwarded message from forwarding and saving
