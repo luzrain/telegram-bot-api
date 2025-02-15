@@ -41,6 +41,7 @@ final readonly class InlineQueryResultArticle extends InlineQueryResult
 
         /**
          * Optional. Pass True, if you don't want the URL to be shown in the message
+         * @deprecated Pass an empty string as url instead
          */
         public bool|null $hideUrl = null,
 

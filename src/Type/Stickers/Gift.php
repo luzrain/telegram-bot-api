@@ -28,6 +28,11 @@ final readonly class Gift extends Type
         public int $starCount,
 
         /**
+         * Optional. The number of Telegram Stars that must be paid to upgrade the gift to a unique one
+         */
+        public int|null $upgradeStarCount = null,
+
+        /**
          * Optional. The total number of the gifts of this type that can be sent; for limited gifts only
          */
         public int|null $totalCount = null,

@@ -29,6 +29,11 @@ final class SendGift extends Method
         protected string $giftId,
 
         /**
+         * Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver
+         */
+        protected bool|null $payForUpgrade = null,
+
+        /**
          * Text that will be shown along with the gift; 0-255 characters
          */
         protected string|null $text = null,
