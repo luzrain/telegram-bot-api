@@ -18,7 +18,7 @@ abstract readonly class Type implements \JsonSerializable
     /**
      * @internal
      * @throws TelegramTypeException
-     * @throws \Exception
+     * @return static
      */
     public static function fromArray(array $data): static
     {
@@ -47,7 +47,7 @@ abstract readonly class Type implements \JsonSerializable
         }
 
         try {
-            /** @psalm-suppress TooManyArguments */
+            /** @psalm-suppress TooManyArguments, UnsafeInstantiation */
             return new static(...$constructorMap);
         } catch (\ArgumentCountError $e) {
             throw TelegramTypeException::createExceptionWithMissingKeys($reflClass, $e, $data);
@@ -60,11 +60,12 @@ abstract readonly class Type implements \JsonSerializable
     public function toStdObject(): \stdClass
     {
         $data = new \stdClass();
+        /** @psalm-suppress RawObjectIteration */
         foreach ($this as $property => $value) {
             $propertyKey = StringUtils::toSnakeCase($property);
             if ($this->$property !== null) {
                 if (\is_array($this->$property)) {
-                    $data->$propertyKey = \array_map(fn($value) => $value instanceof self ? $value->toStdObject() : $value, $this->$property);
+                    $data->$propertyKey = \array_map(fn(mixed $value) => $value instanceof self ? $value->toStdObject() : $value, $this->$property);
                 } else {
                     $data->$propertyKey = $value instanceof self ? $value->toStdObject() : $this->$property;
                 }

@@ -13,7 +13,7 @@ use Luzrain\TelegramBotApi\Internal\StringUtils;
  *
  * @see https://core.telegram.org/bots/api#available-methods
  *
- * @template TReturn of Type|list<Type>|list<list<Type>>|int|string|bool
+ * @template TReturn
  */
 abstract class Method implements \JsonSerializable
 {
@@ -28,12 +28,13 @@ abstract class Method implements \JsonSerializable
     }
 
     /**
+     * @internal
      * @return TReturn
      * @throws TelegramTypeException
      * @psalm-suppress InvalidReturnType
      * @psalm-suppress InvalidReturnStatement
      */
-    public function createResponse(array|int|string|bool $data): Type|array|int|string|bool
+    public function createResponse(array|int|string|bool $data): mixed
     {
         /** @var class-string<Type> $responseClass */
         $responseClass = static::$responseClass;
@@ -48,6 +49,7 @@ abstract class Method implements \JsonSerializable
 
     public function getIterator(): \Traversable
     {
+        /** @psalm-suppress RawObjectIteration */
         foreach ($this as $key => $value) {
             if ($value !== null) {
                 yield StringUtils::toSnakeCase($key) => $value;

@@ -46,13 +46,13 @@ final readonly class BotApi
     /**
      * Execute telergam method
      *
-     * @template TReturn of Type|list<Type>|list<list<Type>>|int|string|bool
+     * @template TReturn
      * @param Method<TReturn> $method
      * @return TReturn
      * @throws TelegramApiException
      * @throws TelegramApiServerException
      */
-    public function call(Method $method): Type|array|int|string|bool
+    public function call(Method $method): mixed
     {
         $url = \sprintf('%s/bot%s/%s', $this->server, $this->token, $method->getName());
         $multiparts = [];

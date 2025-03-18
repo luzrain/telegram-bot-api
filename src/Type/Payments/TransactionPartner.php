@@ -33,7 +33,6 @@ readonly class TransactionPartner extends Type
      */
     public static function fromArray(array $data): static
     {
-        /** @var self $instance */
         $instance = parent::fromArray($data);
 
         return self::class !== static::class ? $instance : match ($instance->type) {
