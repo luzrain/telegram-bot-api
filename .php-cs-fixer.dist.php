@@ -53,7 +53,7 @@ $rules = [
     'get_class_to_class_keyword' => true,
 
     // Removes @param, @return and @var tags that don’t provide any useful information.
-    'no_superfluous_phpdoc_tags' => true,
+    'no_superfluous_phpdoc_tags' => false,
 
     // Multi-line arrays, arguments list, parameters list and match expressions must have a trailing comma.
     'trailing_comma_in_multiline' => [
