@@ -24,11 +24,11 @@ use Psr\Http\Message\StreamInterface;
 /**
  * Service for execute telegram methods
  */
-final class BotApi
+final readonly class BotApi
 {
-    private const URL_API_ENDPOINT = 'https://api.telegram.org/bot%s/%s';
-    private const URL_FILE_ENDPOINT = 'https://api.telegram.org/file/bot%s/%s';
+    private const DEFAULT_API_SERVER = 'https://api.telegram.org';
 
+    private string $server;
     private RequestBuilder $requestBuilder;
 
     public function __construct(
@@ -36,7 +36,9 @@ final class BotApi
         private StreamFactoryInterface $streamFactory,
         private ClientInterface $client,
         private string $token,
+        string|null $server = null,
     ) {
+        $this->server = \rtrim($server ?? self::DEFAULT_API_SERVER, '/');
         $this->requestBuilder = new RequestBuilder($requestFactory, $streamFactory);
     }
 
@@ -51,7 +53,7 @@ final class BotApi
      */
     public function call(Method $method): Type|array|int|string|bool
     {
-        $url = \sprintf(self::URL_API_ENDPOINT, $this->token, $method->getName());
+        $url = \sprintf('%s/bot%s/%s', $this->server, $this->token, $method->getName());
         $multiparts = [];
         $files = [];
 
@@ -111,7 +113,7 @@ final class BotApi
             $file = $this->call(new GetFile($file));
         }
 
-        $url = \sprintf(self::URL_FILE_ENDPOINT, $this->token, $file->filePath);
+        $url = \sprintf('%s/file/bot%s/%s', $this->server, $this->token, $file->filePath);
         $httpRequest = $this->requestBuilder->create('GET', $url);
         $httpResponse = $this->client->sendRequest($httpRequest);
 
