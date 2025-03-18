@@ -6,7 +6,7 @@ namespace Luzrain\TelegramBotApi\Exception;
 
 use Luzrain\TelegramBotApi\Internal\StringUtils;
 
-final class TelegramTypeException extends \Exception
+final class TelegramTypeException extends \RuntimeException
 {
     public static function createExceptionWithMissingKeys(\ReflectionClass $refl, \Throwable $previous, array $data): self
     {

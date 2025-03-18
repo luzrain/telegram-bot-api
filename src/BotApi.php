@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi;
 
 use Luzrain\TelegramBotApi\Exception\TelegramApiException;
+use Luzrain\TelegramBotApi\Exception\TelegramApiServerException;
 use Luzrain\TelegramBotApi\Internal\HttpClient\RequestBuilder;
 use Luzrain\TelegramBotApi\Method\GetFile;
 use Luzrain\TelegramBotApi\Method\SendMediaGroup;
@@ -49,7 +50,7 @@ final readonly class BotApi
      * @param Method<TReturn> $method
      * @return TReturn
      * @throws TelegramApiException
-     * @throws ClientExceptionInterface
+     * @throws TelegramApiServerException
      */
     public function call(Method $method): Type|array|int|string|bool
     {
@@ -89,12 +90,28 @@ final readonly class BotApi
             : $this->requestBuilder->create('POST', $url, $multiparts)
         ;
 
-        $httpResponse = $this->client->sendRequest($httpRequest);
+        try {
+            $httpResponse = $this->client->sendRequest($httpRequest);
+        } catch (ClientExceptionInterface $e) {
+            throw new TelegramApiServerException($e->getMessage(), 0, $e);
+        }
+
         $response = \json_decode((string) $httpResponse->getBody(), true);
 
+        if (!isset($response['ok'])) {
+            throw new TelegramApiServerException($httpResponse->getStatusCode() . ' Unexpected server response');
+        }
+
         if ($response['ok'] === false) {
-            $parameters = isset($response['parameters']) ? ResponseParameters::fromArray($response['parameters']) : null;
-            throw new TelegramApiException($response['description'], $response['error_code'], $parameters);
+            throw new TelegramApiException(
+                message: $response['description'] ?? $httpResponse->getReasonPhrase(),
+                code: $response['error_code'] ?? $httpResponse->getStatusCode(),
+                parameters: isset($response['parameters']) ? ResponseParameters::fromArray($response['parameters']) : null,
+            );
+        }
+
+        if (!isset($response['result'])) {
+            throw new TelegramApiServerException($httpResponse->getStatusCode() . ' Unexpected server response');
         }
 
         return $method->createResponse($response['result']);
@@ -103,9 +120,9 @@ final readonly class BotApi
     /**
      * Download telegram file
      *
-     * @param File|string $file File object or string with fileId
+     * @param File|string $file File object or fileId string
      * @throws TelegramApiException
-     * @throws ClientExceptionInterface
+     * @throws TelegramApiServerException
      */
     public function downloadFile(File|string $file): StreamInterface
     {
@@ -115,11 +132,24 @@ final readonly class BotApi
 
         $url = \sprintf('%s/file/bot%s/%s', $this->server, $this->token, $file->filePath);
         $httpRequest = $this->requestBuilder->create('GET', $url);
-        $httpResponse = $this->client->sendRequest($httpRequest);
+
+        try {
+            $httpResponse = $this->client->sendRequest($httpRequest);
+        } catch (ClientExceptionInterface $e) {
+            throw new TelegramApiServerException($e->getMessage(), 0, $e);
+        }
+
+        $response = \json_decode((string) $httpResponse->getBody(), true);
+
+        if ($httpResponse->getStatusCode() !== 200 && !isset($response['ok'])) {
+            throw new TelegramApiServerException($httpResponse->getStatusCode() . ' Unexpected server response');
+        }
 
         if ($httpResponse->getStatusCode() !== 200) {
-            $response = \json_decode((string) $httpResponse->getBody(), true);
-            throw new TelegramApiException($response['description'], $response['error_code']);
+            throw new TelegramApiException(
+                message: $response['description'] ?? $httpResponse->getReasonPhrase(),
+                code: $response['error_code'] ?? $httpResponse->getStatusCode(),
+            );
         }
 
         return $httpResponse->getBody();
