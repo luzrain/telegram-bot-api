@@ -36,6 +36,7 @@ final readonly class BotApi
         RequestFactoryInterface $requestFactory,
         private StreamFactoryInterface $streamFactory,
         private ClientInterface $client,
+        #[\SensitiveParameter]
         private string $token,
         string|null $server = null,
     ) {
