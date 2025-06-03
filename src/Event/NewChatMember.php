@@ -11,9 +11,8 @@ use Luzrain\TelegramBotApi\Type;
 /**
  * New member has joined the chat
  * The bot must explicitly allow the update "chat_member" to receive it.
- * @deprecated use NewChatMember
  */
-final class ChatMemberMember extends Event
+final class NewChatMember extends Event
 {
     public function executeChecker(Type\Update $update): bool
     {
@@ -22,6 +21,6 @@ final class ChatMemberMember extends Event
 
     public function executeCallback(Type\Update $update): Method|null
     {
-        return $this->callback($update->chatMember);
+        return $this->callback($update->chatMember?->newChatMember);
     }
 }

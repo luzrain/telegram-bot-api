@@ -7,14 +7,11 @@ namespace Luzrain\TelegramBotApi\Event;
 use Luzrain\TelegramBotApi\Event;
 use Luzrain\TelegramBotApi\Type;
 
-/**
- * @deprecated use TextMessage
- */
-final class Message extends Event
+final class TextMessage extends Event
 {
     public function executeChecker(Type\Update $update): bool
     {
-        return $update->message !== null;
+        return $update->message?->text !== null;
     }
 
     public function executeCallback(Type\Update $update): mixed

@@ -10,6 +10,7 @@ use Luzrain\TelegramBotApi\Type;
 
 /**
  * New member has joined the bot
+ * @deprecated use NewBotMember
  */
 final class BotMemberMember extends Event
 {
