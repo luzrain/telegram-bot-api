@@ -35,14 +35,20 @@ final readonly class BusinessConnection extends Type
         public int $date,
 
         /**
-         * True, if the bot can act on behalf of the business account in chats that were active in the last 24 hours
-         */
-        public bool $canReply,
-
-        /**
          * True, if the connection is active
          */
         public bool $isEnabled,
+
+        /**
+         * Optional. Rights of the business bot
+         */
+        public BusinessBotRights|null $rights = null,
+
+        /**
+         * True, if the bot can act on behalf of the business account in chats that were active in the last 24 hours
+         * @deprecated use $rights instead
+         */
+        public bool $canReply = false,
     ) {
     }
 }

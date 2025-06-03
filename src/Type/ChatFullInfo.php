@@ -39,6 +39,11 @@ final readonly class ChatFullInfo extends Type
         public int $maxReactionCount,
 
         /**
+         * Information about types of gifts that are accepted by the chat or by the corresponding user for private chats
+         */
+        public AcceptedGiftTypes $acceptedGiftTypes,
+
+        /**
          * Optional. Title, for supergroups, channels and group chats
          */
         public string|null $title = null,
@@ -181,6 +186,7 @@ final readonly class ChatFullInfo extends Type
 
         /**
          * Optional. True, if gifts can be sent to the chat
+         * @deprecated replaced by acceptedGiftTypes
          */
         public true|null $canSendGift = null,
 

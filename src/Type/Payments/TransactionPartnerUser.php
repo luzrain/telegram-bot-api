@@ -18,6 +18,13 @@ final readonly class TransactionPartnerUser extends TransactionPartner
     public const TYPE = 'user';
 
     protected function __construct(
+
+        /**
+         * Type of the transaction, currently one of "invoice_payment" for payments via invoices, "paid_media_payment" for payments for paid media, "gift_purchase" for gifts sent by the bot,
+         * "premium_purchase" for Telegram Premium subscriptions gifted by the bot, "business_account_transfer" for direct transfers from managed business accounts
+         */
+        public string $transactionType,
+
         /**
          * Information about the user
          */
@@ -55,6 +62,11 @@ final readonly class TransactionPartnerUser extends TransactionPartner
          * Optional. The gift sent to the user by the bot
          */
         public Gift|null $gift = null,
+
+        /**
+         * Optional. Number of months the gifted Telegram Premium subscription will be active for; for "premium_purchase" transactions only
+         */
+        public int|null $premiumSubscriptionDuration = null,
     ) {
         parent::__construct(self::TYPE);
     }

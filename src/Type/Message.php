@@ -138,6 +138,11 @@ final readonly class Message extends MaybeInaccessibleMessage
         public string|null $authorSignature = null,
 
         /**
+         * Optional. The number of Telegram Stars that were paid by the sender of the message to send it
+         */
+        public int|null $paidStarCount = null,
+
+        /**
          * Optional. For text messages, the actual UTF-8 text of the message, 0-4096 characters
          */
         public string|null $text = null,
@@ -373,6 +378,16 @@ final readonly class Message extends MaybeInaccessibleMessage
         public ChatShared|null $chatShared = null,
 
         /**
+         * Optional. Service message: a regular gift was sent or received
+         */
+        public GiftInfo|null $gift = null,
+
+        /**
+         * Optional. Service message: a unique gift was sent or received
+         */
+        public UniqueGiftInfo|null $uniqueGift = null,
+
+        /**
          * Optional. The domain name of the website on which the user has logged in.
          */
         public string|null $connectedWebsite = null,
@@ -451,6 +466,11 @@ final readonly class Message extends MaybeInaccessibleMessage
          * Optional. Service message: a giveaway without public winners was completed
          */
         public GiveawayCompleted|null $giveawayCompleted = null,
+
+        /**
+         * Optional. Service message: the price for paid messages has changed in the chat
+         */
+        public PaidMessagePriceChanged|null $paidMessagePriceChanged = null,
 
         /**
          * Optional. Service message: video chat scheduled
