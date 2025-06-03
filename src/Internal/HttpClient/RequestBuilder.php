@@ -12,7 +12,7 @@ use Psr\Http\Message\StreamInterface;
 /**
  * @internal
  */
-final class RequestBuilder
+final readonly class RequestBuilder
 {
     private MultipartStreamBuilder $multipartStreamBuilder;
 

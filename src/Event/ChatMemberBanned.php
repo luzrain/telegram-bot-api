@@ -9,6 +9,7 @@ use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type;
 
 /**
+ * The chat member is blocked by the user
  * The bot must explicitly allow the update "chat_member" to receive it.
  */
 final class ChatMemberBanned extends Event

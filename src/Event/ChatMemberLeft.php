@@ -9,6 +9,7 @@ use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type;
 
 /**
+ * A chat member left from the chat.
  * The bot must explicitly allow the update "chat_member" to receive it.
  */
 final class ChatMemberLeft extends Event

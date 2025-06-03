@@ -9,13 +9,13 @@ use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type;
 
 /**
- * The bot is blocked by the user
+ * A bot left from the chat
  */
-final class BotMemberBanned extends Event
+final class BotMemberLeft extends Event
 {
     public function executeChecker(Type\Update $update): bool
     {
-        return $update->myChatMember?->newChatMember instanceof Type\ChatMemberBanned;
+        return $update->myChatMember?->newChatMember instanceof Type\ChatMemberLeft;
     }
 
     public function executeCallback(Type\Update $update): Method|null
