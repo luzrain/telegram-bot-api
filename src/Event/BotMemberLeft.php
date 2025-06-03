@@ -9,17 +9,17 @@ use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type;
 
 /**
- * The bot must explicitly allow the update "chat_member" to receive it.
+ * A bot left from the chat
  */
-final class ChatMemberMember extends Event
+final class BotMemberLeft extends Event
 {
     public function executeChecker(Type\Update $update): bool
     {
-        return $update->chatMember?->newChatMember instanceof Type\ChatMemberMember;
+        return $update->myChatMember?->newChatMember instanceof Type\ChatMemberLeft;
     }
 
     public function executeCallback(Type\Update $update): Method|null
     {
-        return $this->callback($update->chatMember);
+        return $this->callback($update->myChatMember);
     }
 }
