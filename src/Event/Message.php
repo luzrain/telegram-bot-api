@@ -8,7 +8,7 @@ use Luzrain\TelegramBotApi\Event;
 use Luzrain\TelegramBotApi\Type;
 
 /**
- * @deprecated use TextMessage
+ * @deprecated
  */
 final class Message extends Event
 {

@@ -9,17 +9,17 @@ use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type;
 
 /**
- * New member has joined the bot
+ * Member left the group
  */
-final class NewBotMember extends Event
+final class MemberLeftTheGroup extends Event
 {
     public function executeChecker(Type\Update $update): bool
     {
-        return $update->myChatMember?->newChatMember instanceof Type\ChatMemberMember;
+        return $update->message?->leftChatMember !== null;
     }
 
     public function executeCallback(Type\Update $update): Method|null
     {
-        return $this->callback($update->myChatMember?->newChatMember);
+        return $this->callback($update->message);
     }
 }

@@ -11,7 +11,6 @@ use Luzrain\TelegramBotApi\Type;
 /**
  * New member has joined the chat
  * The bot must explicitly allow the update "chat_member" to receive it.
- * @deprecated use NewChatMember
  */
 final class ChatMemberMember extends Event
 {

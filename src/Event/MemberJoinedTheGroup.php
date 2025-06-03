@@ -9,18 +9,17 @@ use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type;
 
 /**
- * New member has joined the chat
- * The bot must explicitly allow the update "chat_member" to receive it.
+ * New member has joined the group
  */
-final class NewChatMember extends Event
+final class MemberJoinedTheGroup extends Event
 {
     public function executeChecker(Type\Update $update): bool
     {
-        return $update->chatMember?->newChatMember instanceof Type\ChatMemberMember;
+        return $update->message?->newChatMembers !== null;
     }
 
     public function executeCallback(Type\Update $update): Method|null
     {
-        return $this->callback($update->chatMember?->newChatMember);
+        return $this->callback($update->message);
     }
 }
