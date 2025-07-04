@@ -64,6 +64,8 @@ final readonly class InlineQueryResultGif extends InlineQueryResult
 
         /**
          * Optional. Mode for parsing entities in the caption. See formatting options for more details.
+         *
+         * @see https://core.telegram.org/bots/api#formatting-options
          */
         public string|null $parseMode = null,
 

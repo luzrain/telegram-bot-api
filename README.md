@@ -1,8 +1,9 @@
 # PHP Wrapper for Telegram Bot API
 
-[![Bot Api 9.0](https://img.shields.io/badge/Bot%20API-9.0-0088cc.svg?style=flat)](https://core.telegram.org/bots/api-changelog#april-11-2025)
-[![PHP >=8.2](https://img.shields.io/badge/PHP->=8.2-777bb3.svg?style=flat)](https://www.php.net/releases/8.2/en.php)
-[![Tests Status](https://img.shields.io/github/actions/workflow/status/luzrain/telegram-bot-api/tests.yaml?branch=master)](../../actions/workflows/tests.yaml)
+[![Bot Api 9.1](https://img.shields.io/badge/Bot%20API-9.1-0088cc.svg?style=flat)](https://core.telegram.org/bots/api-changelog#july-3-2025)
+![PHP >=8.2](https://img.shields.io/badge/PHP->=8.2-777bb3.svg?style=flat)
+![Tests Status](https://img.shields.io/github/actions/workflow/status/luzrain/telegram-bot-api/tests.yaml?branch=master&label=Tests)
+![Downloads](https://img.shields.io/packagist/dt/luzrain/telegram-bot-api?label=Downloads&color=f28d1a)
 
 A lightweight object-oriented PHP wrapper for the [Telegram Bot API](https://core.telegram.org/bots/api) with full support for all the telegram methods and types.
 See all available methods and their parameters on the [Telegram Bot API](https://core.telegram.org/bots/api#available-methods) documentation page.
@@ -199,7 +200,7 @@ $client->on(new Event\Command('/ping', function(Type\Message $message) {
 }));
 
 // Handle text messages
-$client->on(new Event\Message(function(Type\Message $message) {
+$client->on(new Event\TextMessage(function(Type\Message $message) {
     return new Method\SendMessage(
         chatId: $message->chat->id,
         text: 'Your message: ' . $message->text,

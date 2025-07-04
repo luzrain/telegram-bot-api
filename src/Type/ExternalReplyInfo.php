@@ -95,6 +95,11 @@ final readonly class ExternalReplyInfo extends Type
         public true|null $hasMediaSpoiler = null,
 
         /**
+         * Optional. Message is a checklist
+         */
+        public Checklist|null $checklist = null,
+
+        /**
          * Optional. Message is a shared contact, information about the contact
          */
         public Contact|null $contact = null,

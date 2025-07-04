@@ -243,6 +243,11 @@ final readonly class Message extends MaybeInaccessibleMessage
         public true|null $hasMediaSpoiler = null,
 
         /**
+         * Optional. Message is a checklist
+         */
+        public Checklist|null $checklist = null,
+
+        /**
          * Optional. Message is a shared contact, information about the contact
          */
         public Contact|null $contact = null,
@@ -416,6 +421,21 @@ final readonly class Message extends MaybeInaccessibleMessage
          * Optional. Service message: chat background set
          */
         public ChatBackground|null $chatBackgroundSet = null,
+
+        /**
+         * Optional. Service message: some tasks in a checklist were marked as done or not done
+         */
+        public ChecklistTasksDone|null $checklistTasksDone = null,
+
+        /**
+         * Optional. Service message: tasks were added to a checklist
+         */
+        public ChecklistTasksAdded|null $checklistTasksAdded = null,
+
+        /**
+         * Optional. Service message: the price for paid messages in the corresponding direct messages chat of a channel has changed
+         */
+        public DirectMessagePriceChanged|null $directMessagePriceChanged = null,
 
         /**
          * Optional. Service message: forum topic created

@@ -44,6 +44,8 @@ final class EditStory extends Method
 
         /**
          * Mode for parsing entities in the story caption. See formatting options for more details.
+         *
+         * @see https://core.telegram.org/bots/api#formatting-options
          */
         protected string|null $parseMode = null,
 
