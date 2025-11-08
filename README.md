@@ -5,7 +5,7 @@
 ![Tests Status](https://img.shields.io/github/actions/workflow/status/luzrain/telegram-bot-api/tests.yaml?branch=master&label=Tests)
 ![Downloads](https://img.shields.io/packagist/dt/luzrain/telegram-bot-api?label=Downloads&color=f28d1a)
 
-A lightweight, object-oriented PHP wrapper for the [Telegram Bot API](https://core.telegram.org/bots/api), with full support for all available methods and types.  
+A lightweight, object-oriented PHP wrapper for the [Telegram Bot API](https://core.telegram.org/bots/api), with full support for all available methods and types.
 For details on each method and its parameters, refer to the official [Telegram Bot API documentation](https://core.telegram.org/bots/api#available-methods).
 
 ## Installation
@@ -20,7 +20,7 @@ It relies on the [PSR-18](https://www.php-fig.org/psr/psr-18/) HTTP client and [
 > [!NOTE]  
 > Using named parameters is recommended, since parameter order and counts can vary between releases.
 
-#### Example Initializing the BotApi with Guzzle
+#### Example Initializing the BotApi with Guzzle HTTP Client
 ```php
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\HttpFactory;
