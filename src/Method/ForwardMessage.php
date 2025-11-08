@@ -6,6 +6,7 @@ namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\Message;
+use Luzrain\TelegramBotApi\Type\SuggestedPostParameters;
 
 /**
  * Use this method to forward messages of any kind. Service messages and messages with protected content can't be forwarded.
@@ -40,6 +41,11 @@ final class ForwardMessage extends Method
         protected int|null $messageThreadId = null,
 
         /**
+         * Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat
+         */
+        protected int|null $directMessagesTopicId = null,
+
+        /**
          * New start timestamp for the forwarded video in the message
          */
         protected int|null $videoStartTimestamp = null,
@@ -53,6 +59,11 @@ final class ForwardMessage extends Method
          * Message identifier in the chat specified in from_chat_id
          */
         protected bool|null $protectContent = null,
+
+        /**
+         * A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only
+         */
+        protected SuggestedPostParameters|null $suggestedPostParameters = null,
     ) {
     }
 }

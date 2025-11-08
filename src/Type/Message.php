@@ -39,6 +39,11 @@ final readonly class Message extends MaybeInaccessibleMessage
         public int|null $messageThreadId = null,
 
         /**
+         * Optional. Information about the direct messages chat topic that contains the message
+         */
+        public DirectMessagesTopic|null $directMessagesTopic = null,
+
+        /**
          * Optional. Sender of the message; empty for messages sent to channels.
          * For backward compatibility, the field contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
          */
@@ -107,6 +112,11 @@ final readonly class Message extends MaybeInaccessibleMessage
         public Story|null $replyToStory = null,
 
         /**
+         * Optional. Identifier of the specific checklist task that is being replied to
+         */
+        public int|null $replyToChecklistTaskId = null,
+
+        /**
          * Optional. Bot through which the message was sent
          */
         public User|null $viaBot = null,
@@ -126,6 +136,11 @@ final readonly class Message extends MaybeInaccessibleMessage
          * or as a scheduled message
          */
         public true|null $isFromOffline = null,
+
+        /**
+         * Optional. True, if the message is a paid post. Note that such posts must not be deleted for 24 hours to receive the payment and can't be edited.
+         */
+        public true|null $isPaidPost = null,
 
         /**
          * Optional. The unique identifier of a media message group this message belongs to
@@ -159,6 +174,12 @@ final readonly class Message extends MaybeInaccessibleMessage
          * Optional. Options used for link preview generation for the message, if it is a text message and link preview options were changed
          */
         public LinkPreviewOptions|null $linkPreviewOptions = null,
+
+        /**
+         * Optional. Information about suggested post parameters if the message is a suggested post in a channel direct messages chat.
+         * If the message is an approved or declined suggested post, then it can't be edited.
+         */
+        public SuggestedPostInfo|null $suggestedPostInfo = null,
 
         /**
          * Optional. Unique identifier of the message effect added to the message
@@ -491,6 +512,31 @@ final readonly class Message extends MaybeInaccessibleMessage
          * Optional. Service message: the price for paid messages has changed in the chat
          */
         public PaidMessagePriceChanged|null $paidMessagePriceChanged = null,
+
+        /**
+         * Optional. Service message: a suggested post was approved
+         */
+        public SuggestedPostApproved|null $suggestedPostApproved = null,
+
+        /**
+         * Optional. Service message: approval of a suggested post has failed
+         */
+        public SuggestedPostApprovalFailed|null $suggestedPostApprovalFailed = null,
+
+        /**
+         * Optional. Service message: a suggested post was declined
+         */
+        public SuggestedPostDeclined|null $suggestedPostDeclined = null,
+
+        /**
+         * Optional. Service message: payment for a suggested post was received
+         */
+        public SuggestedPostPaid|null $suggestedPostPaid = null,
+
+        /**
+         * Optional. Service message: payment for a suggested post was refunded
+         */
+        public SuggestedPostRefunded|null $suggestedPostRefunded = null,
 
         /**
          * Optional. Service message: video chat scheduled

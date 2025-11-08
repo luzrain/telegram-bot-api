@@ -41,6 +41,11 @@ final readonly class UniqueGift extends Type
          * Backdrop of the gift
          */
         public UniqueGiftBackdrop $backdrop,
+
+        /**
+         * Optional. Information about the chat that published the gift
+         */
+        public Chat|null $publisherChat = null,
     ) {
     }
 }

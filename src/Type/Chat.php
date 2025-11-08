@@ -48,6 +48,11 @@ final readonly class Chat extends Type
          * Optional. True, if the supergroup chat is a forum (has topics enabled)
          */
         public true|null $isForum = null,
+
+        /**
+         * Optional. True, if the chat is the direct messages chat of a channel
+         */
+        public true|null $isDirectMessages = null,
     ) {
     }
 }

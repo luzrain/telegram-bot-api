@@ -69,6 +69,11 @@ final readonly class ChatFullInfo extends Type
         public true|null $isForum = null,
 
         /**
+         * Optional. True, if the chat is the direct messages chat of a channel
+         */
+        public true|null $isDirectMessages = null,
+
+        /**
          * Optional. Chat photo
          */
         public ChatPhoto|null $photo = null,
@@ -104,6 +109,11 @@ final readonly class ChatFullInfo extends Type
          * Optional. For private chats, the personal channel of the user
          */
         public Chat|null $personalChat = null,
+
+        /**
+         * Optional. Information about the corresponding channel chat; for direct messages chats only
+         */
+        public Chat|null $parentChat = null,
 
         /**
          * Optional. List of available reactions allowed in the chat. If omitted, then all emoji reactions are allowed.

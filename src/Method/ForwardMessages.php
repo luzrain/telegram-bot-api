@@ -45,6 +45,11 @@ final class ForwardMessages extends Method
         protected int|null $messageThreadId = null,
 
         /**
+         * Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat
+         */
+        protected int|null $directMessagesTopicId = null,
+
+        /**
          * Sends the messages silently. Users will receive a notification with no sound.
          */
         protected bool|null $disableNotification = null,

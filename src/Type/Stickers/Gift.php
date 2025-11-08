@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type\Stickers;
 
 use Luzrain\TelegramBotApi\Type;
+use Luzrain\TelegramBotApi\Type\Chat;
 
 /**
  * This object represents a gift that can be sent by the bot.
@@ -41,6 +42,11 @@ final readonly class Gift extends Type
          * Optional. The number of remaining gifts of this type that can be sent; for limited gifts only
          */
         public int|null $remainingCount = null,
+
+        /**
+         * Optional. Information about the chat that published the gift
+         */
+        public Chat|null $publisherChat = null,
     ) {
     }
 }

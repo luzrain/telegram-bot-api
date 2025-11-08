@@ -13,6 +13,7 @@ use Luzrain\TelegramBotApi\Type\MessageEntity;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 use Luzrain\TelegramBotApi\Type\ReplyParameters;
+use Luzrain\TelegramBotApi\Type\SuggestedPostParameters;
 
 /**
  * Use this method to send paid media to channel chats. On success, the sent Message is returned.
@@ -46,6 +47,16 @@ final class SendPaidMedia extends Method
          * Unique identifier of the business connection on behalf of which the message will be sent
          */
         protected string|null $businessConnectionId = null,
+
+        /**
+         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+         */
+        protected int|null $messageThreadId = null,
+
+        /**
+         * Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+         */
+        protected int|null $directMessagesTopicId = null,
 
         /**
          * Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.
@@ -91,6 +102,12 @@ final class SendPaidMedia extends Method
          * The relevant Stars will be withdrawn from the bot's balance
          */
         protected bool|null $allowPaidBroadcast = null,
+
+        /**
+         * A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only.
+         * If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
+         */
+        protected SuggestedPostParameters|null $suggestedPostParameters = null,
 
         /**
          * Description of the message to reply to

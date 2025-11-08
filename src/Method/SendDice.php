@@ -11,6 +11,7 @@ use Luzrain\TelegramBotApi\Type\Message;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 use Luzrain\TelegramBotApi\Type\ReplyParameters;
+use Luzrain\TelegramBotApi\Type\SuggestedPostParameters;
 
 /**
  * Use this method to send an animated emoji that will display a random value.
@@ -40,6 +41,11 @@ final class SendDice extends Method
         protected int|null $messageThreadId = null,
 
         /**
+         * Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+         */
+        protected int|null $directMessagesTopicId = null,
+
+        /**
          * Emoji on which the dice throw animation is based.
          * Currently, must be one of "🎲", "🎯", "🏀", "⚽", "🎳", or "🎰".
          * Dice can have values 1-6 for "🎲", "🎯" and "🎳", values 1-5 for "🏀" and "⚽", and values 1-64 for "🎰". Defaults to "🎲"
@@ -66,6 +72,12 @@ final class SendDice extends Method
          * Unique identifier of the message effect to be added to the message; for private chats only
          */
         protected string|null $messageEffectId = null,
+
+        /**
+         * A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only.
+         * If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
+         */
+        protected SuggestedPostParameters|null $suggestedPostParameters = null,
 
         /**
          * Description of the message to reply to

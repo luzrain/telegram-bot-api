@@ -57,6 +57,11 @@ final readonly class ReplyParameters extends Type
          * Optional. Position of the quote in the original message in UTF-16 code units
          */
         public int|null $quotePosition = null,
+
+        /**
+         * Optional. Identifier of the specific checklist task to be replied to
+         */
+        public int|null $checklistTaskId = null,
     ) {
     }
 }

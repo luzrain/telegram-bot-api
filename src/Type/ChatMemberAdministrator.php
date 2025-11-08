@@ -100,6 +100,11 @@ final readonly class ChatMemberAdministrator extends ChatMember
         public bool|null $canManageTopics = null,
 
         /**
+         * Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only
+         */
+        public bool|null $canManageDirectMessages = null,
+
+        /**
          * Optional. Custom title for this user
          */
         public string|null $customTitle = null,

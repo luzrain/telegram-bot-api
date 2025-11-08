@@ -12,6 +12,7 @@ use Luzrain\TelegramBotApi\Type\Message;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardMarkup;
 use Luzrain\TelegramBotApi\Type\ReplyKeyboardRemove;
 use Luzrain\TelegramBotApi\Type\ReplyParameters;
+use Luzrain\TelegramBotApi\Type\SuggestedPostParameters;
 
 /**
  * As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages.
@@ -46,6 +47,11 @@ final class SendVideoNote extends Method
          * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
          */
         protected int|null $messageThreadId = null,
+
+        /**
+         * Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+         */
+        protected int|null $directMessagesTopicId = null,
 
         /**
          * Duration of sent video in seconds
@@ -83,6 +89,12 @@ final class SendVideoNote extends Method
          * Unique identifier of the message effect to be added to the message; for private chats only
          */
         protected string|null $messageEffectId = null,
+
+        /**
+         * A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only.
+         * If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
+         */
+        protected SuggestedPostParameters|null $suggestedPostParameters = null,
 
         /**
          * Description of the message to reply to

@@ -47,6 +47,11 @@ final class CopyMessages extends Method
         protected int|null $messageThreadId = null,
 
         /**
+         * Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat
+         */
+        protected int|null $directMessagesTopicId = null,
+
+        /**
          * Sends the messages silently. Users will receive a notification with no sound.
          */
         protected bool|null $disableNotification = null,

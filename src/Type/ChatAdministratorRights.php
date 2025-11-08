@@ -89,6 +89,11 @@ final readonly class ChatAdministratorRights extends Type
          * Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
          */
         public bool|null $canManageTopics = null,
+
+        /**
+         * Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only
+         */
+        public bool|null $canManageDirectMessages = null,
     ) {
     }
 }
