@@ -31,9 +31,9 @@
         "psr/http-factory": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit" : "^10.5.45",
-        "friendsofphp/php-cs-fixer": "^3.72",
-        "vimeo/psalm": "^6.9.1"
+        "phpunit/phpunit" : "^10.5.58",
+        "friendsofphp/php-cs-fixer": "^3.89.1",
+        "vimeo/psalm": "^6.13.1"
     },
     "autoload": {
         "psr-4": {
