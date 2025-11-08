@@ -1,12 +1,12 @@
-# PHP Wrapper for Telegram Bot API
+# Telegram Bot API Client for PHP
 
 [![Bot Api 9.2](https://img.shields.io/badge/Bot%20API-9.2-0088cc.svg?style=flat)](https://core.telegram.org/bots/api-changelog#august-15-2025)
 ![PHP >=8.2](https://img.shields.io/badge/PHP->=8.2-777bb3.svg?style=flat)
 ![Tests Status](https://img.shields.io/github/actions/workflow/status/luzrain/telegram-bot-api/tests.yaml?branch=master&label=Tests)
 ![Downloads](https://img.shields.io/packagist/dt/luzrain/telegram-bot-api?label=Downloads&color=f28d1a)
 
-A lightweight object-oriented PHP wrapper for the [Telegram Bot API](https://core.telegram.org/bots/api) with full support for all the telegram methods and types.
-See all available methods and their parameters on the [Telegram Bot API](https://core.telegram.org/bots/api#available-methods) documentation page.
+A lightweight, object-oriented PHP wrapper for the [Telegram Bot API](https://core.telegram.org/bots/api), with full support for all available methods and types.  
+For details on each method and its parameters, refer to the official [Telegram Bot API documentation](https://core.telegram.org/bots/api#available-methods).
 
 ## Installation
 ``` bash
@@ -14,14 +14,13 @@ $ composer require luzrain/telegram-bot-api
 ```
 
 ## Bot API
-The Telegram Bot Client is not hard coupled to Guzzle or any other library that sends HTTP messages.
-Instead, it uses the [PSR-18](https://www.php-fig.org/psr/psr-18/) client abstraction.
-This will give you the flexibility to choose what [PSR-7 implementation](https://packagist.org/providers/psr/http-message-implementation) and [HTTP client](https://packagist.org/providers/psr/http-client-implementation) you want to use.
+The Telegram Bot Client is not tied to Guzzle or any specific HTTP client.  
+It relies on the [PSR-18](https://www.php-fig.org/psr/psr-18/) HTTP client and [PSR-17](https://www.php-fig.org/psr/psr-17/) HTTP Factories abstractions.
 
 > [!NOTE]  
-> It is highly recommended that you use named parameters, as in the examples below, because the number and order of parameters changes between releases.
+> Using named parameters is recommended, since parameter order and counts can vary between releases.
 
-#### Example of initialising the BotApi with Guzzle client
+#### Example Initializing the BotApi with Guzzle
 ```php
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\HttpFactory;
@@ -38,7 +37,7 @@ $bot = new BotApi(
 );
 ```
 
-#### Send message
+#### Send Message
 ```php
 use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type;
@@ -52,7 +51,7 @@ $response = $bot->call(new Method\SendMessage(
 ));
 ```
 
-#### Send message with reply keyboard
+#### Send Message with Reply Keyboard
 
 ```php
 use Luzrain\TelegramBotApi\Method;
@@ -82,7 +81,7 @@ $response = $bot->call(new Method\SendMessage(
 ));
 ```
 
-#### Send message with inline keyboard
+#### Send Message with Inline Keyboard
 
 ```php
 use Luzrain\TelegramBotApi\Method;
@@ -147,7 +146,7 @@ $response = $bot->call(new Method\SendDocument(
  */
 ```
 
-#### Send media group
+#### Send Media Group
 
 ```php
 use Luzrain\TelegramBotApi\Method;
@@ -172,7 +171,7 @@ $response = $bot->call(new Method\SendMediaGroup(
 ```
 
 ## Client Api
-#### Webhook client
+#### Webhook Client
 
 ```php
 use Luzrain\TelegramBotApi\ClientApi;
