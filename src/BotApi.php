@@ -7,6 +7,7 @@ namespace Luzrain\TelegramBotApi;
 use Luzrain\TelegramBotApi\Exception\TelegramApiException;
 use Luzrain\TelegramBotApi\Exception\TelegramApiServerException;
 use Luzrain\TelegramBotApi\Internal\HttpClient\RequestBuilder;
+use Luzrain\TelegramBotApi\Method\EditMessageMedia;
 use Luzrain\TelegramBotApi\Method\GetFile;
 use Luzrain\TelegramBotApi\Method\SendMediaGroup;
 use Luzrain\TelegramBotApi\Type\File;
@@ -77,6 +78,17 @@ final readonly class BotApi
                     if (!$inputMedia instanceof InputMediaPhoto && $inputMedia->thumbnail instanceof InputFile) {
                         $files[] = $inputMedia->thumbnail;
                     }
+                }
+            }
+
+            /** @psalm-suppress TypeDoesNotContainType */
+            if ($method instanceof EditMessageMedia && $name === 'media') {
+                /** @var InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo $value */
+                if ($value->media instanceof InputFile) {
+                    $files[] = $value->media;
+                }
+                if (!$value instanceof InputMediaPhoto && $value->thumbnail instanceof InputFile) {
+                    $files[] = $value->thumbnail;
                 }
             }
         }
