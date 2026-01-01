@@ -7,15 +7,19 @@ namespace Luzrain\TelegramBotApi;
 use Luzrain\TelegramBotApi\Exception\TelegramApiException;
 use Luzrain\TelegramBotApi\Exception\TelegramApiServerException;
 use Luzrain\TelegramBotApi\Internal\HttpClient\RequestBuilder;
-use Luzrain\TelegramBotApi\Method\EditMessageMedia;
 use Luzrain\TelegramBotApi\Method\GetFile;
 use Luzrain\TelegramBotApi\Method\SendMediaGroup;
+use Luzrain\TelegramBotApi\Method\SendPaidMedia;
 use Luzrain\TelegramBotApi\Type\File;
 use Luzrain\TelegramBotApi\Type\InputFile;
+use Luzrain\TelegramBotApi\Type\InputMedia;
+use Luzrain\TelegramBotApi\Type\InputMediaAnimation;
 use Luzrain\TelegramBotApi\Type\InputMediaAudio;
 use Luzrain\TelegramBotApi\Type\InputMediaDocument;
 use Luzrain\TelegramBotApi\Type\InputMediaPhoto;
 use Luzrain\TelegramBotApi\Type\InputMediaVideo;
+use Luzrain\TelegramBotApi\Type\InputPaidMediaPhoto;
+use Luzrain\TelegramBotApi\Type\InputPaidMediaVideo;
 use Luzrain\TelegramBotApi\Type\ResponseParameters;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
@@ -68,9 +72,19 @@ final readonly class BotApi
                 $multiparts[$name] = \is_scalar($value) ? $value : \json_encode($value, JSON_UNESCAPED_UNICODE);
             }
 
+            if ($value instanceof InputMedia) {
+                /** @var InputMediaAnimation|InputMediaDocument|InputMediaAudio|InputMediaPhoto|InputMediaVideo $value */
+                if ($value->media instanceof InputFile) {
+                    $files[] = $value->media;
+                }
+                if (!$value instanceof InputMediaPhoto && $value->thumbnail instanceof InputFile) {
+                    $files[] = $value->thumbnail;
+                }
+            }
+
             /** @psalm-suppress TypeDoesNotContainType */
             if ($method instanceof SendMediaGroup && $name === 'media') {
-                /** @var list<InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo> $value */
+                /** @var list<InputMediaAnimation|InputMediaDocument|InputMediaAudio|InputMediaPhoto|InputMediaVideo> $value */
                 foreach ($value as $inputMedia) {
                     if ($inputMedia->media instanceof InputFile) {
                         $files[] = $inputMedia->media;
@@ -82,13 +96,15 @@ final readonly class BotApi
             }
 
             /** @psalm-suppress TypeDoesNotContainType */
-            if ($method instanceof EditMessageMedia && $name === 'media') {
-                /** @var InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo $value */
-                if ($value->media instanceof InputFile) {
-                    $files[] = $value->media;
-                }
-                if (!$value instanceof InputMediaPhoto && $value->thumbnail instanceof InputFile) {
-                    $files[] = $value->thumbnail;
+            if ($method instanceof SendPaidMedia && $name === 'media') {
+                /** @var list<InputPaidMediaPhoto|InputPaidMediaVideo> $value */
+                foreach ($value as $inputPaidMedia) {
+                    if ($inputPaidMedia->media instanceof InputFile) {
+                        $files[] = $inputPaidMedia->media;
+                    }
+                    if (!$inputPaidMedia instanceof InputPaidMediaPhoto && $inputPaidMedia->thumbnail instanceof InputFile) {
+                        $files[] = $inputPaidMedia->thumbnail;
+                    }
                 }
             }
         }
