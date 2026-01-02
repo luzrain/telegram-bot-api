@@ -76,6 +76,11 @@ final readonly class User extends Type
          * Optional. True, if the bot has a main Web App. Returned only in getMe.
          */
         public bool|null $hasMainWebApp = null,
+
+        /**
+         * Optional. True, if the bot has forum topic mode enabled in private chats. Returned only in getMe.
+         */
+        public bool|null $hasTopicsEnabled = null,
     ) {
     }
 }

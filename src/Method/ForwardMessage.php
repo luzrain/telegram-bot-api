@@ -36,7 +36,7 @@ final class ForwardMessage extends Method
         protected int|string $messageId,
 
         /**
-         * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+         * Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
          */
         protected int|null $messageThreadId = null,
 
@@ -59,6 +59,11 @@ final class ForwardMessage extends Method
          * Message identifier in the chat specified in from_chat_id
          */
         protected bool|null $protectContent = null,
+
+        /**
+         * Unique identifier of the message effect to be added to the message; only available when forwarding to private chats
+         */
+        protected string|null $messageEffectId = null,
 
         /**
          * A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only

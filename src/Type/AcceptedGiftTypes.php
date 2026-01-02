@@ -31,6 +31,11 @@ final readonly class AcceptedGiftTypes extends Type
          * True, if a Telegram Premium subscription is accepted
          */
         public bool $premiumSubscription,
+
+        /**
+         * True, if transfers of unique gifts from channels are accepted
+         */
+        public bool $giftsFromChannels,
     ) {
     }
 }

@@ -54,9 +54,9 @@ final class SendChatAction extends Method
         protected string|null $businessConnectionId = null,
 
         /**
-         * Unique identifier for the target message thread; supergroups only
+         * Unique identifier for the target message thread or topic of a forum; for supergroups and private chats of bots with forum topic mode enabled only
          */
-        protected string|null $messageThreadId = null,
+        protected int|null $messageThreadId = null,
     ) {
     }
 }

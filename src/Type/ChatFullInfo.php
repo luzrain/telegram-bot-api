@@ -269,6 +269,21 @@ final readonly class ChatFullInfo extends Type
          * Optional. For supergroups, the location to which the supergroup is connected
          */
         public ChatLocation|null $location = null,
+
+        /**
+         * Optional. For private chats, the rating of the user if any
+         */
+        public UserRating|null $rating = null,
+
+        /**
+         * Optional. The color scheme based on a unique gift that must be used for the chat's name, message replies and link previews
+         */
+        public UniqueGiftColors|null $uniqueGiftColors = null,
+
+        /**
+         * Optional. The number of Telegram Stars a general user have to pay to send a message to the chat
+         */
+        public int|null $paidMessageStarCount = null,
     ) {
     }
 }

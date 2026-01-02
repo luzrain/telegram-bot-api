@@ -26,6 +26,11 @@ final readonly class ForumTopicCreated extends Type
          * Optional. Unique identifier of the custom emoji shown as the topic icon
          */
         public string|null $iconCustomEmojiId = null,
+
+        /**
+         * Optional. True, if the name of the topic wasn't specified explicitly by its creator and likely needs to be changed by the bot
+         */
+        public true|null $isNameImplicit = null,
     ) {
     }
 }

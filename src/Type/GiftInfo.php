@@ -35,6 +35,11 @@ final readonly class GiftInfo extends Type
         public int|null $prepaidUpgradeStarCount = null,
 
         /**
+         * Optional. True, if the gift's upgrade was purchased after the gift was sent
+         */
+        public true|null $isUpgradeSeparate = null,
+
+        /**
          * Optional. True, if the gift can be upgraded to a unique gift
          */
         public true|null $canBeUpgraded = null,
@@ -56,6 +61,11 @@ final readonly class GiftInfo extends Type
          * Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them
          */
         public true|null $isPrivate = null,
+
+        /**
+         * Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift
+         */
+        public int|null $uniqueGiftNumber = null,
     ) {
     }
 }

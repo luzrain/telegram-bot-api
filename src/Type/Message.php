@@ -34,7 +34,7 @@ final readonly class Message extends MaybeInaccessibleMessage
         public Chat $chat,
 
         /**
-         * Optional. Unique identifier of a message thread to which the message belongs; for supergroups only
+         * Optional. Unique identifier of a message thread or forum topic to which the message belongs; for supergroups and private chats only
          */
         public int|null $messageThreadId = null,
 
@@ -81,7 +81,7 @@ final readonly class Message extends MaybeInaccessibleMessage
         public MessageOrigin|null $forwardOrigin = null,
 
         /**
-         * Optional. True, if the message is sent to a forum topic
+         * Optional. True, if the message is sent to a topic in a forum supergroup or a private chat with the bot
          */
         public true|null $isTopicMessage = null,
 
@@ -412,6 +412,11 @@ final readonly class Message extends MaybeInaccessibleMessage
          * Optional. Service message: a unique gift was sent or received
          */
         public UniqueGiftInfo|null $uniqueGift = null,
+
+        /**
+         * Optional. Service message: upgrade of a gift was purchased after the gift was sent
+         */
+        public GiftInfo|null $giftUpgradeSent = null,
 
         /**
          * Optional. The domain name of the website on which the user has logged in.

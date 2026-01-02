@@ -77,6 +77,16 @@ final readonly class OwnedGiftRegular extends OwnedGift
          * Optional. Number of Telegram Stars that were paid by the sender for the ability to upgrade the gift
          */
         public int|null $prepaidUpgradeStarCount = null,
+
+        /**
+         * Optional. True, if the gift's upgrade was purchased after the gift was sent; for gifts received on behalf of business accounts only
+         */
+        public true|null $isUpgradeSeparate = null,
+
+        /**
+         * Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift
+         */
+        public int|null $uniqueGiftNumber = null,
     ) {
         parent::__construct(self::TYPE);
     }

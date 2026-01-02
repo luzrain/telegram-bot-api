@@ -37,6 +37,11 @@ final readonly class ChecklistTask extends Type
         public User|null $completedByUser = null,
 
         /**
+         * Optional. Chat that completed the task; omitted if the task wasn't completed by a chat
+         */
+        public Chat|null $completedByChat = null,
+
+        /**
          * Optional. Point in time (Unix timestamp) when the task was completed; 0 if the task wasn't completed
          */
         public int|null $completionDate = null,
