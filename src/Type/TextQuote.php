@@ -20,7 +20,7 @@ final readonly class TextQuote extends Type
 
         /**
          * Optional. Special entities that appear in the quote.
-         * Currently, only bold, italic, underline, strikethrough, spoiler, and custom_emoji entities are kept in quotes.
+         * Currently, only bold, italic, underline, strikethrough, spoiler, custom_emoji, and date_time entities are kept in quotes.
          *
          * @var list<MessageEntity>|null
          */

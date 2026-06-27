@@ -48,6 +48,12 @@ final readonly class KeyboardButton extends Type
         public KeyboardButtonRequestChat|null  $requestChat = null,
 
         /**
+         * Optional. If specified, pressing the button will ask the user to create and share a bot that will be managed by the current bot.
+         * Available for bots that enabled management of other bots in the @BotFather Mini App. Available in private chats only.
+         */
+        public KeyboardButtonRequestManagedBot|null $requestManagedBot = null,
+
+        /**
          * Optional. If True, the user's phone number will be sent as a contact when the button is pressed.
          * Available in private chats only.
          */

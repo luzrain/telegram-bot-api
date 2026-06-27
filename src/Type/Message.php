@@ -122,6 +122,11 @@ final readonly class Message extends MaybeInaccessibleMessage
         public int|null $replyToChecklistTaskId = null,
 
         /**
+         * Optional. Persistent identifier of the specific poll option that is being replied to
+         */
+        public string|null $replyToPollOptionId = null,
+
+        /**
          * Optional. Bot through which the message was sent
          */
         public User|null $viaBot = null,
@@ -529,9 +534,24 @@ final readonly class Message extends MaybeInaccessibleMessage
         public GiveawayCompleted|null $giveawayCompleted = null,
 
         /**
+         * Optional. Service message: user created a bot that will be managed by the current bot
+         */
+        public ManagedBotCreated|null $managedBotCreated = null,
+
+        /**
          * Optional. Service message: the price for paid messages has changed in the chat
          */
         public PaidMessagePriceChanged|null $paidMessagePriceChanged = null,
+
+        /**
+         * Optional. Service message: answer option was added to a poll
+         */
+        public PollOptionAdded|null $pollOptionAdded = null,
+
+        /**
+         * Optional. Service message: answer option was deleted from a poll
+         */
+        public PollOptionDeleted|null $pollOptionDeleted = null,
 
         /**
          * Optional. Service message: a suggested post was approved

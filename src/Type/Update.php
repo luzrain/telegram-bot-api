@@ -22,6 +22,10 @@ final readonly class Update extends Type
         'edited_message',
         'channel_post',
         'edited_channel_post',
+        'business_connection',
+        'business_message',
+        'edited_business_message',
+        'deleted_business_messages',
         'message_reaction',
         'message_reaction_count',
         'inline_query',
@@ -29,6 +33,7 @@ final readonly class Update extends Type
         'callback_query',
         'shipping_query',
         'pre_checkout_query',
+        'purchased_paid_media',
         'poll',
         'poll_answer',
         'my_chat_member',
@@ -36,6 +41,7 @@ final readonly class Update extends Type
         'chat_join_request',
         'chat_boost',
         'removed_chat_boost',
+        'managed_bot',
     ];
 
     protected function __construct(
@@ -170,6 +176,11 @@ final readonly class Update extends Type
          * Optional. A boost was removed from a chat. The bot must be an administrator in the chat to receive these updates.
          */
         public ChatBoostRemoved|null $removedChatBoost = null,
+
+        /**
+         * Optional. A new bot was created to be managed by the bot, or token or owner of a managed bot was changed
+         */
+        public ManagedBotUpdated|null $managedBot = null,
     ) {
     }
 

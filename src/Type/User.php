@@ -86,6 +86,11 @@ final readonly class User extends Type
          * Optional. True, if the bot allows users to create and delete topics in private chats. Returned only in getMe.
          */
         public bool|null $allowsUsersToCreateTopics = null,
+
+        /**
+         * Optional. True, if other bots can be created to be controlled by the bot. Returned only in getMe.
+         */
+        public bool|null $canManageBots = null,
     ) {
     }
 }

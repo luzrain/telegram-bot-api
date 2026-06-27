@@ -25,6 +25,13 @@ final readonly class PollAnswer extends Type
         public array $optionIds,
 
         /**
+         * Persistent identifiers of the chosen answer options. May be empty if the vote was retracted.
+         *
+         * @var list<string>
+         */
+        public array $optionPersistentIds,
+
+        /**
          * Optional. The chat that changed the answer to the poll, if the voter is anonymous
          */
         public Chat|null $voterChat = null,

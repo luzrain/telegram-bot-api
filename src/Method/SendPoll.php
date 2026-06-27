@@ -39,7 +39,7 @@ final class SendPoll extends Method
         protected string $question,
 
         /**
-         * A JSON-serialized list of 2-10 answer options
+         * A JSON-serialized list of 2-12 answer options
          *
          * @var list<InputPollOption>
          */
@@ -80,14 +80,41 @@ final class SendPoll extends Method
         protected string|null $type = null,
 
         /**
-         * True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False
+         * Pass True, if the poll allows multiple answers, defaults to False
          */
         protected bool|null $allowsMultipleAnswers = null,
 
         /**
-         * 0-based identifier of the correct answer option, required for polls in quiz mode
+         * Pass True, if the poll allows to change chosen answer options, defaults to False for quizzes and to True for regular polls
+         */
+        protected bool|null $allowsRevoting = null,
+
+        /**
+         * Pass True, if the poll options must be shown in random order
+         */
+        protected bool|null $shuffleOptions = null,
+
+        /**
+         * Pass True, if answer options can be added to the poll after creation; not supported for anonymous polls and quizzes
+         */
+        protected bool|null $allowAddingOptions = null,
+
+        /**
+         * Pass True, if poll results must be shown only after the poll closes
+         */
+        protected bool|null $hideResultsUntilCloses = null,
+
+        /**
+         * @deprecated replaced by $correctOptionIds
          */
         protected int|null $correctOptionId = null,
+
+        /**
+         * A JSON-serialized list of monotonically increasing 0-based identifiers of the correct answer options, required for polls in quiz mode
+         *
+         * @var list<int>|null
+         */
+        protected array|null $correctOptionIds = null,
 
         /**
          * Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll,
@@ -108,13 +135,13 @@ final class SendPoll extends Method
         protected array|null $explanationEntities = null,
 
         /**
-         * Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with close_date.
+         * Amount of time in seconds the poll will be active after creation, 5-2628000. Can't be used together with close_date.
          */
         protected int|null $openPeriod = null,
 
         /**
          * Point in time (Unix timestamp) when the poll will be automatically closed.
-         * Must be at least 5 and no more than 600 seconds in the future. Can't be used together with open_period.
+         * Must be at least 5 and no more than 2628000 seconds in the future. Can't be used together with open_period.
          */
         protected int|null $closeDate = null,
 
@@ -122,6 +149,25 @@ final class SendPoll extends Method
          * Pass True if the poll needs to be immediately closed. This can be useful for poll preview.
          */
         protected bool|null $isClosed = null,
+
+        /**
+         * Description of the poll to be sent, 0-1024 characters after entities parsing
+         */
+        protected string|null $description = null,
+
+        /**
+         * Mode for parsing entities in the poll description. See formatting options for more details.
+         *
+         * @see https://core.telegram.org/bots/api#formatting-options
+         */
+        protected string|null $descriptionParseMode = null,
+
+        /**
+         * A JSON-serialized list of special entities that appear in the poll description, which can be specified instead of description_parse_mode
+         *
+         * @var list<MessageEntity>|null
+         */
+        protected array|null $descriptionEntities = null,
 
         /**
          * Sends the message silently. Users will receive a notification with no sound.

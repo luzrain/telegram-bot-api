@@ -33,8 +33,8 @@ final readonly class ReplyParameters extends Type
 
         /**
          * Optional. Quoted part of the message to be replied to; 0-1024 characters after entities parsing.
-         * The quote must be an exact substring of the message to be replied to, including bold, italic, underline, strikethrough,
-         * spoiler, and custom_emoji entities. The message will fail to send if the quote isn't found in the original message.
+         * The quote must be an exact substring of the message to be replied to, including bold, italic, underline, strikethrough, spoiler, custom_emoji, and date_time entities.
+         * The message will fail to send if the quote isn't found in the original message.
          */
         public string|null $quote = null,
 
@@ -62,6 +62,11 @@ final readonly class ReplyParameters extends Type
          * Optional. Identifier of the specific checklist task to be replied to
          */
         public int|null $checklistTaskId = null,
+
+        /**
+         * Optional. Persistent identifier of the specific poll option to be replied to
+         */
+        public string|null $pollOptionId = null,
     ) {
     }
 }

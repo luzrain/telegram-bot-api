@@ -40,13 +40,13 @@ final class GiftPremiumSubscription extends Method
 
         /**
          * Mode for parsing entities in the text. See formatting options for more details.
-         * Entities other than "bold", "italic", "underline", "strikethrough", "spoiler", and "custom_emoji" are ignored.
+         * Entities other than "bold", "italic", "underline", "strikethrough", "spoiler", "custom_emoji", and "date_time" are ignored.
          */
         protected string|null $textParseMode = null,
 
         /**
          * A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode.
-         * Entities other than "bold", "italic", "underline", "strikethrough", "spoiler", and "custom_emoji" are ignored.
+         * Entities other than "bold", "italic", "underline", "strikethrough", "spoiler", "custom_emoji", and "date_time" are ignored.
          *
          * @var list<MessageEntity>|null
          */
