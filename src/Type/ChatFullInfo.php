@@ -276,6 +276,11 @@ final readonly class ChatFullInfo extends Type
         public UserRating|null $rating = null,
 
         /**
+         * Optional. For private chats, the first audio added to the profile of the user
+         */
+        public Audio|null $firstProfileAudio = null,
+
+        /**
          * Optional. The color scheme based on a unique gift that must be used for the chat's name, message replies and link previews
          */
         public UniqueGiftColors|null $uniqueGiftColors = null,

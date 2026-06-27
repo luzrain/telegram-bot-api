@@ -58,6 +58,14 @@ final readonly class Video extends Type
         public int|null $startTimestamp = null,
 
         /**
+         * Optional. List of available qualities of the video
+         *
+         * @var list<VideoQuality>|null
+         */
+        #[ArrayType(VideoQuality::class)]
+        public array|null $qualities = null,
+
+        /**
          * Optional. Original filename as defined by the sender
          */
         public string|null $fileName = null,

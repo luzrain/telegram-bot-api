@@ -315,6 +315,16 @@ final readonly class Message extends MaybeInaccessibleMessage
         public User|null $leftChatMember = null,
 
         /**
+         * Optional. Service message: chat owner has left
+         */
+        public ChatOwnerLeft|null $chatOwnerLeft = null,
+
+        /**
+         * Optional. Service message: chat owner has changed
+         */
+        public ChatOwnerChanged|null $chatOwnerChanged = null,
+
+        /**
          * Optional. A chat title was changed to this value
          */
         public string|null $newChatTitle = null,

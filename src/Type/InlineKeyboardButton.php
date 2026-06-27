@@ -8,7 +8,8 @@ use Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type\Games\CallbackGame;
 
 /**
- * This object represents one button of an inline keyboard. Exactly one of the optional fields must be used to specify type of the button.
+ * This object represents one button of an inline keyboard.
+ * Exactly one of the fields other than text, icon_custom_emoji_id, and style must be used to specify the type of the button.
  */
 final readonly class InlineKeyboardButton extends Type
 {
@@ -17,6 +18,19 @@ final readonly class InlineKeyboardButton extends Type
          * Label text on the button
          */
         public string $text,
+
+        /**
+         * Optional. Unique identifier of the custom emoji shown before the text of the button.
+         * Can only be used by bots that purchased additional usernames on Fragment or in the messages directly sent by the bot
+         * to private, group and supergroup chats if the owner of the bot has a Telegram Premium subscription.
+         */
+        public string|null $iconCustomEmojiId = null,
+
+        /**
+         * Optional. Style of the button. Must be one of "danger" (red), "success" (green) or "primary" (blue).
+         * If omitted, then an app-specific style is used.
+         */
+        public string|null $style = null,
 
         /**
          * Optional. HTTP or tg:// url to be opened when the button is pressed.

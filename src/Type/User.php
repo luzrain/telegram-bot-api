@@ -81,6 +81,11 @@ final readonly class User extends Type
          * Optional. True, if the bot has forum topic mode enabled in private chats. Returned only in getMe.
          */
         public bool|null $hasTopicsEnabled = null,
+
+        /**
+         * Optional. True, if the bot allows users to create and delete topics in private chats. Returned only in getMe.
+         */
+        public bool|null $allowsUsersToCreateTopics = null,
     ) {
     }
 }

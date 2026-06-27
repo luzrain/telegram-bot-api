@@ -53,6 +53,11 @@ final readonly class UniqueGift extends Type
         public true|null $isPremium = null,
 
         /**
+         * Optional. True, if the gift was used to craft another gift and isn't available anymore
+         */
+        public true|null $isBurned = null,
+
+        /**
          * Optional. True, if the gift is assigned from the TON blockchain and can't be resold or transferred in Telegram
          */
         public true|null $isFromBlockchain = null,
