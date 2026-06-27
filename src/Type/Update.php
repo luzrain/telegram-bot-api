@@ -26,6 +26,7 @@ final readonly class Update extends Type
         'business_message',
         'edited_business_message',
         'deleted_business_messages',
+        'guest_message',
         'message_reaction',
         'message_reaction_count',
         'inline_query',
@@ -92,6 +93,11 @@ final readonly class Update extends Type
          * Optional. Messages were deleted from a connected business account
          */
         public BusinessMessagesDeleted|null $deletedBusinessMessages = null,
+
+        /**
+         * Optional. New guest message. The bot can use the field Message.guest_query_id and the method answerGuestQuery to send a message in response.
+         */
+        public Message|null $guestMessage = null,
 
         /**
          * Optional. A reaction to a message was changed by a user.

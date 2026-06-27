@@ -74,6 +74,13 @@ final readonly class Message extends MaybeInaccessibleMessage
         public string|null $senderTag = null,
 
         /**
+         * Optional. The unique identifier for the guest query. Use this identifier with the method answerGuestQuery to send a response message.
+         * If non-empty, the message belongs to the chat where the guest bot was summoned,
+         * which may not coincide with other existing bot chats sharing the same identifier.
+         */
+        public string|null $guestQueryId = null,
+
+        /**
          * Optional. Unique identifier of the business connection from which the message was received.
          * If non-empty, the message belongs to a chat of the corresponding business account that is
          * independent from any potential bot chat which might share the same identifier.
@@ -130,6 +137,16 @@ final readonly class Message extends MaybeInaccessibleMessage
          * Optional. Bot through which the message was sent
          */
         public User|null $viaBot = null,
+
+        /**
+         * Optional. For a message sent by a guest bot, this is the user whose original message triggered the bot's response
+         */
+        public User|null $guestBotCallerUser = null,
+
+        /**
+         * Optional. For a message sent by a guest bot, this is the chat whose original message triggered the bot's response
+         */
+        public Chat|null $guestBotCallerChat = null,
 
         /**
          * Optional. Date the message was last edited in Unix time
@@ -213,6 +230,11 @@ final readonly class Message extends MaybeInaccessibleMessage
         public Document|null $document = null,
 
         /**
+         * Optional. Message is a live photo, information about the live photo. For backward compatibility, when this field is set, the photo field will also be set.
+         */
+        public LivePhoto|null $livePhoto = null,
+
+        /**
          * Optional. Message contains paid media; information about the paid media
          */
         public PaidMediaInfo|null $paidMedia = null,
@@ -251,7 +273,7 @@ final readonly class Message extends MaybeInaccessibleMessage
         public Voice|null $voice = null,
 
         /**
-         * Optional. Caption for the animation, audio, document, photo, video or voice, 0-1024 characters
+         * Optional. Caption for the animation, audio, document, paid media, photo, video or voice
          */
         public string|null $caption = null,
 

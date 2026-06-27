@@ -37,6 +37,11 @@ final readonly class PollOption extends Type
         public array|null $textEntities = null,
 
         /**
+         * Optional. Media added to the poll option
+         */
+        public PollMedia|null $media = null,
+
+        /**
          * Optional. User who added the option; omitted if the option wasn't added by a user after poll creation
          */
         public User|null $addedByUser = null,

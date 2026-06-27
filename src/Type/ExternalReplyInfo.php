@@ -52,6 +52,11 @@ final readonly class ExternalReplyInfo extends Type
         public Document|null $document = null,
 
         /**
+         * Optional. Message is a live photo, information about the live photo
+         */
+        public LivePhoto|null $livePhoto = null,
+
+        /**
          * Optional. Message contains paid media; information about the paid media
          */
         public PaidMediaInfo|null $paidMedia = null,

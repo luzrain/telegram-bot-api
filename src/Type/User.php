@@ -78,6 +78,11 @@ final readonly class User extends Type
         public bool|null $hasMainWebApp = null,
 
         /**
+         * Optional. True, if the bot supports guest queries from chats it is not a member of. Returned only in getMe.
+         */
+        public bool|null $supportsGuestQueries = null,
+
+        /**
          * Optional. True, if the bot has forum topic mode enabled in private chats. Returned only in getMe.
          */
         public bool|null $hasTopicsEnabled = null,

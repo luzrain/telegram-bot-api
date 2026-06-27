@@ -73,6 +73,11 @@ final readonly class ChatMemberRestricted extends ChatMember
         public bool $canAddWebPagePreviews,
 
         /**
+         * True, if the user is allowed to react to messages
+         */
+        public bool $canReactToMessages,
+
+        /**
          * True, if the user is allowed to edit their own tag
          */
         public bool $canEditTag,

@@ -9,8 +9,9 @@ use Luzrain\TelegramBotApi\Type;
 /**
  * This object describes paid media. Currently, it can be one of
  *
- * @see PaidMediaPreview
+ * @see PaidMediaLivePhoto
  * @see PaidMediaPhoto
+ * @see PaidMediaPreview
  * @see PaidMediaVideo
  */
 readonly class PaidMedia extends Type
@@ -32,8 +33,9 @@ readonly class PaidMedia extends Type
         $instance = parent::fromArray($data);
 
         return self::class !== static::class ? $instance : match ($instance->type) {
-            PaidMediaPreview::TYPE => PaidMediaPreview::fromArray($data),
+            PaidMediaLivePhoto::TYPE => PaidMediaLivePhoto::fromArray($data),
             PaidMediaPhoto::TYPE => PaidMediaPhoto::fromArray($data),
+            PaidMediaPreview::TYPE => PaidMediaPreview::fromArray($data),
             PaidMediaVideo::TYPE => PaidMediaVideo::fromArray($data),
         };
     }

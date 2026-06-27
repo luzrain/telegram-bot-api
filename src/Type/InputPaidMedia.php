@@ -9,6 +9,7 @@ use Luzrain\TelegramBotApi\Type;
 /**
  * This object describes the paid media to be sent. Currently, it can be one of
  *
+ * @see InputPaidMediaLivePhoto
  * @see InputPaidMediaPhoto
  * @see InputPaidMediaVideo
  */

@@ -9,7 +9,7 @@ use Luzrain\TelegramBotApi\Internal\ArrayType;
 /**
  * Represents a video to be sent.
  */
-final readonly class InputMediaVideo extends InputMedia
+final readonly class InputMediaVideo extends InputMedia implements InputPollMedia, InputPollOptionMedia
 {
     public const TYPE = 'video';
 

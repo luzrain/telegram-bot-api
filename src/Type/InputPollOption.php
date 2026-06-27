@@ -8,7 +8,7 @@ use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Type;
 
 /**
- * This object contains information about one answer option in a poll to send.
+ * This object contains information about one answer option in a poll to be sent.
  */
 final readonly class InputPollOption extends Type
 {
@@ -32,6 +32,11 @@ final readonly class InputPollOption extends Type
          */
         #[ArrayType(MessageEntity::class)]
         public array|null $textEntities = null,
+
+        /**
+         * Optional. Media added to the poll option
+         */
+        public InputPollOptionMedia|null $media = null,
     ) {
     }
 }

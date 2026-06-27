@@ -1,6 +1,6 @@
 # Telegram Bot API Client for PHP
 
-[![Bot Api 9.6](https://img.shields.io/badge/Bot%20API-9.6-0088cc.svg?style=flat)](https://core.telegram.org/bots/api-changelog#april-3-2026)
+[![Bot Api 10.0](https://img.shields.io/badge/Bot%20API-10.0-0088cc.svg?style=flat)](https://core.telegram.org/bots/api-changelog#may-8-2026)
 ![PHP >=8.2](https://img.shields.io/badge/PHP->=8.2-777bb3.svg?style=flat)
 ![Tests Status](https://img.shields.io/github/actions/workflow/status/luzrain/telegram-bot-api/tests.yaml?branch=master&label=Tests)
 ![Downloads](https://img.shields.io/packagist/dt/luzrain/telegram-bot-api?label=Downloads&color=f28d1a)

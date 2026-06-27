@@ -7,27 +7,33 @@ namespace Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Internal\ArrayType;
 
 /**
- * Represents a photo to be sent.
+ * Represents a live photo to be sent.
  */
-final readonly class InputMediaPhoto extends InputMedia implements InputPollMedia, InputPollOptionMedia
+final readonly class InputMediaLivePhoto extends InputMedia implements InputPollMedia, InputPollOptionMedia
 {
-    public const TYPE = 'photo';
+    public const TYPE = 'live_photo';
 
     public function __construct(
         /**
-         * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
-         * pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload
+         * Video of the live photo to send.
+         * Pass a file_id to send a file that exists on the Telegram servers (recommended) or pass "attach://<file_attach_name>" to upload
          * a new one using multipart/form-data under <file_attach_name> name.
          */
         public InputFile|string $media,
 
         /**
-         * Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
+         * The static photo to send. Pass a file_id to send a file that exists on the Telegram servers (recommended)
+         * or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name.
+         */
+        public InputFile|string $photo,
+
+        /**
+         * Optional. Caption of the live photo to be sent, 0-1024 characters after entities parsing
          */
         public string|null $caption = null,
 
         /**
-         * Optional. Mode for parsing entities in the photo caption. See formatting options for more details.
+         * Optional. Mode for parsing entities in the live photo caption. See formatting options for more details.
          *
          * @see https://core.telegram.org/bots/api#formatting-options
          */
@@ -47,7 +53,7 @@ final readonly class InputMediaPhoto extends InputMedia implements InputPollMedi
         public bool|null $showCaptionAboveMedia = null,
 
         /**
-         * Optional. Pass True if the animation needs to be covered with a spoiler animation
+         * Optional. Pass True if the live photo needs to be covered with a spoiler animation
          */
         public bool|null $hasSpoiler = null,
     ) {

@@ -7,6 +7,7 @@ namespace Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ForceReply;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
+use Luzrain\TelegramBotApi\Type\InputPollMedia;
 use Luzrain\TelegramBotApi\Type\InputPollOption;
 use Luzrain\TelegramBotApi\Type\Message;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
@@ -29,7 +30,7 @@ final class SendPoll extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. Polls can't be sent to channel direct messages chats.
          */
         protected int|string $chatId,
 
@@ -39,11 +40,21 @@ final class SendPoll extends Method
         protected string $question,
 
         /**
-         * A JSON-serialized list of 2-12 answer options
+         * A JSON-serialized list of 1-12 answer options
          *
          * @var list<InputPollOption>
          */
         protected array $options,
+
+        /**
+         * Unique identifier of the business connection on behalf of which the message will be sent
+         */
+        protected string|null $businessConnectionId = null,
+
+        /**
+         * Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
+         */
+        protected int|null $messageThreadId = null,
 
         /**
          * Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed
@@ -58,16 +69,6 @@ final class SendPoll extends Method
          * @var list<MessageEntity>|null
          */
         protected array|null $questionEntities = null,
-
-        /**
-         * Unique identifier of the business connection on behalf of which the message will be sent
-         */
-        protected string|null $businessConnectionId = null,
-
-        /**
-         * Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
-         */
-        protected int|null $messageThreadId = null,
 
         /**
          * True, if the poll needs to be anonymous, defaults to True
@@ -105,6 +106,20 @@ final class SendPoll extends Method
         protected bool|null $hideResultsUntilCloses = null,
 
         /**
+         * Pass True, if voting is limited to users who have been members of the chat where the poll is being sent for more than 24 hours; for channel chats only
+         */
+        protected bool|null $membersOnly = null,
+
+        /**
+         * A JSON-serialized list of 0-12 two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll;
+         * for channel chats only. Use "FT" as a country code to allow users with anonymous numbers to vote.
+         * If omitted or empty, then users from any country can participate in the poll.
+         *
+         * @var list<string>|null
+         */
+        protected array|null $countryCodes = null,
+
+        /**
          * @deprecated replaced by $correctOptionIds
          */
         protected int|null $correctOptionId = null,
@@ -128,11 +143,16 @@ final class SendPoll extends Method
         protected string|null $explanationParseMode = null,
 
         /**
-         * A JSON-serialized list of special entities that appear in the poll explanation, which can be specified instead of parse_mode
+         * A JSON-serialized list of special entities that appear in the poll explanation. It can be specified instead of explanation_parse_mode.
          *
          * @var list<MessageEntity>|null
          */
         protected array|null $explanationEntities = null,
+
+        /**
+         * Media added to the quiz explanation
+         */
+        protected InputPollMedia|null $explanationMedia = null,
 
         /**
          * Amount of time in seconds the poll will be active after creation, 5-2628000. Can't be used together with close_date.
@@ -170,6 +190,11 @@ final class SendPoll extends Method
         protected array|null $descriptionEntities = null,
 
         /**
+         * Media added to the poll description
+         */
+        protected InputPollMedia|null $media = null,
+
+        /**
          * Sends the message silently. Users will receive a notification with no sound.
          */
         protected bool|null $disableNotification = null,
@@ -181,7 +206,7 @@ final class SendPoll extends Method
 
         /**
          * Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message.
-         * The relevant Stars will be withdrawn from the bot's balance
+         * The relevant Stars will be withdrawn from the bot's balance.
          */
         protected bool|null $allowPaidBroadcast = null,
 

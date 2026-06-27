@@ -59,7 +59,12 @@ final readonly class Poll extends Type
         /**
          * True, if the poll allows to change the chosen answer options
          */
-        public bool|null $allowsRevoting = null,
+        public bool $allowsRevoting,
+
+        /**
+         * True if voting is limited to users who have been members of the chat where the poll was originally sent for more than 24 hours
+         */
+        public bool $membersOnly,
 
         /**
          * Optional. Special entities that appear in the question. Currently, only custom emoji entities are allowed in poll questions
@@ -68,6 +73,14 @@ final readonly class Poll extends Type
          */
         #[ArrayType(MessageEntity::class)]
         public array|null $questionEntities = null,
+
+        /**
+         * Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll.
+         * The country code "FT" is used for users with anonymous numbers. If omitted, then users from any country can participate in the poll.
+         *
+         * @var list<string>|null
+         */
+        public array|null $countryCodes = null,
 
         /**
          * @deprecated replaced by $correctOptionIds
@@ -96,6 +109,11 @@ final readonly class Poll extends Type
         public array|null $explanationEntities = null,
 
         /**
+         * Optional. Media added to the quiz explanation
+         */
+        public PollMedia|null $explanationMedia = null,
+
+        /**
          * Optional. Amount of time in seconds the poll will be active after creation
          */
         public int|null $openPeriod = null,
@@ -117,6 +135,11 @@ final readonly class Poll extends Type
          */
         #[ArrayType(MessageEntity::class)]
         public array|null $descriptionEntities = null,
+
+        /**
+         * Optional. Media attached to the poll question
+         */
+        public PollMedia|null $media = null,
     ) {
     }
 }

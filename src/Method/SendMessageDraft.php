@@ -25,12 +25,12 @@ final class SendMessageDraft extends Method
         protected int $chatId,
 
         /**
-         * Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated
+         * Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated.
          */
         protected int $draftId,
 
         /**
-         * Text of the message to be sent, 1-4096 characters after entities parsing
+         * Text of the message to be sent, 0-4096 characters after entities parsing. Pass an empty text to show a "Thinking…" placeholder.
          */
         protected string $text,
 

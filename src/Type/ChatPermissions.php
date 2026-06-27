@@ -13,7 +13,7 @@ final readonly class ChatPermissions extends Type
 {
     public function __construct(
         /**
-         * Optional. True, if the user is allowed to send text messages, contacts, locations and venues
+         * Optional. True, if the user is allowed to send text messages, rich messages, contacts, giveaways, giveaway winners, invoices, locations and venues
          */
         public bool|null $canSendMessages = null,
 
@@ -48,19 +48,24 @@ final readonly class ChatPermissions extends Type
         public bool|null $canSendVoiceNotes = null,
 
         /**
-         * Optional. True, if the user is allowed to send polls, implies can_send_messages
+         * Optional. True, if the user is allowed to send polls and checklists
          */
         public bool|null $canSendPolls = null,
 
         /**
-         * Optional. True, if the user is allowed to send animations, games, stickers and use inline bots, implies can_send_media_messages
+         * Optional. True, if the user is allowed to send animations, games, stickers and use inline bots
          */
         public bool|null $canSendOtherMessages = null,
 
         /**
-         * Optional. True, if the user is allowed to add web page previews to their messages, implies can_send_media_messages
+         * Optional. True, if the user is allowed to add web page previews to their messages
          */
         public bool|null $canAddWebPagePreviews = null,
+
+        /**
+         * Optional. True, if the user is allowed to react to messages. If omitted, defaults to the value of can_send_messages.
+         */
+        public bool|null $canReactToMessages = null,
 
         /**
          * Optional. True, if the user is allowed to edit their own tag. If omitted, defaults to the value of can_pin_messages.
@@ -68,7 +73,7 @@ final readonly class ChatPermissions extends Type
         public bool|null $canEditTag = null,
 
         /**
-         * Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups
+         * Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups.
          */
         public bool|null $canChangeInfo = null,
 
@@ -78,12 +83,12 @@ final readonly class ChatPermissions extends Type
         public bool|null $canInviteUsers = null,
 
         /**
-         *Optional. True, if the user is allowed to pin messages. Ignored in public supergroups
+         * Optional. True, if the user is allowed to pin messages. Ignored in public supergroups.
          */
         public bool|null $canPinMessages = null,
 
         /**
-         * Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
+         * Optional. True, if the user is allowed to create forum topics. If omitted defaults to the value of can_pin_messages.
          */
         public bool|null $canManageTopics = null,
     ) {
