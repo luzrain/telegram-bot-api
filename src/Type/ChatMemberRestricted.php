@@ -73,6 +73,11 @@ final readonly class ChatMemberRestricted extends ChatMember
         public bool $canAddWebPagePreviews,
 
         /**
+         * True, if the user is allowed to edit their own tag
+         */
+        public bool $canEditTag,
+
+        /**
          * True, if the user is allowed to change the chat title, photo and other settings
          */
         public bool $canChangeInfo,
@@ -96,6 +101,11 @@ final readonly class ChatMemberRestricted extends ChatMember
          * Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever
          */
         public int $untilDate,
+
+        /**
+         * Optional. Tag of the member
+         */
+        public string|null $tag = null,
     ) {
         parent::__construct(self::STATUS);
     }

@@ -8,8 +8,9 @@ use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
 /**
- * Use this method to stream a partial message to a user while the message is being generated; supported only for bots with forum topic mode enabled.
- * Returns True on success.
+ * Use this method to stream a partial message to a user while the message is being generated.
+ * Note that the streamed draft is ephemeral and acts as a temporary 30-second preview - once the output is finalized,
+ * you must call sendMessage with the complete message to persist it in the user's chat. Returns True on success.
  *
  * @extends Method<true>
  */

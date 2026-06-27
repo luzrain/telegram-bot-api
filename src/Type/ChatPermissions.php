@@ -63,6 +63,11 @@ final readonly class ChatPermissions extends Type
         public bool|null $canAddWebPagePreviews = null,
 
         /**
+         * Optional. True, if the user is allowed to edit their own tag. If omitted, defaults to the value of can_pin_messages.
+         */
+        public bool|null $canEditTag = null,
+
+        /**
          * Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups
          */
         public bool|null $canChangeInfo = null,

@@ -111,6 +111,11 @@ final class PromoteChatMember extends Method
          * Pass True if the administrator can manage direct messages within the channel and decline suggested posts; for channels only
          */
         protected bool|null $canManageDirectMessages = null,
+
+        /**
+         * Pass True if the administrator can edit the tags of regular members; for groups and supergroups only
+         */
+        protected bool|null $canManageTags = null,
     ) {
     }
 }

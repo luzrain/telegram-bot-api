@@ -30,6 +30,7 @@ final readonly class MessageEntity extends Type
     public const TEXT_LINK = 'text_link'; // for clickable text URLs
     public const TEXT_MENTION = 'text_mention'; // for users without usernames
     public const CUSTOM_EMOJI = 'custom_emoji'; // for inline custom emoji stickers
+    public const DATE_TIME = 'date_time'; // for formatted date and time
 
     public function __construct(
         /**
@@ -67,6 +68,19 @@ final readonly class MessageEntity extends Type
          * Use getCustomEmojiStickers to get full information about the sticker
          */
         public string|null $customEmojiId = null,
+
+        /**
+         * Optional. For "date_time" only, the Unix time associated with the entity
+         */
+        public int|null $unixTime = null,
+
+        /**
+         * Optional. For "date_time" only, the string that defines the formatting of the date and time.
+         * See date-time entity formatting for more details.
+         *
+         * @see https://core.telegram.org/bots/api#date-time-entity-formatting
+         */
+        public string|null $dateTimeFormat = null,
     ) {
     }
 }

@@ -69,6 +69,11 @@ final readonly class Message extends MaybeInaccessibleMessage
         public User|null $senderBusinessBot = null,
 
         /**
+         * Optional. Tag or custom title of the sender of the message; for supergroups only
+         */
+        public string|null $senderTag = null,
+
+        /**
          * Optional. Unique identifier of the business connection from which the message was received.
          * If non-empty, the message belongs to a chat of the corresponding business account that is
          * independent from any potential bot chat which might share the same identifier.

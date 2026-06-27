@@ -105,6 +105,12 @@ final readonly class ChatMemberAdministrator extends ChatMember
         public bool|null $canManageDirectMessages = null,
 
         /**
+         * Optional. True, if the administrator can edit the tags of regular members; for groups and supergroups only.
+         * If omitted defaults to the value of can_pin_messages.
+         */
+        public bool|null $canManageTags = null,
+
+        /**
          * Optional. Custom title for this user
          */
         public string|null $customTitle = null,

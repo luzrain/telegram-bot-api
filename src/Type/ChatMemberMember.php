@@ -18,6 +18,11 @@ final readonly class ChatMemberMember extends ChatMember
         public User $user,
 
         /**
+         * Optional. Tag of the member
+         */
+        public string|null $tag = null,
+
+        /**
          * Optional. Date when the user's subscription will expire; Unix time
          */
         public int|null $untilDate = null,
