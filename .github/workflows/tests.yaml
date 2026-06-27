@@ -23,6 +23,11 @@ jobs:
       - name: Composer install
         run: composer install
 
+      - name: Composer checks
+        run: |
+          composer validate --no-check-lock --strict
+          composer dump-autoload --dry-run --optimize --strict-psr --strict-ambiguous
+
       - name: Codestyle
         run: vendor/bin/php-cs-fixer fix -v --dry-run
 
