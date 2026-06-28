@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi;
 
 use Luzrain\TelegramBotApi\Exception\TelegramTypeException;
-use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Internal\StringUtils;
+use Luzrain\TelegramBotApi\Internal\TypeDefinition;
 
 /**
  * Base class for Telegram Types
@@ -32,10 +32,11 @@ abstract readonly class Type implements \JsonSerializable
                 continue;
             }
 
-            /** @var ArrayType|null $arrayType */
-            $arrayType = ($reflParameter->getAttributes(ArrayType::class)[0] ?? null)?->newInstance();
-            if ($arrayType !== null) {
-                $constructorMap[$property] = $arrayType->create((array) $data[$propertyKey]);
+            /** @var TypeDefinition|null $type */
+            $type = ($reflParameter->getAttributes()[0] ?? null)?->newInstance();
+
+            if ($type !== null) {
+                $constructorMap[$property] = $type->create($data[$propertyKey]);
             } else {
                 /** @psalm-suppress UndefinedMethod */
                 $propertyType = $reflParameter->getType()->getName();

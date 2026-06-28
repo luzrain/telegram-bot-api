@@ -45,6 +45,12 @@ final readonly class ChatJoinRequest extends Type
          * Optional. Chat invite link that was used by the user to send the join request
          */
         public ChatInviteLink|null $inviteLink = null,
+
+        /**
+         * Optional. Identifier of the join request query; for bots assigned to process join request only.
+         * If present, then the bot must call sendChatJoinRequestWebApp or directly call answerChatJoinRequestQuery within 10 seconds.
+         */
+        public string|null $queryId = null,
     ) {
     }
 }

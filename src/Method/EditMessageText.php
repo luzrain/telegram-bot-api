@@ -6,13 +6,15 @@ namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\InlineKeyboardMarkup;
+use Luzrain\TelegramBotApi\Type\InputRichMessage;
 use Luzrain\TelegramBotApi\Type\LinkPreviewOptions;
 use Luzrain\TelegramBotApi\Type\Message;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
 /**
- * Use this method to edit text and game messages.
- * On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+ * Use this method to edit text, rich and game messages. On success, if the edited message is not an inline message,
+ * the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot
+ * and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
  *
  * @todo: Check return type in real case
  * @extends Method<Message>
@@ -23,11 +25,6 @@ final class EditMessageText extends Method
     protected static string $responseClass = Message::class;
 
     public function __construct(
-        /**
-         * New text of the message, 1-4096 characters after entities parsing
-         */
-        protected string $text,
-
         /**
          * Unique identifier of the business connection on behalf of which the message to be edited was sent
          */
@@ -50,6 +47,11 @@ final class EditMessageText extends Method
         protected string|null $inlineMessageId = null,
 
         /**
+         * New text of the message, 1-4096 characters after entity parsing; required if rich_message isn't specified
+         */
+        protected string|null $text = null,
+
+        /**
          * Mode for parsing entities in the message text. See formatting options for more details.
          *
          * @see https://core.telegram.org/bots/api#formatting-options
@@ -67,6 +69,11 @@ final class EditMessageText extends Method
          * Link preview generation options for the message
          */
         protected LinkPreviewOptions|null $linkPreviewOptions = null,
+
+        /**
+         * New rich content of the message; required if text isn't specified
+         */
+        protected InputRichMessage|null $richMessage = null,
 
         /**
          * A JSON-serialized object for an inline keyboard.

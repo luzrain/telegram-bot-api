@@ -59,12 +59,12 @@ final readonly class Poll extends Type
         /**
          * True, if the poll allows to change the chosen answer options
          */
-        public bool $allowsRevoting,
+        public bool|null $allowsRevoting = null,
 
         /**
          * True if voting is limited to users who have been members of the chat where the poll was originally sent for more than 24 hours
          */
-        public bool $membersOnly,
+        public bool|null $membersOnly = null,
 
         /**
          * Optional. Special entities that appear in the question. Currently, only custom emoji entities are allowed in poll questions

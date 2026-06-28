@@ -30,6 +30,11 @@ final readonly class PollMedia extends Type
         public Document|null $document = null,
 
         /**
+         * Optional. The HTTP link attached to the poll option
+         */
+        public Link|null $link = null,
+
+        /**
          * Optional. Media is a live photo, information about the live photo
          */
         public LivePhoto|null $livePhoto = null,

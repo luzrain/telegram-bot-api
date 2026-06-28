@@ -96,6 +96,11 @@ final readonly class User extends Type
          * Optional. True, if other bots can be created to be controlled by the bot. Returned only in getMe.
          */
         public bool|null $canManageBots = null,
+
+        /**
+         * Optional. True, if the bot supports join request queries and can be assigned to process them. Returned only in getMe.
+         */
+        public bool|null $supportsJoinRequestQueries = null,
     ) {
     }
 }

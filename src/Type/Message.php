@@ -214,6 +214,11 @@ final readonly class Message extends MaybeInaccessibleMessage
         public string|null $effectId = null,
 
         /**
+         * Optional. Message is a rich formatted message
+         */
+        public RichMessage|null $richMessage = null,
+
+        /**
          * Optional. Message is an animation, information about the animation.
          * For backward compatibility, when this field is set, the document field will also be set
          */

@@ -23,7 +23,7 @@ final readonly class ChatMemberRestricted extends ChatMember
         public bool $isMember,
 
         /**
-         * True, if the user is allowed to send text messages, contacts, invoices, locations and venues
+         * True, if the user is allowed to send text messages, rich messages, contacts, giveaways, giveaway winners, invoices, locations and venues
          */
         public bool $canSendMessages,
 

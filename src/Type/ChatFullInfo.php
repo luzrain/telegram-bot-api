@@ -289,6 +289,11 @@ final readonly class ChatFullInfo extends Type
          * Optional. The number of Telegram Stars a general user have to pay to send a message to the chat
          */
         public int|null $paidMessageStarCount = null,
+
+        /**
+         * Optional. The bot that processes join request queries in the chat. The field is only available to chat administrators.
+         */
+        public User|null $guardBot = null,
     ) {
     }
 }

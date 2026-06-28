@@ -14,11 +14,6 @@ final readonly class PollOption extends Type
 {
     protected function __construct(
         /**
-         * Unique identifier of the option, persistent on option addition and deletion
-         */
-        public string $persistentId,
-
-        /**
          * Option text, 1-100 characters
          */
         public string $text,
@@ -27,6 +22,11 @@ final readonly class PollOption extends Type
          * Number of users who voted for this option; may be 0 if unknown
          */
         public int $voterCount,
+
+        /**
+         * Unique identifier of the option, persistent on option addition and deletion
+         */
+        public string|null $persistentId = null,
 
         /**
          * Optional. Special entities that appear in the option text. Currently, only custom emoji entities are allowed in poll option texts
