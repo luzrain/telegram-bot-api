@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\Internal\ArrayType;
+use Luzrain\TelegramBotApi\Internal\ArrayOfArayType;
 use Luzrain\TelegramBotApi\Type;
 
 /**
@@ -21,7 +21,7 @@ final readonly class InlineKeyboardMarkup extends Type
         /**
          * Array of button rows, each represented by an Array of InlineKeyboardButton objects
          */
-        #[ArrayType(InlineKeyboardButton::class, arrayOfArray: true)]
+        #[ArrayOfArayType(InlineKeyboardButton::class)]
         InlineKeyboardButtonArrayBuilder|array $inlineKeyboard,
     ) {
         $this->inlineKeyboard = \is_array($inlineKeyboard) ? $inlineKeyboard : $inlineKeyboard->toArray();

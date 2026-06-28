@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type\RichBlock;
 
-use Luzrain\TelegramBotApi\Internal\ArrayType;
+use Luzrain\TelegramBotApi\Internal\ArrayOfArayType;
 use Luzrain\TelegramBotApi\Internal\RichTextType;
 use Luzrain\TelegramBotApi\Type\RichText\RichText;
 
@@ -19,9 +19,9 @@ final readonly class RichBlockTable extends RichBlock
         /**
          * Cells of the table
          *
-         * @var RichBlockTableCell
+         * @var list<RichBlockTableCell>
          */
-        #[ArrayType(RichBlockTableCell::class, arrayOfArray: true)]
+        #[ArrayOfArayType(RichBlockTableCell::class)]
         public array $cells,
 
         /**

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi;
 
 use Luzrain\TelegramBotApi\Exception\TelegramTypeException;
+use Luzrain\TelegramBotApi\Internal\ArrayOfArayType;
 use Luzrain\TelegramBotApi\Internal\ArrayType;
 use Luzrain\TelegramBotApi\Internal\StringUtils;
 
@@ -41,7 +42,7 @@ abstract class Method implements \JsonSerializable
 
         return match (true) {
             \is_array($data) && static::$isArrayOfResponse => ArrayType::createArray($responseClass, $data),
-            \is_array($data) && static::$isArrayOfArrayOfResponse => ArrayType::createArrayOfArray($responseClass, $data),
+            \is_array($data) && static::$isArrayOfArrayOfResponse => ArrayOfArayType::createArrayOfArray($responseClass, $data),
             \is_array($data) => $responseClass::fromArray($data),
             default => $data,
         };

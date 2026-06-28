@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\Internal\ArrayType;
+use Luzrain\TelegramBotApi\Internal\ArrayOfArayType;
 use Luzrain\TelegramBotApi\Type;
 
 /**
@@ -23,7 +23,7 @@ final readonly class UserProfilePhotos extends Type
          *
          * @var list<list<PhotoSize>>
          */
-        #[ArrayType(PhotoSize::class, arrayOfArray: true)]
+        #[ArrayOfArayType(PhotoSize::class)]
         public array $photos,
     ) {
     }

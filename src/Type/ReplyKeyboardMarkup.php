@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
-use Luzrain\TelegramBotApi\Internal\ArrayType;
+use Luzrain\TelegramBotApi\Internal\ArrayOfArayType;
 use Luzrain\TelegramBotApi\Type;
 
 /**
@@ -18,7 +18,7 @@ final readonly class ReplyKeyboardMarkup extends Type
         /**
          * Array of button rows, each represented by an Array of KeyboardButton objects
          */
-        #[ArrayType(KeyboardButton::class, arrayOfArray: true)]
+        #[ArrayOfArayType(KeyboardButton::class)]
         KeyboardButtonArrayBuilder|array $keyboard,
 
         /**

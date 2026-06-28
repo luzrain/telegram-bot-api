@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\Type;
  * @internal
  */
 #[\Attribute(\Attribute::TARGET_PROPERTY | \Attribute::TARGET_PARAMETER)]
-final readonly class ArrayType implements TypeDefinition
+final readonly class ArrayOfArayType implements TypeDefinition
 {
     /**
      * @param class-string<Type> $type
@@ -20,24 +20,21 @@ final readonly class ArrayType implements TypeDefinition
     }
 
     /**
-     * @return list<Type>
+     * @return list<list<Type>>
      */
     public function create(string|array $data): array
     {
-        return self::createArray($this->type, (array) $data);
+        return self::createArrayOfArray($this->type, (array) $data);
     }
 
     /**
+     * @psalm-suppress MoreSpecificReturnType
+     * @psalm-suppress LessSpecificReturnStatement
      * @param class-string<Type> $type
-     * @return list<Type>
+     * @return list<list<Type>>
      */
-    public static function createArray(string $type, array $data): array
+    public static function createArrayOfArray(string $type, array $data): array
     {
-        $array = [];
-        foreach ($data as $item) {
-            $array[] = $type::fromArray($item);
-        }
-
-        return $array;
+        return \array_map(static fn(array $array): array => ArrayType::createArray($type, $array), $data);
     }
 }

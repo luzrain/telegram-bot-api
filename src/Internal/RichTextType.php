@@ -13,7 +13,8 @@ use Luzrain\TelegramBotApi\Type\RichText\RichText;
 final readonly class RichTextType implements TypeDefinition
 {
     /**
-     * @return RichText|list<RichText>|string
+     * @return RichText|string|list<RichText|string>
+     * @psalm-suppress InvalidReturnType
      */
     public function create(string|array $data): RichText|string|array
     {
@@ -21,7 +22,8 @@ final readonly class RichTextType implements TypeDefinition
             return $data;
         }
 
-        if (\is_array($data) && \array_is_list($data)) {
+        if (\array_is_list($data)) {
+            /** @psalm-suppress InvalidReturnStatement */
             return \array_map(fn(mixed $item): RichText|string|array => $this->create($item), $data);
         }
 
