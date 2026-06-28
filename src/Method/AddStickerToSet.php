@@ -35,7 +35,7 @@ final class AddStickerToSet extends Method
          * A JSON-serialized object with information about the added sticker.
          * If exactly the same sticker had already been added to the set, then the set isn't changed.
          */
-        protected InputSticker $stickers,
+        protected InputSticker $sticker,
     ) {
     }
 }

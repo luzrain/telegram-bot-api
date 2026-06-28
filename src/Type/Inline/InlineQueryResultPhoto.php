@@ -30,7 +30,7 @@ final readonly class InlineQueryResultPhoto extends InlineQueryResult
         /**
          * URL of the thumbnail for the photo
          */
-        public string $thumbUrl,
+        public string $thumbnailUrl,
 
         /**
          * Optional. Width of the photo

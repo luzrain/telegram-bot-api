@@ -47,7 +47,7 @@ final readonly class MessageReactionUpdated extends Type
         /**
          * Optional. The user that changed the reaction, if the user isn't anonymous
          */
-        public User|null $from = null,
+        public User|null $user = null,
 
         /**
          * Optional. The chat on behalf of which the reaction was changed, if the user is anonymous

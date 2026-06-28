@@ -16,7 +16,7 @@ final readonly class Checklist extends Type
         /**
          * Title of the checklist
          */
-        public string $text,
+        public string $title,
 
         /**
          * List of tasks in the checklist

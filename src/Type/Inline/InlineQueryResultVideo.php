@@ -36,7 +36,7 @@ final readonly class InlineQueryResultVideo extends InlineQueryResult
         /**
          * URL of the thumbnail (JPEG only) for the video
          */
-        public string $thumbUrl,
+        public string $thumbnailUrl,
 
         /**
          * Title for the result

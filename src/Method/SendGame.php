@@ -23,7 +23,7 @@ final class SendGame extends Method
         /**
          * Unique identifier for the target chat
          */
-        protected int $userId,
+        protected int|string $chatId,
 
         /**
          * Short name of the game, serves as the unique identifier for the game. Set up your games via @BotFather.

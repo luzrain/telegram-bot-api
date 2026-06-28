@@ -13,11 +13,6 @@ final readonly class BackgroundTypeChatTheme extends BackgroundType
 
     public function __construct(
         /**
-         * Document with the pattern
-         */
-        public Document $document,
-
-        /**
          * Name of the chat theme, which is usually an emoji
          */
         public string $themeName,
