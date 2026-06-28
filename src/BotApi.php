@@ -13,6 +13,7 @@ use Luzrain\TelegramBotApi\Method\SendPaidMedia;
 use Luzrain\TelegramBotApi\Type\File;
 use Luzrain\TelegramBotApi\Type\InputFile;
 use Luzrain\TelegramBotApi\Type\InputMedia;
+use Luzrain\TelegramBotApi\Type\InputPaidMedia;
 use Luzrain\TelegramBotApi\Type\ResponseParameters;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
@@ -57,7 +58,8 @@ final readonly class BotApi
         $multiparts = [];
         $files = [];
 
-        $extractFiles = static function (mixed $inputMedia): array {
+        /** @psalm-suppress UndefinedPropertyFetch */
+        $extractFiles = static function (InputMedia|InputPaidMedia $inputMedia): array {
             $files = [];
             if (\property_exists($inputMedia, 'media') && $inputMedia->media instanceof InputFile) {
                 $files[] = $inputMedia->media;
@@ -65,11 +67,11 @@ final readonly class BotApi
             if (\property_exists($inputMedia, 'thumbnail') && $inputMedia->thumbnail instanceof InputFile) {
                 $files[] = $inputMedia->thumbnail;
             }
-            if (\property_exists($inputMedia, 'cover') && $inputMedia->cover instanceof InputFile) {
-                $files[] = $inputMedia->cover;
-            }
             if (\property_exists($inputMedia, 'photo') && $inputMedia->photo instanceof InputFile) {
                 $files[] = $inputMedia->photo;
+            }
+            if (\property_exists($inputMedia, 'cover') && $inputMedia->cover instanceof InputFile) {
+                $files[] = $inputMedia->cover;
             }
             return $files;
         };
@@ -82,14 +84,15 @@ final readonly class BotApi
                 $multiparts[$name] = \is_scalar($value) ? $value : \json_encode($value, JSON_UNESCAPED_UNICODE);
             }
 
-            if ($value instanceof InputMedia) {
+            if ($value instanceof InputMedia || $value instanceof InputPaidMedia) {
                 $files = [...$files, ...$extractFiles($value)];
             }
 
             /** @psalm-suppress TypeDoesNotContainType */
             if ($name === 'media' && \is_array($value) && ($method instanceof SendMediaGroup || $method instanceof SendPaidMedia)) {
-                foreach ($value as $inputMedia) {
-                    $files = [...$files, ...$extractFiles($inputMedia)];
+                /** @var array<InputMedia|InputPaidMedia> $value */
+                foreach ($value as $media) {
+                    $files = [...$files, ...$extractFiles($media)];
                 }
             }
         }
