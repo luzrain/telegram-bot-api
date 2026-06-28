@@ -13,13 +13,6 @@ use Luzrain\TelegramBotApi\Method\SendPaidMedia;
 use Luzrain\TelegramBotApi\Type\File;
 use Luzrain\TelegramBotApi\Type\InputFile;
 use Luzrain\TelegramBotApi\Type\InputMedia;
-use Luzrain\TelegramBotApi\Type\InputMediaAnimation;
-use Luzrain\TelegramBotApi\Type\InputMediaAudio;
-use Luzrain\TelegramBotApi\Type\InputMediaDocument;
-use Luzrain\TelegramBotApi\Type\InputMediaPhoto;
-use Luzrain\TelegramBotApi\Type\InputMediaVideo;
-use Luzrain\TelegramBotApi\Type\InputPaidMediaPhoto;
-use Luzrain\TelegramBotApi\Type\InputPaidMediaVideo;
 use Luzrain\TelegramBotApi\Type\ResponseParameters;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
@@ -64,6 +57,23 @@ final readonly class BotApi
         $multiparts = [];
         $files = [];
 
+        $extractFiles = static function (mixed $inputMedia): array {
+            $files = [];
+            if (\property_exists($inputMedia, 'media') && $inputMedia->media instanceof InputFile) {
+                $files[] = $inputMedia->media;
+            }
+            if (\property_exists($inputMedia, 'thumbnail') && $inputMedia->thumbnail instanceof InputFile) {
+                $files[] = $inputMedia->thumbnail;
+            }
+            if (\property_exists($inputMedia, 'cover') && $inputMedia->cover instanceof InputFile) {
+                $files[] = $inputMedia->cover;
+            }
+            if (\property_exists($inputMedia, 'photo') && $inputMedia->photo instanceof InputFile) {
+                $files[] = $inputMedia->photo;
+            }
+            return $files;
+        };
+
         foreach ($method->getIterator() as $name => $value) {
             if ($value instanceof InputFile) {
                 $multiparts[$name] = $value->getAttachPath();
@@ -73,38 +83,13 @@ final readonly class BotApi
             }
 
             if ($value instanceof InputMedia) {
-                /** @var InputMediaAnimation|InputMediaDocument|InputMediaAudio|InputMediaPhoto|InputMediaVideo $value */
-                if ($value->media instanceof InputFile) {
-                    $files[] = $value->media;
-                }
-                if (!$value instanceof InputMediaPhoto && $value->thumbnail instanceof InputFile) {
-                    $files[] = $value->thumbnail;
-                }
+                $files = [...$files, ...$extractFiles($value)];
             }
 
             /** @psalm-suppress TypeDoesNotContainType */
-            if ($method instanceof SendMediaGroup && $name === 'media') {
-                /** @var list<InputMediaAnimation|InputMediaDocument|InputMediaAudio|InputMediaPhoto|InputMediaVideo> $value */
+            if ($name === 'media' && \is_array($value) && ($method instanceof SendMediaGroup || $method instanceof SendPaidMedia)) {
                 foreach ($value as $inputMedia) {
-                    if ($inputMedia->media instanceof InputFile) {
-                        $files[] = $inputMedia->media;
-                    }
-                    if (!$inputMedia instanceof InputMediaPhoto && $inputMedia->thumbnail instanceof InputFile) {
-                        $files[] = $inputMedia->thumbnail;
-                    }
-                }
-            }
-
-            /** @psalm-suppress TypeDoesNotContainType */
-            if ($method instanceof SendPaidMedia && $name === 'media') {
-                /** @var list<InputPaidMediaPhoto|InputPaidMediaVideo> $value */
-                foreach ($value as $inputPaidMedia) {
-                    if ($inputPaidMedia->media instanceof InputFile) {
-                        $files[] = $inputPaidMedia->media;
-                    }
-                    if (!$inputPaidMedia instanceof InputPaidMediaPhoto && $inputPaidMedia->thumbnail instanceof InputFile) {
-                        $files[] = $inputPaidMedia->thumbnail;
-                    }
+                    $files = [...$files, ...$extractFiles($inputMedia)];
                 }
             }
         }
