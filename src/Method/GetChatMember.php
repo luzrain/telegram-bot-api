@@ -8,7 +8,7 @@ use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ChatMember;
 
 /**
- * Use this method to get information about a member of a chat.
+ * Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat.
  * Returns a ChatMember object on success.
  *
  * @extends Method<ChatMember>
@@ -20,7 +20,7 @@ final class GetChatMember extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target supergroup or channel in the format @username
          */
         protected int|string $chatId,
 

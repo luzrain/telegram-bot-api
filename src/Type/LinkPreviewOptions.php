@@ -18,7 +18,7 @@ final readonly class LinkPreviewOptions extends Type
         public bool|null $isDisabled = null,
 
         /**
-         * Optional. URL to use for the link preview. If empty, then the first URL found in the message text will be used
+         * Optional. URL to use for the link preview. If empty, then the first URL found in the message text will be used.
          */
         public string|null $url = null,
 

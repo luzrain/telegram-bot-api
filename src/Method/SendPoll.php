@@ -57,14 +57,14 @@ final class SendPoll extends Method
         protected int|null $messageThreadId = null,
 
         /**
-         * Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed
+         * Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed.
          *
          * @see https://core.telegram.org/bots/api#formatting-options
          */
         protected string|null $questionParseMode = null,
 
         /**
-         * A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of question_parse_mode
+         * A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of question_parse_mode.
          *
          * @var list<MessageEntity>|null
          */
@@ -223,7 +223,6 @@ final class SendPoll extends Method
         /**
          * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard,
          * instructions to remove a reply keyboard or to force a reply from the user.
-         * Not supported for messages sent on behalf of a business account.
          */
         protected InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $replyMarkup = null,
     ) {

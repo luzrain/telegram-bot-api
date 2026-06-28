@@ -37,7 +37,7 @@ final readonly class CallbackQuery extends Type
         public MaybeInaccessibleMessage|null $message = null,
 
         /**
-         * Optional. Identifier of the message sent via the bot in inline mode, that originated the query.
+         * Optional. Identifier of the message sent via the bot in inline mode, that originated the query
          */
         public string|null $inlineMessageId = null,
 

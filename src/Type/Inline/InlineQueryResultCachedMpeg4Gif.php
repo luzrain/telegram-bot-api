@@ -24,7 +24,7 @@ final readonly class InlineQueryResultCachedMpeg4Gif extends InlineQueryResult
         public string $id,
 
         /**
-         * A valid file identifier for the MP4 file
+         * A valid file identifier for the MPEG4 file
          */
         public string $mpeg4FileId,
 

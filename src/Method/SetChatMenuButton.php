@@ -19,12 +19,12 @@ final class SetChatMenuButton extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target private chat. If not specified, default bot's menu button will be changed
+         * Unique identifier for the target private chat. If not specified, the bot's default menu button will be changed.
          */
         protected int|null $chatId = null,
 
         /**
-         * A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault
+         * A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault.
          */
         protected MenuButton|null $menuButton = null,
     ) {

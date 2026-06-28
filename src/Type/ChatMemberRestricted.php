@@ -58,7 +58,7 @@ final readonly class ChatMemberRestricted extends ChatMember
         public bool $canSendVoiceNotes,
 
         /**
-         * True, if the user is allowed to send polls
+         * True, if the user is allowed to send polls and checklists
          */
         public bool $canSendPolls,
 
@@ -103,7 +103,7 @@ final readonly class ChatMemberRestricted extends ChatMember
         public bool $canManageTopics,
 
         /**
-         * Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever
+         * Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever.
          */
         public int $untilDate,
 

@@ -32,7 +32,7 @@ final class SetGameScore extends Method
         protected int $score,
 
         /**
-         * Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters
+         * Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters.
          */
         protected bool|null $force = null,
 
@@ -42,17 +42,17 @@ final class SetGameScore extends Method
         protected bool|null $disableEditMessage = null,
 
         /**
-         * Required if inline_message_id is not specified. Unique identifier for the target chat
+         * Required if inline_message_id is not specified. Unique identifier for the target chat.
          */
         protected int|null $chatId = null,
 
         /**
-         * Required if inline_message_id is not specified. Identifier of the sent message
+         * Required if inline_message_id is not specified. Identifier of the sent message.
          */
         protected int|null $messageId = null,
 
         /**
-         * Required if chat_id and message_id are not specified. Identifier of the inline message
+         * Required if chat_id and message_id are not specified. Identifier of the inline message.
          */
         protected string|null $inlineMessageId = null,
     ) {

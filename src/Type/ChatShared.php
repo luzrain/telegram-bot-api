@@ -28,12 +28,12 @@ final readonly class ChatShared extends Type
         public int $chatId,
 
         /**
-         * Optional. Title of the chat, if the title was requested by the bot.
+         * Optional. Title of the chat, if the title was requested by the bot
          */
         public string|null $title = null,
 
         /**
-         * Optional. Username of the chat, if the username was requested by the bot and available.
+         * Optional. Username of the chat, if the username was requested by the bot and available
          */
         public string|null $username = null,
 

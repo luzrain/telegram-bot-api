@@ -25,7 +25,7 @@ final readonly class InputInvoiceMessageContent extends Type implements InputMes
         public string $description,
 
         /**
-         * Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
+         * Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes.
          */
         public string $payload,
 
@@ -59,9 +59,9 @@ final readonly class InputInvoiceMessageContent extends Type implements InputMes
         public int|null $maxTipAmount = null,
 
         /**
-         * Optional. A JSON-serialized array of suggested amounts of tip in the smallest units of the currency
-         * (integer, not float/double).At most 4 suggested tip amounts can be specified. The suggested tip amounts must
-         * be positive, passed in a strictly increased order and must not exceed max_tip_amount.
+         * Optional. A JSON-serialized array of suggested amounts of tip in the smallest units of the currency (integer, not float/double).
+         * At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive,
+         * passed in a strictly increased order and must not exceed max_tip_amount.
          *
          * @var list<int>|null
          */
@@ -75,12 +75,11 @@ final readonly class InputInvoiceMessageContent extends Type implements InputMes
 
         /**
          * Optional. URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a service.
-         * People like it better when they see what they are paying for.
          */
         public string|null $photoUrl = null,
 
         /**
-         * Optional. Photo size
+         * Optional. Photo size in bytes
          */
         public int|null $photoSize = null,
 

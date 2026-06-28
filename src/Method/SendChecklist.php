@@ -28,7 +28,7 @@ final class SendChecklist extends Method
         protected string $businessConnectionId,
 
         /**
-         * Unique identifier for the target chat
+         * Unique identifier for the target chat or username of the target bot in the format @username
          */
         protected int $chatId,
 

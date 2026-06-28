@@ -27,7 +27,7 @@ final readonly class Game extends Type
         public string $description,
 
         /**
-         * Photo that will be displayed in the game message in chats.
+         * Photo that will be displayed in the game message in chats
          *
          * @var list<PhotoSize>
          */
@@ -50,7 +50,7 @@ final readonly class Game extends Type
         public array|null $textEntities = null,
 
         /**
-         * Optional. Animation that will be displayed in the game message in chats. Upload via BotFather
+         * Optional. Animation that will be displayed in the game message in chats. Upload via BotFather.
          */
         public Animation|null $animation = null,
     ) {

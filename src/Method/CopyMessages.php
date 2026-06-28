@@ -25,17 +25,18 @@ final class CopyMessages extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
          */
         protected int|string $chatId,
 
         /**
-         * Unique identifier for the chat where the original messages were sent (or channel username in the format @channelusername)
+         * Unique identifier for the chat where the original messages were sent (or username of the target bot, supergroup or channel in the format @username)
          */
         protected int|string $fromChatId,
 
         /**
-         * Identifiers of 1-100 messages in the chat from_chat_id to copy. The identifiers must be specified in a strictly increasing order.
+         * A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to copy.
+         * The identifiers must be specified in a strictly increasing order.
          *
          * @var list<int>
          */

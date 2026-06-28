@@ -38,7 +38,7 @@ final readonly class StickerSet extends Type
         public array $stickers,
 
         /**
-         * Optional. Sticker thumbnail in the .WEBP or .JPG format
+         * Optional. Sticker set thumbnail in the .WEBP, .TGS, or .WEBM format
          */
         public PhotoSize|null $thumbnail = null,
     ) {

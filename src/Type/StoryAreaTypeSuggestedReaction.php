@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 /**
- * Describes a regular gift owned by a user or a chat.
+ * Describes a story area pointing to a suggested reaction. Currently, a story can have up to 5 suggested reaction areas.
  */
 final readonly class StoryAreaTypeSuggestedReaction extends StoryAreaType
 {

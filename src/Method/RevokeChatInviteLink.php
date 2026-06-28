@@ -21,7 +21,7 @@ final class RevokeChatInviteLink extends Method
 
     public function __construct(
         /**
-         * Unique identifier of the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier of the target chat or username of the target channel in the format @username
          */
         protected int|string $chatId,
 

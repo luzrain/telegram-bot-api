@@ -27,7 +27,7 @@ final readonly class OwnedGifts extends Type
         public array $gifts,
 
         /**
-         * Optional. Offset for the next request. If empty, then there are no more results
+         * Optional. Offset for the next request. If empty, then there are no more results.
          */
         public string|null $nextOffset = null,
     ) {

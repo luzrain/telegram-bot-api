@@ -20,7 +20,7 @@ final class SetChatPhoto extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target channel in the format @username
          */
         protected int|string $chatId,
 

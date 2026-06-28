@@ -21,7 +21,7 @@ final class RestrictChatMember extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+         * Unique identifier for the target chat or username of the target supergroup in the format @username
          */
         protected int|string $chatId,
 
@@ -44,7 +44,7 @@ final class RestrictChatMember extends Method
 
         /**
          * Date when restrictions will be lifted for the user; Unix time.
-         * If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever
+         * If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever.
          */
         protected bool|null $untilDate = null,
     ) {

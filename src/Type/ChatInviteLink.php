@@ -48,7 +48,7 @@ final readonly class ChatInviteLink extends Type
         public int|null $expireDate = null,
 
         /**
-         * Optional. Maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
+         * Optional. The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
          */
         public int|null $memberLimit = null,
 

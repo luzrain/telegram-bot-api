@@ -28,7 +28,7 @@ final class SendAnimation extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
          */
         protected int|string $chatId,
 
@@ -71,6 +71,8 @@ final class SendAnimation extends Method
         /**
          * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side.
          * The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320.
+         * Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file,
+         * so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>.
          */
         protected InputFile|string|null $thumbnail = null,
 
@@ -99,7 +101,7 @@ final class SendAnimation extends Method
         protected bool|null $showCaptionAboveMedia = null,
 
         /**
-         * Pass True if the photo needs to be covered with a spoiler animation
+         * Pass True if the animation needs to be covered with a spoiler animation
          */
         protected bool|null $hasSpoiler = null,
 
@@ -115,7 +117,7 @@ final class SendAnimation extends Method
 
         /**
          * Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message.
-         * The relevant Stars will be withdrawn from the bot's balance
+         * The relevant Stars will be withdrawn from the bot's balance.
          */
         protected bool|null $allowPaidBroadcast = null,
 
@@ -138,7 +140,6 @@ final class SendAnimation extends Method
         /**
          * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard,
          * instructions to remove a reply keyboard or to force a reply from the user.
-         * Not supported for messages sent on behalf of a business account.
          */
         protected InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $replyMarkup = null,
     ) {

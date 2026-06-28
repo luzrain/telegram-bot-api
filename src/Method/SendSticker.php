@@ -26,15 +26,14 @@ final class SendSticker extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
          */
         protected int|string $chatId,
 
         /**
          * Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended),
-         * pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet,
-         * or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data.
-         * Video and animated stickers can't be sent via an HTTP URL.
+         * pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS,
+         * or .WEBM sticker using multipart/form-data. Video and animated stickers can't be sent via an HTTP URL.
          */
         protected InputFile|string $sticker,
 
@@ -70,7 +69,7 @@ final class SendSticker extends Method
 
         /**
          * Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message.
-         * The relevant Stars will be withdrawn from the bot's balance
+         * The relevant Stars will be withdrawn from the bot's balance.
          */
         protected bool|null $allowPaidBroadcast = null,
 
@@ -93,7 +92,6 @@ final class SendSticker extends Method
         /**
          * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard,
          * instructions to remove a reply keyboard or to force a reply from the user.
-         * Not supported for messages sent on behalf of a business account.
          */
         protected InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $replyMarkup = null,
     ) {

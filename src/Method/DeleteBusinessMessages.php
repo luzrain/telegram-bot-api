@@ -23,7 +23,8 @@ final class DeleteBusinessMessages extends Method
         protected string $businessConnectionId,
 
         /**
-         * A JSON-serialized list of 1-100 identifiers of messages to delete. All messages must be from the same chat. See deleteMessage for limitations on which messages can be deleted
+         * A JSON-serialized list of 1-100 identifiers of messages to delete. All messages must be from the same chat.
+         * See deleteMessage for limitations on which messages can be deleted.
          *
          * @var list<int>
          */

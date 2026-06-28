@@ -19,7 +19,7 @@ final readonly class RichBlockListItem extends Type
         public string $label,
 
         /**
-         * Content of the item
+         * The content of the item
          *
          * @var list<RichBlock>
          */

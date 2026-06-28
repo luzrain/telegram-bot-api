@@ -66,7 +66,7 @@ final class SendMediaGroup extends Method
 
         /**
          * Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message.
-         * The relevant Stars will be withdrawn from the bot's balance
+         * The relevant Stars will be withdrawn from the bot's balance.
          */
         protected bool|null $allowPaidBroadcast = null,
 

@@ -30,7 +30,7 @@ final readonly class GiftInfo extends Type
         public int|null $convertStarCount = null,
 
         /**
-         * Optional. Number of Telegram Stars that were prepaid by the sender for the ability to upgrade the gift
+         * Optional. Number of Telegram Stars that were prepaid for the ability to upgrade the gift
          */
         public int|null $prepaidUpgradeStarCount = null,
 
@@ -63,7 +63,7 @@ final readonly class GiftInfo extends Type
         public true|null $isPrivate = null,
 
         /**
-         * Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift
+         * Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift.
          */
         public int|null $uniqueGiftNumber = null,
     ) {

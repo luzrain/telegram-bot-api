@@ -21,12 +21,12 @@ final class ForwardMessage extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
          */
         protected int|string $chatId,
 
         /**
-         * Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)
+         * Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup or channel in the format @username)
          */
         protected int|string $fromChatId,
 
@@ -51,12 +51,12 @@ final class ForwardMessage extends Method
         protected int|null $videoStartTimestamp = null,
 
         /**
-         * Protects the contents of the forwarded message from forwarding and saving
+         * Sends the message silently. Users will receive a notification with no sound.
          */
         protected bool|null $disableNotification = null,
 
         /**
-         * Message identifier in the chat specified in from_chat_id
+         * Protects the contents of the forwarded message from forwarding and saving
          */
         protected bool|null $protectContent = null,
 

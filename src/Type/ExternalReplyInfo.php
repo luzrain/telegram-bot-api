@@ -117,7 +117,7 @@ final readonly class ExternalReplyInfo extends Type
         /**
          * Optional. Message is a game, information about the game.
          *
-         * @llink https://core.telegram.org/bots/api#games
+         * @see https://core.telegram.org/bots/api#games
          */
         public Game|null $game = null,
 
@@ -134,7 +134,7 @@ final readonly class ExternalReplyInfo extends Type
         /**
          * Optional. Message is an invoice for a payment, information about the invoice.
          *
-         * @link https://core.telegram.org/bots/api#payments
+         * @see https://core.telegram.org/bots/api#payments
          */
         public Invoice|null $invoice = null,
 

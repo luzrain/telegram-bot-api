@@ -7,19 +7,20 @@ namespace Luzrain\TelegramBotApi\Type\Payments;
 use Luzrain\TelegramBotApi\Type;
 
 /**
- * Describes a Telegram Star transaction.
+ * Describes a Telegram Star transaction. Note that if the buyer initiates a chargeback with the payment provider from whom they acquired Stars
+ * (e.g., Apple, Google) following this transaction, the refunded Stars will be deducted from the bot's balance. This is outside of Telegram's control.
  */
 final readonly class StarTransaction extends Type
 {
     protected function __construct(
         /**
-         * Unique identifier of the transaction. Coincides with the identifer of the original transaction for refund transactions.
+         * Unique identifier of the transaction. Coincides with the identifier of the original transaction for refund transactions.
          * Coincides with SuccessfulPayment.telegram_payment_charge_id for successful incoming payments from users.
          */
         public string $id,
 
         /**
-         * Number of Telegram Stars transferred by the transaction
+         * Integer amount of Telegram Stars transferred by the transaction
          */
         public int $amount,
 
@@ -35,13 +36,13 @@ final readonly class StarTransaction extends Type
 
         /**
          * Optional. Source of an incoming transaction (e.g., a user purchasing goods or services, Fragment refunding a failed withdrawal).
-         * Only for incoming transactions
+         * Only for incoming transactions.
          */
         public TransactionPartner|null $source = null,
 
         /**
          * Optional. Receiver of an outgoing transaction (e.g., a user for a purchase refund, Fragment for a withdrawal).
-         * Only for outgoing transactions
+         * Only for outgoing transactions.
          */
         public TransactionPartner|null $receiver = null,
     ) {

@@ -19,7 +19,7 @@ final readonly class UsersShared extends Type
         public int $requestId,
 
         /**
-         * Information about users shared with the bot.
+         * Information about users shared with the bot
          *
          * @var list<SharedUser>
          */

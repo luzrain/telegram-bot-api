@@ -8,8 +8,7 @@ use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\MessageEntity;
 
 /**
- * Gifts a Telegram Premium subscription to the given user.
- * Returns True on success.
+ * Gifts a Telegram Premium subscription to the given user. Returns True on success.
  *
  * @extends Method<true>
  */

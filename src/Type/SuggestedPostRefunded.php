@@ -13,8 +13,8 @@ final readonly class SuggestedPostRefunded extends Type
 {
     protected function __construct(
         /**
-         * Reason for the refund. Currently, one of "post_deleted" if the post was deleted within 24 hours of being posted or removed from scheduled messages without being posted,
-         * or "payment_refunded" if the payer refunded their payment.
+         * Reason for the refund. Currently, one of "post_deleted" if the post was deleted within 24 hours of being posted or removed
+         * from scheduled messages without being posted, or "payment_refunded" if the payer refunded their payment.
          */
         public string $reason,
 

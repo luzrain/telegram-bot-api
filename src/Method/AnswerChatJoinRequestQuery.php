@@ -22,7 +22,8 @@ final class AnswerChatJoinRequestQuery extends Method
         protected string $chatJoinRequestQueryId,
 
         /**
-         * Result of the query. Must be either "approve" to allow the user to join the chat, "decline" to disallow the user to join the chat, or "queue" to leave the decision to other administrators.
+         * Result of the query. Must be either "approve" to allow the user to join the chat, "decline" to
+         * disallow the user to join the chat, or "queue" to leave the decision to other administrators.
          */
         protected string $result,
     ) {

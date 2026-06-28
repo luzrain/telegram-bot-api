@@ -13,7 +13,7 @@ final readonly class SwitchInlineQueryChosenChat extends Type
 {
     public function __construct(
         /**
-         * Optional. The default inline query to be inserted in the input field. If left empty, only the bot's username will be inserted
+         * Optional. The default inline query to be inserted in the input field. If left empty, only the bot's username will be inserted.
          */
         public string|null $query = null,
 

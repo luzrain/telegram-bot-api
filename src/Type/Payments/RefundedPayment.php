@@ -13,7 +13,7 @@ final readonly class RefundedPayment extends Type
 {
     public function __construct(
         /**
-         * Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars. Currently, always "XTR"
+         * Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars. Currently, always "XTR".
          */
         public string $currency,
 

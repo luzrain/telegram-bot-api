@@ -20,7 +20,7 @@ final class GetUserChatBoosts extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the chat or username of the channel (in the format @channelusername)
+         * Unique identifier for the chat or username of the channel in the format @username
          */
         protected int|string $chatId,
 

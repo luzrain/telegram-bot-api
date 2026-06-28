@@ -30,12 +30,12 @@ final class CopyMessage extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
          */
         protected int|string $chatId,
 
         /**
-         * Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)
+         * Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup or channel in the format @username)
          */
         protected int|string $fromChatId,
 
@@ -60,7 +60,7 @@ final class CopyMessage extends Method
         protected int|null $videoStartTimestamp = null,
 
         /**
-         * New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept
+         * New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept.
          */
         protected string|null $caption = null,
 
@@ -95,7 +95,7 @@ final class CopyMessage extends Method
 
         /**
          * Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message.
-         * The relevant Stars will be withdrawn from the bot's balance
+         * The relevant Stars will be withdrawn from the bot's balance.
          */
         protected bool|null $allowPaidBroadcast = null,
 
@@ -117,7 +117,7 @@ final class CopyMessage extends Method
 
         /**
          * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard,
-         * instructions to remove a reply keyboard or to force a reply from the user
+         * instructions to remove a reply keyboard or to force a reply from the user.
          */
         protected InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $replyMarkup = null,
     ) {

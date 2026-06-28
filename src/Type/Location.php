@@ -13,12 +13,12 @@ final readonly class Location extends Type
 {
     protected function __construct(
         /**
-         * Longitude as defined by sender
+         * Longitude as defined by the sender
          */
         public float $longitude,
 
         /**
-         * Latitude as defined by sender
+         * Latitude as defined by the sender
          */
         public float $latitude,
 
@@ -38,7 +38,7 @@ final readonly class Location extends Type
         public int|null $heading = null,
 
         /**
-         * Optional. Maximum distance for proximity alerts about approaching another chat member, in meters. For sent live locations only.
+         * Optional. The maximum distance for proximity alerts about approaching another chat member, in meters. For sent live locations only.
          */
         public int|null $proximityAlertRadius = null,
     ) {

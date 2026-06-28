@@ -13,7 +13,7 @@ final readonly class Venue extends Type
 {
     protected function __construct(
         /**
-         * Venue location. Can't be a live location
+         * Venue location. Can't be a live location.
          */
         public Location $location,
 
@@ -43,7 +43,8 @@ final readonly class Venue extends Type
         public string|null $googlePlaceId = null,
 
         /**
-         * Optional. Google Places type of the venue.
+         * Optional. Google Places type of the venue. (See supported types.)
+         *
          * @see https://developers.google.com/places/web-service/supported_types
          */
         public string|null $googlePlaceType = null,

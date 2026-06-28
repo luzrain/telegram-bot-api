@@ -7,22 +7,21 @@ namespace Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type;
 
 /**
- * This object defines the criteria used to request a suitable chat.
- * Information about the selected chat will be shared with the bot when the corresponding button is pressed.
- * The bot will be granted requested rights in the chat if appropriate.
+ * This object defines the criteria used to request a suitable chat. Information about the selected chat will be
+ * shared with the bot when the corresponding button is pressed. The bot will be granted requested rights in the chat if appropriate.
  *
- * @link https://core.telegram.org/bots/features#chat-and-user-selection
+ * @see https://core.telegram.org/bots/features#chat-and-user-selection
  */
 final readonly class KeyboardButtonRequestChat extends Type
 {
     public function __construct(
         /**
-         * Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must be unique within the message
+         * Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must be unique within the message.
          */
         public int $requestId,
 
         /**
-         * Pass True to request a channel chat, pass False to request a group or a supergroup chat.
+         * Pass True to request a channel chat, pass False to request a group or a supergroup chat
          */
         public bool $chatIsChannel,
 

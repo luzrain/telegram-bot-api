@@ -25,7 +25,7 @@ final class AnswerShippingQuery extends Method
         protected string $shippingQueryId,
 
         /**
-         * Specify True if delivery to the specified address is possible and False if there are any problems
+         * Pass True if delivery to the specified address is possible and False if there are any problems
          * (for example, if delivery to the specified address is not possible)
          */
         protected bool $ok,
@@ -38,8 +38,9 @@ final class AnswerShippingQuery extends Method
         protected array|null $shippingOptions = null,
 
         /**
-         * Required if ok is False. Error message in human readable form that explains why it is impossible to complete the order
-         * (e.g. "Sorry, delivery to your desired address is unavailable'). Telegram will display this message to the user.
+         * Required if ok is False. Error message in human readable form that explains why it is impossible to complete
+         * the order (e.g. "Sorry, delivery to your desired address is unavailable").
+         * Telegram will display this message to the user.
          */
         protected string|null $errorMessage = null,
     ) {

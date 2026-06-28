@@ -7,16 +7,16 @@ namespace Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type;
 
 /**
- * This object defines the criteria used to request suitable users.
- * Information about the selected users will be shared with the bot when the corresponding button is pressed.
+ * This object defines the criteria used to request suitable users. Information about the selected users will
+ * be shared with the bot when the corresponding button is pressed.
  *
- * @link https://core.telegram.org/bots/features#chat-and-user-selection
+ * @see https://core.telegram.org/bots/features#chat-and-user-selection
  */
 final readonly class KeyboardButtonRequestUsers extends Type
 {
     public function __construct(
         /**
-         * Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must be unique within the message
+         * Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must be unique within the message.
          */
         public int $requestId,
 

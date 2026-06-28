@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 /**
- * Describes a regular gift owned by a user or a chat.
+ * Describes a unique gift received and owned by a user or a chat.
  */
 final readonly class OwnedGiftUnique extends OwnedGift
 {
@@ -48,7 +48,7 @@ final readonly class OwnedGiftUnique extends OwnedGift
         public int|null $transferStarCount = null,
 
         /**
-         * Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now
+         * Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now.
          */
         public int|null $nextTransferDate = null,
     ) {

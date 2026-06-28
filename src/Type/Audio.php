@@ -24,32 +24,34 @@ final readonly class Audio extends Type
         public string $fileUniqueId,
 
         /**
-         * Duration of the audio in seconds as defined by sender
+         * Duration of the audio in seconds as defined by the sender
          */
         public int $duration,
 
         /**
-         * Optional. Performer of the audio as defined by sender or by audio tags
+         * Optional. Performer of the audio as defined by the sender or by audio tags
          */
         public string|null $performer = null,
 
         /**
-         * Optional. Title of the audio as defined by sender or by audio tags
+         * Optional. Title of the audio as defined by the sender or by audio tags
          */
         public string|null $title = null,
 
         /**
-         * Optional. Original filename as defined by sender
+         * Optional. Original filename as defined by the sender
          */
         public string|null $fileName = null,
 
         /**
-         * Optional. MIME type of the file as defined by sender
+         * Optional. MIME type of the file as defined by the sender
          */
         public string|null $mimeType = null,
 
         /**
-         * Optional. File size in bytes
+         * Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have
+         * difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit
+         * integer or double-precision float type are safe for storing this value.
          */
         public int|null $fileSize = null,
 

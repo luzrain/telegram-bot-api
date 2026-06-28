@@ -88,8 +88,8 @@ final readonly class Poll extends Type
         public int|null $correctOptionId = null,
 
         /**
-         * Optional. 0-based identifiers of the correct answer options. Available only for polls in the quiz mode,
-         * which are closed, or was sent (not forwarded) by the bot or to the private chat with the bot.
+         * Optional. Array of 0-based identifiers of the correct answer options.
+         * Available only for polls in quiz mode which are closed or were sent (not forwarded) by the bot or to the private chat with the bot.
          *
          * @var list<int>|null
          */
@@ -137,7 +137,7 @@ final readonly class Poll extends Type
         public array|null $descriptionEntities = null,
 
         /**
-         * Optional. Media attached to the poll question
+         * Optional. Media added to the poll description; for polls inside the Message object only
          */
         public PollMedia|null $media = null,
     ) {

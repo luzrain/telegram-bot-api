@@ -45,12 +45,12 @@ final readonly class Gift extends Type
         public true|null $hasColors = null,
 
         /**
-         * Optional. The total number of the gifts of this type that can be sent; for limited gifts only
+         * Optional. The total number of gifts of this type that can be sent by all users; for limited gifts only
          */
         public int|null $totalCount = null,
 
         /**
-         * Optional. The number of remaining gifts of this type that can be sent; for limited gifts only
+         * Optional. The number of remaining gifts of this type that can be sent by all users; for limited gifts only
          */
         public int|null $remainingCount = null,
 

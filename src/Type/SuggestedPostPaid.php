@@ -13,7 +13,7 @@ final readonly class SuggestedPostPaid extends Type
 {
     protected function __construct(
         /**
-         * Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins
+         * Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins.
          */
         public string $currency,
 

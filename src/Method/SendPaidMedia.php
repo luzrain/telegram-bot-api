@@ -16,7 +16,7 @@ use Luzrain\TelegramBotApi\Type\ReplyParameters;
 use Luzrain\TelegramBotApi\Type\SuggestedPostParameters;
 
 /**
- * Use this method to send paid media to channel chats. On success, the sent Message is returned.
+ * Use this method to send paid media. On success, the sent Message is returned.
  *
  * @extends Method<Message>
  */
@@ -27,12 +27,14 @@ final class SendPaidMedia extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.
+         * If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance.
+         * Otherwise, they will be credited to the bot's balance.
          */
         protected int|string $chatId,
 
         /**
-         * The number of Telegram Stars that must be paid to buy access to the media
+         * The number of Telegram Stars that must be paid to buy access to the media; 1-25000
          */
         protected int $starCount,
 
@@ -99,7 +101,7 @@ final class SendPaidMedia extends Method
 
         /**
          * Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message.
-         * The relevant Stars will be withdrawn from the bot's balance
+         * The relevant Stars will be withdrawn from the bot's balance.
          */
         protected bool|null $allowPaidBroadcast = null,
 
@@ -116,7 +118,7 @@ final class SendPaidMedia extends Method
 
         /**
          * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard,
-         * instructions to remove a reply keyboard or to force a reply from the user
+         * instructions to remove a reply keyboard or to force a reply from the user.
          */
         protected InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $replyMarkup = null,
     ) {

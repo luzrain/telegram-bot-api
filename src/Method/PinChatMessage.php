@@ -7,10 +7,9 @@ namespace Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Method;
 
 /**
- * Use this method to add a message to the list of pinned messages in a chat.
- * If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the
- * 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel.
- * Returns True on success.
+ * Use this method to add a message to the list of pinned messages in a chat. In private chats and channel direct messages chats,
+ * all non-service messages can be pinned. Conversely, the bot must be an administrator with the 'can_pin_messages'
+ * right or the 'can_edit_messages' right to pin messages in groups and channels respectively. Returns True on success.
  *
  * @extends Method<true>
  */
@@ -20,7 +19,7 @@ final class PinChatMessage extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target channel in the format @username
          */
         protected int|string $chatId,
 

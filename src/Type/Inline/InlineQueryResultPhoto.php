@@ -23,7 +23,7 @@ final readonly class InlineQueryResultPhoto extends InlineQueryResult
         public string $id,
 
         /**
-         * A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB
+         * A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB.
          */
         public string $photoUrl,
 

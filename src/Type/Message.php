@@ -19,7 +19,9 @@ final readonly class Message extends MaybeInaccessibleMessage
 {
     protected function __construct(
         /**
-         * Unique message identifier inside this chat
+         * Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat),
+         * the server might automatically schedule a message instead of sending it immediately.
+         * In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent.
          */
         public int $messageId,
 
@@ -44,16 +46,15 @@ final readonly class Message extends MaybeInaccessibleMessage
         public DirectMessagesTopic|null $directMessagesTopic = null,
 
         /**
-         * Optional. Sender of the message; empty for messages sent to channels.
-         * For backward compatibility, the field contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
+         * Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility,
+         * if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats.
          */
         public User|null $from = null,
 
         /**
-         * Optional. Sender of the message, sent on behalf of a chat.
-         * For example, the channel itself for channel posts, the supergroup itself for messages from anonymous group
-         * administrators, the linked channel for messages automatically forwarded to the discussion group.
-         * For backward compatibility, the field from contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
+         * Optional. Sender of the message when sent on behalf of a chat. For example, the supergroup itself for messages sent by
+         * its anonymous administrators or a linked channel for messages automatically forwarded to the channel's discussion group.
+         * For backward compatibility, if the message was sent on behalf of a chat, the field from contains a fake sender user in non-channel chats.
          */
         public Chat|null $senderChat = null,
 
@@ -103,8 +104,8 @@ final readonly class Message extends MaybeInaccessibleMessage
         public true|null $isAutomaticForward = null,
 
         /**
-         * Optional. For replies, the original message. Note that the Message object in this field will not contain further
-         * reply_to_message fields even if it itself is a reply.
+         * Optional. For replies in the same chat and message thread, the original message.
+         * Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
          */
         public Message|null $replyToMessage = null,
 
@@ -170,7 +171,7 @@ final readonly class Message extends MaybeInaccessibleMessage
         public true|null $isPaidPost = null,
 
         /**
-         * Optional. The unique identifier of a media message group this message belongs to
+         * Optional. The unique identifier inside this chat of a media message group this message belongs to
          */
         public string|null $mediaGroupId = null,
 
@@ -185,7 +186,7 @@ final readonly class Message extends MaybeInaccessibleMessage
         public int|null $paidStarCount = null,
 
         /**
-         * Optional. For text messages, the actual UTF-8 text of the message, 0-4096 characters
+         * Optional. For text messages, the actual UTF-8 text of the message
          */
         public string|null $text = null,
 
@@ -220,7 +221,7 @@ final readonly class Message extends MaybeInaccessibleMessage
 
         /**
          * Optional. Message is an animation, information about the animation.
-         * For backward compatibility, when this field is set, the document field will also be set
+         * For backward compatibility, when this field is set, the document field will also be set.
          */
         public Animation|null $animation = null,
 
@@ -317,8 +318,6 @@ final readonly class Message extends MaybeInaccessibleMessage
 
         /**
          * Optional. Message is a game, information about the game.
-         *
-         * @llink https://core.telegram.org/bots/api#games
          */
         public Game|null $game = null,
 
@@ -329,7 +328,7 @@ final readonly class Message extends MaybeInaccessibleMessage
 
         /**
          * Optional. Message is a venue, information about the venue.
-         * For backward compatibility, when this field is set, the location field will also be set
+         * For backward compatibility, when this field is set, the location field will also be set.
          */
         public Venue|null $venue = null,
 
@@ -425,8 +424,6 @@ final readonly class Message extends MaybeInaccessibleMessage
 
         /**
          * Optional. Message is an invoice for a payment, information about the invoice.
-         *
-         * @link https://core.telegram.org/bots/api#payments
          */
         public Invoice|null $invoice = null,
 
@@ -471,7 +468,8 @@ final readonly class Message extends MaybeInaccessibleMessage
         public string|null $connectedWebsite = null,
 
         /**
-         * Optional. Service message: the user allowed the bot added to the attachment menu to write messages
+         * Optional. Service message: the user allowed the bot to write messages after adding it to the attachment or side menu,
+         * launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess
          */
         public WriteAccessAllowed|null $writeAccessAllowed = null,
 

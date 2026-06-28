@@ -27,7 +27,7 @@ final class SendLivePhoto extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target channel in the format @username
          */
         protected int|string $chatId,
 
@@ -39,8 +39,8 @@ final class SendLivePhoto extends Method
         protected InputFile|string $livePhoto,
 
         /**
-         * The static photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data.
-         * Sending live photos by a URL is currently unsupported.
+         * The static photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended)
+         * or upload a new video using multipart/form-data. Sending live photos by a URL is currently unsupported.
          */
         protected InputFile|string $photo,
 

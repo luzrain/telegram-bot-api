@@ -10,7 +10,7 @@ use Luzrain\TelegramBotApi\Type\BotCommandScope;
 
 /**
  * Use this method to get the current list of the bot's commands for the given scope and user language.
- * Returns Array of BotCommand on success. If commands aren't set, an empty list is returned.
+ * Returns an Array of BotCommand objects. If commands aren't set, an empty list is returned.
  *
  * @extends Method<list<BotCommand>>
  */

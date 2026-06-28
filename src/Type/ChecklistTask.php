@@ -32,7 +32,7 @@ final readonly class ChecklistTask extends Type
         public array|null $textEntities = null,
 
         /**
-         * Optional. User that completed the task; omitted if the task wasn't completed
+         * Optional. User that completed the task; omitted if the task wasn't completed by a user
          */
         public User|null $completedByUser = null,
 

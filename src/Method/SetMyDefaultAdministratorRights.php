@@ -9,8 +9,7 @@ use Luzrain\TelegramBotApi\Type\ChatAdministratorRights;
 
 /**
  * Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels.
- * These rights will be suggested to users, but they are are free to modify the list before adding the bot.
- * Returns True on success.
+ * These rights will be suggested to users, but they are free to modify the list before adding the bot. Returns True on success.
  *
  * @extends Method<true>
  */

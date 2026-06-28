@@ -9,8 +9,7 @@ use Luzrain\TelegramBotApi\Method;
 /**
  * Use this method to promote or demote a user in a supergroup or a channel.
  * The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights.
- * Pass False for all boolean parameters to demote a user.
- * Returns True on success.
+ * Pass False for all boolean parameters to demote a user. Returns True on success.
  *
  * @extends Method<true>
  */
@@ -20,7 +19,7 @@ final class PromoteChatMember extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target channel in the format @username
          */
         protected int|string $chatId,
 
@@ -35,21 +34,10 @@ final class PromoteChatMember extends Method
         protected bool|null $isAnonymous = null,
 
         /**
-         * Pass True if the administrator can access the chat event log, chat statistics, boost list in channels,
-         * message statistics in channels, see channel members, see anonymous administrators in supergroups and ignore slow mode.
-         * Implied by any other administrator privilege
+         * Pass True if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages,
+         * ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.
          */
         protected bool|null $canManageChat = null,
-
-        /**
-         * Pass True if the administrator can post messages in the channel; channels only
-         */
-        protected bool|null $canPostMessages = null,
-
-        /**
-         * Pass True if the administrator can edit messages of other users and can pin messages; channels only
-         */
-        protected bool|null $canEditMessages = null,
 
         /**
          * Pass True if the administrator can delete messages of other users
@@ -57,27 +45,13 @@ final class PromoteChatMember extends Method
         protected bool|null $canDeleteMessages = null,
 
         /**
-         * Pass True if the administrator can post stories in the channel; channels only
-         */
-        protected bool|null $canPostStories = null,
-
-        /**
-         * Pass True if the administrator can edit stories posted by other users; channels only
-         */
-        protected bool|null $canEditStories = null,
-
-        /**
-         * Pass True if the administrator can delete stories posted by other users; channels only
-         */
-        protected bool|null $canDeleteStories = null,
-
-        /**
          * Pass True if the administrator can manage video chats
          */
         protected bool|null $canManageVideoChats = null,
 
         /**
-         * Pass True if the administrator can restrict, ban or unban chat members
+         * Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics.
+         * For backward compatibility, defaults to True for promotions of channel administrators.
          */
         protected bool|null $canRestrictMembers = null,
 
@@ -98,12 +72,37 @@ final class PromoteChatMember extends Method
         protected bool|null $canInviteUsers = null,
 
         /**
-         * Pass True if the administrator can pin messages, supergroups only
+         * Pass True if the administrator can post stories to the chat
+         */
+        protected bool|null $canPostStories = null,
+
+        /**
+         * Pass True if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access the chat's story archive
+         */
+        protected bool|null $canEditStories = null,
+
+        /**
+         * Pass True if the administrator can delete stories posted by other users
+         */
+        protected bool|null $canDeleteStories = null,
+
+        /**
+         * Pass True if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only
+         */
+        protected bool|null $canPostMessages = null,
+
+        /**
+         * Pass True if the administrator can edit messages of other users and can pin messages; for channels only
+         */
+        protected bool|null $canEditMessages = null,
+
+        /**
+         * Pass True if the administrator can pin messages; for supergroups only
          */
         protected bool|null $canPinMessages = null,
 
         /**
-         * Pass True if the user is allowed to create, rename, close, and reopen forum topics, supergroups only
+         * Pass True if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
          */
         protected bool|null $canManageTopics = null,
 

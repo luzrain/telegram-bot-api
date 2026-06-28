@@ -27,22 +27,22 @@ final class StopMessageLiveLocation extends Method
 
         /**
          * Required if inline_message_id is not specified.
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.
          */
         protected int|string|null $chatId = null,
 
         /**
-         * Required if inline_message_id is not specified. Identifier of the message with live location to stop
+         * Required if inline_message_id is not specified. Identifier of the message with live location to stop.
          */
         protected int|null $messageId = null,
 
         /**
-         * Required if chat_id and message_id are not specified. Identifier of the inline message
+         * Required if chat_id and message_id are not specified. Identifier of the inline message.
          */
         protected string|null $inlineMessageId = null,
 
         /**
-         * A JSON-serialized object for a new inline keyboard.
+         * A JSON-serialized object for a new inline keyboard
          */
         protected InlineKeyboardMarkup|null $replyMarkup = null,
     ) {

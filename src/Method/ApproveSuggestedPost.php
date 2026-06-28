@@ -29,7 +29,7 @@ final class ApproveSuggestedPost extends Method
 
         /**
          * Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created.
-         * If specified, then the date must be not more than 2678400 seconds (30 days) in the future
+         * If specified, then the date must be not more than 2678400 seconds (30 days) in the future.
          */
         protected int|null $sendDate = null,
     ) {

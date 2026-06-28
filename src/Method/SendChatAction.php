@@ -31,7 +31,8 @@ final class SendChatAction extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target bot or supergroup in the format @username.
+         * Channel chats and channel direct messages chats aren't supported.
          */
         protected int|string $chatId,
 

@@ -61,7 +61,7 @@ final readonly class Giveaway extends Type
         public int|null $prizeStarCount = null,
 
         /**
-         * Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for
+         * Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for; for Telegram Premium giveaways only
          */
         public int|null $premiumSubscriptionMonthCount = null,
     ) {

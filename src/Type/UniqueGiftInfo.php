@@ -18,8 +18,9 @@ final readonly class UniqueGiftInfo extends Type
         public UniqueGift $gift,
 
         /**
-         * Origin of the gift. Currently, either "upgrade" for gifts upgraded from regular gifts, "transfer" for gifts transferred from other users or channels,
-         * "resale" for gifts bought from other users, "gifted_upgrade" for upgrades purchased after the gift was sent, or "offer" for gifts bought or sold through gift purchase offers
+         * Origin of the gift. Currently, either "upgrade" for gifts upgraded from regular gifts, "transfer" for gifts
+         * transferred from other users or channels, "resale" for gifts bought from other users, "gifted_upgrade"
+         * for upgrades purchased after the gift was sent, or "offer" for gifts bought or sold through gift purchase offers.
          */
         public string $origin,
 
@@ -30,7 +31,8 @@ final readonly class UniqueGiftInfo extends Type
         public int|null $lastResaleStarCount = null,
 
         /**
-         * Optional. For gifts bought from other users, the currency in which the payment for the gift was done. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins.
+         * Optional. For gifts bought from other users, the currency in which the payment for the gift was done.
+         * Currently, one of "XTR" for Telegram Stars or "TON" for toncoins.
          */
         public string|null $lastResaleCurrency = null,
 
@@ -50,7 +52,7 @@ final readonly class UniqueGiftInfo extends Type
         public int|null $transferStarCount = null,
 
         /**
-         * Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now
+         * Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now.
          */
         public int|null $nextTransferDate = null,
     ) {

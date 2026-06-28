@@ -69,12 +69,13 @@ final readonly class OwnedGiftRegular extends OwnedGift
         public true|null $wasRefunded = null,
 
         /**
-         * Optional. Number of Telegram Stars that can be claimed by the receiver instead of the gift; omitted if the gift cannot be converted to Telegram Stars
+         * Optional. Number of Telegram Stars that can be claimed by the receiver instead of the gift;
+         * omitted if the gift cannot be converted to Telegram Stars; for gifts received on behalf of business accounts only
          */
         public int|null $convertStarCount = null,
 
         /**
-         * Optional. Number of Telegram Stars that were paid by the sender for the ability to upgrade the gift
+         * Optional. Number of Telegram Stars that were paid for the ability to upgrade the gift
          */
         public int|null $prepaidUpgradeStarCount = null,
 
@@ -84,7 +85,7 @@ final readonly class OwnedGiftRegular extends OwnedGift
         public true|null $isUpgradeSeparate = null,
 
         /**
-         * Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift
+         * Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift.
          */
         public int|null $uniqueGiftNumber = null,
     ) {

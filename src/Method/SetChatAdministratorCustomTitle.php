@@ -7,8 +7,7 @@ namespace Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Method;
 
 /**
- * Use this method to set a custom title for an administrator in a supergroup promoted by the bot.
- * Returns True on success.
+ * Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.
  *
  * @extends Method<true>
  */
@@ -18,7 +17,7 @@ final class SetChatAdministratorCustomTitle extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+         * Unique identifier for the target chat or username of the target supergroup in the format @username
          */
         protected int|string $chatId,
 

@@ -24,7 +24,7 @@ final readonly class PreCheckoutQuery extends Type
         public User $from,
 
         /**
-         * Three-letter ISO 4217 currency code
+         * Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars
          */
         public string $currency,
 
@@ -36,7 +36,7 @@ final readonly class PreCheckoutQuery extends Type
         public int $totalAmount,
 
         /**
-         * Bot specified invoice payload
+         * Bot-specified invoice payload
          */
         public string $invoicePayload,
 
@@ -46,7 +46,7 @@ final readonly class PreCheckoutQuery extends Type
         public string|null $shippingOptionId = null,
 
         /**
-         * Optional. Order info provided by the user
+         * Optional. Order information provided by the user
          */
         public OrderInfo|null $orderInfo = null,
     ) {

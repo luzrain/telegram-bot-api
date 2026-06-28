@@ -28,7 +28,7 @@ final readonly class Invoice extends Type
         public string $startParameter,
 
         /**
-         * Three-letter ISO 4217 currency code
+         * Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars
          */
         public string $currency,
 

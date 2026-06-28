@@ -24,7 +24,7 @@ final class AnswerCallbackQuery extends Method
         protected string $callbackQueryId,
 
         /**
-         * Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters
+         * Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters.
          */
         protected string|null $text = null,
 

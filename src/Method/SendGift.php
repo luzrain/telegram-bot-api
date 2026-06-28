@@ -19,7 +19,7 @@ final class SendGift extends Method
 
     public function __construct(
         /**
-         * Identifier of the gift
+         * Identifier of the gift; limited gifts can't be sent to channel chats
          */
         protected string $giftId,
 
@@ -29,7 +29,7 @@ final class SendGift extends Method
         protected int|null $userId = null,
 
         /**
-         * Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @channelusername) that will receive the gift.
+         * Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @username) that will receive the gift.
          */
         protected int|string|null $chatId = null,
 
@@ -39,7 +39,7 @@ final class SendGift extends Method
         protected bool|null $payForUpgrade = null,
 
         /**
-         * Text that will be shown along with the gift; 0-255 characters
+         * Text that will be shown along with the gift; 0-128 characters
          */
         protected string|null $text = null,
 

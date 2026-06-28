@@ -24,12 +24,12 @@ final readonly class VideoNote extends Type
         public string $fileUniqueId,
 
         /**
-         * Video width and height (diameter of the video message) as defined by sender
+         * Video width and height (diameter of the video message) as defined by the sender
          */
         public int $length,
 
         /**
-         * Duration of the video in seconds as defined by sender
+         * Duration of the video in seconds as defined by the sender
          */
         public int $duration,
 

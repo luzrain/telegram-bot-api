@@ -8,10 +8,9 @@ use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\ReactionType;
 
 /**
- * Use this method to change the chosen reactions on a message.
- * Service messages can't be reacted to. Automatically forwarded messages from a channel to its discussion group
- * have the same available reactions as messages in the channel.
- * Returns True on success.
+ * Use this method to change the chosen reactions on a message. Service messages of some types can't be reacted to.
+ * Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel.
+ * Bots can't use paid reactions. Returns True on success.
  *
  * @extends Method<true>
  */
@@ -21,7 +20,7 @@ final class SetMessageReaction extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
          */
         protected int|string $chatId,
 
@@ -32,9 +31,9 @@ final class SetMessageReaction extends Method
         protected int $messageId,
 
         /**
-         * New list of reaction types to set on the message.
-         * Currently, as non-premium users, bots can set up to one reaction per message.
+         * A JSON-serialized list of reaction types to set on the message. Currently, as non-premium users, bots can set up to one reaction per message.
          * A custom emoji reaction can be used if it is either already present on the message or explicitly allowed by chat administrators.
+         * Paid reactions can't be used by bots.
          *
          * @var null|list<ReactionType>
          */

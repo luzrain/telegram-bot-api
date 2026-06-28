@@ -21,7 +21,8 @@ final class SendGame extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat
+         * Unique identifier for the target chat or username of the target bot in the format @username.
+         * Games can't be sent to channel direct messages chats and channel chats.
          */
         protected int|string $chatId,
 
@@ -52,7 +53,7 @@ final class SendGame extends Method
 
         /**
          * Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message.
-         * The relevant Stars will be withdrawn from the bot's balance
+         * The relevant Stars will be withdrawn from the bot's balance.
          */
         protected bool|null $allowPaidBroadcast = null,
 
@@ -69,7 +70,6 @@ final class SendGame extends Method
         /**
          * A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title' button will be shown.
          * If not empty, the first button must launch the game.
-         * Not supported for messages sent on behalf of a business account.
          */
         protected InlineKeyboardMarkup|null $replyMarkup = null,
     ) {

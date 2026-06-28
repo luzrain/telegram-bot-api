@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 /**
- * The background is a PNG or TGV (gzipped subset of SVG with MIME type "application/x-tgwallpattern")
- * pattern to be combined with the background fill chosen by the user.
+ * The background is a .PNG or .TGV (gzipped subset of SVG with MIME type "application/x-tgwallpattern") pattern to
+ * be combined with the background fill chosen by the user.
  */
 final readonly class BackgroundTypePattern extends BackgroundType
 {
@@ -29,8 +29,8 @@ final readonly class BackgroundTypePattern extends BackgroundType
         public int $intensity,
 
         /**
-         * Optional. True, if the background fill must be applied only to the pattern itself.
-         * All other pixels are black in this case. For dark themes only
+         * Optional. True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case.
+         * For dark themes only.
          */
         public true|null $isInverted = null,
 

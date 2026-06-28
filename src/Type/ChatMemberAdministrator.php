@@ -28,8 +28,8 @@ final readonly class ChatMemberAdministrator extends ChatMember
         public bool $isAnonymous,
 
         /**
-         * True, if the administrator can access the chat event log, chat statistics, boost list in channels, message statistics in channels,
-         * see channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege
+         * True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages,
+         * ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.
          */
         public bool $canManageChat,
 
@@ -44,7 +44,7 @@ final readonly class ChatMemberAdministrator extends ChatMember
         public bool $canManageVideoChats,
 
         /**
-         * True, if the administrator can restrict, ban or unban chat members
+         * True, if the administrator can restrict, ban or unban chat members, or access supergroup statistics
          */
         public bool $canRestrictMembers,
 
@@ -65,37 +65,37 @@ final readonly class ChatMemberAdministrator extends ChatMember
         public bool $canInviteUsers,
 
         /**
-         * Optional. True, if the administrator can post messages in the channel; channels only
-         */
-        public bool|null $canPostMessages = null,
-
-        /**
-         * Optional. True, if the administrator can edit messages of other users and can pin messages; channels only
-         */
-        public bool|null $canEditMessages = null,
-
-        /**
-         * Optional. True, if the user is allowed to pin messages; groups and supergroups only
-         */
-        public bool|null $canPinMessages = null,
-
-        /**
-         * Optional. True, if the administrator can post stories in the channel; channels only
+         * True, if the administrator can post stories to the chat
          */
         public bool|null $canPostStories = null,
 
         /**
-         * Optional. True, if the administrator can edit stories posted by other users; channels only
+         * True, if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access the chat's story archive
          */
         public bool|null $canEditStories = null,
 
         /**
-         * Optional. True, if the administrator can delete stories posted by other users; channels only
+         * True, if the administrator can delete stories posted by other users
          */
         public bool|null $canDeleteStories = null,
 
         /**
-         * Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
+         * Optional. True, if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only
+         */
+        public bool|null $canPostMessages = null,
+
+        /**
+         * Optional. True, if the administrator can edit messages of other users and can pin messages; for channels only
+         */
+        public bool|null $canEditMessages = null,
+
+        /**
+         * Optional. True, if the user is allowed to pin messages; for groups and supergroups only
+         */
+        public bool|null $canPinMessages = null,
+
+        /**
+         * Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
          */
         public bool|null $canManageTopics = null,
 
@@ -105,8 +105,7 @@ final readonly class ChatMemberAdministrator extends ChatMember
         public bool|null $canManageDirectMessages = null,
 
         /**
-         * Optional. True, if the administrator can edit the tags of regular members; for groups and supergroups only.
-         * If omitted defaults to the value of can_pin_messages.
+         * Optional. True, if the administrator can edit the tags of regular members; for groups and supergroups only. If omitted defaults to the value of can_pin_messages.
          */
         public bool|null $canManageTags = null,
 

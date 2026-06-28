@@ -13,7 +13,7 @@ use Luzrain\TelegramBotApi\Type\Payments\ShippingQuery;
 
 /**
  * This object represents an incoming update.
- * At most one of the optional parameters can be present in any given update.
+ * At most one of the optional fields can be present in any given update.
  */
 final readonly class Update extends Type
 {
@@ -48,8 +48,8 @@ final readonly class Update extends Type
     protected function __construct(
         /**
          * The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially.
-         * This ID becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates or to
-         * restore the correct update sequence, should they get out of order. If there are no new updates for at least a week,
+         * This identifier becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates or
+         * to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week,
          * then identifier of the next update will be chosen randomly instead of sequentially.
          */
         public int $updateId,
@@ -60,7 +60,8 @@ final readonly class Update extends Type
         public Message|null $message = null,
 
         /**
-         * Optional. New version of a message that is known to the bot and was edited
+         * Optional. New version of a message that is known to the bot and was edited.
+         * This update may at times be triggered by changes to message fields that are either unavailable or not actively used by your bot.
          */
         public Message|null $editedMessage = null,
 
@@ -70,7 +71,8 @@ final readonly class Update extends Type
         public Message|null $channelPost = null,
 
         /**
-         * Optional. New version of a channel post that is known to the bot and was edited
+         * Optional. New version of a channel post that is known to the bot and was edited.
+         * This update may at times be triggered by changes to message fields that are either unavailable or not actively used by your bot.
          */
         public Message|null $editedChannelPost = null,
 
@@ -80,7 +82,7 @@ final readonly class Update extends Type
         public BusinessConnection|null $businessConnection = null,
 
         /**
-         * Optional. New non-service message from a connected business account
+         * Optional. New message from a connected business account
          */
         public Message|null $businessMessage = null,
 
@@ -130,12 +132,12 @@ final readonly class Update extends Type
         public CallbackQuery|null $callbackQuery = null,
 
         /**
-         * Optional. New incoming shipping query. Only for invoices with flexible price
+         * Optional. New incoming shipping query. Only for invoices with flexible price.
          */
         public ShippingQuery|null $shippingQuery = null,
 
         /**
-         * Optional. New incoming pre-checkout query. Contains full information about checkout
+         * Optional. New incoming pre-checkout query. Contains full information about checkout.
          */
         public PreCheckoutQuery|null $preCheckoutQuery = null,
 
@@ -145,7 +147,7 @@ final readonly class Update extends Type
         public PaidMediaPurchased|null $purchasedPaidMedia = null,
 
         /**
-         * Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot
+         * Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are sent by the bot.
          */
         public Poll|null $poll = null,
 

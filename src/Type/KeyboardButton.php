@@ -28,22 +28,19 @@ final readonly class KeyboardButton extends Type
         public string|null $iconCustomEmojiId = null,
 
         /**
-         * Optional. Style of the button. Must be one of "danger" (red), "success" (green) or "primary" (blue).
-         * If omitted, then an app-specific style is used.
+         * Optional. Style of the button. Must be one of "danger" (red), "success" (green) or "primary" (blue). If omitted, then an app-specific style is used.
          */
         public string|null $style = null,
 
         /**
          * Optional. If specified, pressing the button will open a list of suitable users.
-         * Identifiers of selected users will be sent to the bot in a "users_shared" service message.
-         * Available in private chats only.
+         * Identifiers of selected users will be sent to the bot in a "users_shared" service message. Available in private chats only.
          */
         public KeyboardButtonRequestUsers|null $requestUsers = null,
 
         /**
          * Optional. If specified, pressing the button will open a list of suitable chats.
-         * Tapping on a chat will send its identifier to the bot in a "chat_shared" service message.
-         * Available in private chats only.
+         * Tapping on a chat will send its identifier to the bot in a "chat_shared" service message. Available in private chats only.
          */
         public KeyboardButtonRequestChat|null  $requestChat = null,
 
@@ -73,8 +70,7 @@ final readonly class KeyboardButton extends Type
 
         /**
          * Optional. If specified, the described Web App will be launched when the button is pressed.
-         * The Web App will be able to send a "web_app_data" service message.
-         * Available in private chats only.
+         * The Web App will be able to send a "web_app_data" service message. Available in private chats only.
          */
         public WebAppInfo|null $webApp = null,
     ) {

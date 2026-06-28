@@ -24,7 +24,7 @@ final readonly class ShippingQuery extends Type
         public User $from,
 
         /**
-         * Bot specified invoice payload
+         * Bot-specified invoice payload
          */
         public string $invoicePayload,
 

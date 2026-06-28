@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 /**
- * The boost was obtained by the creation of a Telegram Premium giveaway.
- * This boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription.
+ * The boost was obtained by the creation of a Telegram Premium or a Telegram Star giveaway.
+ * This boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription
+ * for Telegram Premium giveaways and prize_star_count / 500 times for one year for Telegram Star giveaways.
  */
 final readonly class ChatBoostSourceGiveaway extends ChatBoostSource
 {
@@ -20,7 +21,7 @@ final readonly class ChatBoostSourceGiveaway extends ChatBoostSource
         public int $giveawayMessageId,
 
         /**
-         * Optional. User that won the prize in the giveaway if any
+         * Optional. User that won the prize in the giveaway if any; for Telegram Premium giveaways only
          */
         public User|null $user = null,
 

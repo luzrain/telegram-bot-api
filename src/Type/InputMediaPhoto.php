@@ -16,8 +16,8 @@ final readonly class InputMediaPhoto extends InputMedia implements InputPollMedi
     public function __construct(
         /**
          * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
-         * pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload
-         * a new one using multipart/form-data under <file_attach_name> name.
+         * pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>"
+         * to upload a new one using multipart/form-data under <file_attach_name> name.
          */
         public InputFile|string $media,
 
@@ -47,7 +47,7 @@ final readonly class InputMediaPhoto extends InputMedia implements InputPollMedi
         public bool|null $showCaptionAboveMedia = null,
 
         /**
-         * Optional. Pass True if the animation needs to be covered with a spoiler animation
+         * Optional. Pass True if the photo needs to be covered with a spoiler animation
          */
         public bool|null $hasSpoiler = null,
     ) {

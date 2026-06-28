@@ -18,7 +18,8 @@ final class LeaveChat extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target supergroup or channel in the format @username.
+         * Channel direct messages chats aren't supported; leave the corresponding channel instead.
          */
         protected int|string $chatId,
     ) {

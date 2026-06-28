@@ -8,8 +8,7 @@ use Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Type\Payments\LabeledPrice;
 
 /**
- * Use this method to create a link for an invoice.
- * Returns the created invoice link as String on success.
+ * Use this method to create a link for an invoice. Returns the created invoice link as String on success.
  *
  * @extends Method<string>
  */
@@ -29,7 +28,7 @@ final class CreateInvoiceLink extends Method
         protected string $description,
 
         /**
-         * Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
+         * Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes.
          */
         protected string $payload,
 
@@ -59,11 +58,9 @@ final class CreateInvoiceLink extends Method
         protected string|null $providerToken = null,
 
         /**
-         * The number of seconds the subscription will be active for before the next payment.
-         * The currency must be set to "XTR" (Telegram Stars) if the parameter is used.
-         * Currently, it must always be 2592000 (30 days) if specified.
-         * Any number of subscriptions can be active for a given bot at the same time, including multiple concurrent subscriptions from the same user.
-         * Subscription price must no exceed 2500 Telegram Stars.
+         * The number of seconds the subscription will be active for before the next payment. The currency must be set to "XTR" (Telegram Stars) if the parameter is used.
+         * Currently, it must always be 2592000 (30 days) if specified. Any number of subscriptions can be active for a given bot at the same time,
+         * including multiple concurrent subscriptions from the same user. Subscription price must no exceed 10000 Telegram Stars.
          */
         protected int|null $subscriptionPeriod = null,
 

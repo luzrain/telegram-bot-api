@@ -18,7 +18,7 @@ final readonly class BotCommand extends Type
         public string $command,
 
         /**
-         * Description of the command; 1-256 characters.
+         * Description of the command; 1-256 characters
          */
         public string $description,
     ) {

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 /**
- * Describes a regular gift owned by a user or a chat.
+ * Describes a story area pointing to a location. Currently, a story can have up to 10 location areas.
  */
 final readonly class StoryAreaTypeLocation extends StoryAreaType
 {

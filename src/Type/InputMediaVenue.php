@@ -13,12 +13,12 @@ final readonly class InputMediaVenue extends InputMedia implements InputPollMedi
 
     public function __construct(
         /**
-         * Latitude of the venue
+         * Latitude of the location
          */
         public float $latitude,
 
         /**
-         * Longitude of the venue
+         * Longitude of the location
          */
         public float $longitude,
 
@@ -38,8 +38,7 @@ final readonly class InputMediaVenue extends InputMedia implements InputPollMedi
         public string|null $foursquareId = null,
 
         /**
-         * Optional. Foursquare type of the venue, if known.
-         * (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
+         * Optional. Foursquare type of the venue, if known. (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
          */
         public string|null $foursquareType = null,
 

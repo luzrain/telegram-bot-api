@@ -13,7 +13,9 @@ final readonly class User extends Type
 {
     protected function __construct(
         /**
-         * Unique identifier for this user or bot
+         * Unique identifier for this user or bot. This number may have more than 32 significant bits and some programming languages
+         * may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits,
+         * so a 64-bit integer or double-precision float type are safe for storing this identifier.
          */
         public int $id,
 
@@ -68,7 +70,7 @@ final readonly class User extends Type
         public bool|null $supportsInlineQueries = null,
 
         /**
-         * Optional. True, if the bot can be connected to a Telegram Business account to receive its messages. Returned only in getMe.
+         * Optional. True, if the bot can be connected to a user account to manage it. Returned only in getMe.
          */
         public bool|null $canConnectToBusiness = null,
 

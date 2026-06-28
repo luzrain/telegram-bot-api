@@ -76,7 +76,7 @@ final class GetBusinessAccountGifts extends Method
         protected string|null $offset = null,
 
         /**
-         * The maximum number of gifts to be returned; 1-100. Defaults to 100
+         * The maximum number of gifts to be returned; 1-100. Defaults to 100.
          */
         protected int|null $limit = null,
     ) {

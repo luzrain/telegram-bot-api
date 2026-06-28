@@ -170,7 +170,7 @@ final readonly class ChatFullInfo extends Type
         public true|null $joinToSendMessages = null,
 
         /**
-         * Optional. True, if all users directly joining the supergroup need to be approved by supergroup administrators
+         * Optional. True, if all users directly joining the supergroup without using an invite link need to be approved by supergroup administrators
          */
         public true|null $joinByRequest = null,
 
@@ -286,7 +286,7 @@ final readonly class ChatFullInfo extends Type
         public UniqueGiftColors|null $uniqueGiftColors = null,
 
         /**
-         * Optional. The number of Telegram Stars a general user have to pay to send a message to the chat
+         * Optional. The number of Telegram Stars a general user has to pay to send a message to the chat
          */
         public int|null $paidMessageStarCount = null,
 

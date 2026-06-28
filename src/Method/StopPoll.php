@@ -20,7 +20,7 @@ final class StopPoll extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
          */
         protected int|string $chatId,
 
@@ -35,7 +35,7 @@ final class StopPoll extends Method
         protected string|null $businessConnectionId = null,
 
         /**
-         * A JSON-serialized object for a new message inline keyboard.
+         * A JSON-serialized object for a new message inline keyboard
          */
         protected InlineKeyboardMarkup|null $replyMarkup = null,
     ) {

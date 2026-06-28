@@ -7,13 +7,14 @@ namespace Luzrain\TelegramBotApi\Type\Payments;
 use Luzrain\TelegramBotApi\Type;
 
 /**
- * This object contains basic information about a successful payment.
+ * This object contains basic information about a successful payment. Note that if the buyer initiates a chargeback with the
+ * relevant payment provider following this transaction, the funds may be debited from your balance. This is outside of Telegram's control.
  */
 final readonly class SuccessfulPayment extends Type
 {
     protected function __construct(
         /**
-         * Three-letter ISO 4217 currency code
+         * Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars
          *
          * @see https://core.telegram.org/bots/payments#supported-currencies
          */
@@ -27,7 +28,7 @@ final readonly class SuccessfulPayment extends Type
         public int $totalAmount,
 
         /**
-         * Bot specified invoice payload
+         * Bot-specified invoice payload
          */
         public string $invoicePayload,
 
@@ -62,7 +63,7 @@ final readonly class SuccessfulPayment extends Type
         public string|null $shippingOptionId = null,
 
         /**
-         * Optional. Order info provided by the user
+         * Optional. Order information provided by the user
          */
         public OrderInfo|null $orderInfo = null,
     ) {

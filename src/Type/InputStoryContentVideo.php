@@ -13,10 +13,10 @@ final readonly class InputStoryContentVideo extends InputStoryContent
 
     protected function __construct(
         /**
-         * The video to post as a story. The video must be of the size 720x1280, streamable, encoded with H.265 codec, with key frames added each second in the MPEG4 format, and must not exceed 30 MB.
-         * The video can't be reused and can only be uploaded as a new file, so you can pass "attach://<file_attach_name>" if the video was uploaded using multipart/form-data under <file_attach_name>.
-         *
-         * @see https://core.telegram.org/bots/api#sending-files
+         * The video to post as a story. The video must be of the size 720x1280, streamable, encoded with H.265 codec,
+         * with key frames added each second in the MPEG4 format, and must not exceed 30 MB. The video can't be reused
+         * and can only be uploaded as a new file, so you can pass "attach://<file_attach_name>"
+         * if the video was uploaded using multipart/form-data under <file_attach_name>.
          */
         public InputFile|string $video,
 

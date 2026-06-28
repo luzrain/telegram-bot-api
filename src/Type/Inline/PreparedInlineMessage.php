@@ -18,7 +18,7 @@ final readonly class PreparedInlineMessage extends Type
         public string $id,
 
         /**
-         * Expiration date of the prepared message, in Unix time. Expired prepared messages can no longer be used
+         * Expiration date of the prepared message, in Unix time. Expired prepared messages can no longer be used.
          */
         public int $expirationDate,
     ) {

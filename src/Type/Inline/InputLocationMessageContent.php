@@ -28,7 +28,7 @@ final readonly class InputLocationMessageContent extends Type implements InputMe
         public float|null $horizontalAccuracy = null,
 
         /**
-         * Optional. Period in seconds for which the location can be updated, should be between 60 and 86400.
+         * Optional. Period in seconds during which the location can be updated, must be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely
          */
         public int|null $livePeriod = null,
 

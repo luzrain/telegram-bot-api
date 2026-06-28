@@ -13,7 +13,7 @@ final readonly class ShippingAddress extends Type
 {
     protected function __construct(
         /**
-         * ISO 3166-1 alpha-2 country code
+         * Two-letter ISO 3166-1 alpha-2 country code
          */
         public string $countryCode,
 

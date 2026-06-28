@@ -19,12 +19,12 @@ final class SetChatTitle extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target channel in the format @username
          */
         protected int|string $chatId,
 
         /**
-         * New chat title, 1-255 characters
+         * New chat title, 1-128 characters
          */
         protected string $title,
     ) {

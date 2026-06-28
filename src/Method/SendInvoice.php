@@ -12,8 +12,7 @@ use Luzrain\TelegramBotApi\Type\ReplyParameters;
 use Luzrain\TelegramBotApi\Type\SuggestedPostParameters;
 
 /**
- * Use this method to send invoices.
- * On success, the sent Message is returned.
+ * Use this method to send invoices. On success, the sent Message is returned.
  *
  * @extends Method<Message>
  */
@@ -24,7 +23,7 @@ final class SendInvoice extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+         * Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
          */
         protected int|string $chatId,
 
@@ -39,7 +38,7 @@ final class SendInvoice extends Method
         protected string $description,
 
         /**
-         * Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
+         * Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes.
          */
         protected string $payload,
 
@@ -92,9 +91,9 @@ final class SendInvoice extends Method
 
         /**
          * Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay button,
-         * allowing multiple users to pay directly from the forwarded message, using the same invoice.
-         * If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the bot
-         * (instead of a Pay button), with the value used as the start parameter
+         * allowing multiple users to pay directly from the forwarded message, using the same invoice. If non-empty,
+         * forwarded copies of the sent message will have a URL button with a deep link to the bot (instead of a Pay
+         * button), with the value used as the start parameter.
          */
         protected string|null $startParameter = null,
 
@@ -111,7 +110,7 @@ final class SendInvoice extends Method
         protected string|null $photoUrl = null,
 
         /**
-         * Photo size
+         * Photo size in bytes
          */
         protected int|null $photoSize = null,
 
@@ -171,8 +170,8 @@ final class SendInvoice extends Method
         protected bool|null $protectContent = null,
 
         /**
-         * Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message.
-         * The relevant Stars will be withdrawn from the bot's balance
+         * Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram
+         * Stars per message. The relevant Stars will be withdrawn from the bot's balance.
          */
         protected bool|null $allowPaidBroadcast = null,
 
@@ -193,8 +192,8 @@ final class SendInvoice extends Method
         protected ReplyParameters|null $replyParameters = null,
 
         /**
-         * A JSON-serialized object for an inline keyboard. If empty, one 'Pay total price' button will be shown.
-         * If not empty, the first button must be a Pay button.
+         * A JSON-serialized object for an inline keyboard. If empty, one 'Pay total price ' button will be shown. If
+         * not empty, the first button must be a Pay button.
          */
         protected InlineKeyboardMarkup|null $replyMarkup = null,
     ) {

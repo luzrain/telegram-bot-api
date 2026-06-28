@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Method;
 use Luzrain\TelegramBotApi\Method;
 
 /**
- * Removes the profile photo of the bot. Returns True on success.
+ * Removes the profile photo of the bot. Requires no parameters. Returns True on success.
  *
  * @extends Method<true>
  */

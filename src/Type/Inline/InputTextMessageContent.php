@@ -23,7 +23,7 @@ final readonly class InputTextMessageContent extends Type implements InputMessag
         /**
          * Optional. Mode for parsing entities in the message text. See formatting options for more details.
          *
-         * @link https://core.telegram.org/bots/api#formatting-options
+         * @see https://core.telegram.org/bots/api#formatting-options
          */
         public string|null $parseMode = null,
 

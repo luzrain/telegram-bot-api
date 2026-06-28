@@ -13,7 +13,8 @@ final readonly class BotCommandScopeChatAdministrators extends BotCommandScope
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+         * Unique identifier for the target chat or username of the target supergroup in the format @username.
+         * Channel direct messages chats and channel chats aren't supported.
          */
         public int|string $chatId,
     ) {

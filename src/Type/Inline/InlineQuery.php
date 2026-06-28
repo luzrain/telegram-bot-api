@@ -36,9 +36,9 @@ final readonly class InlineQuery extends Type
         public string $offset,
 
         /**
-         * Optional. Type of the chat, from which the inline query was sent.
+         * Optional. Type of the chat from which the inline query was sent.
          * Can be either "sender" for a private chat with the inline query sender, "private", "group", "supergroup", or "channel".
-         * The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat
+         * The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat.
          */
         public string|null $chatType = null,
 
