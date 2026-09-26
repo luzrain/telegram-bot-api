@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
+use Luzrain\TelegramBotApi\Type;
+
 /**
  * Represents a location to be sent.
  */
-final readonly class InputMediaLocation extends InputMedia implements InputPollMedia, InputPollOptionMedia
+final readonly class InputMediaLocation extends Type implements InputPollMedia, InputPollOptionMedia
 {
     public const TYPE = 'location';
+
+    public string $type;
 
     public function __construct(
         /**
@@ -27,6 +31,6 @@ final readonly class InputMediaLocation extends InputMedia implements InputPollM
          */
         public float|null $horizontalAccuracy = null,
     ) {
-        parent::__construct(self::TYPE);
+        $this->type = self::TYPE;
     }
 }

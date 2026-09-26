@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace Luzrain\TelegramBotApi\Type;
 
+use Luzrain\TelegramBotApi\Type;
+
 /**
  * Represents a sticker file to be sent.
  */
-final readonly class InputMediaSticker extends InputMedia implements InputPollOptionMedia
+final readonly class InputMediaSticker extends Type implements InputPollOptionMedia
 {
     public const TYPE = 'sticker';
+
+    public string $type;
 
     public function __construct(
         /**
@@ -24,6 +28,6 @@ final readonly class InputMediaSticker extends InputMedia implements InputPollOp
          */
         public string|null $emoji = null,
     ) {
-        parent::__construct(self::TYPE);
+        $this->type = self::TYPE;
     }
 }

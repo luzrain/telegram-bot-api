@@ -5,13 +5,16 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Type;
 
 use Luzrain\TelegramBotApi\Internal\ArrayType;
+use Luzrain\TelegramBotApi\Type;
 
 /**
  * Represents a voice message file to be sent.
  */
-final readonly class InputMediaVoiceNote extends InputMedia
+final readonly class InputMediaVoiceNote extends Type
 {
     public const TYPE = 'voice_note';
+
+    public string $type;
 
     public function __construct(
         /**
@@ -44,6 +47,6 @@ final readonly class InputMediaVoiceNote extends InputMedia
          */
         public int|null $duration = null,
     ) {
-        parent::__construct(self::TYPE);
+        $this->type = self::TYPE;
     }
 }
