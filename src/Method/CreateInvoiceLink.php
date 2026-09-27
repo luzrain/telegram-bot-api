@@ -75,7 +75,7 @@ final class CreateInvoiceLink extends Method
         protected int|null $maxTipAmount = null,
 
         /**
-         * A JSON-serialized array of suggested amounts of tips in the smallest units of the currency (integer, not float/double).
+         * A JSON-serialized Array of suggested amounts of tips in the smallest units of the currency (integer, not float/double).
          * At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive,
          * passed in a strictly increased order and must not exceed max_tip_amount.
          *

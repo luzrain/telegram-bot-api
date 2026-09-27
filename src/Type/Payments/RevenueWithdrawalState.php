@@ -17,7 +17,7 @@ readonly class RevenueWithdrawalState extends Type
 {
     protected function __construct(
         /**
-         * Type of the transaction partner
+         * Type of the state
          */
         public string $type,
     ) {

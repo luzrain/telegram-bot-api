@@ -13,6 +13,9 @@ final readonly class InputMediaVenue extends Type implements InputPollMedia, Inp
 {
     public const TYPE = 'venue';
 
+    /**
+     * Type of the media, must be venue
+     */
     public string $type;
 
     public function __construct(

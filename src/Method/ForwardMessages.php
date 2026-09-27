@@ -11,7 +11,7 @@ use Luzrain\TelegramBotApi\Type\MessageId;
  * Use this method to forward multiple messages of any kind.
  * If some of the specified messages can't be found or forwarded, they are skipped.
  * Service messages and messages with protected content can't be forwarded. Album grouping is kept for forwarded messages.
- * On success, an array of MessageId of the sent messages is returned.
+ * On success, an Array of MessageId of the sent messages is returned.
  *
  * @extends Method<list<MessageId>>
  */

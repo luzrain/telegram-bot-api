@@ -44,6 +44,8 @@ final class GetUpdates extends Method
          * See Update for a complete list of available update types. Specify an empty list to receive all update types
          * except chat_member, message_reaction, and message_reaction_count (default). If not specified, the previous setting will be used.
          *
+         * Please note that this parameter doesn't affect updates created before the call to getUpdates, so unwanted updates may be received for a short period of time.
+         *
          * @var list<string>|null
          */
         protected array|null $allowedUpdates = null,

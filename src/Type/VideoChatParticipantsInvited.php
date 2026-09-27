@@ -19,7 +19,7 @@ final readonly class VideoChatParticipantsInvited extends Type
          * @var list<User>
          */
         #[ArrayType(User::class)]
-        protected array $users,
+        public array $users,
     ) {
     }
 }

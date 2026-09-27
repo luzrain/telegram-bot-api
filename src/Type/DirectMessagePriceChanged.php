@@ -13,7 +13,7 @@ final readonly class DirectMessagePriceChanged extends Type
 {
     protected function __construct(
         /**
-         * True, if direct messages are enabled for the channel chat; false otherwise
+         * True, if direct messages are enabled for the channel chat; False otherwise
          */
         public bool $areDirectMessagesEnabled,
 

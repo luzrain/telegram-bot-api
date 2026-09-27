@@ -8,7 +8,7 @@ use Luzrain\TelegramBotApi\Method;
 
 /**
  * Use this method to get the number of members in a chat.
- * Returns Int on success.
+ * Returns Integer on success.
  *
  * @extends Method<int>
  */

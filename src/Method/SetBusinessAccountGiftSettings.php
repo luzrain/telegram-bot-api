@@ -24,7 +24,7 @@ final class SetBusinessAccountGiftSettings extends Method
         protected string $businessConnectionId,
 
         /**
-         * Pass True, if a button for sending a gift to the user or by the business account must always be shown in the input field
+         * Pass True if a button for sending a gift to the user or by the business account must always be shown in the input field
          */
         protected bool $showGiftButton,
 

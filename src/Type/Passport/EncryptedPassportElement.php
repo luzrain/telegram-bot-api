@@ -25,14 +25,14 @@ final readonly class EncryptedPassportElement extends Type
         public string $hash,
 
         /**
-         * Optional. Base64-encoded encrypted Telegram Passport element data provided by the user, available for
+         * Optional. Base64-encoded encrypted Telegram Passport element data provided by the user; available only for
          * "personal_details", "passport", "driver_license", "identity_card", "internal_passport" and "address" types.
          * Can be decrypted and verified using the accompanying EncryptedCredentials.
          */
         public string|null $data = null,
 
         /**
-         * Optional. User's verified phone number, available only for "phone_number" type
+         * Optional. User's verified phone number; available only for "phone_number" type
          */
         public string|null $phoneNumber = null,
 

@@ -15,7 +15,7 @@ use Luzrain\TelegramBotApi\Type;
 final readonly class ForceReply extends Type
 {
     /**
-     * Shows reply interface to the user, as if they manually selected the bot's message and tapped 'Reply'
+     * Shows reply interface to the user, as if they had manually selected the bot's message and tapped 'Reply'
      */
     public true $forceReply;
 

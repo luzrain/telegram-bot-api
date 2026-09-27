@@ -17,7 +17,7 @@ readonly class BackgroundFill extends Type
 {
     protected function __construct(
         /**
-         * Type of the background
+         * Type of the background fill
          */
         public string $type,
     ) {

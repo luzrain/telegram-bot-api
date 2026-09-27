@@ -29,7 +29,7 @@ final class EditMessageChecklist extends Method
         /**
          * Unique identifier for the target chat or username of the target bot in the format @username
          */
-        protected int $chatId,
+        protected int|string $chatId,
 
         /**
          * Unique identifier for the target message

@@ -28,12 +28,12 @@ final readonly class InputRichBlockTable extends InputRichBlock
         /**
          * Optional. Pass True if the table has borders
          */
-        public bool|null $isBordered = null,
+        public true|null $isBordered = null,
 
         /**
          * Optional. Pass True if the table is striped
          */
-        public bool|null $isStriped = null,
+        public true|null $isStriped = null,
 
         /**
          * Optional. Caption of the table
@@ -46,7 +46,7 @@ final readonly class InputRichBlockTable extends InputRichBlock
         /**
          * Optional. Pass True if table cells must have smaller indents
          */
-        public bool|null $isCompact = null,
+        public true|null $isCompact = null,
     ) {
         parent::__construct(self::TYPE);
     }

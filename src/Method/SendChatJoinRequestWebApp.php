@@ -24,7 +24,7 @@ final class SendChatJoinRequestWebApp extends Method
         protected string $chatJoinRequestQueryId,
 
         /**
-         * The URL of the Mini App to be opened
+         * An HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web Apps
          */
         protected string $webAppUrl,
     ) {

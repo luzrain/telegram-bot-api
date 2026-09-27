@@ -26,7 +26,7 @@ final class EditMessageMedia extends Method
 
     public function __construct(
         /**
-         * A JSON-serialized object for a new media content of the message
+         * A JSON-serialized object for the new media content of the message
          */
         protected InputMedia $media,
 

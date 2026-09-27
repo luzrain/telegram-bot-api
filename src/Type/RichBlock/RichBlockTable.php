@@ -19,7 +19,7 @@ final readonly class RichBlockTable extends RichBlock
         /**
          * Cells of the table
          *
-         * @var list<RichBlockTableCell>
+         * @var list<list<RichBlockTableCell>>
          */
         #[ArrayOfArayType(RichBlockTableCell::class)]
         public array $cells,

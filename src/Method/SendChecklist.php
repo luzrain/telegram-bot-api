@@ -30,7 +30,7 @@ final class SendChecklist extends Method
         /**
          * Unique identifier for the target chat or username of the target bot in the format @username
          */
-        protected int $chatId,
+        protected int|string $chatId,
 
         /**
          * A JSON-serialized object for the checklist to send

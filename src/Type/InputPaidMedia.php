@@ -17,7 +17,7 @@ readonly class InputPaidMedia extends Type
 {
     protected function __construct(
         /**
-         * Type of the paid media
+         * Type of the media
          */
         public string $type,
     ) {

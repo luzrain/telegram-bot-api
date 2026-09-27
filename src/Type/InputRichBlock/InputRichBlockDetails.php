@@ -35,7 +35,7 @@ final readonly class InputRichBlockDetails extends InputRichBlock
         /**
          * Optional. Pass True if the content of the block is visible by default
          */
-        public bool|null $isOpen = null,
+        public true|null $isOpen = null,
     ) {
         parent::__construct(self::TYPE);
     }

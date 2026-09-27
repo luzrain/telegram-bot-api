@@ -74,7 +74,7 @@ final class SendPhoto extends Method
         protected array|null $captionEntities = null,
 
         /**
-         * Pass True, if the caption must be shown above the message media
+         * Pass True if the caption must be shown above the message media
          */
         protected bool|null $showCaptionAboveMedia = null,
 

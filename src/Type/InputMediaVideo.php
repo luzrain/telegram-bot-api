@@ -62,7 +62,7 @@ final readonly class InputMediaVideo extends InputMedia implements InputPollMedi
         public array|null $captionEntities = null,
 
         /**
-         * Optional. Pass True, if the caption must be shown above the message media
+         * Optional. Pass True if the caption must be shown above the message media
          */
         public bool|null $showCaptionAboveMedia = null,
 

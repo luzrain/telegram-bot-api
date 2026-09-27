@@ -46,7 +46,7 @@ final class RestrictChatMember extends Method
          * Date when restrictions will be lifted for the user; Unix time.
          * If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever.
          */
-        protected bool|null $untilDate = null,
+        protected int|null $untilDate = null,
     ) {
     }
 }

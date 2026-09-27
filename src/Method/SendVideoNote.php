@@ -16,8 +16,7 @@ use Luzrain\TelegramBotApi\Type\ReplyParameters;
 use Luzrain\TelegramBotApi\Type\SuggestedPostParameters;
 
 /**
- * As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages.
- * On success, the sent Message is returned.
+ * Use this method to send a rounded square MPEG4 video of up to 1 minute long. On success, the sent Message is returned.
  *
  * @extends Method<Message>
  */

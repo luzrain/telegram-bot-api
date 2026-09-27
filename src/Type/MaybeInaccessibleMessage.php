@@ -18,8 +18,12 @@ use Luzrain\TelegramBotApi\Type;
  */
 readonly class MaybeInaccessibleMessage extends Type
 {
-    protected function __construct(private int $date)
-    {
+    protected function __construct(
+        /**
+         * Date the message was sent in Unix time
+         */
+        private int $date,
+    ) {
     }
 
     /**

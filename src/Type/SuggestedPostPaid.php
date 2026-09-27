@@ -13,7 +13,7 @@ final readonly class SuggestedPostPaid extends Type
 {
     protected function __construct(
         /**
-         * Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins.
+         * Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for TON grams.
          */
         public string $currency,
 
@@ -23,7 +23,7 @@ final readonly class SuggestedPostPaid extends Type
         public Message|null $suggestedPostMessage = null,
 
         /**
-         * Optional. The amount of the currency that was received by the channel in nanotoncoins; for payments in toncoins only
+         * Optional. The amount of the currency that was received by the channel in nanograms; for payments in TON grams only
          */
         public int|null $amount = null,
 

@@ -14,12 +14,16 @@ final readonly class InlineKeyboardMarkup extends Type
 {
     /**
      * Array of button rows, each represented by an Array of InlineKeyboardButton objects
+     *
+     * @var list<list<InlineKeyboardButton>>
      */
     public array $inlineKeyboard;
 
     public function __construct(
         /**
          * Array of button rows, each represented by an Array of InlineKeyboardButton objects
+         *
+         * @var list<list<InlineKeyboardButton>>|InlineKeyboardButtonArrayBuilder
          */
         #[ArrayOfArayType(InlineKeyboardButton::class)]
         InlineKeyboardButtonArrayBuilder|array $inlineKeyboard,
@@ -30,6 +34,7 @@ final readonly class InlineKeyboardMarkup extends Type
          */
         public bool|null $forceReply = null,
     ) {
+        /** @psalm-suppress PropertyTypeCoercion */
         $this->inlineKeyboard = \is_array($inlineKeyboard) ? $inlineKeyboard : $inlineKeyboard->toArray();
     }
 }

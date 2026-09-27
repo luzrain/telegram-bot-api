@@ -81,32 +81,32 @@ final class SendPoll extends Method
         protected string|null $type = null,
 
         /**
-         * Pass True, if the poll allows multiple answers, defaults to False
+         * Pass True if the poll allows multiple answers, defaults to False
          */
         protected bool|null $allowsMultipleAnswers = null,
 
         /**
-         * Pass True, if the poll allows to change chosen answer options, defaults to False for quizzes and to True for regular polls
+         * Pass True if the poll allows to change chosen answer options, defaults to False for quizzes and to True for regular polls
          */
         protected bool|null $allowsRevoting = null,
 
         /**
-         * Pass True, if the poll options must be shown in random order
+         * Pass True if the poll options must be shown in random order
          */
         protected bool|null $shuffleOptions = null,
 
         /**
-         * Pass True, if answer options can be added to the poll after creation; not supported for anonymous polls and quizzes
+         * Pass True if answer options can be added to the poll after creation; not supported for anonymous polls and quizzes
          */
         protected bool|null $allowAddingOptions = null,
 
         /**
-         * Pass True, if poll results must be shown only after the poll closes
+         * Pass True if poll results must be shown only after the poll closes
          */
         protected bool|null $hideResultsUntilCloses = null,
 
         /**
-         * Pass True, if voting is limited to users who have been members of the chat where the poll is being sent for more than 24 hours; for channel chats only
+         * Pass True if voting is limited to users who have been members of the chat where the poll is being sent for more than 24 hours; for channel chats only
          */
         protected bool|null $membersOnly = null,
 

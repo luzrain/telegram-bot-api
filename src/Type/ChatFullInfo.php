@@ -118,7 +118,7 @@ final readonly class ChatFullInfo extends Type
         /**
          * Optional. List of available reactions allowed in the chat. If omitted, then all emoji reactions are allowed.
          *
-         * @var null|list<ReactionType>
+         * @var list<ReactionType>|null
          */
         #[ArrayType(ReactionType::class)]
         public array|null $availableReactions = null,

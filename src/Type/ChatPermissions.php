@@ -88,7 +88,7 @@ final readonly class ChatPermissions extends Type
         public bool|null $canPinMessages = null,
 
         /**
-         * Optional. True, if the user is allowed to create forum topics. If omitted defaults to the value of can_pin_messages.
+         * Optional. True, if the user is allowed to create forum topics. If omitted, defaults to the value of can_pin_messages.
          */
         public bool|null $canManageTopics = null,
     ) {

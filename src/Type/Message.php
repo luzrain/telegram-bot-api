@@ -19,7 +19,7 @@ final readonly class Message extends MaybeInaccessibleMessage
 {
     protected function __construct(
         /**
-         * Unique message identifier inside this chat; 0 for ephemeral messages. In specific instances (e.g., message containing a video sent to a big chat),
+         * Unique message identifier inside this chat; 0 for ephemeral messages. In specific instances (e.g., a message containing a video sent to a big chat),
          * the server might automatically schedule a message instead of sending it immediately.
          * In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent.
          */
@@ -480,7 +480,7 @@ final readonly class Message extends MaybeInaccessibleMessage
         public PassportData|null $passportData = null,
 
         /**
-         * Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
+         * Optional. Service message: a user in the chat triggered another user's proximity alert while sharing Live Location
          */
         public ProximityAlertTriggered|null $proximityAlertTriggered = null,
 

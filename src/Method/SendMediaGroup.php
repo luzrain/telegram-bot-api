@@ -16,7 +16,7 @@ use Luzrain\TelegramBotApi\Type\ReplyParameters;
 /**
  * Use this method to send a group of photos, live photos, videos, documents or audios as an album.
  * Documents and audio files can be only grouped in an album with messages of the same type.
- * On success, an array of Message objects that were sent is returned.
+ * On success, an Array of Message objects that were sent is returned.
  *
  * @extends Method<list<Message>>
  */
@@ -33,7 +33,7 @@ final class SendMediaGroup extends Method
         protected int|string $chatId,
 
         /**
-         * A JSON-serialized array describing messages to be sent, must include 2-10 items
+         * A JSON-serialized Array describing messages to be sent, must include 2-10 items
          *
          * @var list<InputMediaAudio|InputMediaDocument|InputMediaLivePhoto|InputMediaPhoto|InputMediaVideo>
          */

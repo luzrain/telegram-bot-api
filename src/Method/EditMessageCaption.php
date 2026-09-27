@@ -63,7 +63,7 @@ final class EditMessageCaption extends Method
         protected array|null $captionEntities = null,
 
         /**
-         * Pass True, if the caption must be shown above the message media. Supported only for animation, photo and video messages.
+         * Pass True if the caption must be shown above the message media. Supported only for animation, photo and video messages.
          */
         protected bool|null $showCaptionAboveMedia = null,
 

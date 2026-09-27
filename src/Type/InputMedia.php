@@ -20,7 +20,7 @@ readonly class InputMedia extends Type
 {
     protected function __construct(
         /**
-         * Type of the result
+         * Type of the media
          */
         public string $type,
     ) {

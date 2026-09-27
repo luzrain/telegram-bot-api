@@ -29,8 +29,7 @@ final class AnswerCallbackQuery extends Method
         protected string|null $text = null,
 
         /**
-         * If True, an alert will be shown by the client instead of a notification at the top of the chat screen.
-         * Defaults to false.
+         * If True, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to False.
          */
         protected bool|null $showAlert = null,
 
@@ -43,8 +42,7 @@ final class AnswerCallbackQuery extends Method
         protected string|null $url = null,
 
         /**
-         * The maximum amount of time in seconds that the result of the callback query may be cached client-side.
-         * Telegram apps will support caching starting in version 3.14. Defaults to 0.
+         * The maximum amount of time in seconds that the result of the callback query may be cached client-side. Defaults to 0.
          */
         protected int|null $cacheTime = null,
     ) {

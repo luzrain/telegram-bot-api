@@ -13,6 +13,9 @@ final readonly class InputMediaSticker extends Type implements InputPollOptionMe
 {
     public const TYPE = 'sticker';
 
+    /**
+     * Type of the media, must be sticker
+     */
     public string $type;
 
     public function __construct(

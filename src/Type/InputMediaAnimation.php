@@ -50,7 +50,7 @@ final readonly class InputMediaAnimation extends InputMedia implements InputPoll
         public array|null $captionEntities = null,
 
         /**
-         * Optional. Pass True, if the caption must be shown above the message media
+         * Optional. Pass True if the caption must be shown above the message media
          */
         public bool|null $showCaptionAboveMedia = null,
 

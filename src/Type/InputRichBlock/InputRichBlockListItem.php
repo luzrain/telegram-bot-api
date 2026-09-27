@@ -24,12 +24,12 @@ final readonly class InputRichBlockListItem extends Type
         /**
          * Optional. Pass True if the item has a checkbox
          */
-        public bool|null $hasCheckbox = null,
+        public true|null $hasCheckbox = null,
 
         /**
          * Optional. Pass True if the item has a checked checkbox
          */
-        public bool|null $isChecked = null,
+        public true|null $isChecked = null,
 
         /**
          * Optional. For ordered lists, the numeric value of the item label

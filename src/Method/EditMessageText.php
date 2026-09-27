@@ -70,7 +70,8 @@ final class EditMessageText extends Method
         protected LinkPreviewOptions|null $linkPreviewOptions = null,
 
         /**
-         * New rich content of the message; required if text isn't specified
+         * New rich content of the message; required if text isn't specified.
+         * Direct upload of new files and explicit upload of files by a URL isn't supported when an inline message is edited.
          */
         protected InputRichMessage|null $richMessage = null,
 

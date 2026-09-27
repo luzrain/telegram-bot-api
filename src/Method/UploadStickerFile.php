@@ -27,7 +27,7 @@ final class UploadStickerFile extends Method
 
         /**
          * A file with the sticker in .WEBP, .PNG, .TGS, or .WEBM format.
-         * See https://core.telegram.org/stickers for technical requirements. More information on Sending Files »
+         * See https://core.telegram.org/stickers for technical requirements.
          *
          * @see https://core.telegram.org/bots/api#sending-files
          */

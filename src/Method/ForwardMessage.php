@@ -33,7 +33,7 @@ final class ForwardMessage extends Method
         /**
          * Message identifier in the chat specified in from_chat_id
          */
-        protected int|string $messageId,
+        protected int $messageId,
 
         /**
          * Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only

@@ -11,6 +11,11 @@ use Luzrain\TelegramBotApi\Type;
  */
 final readonly class InputMediaLink extends Type implements InputPollOptionMedia
 {
+    public const TYPE = 'link';
+
+    /**
+     * Type of the media, must be link
+     */
     public string $type;
 
     public function __construct(
@@ -19,6 +24,6 @@ final readonly class InputMediaLink extends Type implements InputPollOptionMedia
          */
         public string $url,
     ) {
-        $this->type = 'link';
+        $this->type = self::TYPE;
     }
 }

@@ -31,7 +31,7 @@ final class AnswerShippingQuery extends Method
         protected bool $ok,
 
         /**
-         * Required if ok is True. A JSON-serialized array of available shipping options.
+         * Required if ok is True. A JSON-serialized Array of available shipping options.
          *
          * @var list<ShippingOption>|null
          */

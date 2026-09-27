@@ -39,7 +39,7 @@ final class SendPaidMedia extends Method
         protected int $starCount,
 
         /**
-         * A JSON-serialized array describing the media to be sent; up to 10 items
+         * A JSON-serialized Array describing the media to be sent; up to 10 items
          *
          * @var list<InputPaidMedia>
          */
@@ -85,7 +85,7 @@ final class SendPaidMedia extends Method
         protected array|null $captionEntities = null,
 
         /**
-         * Pass True, if the caption must be shown above the message media
+         * Pass True if the caption must be shown above the message media
          */
         protected bool|null $showCaptionAboveMedia = null,
 

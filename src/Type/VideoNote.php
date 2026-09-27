@@ -7,7 +7,7 @@ namespace Luzrain\TelegramBotApi\Type;
 use Luzrain\TelegramBotApi\Type;
 
 /**
- * This object represents a video message (available in Telegram apps as of v.4.0).
+ * This object represents a video message.
  */
 final readonly class VideoNote extends Type
 {

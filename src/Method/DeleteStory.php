@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Luzrain\TelegramBotApi\Method;
 
 use Luzrain\TelegramBotApi\Method;
-use Luzrain\TelegramBotApi\Type\Story;
 
 /**
  * Deletes a story previously posted by the bot on behalf of a managed business account. Requires the can_manage_stories business bot right.
  * Returns True on success.
  *
- * @extends Method<Story>
+ * @extends Method<true>
  */
 final class DeleteStory extends Method
 {

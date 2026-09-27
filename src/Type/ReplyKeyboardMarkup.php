@@ -13,32 +13,39 @@ use Luzrain\TelegramBotApi\Type;
  */
 final readonly class ReplyKeyboardMarkup extends Type
 {
+    /**
+     * Array of button rows, each represented by an Array of KeyboardButton objects
+     *
+     * @var list<list<KeyboardButton>>
+     */
     public array $keyboard;
 
     public function __construct(
         /**
          * Array of button rows, each represented by an Array of KeyboardButton objects
+         *
+         * @var list<list<KeyboardButton>>|KeyboardButtonArrayBuilder
          */
         #[ArrayOfArayType(KeyboardButton::class)]
         KeyboardButtonArrayBuilder|array $keyboard,
 
         /**
          * Optional. Requests clients to always show the keyboard when the regular keyboard is hidden.
-         * Defaults to false, in which case the custom keyboard can be hidden and opened with a keyboard icon.
+         * Defaults to False, in which case the custom keyboard can be hidden and opened with a keyboard icon.
          */
         public bool|null $isPersistent = null,
 
         /**
          * Optional. Requests clients to resize the keyboard vertically for optimal fit
          * (e.g., make the keyboard smaller if there are just two rows of buttons).
-         * Defaults to false, in which case the custom keyboard is always of the same height as the app's standard keyboard.
+         * Defaults to False, in which case the custom keyboard is always of the same height as the app's standard keyboard.
          */
         public bool|null $resizeKeyboard = null,
 
         /**
          * Optional. Requests clients to hide the keyboard as soon as it's been used. The keyboard will still be available,
          * but clients will automatically display the usual letter-keyboard in the chat - the user can press a special
-         * button in the input field to see the custom keyboard again. Defaults to false.
+         * button in the input field to see the custom keyboard again. Defaults to False.
          */
         public bool|null $oneTimeKeyboard = null,
 
@@ -63,6 +70,7 @@ final readonly class ReplyKeyboardMarkup extends Type
          */
         public bool|null $forceReply = null,
     ) {
+        /** @psalm-suppress PropertyTypeCoercion */
         $this->keyboard = \is_array($keyboard) ? $keyboard : $keyboard->toArray();
     }
 }

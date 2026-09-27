@@ -22,12 +22,12 @@ final class SetManagedBotAccessSettings extends Method
         protected int $userId,
 
         /**
-         * Pass True, if only selected users can access the bot. The bot's owner can always access it.
+         * Pass True if only selected users can access the bot. The bot's owner can always access it.
          */
         protected bool $isAccessRestricted,
 
         /**
-         * A JSON-serialized list of up to 10 identifiers of users who will have access to the bot in addition to its owner. Ignored if is_access_restricted is false.
+         * A JSON-serialized list of up to 10 identifiers of users who will have access to the bot in addition to its owner. Ignored if is_access_restricted is False.
          *
          * @var list<int>|null
          */

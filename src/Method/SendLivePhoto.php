@@ -28,7 +28,7 @@ final class SendLivePhoto extends Method
 
     public function __construct(
         /**
-         * Unique identifier for the target chat or username of the target channel in the format @username
+         * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
          */
         protected int|string $chatId,
 
@@ -80,7 +80,7 @@ final class SendLivePhoto extends Method
         protected array|null $captionEntities = null,
 
         /**
-         * Pass True, if the caption must be shown above the message media
+         * Pass True if the caption must be shown above the message media
          */
         protected bool|null $showCaptionAboveMedia = null,
 

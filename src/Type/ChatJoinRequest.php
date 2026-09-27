@@ -46,7 +46,7 @@ final readonly class ChatJoinRequest extends Type
         public ChatInviteLink|null $inviteLink = null,
 
         /**
-         * Optional. Identifier of the join request query; for bots assigned to process join request only.
+         * Optional. Identifier of the join request query; for bots assigned to process join requests only.
          * If present, then the bot must call sendChatJoinRequestWebApp or directly call answerChatJoinRequestQuery within 10 seconds.
          */
         public string|null $queryId = null,

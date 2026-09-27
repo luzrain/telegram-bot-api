@@ -13,6 +13,9 @@ final readonly class InputMediaLocation extends Type implements InputPollMedia, 
 {
     public const TYPE = 'location';
 
+    /**
+     * Type of the media, must be location
+     */
     public string $type;
 
     public function __construct(

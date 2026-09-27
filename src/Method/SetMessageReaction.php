@@ -35,7 +35,7 @@ final class SetMessageReaction extends Method
          * A custom emoji reaction can be used if it is either already present on the message or explicitly allowed by chat administrators.
          * Paid reactions can't be used by bots.
          *
-         * @var null|list<ReactionType>
+         * @var list<ReactionType>|null
          */
         protected array|null $reaction = null,
 
